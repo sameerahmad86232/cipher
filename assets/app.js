@@ -1,29 +1,178 @@
-const input=document.querySelector('#search-input'),results=document.querySelector('#results'),statusEl=document.querySelector('#dictionary-status'),countEl=document.querySelector('#result-count'),titleEl=document.querySelector('#results-title'),eyebrow=document.querySelector('#results-eyebrow'),clearBtn=document.querySelector('#clear-button'),moreBtn=document.querySelector('#load-more'),letters=document.querySelector('#letter-list'),recentBlock=document.querySelector('.recent-block'),recentList=document.querySelector('#recent-list');
-let dictionary=[],matches=[],visible=12;
-const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const norm=s=>String(s||'').normalize('NFC').toLocaleLowerCase().trim();
-const loose=s=>norm(s).normalize('NFD').replace(/\p{M}/gu,'').replace(/[ـ]/g,'');
-const recent=()=>JSON.parse(localStorage.getItem('koshur-recent')||'[]');
-function saveRecent(q){if(q.length<2)return;localStorage.setItem('koshur-recent',JSON.stringify([q,...recent().filter(x=>x!==q)].slice(0,6)));renderRecent()}
-function renderRecent(){const items=recent();recentBlock.hidden=!items.length;recentList.innerHTML=items.map(x=>`<button data-query="${esc(x)}">${esc(x)}</button>`).join('')}
-function card(item){const arabic=/[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]/.test(item.k);return `<article class="word-card"><div class="headword"><p class="kashmiri-word" lang="${arabic?'ks-Arab':'ks-Latn'}" dir="${arabic?'rtl':'ltr'}">${esc(item.k)}</p>${item.p?`<span class="pos">${esc(item.p)}</span>`:''}</div><div><p class="meaning">${esc(item.e)}</p>${item.tr?`<p class="word-details">${esc(item.tr)}${item.ipa?` · ${esc(item.ipa)}`:''}</p>`:''}${item.x?`<p class="example">“${esc(item.x)}”</p>`:''}${item.kx?`<p class="kashmiri-example" lang="ks-Arab" dir="rtl">${esc(item.kx)}</p>`:''}${item.url?`<a class="entry-source" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(item.s)} · ${esc(item.license)}</a>`:''}</div></article>`}
-function render(){const shown=matches.slice(0,visible);countEl.textContent=matches.length?`${matches.length.toLocaleString()} result${matches.length===1?'':'s'}`:'';results.innerHTML=shown.length?shown.map(card).join(''):`<div class="empty-state"><strong>No matching words found</strong><span>Try a shorter spelling or search in the other language.</span></div>`;moreBtn.hidden=visible>=matches.length}
-function search(commit=false){const q=norm(input.value),lq=loose(input.value);clearBtn.hidden=!q;visible=12;document.querySelectorAll('.letter-list button').forEach(b=>b.classList.remove('active'));if(!q){matches=dictionary.slice(0,12);titleEl.textContent='Featured words';eyebrow.textContent='START EXPLORING'}else{matches=dictionary.filter(x=>norm(x.e).includes(q)||norm(x.k).includes(q)||(lq&&(loose(x.k).includes(lq)||loose(x.tr).includes(lq))));matches.sort((a,b)=>{const aa=norm(a.e).startsWith(q)||norm(a.k).startsWith(q),bb=norm(b.e).startsWith(q)||norm(b.k).startsWith(q);return Number(bb)-Number(aa)||a.e.localeCompare(b.e)});titleEl.textContent=`Results for “${input.value.trim()}”`;eyebrow.textContent='DICTIONARY SEARCH';if(commit)saveRecent(input.value.trim())}render()}
-function browseLetter(letter,button){input.value='';clearBtn.hidden=true;visible=12;document.querySelectorAll('.letter-list button').forEach(b=>b.classList.toggle('active',b===button));matches=dictionary.filter(x=>norm(x.e).startsWith(letter.toLowerCase()));titleEl.textContent=`Words beginning with ${letter}`;eyebrow.textContent='BROWSE BY LETTER';render()}
-'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter=>{const b=document.createElement('button');b.textContent=letter;b.addEventListener('click',()=>browseLetter(letter,b));letters.appendChild(b)});
-document.querySelector('#browse-calendar').addEventListener('click',()=>{const days=['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];input.value='';clearBtn.hidden=true;visible=12;document.querySelectorAll('.letter-list button').forEach(b=>b.classList.remove('active'));matches=dictionary.filter(entry=>entry.topic==='calendar').sort((a,b)=>{const aDay=days.indexOf(norm(a.e)),bDay=days.indexOf(norm(b.e));if(aDay!==-1||bDay!==-1)return (aDay===-1?7:aDay)-(bDay===-1?7:bDay);return a.e.localeCompare(b.e)});titleEl.textContent='Days & calendar';eyebrow.textContent='WEEKDAYS, MONTHS AND TIME';render()});
-input.addEventListener('input',()=>search(false));input.addEventListener('keydown',e=>{if(e.key==='Enter')search(true)});input.addEventListener('blur',()=>{if(input.value.trim())saveRecent(input.value.trim())});clearBtn.addEventListener('click',()=>{input.value='';search();input.focus()});moreBtn.addEventListener('click',()=>{visible+=20;render()});recentList.addEventListener('click',e=>{const b=e.target.closest('button');if(b){input.value=b.dataset.query;search();input.focus()}});document.querySelector('#clear-recent').addEventListener('click',()=>{localStorage.removeItem('koshur-recent');renderRecent()});document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==input){e.preventDefault();input.focus()}});
-document.querySelectorAll('.nav-link').forEach(button=>button.addEventListener('click',()=>{const view=button.dataset.view;document.querySelector('#dictionary-view').hidden=view!=='dictionary';document.querySelector('#translator-view').hidden=view!=='translator';document.querySelector('#about-view').hidden=view!=='about';document.querySelectorAll('.nav-link').forEach(x=>x.classList.toggle('active',x===button));window.scrollTo({top:0})}));
+import { buildIndex, searchIndex, normalize as norm, fold } from './dictionary-search.mjs';
 
-const sentenceInput=document.querySelector('#sentence-input'),sentenceOutput=document.querySelector('#sentence-output'),sourceLanguage=document.querySelector('#source-language'),targetLanguage=document.querySelector('#target-language'),sourceLabel=document.querySelector('#source-label'),targetLabel=document.querySelector('#target-label'),translateSentence=document.querySelector('#translate-sentence'),copyTranslation=document.querySelector('#copy-translation');
-let direction='ks-en',ksToEn=new Map(),enToKs=new Map();
-const cleanToken=s=>norm(s).replace(/^[\p{P}\p{S}]+|[\p{P}\p{S}]+$/gu,'');
-function buildTranslationMaps(){for(const item of dictionary){const k=norm(item.k),e=norm(item.e);if(!k||!e||item.p==='Romanized'||item.lexical===false)continue;if(!ksToEn.has(k)||item.e.length<ksToEn.get(k).length)ksToEn.set(k,item.e);if(!enToKs.has(e)||item.k.length<enToKs.get(e).length)enToKs.set(e,item.k)}for(const [k,e] of [...ksToEn]){const plain=loose(k);if(plain&&!ksToEn.has(plain))ksToEn.set(plain,e)}}
-function lexicalTranslate(text,map){const raw=text.trim().split(/\s+/),out=[];for(let i=0;i<raw.length;){let found='',take=0;for(let size=Math.min(5,raw.length-i);size>0;size--){const phrase=raw.slice(i,i+size).map(cleanToken).join(' ');const key=map.has(phrase)?phrase:map===ksToEn?loose(phrase):phrase;if(map.has(key)){found=map.get(key);take=size;break}}if(found){const lead=raw[i].match(/^[\p{P}\p{S}]+/u)?.[0]||'',trail=raw[i+take-1].match(/[\p{P}\p{S}]+$/u)?.[0]||'';out.push(lead+found+trail);i+=take}else{out.push(raw[i]);i++}}return out.join(' ')}
-function setDirection(next){direction=next;const toEnglish=direction==='ks-en';sourceLanguage.textContent=toEnglish?'Kashmiri':'English';targetLanguage.textContent=toEnglish?'English':'Kashmiri';sourceLabel.textContent=toEnglish?'Kashmiri sentence':'English sentence';targetLabel.textContent=toEnglish?'English translation':'Kashmiri translation';sentenceInput.dir=toEnglish?'rtl':'ltr';sentenceInput.lang=toEnglish?'ks-Arab':'en';sentenceInput.placeholder=toEnglish?'اَتہِ کٲشُر جُملہٕ لِکھِو…':'Type an English sentence here…';sentenceOutput.dir=toEnglish?'ltr':'rtl';sentenceOutput.lang=toEnglish?'en':'ks-Arab';sentenceInput.value='';sentenceOutput.textContent='Your translation will appear here.';sentenceOutput.classList.add('empty');copyTranslation.disabled=true}
-document.querySelector('#swap-languages').addEventListener('click',()=>setDirection(direction==='ks-en'?'en-ks':'ks-en'));
-sentenceInput.addEventListener('input',()=>document.querySelector('#sentence-count').textContent=`${sentenceInput.value.length} / 1,000`);
-translateSentence.addEventListener('click',()=>{const text=sentenceInput.value.trim();if(!text){sentenceInput.focus();return}const translated=lexicalTranslate(text,direction==='ks-en'?ksToEn:enToKs);sentenceOutput.textContent=translated;sentenceOutput.classList.remove('empty');copyTranslation.disabled=false});
-copyTranslation.addEventListener('click',async()=>{await navigator.clipboard.writeText(sentenceOutput.textContent);copyTranslation.textContent='Copied';setTimeout(()=>copyTranslation.textContent='Copy',1200)});
+const $ = selector => document.querySelector(selector);
+const input = $('#search-input'), results = $('#results'), statusEl = $('#dictionary-status');
+const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const read = key => { try { const value = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter(x => typeof x === 'string') : []; } catch { return []; } };
+const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browser: dictionary still works. */ } };
+const sourceLink = row => { try { const url = new URL(row.url); return url.protocol === 'https:' ? `<a class="entry-source" href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(row.s)} · ${esc(row.license)}</a>` : ''; } catch { return ''; } };
+let words = [], matches = [], visible = 12, collection = '', browse = '', debounce;
+const filters = () => ({ script: $('#script-filter').value, source: $('#source-filter').value, pos: $('#pos-filter').value });
 
-fetch('/assets/dictionary.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{dictionary=data;buildTranslationMaps();statusEl.textContent=`${dictionary.length.toLocaleString()} dictionary records`;document.querySelector('#dictionary-total').textContent=dictionary.length.toLocaleString();matches=dictionary.slice(0,12);render();renderRecent()}).catch(()=>{statusEl.textContent='Dictionary unavailable';results.innerHTML='<div class="empty-state"><strong>Could not load the dictionary</strong><span>Please refresh and try again.</span></div>'});
+function sense(row) {
+  const examples = row.examples?.length ? row.examples : row.kx ? [{ k: row.kx, e: row.x }] : [];
+  return `<div class="sense"><p class="meaning">${esc(row.e)} ${row.p ? `<span class="pos">${esc(row.p)}</span>` : ''}</p>
+    ${row.context ? `<p class="sense-context">${esc(row.context)}</p>` : ''}
+    ${row.grammar?.length ? `<p class="word-details">${esc(row.grammar.join(' · '))}</p>` : ''}
+    ${examples.map(x => `<p class="kashmiri-example" lang="ks-Arab" dir="rtl">${esc(x.k)}</p><p class="example">${esc(x.e)}</p>`).join('')}
+    ${!examples.length && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}</div>`;
+}
+function card(word) {
+  const primary = word.senses.find(s => s.tr || s.ipa) || word.senses[0];
+  const forms = word.forms.filter(f => norm(f.word) !== norm(word.k));
+  const related = [...new Set(word.senses.flatMap(s => [...(s.synonyms || []), ...(s.antonyms || [])]))];
+  return `<article class="word-card"><div class="headword"><p class="kashmiri-word" lang="${word.arabic ? 'ks-Arab' : 'ks-Latn'}" dir="${word.arabic ? 'rtl' : 'ltr'}">${esc(word.k)}</p></div>
+    <div>${primary.tr || primary.ipa ? `<p class="word-details pronunciation">${esc(primary.tr)} ${esc(primary.ipa)}</p>` : ''}
+    ${word.senses.slice(0, 3).map(sense).join('')}
+    ${word.senses.length > 3 ? `<details><summary>${word.senses.length - 3} more meanings</summary>${word.senses.slice(3).map(sense).join('')}</details>` : ''}
+    ${forms.length ? `<details class="word-forms"><summary>${new Set(forms.map(f => f.word)).size} inflected / alternate forms</summary><div>${forms.map(f => `<p><button data-query="${esc(f.word)}" class="form-word" lang="ks-Arab" dir="rtl">${esc(f.word)}</button> <span>${esc((f.tags || []).join(' · '))}</span></p>`).join('')}</div></details>` : ''}
+    ${related.length ? `<details><summary>Related words</summary>${related.map(k => `<button class="form-word" data-query="${esc(k)}" lang="ks-Arab">${esc(k)}</button>`).join(' ')}</details>` : ''}
+    ${primary.etymology ? `<details><summary>Etymology</summary><p class="etymology">${esc(primary.etymology)}</p></details>` : ''}</div></article>`;
+}
+function render() {
+  $('#result-count').textContent = `${matches.length.toLocaleString()} headword${matches.length === 1 ? '' : 's'}`;
+  results.innerHTML = matches.length ? matches.slice(0, visible).map(card).join('') : '<div class="empty-state"><strong>No matching words found</strong><span>Try a shorter spelling, clear your filters, or search the other language.</span></div>';
+  $('#load-more').hidden = visible >= matches.length;
+}
+function renderRecent() {
+  const items = read('koshur-recent'); $('.recent-block').hidden = !items.length;
+  $('#recent-list').innerHTML = items.map(q => `<button data-query="${esc(q)}">${esc(q)}</button>`).join('');
+}
+function remember(query) {
+  if (query.length < 2) return;
+  write('koshur-recent', [query, ...read('koshur-recent').filter(q => q !== query)].slice(0, 6)); renderRecent();
+}
+function search(commit = false) {
+  visible = 12; const q = input.value.trim(); $('#clear-button').hidden = !q;
+  matches = searchIndex(words, q, filters());
+  if (collection === 'calendar') matches = matches.filter(w => w.senses.some(s => s.topic === 'calendar'));
+  if (browse) matches = matches.filter(w => $('#alphabet-select').value === 'en' ? w.senses.some(s => norm(s.e).startsWith(norm(browse))) : fold(w.k).startsWith(fold(browse)));
+  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : browse ? `Words beginning with ${browse}` : 'Featured words';
+  $('#results-eyebrow').textContent = q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
+  if (!q && !collection && !browse) matches = matches.slice(0, 12);
+  if (commit) remember(q); render();
+}
+function query(value) {
+  input.value = value; collection = ''; browse = ''; $('#letter-list .active')?.classList.remove('active'); search();
+}
+function letters() {
+  const alphabet = $('#alphabet-select').value === 'en' ? [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'] : ['ا', 'ٲ', 'ب', 'پ', 'ت', 'ٹ', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ڈ', 'ذ', 'ر', 'ڑ', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'و', 'ہ', 'ی'];
+  $('#letter-list').innerHTML = alphabet.map(k => `<button data-letter="${esc(k)}">${esc(k)}</button>`).join('');
+}
+$('#alphabet-select').addEventListener('change', () => { browse = ''; letters(); search(); });
+$('#letter-list').addEventListener('click', e => {
+  const button = e.target.closest('[data-letter]'); if (!button) return;
+  input.value = ''; collection = ''; browse = button.dataset.letter;
+  $('#letter-list .active')?.classList.remove('active'); button.classList.add('active'); search();
+});
+$('#browse-calendar').addEventListener('click', () => { input.value = ''; browse = ''; collection = 'calendar'; search(); });
+for (const id of ['script-filter', 'source-filter', 'pos-filter']) $(`#${id}`).addEventListener('change', () => search());
+input.addEventListener('input', () => { clearTimeout(debounce); collection = ''; browse = ''; debounce = setTimeout(search, 60); });
+input.addEventListener('keydown', e => { if (e.key === 'Enter') search(true); });
+input.addEventListener('blur', () => remember(input.value.trim()));
+$('#clear-button').addEventListener('click', () => { query(''); input.focus(); });
+$('#load-more').addEventListener('click', () => { visible += 20; render(); });
+for (const element of [results, $('#recent-list')]) element.addEventListener('click', e => {
+  const button = e.target.closest('[data-query]'); if (button) { query(button.dataset.query); input.focus(); }
+});
+$('#clear-recent').addEventListener('click', () => { write('koshur-recent', []); renderRecent(); });
+function showView(view) {
+  if (!['dictionary', 'translator', 'about'].includes(view)) view = 'dictionary';
+  for (const name of ['dictionary', 'translator', 'about']) $(`#${name}-view`).hidden = name !== view;
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  history.replaceState(null, '', `#${view}`); window.scrollTo({ top: 0 });
+}
+document.querySelectorAll('.nav-link').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !document.activeElement.isContentEditable) { e.preventDefault(); showView('dictionary'); input.focus(); }
+});
+letters(); renderRecent(); showView(location.hash.slice(1));
+
+// Neural translation is independent of dictionary loading and runs off the UI thread.
+const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence'), progress = $('#model-progress');
+let direction = 'ks-en', worker, busy = false, cacheWarning = '', readyDirection = '', translated = '';
+const initialNote = 'First use downloads about 260–310 MB per direction and caches the model when storage allows. Text stays in this browser. AI translations can be wrong; review important text with a fluent speaker.';
+const modelKey = () => `${direction}|${$('#model-size').value}`;
+const modelNote = () => $('#model-size').value === 'large' ? 'Large mode downloads about 1.1–1.2 GB per direction. Use a desktop with at least 8 GB RAM; unsupported devices may run out of memory. Greater model capacity does not guarantee a correct translation.' : initialNote;
+function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
+function setBusy(value) {
+  busy = value; run.disabled = value; sentenceInput.disabled = value; $('#swap-languages').disabled = value; $('#cancel-translation').hidden = !value; $('#clear-model-cache').disabled = value;
+  $('#source-language').disabled = value; $('#target-language').disabled = value; $('#example-sentence').disabled = value;
+  $('#model-size').disabled = value;
+  run.textContent = value ? 'Working…' : readyDirection === modelKey() ? 'Translate sentence' : 'Download model & translate';
+}
+function setDirection(next) {
+  if (busy) return;
+  const swap = next !== direction; direction = next; const english = next === 'en-ks';
+  if (swap) { worker?.terminate(); worker = undefined; readyDirection = ''; } // Release WASM memory before loading the other model.
+  $('#source-language').textContent = english ? 'English' : 'Kashmiri'; $('#target-language').textContent = english ? 'Kashmiri' : 'English';
+  $('#source-label').textContent = `${english ? 'English' : 'Kashmiri'} sentence`; $('#target-label').textContent = `${english ? 'Kashmiri' : 'English'} translation`;
+  if (swap) sentenceInput.value = translated || '';
+  sentenceInput.dir = english ? 'ltr' : 'rtl'; sentenceInput.lang = english ? 'en' : 'ks-Arab';
+  sentenceInput.placeholder = english ? 'Type an English sentence here…' : 'اَتہِ کٲشُر جُملہٕ لِکھِو…';
+  output.dir = english ? 'rtl' : 'ltr'; output.lang = english ? 'ks-Arab' : 'en'; output.textContent = 'Your translation will appear here.'; output.classList.add('empty');
+  translated = ''; $('#copy-translation').disabled = true; note.textContent = modelNote(); progress.hidden = true;
+  $('#example-sentence').textContent = english ? 'The weather is good today.' : 'مےٚ پٔر اَکھ کِتاب'; countSentence(); setBusy(false);
+}
+function stop() {
+  worker?.terminate(); worker = undefined; readyDirection = ''; translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty'); $('#copy-translation').disabled = true;
+  progress.hidden = true; note.textContent = 'Stopped. Any completed model downloads remain cached in this browser.'; setBusy(false);
+}
+function getWorker() {
+  if (worker) return worker;
+  worker = new Worker('/assets/translation-worker.mjs', { type: 'module' });
+  worker.onmessage = ({ data }) => {
+    if (data.type === 'progress') {
+      progress.hidden = data.phase !== 'download';
+      if (data.phase === 'download') { progress.value = Math.min(99, data.loaded / data.total * 100); note.textContent = `${data.cached ? 'Reading cached model' : 'Downloading model'} · ${(data.loaded / 1000000).toFixed(0)} / ~${(data.total / 1000000).toFixed(0)} MB`; }
+      else note.textContent = data.label;
+    }
+    if (data.type === 'cache-warning') cacheWarning = data.message;
+    if (data.type === 'partial') { output.textContent = data.text; output.classList.remove('empty'); }
+    if (data.type === 'result') {
+      translated = data.text; output.textContent = translated; output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
+      readyDirection = modelKey(); progress.hidden = true;
+      note.textContent = `${data.model}. ${data.limited ? 'Output reached the model limit and may be incomplete. ' : ''}Automatic translation—check grammar, names and meaning with a fluent speaker. ${cacheWarning}`;
+      setBusy(false);
+    }
+    if (data.type === 'error') {
+      translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; progress.hidden = true;
+      note.textContent = data.message; worker.terminate(); worker = undefined; readyDirection = ''; setBusy(false);
+    }
+  };
+  worker.onerror = event => { stop(); note.textContent = `Could not start the translation engine. Try a current desktop Chrome, Edge or Firefox browser and check your connection. ${event.message || ''}`; };
+  return worker;
+}
+$('#swap-languages').addEventListener('click', () => setDirection(direction === 'ks-en' ? 'en-ks' : 'ks-en'));
+for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
+  const next = $(`#${id}`).textContent === 'English' ? 'en-ks' : 'ks-en'; if (next !== direction) setDirection(next);
+});
+sentenceInput.addEventListener('input', countSentence);
+$('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); sentenceInput.focus(); });
+run.addEventListener('click', () => {
+  const text = sentenceInput.value.trim(); if (!text) { sentenceInput.focus(); return; }
+  if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
+  translated = ''; $('#copy-translation').disabled = true; cacheWarning = ''; setBusy(true);
+  try { getWorker().postMessage({ type: 'translate', text, direction, size: $('#model-size').value }); } catch (error) { stop(); note.textContent = error.message; }
+});
+$('#cancel-translation').addEventListener('click', stop);
+$('#model-size').addEventListener('change', () => { worker?.terminate(); worker = undefined; readyDirection = ''; translated = ''; output.textContent = 'Your translation will appear here.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = modelNote(); setBusy(false); });
+$('#clear-model-cache').addEventListener('click', async () => {
+  if (busy) return;
+  worker?.terminate(); worker = undefined; readyDirection = '';
+  try { await caches.delete('koshur-models-v1'); note.textContent = 'Downloaded translation models cleared from this browser. The dictionary and recent searches are unchanged.'; } catch { note.textContent = 'This browser does not allow model cache management.'; }
+  setBusy(false);
+});
+$('#copy-translation').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(translated); $('#copy-translation').textContent = 'Copied'; setTimeout(() => $('#copy-translation').textContent = 'Copy', 1200); }
+  catch { note.textContent = 'Clipboard unavailable. Select and copy the translation manually.'; }
+});
+setDirection(direction);
+
+fetch('/assets/dictionary.json').then(response => { if (!response.ok) throw Error('Dictionary download failed'); return response.json(); }).then(records => {
+  words = buildIndex(records);
+  const meanings = words.reduce((n, w) => n + w.senses.length, 0), forms = new Set(words.flatMap(w => w.forms.map(f => norm(f.word))));
+  statusEl.textContent = `${words.length.toLocaleString()} searchable headwords`;
+  $('#dictionary-stats').textContent = `${words.length.toLocaleString()} headwords · ${meanings.toLocaleString()} meanings · ${forms.size.toLocaleString()} sourced word forms`;
+  $('#dictionary-total').textContent = records.length.toLocaleString(); search();
+}).catch(() => { statusEl.textContent = 'Dictionary unavailable'; results.innerHTML = '<div class="empty-state"><strong>Could not load the dictionary</strong><span>Refresh to retry. The translator remains available.</span></div>'; });

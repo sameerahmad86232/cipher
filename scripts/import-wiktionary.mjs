@@ -27,6 +27,7 @@ const parts = {
 };
 let sourceSenses = 0;
 let enriched = 0;
+let relatedAdded = 0;
 for (const line of fs.readFileSync(source, 'utf8').trim().split('\n')) {
   const row = JSON.parse(line);
   if (row.lang_code !== 'ks' || row.pos === 'character' || !/[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]/.test(row.word)) continue;
@@ -41,6 +42,14 @@ for (const line of fs.readFileSync(source, 'utf8').trim().split('\n')) {
       license: 'CC BY-SA 4.0',
       tr: row.forms?.find(form => form.tags?.includes('romanization'))?.form || '',
       ipa: row.sounds?.find(sound => sound.ipa)?.ipa || '',
+      forms: [...new Map((row.forms || []).filter(form => /\p{Script=Arabic}/u.test(form.form || '') && !form.tags?.some(t => ['table-tags', 'inflection-template'].includes(t)))
+        .map(form => ({ word: clean(form.form), tags: form.tags || [], tr: clean(form.roman) }))
+        .map(form => [JSON.stringify(form), form])).values()],
+      grammar: (sense.tags || []).filter(tag => !['no-gloss', 'form-of'].includes(tag)),
+      etymology: clean(row.etymology_text),
+      synonyms: (sense.synonyms || row.synonyms || []).filter(x => /\p{Script=Arabic}/u.test(x.word || '')).map(x => clean(x.word)),
+      antonyms: (sense.antonyms || row.antonyms || []).filter(x => /\p{Script=Arabic}/u.test(x.word || '')).map(x => clean(x.word)),
+      examples: (sense.examples || []).filter(x => x.text && (x.english || x.translation)).map(x => ({ k: clean(x.text), e: clean(x.english || x.translation) })),
     };
     // Descriptions of inflections and long dictionary explanations are for
     // lookup, rather than substitutes for words in the lexical translator.
@@ -49,9 +58,16 @@ for (const line of fs.readFileSync(source, 'utf8').trim().split('\n')) {
     const matches = index.get(id);
     if (matches) {
       for (const entry of matches) {
+        const provenance = [...(entry.sources || [])];
+        if (entry.url && entry.url !== metadata.url) provenance.push({ s: entry.s, url: entry.url, license: entry.license });
+        // Translation-table context was added in this edition. Retain its
+        // English-page attribution even when the same pair has a KS definition.
+        if (entry.context && !entry.context.includes(' term listed under ')) provenance.push({ s: 'Wiktionary translation table', url: `https://en.wiktionary.org/wiki/${encodeURIComponent(entry.e)}#Translations`, license: 'CC BY-SA 4.0' });
         Object.assign(entry, metadata);
-        if (!entry.x && example) entry.x = clean(example.english || example.translation);
-        if (example) entry.kx = clean(example.text);
+        if (provenance.length) entry.sources = [...new Map(provenance.map(s => [s.url, s])).values()];
+        // Keep the two halves from the same source example. A previous English
+        // illustration must never be presented as the translation of this KS text.
+        if (example) { entry.x = clean(example.english || example.translation); entry.kx = clean(example.text); }
       }
       enriched++;
     } else {
@@ -66,12 +82,24 @@ for (const line of fs.readFileSync(source, 'utf8').trim().split('\n')) {
     }
     sourceSenses++;
   }
+  // Explicitly glossed derived / related terms are additional sourced entries,
+  // not guessed definitions propagated to every synonym.
+  for (const relation of ['derived', 'related', 'synonyms', 'antonyms']) {
+    for (const term of row[relation] || []) {
+      const word = clean(term.word), meaning = clean(term.english || term.translation);
+      if (!/\p{Script=Arabic}/u.test(word) || !meaning || index.has(key(word, meaning))) continue;
+      const entry = { k: word, e: meaning, p: '', x: '', tr: clean(term.roman), s: 'Wiktionary',
+        url: `https://en.wiktionary.org/wiki/${encodeURIComponent(row.word)}#Kashmiri`, license: 'CC BY-SA 4.0', context: `${relation} term listed under ${row.word}` };
+      entries.push(entry); index.set(key(word, meaning), [entry]); relatedAdded++;
+    }
+  }
 }
 fs.writeFileSync(target, `${JSON.stringify(entries)}\n`, 'utf8');
 console.log(JSON.stringify({
   source_senses: sourceSenses,
   added: entries.length - initialCount,
   enriched_or_merged: enriched,
+  related_added: relatedAdded,
   total: entries.length,
   wiktionary_records: entries.filter(entry => entry.s === 'Wiktionary').length,
   records_with_kashmiri_examples: entries.filter(entry => entry.kx).length,
