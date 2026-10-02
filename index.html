@@ -21,7 +21,7 @@
         <div class="search-meta"><span id="dictionary-status">Loading dictionary…</span><span>Perso-Arabic · English</span></div>
       </section>
       <section class="content-grid">
-        <aside><div class="aside-block"><h2>Browse by letter</h2><div id="letter-list" class="letter-list"></div></div><div class="aside-block recent-block" hidden><div class="aside-heading"><h2>Recent</h2><button id="clear-recent">Clear</button></div><div id="recent-list" class="recent-list"></div></div></aside>
+        <aside><div class="aside-block"><button id="browse-calendar" class="collection-button" type="button">Days &amp; calendar</button></div><div class="aside-block"><h2>Browse by letter</h2><div id="letter-list" class="letter-list"></div></div><div class="aside-block recent-block" hidden><div class="aside-heading"><h2>Recent</h2><button id="clear-recent">Clear</button></div><div id="recent-list" class="recent-list"></div></div></aside>
         <section class="results-area" aria-live="polite"><div class="results-heading"><div><p class="eyebrow" id="results-eyebrow">START EXPLORING</p><h2 id="results-title">Featured words</h2></div><span id="result-count"></span></div><div id="results" class="results-list"><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div></div><button id="load-more" class="load-more" type="button" hidden>Show more results</button></section>
       </section>
     </section>
@@ -39,7 +39,7 @@
     </section>
     <section id="about-view" class="about-view" hidden><p class="eyebrow">ABOUT THE PROJECT</p><h1>A practical home for<br><em>Kashmiri words.</em></h1><div class="about-grid"><p>Koshur Lughat is a searchable Kashmiri–English dictionary and an experimental two-way sentence translator built around the Perso-Arabic script.</p><div><h2>What’s included</h2><p>More than 18,000 searchable records, separately indexed spelling alternatives, romanized Kashmiri, English meanings, grammatical categories and usage examples.</p></div><div><h2>Still improving</h2><p>The sentence translator currently uses lexical phrase matching. A reviewed parallel corpus and neural model backend are needed for fluent grammar and idioms.</p></div></div></section>
   </main>
-  <footer><span>کٲشُر لُغَتھ · Koshur Lughat</span><span>18,550 records · Lexical source: Kashmiri Language Text Dataset · Public beta</span></footer>
+  <footer><span>کٲشُر لُغَتھ · Koshur Lughat</span><span><span id="dictionary-total">Over 18,000</span> records · Public beta<br>Core vocabulary: Kashmiri Language Text Dataset<br>Calendar vocabulary: <a href="https://kaikki.org/dictionary/Kashmiri/" target="_blank" rel="noopener noreferrer">Wiktionary via Kaikki</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a></span></footer>
   <script src="/assets/app.js" defer></script>
 </body>
 </html>

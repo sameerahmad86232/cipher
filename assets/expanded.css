@@ -5,6 +5,14 @@
   text-align: left;
 }
 
+.collection-button { width: 100%; padding: 12px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--forest); font-size: 14px; font-weight: 600; cursor: pointer; }
+.collection-button:hover { background: var(--lime); }
+.word-details { margin: 0 0 8px; color: var(--muted); font-size: 14px; }
+.entry-source { display: inline-block; margin-top: 12px; color: var(--green); font-size: 12px; }
+.kashmiri-example { font: 18px/2 "Noto Nastaliq Urdu", serif; text-align: right; margin: 12px 0 0; }
+footer a { color: var(--green); }
+footer { line-height: 1.8; }
+
 .translator-view { min-height: 650px; }
 .translator-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: end; }
 .translator-heading .eyebrow { grid-column: 1 / -1; margin-bottom: -35px; }
