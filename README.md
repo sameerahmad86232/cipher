@@ -1,11 +1,24 @@
-<div align="center">
+# Koshur Lughat
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A static Kashmiri–English dictionary and experimental two-way sentence translator.
 
-  <h1>Built with AI Studio</h2>
+## Features
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- 18,550 searchable dictionary records
+- Perso-Arabic and romanized Kashmiri search
+- English alphabetical browsing and recent searches
+- Kashmiri → English sentence translation
+- English → Kashmiri sentence translation
+- Runs entirely in the browser with no build step
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Run locally
 
-</div>
+Serve the repository with any static server, for example:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000>.
+
+The sentence translator currently uses longest-phrase dictionary matching. It is useful for simple sentences and vocabulary assistance, but is not a replacement for a neural translation model.

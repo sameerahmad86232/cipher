@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372b">
+  <meta name="description" content="Search Kashmiri and English words in a fast Perso-Arabic Kashmiri dictionary.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312372b'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='30' fill='white'%3Eک%3C/text%3E%3C/svg%3E">
+  <title>Koshur Lughat — Kashmiri English Dictionary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/expanded.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><span class="brand-mark">ک</span><span><strong>Koshur Lughat</strong><small>کٲشُر لُغَتھ</small></span></a>
+    <nav aria-label="Primary navigation"><button class="nav-link active" data-view="dictionary">Dictionary</button><button class="nav-link" data-view="translator">Translator</button><button class="nav-link" data-view="about">About</button></nav>
+  </header>
+  <main>
+    <section id="dictionary-view">
+      <div class="hero"><p class="kashmiri-kicker" lang="ks-Arab" dir="rtl">لفظَن ہُنٛد گھر</p><h1>Find the word<br><em>you mean.</em></h1><p class="hero-copy">Search more than 18,000 Kashmiri and English records. Type Perso-Arabic, romanized Kashmiri or English—results appear as you write.</p></div>
+      <section class="search-shell" aria-label="Dictionary search">
+        <div class="search-row"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg><input id="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search کٲشُر or English…" aria-label="Search Kashmiri or English"><kbd>/</kbd><button id="clear-button" class="clear-button" type="button" hidden>Clear</button></div>
+        <div class="search-meta"><span id="dictionary-status">Loading dictionary…</span><span>Perso-Arabic · English</span></div>
+      </section>
+      <section class="content-grid">
+        <aside><div class="aside-block"><h2>Browse by letter</h2><div id="letter-list" class="letter-list"></div></div><div class="aside-block recent-block" hidden><div class="aside-heading"><h2>Recent</h2><button id="clear-recent">Clear</button></div><div id="recent-list" class="recent-list"></div></div></aside>
+        <section class="results-area" aria-live="polite"><div class="results-heading"><div><p class="eyebrow" id="results-eyebrow">START EXPLORING</p><h2 id="results-title">Featured words</h2></div><span id="result-count"></span></div><div id="results" class="results-list"><div class="loading-card"></div><div class="loading-card"></div><div class="loading-card"></div></div><button id="load-more" class="load-more" type="button" hidden>Show more results</button></section>
+      </section>
+    </section>
+    <section id="translator-view" class="translator-view" hidden>
+      <div class="translator-heading"><p class="eyebrow">EXPERIMENTAL TRANSLATOR</p><h1>Translate a<br><em>whole sentence.</em></h1><p>Runs directly in your browser using the dictionary. It matches the longest known phrases and keeps unfamiliar words visible for review.</p></div>
+      <div class="translation-workspace">
+        <div class="direction-bar"><button id="source-language" type="button">Kashmiri</button><button id="swap-languages" type="button" aria-label="Swap languages">⇄</button><button id="target-language" type="button">English</button></div>
+        <div class="translation-panes">
+          <div class="translation-pane"><label id="source-label" for="sentence-input">Kashmiri sentence</label><textarea id="sentence-input" dir="rtl" lang="ks-Arab" maxlength="1000" placeholder="اَتہِ کٲشُر جُملہٕ لِکھِو…"></textarea><span id="sentence-count">0 / 1,000</span></div>
+          <div class="translation-pane output-pane"><span id="target-label" class="field-label">English translation</span><div id="sentence-output" class="sentence-output empty">Your translation will appear here.</div><button id="copy-translation" type="button" disabled>Copy</button></div>
+        </div>
+        <div id="translation-note" class="translation-note">Dictionary-based preview: useful for simple sentences and vocabulary lookup, but not yet a fluent neural translation model.</div>
+        <button id="translate-sentence" class="translate-sentence" type="button">Translate sentence</button>
+      </div>
+    </section>
+    <section id="about-view" class="about-view" hidden><p class="eyebrow">ABOUT THE PROJECT</p><h1>A practical home for<br><em>Kashmiri words.</em></h1><div class="about-grid"><p>Koshur Lughat is a searchable Kashmiri–English dictionary and an experimental two-way sentence translator built around the Perso-Arabic script.</p><div><h2>What’s included</h2><p>More than 18,000 searchable records, separately indexed spelling alternatives, romanized Kashmiri, English meanings, grammatical categories and usage examples.</p></div><div><h2>Still improving</h2><p>The sentence translator currently uses lexical phrase matching. A reviewed parallel corpus and neural model backend are needed for fluent grammar and idioms.</p></div></div></section>
+  </main>
+  <footer><span>کٲشُر لُغَتھ · Koshur Lughat</span><span>18,550 records · Lexical source: Kashmiri Language Text Dataset · Public beta</span></footer>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
