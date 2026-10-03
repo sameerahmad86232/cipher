@@ -261,7 +261,7 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
 let direction = 'ks-en', busy = false, translated = '', activeController;
-const initialNote = 'Text is sent to the public server translator; this browser does not download a translation model. The server returns translation, normalization, transliteration and a grammar review. AI translations can be wrong; review important text with a fluent speaker.';
+const initialNote = 'Text is sent to the public server translator; this browser does not download a translation model. Reviewed dictionary phrases are used when available; new sentences use NLLB-200. The server returns translation, normalization, transliteration, dictionary matches and a grammar review. AI translations can be wrong; review important text with a fluent speaker.';
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
 function renderSourceTransliteration() {
   const box = $('#source-transliteration');
