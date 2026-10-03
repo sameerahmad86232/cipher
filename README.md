@@ -4,13 +4,14 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 
 ## Dictionary
 
-- 21,276 meaning records across 13,233 headwords; 1,818 distinct sourced word-form spellings.
+- 23,630 modern-script meaning records across 14,986 headwords; 1,818 distinct sourced word-form spellings.
+- A separate historical romanized lexicon has 20,643 entries across 20,532 headwords.
 - 322 additional sourced meaning records in this upgrade: 183 English Wiktionary translation pairs and 139 explicitly glossed related terms.
 - Multiple meanings grouped under each word, exact-match ranking, inflection-aware search, and script/source/grammar filters.
 - Transliteration, IPA, grammatical labels, paired examples, etymologies and related words where supplied by the source.
 - Kashmiri and English alphabetical browsing; all seven weekdays and twelve traditional months.
 
-Counts include spelling alternatives, multiple senses and romanized records. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0. See [SOURCES.md](SOURCES.md).
+Counts include spelling alternatives and multiple senses. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0 and Kaeshir Dictionary data is MIT licensed. See [SOURCES.md](SOURCES.md).
 
 ## Translator
 
@@ -49,6 +50,8 @@ No environment variables or server-side model hosting are needed. Model weights 
 curl --fail -L https://kaikki.org/dictionary/Kashmiri/kaikki.org-dictionary-Kashmiri.jsonl -o /tmp/kashmiri.jsonl
 node scripts/import-wiktionary.mjs /tmp/kashmiri.jsonl
 node scripts/import-english-translations.mjs --download
+git clone https://github.com/izan-majeed/kaeshir-dictionary-data /tmp/kaeshir-dictionary-data
+node scripts/import-kaeshir.mjs /tmp/kaeshir-dictionary-data
 ```
 
 The English dump exceeds 3 GB; the importer streams it without retaining the entire dump. Imports preserve attribution and sense context; generated form/character-only entries without meanings are not mined as new definitions. Re-running the imports merges existing pairs rather than intentionally duplicating them.

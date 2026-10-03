@@ -6,16 +6,18 @@ const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;
 const read = key => { try { const value = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter(x => typeof x === 'string') : []; } catch { return []; } };
 const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browser: dictionary still works. */ } };
 const sourceLink = row => { try { const url = new URL(row.url); return url.protocol === 'https:' ? `<a class="entry-source" href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(row.s)} · ${esc(row.license)}</a>` : ''; } catch { return ''; } };
-let words = [], matches = [], visible = 12, collection = '', browse = '', debounce;
+let words = [], historicalWords = [], matches = [], visible = 12, collection = '', browse = '', debounce;
 const filters = () => ({ script: $('#script-filter').value, source: $('#source-filter').value, pos: $('#pos-filter').value });
 
 function sense(row) {
   const examples = row.examples?.length ? row.examples : row.kx ? [{ k: row.kx, e: row.x }] : [];
   return `<div class="sense"><p class="meaning">${esc(row.e)} ${row.p ? `<span class="pos">${esc(row.p)}</span>` : ''}</p>
+    ${row.fullMeaning ? `<details class="historical-entry"><summary>Read full historical entry</summary><p>${esc(row.fullMeaning)}</p></details>` : ''}
     ${row.context ? `<p class="sense-context">${esc(row.context)}</p>` : ''}
     ${row.grammar?.length ? `<p class="word-details">${esc(row.grammar.join(' · '))}</p>` : ''}
     ${examples.map(x => `<p class="kashmiri-example" lang="ks-Arab" dir="rtl">${esc(x.k)}</p><p class="example">${esc(x.e)}</p>`).join('')}
-    ${!examples.length && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}</div>`;
+    ${row.romanExample ? `<p class="roman-example" lang="ks-Latn">${esc(row.romanExample.k)} <span>· romanized Kashmiri</span></p><p class="example">${esc(row.romanExample.e)}</p>` : ''}
+    ${!examples.length && !row.romanExample && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}</div>`;
 }
 function card(word) {
   const primary = word.senses.find(s => s.tr || s.ipa) || word.senses[0];
@@ -44,11 +46,11 @@ function remember(query) {
 }
 function search(commit = false) {
   visible = 12; const q = input.value.trim(); $('#clear-button').hidden = !q;
-  matches = searchIndex(words, q, filters());
+  matches = searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
   if (collection === 'calendar') matches = matches.filter(w => w.senses.some(s => s.topic === 'calendar'));
   if (browse) matches = matches.filter(w => $('#alphabet-select').value === 'en' ? w.senses.some(s => norm(s.e).startsWith(norm(browse))) : fold(w.k).startsWith(fold(browse)));
-  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : browse ? `Words beginning with ${browse}` : 'Featured words';
-  $('#results-eyebrow').textContent = q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
+  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : browse ? `Words beginning with ${browse}` : 'Featured words';
+  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
   if (!q && !collection && !browse) matches = matches.slice(0, 12);
   if (commit) remember(q); render();
 }
@@ -66,8 +68,21 @@ $('#letter-list').addEventListener('click', e => {
   $('#letter-list .active')?.classList.remove('active'); button.classList.add('active'); search();
 });
 $('#browse-calendar').addEventListener('click', () => { input.value = ''; browse = ''; collection = 'calendar'; search(); });
+$('#browse-historical').addEventListener('click', async () => {
+  input.value = ''; browse = ''; collection = 'historical';
+  $('#script-filter').value = 'all'; $('#pos-filter').value = 'all'; $('#source-filter').value = 'all';
+  if (!historicalWords.length) {
+    $('#results-title').textContent = 'Loading historical dictionary…';
+    try {
+      const response = await fetch('/assets/historical-lexicon.json');
+      if (!response.ok) throw Error('Download failed');
+      historicalWords = buildIndex(await response.json());
+    } catch { $('#results-title').textContent = 'Historical dictionary unavailable'; return; }
+  }
+  search();
+});
 for (const id of ['script-filter', 'source-filter', 'pos-filter']) $(`#${id}`).addEventListener('change', () => search());
-input.addEventListener('input', () => { clearTimeout(debounce); collection = ''; browse = ''; debounce = setTimeout(search, 60); });
+input.addEventListener('input', () => { clearTimeout(debounce); if (collection !== 'historical') collection = ''; browse = ''; debounce = setTimeout(search, 60); });
 input.addEventListener('keydown', e => { if (e.key === 'Enter') search(true); });
 input.addEventListener('blur', () => remember(input.value.trim()));
 $('#clear-button').addEventListener('click', () => { query(''); input.focus(); });

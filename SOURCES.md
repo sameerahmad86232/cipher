@@ -20,14 +20,24 @@ The former dictionary-based sentence substitution has been removed. Dictionary e
 
 ## October 2026 expansion
 
-The dictionary now contains **21,276 meaning records across 13,233 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 21,276 distinct Kashmiri words. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
+The modern-script dictionary now contains **23,630 meaning records across 14,986 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 23,630 distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
 
 - Scanned all 1,492,838 rows of the English Kaikki dump and imported 183 explicitly tagged Perso-Arabic Kashmiri translation pairs. Sense context, transliteration, grammatical tags and the English source-page link are retained. Entries are marked `s: "Wiktionary translation table"`.
 - Imported 139 additional explicitly glossed derived/related terms from Kashmiri Wiktionary entries. A synonym without an explicit English gloss does not generate a guessed definition.
 - Enriched sourced entries with inflected forms and their grammatical tags, sense labels, etymologies, synonyms, antonyms and paired examples when available. Kashmiri and English examples are kept together from the same source; old unrelated English illustrations are not attached to new Kashmiri examples.
 - Search groups senses by headword, indexes recorded forms, ranks exact matches first and allows script/source/word-type filtering. It tolerates omitted vowel marks for lookup; it does not invent new vocabulary or transliterations.
 
-The English and Kashmiri Wiktionary adaptations remain **CC BY-SA 4.0**, with attribution links in every imported record. The original dataset's missing license remains unresolved. Filtering to “Wiktionary · sourced” helps inspect the attributable subset, but is not a blanket license for the original data.
+The English and Kashmiri Wiktionary adaptations remain **CC BY-SA 4.0**, with attribution links in every imported record. The original dataset's missing license remains unresolved. Filtering to “Attributed sources” helps inspect the attributable subset, but is not a blanket license for the original data.
+
+## Kaeshir Dictionary expansion
+
+Imported the English–Kashmiri word list and a separate historical romanized lexicon from [izan-majeed/kaeshir-dictionary-data](https://github.com/izan-majeed/kaeshir-dictionary-data) at commit `4222492fbac277321bc0a4bfc6cc790edc25566a`. The dataset is published under [MIT](DATA-LICENSES/kaeshir-dictionary-MIT.txt); attribution: Izan Majeed, *Kaeshir Dictionary Data* (2026). The repository describes the romanized historical entries as sourced from Grierson. Original historical source and romanization conventions should be checked before scholarly citation.
+
+- `collected-words.json` contributed **2,354 new Perso-Arabic/English pairs** and additional attribution for **9,496 overlapping pairs**. Its `englishMeaning` field contains romanized Kashmiri, not an English definition. We use its English `title` as the gloss, keep its romanized examples labeled as such, and attach transliteration only when variants align unambiguously.
+- `dictionary-words.json` contributed **20,643 separate historical romanized entries**. These are browsable on demand and are excluded from the modern Perso-Arabic counts and sentence model. Long historical entries are collapsed in result cards.
+- `audio-words.json` was not copied because its linked audio/descriptions may have separate rights and the source host was unavailable during review.
+
+The import can be repeated with `node scripts/import-kaeshir.mjs /path/to/kaeshir-dictionary-data`. Existing original entries retain their original licensing status even when we attach an MIT source for the same word pair. This is a lookup expansion, not new training or evidence of improved sentence translation accuracy.
 
 ## Sources audited, not imported indiscriminately
 
