@@ -295,7 +295,7 @@ async function loadOfflineTranslator() {
   offlineTranslatorPromise = import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2').then(async ({ pipeline, env }) => {
     env.useBrowserCache = true;
     env.allowRemoteModels = true;
-    const translator = await pipeline('translation', OFFLINE_MODEL, { dtype: 'q8', progress_callback: event => {
+    const translator = await pipeline('translation', OFFLINE_MODEL, { dtype: 'q4', progress_callback: event => {
       if (event?.status === 'progress' && Number.isFinite(event.progress)) status.textContent = `Downloading offline model… ${Math.round(event.progress)}%`;
       else if (event?.status === 'initiate') status.textContent = 'Preparing offline model…';
     }});
