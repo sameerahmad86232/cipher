@@ -4,6 +4,7 @@ import path from 'node:path';
 const root = fs.existsSync('dist/assets/dictionary.json') ? 'dist' : '.';
 const { buildIndex, searchIndex, fold } = await import(path.resolve(root, 'assets/dictionary-search.mjs'));
 const { prepareText, finishText, sentenceChunks, normalizeKashmiri } = await import(path.resolve(root, 'assets/translation-text.mjs'));
+const { analyzeKashmiriSentence, analyzeEnglishSentence, applyGrammarOutput } = await import(path.resolve(root, 'assets/grammar-engine.mjs'));
 const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets/dictionary.json'))),
   ...Array.from({ length: 8 }, (_, index) => `dictionary-kashir-${index + 1}.json`).filter(file => fs.existsSync(path.join(root, 'assets', file))).map(file => JSON.parse(fs.readFileSync(path.join(root, 'assets', file))))
@@ -54,6 +55,9 @@ assert.equal(sentenceChunks('One sentence. Two sentences.', 'en-ks').length, 2);
 assert.ok(prepareText('مےٚ پٔر اَکھ کِتاب', 'ks-en').text.includes('کتاب'));
 assert.equal(normalizeKashmiri('ه ي ك'), 'ہ ی ک');
 assert.equal(normalizeKashmiri('أ إ ئ ة ك ي ى'), 'ا ا ی ہ ک ی ی');
+assert.equal(analyzeKashmiriSentence('مےٚ پٔر اَکھ کِتاب؟').question, true);
+assert.equal(analyzeEnglishSentence('Why do they not come?').negative, true);
+assert.equal(applyGrammarOutput('اَمہٕ حالت۔', 'Is this good?', 'en-ks').endsWith('؟'), true);
 assert.equal(JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json'))).metadata.ocrCharacterInventory.length, 38);
 const forms = new Set(words.flatMap(w => w.forms.map(f => f.word)));
 assert.equal(forms.size, 1818);

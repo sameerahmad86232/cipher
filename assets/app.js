@@ -2,6 +2,7 @@ import { buildIndex, searchIndex, normalize as norm, fold } from './dictionary-s
 import { transliterateKashmiri } from './transliteration.mjs';
 import { autocorrectKashmiri } from './kashmiri-text.mjs';
 import { transliterateUnknownEnglish } from './translation-text.mjs';
+import { analyzeSentence, applyGrammarOutput } from './grammar-engine.mjs';
 
 const $ = selector => document.querySelector(selector);
 const input = $('#search-input'), results = $('#results'), statusEl = $('#dictionary-status');
@@ -215,6 +216,11 @@ function renderSourceTransliteration() {
     const corrected = autocorrectKashmiri(sentenceInput.value.trim());
     box.textContent = `Normalized Kashmiri: ${corrected} · Romanized reading: ${transliterateKashmiri(corrected)}`;
   } else { box.hidden = true; box.textContent = ''; }
+  renderGrammarNote();
+}
+function renderGrammarNote() {
+  const text = sentenceInput?.value?.trim() || '';
+  $('#grammar-note').textContent = text ? analyzeSentence(text, direction).summary : 'Grammar-aware checks will appear as you type.';
 }
 function renderTranslation(text) {
   output.replaceChildren();
@@ -290,7 +296,8 @@ function getWorker() {
     if (data.type === 'cache-warning') cacheWarning = data.message;
     if (data.type === 'partial') { renderTranslation(data.text); output.classList.remove('empty'); }
     if (data.type === 'result') {
-      const fallback = applyUnknownEnglishFallback(sentenceInput.value, data.text);
+      const grammarOutput = applyGrammarOutput(data.text, sentenceInput.value, direction);
+      const fallback = applyUnknownEnglishFallback(sentenceInput.value, grammarOutput);
       translated = fallback.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
       readyDirection = modelKey(); progress.hidden = true;
       note.textContent = `${data.model}. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}${data.limited ? 'Output reached the model limit and may be incomplete. ' : ''}Automatic translation—check grammar, names and meaning with a fluent speaker. ${cacheWarning}`;
@@ -308,7 +315,7 @@ $('#swap-languages').addEventListener('click', () => setDirection(direction === 
 for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
   const next = $(`#${id}`).textContent === 'English' ? 'en-ks' : 'ks-en'; if (next !== direction) setDirection(next);
 });
-sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); });
+sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); renderGrammarNote(); });
 $('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); sentenceInput.focus(); });
 $('#lookup-koul').addEventListener('click', async () => {
   const text = sentenceInput.value.trim();
