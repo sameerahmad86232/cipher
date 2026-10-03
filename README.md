@@ -14,6 +14,8 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 - Complete page-preserving OCR for all 140 scanned pages is searchable under “Koul book OCR.” It is labeled machine output and is not treated as verified dictionary data.
 - The Translator view can look up Koul OCR references for the sentence being translated. These references provide source context; they do not silently rewrite neural model output.
 - Kashmiri orthography data includes 118 character mappings and 504 attributed example glosses from the current v32 notes, used for lookup, spelling variants and writing guidance.
+- Every dictionary record has a transliteration: an existing source spelling is retained, while missing spellings are generated from the orthography character map and marked `trGenerated` in the data. The Translator view shows a Romanized reading beside Kashmiri output and beneath Kashmiri input.
+- The complete source guide is available at [`/orthography.html`](./orthography.html), covering phonology, vowels, consonants, joining, encoding, direction, shaping, typography, layout and forms.
 
 Counts include spelling alternatives and multiple senses. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0 and Kaeshir Dictionary data is MIT licensed. See [SOURCES.md](SOURCES.md).
 

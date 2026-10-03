@@ -11,7 +11,7 @@
 <body>
   <header class="site-header">
     <a class="brand" href="/"><span class="brand-mark">ک</span><span><strong>Koshur Lughat</strong><small>کٲشُر لُغَتھ</small></span></a>
-    <nav aria-label="Primary navigation"><button class="nav-link active" data-view="dictionary">Dictionary</button><button class="nav-link" data-view="translator">Translator</button><button class="nav-link" data-view="about">About</button></nav>
+    <nav aria-label="Primary navigation"><button class="nav-link active" data-view="dictionary">Dictionary</button><button class="nav-link" data-view="translator">Translator</button><button class="nav-link" data-view="about">About</button><a class="orthography-nav" href="/orthography.html">Orthography</a></nav>
   </header>
   <main>
     <section id="dictionary-view">
@@ -32,7 +32,7 @@
         <div class="model-selection"><label for="model-size">Translation model</label><select id="model-size"><option value="standard">Standard · 200M · ~260–310 MB</option><option value="large">Large · 1B · ~1.1–1.2 GB · desktop only</option></select></div>
         <div class="direction-bar"><button id="source-language" type="button">Kashmiri</button><button id="swap-languages" type="button" aria-label="Swap languages">⇄</button><button id="target-language" type="button">English</button></div>
         <div class="translation-panes">
-          <div class="translation-pane"><label id="source-label" for="sentence-input">Kashmiri sentence</label><textarea id="sentence-input" dir="rtl" lang="ks-Arab" maxlength="1000" placeholder="اَتہِ کٲشُر جُملہٕ لِکھِو…"></textarea><span id="sentence-count">0 / 1,000</span></div>
+          <div class="translation-pane"><label id="source-label" for="sentence-input">Kashmiri sentence</label><textarea id="sentence-input" dir="rtl" lang="ks-Arab" maxlength="1000" placeholder="اَتہِ کٲشُر جُملہٕ لِکھِو…"></textarea><div id="source-transliteration" class="source-transliteration" hidden></div><span id="sentence-count">0 / 1,000</span></div>
           <div class="translation-pane output-pane"><span id="target-label" class="field-label">English translation</span><div id="sentence-output" class="sentence-output empty">Your translation will appear here.</div><button id="copy-translation" type="button" disabled>Copy</button></div>
         </div>
         <div class="translation-examples"><span>Try a sentence</span><button id="example-sentence" type="button"></button></div>

@@ -1,4 +1,5 @@
 import { buildIndex, searchIndex, normalize as norm, fold } from './dictionary-search.mjs';
+import { transliterateKashmiri } from './transliteration.mjs';
 
 const $ = selector => document.querySelector(selector);
 const input = $('#search-input'), results = $('#results'), statusEl = $('#dictionary-status');
@@ -24,7 +25,7 @@ function card(word) {
   const forms = word.forms.filter(f => norm(f.word) !== norm(word.k));
   const related = [...new Set(word.senses.flatMap(s => [...(s.synonyms || []), ...(s.antonyms || [])]))];
   return `<article class="word-card"><div class="headword"><p class="kashmiri-word" lang="${word.arabic ? 'ks-Arab' : 'ks-Latn'}" dir="${word.arabic ? 'rtl' : 'ltr'}">${esc(word.k)}</p></div>
-    <div>${primary.tr || primary.ipa ? `<p class="word-details pronunciation">${esc(primary.tr)} ${esc(primary.ipa)}</p>` : ''}
+    <div>${primary.tr || primary.ipa ? `<p class="word-details pronunciation">${esc(primary.tr)} ${esc(primary.ipa)}${primary.trGenerated ? ' <span class="generated-label">orthography-derived</span>' : ''}</p>` : ''}
     ${word.senses.slice(0, 3).map(sense).join('')}
     ${word.senses.length > 3 ? `<details><summary>${word.senses.length - 3} more meanings</summary>${word.senses.slice(3).map(sense).join('')}</details>` : ''}
     ${forms.length ? `<details class="word-forms"><summary>${new Set(forms.map(f => f.word)).size} inflected / alternate forms</summary><div>${forms.map(f => `<p><button data-query="${esc(f.word)}" class="form-word" lang="ks-Arab" dir="rtl">${esc(f.word)}</button> <span>${esc((f.tags || []).join(' · '))}</span></p>`).join('')}</div></details>` : ''}
@@ -139,6 +140,21 @@ const initialNote = 'First use downloads about 260–310 MB per direction and ca
 const modelKey = () => `${direction}|${$('#model-size').value}`;
 const modelNote = () => $('#model-size').value === 'large' ? 'Large mode downloads about 1.1–1.2 GB per direction. Use a desktop with at least 8 GB RAM; unsupported devices may run out of memory. Greater model capacity does not guarantee a correct translation.' : initialNote;
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
+function renderSourceTransliteration() {
+  const box = $('#source-transliteration');
+  if (direction === 'ks-en' && sentenceInput.value.trim()) {
+    box.hidden = false;
+    box.textContent = `Romanized reading: ${transliterateKashmiri(sentenceInput.value.trim())}`;
+  } else { box.hidden = true; box.textContent = ''; }
+}
+function renderTranslation(text) {
+  output.replaceChildren();
+  if (direction === 'en-ks' && text) {
+    const native = document.createElement('span'); native.className = 'translated-script'; native.textContent = text;
+    const roman = document.createElement('span'); roman.className = 'translation-translit'; roman.textContent = `Romanized reading: ${transliterateKashmiri(text)}`;
+    output.append(native, roman);
+  } else output.textContent = text;
+}
 function renderKoulReferences(query) {
   const box = $('#koul-references'), q = norm(query);
   if (!q) { box.hidden = true; box.innerHTML = ''; return; }
@@ -168,6 +184,7 @@ function setDirection(next) {
   sentenceInput.dir = english ? 'ltr' : 'rtl'; sentenceInput.lang = english ? 'en' : 'ks-Arab';
   sentenceInput.placeholder = english ? 'Type an English sentence here…' : 'اَتہِ کٲشُر جُملہٕ لِکھِو…';
   output.dir = english ? 'rtl' : 'ltr'; output.lang = english ? 'ks-Arab' : 'en'; output.textContent = 'Your translation will appear here.'; output.classList.add('empty');
+  renderSourceTransliteration();
   translated = ''; $('#copy-translation').disabled = true; note.textContent = modelNote(); progress.hidden = true;
   $('#example-sentence').textContent = english ? 'The weather is good today.' : 'مےٚ پٔر اَکھ کِتاب'; countSentence(); setBusy(false);
 }
@@ -185,9 +202,9 @@ function getWorker() {
       else note.textContent = data.label;
     }
     if (data.type === 'cache-warning') cacheWarning = data.message;
-    if (data.type === 'partial') { output.textContent = data.text; output.classList.remove('empty'); }
+    if (data.type === 'partial') { renderTranslation(data.text); output.classList.remove('empty'); }
     if (data.type === 'result') {
-      translated = data.text; output.textContent = translated; output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
+      translated = data.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
       readyDirection = modelKey(); progress.hidden = true;
       note.textContent = `${data.model}. ${data.limited ? 'Output reached the model limit and may be incomplete. ' : ''}Automatic translation—check grammar, names and meaning with a fluent speaker. ${cacheWarning}`;
       setBusy(false);
@@ -204,7 +221,7 @@ $('#swap-languages').addEventListener('click', () => setDirection(direction === 
 for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
   const next = $(`#${id}`).textContent === 'English' ? 'en-ks' : 'ks-en'; if (next !== direction) setDirection(next);
 });
-sentenceInput.addEventListener('input', countSentence);
+sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); });
 $('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); sentenceInput.focus(); });
 $('#lookup-koul').addEventListener('click', async () => {
   const text = sentenceInput.value.trim();

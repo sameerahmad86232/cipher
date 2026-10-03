@@ -9,6 +9,8 @@ const words = buildIndex(records);
 assert.equal(records.length, 23953);
 assert.equal(words.length, 15181);
 assert.ok(records.every(r => r.k && r.e));
+assert.ok(records.every(r => r.tr));
+assert.equal(records.filter(r => r.trGenerated).length, 9791);
 assert.ok(searchIndex(words, 'water').some(w => w.senses.some(s => s.e.toLowerCase() === 'water')));
 assert.equal(searchIndex(words, 'تۆت')[0].k, 'تۆت');
 const example = words.find(w => w.k === 'تۆت');
