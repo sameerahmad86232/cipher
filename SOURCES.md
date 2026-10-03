@@ -124,11 +124,11 @@ The paper says the dataset is CC-BY-4.0, while the current Hugging Face card rep
 
 The public website sends translation requests to the Hugging Face Space [Sameer0313/Koshur_lughat](https://huggingface.co/spaces/Sameer0313/Koshur_lughat). The Space runs `facebook/nllb-200-distilled-600M` with `kas_Arab` and `eng_Latn` on its server hardware. Visitors do not download model weights.
 
-The server normalizes documented Kashmiri code-point variants, generates with three-beam decoding, returns a Kashmiri transliteration, repairs question punctuation, renders an unknown English token in Kashmiri script when needed, and reports conservative grammar checks. The grammar layer does not invent case endings or claim native-speaker agreement. Romanized Kashmiri sentence input is not supported.
+The server normalizes documented Kashmiri code-point variants, generates with three-beam decoding, returns a Kashmiri transliteration, repairs question punctuation, renders an unknown English token in Kashmiri script when needed, and reports conservative grammar checks. It also loads the compact lookup built by `scripts/build-server-lexicon.py`: exact single-word requests use the reviewed dictionary, sentence requests show matching dictionary terms, and the server indexes the 8,336 licensed corpus sentences. This lookup layer supports the neural result; it does not pretend that monolingual corpus text is an English translation. The grammar layer does not invent case endings or claim native-speaker agreement. Romanized Kashmiri sentence input is not supported.
 
 Machine translation can omit information, mistranslate polysemous words, repeat words or alter names/numbers; important translations need fluent-speaker review. Hugging Face’s free ZeroGPU service has usage quotas and may temporarily reject requests after the quota is exhausted.
 
-The dictionary, OCR collections and grammar guide remain static assets and work without a model download.
+The dictionary, OCR collections and grammar guide remain static assets and work without a model download. The public server keeps its model, compact lexicon and licensed corpus on the Space; browser visitors send text and receive the result without downloading those files.
 
 
 ## Licensed public Kashmiri corpus subset
