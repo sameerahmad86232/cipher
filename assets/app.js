@@ -6,7 +6,7 @@ const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;
 const read = key => { try { const value = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter(x => typeof x === 'string') : []; } catch { return []; } };
 const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browser: dictionary still works. */ } };
 const sourceLink = row => { try { const url = new URL(row.url); return url.protocol === 'https:' ? `<a class="entry-source" href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(row.s)} · ${esc(row.license)}</a>` : ''; } catch { return ''; } };
-let words = [], historicalWords = [], matches = [], visible = 12, collection = '', browse = '', debounce;
+let words = [], historicalWords = [], bookOcr = [], matches = [], visible = 12, collection = '', browse = '', debounce;
 const filters = () => ({ script: $('#script-filter').value, source: $('#source-filter').value, pos: $('#pos-filter').value });
 
 function sense(row) {
@@ -31,8 +31,21 @@ function card(word) {
     ${related.length ? `<details><summary>Related words</summary>${related.map(k => `<button class="form-word" data-query="${esc(k)}" lang="ks-Arab">${esc(k)}</button>`).join(' ')}</details>` : ''}
     ${primary.etymology ? `<details><summary>Etymology</summary><p class="etymology">${esc(primary.etymology)}</p></details>` : ''}</div></article>`;
 }
+function searchBookOcr(query) {
+  const q = norm(query), pages = [];
+  for (const page of bookOcr) {
+    const text = page.text || '', folded = norm(text);
+    if (q && !folded.includes(q)) continue;
+    const at = q ? folded.indexOf(q) : 0;
+    const start = q ? Math.max(0, at - 190) : 0;
+    const snippet = text.replace(/\s+/g, ' ').slice(start, start + (q ? 520 : 520)).trim();
+    pages.push({ k: `PDF page ${page.page}`, arabic: false, forms: [], senses: [{ e: snippet || '(This scanned page contains no OCR text.)', p: 'Machine OCR', s: 'Koul, Raina & Bhat (2000)', url: `https://archive.org/details/tbjU_kashmiri-english-dictionary-for-second-language-learners-omkar-koul/page/n${page.page - 1}/mode/1up`, license: 'Rights-holder permission (reported by project owner)' }] });
+  }
+  return pages;
+}
 function render() {
-  $('#result-count').textContent = `${matches.length.toLocaleString()} headword${matches.length === 1 ? '' : 's'}`;
+  const label = collection === 'book-ocr' ? 'page' : 'headword';
+  $('#result-count').textContent = `${matches.length.toLocaleString()} ${label}${matches.length === 1 ? '' : 's'}`;
   results.innerHTML = matches.length ? matches.slice(0, visible).map(card).join('') : '<div class="empty-state"><strong>No matching words found</strong><span>Try a shorter spelling, clear your filters, or search the other language.</span></div>';
   $('#load-more').hidden = visible >= matches.length;
 }
@@ -46,11 +59,11 @@ function remember(query) {
 }
 function search(commit = false) {
   visible = 12; const q = input.value.trim(); $('#clear-button').hidden = !q;
-  matches = searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
+  matches = collection === 'book-ocr' ? searchBookOcr(q) : searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
   if (collection === 'calendar') matches = matches.filter(w => w.senses.some(s => s.topic === 'calendar'));
   if (browse) matches = matches.filter(w => $('#alphabet-select').value === 'en' ? w.senses.some(s => norm(s.e).startsWith(norm(browse))) : fold(w.k).startsWith(fold(browse)));
-  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : browse ? `Words beginning with ${browse}` : 'Featured words';
-  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
+  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : collection === 'book-ocr' ? 'Koul book OCR' : browse ? `Words beginning with ${browse}` : 'Featured words';
+  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
   if (!q && !collection && !browse) matches = matches.slice(0, 12);
   if (commit) remember(q); render();
 }
@@ -81,8 +94,21 @@ $('#browse-historical').addEventListener('click', async () => {
   }
   search();
 });
+$('#browse-koul-ocr').addEventListener('click', async () => {
+  input.value = ''; browse = ''; collection = 'book-ocr';
+  $('#script-filter').value = 'all'; $('#pos-filter').value = 'all'; $('#source-filter').value = 'all';
+  if (!bookOcr.length) {
+    $('#results-title').textContent = 'Loading complete book OCR…';
+    try {
+      const response = await fetch('/assets/koul-book-ocr.json');
+      if (!response.ok) throw Error('Download failed');
+      bookOcr = (await response.json()).pages || [];
+    } catch { $('#results-title').textContent = 'Book OCR unavailable'; return; }
+  }
+  search();
+});
 for (const id of ['script-filter', 'source-filter', 'pos-filter']) $(`#${id}`).addEventListener('change', () => search());
-input.addEventListener('input', () => { clearTimeout(debounce); if (collection !== 'historical') collection = ''; browse = ''; debounce = setTimeout(search, 60); });
+input.addEventListener('input', () => { clearTimeout(debounce); if (!['historical', 'book-ocr'].includes(collection)) collection = ''; browse = ''; debounce = setTimeout(search, 60); });
 input.addEventListener('keydown', e => { if (e.key === 'Enter') search(true); });
 input.addEventListener('blur', () => remember(input.value.trim()));
 $('#clear-button').addEventListener('click', () => { query(''); input.focus(); });

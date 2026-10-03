@@ -11,6 +11,7 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 - Transliteration, IPA, grammatical labels, paired examples, etymologies and related words where supplied by the source.
 - Kashmiri and English alphabetical browsing; all seven weekdays and twelve traditional months.
 - Direct access to Koul, Raina and Bhat's 2000 scanned learner's dictionary, with page-linked checks and two manually added senses. The project owner reports rights-holder approval for public reuse; unreviewed OCR is not imported.
+- Complete page-preserving OCR for all 140 scanned pages is searchable under “Koul book OCR.” It is labeled machine output and is not treated as verified dictionary data.
 
 Counts include spelling alternatives and multiple senses. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0 and Kaeshir Dictionary data is MIT licensed. See [SOURCES.md](SOURCES.md).
 
@@ -53,6 +54,7 @@ node scripts/import-wiktionary.mjs /tmp/kashmiri.jsonl
 node scripts/import-english-translations.mjs --download
 git clone https://github.com/izan-majeed/kaeshir-dictionary-data /tmp/kaeshir-dictionary-data
 node scripts/import-kaeshir.mjs /tmp/kaeshir-dictionary-data
+node scripts/ocr-koul-book.mjs /path/to/Koul.pdf dist/assets --tessdata-dir /path/to/tessdata
 ```
 
 The English dump exceeds 3 GB; the importer streams it without retaining the entire dump. Imports preserve attribution and sense context; generated form/character-only entries without meanings are not mined as new definitions. Re-running the imports merges existing pairs rather than intentionally duplicating them.

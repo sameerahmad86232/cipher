@@ -6,6 +6,10 @@ We consulted [*Kashmiri–English Dictionary for Second Language Learners*](http
 
 Eleven existing word pairs, including `اَدَب` / “literature,” `اَنٛدَر` / “inside,” and `اَداکار` / “actor,” were manually checked against printed p. 10 (PDF p. 20) and now have links to that page. The book also supplied the new `اَدَب` / “good manners” and `اَنٛداز` / “imagination” senses. Comparison exposed an unrelated dataset's incorrect `اَدَب` / “court” pair, which was removed; the book has `عدالَت` for “court.” `scripts/reference-koul.mjs` applies these reviewed changes reproducibly. The book is not declared CC0 or bundled with the site.
 
+### Complete machine OCR
+
+The 140-page scan has also been OCRed page by page with Tesseract `eng+ara` from the embedded page images. The output is available as `assets/koul-book-ocr.json` and `assets/koul-book-ocr.txt`, and the site exposes it through “Koul book OCR.” It contains one record for every PDF page, including blank or front-matter pages, and links each result to the corresponding Internet Archive page. This is a preservation/search layer, not a claim that every Kashmiri glyph was recognized correctly; the OCR model is Arabic-trained and the book uses Kashmiri Nastaliq. Human review is required before treating a machine-OCR line as a dictionary fact.
+
 The original vocabulary comes from [injilashah/Kashmiri-language-text-dataset](https://huggingface.co/datasets/injilashah/Kashmiri-language-text-dataset). Its dataset card does not specify a license; the new calendar entries do not change the terms of that earlier material.
 
 ## Wiktionary expansion
