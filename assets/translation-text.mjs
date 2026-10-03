@@ -2,7 +2,7 @@
 // Keep Kashmiri-specific letters/signs; do not transliterate to Urdu. The six
 // shared vowel marks below follow IndicTransToolkit's Arabic input normalizer.
 export function normalizeKashmiri(input) {
-  return input.normalize('NFC').replace(/[ك]/g, 'ک').replace(/[يى]/g, 'ی').replace(/ه/g, 'ہ');
+  return input.normalize('NFC').replace(/[أإ]/g, 'ا').replace(/[ك]/g, 'ک').replace(/[يىئ]/g, 'ی').replace(/ه/g, 'ہ').replace(/ة/g, 'ہ');
 }
 
 export function prepareText(input, direction) {

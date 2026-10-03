@@ -37,6 +37,8 @@ assert.match(finishText('Contact < ID1 > .', 'ks-en', prepared.entities), /test@
 assert.equal(sentenceChunks('One sentence. Two sentences.', 'en-ks').length, 2);
 assert.ok(prepareText('مےٚ پٔر اَکھ کِتاب', 'ks-en').text.includes('کتاب'));
 assert.equal(normalizeKashmiri('ه ي ك'), 'ہ ی ک');
+assert.equal(normalizeKashmiri('أ إ ئ ة ك ي ى'), 'ا ا ی ہ ک ی ی');
+assert.equal(JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json'))).metadata.ocrCharacterInventory.length, 38);
 const forms = new Set(words.flatMap(w => w.forms.map(f => f.word)));
 assert.equal(forms.size, 1818);
 console.log(JSON.stringify({ result: 'passed', records: records.length, headwords: words.length, form_spellings: forms.size }));

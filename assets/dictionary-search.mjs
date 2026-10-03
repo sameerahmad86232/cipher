@@ -1,5 +1,5 @@
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim();
-export const fold = value => normalize(value).normalize('NFD').replace(/\p{M}/gu, '').replace(/ـ/g, '').replace(/ك/g, 'ک').replace(/[يى]/g, 'ی').replace(/ه/g, 'ہ');
+export const fold = value => normalize(value).normalize('NFD').replace(/\p{M}/gu, '').replace(/ـ/g, '').replace(/[أإ]/g, 'ا').replace(/ك/g, 'ک').replace(/[يىئ]/g, 'ی').replace(/ه/g, 'ہ').replace(/ة/g, 'ہ');
 
 export function buildIndex(records) {
   const groups = new Map();
