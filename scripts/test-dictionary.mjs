@@ -39,6 +39,11 @@ assert.ok(resourceIndex.resources.some(resource => resource.name === 'IndicTrans
 for (const name of ['Kashmiri Nastaliq LLM', 'KoshurOCR', 'KoshurAI', 'Koshur Diacritizer ByT5-small', 'Bolbosh', 'Kashmiri Speech Corpus Utilities']) {
   assert.ok(resourceIndex.resources.some(resource => resource.name === name), `missing resource index entry: ${name}`);
 }
+if (fs.existsSync('server-data/phrase-memory.json')) {
+  const phraseMemory = JSON.parse(fs.readFileSync('server-data/phrase-memory.json'));
+  assert.ok(Object.keys(phraseMemory.kashmiri_to_english).length >= 100);
+  assert.ok(Object.keys(phraseMemory.english_to_kashmiri).length >= 100);
+}
 const kslit = JSON.parse(fs.readFileSync(path.join(root, 'assets/ks-lit-3m-reference.json')));
 assert.equal(kslit.stats.words, 3100000);
 assert.equal(kslit.stats.uniqueWords, 131607);
