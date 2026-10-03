@@ -316,6 +316,7 @@ function setDirection(next) {
   sentenceInput.dir = english ? 'ltr' : 'rtl'; sentenceInput.lang = english ? 'en' : 'ks-Arab';
   sentenceInput.placeholder = english ? 'Type an English sentence here…' : 'اَتہِ کٲشُر جُملہٕ لِکھِو…';
   output.dir = english ? 'rtl' : 'ltr'; output.lang = english ? 'ks-Arab' : 'en'; output.textContent = 'Your translation will appear here.'; output.classList.add('empty');
+  $('#dictionary-context').textContent = 'Dictionary and corpus matches will appear with the server result.';
   renderSourceTransliteration(); translated = ''; $('#copy-translation').disabled = true; note.textContent = initialNote;
   $('#example-sentence').textContent = english ? 'The weather is good today.' : 'مےٚ پٔر اَکھ کِتاب'; countSentence(); setBusy(false);
 }
@@ -370,12 +371,12 @@ run.addEventListener('click', async () => {
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
   translated = ''; $('#copy-translation').disabled = true; setBusy(true); note.textContent = 'Sending your sentence to the server…';
   try {
-    const [serverOutput, normalized, romanized, grammar] = await serverTranslate(text);
+    const [serverOutput, normalized, romanized, grammar, dictionaryContext] = await serverTranslate(text);
     const grammarOutput = applyGrammarOutput(serverOutput, text, direction);
     const fallback = applyUnknownEnglishFallback(text, grammarOutput);
     translated = fallback.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
     if (direction === 'ks-en' && normalized) $('#source-transliteration').textContent = `Normalized Kashmiri: ${normalized} · Romanized reading: ${romanized}`;
-    renderGrammarNote(grammar); note.textContent = `Server model: NLLB-200 600M. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
+    renderGrammarNote(grammar); $('#dictionary-context').textContent = dictionaryContext || 'No exact dictionary entry found; the neural model supplied the translation.'; note.textContent = `Server model: NLLB-200 600M. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
   } catch (error) {
     if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
   } finally { activeController = undefined; setBusy(false); }
