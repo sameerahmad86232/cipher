@@ -100,21 +100,11 @@ This is an audit of useful candidates, not a claim that every resource online wa
 
 ## Neural translation
 
-AI4Bharat IndicTrans2 models support `eng_Latn` and `kas_Arab`. Public ONNX INT8 exports by Hari31416 are used under their listed MIT license. Both sizes are supported; model capacity is not an accuracy guarantee.
+The public website sends translation requests to the Hugging Face Space [Sameer0313/Koshur_lughat](https://huggingface.co/spaces/Sameer0313/Koshur_lughat). The Space runs `facebook/nllb-200-distilled-600M` with `kas_Arab` and `eng_Latn` on its server hardware. Visitors do not download model weights.
 
-| Mode | English → Kashmiri | Kashmiri → English | Approximate first download per direction |
-| --- | --- | --- | --- |
-| Standard · 200M | [Model](https://huggingface.co/hari31416/indictrans2-en-indic-dist-200M-ONNX-int8) | [Model](https://huggingface.co/hari31416/indictrans2-indic-en-dist-200M-ONNX-int8) | 260–310 MB |
-| Large · 1B · desktop | [Model](https://huggingface.co/hari31416/indictrans2-en-indic-1B-ONNX-int8) | [Model](https://huggingface.co/hari31416/indictrans2-indic-en-1B-ONNX-int8) | 1.1–1.2 GB; several GB of runtime memory |
+The server normalizes documented Kashmiri code-point variants, generates with three-beam decoding, returns a Kashmiri transliteration, repairs question punctuation, renders an unknown English token in Kashmiri script when needed, and reports conservative grammar checks. The grammar layer does not invent case endings or claim native-speaker agreement. Romanized Kashmiri sentence input is not supported.
 
-`assets/translation-worker.mjs` pins each model's full revision, uses ONNX Runtime Web 1.21.0 (MIT) and Transformers.js 3.0.2 (Apache-2.0) tokenizers. Inference uses a single-threaded WASM worker and three-beam decoding; no cross-origin-isolation headers or API key are required. Only one model is kept loaded at a time. Cache Storage is best-effort; a storage limit or private-browsing policy can cause repeat downloads.
+Machine translation can omit information, mistranslate polysemous words, repeat words or alter names/numbers; important translations need fluent-speaker review. Hugging Face’s free ZeroGPU service has usage quotas and may temporarily reject requests after the quota is exhausted.
 
-Input processing adapts the English/Perso-Arabic path described by [IndicTransToolkit](https://github.com/VarunGumma/IndicTransToolkit) (MIT): language tags, punctuation/digit normalization, basic entity placeholders, shared Arabic vowel-mark normalization, and output punctuation cleanup. This focused browser implementation is not the complete Python toolkit or its full Moses/UrduHack pipeline. It preserves Kashmiri-specific letters/signs; it does not relabel the language as Urdu. Romanized Kashmiri sentence input is not supported.
+The dictionary, OCR collections and grammar guide remain static assets and work without a model download.
 
-The translator also runs `assets/grammar-engine.mjs`, a conservative grammar layer based on the project’s language guide. It identifies likely Kashmiri verb-final/SOV order, question and negative constructions, postposition/case checks, copula/TAM agreement checks and English tense/polarity before inference. It normalizes documented script variants and repairs question punctuation after generation; it never invents a case ending or claims that a model output has native-speaker agreement. The translator view displays these checks beside the sentence so a writer can review the grammar systematically.
-
-Sentences are segmented before inference. Inputs exceeding a model's 256-token source limit are rejected explicitly rather than silently truncated. A generation-limit warning is shown if output cannot complete within 128 decoding steps. Machine translation can omit information, mistranslate polysemous words, repeat words or alter names/numbers; important translations need fluent-speaker review.
-
-Browser smoke tests demonstrate that both directions run and produce output; they are not evidence of world-leading translation accuracy. The exported models' parity scores compare quantized outputs with the original model, not with human correctness.
-
-The public website is static. Sentences are not sent to a translation service. Model/runtime downloads contact Hugging Face and jsDelivr; dictionary fonts contact Google Fonts. Users can stop downloads/inference or clear this site's model cache.

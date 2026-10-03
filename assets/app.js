@@ -231,12 +231,11 @@ document.addEventListener('keydown', e => {
 });
 letters(); renderRecent(); showView(location.hash.slice(1));
 
-// Neural translation is independent of dictionary loading and runs off the UI thread.
-const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence'), progress = $('#model-progress');
-let direction = 'ks-en', worker, busy = false, cacheWarning = '', readyDirection = '', translated = '';
-const initialNote = 'First use downloads about 260–310 MB per direction and caches the model when storage allows. Text stays in this browser. Common Kashmiri Arabic/OCR spelling variants are normalized before translation. English words outside the dictionary are rendered in Kashmiri script as a fallback. AI translations can be wrong; review important text with a fluent speaker.';
-const modelKey = () => `${direction}|${$('#model-size').value}`;
-const modelNote = () => $('#model-size').value === 'large' ? 'Large mode downloads about 1.1–1.2 GB per direction. Use a desktop with at least 8 GB RAM; unsupported devices may run out of memory. Greater model capacity does not guarantee a correct translation.' : initialNote;
+// Server-side neural translation runs in the public Hugging Face Space.
+const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
+const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
+let direction = 'ks-en', busy = false, translated = '', activeController;
+const initialNote = 'Text is sent to the public server translator; this browser does not download a translation model. The server returns translation, normalization, transliteration and a grammar review. AI translations can be wrong; review important text with a fluent speaker.';
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
 function renderSourceTransliteration() {
   const box = $('#source-transliteration');
@@ -247,9 +246,9 @@ function renderSourceTransliteration() {
   } else { box.hidden = true; box.textContent = ''; }
   renderGrammarNote();
 }
-function renderGrammarNote() {
+function renderGrammarNote(value) {
   const text = sentenceInput?.value?.trim() || '';
-  $('#grammar-note').textContent = text ? analyzeSentence(text, direction).summary : 'Grammar-aware checks will appear as you type.';
+  $('#grammar-note').textContent = value || (text ? analyzeSentence(text, direction).summary : 'Grammar-aware checks will appear as you type.');
 }
 function renderTranslation(text) {
   output.replaceChildren();
@@ -276,76 +275,63 @@ function applyUnknownEnglishFallback(source, result) {
   if (added.length) text = `${text} · ${added.join(' · ')}`;
   return { text, words: unknown };
 }
-function renderKoulReferences(query) {
-  const box = $('#koul-references'), q = norm(query);
-  if (!q) { box.hidden = true; box.innerHTML = ''; return; }
-  const tokens = [...q.matchAll(/[\p{L}\p{M}][\p{L}\p{M}'’ʼ-]{2,}/gu)].map(match => match[0]).filter((token, i, all) => all.indexOf(token) === i).slice(0, 12);
-  const hits = bookOcr.map(page => {
-    const text = page.text || '', folded = norm(text), token = tokens.find(t => folded.includes(t));
-    if (!token) return null;
-    const at = folded.indexOf(token), snippet = text.replace(/\s+/g, ' ').slice(Math.max(0, at - 90), at + 260).trim();
-    return { page: page.page, snippet };
-  }).filter(Boolean).slice(0, 5);
-  box.hidden = false;
-  box.innerHTML = hits.length ? `<p><strong>Koul book references</strong> <span>These OCR matches provide source context; they do not alter the neural model output.</span></p>${hits.map(hit => `<a href="https://archive.org/details/tbjU_kashmiri-english-dictionary-for-second-language-learners-omkar-koul/page/n${hit.page - 1}/mode/1up" target="_blank" rel="noopener noreferrer"><strong>PDF page ${hit.page}</strong><span>${esc(hit.snippet)}</span></a>`).join('')}` : '<p><strong>No Koul OCR match found</strong><span>Search the separate Koul book OCR collection for the full page text.</span></p>';
-}
 function setBusy(value) {
-  busy = value; run.disabled = value; sentenceInput.disabled = value; $('#swap-languages').disabled = value; $('#cancel-translation').hidden = !value; $('#clear-model-cache').disabled = value;
+  busy = value; run.disabled = value; sentenceInput.disabled = value; $('#swap-languages').disabled = value;
   $('#source-language').disabled = value; $('#target-language').disabled = value; $('#example-sentence').disabled = value;
-  $('#model-size').disabled = value;
-  run.textContent = value ? 'Working…' : readyDirection === modelKey() ? 'Translate sentence' : 'Download model & translate';
+  run.textContent = value ? 'Working on server…' : 'Translate sentence';
+  $('#cancel-translation').hidden = !value;
 }
 function setDirection(next) {
   if (busy) return;
   const swap = next !== direction; direction = next; const english = next === 'en-ks';
-  if (swap) { worker?.terminate(); worker = undefined; readyDirection = ''; } // Release WASM memory before loading the other model.
   $('#source-language').textContent = english ? 'English' : 'Kashmiri'; $('#target-language').textContent = english ? 'Kashmiri' : 'English';
   $('#source-label').textContent = `${english ? 'English' : 'Kashmiri'} sentence`; $('#target-label').textContent = `${english ? 'Kashmiri' : 'English'} translation`;
   if (swap) sentenceInput.value = translated || '';
   sentenceInput.dir = english ? 'ltr' : 'rtl'; sentenceInput.lang = english ? 'en' : 'ks-Arab';
   sentenceInput.placeholder = english ? 'Type an English sentence here…' : 'اَتہِ کٲشُر جُملہٕ لِکھِو…';
   output.dir = english ? 'rtl' : 'ltr'; output.lang = english ? 'ks-Arab' : 'en'; output.textContent = 'Your translation will appear here.'; output.classList.add('empty');
-  renderSourceTransliteration();
-  translated = ''; $('#copy-translation').disabled = true; note.textContent = modelNote(); progress.hidden = true;
+  renderSourceTransliteration(); translated = ''; $('#copy-translation').disabled = true; note.textContent = initialNote;
   $('#example-sentence').textContent = english ? 'The weather is good today.' : 'مےٚ پٔر اَکھ کِتاب'; countSentence(); setBusy(false);
 }
 function stop() {
-  worker?.terminate(); worker = undefined; readyDirection = ''; translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty'); $('#copy-translation').disabled = true;
-  progress.hidden = true; note.textContent = 'Stopped. Any completed model downloads remain cached in this browser.'; setBusy(false);
+  activeController?.abort(); activeController = undefined; translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty');
+  $('#copy-translation').disabled = true; note.textContent = 'Stopped. The server request was cancelled.'; setBusy(false);
 }
-function getWorker() {
-  if (worker) return worker;
-  worker = new Worker('/assets/translation-worker.mjs', { type: 'module' });
-  worker.onmessage = ({ data }) => {
-    if (data.type === 'progress') {
-      progress.hidden = data.phase !== 'download';
-      if (data.phase === 'download') { progress.value = Math.min(99, data.loaded / data.total * 100); note.textContent = `${data.cached ? 'Reading cached model' : 'Downloading model'} · ${(data.loaded / 1000000).toFixed(0)} / ~${(data.total / 1000000).toFixed(0)} MB`; }
-      else note.textContent = data.label;
+async function serverTranslate(text) {
+  const controller = new AbortController(); activeController = controller;
+  const sessionHash = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
+  const serverDirection = direction === 'ks-en' ? 'Kashmiri → English' : 'English → Kashmiri';
+  const joined = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/join`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
+    body: JSON.stringify({ data: [text, serverDirection], fn_index: 0, session_hash: sessionHash })
+  });
+  if (!joined.ok) throw new Error(`Server queue rejected the request (${joined.status}).`);
+  const { event_id: eventId } = await joined.json();
+  const response = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`, { signal: controller.signal, headers: { Accept: 'text/event-stream' } });
+  if (!response.ok || !response.body) throw new Error(`Server stream unavailable (${response.status}).`);
+  const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
+  while (true) {
+    const chunk = await reader.read(); if (chunk.done) break; buffer += decoder.decode(chunk.value, { stream: true });
+    const events = buffer.split('\n\n'); buffer = events.pop() || '';
+    for (const event of events) {
+      const line = event.split('\n').find(item => item.startsWith('data: ')); if (!line) continue;
+      const message = JSON.parse(line.slice(6)); if (message.event_id && message.event_id !== eventId) continue;
+      if (message.msg === 'process_starts') note.textContent = 'Server model is translating…';
+      if (message.msg === 'process_completed') {
+        if (!message.success || message.output?.error) throw new Error(message.output?.error || 'The server could not complete this translation.');
+        return message.output.data;
+      }
+      if (message.msg === 'close_stream') break;
     }
-    if (data.type === 'cache-warning') cacheWarning = data.message;
-    if (data.type === 'partial') { renderTranslation(data.text); output.classList.remove('empty'); }
-    if (data.type === 'result') {
-      const grammarOutput = applyGrammarOutput(data.text, sentenceInput.value, direction);
-      const fallback = applyUnknownEnglishFallback(sentenceInput.value, grammarOutput);
-      translated = fallback.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
-      readyDirection = modelKey(); progress.hidden = true;
-      note.textContent = `${data.model}. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}${data.limited ? 'Output reached the model limit and may be incomplete. ' : ''}Automatic translation—check grammar, names and meaning with a fluent speaker. ${cacheWarning}`;
-      setBusy(false);
-    }
-    if (data.type === 'error') {
-      translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; progress.hidden = true;
-      note.textContent = data.message; worker.terminate(); worker = undefined; readyDirection = ''; setBusy(false);
-    }
-  };
-  worker.onerror = event => { stop(); note.textContent = `Could not start the translation engine. Try a current desktop Chrome, Edge or Firefox browser and check your connection. ${event.message || ''}`; };
-  return worker;
+  }
+  throw new Error('The server closed the translation stream before returning a result.');
 }
 $('#swap-languages').addEventListener('click', () => setDirection(direction === 'ks-en' ? 'en-ks' : 'ks-en'));
 for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
   const next = $(`#${id}`).textContent === 'English' ? 'en-ks' : 'ks-en'; if (next !== direction) setDirection(next);
 });
 sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); renderGrammarNote(); });
-$('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); sentenceInput.focus(); });
+$('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); renderSourceTransliteration(); sentenceInput.focus(); });
 $('#lookup-koul').addEventListener('click', async () => {
   const text = sentenceInput.value.trim();
   if (!text) { sentenceInput.focus(); return; }
@@ -353,20 +339,22 @@ $('#lookup-koul').addEventListener('click', async () => {
   try { await loadBookOcr(); renderKoulReferences(text); } catch { $('#koul-references').hidden = false; $('#koul-references').innerHTML = '<p><strong>Koul OCR unavailable</strong><span>Try again after checking your connection.</span></p>'; }
   button.disabled = false; button.textContent = 'Look up Koul book references';
 });
-run.addEventListener('click', () => {
+run.addEventListener('click', async () => {
   const text = sentenceInput.value.trim(); if (!text) { sentenceInput.focus(); return; }
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
-  translated = ''; $('#copy-translation').disabled = true; cacheWarning = ''; setBusy(true);
-  try { getWorker().postMessage({ type: 'translate', text, direction, size: $('#model-size').value }); } catch (error) { stop(); note.textContent = error.message; }
+  translated = ''; $('#copy-translation').disabled = true; setBusy(true); note.textContent = 'Sending your sentence to the server…';
+  try {
+    const [serverOutput, normalized, romanized, grammar] = await serverTranslate(text);
+    const grammarOutput = applyGrammarOutput(serverOutput, text, direction);
+    const fallback = applyUnknownEnglishFallback(text, grammarOutput);
+    translated = fallback.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
+    if (direction === 'ks-en' && normalized) $('#source-transliteration').textContent = `Normalized Kashmiri: ${normalized} · Romanized reading: ${romanized}`;
+    renderGrammarNote(grammar); note.textContent = `Server model: NLLB-200 600M. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
+  } catch (error) {
+    if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
+  } finally { activeController = undefined; setBusy(false); }
 });
 $('#cancel-translation').addEventListener('click', stop);
-$('#model-size').addEventListener('change', () => { worker?.terminate(); worker = undefined; readyDirection = ''; translated = ''; output.textContent = 'Your translation will appear here.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = modelNote(); setBusy(false); });
-$('#clear-model-cache').addEventListener('click', async () => {
-  if (busy) return;
-  worker?.terminate(); worker = undefined; readyDirection = '';
-  try { await caches.delete('koshur-models-v1'); note.textContent = 'Downloaded translation models cleared from this browser. The dictionary and recent searches are unchanged.'; } catch { note.textContent = 'This browser does not allow model cache management.'; }
-  setBusy(false);
-});
 $('#copy-translation').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(translated); $('#copy-translation').textContent = 'Copied'; setTimeout(() => $('#copy-translation').textContent = 'Copy', 1200); }
   catch { note.textContent = 'Clipboard unavailable. Select and copy the translation manually.'; }
