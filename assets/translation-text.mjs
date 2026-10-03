@@ -1,6 +1,10 @@
 // English / Perso-Arabic processing for IndicTrans2's language-tagged input.
 // Keep Kashmiri-specific letters/signs; do not transliterate to Urdu. The six
 // shared vowel marks below follow IndicTransToolkit's Arabic input normalizer.
+export function normalizeKashmiri(input) {
+  return input.normalize('NFC').replace(/[ك]/g, 'ک').replace(/[يى]/g, 'ی').replace(/ه/g, 'ہ');
+}
+
 export function prepareText(input, direction) {
   const entities = [];
   let text = input.normalize('NFC').replace(/[\u200b\ufeff]/g, '')
@@ -11,7 +15,7 @@ export function prepareText(input, direction) {
     return `<ID${id}>`;
   });
   if (direction === 'ks-en') {
-    text = text.normalize('NFKC').replace(/[ك]/g, 'ک').replace(/[يى]/g, 'ی').replace(/ه/g, 'ہ')
+    text = normalizeKashmiri(text).normalize('NFKC')
       .replace(/[\u064e\u064b\u0670\u0650\u064f\u064dـ]/g, '');
   }
   text = text.replace(/([!"#$%&()*+,/:;<=>?@[\]^{|}~۔،؟])/g, ' $1 ')
