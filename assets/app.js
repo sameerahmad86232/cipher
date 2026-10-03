@@ -10,13 +10,13 @@ const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;
 const read = key => { try { const value = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter(x => typeof x === 'string') : []; } catch { return []; } };
 const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browser: dictionary still works. */ } };
 const sourceLink = row => { try { const url = new URL(row.url); return url.protocol === 'https:' ? `<a class="entry-source" href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(row.s)} · ${esc(row.license)}</a>` : ''; } catch { return ''; } };
-let words = [], historicalWords = [], bookOcr = [], schoolOcr = null, kashirOcr = null, readingOcr = null, englishTokens = new Set(), matches = [], visible = 12, collection = '', browse = '', debounce;
+let words = [], historicalWords = [], bookOcr = [], schoolOcr = null, kashirOcr = null, readingOcr = null, publicCorpus = null, englishTokens = new Set(), matches = [], visible = 12, collection = '', browse = '', debounce;
 const filters = () => ({ script: $('#script-filter').value, source: $('#source-filter').value, pos: $('#pos-filter').value });
 
 function sense(row) {
   const examples = row.examples?.length ? row.examples : row.kx ? [{ k: row.kx, e: row.x }] : [];
-  const meaning = row.ocrVocabulary ? 'OCR vocabulary word' : row.e;
-  const note = row.ocrVocabulary ? '<p class="sense-context">Added from corrected OCR text. The source does not provide an English definition for this word.</p>' : '';
+  const meaning = row.ocrVocabulary ? 'OCR vocabulary word' : row.corpusVocabulary ? 'Corpus vocabulary word' : row.e;
+  const note = row.ocrVocabulary ? '<p class="sense-context">Added from corrected OCR text. The source does not provide an English definition for this word.</p>' : row.corpusVocabulary ? '<p class="sense-context">Found in a licensed public Kashmiri corpus. The source does not provide an English definition for this word.</p>' : ''; 
   const refs = row.references || [];
   const shownRefs = refs.slice(0, 5).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join('');
   const moreRefs = refs.length > 5 ? `<details class="ocr-references"><summary>${refs.length - 5} more OCR occurrences</summary>${refs.slice(5).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join('')}</details>` : '';
@@ -122,8 +122,25 @@ async function loadReadingOcr() {
   readingOcr = await response.json();
   return Boolean(readingOcr.pages?.length);
 }
+function searchPublicCorpus(query) {
+  if (!publicCorpus) return [];
+  const q = norm(query), rows = [];
+  for (const row of publicCorpus.records || []) {
+    const folded = norm(row.text);
+    if (q && !folded.includes(q)) continue;
+    rows.push({ k: row.text, arabic: true, forms: [], senses: [{ e: 'Licensed corpus sentence', p: row.dataset, s: row.dataset, url: row.source, license: row.license, x: `Source: ${row.source}` }] });
+  }
+  return rows;
+}
+async function loadPublicCorpus() {
+  if (publicCorpus?.records?.length) return true;
+  const response = await fetch('/assets/kashmiri-public-corpus.json');
+  if (!response.ok) throw Error('Public Kashmiri corpus download failed');
+  publicCorpus = await response.json();
+  return Boolean(publicCorpus.records?.length);
+}
 function render() {
-  const label = ['book-ocr', 'school-ocr', 'kashir-ocr', 'reading-ocr'].includes(collection) ? 'page' : 'headword';
+  const label = ['book-ocr', 'school-ocr', 'kashir-ocr', 'reading-ocr'].includes(collection) ? 'page' : collection === 'public-corpus' ? 'sentence' : 'headword';
   $('#result-count').textContent = `${matches.length.toLocaleString()} ${label}${matches.length === 1 ? '' : 's'}`;
   results.innerHTML = matches.length ? matches.slice(0, visible).map(card).join('') : '<div class="empty-state"><strong>No matching words found</strong><span>Try a shorter spelling, clear your filters, or search the other language.</span></div>';
   $('#load-more').hidden = visible >= matches.length;
@@ -138,11 +155,11 @@ function remember(query) {
 }
 function search(commit = false) {
   visible = 12; const q = input.value.trim(); $('#clear-button').hidden = !q;
-  matches = collection === 'book-ocr' ? searchBookOcr(q) : collection === 'school-ocr' ? searchSchoolOcr(q) : collection === 'kashir-ocr' ? searchKashirOcr(q) : collection === 'reading-ocr' ? searchReadingOcr(q) : searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
+  matches = collection === 'book-ocr' ? searchBookOcr(q) : collection === 'school-ocr' ? searchSchoolOcr(q) : collection === 'kashir-ocr' ? searchKashirOcr(q) : collection === 'reading-ocr' ? searchReadingOcr(q) : collection === 'public-corpus' ? searchPublicCorpus(q) : searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
   if (collection === 'calendar') matches = matches.filter(w => w.senses.some(s => s.topic === 'calendar'));
   if (browse) matches = matches.filter(w => $('#alphabet-select').value === 'en' ? w.senses.some(s => norm(s.e).startsWith(norm(browse))) : fold(w.k).startsWith(fold(browse)));
-  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : collection === 'book-ocr' ? 'Koul book OCR' : collection === 'school-ocr' ? 'Open Kashmiri books OCR' : collection === 'kashir-ocr' ? 'Kashir Dictionary · seven-volume OCR' : collection === 'reading-ocr' ? 'Grammar, textbooks and translations' : browse ? `Words beginning with ${browse}` : 'Featured words';
-  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : collection === 'school-ocr' ? 'MACHINE OCR · OPEN LICENSED KASHMIRI BOOKS' : collection === 'kashir-ocr' ? 'MACHINE OCR · 2,710 REFERENCE-DICTIONARY PAGES' : collection === 'reading-ocr' ? 'MACHINE OCR · 1,393 READING PAGES' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
+  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : collection === 'book-ocr' ? 'Koul book OCR' : collection === 'school-ocr' ? 'Open Kashmiri books OCR' : collection === 'kashir-ocr' ? 'Kashir Dictionary · seven-volume OCR' : collection === 'reading-ocr' ? 'Grammar, textbooks and translations' : collection === 'public-corpus' ? 'Licensed Kashmiri corpus' : browse ? `Words beginning with ${browse}` : 'Featured words';
+  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : collection === 'school-ocr' ? 'MACHINE OCR · OPEN LICENSED KASHMIRI BOOKS' : collection === 'kashir-ocr' ? 'MACHINE OCR · 2,710 REFERENCE-DICTIONARY PAGES' : collection === 'reading-ocr' ? 'MACHINE OCR · 1,393 READING PAGES' : collection === 'public-corpus' ? 'LICENSED CORPUS · 4,166 SENTENCES' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
   if (!q && !collection && !browse) matches = matches.slice(0, 12);
   if (commit) remember(q); render();
 }
@@ -200,6 +217,15 @@ $('#browse-kashir-ocr').addEventListener('click', async () => {
   }
   search();
 });
+$('#browse-public-corpus').addEventListener('click', async () => {
+  input.value = ''; browse = ''; collection = 'public-corpus';
+  $('#script-filter').value = 'all'; $('#pos-filter').value = 'all'; $('#source-filter').value = 'all';
+  if (!publicCorpus?.records?.length) {
+    $('#results-title').textContent = 'Loading licensed Kashmiri corpus…';
+    try { await loadPublicCorpus(); } catch { $('#results-title').textContent = 'Public corpus unavailable'; return; }
+  }
+  search();
+});
 $('#browse-reading-ocr').addEventListener('click', async () => {
   input.value = ''; browse = ''; collection = 'reading-ocr';
   $('#script-filter').value = 'all'; $('#pos-filter').value = 'all'; $('#source-filter').value = 'all';
@@ -210,7 +236,7 @@ $('#browse-reading-ocr').addEventListener('click', async () => {
   search();
 });
 for (const id of ['script-filter', 'source-filter', 'pos-filter']) $(`#${id}`).addEventListener('change', () => search());
-input.addEventListener('input', () => { clearTimeout(debounce); if (!['historical', 'book-ocr', 'school-ocr', 'kashir-ocr', 'reading-ocr'].includes(collection)) collection = ''; browse = ''; debounce = setTimeout(search, 60); });
+input.addEventListener('input', () => { clearTimeout(debounce); if (!['historical', 'book-ocr', 'school-ocr', 'kashir-ocr', 'reading-ocr', 'public-corpus'].includes(collection)) collection = ''; browse = ''; debounce = setTimeout(search, 60); });
 input.addEventListener('keydown', e => { if (e.key === 'Enter') search(true); });
 input.addEventListener('blur', () => remember(input.value.trim()));
 $('#clear-button').addEventListener('click', () => { query(''); input.focus(); });
@@ -361,7 +387,7 @@ $('#copy-translation').addEventListener('click', async () => {
 });
 setDirection(direction);
 
-Promise.all(['/assets/dictionary.json', ...Array.from({ length: 8 }, (_, index) => `/assets/dictionary-kashir-${index + 1}.json`)].map(file => fetch(file).then(response => { if (!response.ok) throw Error(`Dictionary download failed: ${file}`); return response.json(); }))).then(parts => {
+Promise.all(['/assets/dictionary.json', ...Array.from({ length: 8 }, (_, index) => `/assets/dictionary-kashir-${index + 1}.json`), '/assets/dictionary-corpus.json'].map(file => fetch(file).then(response => { if (!response.ok) throw Error(`Dictionary download failed: ${file}`); return response.json(); }))).then(parts => {
   const records = parts.flat();
   words = buildIndex(records);
   englishTokens = new Set(records.flatMap(record => [record.e, record.x, ...(record.examples || []).flatMap(example => [example.e])]).flatMap(text => String(text || '').toLowerCase().match(/[a-z][a-z'-]*/g) || []));

@@ -7,14 +7,15 @@ const { prepareText, finishText, sentenceChunks, normalizeKashmiri } = await imp
 const { analyzeKashmiriSentence, analyzeEnglishSentence, applyGrammarOutput } = await import(path.resolve(root, 'assets/grammar-engine.mjs'));
 const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets/dictionary.json'))),
-  ...Array.from({ length: 8 }, (_, index) => `dictionary-kashir-${index + 1}.json`).filter(file => fs.existsSync(path.join(root, 'assets', file))).map(file => JSON.parse(fs.readFileSync(path.join(root, 'assets', file))))
+  ...Array.from({ length: 8 }, (_, index) => `dictionary-kashir-${index + 1}.json`).filter(file => fs.existsSync(path.join(root, 'assets', file))).map(file => JSON.parse(fs.readFileSync(path.join(root, 'assets', file)))),
+  JSON.parse(fs.readFileSync(path.join(root, 'assets', 'dictionary-corpus.json')))
 ].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 47330);
-assert.equal(words.length, 38558);
+assert.equal(records.length, 57912);
+assert.equal(words.length, 49140);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
-assert.equal(records.filter(r => r.trGenerated).length, 33168);
+assert.equal(records.filter(r => r.trGenerated).length, 43750);
 assert.equal(records.filter(r => r.ocrVocabulary).length, 23377);
 assert.equal(records.filter(r => r.ocrObserved).length, 1447);
 assert.equal(records.filter(r => r.ocrVocabulary && r.e.startsWith('OCR vocabulary word')).length, 23377);

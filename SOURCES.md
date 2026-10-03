@@ -32,7 +32,7 @@ The former dictionary-based sentence substitution has been removed. Dictionary e
 
 ## October 2026 expansion
 
-The modern-script dictionary now contains **47,330 records across 38,558 NFC-normalized searchable headwords**: 23,953 meaning records and 23,377 clearly labeled OCR-only vocabulary records, plus **1,818 distinct sourced word-form spellings**. These are different measures, not counts of distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
+The modern-script dictionary now contains **57,912 records across 49,140 NFC-normalized searchable headwords**: 23,953 meaning records, 23,377 clearly labeled OCR-only vocabulary records, and 10,582 licensed corpus-vocabulary records, plus **1,818 distinct sourced word-form spellings**. These are different measures, not counts of distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
 
 ## Kashmiri orthography notes v32
 
@@ -108,3 +108,9 @@ Machine translation can omit information, mistranslate polysemous words, repeat 
 
 The dictionary, OCR collections and grammar guide remain static assets and work without a model download.
 
+
+## Licensed public Kashmiri corpus subset
+
+The site adds `assets/kashmiri-public-corpus.json`, a sentence-level reading collection filtered from [Nawab’s Kashmiri Language Corpus](https://huggingface.co/datasets/nawabhussain/Kashmiri-Language-Corpus). The composite dataset contains sources with different or unclear terms, so this import includes only two clearly identified subsets: **2,232 Kashmiri Wikipedia sentences** under CC BY-SA 4.0 and **1,934 OpenSLR 122 sentences** under GPL-3.0-or-later. Gated SMUQamar parallel sentences, NLLB-derived rows without a compatible redistribution determination, and the unlicensed scraped web rows are excluded.
+
+The corpus contributes **4,166 sentences** for source-linked reading and **10,582 unique corpus vocabulary forms** to `assets/dictionary-corpus.json`. These forms are labeled as corpus vocabulary and do not receive fabricated English meanings. Every record preserves its source URL and license. The reproducible import is `scripts/import-public-corpus.py`; `scripts/add-public-corpus-vocabulary.mjs` creates the dictionary vocabulary layer. This corpus is useful for search, reading and future licensed parallel-corpus evaluation; it does not retrain the live NLLB model automatically.
