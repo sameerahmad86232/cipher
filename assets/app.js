@@ -22,13 +22,14 @@ function sense(row) {
 }
 function card(word) {
   const primary = word.senses.find(s => s.tr || s.ipa) || word.senses[0];
+  const displayedTransliteration = primary.tr || primary.ipa || (!word.arabic ? word.k : '');
   const forms = word.forms.filter(f => norm(f.word) !== norm(word.k));
   const related = [...new Set(word.senses.flatMap(s => [...(s.synonyms || []), ...(s.antonyms || [])]))];
   return `<article class="word-card"><div class="headword"><p class="kashmiri-word" lang="${word.arabic ? 'ks-Arab' : 'ks-Latn'}" dir="${word.arabic ? 'rtl' : 'ltr'}">${esc(word.k)}</p></div>
-    <div>${primary.tr || primary.ipa ? `<p class="word-details pronunciation">${esc(primary.tr)} ${esc(primary.ipa)}${primary.trGenerated ? ' <span class="generated-label">orthography-derived</span>' : ''}</p>` : ''}
+    <div>${displayedTransliteration ? `<p class="word-details pronunciation">${esc(displayedTransliteration)} ${primary.tr && primary.ipa ? esc(primary.ipa) : ''}${primary.trGenerated ? ' <span class="generated-label">orthography-derived</span>' : ''}</p>` : ''}
     ${word.senses.slice(0, 3).map(sense).join('')}
     ${word.senses.length > 3 ? `<details><summary>${word.senses.length - 3} more meanings</summary>${word.senses.slice(3).map(sense).join('')}</details>` : ''}
-    ${forms.length ? `<details class="word-forms"><summary>${new Set(forms.map(f => f.word)).size} inflected / alternate forms</summary><div>${forms.map(f => `<p><button data-query="${esc(f.word)}" class="form-word" lang="ks-Arab" dir="rtl">${esc(f.word)}</button> <span>${esc((f.tags || []).join(' · '))}</span></p>`).join('')}</div></details>` : ''}
+    ${forms.length ? `<details class="word-forms"><summary>${new Set(forms.map(f => f.word)).size} inflected / alternate forms</summary><div>${forms.map(f => `<p><button data-query="${esc(f.word)}" class="form-word" lang="ks-Arab" dir="rtl">${esc(f.word)}</button> <span class="form-translit">${esc(transliterateKashmiri(f.word))}</span> <span>${esc((f.tags || []).join(' · '))}</span></p>`).join('')}</div></details>` : ''}
     ${related.length ? `<details><summary>Related words</summary>${related.map(k => `<button class="form-word" data-query="${esc(k)}" lang="ks-Arab">${esc(k)}</button>`).join(' ')}</details>` : ''}
     ${primary.etymology ? `<details><summary>Etymology</summary><p class="etymology">${esc(primary.etymology)}</p></details>` : ''}</div></article>`;
 }

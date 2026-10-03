@@ -55,6 +55,7 @@ select { max-width: 100%; padding: 8px; border: 1px solid var(--line); border-ra
 .word-card details { margin-top: 16px; font-size: 14px; }
 .word-card summary { color: var(--green); cursor: pointer; padding: 5px 0; }
 .word-forms span { color: var(--muted); font-size: 12px; }
+.word-forms .form-translit { color: var(--forest); font-family: "DM Sans", sans-serif; }
 .form-word { font: 18px/2 "Noto Nastaliq Urdu", serif; border: 0; background: #f3f1e9; color: var(--forest); border-radius: 6px; padding: 0 8px; cursor: pointer; margin: 3px; }
 .etymology { line-height: 1.7; color: var(--muted); }
 .translation-examples { display: flex; flex-wrap: wrap; gap: 12px; padding: 16px 26px; align-items: center; font-size: 14px; border-top: 1px solid var(--line); }
