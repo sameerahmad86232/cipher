@@ -10,6 +10,7 @@ import csv, json, urllib.request
 from pathlib import Path
 
 URL = 'https://huggingface.co/datasets/nawabhussain/Kashmiri-Language-Corpus/resolve/main/Kashmiri-Language-Corpus.csv?download=true'
+PALI_URL = 'https://raw.githubusercontent.com/sinaahmadi/PersoArabicLID/main/datasets/0/train.txt'
 SOURCE_META = {
     'https://ks.wikipedia.org': {
         'dataset': 'Kashmiri Wikipedia', 'license': 'CC BY-SA 4.0',
@@ -34,6 +35,16 @@ with tmp.open(encoding='utf-8', newline='') as fh:
             continue
         seen.add(sentence)
         rows.append({'text': sentence, 'source': meta['url'], 'dataset': meta['dataset'], 'license': meta['license']})
+pali_path = root / 'source-ocr' / 'persoarabic-lid-train.txt'
+if not pali_path.exists():
+    urllib.request.urlretrieve(PALI_URL, pali_path)
+for line in pali_path.read_text(encoding='utf-8').splitlines():
+    if not line.startswith('__label__kas\t'):
+        continue
+    sentence = ' '.join(line.split('\t', 1)[1].split())
+    if sentence and sentence not in seen:
+        seen.add(sentence)
+        rows.append({'text': sentence, 'source': 'https://github.com/sinaahmadi/PersoArabicLID', 'dataset': 'PALI Perso-Arabic Kashmiri clean corpus', 'license': 'MIT'})
 rows.sort(key=lambda row: (row['dataset'], row['text']))
 out = {
     'title': 'Licensed Kashmiri public corpus subset',
@@ -41,7 +52,7 @@ out = {
     'source': 'https://huggingface.co/datasets/nawabhussain/Kashmiri-Language-Corpus',
     'license': 'Per-record; see each record',
     'records': rows,
-    'counts': {meta['dataset']: sum(row['dataset'] == meta['dataset'] for row in rows) for meta in SOURCE_META.values()},
+    'counts': {**{meta['dataset']: sum(row['dataset'] == meta['dataset'] for row in rows) for meta in SOURCE_META.values()}, 'PALI Perso-Arabic Kashmiri clean corpus': sum(row['dataset'] == 'PALI Perso-Arabic Kashmiri clean corpus' for row in rows)},
 }
 out_path = root / 'dist' / 'assets' / 'kashmiri-public-corpus.json'
 out_path.write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')) + '\n')

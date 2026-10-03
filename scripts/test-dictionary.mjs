@@ -11,11 +11,11 @@ const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets', 'dictionary-corpus.json')))
 ].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 57912);
-assert.equal(words.length, 49140);
+assert.equal(records.length, 58454);
+assert.equal(words.length, 49682);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
-assert.equal(records.filter(r => r.trGenerated).length, 43750);
+assert.equal(records.filter(r => r.trGenerated).length, 44292);
 assert.equal(records.filter(r => r.ocrVocabulary).length, 23377);
 assert.equal(records.filter(r => r.ocrObserved).length, 1447);
 assert.equal(records.filter(r => r.ocrVocabulary && r.e.startsWith('OCR vocabulary word')).length, 23377);
