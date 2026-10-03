@@ -355,32 +355,35 @@ function stop() {
 }
 async function serverTranslate(text) {
   const controller = new AbortController(); activeController = controller;
-  const sessionHash = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
-  const serverDirection = direction === 'ks-en' ? 'Kashmiri → English' : 'English → Kashmiri';
-  const joined = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/join`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
-    body: JSON.stringify({ data: [text, serverDirection], fn_index: 0, session_hash: sessionHash })
-  });
-  if (!joined.ok) throw new Error(`Server queue rejected the request (${joined.status}).`);
-  const { event_id: eventId } = await joined.json();
-  const response = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`, { signal: controller.signal, headers: { Accept: 'text/event-stream' } });
-  if (!response.ok || !response.body) throw new Error(`Server stream unavailable (${response.status}).`);
-  const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
-  while (true) {
-    const chunk = await reader.read(); if (chunk.done) break; buffer += decoder.decode(chunk.value, { stream: true });
-    const events = buffer.split('\n\n'); buffer = events.pop() || '';
-    for (const event of events) {
-      const line = event.split('\n').find(item => item.startsWith('data: ')); if (!line) continue;
-      const message = JSON.parse(line.slice(6)); if (message.event_id && message.event_id !== eventId) continue;
-      if (message.msg === 'process_starts') note.textContent = 'Server model is translating…';
-      if (message.msg === 'process_completed') {
-        if (!message.success || message.output?.error) throw new Error(message.output?.error || 'The server could not complete this translation.');
-        return message.output.data;
+  const timeout = setTimeout(() => controller.abort(), 120000);
+  try {
+    const sessionHash = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
+    const serverDirection = direction === 'ks-en' ? 'Kashmiri → English' : 'English → Kashmiri';
+    const joined = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/join`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
+      body: JSON.stringify({ data: [text, serverDirection], fn_index: 0, session_hash: sessionHash })
+    });
+    if (!joined.ok) throw new Error(`Server queue rejected the request (${joined.status}).`);
+    const { event_id: eventId } = await joined.json();
+    const response = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`, { signal: controller.signal, headers: { Accept: 'text/event-stream' } });
+    if (!response.ok || !response.body) throw new Error(`Server stream unavailable (${response.status}).`);
+    const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
+    while (true) {
+      const chunk = await reader.read(); if (chunk.done) break; buffer += decoder.decode(chunk.value, { stream: true });
+      const events = buffer.split('\n\n'); buffer = events.pop() || '';
+      for (const event of events) {
+        const line = event.split('\n').find(item => item.startsWith('data: ')); if (!line) continue;
+        const message = JSON.parse(line.slice(6)); if (message.event_id && message.event_id !== eventId) continue;
+        if (message.msg === 'process_starts') note.textContent = 'Server model is translating…';
+        if (message.msg === 'process_completed') {
+          if (!message.success || message.output?.error) throw new Error(message.output?.error || 'The server could not complete this translation.');
+          return message.output.data;
+        }
+        if (message.msg === 'close_stream') break;
       }
-      if (message.msg === 'close_stream') break;
     }
-  }
-  throw new Error('The server closed the translation stream before returning a result.');
+    throw new Error('The server closed the translation stream before returning a result.');
+  } finally { clearTimeout(timeout); }
 }
 $('#swap-languages').addEventListener('click', () => setDirection(direction === 'ks-en' ? 'en-ks' : 'ks-en'));
 for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
@@ -409,6 +412,7 @@ async function translateCurrent(automatic = false) {
     renderGrammarNote(grammar); $('#dictionary-context').textContent = dictionaryContext || 'No exact dictionary entry found; the neural model supplied the translation.'; note.textContent = `Server model: NLLB-200 600M. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
   } catch (error) {
     if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
+    else note.textContent = 'The server request timed out or was stopped. Try again.';
   } finally { activeController = undefined; setBusy(false); $('#live-status').textContent = 'Ready'; }
 }
 run.addEventListener('click', () => translateCurrent(false));
