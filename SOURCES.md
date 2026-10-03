@@ -32,7 +32,11 @@ The former dictionary-based sentence substitution has been removed. Dictionary e
 
 ## October 2026 expansion
 
-The modern-script dictionary now contains **23,631 meaning records across 14,986 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 23,631 distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
+The modern-script dictionary now contains **23,953 meaning records across 15,181 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 23,953 distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
+
+## Kashmiri orthography notes v32
+
+The site incorporates structured language assets from [Richard Ishida's Arabic (Kashmiri) Nastaliq orthography notes v32](https://r12a.github.io/scripts/arab/ks.html), retrieved 3 October 2026. The project owner reports permission for public use. `assets/kashmiri-orthography.json` preserves the character spreadsheet, Kashmiri letters and combining marks, native digits and punctuation, 504 example glosses with IPA/transcription where supplied, and a concise set of writing rules. The 504 examples are added as attributed lookup records; orthography rules are not treated as word meanings. The source describes NFC/NFD handling, Kashmiri vowel visibility, aspirated digraphs, palatalisation, jazm placement, right-to-left layout and Kashmiri-specific characters.
 
 - Scanned all 1,492,838 rows of the English Kaikki dump and imported 183 explicitly tagged Perso-Arabic Kashmiri translation pairs. Sense context, transliteration, grammatical tags and the English source-page link are retained. Entries are marked `s: "Wiktionary translation table"`.
 - Imported 139 additional explicitly glossed derived/related terms from Kashmiri Wiktionary entries. A synonym without an explicit English gloss does not generate a guessed definition.

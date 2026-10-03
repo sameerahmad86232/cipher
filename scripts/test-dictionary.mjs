@@ -6,8 +6,8 @@ const { buildIndex, searchIndex, fold } = await import(path.resolve(root, 'asset
 const { prepareText, finishText, sentenceChunks } = await import(path.resolve(root, 'assets/translation-text.mjs'));
 const records = JSON.parse(fs.readFileSync(path.join(root, 'assets/dictionary.json')));
 const words = buildIndex(records);
-assert.equal(records.length, 23631);
-assert.equal(words.length, 14986);
+assert.equal(records.length, 23953);
+assert.equal(words.length, 15181);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(searchIndex(words, 'water').some(w => w.senses.some(s => s.e.toLowerCase() === 'water')));
 assert.equal(searchIndex(words, 'تۆت')[0].k, 'تۆت');
@@ -23,6 +23,10 @@ assert.ok(abdomen.some(w => w.k === 'شِکم' && w.senses.some(s => s.e.toLower
 const historical = JSON.parse(fs.readFileSync(path.join(root, 'assets/historical-lexicon.json')));
 assert.equal(historical.length, 20643);
 assert.ok(searchIndex(buildIndex(historical), 'āb').some(w => w.k === 'āb' && w.senses.some(s => s.e.includes('water'))));
+const orthography = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json')));
+assert.equal(orthography.characters.length, 118);
+assert.equal(orthography.examples.length, 504);
+assert.ok(searchIndex(words, 'Sunday', { source: 'sourced', script: 'arabic' }).some(w => w.k === 'آتھوار'));
 const book = records.find(r => r.kx === 'مےٚ پٔر اَکھ کِتاب');
 assert.equal(book.x, 'I read a book');
 const prepared = prepareText('Email test@example.com about 12.50 today.', 'en-ks');
