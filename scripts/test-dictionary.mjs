@@ -28,6 +28,11 @@ assert.ok(searchIndex(buildIndex(historical), 'āb').some(w => w.k === 'āb' && 
 const orthography = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json')));
 assert.equal(orthography.characters.length, 118);
 assert.equal(orthography.examples.length, 504);
+assert.equal(orthography.metadata.ocrCharacterInventory.length, 38);
+const schoolOcr = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-school-textbooks-ocr.json')));
+assert.equal(schoolOcr.pages.length, 490);
+assert.ok(schoolOcr.pages.every(page => typeof page.normalizedText === 'string' && typeof page.transliteration === 'string'));
+assert.equal(records.reduce((count, row) => count + (row.references || []).filter(reference => reference.s?.startsWith('OCR occurrence')).length, 0), 3333);
 assert.ok(searchIndex(words, 'Sunday', { source: 'sourced', script: 'arabic' }).some(w => w.k === 'آتھوار'));
 const book = records.find(r => r.kx === 'مےٚ پٔر اَکھ کِتاب');
 assert.equal(book.x, 'I read a book');

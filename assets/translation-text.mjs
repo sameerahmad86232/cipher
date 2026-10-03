@@ -1,8 +1,10 @@
+import { autocorrectKashmiri } from './kashmiri-text.mjs';
+
 // English / Perso-Arabic processing for IndicTrans2's language-tagged input.
 // Keep Kashmiri-specific letters/signs; do not transliterate to Urdu. The six
 // shared vowel marks below follow IndicTransToolkit's Arabic input normalizer.
 export function normalizeKashmiri(input) {
-  return input.normalize('NFC').replace(/[أإ]/g, 'ا').replace(/[ك]/g, 'ک').replace(/[يىئ]/g, 'ی').replace(/ه/g, 'ہ').replace(/ة/g, 'ہ');
+  return autocorrectKashmiri(input);
 }
 
 export function prepareText(input, direction) {

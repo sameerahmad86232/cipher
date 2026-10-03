@@ -1,5 +1,6 @@
 import { buildIndex, searchIndex, normalize as norm, fold } from './dictionary-search.mjs';
 import { transliterateKashmiri } from './transliteration.mjs';
+import { autocorrectKashmiri } from './kashmiri-text.mjs';
 
 const $ = selector => document.querySelector(selector);
 const input = $('#search-input'), results = $('#results'), statusEl = $('#dictionary-status');
@@ -16,6 +17,7 @@ function sense(row) {
     ${row.fullMeaning ? `<details class="historical-entry"><summary>Read full historical entry</summary><p>${esc(row.fullMeaning)}</p></details>` : ''}
     ${row.context ? `<p class="sense-context">${esc(row.context)}</p>` : ''}
     ${row.grammar?.length ? `<p class="word-details">${esc(row.grammar.join(' · '))}</p>` : ''}
+    ${row.ocrTransliteration ? `<p class="ocr-transliteration">${esc(row.ocrTransliteration)} <span>· OCR-derived transliteration</span></p>` : ''}
     ${examples.map(x => `<p class="kashmiri-example" lang="ks-Arab" dir="rtl">${esc(x.k)}</p><p class="example">${esc(x.e)}</p>`).join('')}
     ${row.romanExample ? `<p class="roman-example" lang="ks-Latn">${esc(row.romanExample.k)} <span>· romanized Kashmiri</span></p><p class="example">${esc(row.romanExample.e)}</p>` : ''}
     ${!examples.length && !row.romanExample && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}${(row.references || []).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join(' ')}</div>`;
@@ -36,7 +38,7 @@ function card(word) {
 function searchBookOcr(query) {
   const q = norm(query), pages = [];
   for (const page of bookOcr) {
-    const text = page.text || '', folded = norm(text);
+    const text = page.normalizedText || page.text || '', folded = norm(text);
     if (q && !folded.includes(q)) continue;
     const at = q ? folded.indexOf(q) : 0;
     const start = q ? Math.max(0, at - 190) : 0;
@@ -61,7 +63,7 @@ function searchSchoolOcr(query) {
     const at = q ? folded.indexOf(q) : 0;
     const snippet = text.replace(/\s+/g, ' ').slice(Math.max(0, at - 190), Math.max(0, at - 190) + 520).trim();
     const book = (schoolOcr.books || []).find(item => item.id === page.book) || {};
-    pages.push({ k: `${book.title || page.book} · PDF page ${page.page}`, arabic: false, forms: [], senses: [{ e: snippet || '(This scanned page contains no OCR text.)', p: `Machine OCR · ${page.grade || ''}${page.part ? ` · ${page.part}` : ''}`, s: book.creator || 'Open Kashmiri book', url: book.source || 'https://archive.org/', license: `${book.license || 'Open license'} · OCR requires review` }] });
+    pages.push({ k: `${book.title || page.book} · PDF page ${page.page}`, arabic: false, forms: [], senses: [{ e: snippet || '(This scanned page contains no OCR text.)', ocrTransliteration: transliterateKashmiri(snippet), p: `Machine OCR · ${page.grade || ''}${page.part ? ` · ${page.part}` : ''}`, s: book.creator || 'Open Kashmiri book', url: book.source || 'https://archive.org/', license: `${book.license || 'Open license'} · OCR requires review` }] });
   }
   return pages;
 }
@@ -166,7 +168,7 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 // Neural translation is independent of dictionary loading and runs off the UI thread.
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence'), progress = $('#model-progress');
 let direction = 'ks-en', worker, busy = false, cacheWarning = '', readyDirection = '', translated = '';
-const initialNote = 'First use downloads about 260–310 MB per direction and caches the model when storage allows. Text stays in this browser. AI translations can be wrong; review important text with a fluent speaker.';
+const initialNote = 'First use downloads about 260–310 MB per direction and caches the model when storage allows. Text stays in this browser. Common Kashmiri Arabic/OCR spelling variants are normalized before translation. AI translations can be wrong; review important text with a fluent speaker.';
 const modelKey = () => `${direction}|${$('#model-size').value}`;
 const modelNote = () => $('#model-size').value === 'large' ? 'Large mode downloads about 1.1–1.2 GB per direction. Use a desktop with at least 8 GB RAM; unsupported devices may run out of memory. Greater model capacity does not guarantee a correct translation.' : initialNote;
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
@@ -174,7 +176,8 @@ function renderSourceTransliteration() {
   const box = $('#source-transliteration');
   if (direction === 'ks-en' && sentenceInput.value.trim()) {
     box.hidden = false;
-    box.textContent = `Romanized reading: ${transliterateKashmiri(sentenceInput.value.trim())}`;
+    const corrected = autocorrectKashmiri(sentenceInput.value.trim());
+    box.textContent = `Normalized Kashmiri: ${corrected} · Romanized reading: ${transliterateKashmiri(corrected)}`;
   } else { box.hidden = true; box.textContent = ''; }
 }
 function renderTranslation(text) {

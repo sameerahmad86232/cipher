@@ -1,5 +1,7 @@
+import { autocorrectKashmiri } from './kashmiri-text.mjs';
+
 export const normalize = value => String(value || '').normalize('NFC').toLocaleLowerCase().trim();
-export const fold = value => normalize(value).normalize('NFD').replace(/\p{M}/gu, '').replace(/ـ/g, '').replace(/[أإ]/g, 'ا').replace(/ك/g, 'ک').replace(/[يىئ]/g, 'ی').replace(/ه/g, 'ہ').replace(/ة/g, 'ہ');
+export const fold = value => autocorrectKashmiri(normalize(value)).normalize('NFD').replace(/\p{M}/gu, '').replace(/ـ/g, '');
 
 export function buildIndex(records) {
   const groups = new Map();

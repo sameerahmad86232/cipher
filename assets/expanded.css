@@ -50,6 +50,8 @@ select { max-width: 100%; padding: 8px; border: 1px solid var(--line); border-ra
 .sense + .sense { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 16px; }
 .sense .pos { font-size: 12px; vertical-align: middle; }
 .sense-context { margin: 5px 0; font-size: 14px; color: var(--muted); }
+.ocr-transliteration { margin: 8px 0; color: var(--forest); font: 14px/1.5 "DM Sans", sans-serif; direction: ltr; text-align: left; }
+.ocr-transliteration span { color: var(--muted); font-size: 11px; }
 .pronunciation { color: var(--forest); }
 .generated-label { color: var(--muted); font-size: 11px; font-weight: 400; }
 .word-card details { margin-top: 16px; font-size: 14px; }

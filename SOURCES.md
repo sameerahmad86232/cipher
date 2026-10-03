@@ -46,6 +46,10 @@ The searchable `assets/kashmiri-school-textbooks-ocr.json` and `.txt` assets con
 
 The orthography asset records the 38 Arabic-script characters observed in these OCR pages, with code points and counts. Dictionary search folds common OCR variants (`أ`, `إ`, `ك`, `ي`, `ى`, `ه`, `ة`) to the project’s Kashmiri forms, and the translator normalizer accepts the same variants. The Romanization module has fallback mappings for those observed characters and native Arabic-Indic digits.
 
+Each OCR page now stores the original `text`, a conservative `normalizedText`, and a `transliteration`. Normalization is limited to NFC and documented script variants; uncertain words are not silently rewritten. Dictionary records retain their source transliterations, and generated ones remain marked for review.
+
+The OCR linker found 3,333 page occurrences for 1,494 existing Arabic-script dictionary records and attached them as `OCR occurrence` references. These links document where a known headword appears in the books; they do not create a new meaning or assert that OCR is error-free.
+
 - Scanned all 1,492,838 rows of the English Kaikki dump and imported 183 explicitly tagged Perso-Arabic Kashmiri translation pairs. Sense context, transliteration, grammatical tags and the English source-page link are retained. Entries are marked `s: "Wiktionary translation table"`.
 - Imported 139 additional explicitly glossed derived/related terms from Kashmiri Wiktionary entries. A synonym without an explicit English gloss does not generate a guessed definition.
 - Enriched sourced entries with inflected forms and their grammatical tags, sense labels, etymologies, synonyms, antonyms and paired examples when available. Kashmiri and English examples are kept together from the same source; old unrelated English illustrations are not attached to new Kashmiri examples.
