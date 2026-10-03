@@ -10,6 +10,8 @@ Eleven existing word pairs, including `اَدَب` / “literature,” `اَنٛ
 
 The 140-page scan has also been OCRed page by page with Tesseract `eng+ara` from the embedded page images. The output is available as `assets/koul-book-ocr.json` and `assets/koul-book-ocr.txt`, and the site exposes it through “Koul book OCR.” It contains one record for every PDF page, including blank or front-matter pages, and links each result to the corresponding Internet Archive page. This is a preservation/search layer, not a claim that every Kashmiri glyph was recognized correctly; the OCR model is Arabic-trained and the book uses Kashmiri Nastaliq. Human review is required before treating a machine-OCR line as a dictionary fact.
 
+The Translator view also offers a manual Koul-reference lookup for the current sentence. It returns matching source pages and snippets without changing the model's generated translation. Adding OCR text to a lookup glossary does not retrain IndicTrans2; better model accuracy still requires a reviewed parallel corpus and model fine-tuning.
+
 The original vocabulary comes from [injilashah/Kashmiri-language-text-dataset](https://huggingface.co/datasets/injilashah/Kashmiri-language-text-dataset). Its dataset card does not specify a license; the new calendar entries do not change the terms of that earlier material.
 
 ## Wiktionary expansion

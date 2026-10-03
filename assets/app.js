@@ -43,6 +43,13 @@ function searchBookOcr(query) {
   }
   return pages;
 }
+async function loadBookOcr() {
+  if (bookOcr.length) return true;
+  const response = await fetch('/assets/koul-book-ocr.json');
+  if (!response.ok) throw Error('Book OCR download failed');
+  bookOcr = (await response.json()).pages || [];
+  return Boolean(bookOcr.length);
+}
 function render() {
   const label = collection === 'book-ocr' ? 'page' : 'headword';
   $('#result-count').textContent = `${matches.length.toLocaleString()} ${label}${matches.length === 1 ? '' : 's'}`;
@@ -99,11 +106,7 @@ $('#browse-koul-ocr').addEventListener('click', async () => {
   $('#script-filter').value = 'all'; $('#pos-filter').value = 'all'; $('#source-filter').value = 'all';
   if (!bookOcr.length) {
     $('#results-title').textContent = 'Loading complete book OCR…';
-    try {
-      const response = await fetch('/assets/koul-book-ocr.json');
-      if (!response.ok) throw Error('Download failed');
-      bookOcr = (await response.json()).pages || [];
-    } catch { $('#results-title').textContent = 'Book OCR unavailable'; return; }
+    try { await loadBookOcr(); } catch { $('#results-title').textContent = 'Book OCR unavailable'; return; }
   }
   search();
 });
@@ -136,6 +139,19 @@ const initialNote = 'First use downloads about 260–310 MB per direction and ca
 const modelKey = () => `${direction}|${$('#model-size').value}`;
 const modelNote = () => $('#model-size').value === 'large' ? 'Large mode downloads about 1.1–1.2 GB per direction. Use a desktop with at least 8 GB RAM; unsupported devices may run out of memory. Greater model capacity does not guarantee a correct translation.' : initialNote;
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
+function renderKoulReferences(query) {
+  const box = $('#koul-references'), q = norm(query);
+  if (!q) { box.hidden = true; box.innerHTML = ''; return; }
+  const tokens = [...q.matchAll(/[\p{L}\p{M}][\p{L}\p{M}'’ʼ-]{2,}/gu)].map(match => match[0]).filter((token, i, all) => all.indexOf(token) === i).slice(0, 12);
+  const hits = bookOcr.map(page => {
+    const text = page.text || '', folded = norm(text), token = tokens.find(t => folded.includes(t));
+    if (!token) return null;
+    const at = folded.indexOf(token), snippet = text.replace(/\s+/g, ' ').slice(Math.max(0, at - 90), at + 260).trim();
+    return { page: page.page, snippet };
+  }).filter(Boolean).slice(0, 5);
+  box.hidden = false;
+  box.innerHTML = hits.length ? `<p><strong>Koul book references</strong> <span>These OCR matches provide source context; they do not alter the neural model output.</span></p>${hits.map(hit => `<a href="https://archive.org/details/tbjU_kashmiri-english-dictionary-for-second-language-learners-omkar-koul/page/n${hit.page - 1}/mode/1up" target="_blank" rel="noopener noreferrer"><strong>PDF page ${hit.page}</strong><span>${esc(hit.snippet)}</span></a>`).join('')}` : '<p><strong>No Koul OCR match found</strong><span>Search the separate Koul book OCR collection for the full page text.</span></p>';
+}
 function setBusy(value) {
   busy = value; run.disabled = value; sentenceInput.disabled = value; $('#swap-languages').disabled = value; $('#cancel-translation').hidden = !value; $('#clear-model-cache').disabled = value;
   $('#source-language').disabled = value; $('#target-language').disabled = value; $('#example-sentence').disabled = value;
@@ -190,6 +206,13 @@ for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventLis
 });
 sentenceInput.addEventListener('input', countSentence);
 $('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); sentenceInput.focus(); });
+$('#lookup-koul').addEventListener('click', async () => {
+  const text = sentenceInput.value.trim();
+  if (!text) { sentenceInput.focus(); return; }
+  const button = $('#lookup-koul'); button.disabled = true; button.textContent = 'Loading Koul references…';
+  try { await loadBookOcr(); renderKoulReferences(text); } catch { $('#koul-references').hidden = false; $('#koul-references').innerHTML = '<p><strong>Koul OCR unavailable</strong><span>Try again after checking your connection.</span></p>'; }
+  button.disabled = false; button.textContent = 'Look up Koul book references';
+});
 run.addEventListener('click', () => {
   const text = sentenceInput.value.trim(); if (!text) { sentenceInput.focus(); return; }
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }

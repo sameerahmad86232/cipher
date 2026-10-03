@@ -12,6 +12,7 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 - Kashmiri and English alphabetical browsing; all seven weekdays and twelve traditional months.
 - Direct access to Koul, Raina and Bhat's 2000 scanned learner's dictionary, with page-linked checks and two manually added senses. The project owner reports rights-holder approval for public reuse; unreviewed OCR is not imported.
 - Complete page-preserving OCR for all 140 scanned pages is searchable under “Koul book OCR.” It is labeled machine output and is not treated as verified dictionary data.
+- The Translator view can look up Koul OCR references for the sentence being translated. These references provide source context; they do not silently rewrite neural model output.
 
 Counts include spelling alternatives and multiple senses. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0 and Kaeshir Dictionary data is MIT licensed. See [SOURCES.md](SOURCES.md).
 
