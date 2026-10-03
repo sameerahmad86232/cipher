@@ -15,7 +15,7 @@ body.guide-body{background:#f7f6f0}.guide-header,.guide-main{max-width:1180px;ma
 <header class="site-header guide-header"><a class="brand" href="/"><span class="brand-mark">ک</span><span><strong>Koshur Lughat</strong><small>کٲشُر لُغَتھ</small></span></a><a href="/">← Dictionary</a></header>
 <main class="guide-main">
 <header><p class="eyebrow">LANGUAGE · GRAMMAR · PROOFREADING</p><h1>A working grammar for Kashmiri.</h1><p class="lede">A practical scheme for reading, writing, checking and teaching modern Kashmiri in the Perso-Arabic script. It brings the writing system, sound patterns, word structure, sentence structure and proofreading decisions into one place.</p><p class="guide-note"><strong>How to use this guide.</strong> This is a careful working reference, not a claim that every Kashmiri speaker uses one identical form. Kashmiri has regional, social and script traditions. The examples and orthography rules are tied to the sources listed at the end; uncertain grammar should be checked with a fluent speaker before publication.</p></header>
-<nav class="guide-toc" aria-label="Guide sections"><strong>On this page</strong><a href="#scope">Scope and conventions</a><a href="#script">Script and spelling</a><a href="#sounds">Sounds and transliteration</a><a href="#words">How words are built</a><a href="#nouns">Nouns, pronouns and cases</a><a href="#sentences">Sentences and word order</a><a href="#verbs">Verbs and agreement</a><a href="#negation">Negation and questions</a><a href="#proofreading">Proofreading scheme</a><a href="#templates">Writing templates</a><a href="#sources">Sources and limits</a></nav>
+<nav class="guide-toc" aria-label="Guide sections"><strong>On this page</strong><a href="#scope">Scope and conventions</a><a href="#script">Script and spelling</a><a href="#sounds">Sounds and transliteration</a><a href="#words">How words are built</a><a href="#nouns">Nouns, pronouns and cases</a><a href="#sentences">Sentences and word order</a><a href="#verbs">Verbs and agreement</a><a href="#negation">Negation and questions</a><a href="#proofreading">Proofreading scheme</a><a href="#machine">How the translator applies it</a><a href="#templates">Writing templates</a><a href="#sources">Sources and limits</a></nav>
 <article class="guide-content">
 
 <section id="scope"><h2>1. Scope and conventions</h2>
@@ -121,14 +121,19 @@ body.guide-body{background:#f7f6f0}.guide-header,.guide-main{max-width:1180px;ma
 <p class="caution"><strong>Proofreading rule:</strong> a normalizer may fix <span lang="ks-Arab">ك</span> to <span lang="ks-Arab">ک</span> or remove a zero-width space, but it must not invent a word ending, case marker or translation. Automatic correction and grammatical proofreading are separate passes.</p>
 </section>
 
-<section id="templates"><h2>10. Writing templates</h2>
+<section id="machine"><h2>10. How the translator applies this system</h2>
+<p>The translator first preserves protected spans such as names, numbers and links, then normalizes documented Unicode variants. For Kashmiri input it checks the likely verb-final/SOV shape, question and negative signals, postpositions and the need to review case, TAM and agreement. For English input it records question, polarity and tense before the neural model generates a Kashmiri sentence.</p>
+<p>After generation, the system applies only safe script and punctuation repairs. It does not guess an unrecorded gender ending, case marker or dialect form. The output is therefore a translation proposal with a grammar checklist, not an automatic native-speaker certification. The Kashmiri original, the generated text and the transliteration remain separate so an editor can review each layer.</p>
+</section>
+
+<section id="templates"><h2>11. Writing templates</h2>
 <p>These examples show the display order used by Koshur Lughat: Kashmiri first, then a reading and an English gloss. They are learning examples, not a substitute for a dialect-specific paradigm.</p>
 <p class="ks-example" lang="ks-Arab">مےٚ پٔر اَکھ کِتاب</p><p class="romanized" lang="ks-Latn"><strong>Romanized:</strong> mē pᵊr ạ̄akʰ kitạ̄b</p><p class="translation">I read a book. The dictionary records this as a past transitive example; check the subject, object and agreement together.</p>
 <p class="ks-example" lang="ks-Arab">سٲری اِنسان چھِ آزاد زامٕتؠ۔</p><p class="romanized" lang="ks-Latn"><strong>Romanized:</strong> sə̄ry ạ̄insạ̄n ʧʰi ãżạ̄d żạ̄mɨtʲ.</p><p class="translation">All human beings are born free. This is the orthography reference sample; preserve its vowel marks and punctuation when citing it.</p>
 <p>For a new sentence, write the Kashmiri line, add the English gloss separately, then add transliteration. Do not use the English gloss as a back-translation test unless a fluent speaker has checked the intended meaning.</p>
 </section>
 
-<section id="sources"><h2>11. Sources, review and limits</h2>
+<section id="sources"><h2>12. Sources, review and limits</h2>
 <p>The script and Unicode rules on this page follow the bundled <a href="/orthography.html">Kashmiri Arabic orthography notes v32</a>. Examples and lexical evidence come from the attributed dictionary records and the page-linked OCR collections described in <a href="/SOURCES.md">SOURCES.md</a>. OCR vocabulary is useful for discovery and spelling comparison, but an OCR occurrence is not by itself an English definition or a grammatical paradigm.</p>
 <p>The site can normalize common character variants, search transliterations and run a browser translation model. It cannot infer a missing dialect rule, guarantee a native-speaker interpretation or prove that a rare OCR word is correct. A living language needs continuing review by Kashmiri speakers, teachers, writers and linguists. Every proposed correction should retain its original text, source, date and reviewer note.</p>
 <p class="small">For contribution review, submit: the Kashmiri sentence; a transliteration; an English gloss; dialect/region; grammatical analysis; source or speaker; and the exact change being proposed.</p>
