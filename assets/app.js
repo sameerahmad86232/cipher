@@ -260,7 +260,7 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 // Server-side neural translation runs in the public Hugging Face Space.
 const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
-let direction = 'ks-en', busy = false, translated = '', activeController;
+let direction = 'ks-en', busy = false, translated = '', activeController, liveTimer, liveRequestText = '';
 const initialNote = 'Text is sent to the public server translator; this browser does not download a translation model. Reviewed dictionary phrases are used when available; new sentences use NLLB-200. The server returns translation, normalization, transliteration, dictionary matches and a grammar review. AI translations can be wrong; review important text with a fluent speaker.';
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
 function renderSourceTransliteration() {
@@ -275,6 +275,34 @@ function renderSourceTransliteration() {
 function renderGrammarNote(value) {
   const text = sentenceInput?.value?.trim() || '';
   $('#grammar-note').textContent = value || (text ? analyzeSentence(text, direction).summary : 'Grammar-aware checks will appear as you type.');
+}
+function renderLiveDictionaryPreview() {
+  const text = sentenceInput.value.trim(), box = $('#live-dictionary-preview');
+  if (!text) { box.textContent = 'Dictionary matches will appear as you type.'; return; }
+  if (!words.length) { box.textContent = 'Loading dictionary matches…'; return; }
+  const pattern = direction === 'en-ks' ? /[A-Za-z][A-Za-z'-]*/g : /[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff][\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\u064b-\u065f\u0670\u200c\u200d'’ʼ-]*/g;
+  const found = [], seen = new Set();
+  for (const match of text.matchAll(pattern)) {
+    const token = match[0].replace(/[،؛؟.!؟,;:]+$/, '');
+    if (!token || seen.has(token.toLowerCase())) continue;
+    const hit = searchIndex(words, token, { script: direction === 'en-ks' ? 'arabic' : 'all' })[0];
+    if (!hit) continue;
+    const sense = hit.senses.find(item => item.e && !item.e.startsWith('OCR vocabulary') && !item.e.startsWith('Corpus vocabulary')) || hit.senses[0];
+    found.push(direction === 'en-ks' ? `${token} → ${hit.k}` : `${hit.k} → ${sense?.e || 'corpus vocabulary'}`);
+    seen.add(token.toLowerCase());
+    if (found.length >= 8) break;
+  }
+  box.innerHTML = found.length ? `<strong>Live dictionary:</strong> ${esc(found.join(' · '))}` : 'No direct dictionary match yet; the server model will still process this sentence.';
+}
+function scheduleLiveTranslation() {
+  clearTimeout(liveTimer); liveTimer = undefined;
+  if (!$('#live-translate').checked || busy) return;
+  const text = sentenceInput.value.trim();
+  if (text.length < 3) { $('#live-status').textContent = 'Ready'; return; }
+  liveRequestText = text; $('#live-status').textContent = 'Waiting…';
+  liveTimer = setTimeout(() => {
+    if (liveRequestText === sentenceInput.value.trim() && !busy) translateCurrent(true);
+  }, 1400);
 }
 function renderTranslation(text) {
   output.replaceChildren();
@@ -317,12 +345,13 @@ function setDirection(next) {
   sentenceInput.placeholder = english ? 'Type an English sentence here…' : 'اَتہِ کٲشُر جُملہٕ لِکھِو…';
   output.dir = english ? 'rtl' : 'ltr'; output.lang = english ? 'ks-Arab' : 'en'; output.textContent = 'Your translation will appear here.'; output.classList.add('empty');
   $('#dictionary-context').textContent = 'Dictionary and corpus matches will appear with the server result.';
-  renderSourceTransliteration(); translated = ''; $('#copy-translation').disabled = true; note.textContent = initialNote;
+  renderSourceTransliteration(); renderLiveDictionaryPreview(); translated = ''; $('#copy-translation').disabled = true; note.textContent = initialNote; $('#live-status').textContent = 'Ready';
   $('#example-sentence').textContent = english ? 'The weather is good today.' : 'مےٚ پٔر اَکھ کِتاب'; countSentence(); setBusy(false);
 }
 function stop() {
-  activeController?.abort(); activeController = undefined; translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty');
+  clearTimeout(liveTimer); liveTimer = undefined; activeController?.abort(); activeController = undefined; translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty');
   $('#copy-translation').disabled = true; note.textContent = 'Stopped. The server request was cancelled.'; setBusy(false);
+  $('#live-status').textContent = 'Ready';
 }
 async function serverTranslate(text) {
   const controller = new AbortController(); activeController = controller;
@@ -357,7 +386,8 @@ $('#swap-languages').addEventListener('click', () => setDirection(direction === 
 for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
   const next = $(`#${id}`).textContent === 'English' ? 'en-ks' : 'ks-en'; if (next !== direction) setDirection(next);
 });
-sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); renderGrammarNote(); });
+sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); renderGrammarNote(); renderLiveDictionaryPreview(); scheduleLiveTranslation(); });
+$('#live-translate').addEventListener('change', scheduleLiveTranslation);
 $('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); renderSourceTransliteration(); sentenceInput.focus(); });
 $('#lookup-koul').addEventListener('click', async () => {
   const text = sentenceInput.value.trim();
@@ -366,10 +396,10 @@ $('#lookup-koul').addEventListener('click', async () => {
   try { await loadBookOcr(); renderKoulReferences(text); } catch { $('#koul-references').hidden = false; $('#koul-references').innerHTML = '<p><strong>Koul OCR unavailable</strong><span>Try again after checking your connection.</span></p>'; }
   button.disabled = false; button.textContent = 'Look up Koul book references';
 });
-run.addEventListener('click', async () => {
-  const text = sentenceInput.value.trim(); if (!text) { sentenceInput.focus(); return; }
+async function translateCurrent(automatic = false) {
+  const text = sentenceInput.value.trim(); if (!text) { if (!automatic) sentenceInput.focus(); return; }
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
-  translated = ''; $('#copy-translation').disabled = true; setBusy(true); note.textContent = 'Sending your sentence to the server…';
+  liveRequestText = text; translated = ''; $('#copy-translation').disabled = true; setBusy(true); $('#live-status').textContent = automatic ? 'Translating…' : 'Sending…'; note.textContent = 'Sending your sentence to the server…';
   try {
     const [serverOutput, normalized, romanized, grammar, dictionaryContext] = await serverTranslate(text);
     const grammarOutput = applyGrammarOutput(serverOutput, text, direction);
@@ -379,8 +409,9 @@ run.addEventListener('click', async () => {
     renderGrammarNote(grammar); $('#dictionary-context').textContent = dictionaryContext || 'No exact dictionary entry found; the neural model supplied the translation.'; note.textContent = `Server model: NLLB-200 600M. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
   } catch (error) {
     if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
-  } finally { activeController = undefined; setBusy(false); }
-});
+  } finally { activeController = undefined; setBusy(false); $('#live-status').textContent = 'Ready'; }
+}
+run.addEventListener('click', () => translateCurrent(false));
 $('#cancel-translation').addEventListener('click', stop);
 $('#copy-translation').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(translated); $('#copy-translation').textContent = 'Copied'; setTimeout(() => $('#copy-translation').textContent = 'Copy', 1200); }
