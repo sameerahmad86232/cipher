@@ -17,7 +17,7 @@ function sense(row) {
     ${row.grammar?.length ? `<p class="word-details">${esc(row.grammar.join(' · '))}</p>` : ''}
     ${examples.map(x => `<p class="kashmiri-example" lang="ks-Arab" dir="rtl">${esc(x.k)}</p><p class="example">${esc(x.e)}</p>`).join('')}
     ${row.romanExample ? `<p class="roman-example" lang="ks-Latn">${esc(row.romanExample.k)} <span>· romanized Kashmiri</span></p><p class="example">${esc(row.romanExample.e)}</p>` : ''}
-    ${!examples.length && !row.romanExample && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}</div>`;
+    ${!examples.length && !row.romanExample && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}${(row.references || []).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join(' ')}</div>`;
 }
 function card(word) {
   const primary = word.senses.find(s => s.tr || s.ipa) || word.senses[0];

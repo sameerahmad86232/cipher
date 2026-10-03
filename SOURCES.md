@@ -1,5 +1,11 @@
 # Dictionary sources
 
+## Koul, Raina and Bhat reference book
+
+We consulted [*Kashmiri–English Dictionary for Second Language Learners*](https://archive.org/details/tbjU_kashmiri-english-dictionary-for-second-language-learners-omkar-koul) by Omkar N. Koul, S. N. Raina and Roop Krishen Bhat (Central Institute of Indian Languages, 2000). It contains Perso-Arabic Kashmiri headwords, romanization and English glosses. The available PDF is a 140-page image scan; its OCR text is too unreliable for automated extraction. The archive item carries an uploader-supplied CC0 label, but the book’s printed copyright page (PDF p. 8) says reproduction requires the publisher’s written permission. The project owner reports rights-holder approval for public reuse of entries; the scan itself is linked, not redistributed. We are adding manually checked entries and page-linked verification rather than importing unreviewed OCR.
+
+Eleven existing word pairs, including `اَدَب` / “literature,” `اَنٛدَر` / “inside,” and `اَداکار` / “actor,” were manually checked against printed p. 10 (PDF p. 20) and now have links to that page. The book also supplied the new `اَدَب` / “good manners” and `اَنٛداز` / “imagination” senses. Comparison exposed an unrelated dataset's incorrect `اَدَب` / “court” pair, which was removed; the book has `عدالَت` for “court.” `scripts/reference-koul.mjs` applies these reviewed changes reproducibly. The book is not declared CC0 or bundled with the site.
+
 The original vocabulary comes from [injilashah/Kashmiri-language-text-dataset](https://huggingface.co/datasets/injilashah/Kashmiri-language-text-dataset). Its dataset card does not specify a license; the new calendar entries do not change the terms of that earlier material.
 
 ## Wiktionary expansion
@@ -20,7 +26,7 @@ The former dictionary-based sentence substitution has been removed. Dictionary e
 
 ## October 2026 expansion
 
-The modern-script dictionary now contains **23,630 meaning records across 14,986 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 23,630 distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
+The modern-script dictionary now contains **23,631 meaning records across 14,986 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 23,631 distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
 
 - Scanned all 1,492,838 rows of the English Kaikki dump and imported 183 explicitly tagged Perso-Arabic Kashmiri translation pairs. Sense context, transliteration, grammatical tags and the English source-page link are retained. Entries are marked `s: "Wiktionary translation table"`.
 - Imported 139 additional explicitly glossed derived/related terms from Kashmiri Wiktionary entries. A synonym without an explicit English gloss does not generate a guessed definition.

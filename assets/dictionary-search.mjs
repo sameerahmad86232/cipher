@@ -28,7 +28,7 @@ export function searchIndex(index, query, filters = {}) {
   const q = normalize(query), fq = fold(query), ranked = [];
   for (const word of index) {
     if (filters.script === 'arabic' && !word.arabic || filters.script === 'roman' && word.arabic) continue;
-    const senses = word.senses.filter(s => (filters.source !== 'sourced' || [s, ...(s.sources || [])].some(source => source.url && ['CC BY-SA 4.0', 'MIT'].includes(source.license))) && (filters.pos === 'all' || !filters.pos || s.p === filters.pos));
+    const senses = word.senses.filter(s => (filters.source !== 'sourced' || [s, ...(s.sources || [])].some(source => source.url)) && (filters.pos === 'all' || !filters.pos || s.p === filters.pos));
     if (!senses.length) continue;
     const i = word.index;
     let rank = 20;

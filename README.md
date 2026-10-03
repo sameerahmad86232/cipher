@@ -4,12 +4,13 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 
 ## Dictionary
 
-- 23,630 modern-script meaning records across 14,986 headwords; 1,818 distinct sourced word-form spellings.
+- 23,631 modern-script meaning records across 14,986 headwords; 1,818 distinct sourced word-form spellings.
 - A separate historical romanized lexicon has 20,643 entries across 20,532 headwords.
 - 322 additional sourced meaning records in this upgrade: 183 English Wiktionary translation pairs and 139 explicitly glossed related terms.
 - Multiple meanings grouped under each word, exact-match ranking, inflection-aware search, and script/source/grammar filters.
 - Transliteration, IPA, grammatical labels, paired examples, etymologies and related words where supplied by the source.
 - Kashmiri and English alphabetical browsing; all seven weekdays and twelve traditional months.
+- Direct access to Koul, Raina and Bhat's 2000 scanned learner's dictionary, with page-linked checks and two manually added senses. The project owner reports rights-holder approval for public reuse; unreviewed OCR is not imported.
 
 Counts include spelling alternatives and multiple senses. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0 and Kaeshir Dictionary data is MIT licensed. See [SOURCES.md](SOURCES.md).
 
