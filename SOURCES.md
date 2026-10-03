@@ -32,7 +32,7 @@ The former dictionary-based sentence substitution has been removed. Dictionary e
 
 ## October 2026 expansion
 
-The modern-script dictionary now contains **23,953 meaning records across 15,181 NFC-normalized headwords**, plus **1,818 distinct sourced word-form spellings**. These are different measures, not 23,953 distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
+The modern-script dictionary now contains **29,256 records across 20,484 NFC-normalized searchable headwords**: 23,953 meaning records and 5,303 clearly labeled OCR-only vocabulary records, plus **1,818 distinct sourced word-form spellings**. These are different measures, not counts of distinct Kashmiri words. A separate historical romanized collection has 20,643 records across 20,532 headwords. Source forms can overlap existing headwords and include multiple grammatical analyses of one spelling.
 
 ## Kashmiri orthography notes v32
 
@@ -42,13 +42,13 @@ The complete guide is bundled locally at [`/orthography.html`](orthography.html)
 
 ## Open Kashmiri book OCR
 
-The searchable `assets/kashmiri-school-textbooks-ocr.json` and `.txt` assets contain page-level machine OCR from two Kashmiri Perso-Arabic sources retrieved from Internet Archive. **Aagarnamah**, by Ghulam Mohammad Lone, is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and contributes 212 pages ([source](https://archive.org/details/Aagarnamah)). **An Advance Course in Kashmiri**, by Soom Nath Raina, is licensed [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) and contributes 278 pages ([source](https://archive.org/details/dli.language.2242)). OCR was run locally with Tesseract `ara+eng`, page images rendered at 300 dpi. The output is labeled machine OCR and remains a source-context collection; it is not silently converted into dictionary definitions or model training data.
+The searchable `assets/kashmiri-school-textbooks-ocr.json` and `.txt` assets contain page-level machine OCR from two Kashmiri Perso-Arabic sources retrieved from Internet Archive. **Aagarnamah**, by Ghulam Mohammad Lone, is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and contributes 212 pages ([source](https://archive.org/details/Aagarnamah)). **An Advance Course in Kashmiri**, by Soom Nath Raina, is licensed [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) and contributes 278 pages ([source](https://archive.org/details/dli.language.2242)). The Koul learner dictionary contributes 140 pages under the project owner's reported rights-holder permission. OCR was run locally with Tesseract `ara+eng`, page images rendered at 300 dpi. The output is labeled machine OCR; its 5,754 unique Arabic-script words are also included in `assets/dictionary.json` as clearly labeled OCR vocabulary records with generated transliteration and page references. Existing definitions are preserved, while OCR-only records do not claim an English meaning that the books do not provide.
 
 The orthography asset records the 38 Arabic-script characters observed in these OCR pages, with code points and counts. Dictionary search folds common OCR variants (`أ`, `إ`, `ك`, `ي`, `ى`, `ه`, `ة`) to the project’s Kashmiri forms, and the translator normalizer accepts the same variants. The Romanization module has fallback mappings for those observed characters and native Arabic-Indic digits.
 
 Each OCR page now stores the original `text`, a conservative `normalizedText`, and a `transliteration`. Normalization is limited to NFC and documented script variants; uncertain words are not silently rewritten. Dictionary records retain their source transliterations, and generated ones remain marked for review.
 
-The OCR linker found 3,333 page occurrences for 1,494 existing Arabic-script dictionary records and attached them as `OCR occurrence` references. These links document where a known headword appears in the books; they do not create a new meaning or assert that OCR is error-free.
+The OCR linker and vocabulary import attach 28,582 `OCR occurrence` page references across known and OCR-only records. These links document where a word appears in the books; they do not create an English meaning or retrain the sentence model.
 
 - Scanned all 1,492,838 rows of the English Kaikki dump and imported 183 explicitly tagged Perso-Arabic Kashmiri translation pairs. Sense context, transliteration, grammatical tags and the English source-page link are retained. Entries are marked `s: "Wiktionary translation table"`.
 - Imported 139 additional explicitly glossed derived/related terms from Kashmiri Wiktionary entries. A synonym without an explicit English gloss does not generate a guessed definition.

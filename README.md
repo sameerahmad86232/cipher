@@ -4,7 +4,7 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 
 ## Dictionary
 
-- 23,953 modern-script meaning records across 15,181 headwords; 1,818 distinct sourced word-form spellings.
+- 29,256 modern-script records across 20,484 searchable headwords: 23,953 meaning records plus 5,303 OCR-only vocabulary records; 1,818 distinct sourced word-form spellings remain tracked separately.
 - A separate historical romanized lexicon has 20,643 entries across 20,532 headwords.
 - 322 additional sourced meaning records in this upgrade: 183 English Wiktionary translation pairs and 139 explicitly glossed related terms.
 - Multiple meanings grouped under each word, exact-match ranking, inflection-aware search, and script/source/grammar filters.
@@ -15,7 +15,8 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 - The site also provides 490 pages of Kashmiri Perso-Arabic OCR from two openly licensed Internet Archive books: *Aagarnamah* (212 pages, CC BY 4.0) and *An Advance Course in Kashmiri* (278 pages, CC BY-NC 4.0). Use “Open Kashmiri books OCR” for page search. This is source context, not automatically verified dictionary meaning.
 - OCR-observed Arabic-script variants are recorded in the orthography asset and accepted by dictionary search, translator normalization, and transliteration fallback mappings.
 - OCR pages preserve raw text alongside normalized text and page transliteration; the translator applies the same conservative correction layer before model input.
-- 1,494 existing dictionary records now carry 3,333 page-level OCR occurrence references from the two books.
+- All 5,754 unique Arabic-script words found across the 630 combined OCR pages are included in dictionary search with generated transliteration and page references. Existing definitions are retained; OCR-only words are labeled as vocabulary when their source provides no English gloss.
+- The OCR vocabulary layer contains 28,582 page-level occurrence references from the three OCR sources.
 - The Translator view can look up Koul OCR references for the sentence being translated. These references provide source context; they do not silently rewrite neural model output.
 - Kashmiri orthography data includes 118 character mappings and 504 attributed example glosses from the current v32 notes, used for lookup, spelling variants and writing guidance.
 - Every dictionary record has a transliteration: an existing source spelling is retained, while missing spellings are generated from the orthography character map and marked `trGenerated` in the data. The Translator view shows a Romanized reading beside Kashmiri output and beneath Kashmiri input.

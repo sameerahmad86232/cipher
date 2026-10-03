@@ -13,14 +13,19 @@ const filters = () => ({ script: $('#script-filter').value, source: $('#source-f
 
 function sense(row) {
   const examples = row.examples?.length ? row.examples : row.kx ? [{ k: row.kx, e: row.x }] : [];
-  return `<div class="sense"><p class="meaning">${esc(row.e)} ${row.p ? `<span class="pos">${esc(row.p)}</span>` : ''}</p>
+  const meaning = row.ocrVocabulary ? 'OCR vocabulary word' : row.e;
+  const note = row.ocrVocabulary ? '<p class="sense-context">Added from corrected OCR text. The source does not provide an English definition for this word.</p>' : '';
+  const refs = row.references || [];
+  const shownRefs = refs.slice(0, 5).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join('');
+  const moreRefs = refs.length > 5 ? `<details class="ocr-references"><summary>${refs.length - 5} more OCR occurrences</summary>${refs.slice(5).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join('')}</details>` : '';
+  return `<div class="sense"><p class="meaning">${esc(meaning)} ${row.p ? `<span class="pos">${esc(row.p)}</span>` : ''}</p>${note}
     ${row.fullMeaning ? `<details class="historical-entry"><summary>Read full historical entry</summary><p>${esc(row.fullMeaning)}</p></details>` : ''}
     ${row.context ? `<p class="sense-context">${esc(row.context)}</p>` : ''}
     ${row.grammar?.length ? `<p class="word-details">${esc(row.grammar.join(' · '))}</p>` : ''}
     ${row.ocrTransliteration ? `<p class="ocr-transliteration">${esc(row.ocrTransliteration)} <span>· OCR-derived transliteration</span></p>` : ''}
     ${examples.map(x => `<p class="kashmiri-example" lang="ks-Arab" dir="rtl">${esc(x.k)}</p><p class="example">${esc(x.e)}</p>`).join('')}
     ${row.romanExample ? `<p class="roman-example" lang="ks-Latn">${esc(row.romanExample.k)} <span>· romanized Kashmiri</span></p><p class="example">${esc(row.romanExample.e)}</p>` : ''}
-    ${!examples.length && !row.romanExample && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}${(row.references || []).map(ref => `<a class="entry-source" href="${esc(ref.url)}" target="_blank" rel="noopener noreferrer">Checked in ${esc(ref.s)}</a>`).join(' ')}</div>`;
+    ${!examples.length && !row.romanExample && row.x ? `<p class="example">${esc(row.x)}</p>` : ''}${sourceLink(row)}${(row.sources || []).filter(s => s.url !== row.url).map(sourceLink).join(' ')}${shownRefs}${moreRefs}</div>`;
 }
 function card(word) {
   const primary = word.senses.find(s => s.tr || s.ipa) || word.senses[0];
