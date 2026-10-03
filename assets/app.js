@@ -1,3 +1,27 @@
+
+// Installable app shell: translation remains server-side, while the dictionary UI can be added to Android/iOS home screens.
+let deferredInstallPrompt;
+const installAppButton = document.querySelector('#install-app');
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  if (installAppButton) installAppButton.hidden = false;
+});
+installAppButton?.addEventListener('click', async () => {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = undefined;
+  installAppButton.hidden = true;
+});
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = undefined;
+  if (installAppButton) installAppButton.hidden = true;
+});
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+}
+
 import { buildIndex, searchIndex, normalize as norm, fold } from './dictionary-search.mjs';
 import { transliterateKashmiri } from './transliteration.mjs';
 import { autocorrectKashmiri } from './kashmiri-text.mjs';
@@ -261,7 +285,38 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
 let direction = 'ks-en', busy = false, translated = '', activeController, liveTimer, liveRequestText = '';
-const initialNote = 'Text is sent to the public server translator; this browser does not download a translation model. Reviewed dictionary phrases are used when available; new sentences use NLLB-200. The server returns translation, normalization, transliteration, dictionary matches and a grammar review. AI translations can be wrong; review important text with a fluent speaker.';
+const initialNote = 'Online mode sends text to the public translator. Offline mode downloads a quantized NLLB-200 model once, then runs on this device. The model is large and translation may be slower on phones; review important text with a fluent speaker.';
+const OFFLINE_MODEL = 'Xenova/nllb-200-distilled-600M';
+let offlineTranslatorPromise, offlineModelReady = false;
+async function loadOfflineTranslator() {
+  if (offlineTranslatorPromise) return offlineTranslatorPromise;
+  const status = $('#offline-status'), button = $('#download-offline-model');
+  status.textContent = 'Loading offline model…'; button.disabled = true;
+  offlineTranslatorPromise = import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2').then(async ({ pipeline, env }) => {
+    env.useBrowserCache = true;
+    env.allowRemoteModels = true;
+    const translator = await pipeline('translation', OFFLINE_MODEL, { dtype: 'q8', progress_callback: event => {
+      if (event?.status === 'progress' && Number.isFinite(event.progress)) status.textContent = `Downloading offline model… ${Math.round(event.progress)}%`;
+      else if (event?.status === 'initiate') status.textContent = 'Preparing offline model…';
+    }});
+    offlineModelReady = true; status.textContent = 'Offline model ready on this device'; button.textContent = 'Offline model ready';
+    return translator;
+  }).catch(error => {
+    offlineTranslatorPromise = undefined; offlineModelReady = false; button.disabled = false; status.textContent = 'Offline model could not be loaded'; throw error;
+  });
+  return offlineTranslatorPromise;
+}
+async function offlineTranslate(text) {
+  const translator = await loadOfflineTranslator();
+  const source = direction === 'ks-en' ? 'kas_Arab' : 'eng_Latn';
+  const target = direction === 'ks-en' ? 'eng_Latn' : 'kas_Arab';
+  const result = await translator(text, { src_lang: source, tgt_lang: target });
+  return result?.[0]?.translation_text || '';
+}
+$('#download-offline-model').addEventListener('click', async () => {
+  try { await loadOfflineTranslator(); note.textContent = 'Offline model ready. Turn on “Use offline model” to translate without a server.'; }
+  catch { note.textContent = 'The offline model could not be downloaded. Check storage and connection, then try again.'; }
+});
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
 function renderSourceTransliteration() {
   const box = $('#source-transliteration');
@@ -391,6 +446,10 @@ for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventLis
 });
 sentenceInput.addEventListener('input', () => { countSentence(); renderSourceTransliteration(); renderGrammarNote(); renderLiveDictionaryPreview(); scheduleLiveTranslation(); });
 $('#live-translate').addEventListener('change', scheduleLiveTranslation);
+$('#offline-translate').addEventListener('change', () => {
+  if ($('#offline-translate').checked && !offlineModelReady) note.textContent = 'Download the offline model first; it is a large one-time download.';
+  else note.textContent = $('#offline-translate').checked ? 'Offline mode enabled. Translation stays on this device.' : initialNote;
+});
 $('#example-sentence').addEventListener('click', () => { sentenceInput.value = $('#example-sentence').textContent; countSentence(); renderSourceTransliteration(); sentenceInput.focus(); });
 $('#lookup-koul').addEventListener('click', async () => {
   const text = sentenceInput.value.trim();
@@ -404,12 +463,15 @@ async function translateCurrent(automatic = false) {
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
   liveRequestText = text; translated = ''; $('#copy-translation').disabled = true; setBusy(true); $('#live-status').textContent = automatic ? 'Translating…' : 'Sending…'; note.textContent = 'Sending your sentence to the server…';
   try {
-    const [serverOutput, normalized, romanized, grammar, dictionaryContext] = await serverTranslate(text);
+    const useOffline = $('#offline-translate').checked;
+    if (useOffline && !offlineModelReady) await loadOfflineTranslator();
+    const serverData = useOffline ? [await offlineTranslate(text), '', '', analyzeSentence(text, direction).summary, 'Offline model result. Dictionary matches remain available on this device.'] : await serverTranslate(text);
+    const [serverOutput, normalized, romanized, grammar, dictionaryContext] = serverData;
     const grammarOutput = applyGrammarOutput(serverOutput, text, direction);
     const fallback = applyUnknownEnglishFallback(text, grammarOutput);
     translated = fallback.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
     if (direction === 'ks-en' && normalized) $('#source-transliteration').textContent = `Normalized Kashmiri: ${normalized} · Romanized reading: ${romanized}`;
-    renderGrammarNote(grammar); $('#dictionary-context').textContent = dictionaryContext || 'No exact dictionary entry found; the neural model supplied the translation.'; note.textContent = `Server model: NLLB-200 600M. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
+    renderGrammarNote(grammar); $('#dictionary-context').textContent = dictionaryContext || 'No exact dictionary entry found; the neural model supplied the translation.'; note.textContent = `${$('#offline-translate').checked ? 'Offline model: NLLB-200 600M.' : 'Server model: NLLB-200 600M.'} ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
   } catch (error) {
     if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
     else note.textContent = 'The server request timed out or was stopped. Try again.';
