@@ -110,6 +110,12 @@ The import can be repeated with `node scripts/import-kaeshir.mjs /path/to/kaeshi
 
 This is an audit of useful candidates, not a claim that every resource online was found or licensed. No new training/fine-tuning has been performed. Corpus access, careful alignment, native-speaker review and held-out evaluation are necessary for a credible improvement in translation accuracy.
 
+## KS-LIT-3M pretraining corpus
+
+The paper [KS-LIT-3M](https://arxiv.org/abs/2601.01091) describes a **3.1 million-word** Perso-Arabic Kashmiri text stream with about **16.4 million characters** and **131,607 unique words**, spanning literary, journalistic, academic and religious writing. Its official dataset page is [Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM](https://huggingface.co/datasets/Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM). The raw files are currently access-restricted to this workspace, so the site stores the paper metadata in `assets/ks-lit-3m-reference.json` and links the official source.
+
+The paper says the dataset is CC-BY-4.0, while the current Hugging Face card reports CC BY-SA 4.0. That license discrepancy must be resolved with the authors before copying the corpus, adding its words to the dictionary, or using it to train the translator. It is a monolingual pretraining corpus, so it would improve language fluency rather than provide English sentence alignments.
+
 ## Neural translation
 
 The public website sends translation requests to the Hugging Face Space [Sameer0313/Koshur_lughat](https://huggingface.co/spaces/Sameer0313/Koshur_lughat). The Space runs `facebook/nllb-200-distilled-600M` with `kas_Arab` and `eng_Latn` on its server hardware. Visitors do not download model weights.

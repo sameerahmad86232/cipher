@@ -1,0 +1,17 @@
+{
+  "title": "KS-LIT-3M: A 3.1 Million Word Kashmiri Text Dataset",
+  "paper": "https://arxiv.org/abs/2601.01091",
+  "paperHtml": "https://arxiv.org/html/2601.01091",
+  "dataset": "https://huggingface.co/datasets/Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM",
+  "stats": {
+    "words": 3100000,
+    "characters": 16400000,
+    "uniqueWords": 131607,
+    "format": "single continuous Kashmiri text stream"
+  },
+  "script": "Perso-Arabic Kashmiri",
+  "genres": ["literary", "journalistic", "academic", "religious scholarship"],
+  "status": "Paper and dataset metadata recorded; raw files require Hugging Face approval in this environment.",
+  "licenseNote": "The paper abstract states CC-BY-4.0 for the dataset, while the current Hugging Face card reports CC BY-SA 4.0. Confirm the dataset license with the authors before redistribution or training.",
+  "source": "https://huggingface.co/datasets/Omarrran/3.1Million_KASHMIRI_text_Pre_training_Dataset_for_LLM_2026_by_HNM"
+}

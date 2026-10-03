@@ -33,6 +33,9 @@ assert.ok(abdomen.some(w => w.k === 'شِکم' && w.senses.some(s => s.e.toLower
 const historical = JSON.parse(fs.readFileSync(path.join(root, 'assets/historical-lexicon.json')));
 assert.equal(historical.length, 20643);
 assert.ok(searchIndex(buildIndex(historical), 'āb').some(w => w.k === 'āb' && w.senses.some(s => s.e.includes('water'))));
+const kslit = JSON.parse(fs.readFileSync(path.join(root, 'assets/ks-lit-3m-reference.json')));
+assert.equal(kslit.stats.words, 3100000);
+assert.equal(kslit.stats.uniqueWords, 131607);
 const orthography = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json')));
 assert.equal(orthography.characters.length, 118);
 assert.equal(orthography.examples.length, 504);
