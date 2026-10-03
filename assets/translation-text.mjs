@@ -40,3 +40,26 @@ export function sentenceChunks(text, direction) {
   const segmenter = new Intl.Segmenter(direction === 'en-ks' ? 'en' : 'ar', { granularity: 'sentence' });
   return text.split(/\n+/).flatMap(paragraph => [...segmenter.segment(paragraph)].map(s => s.segment.trim())).filter(Boolean);
 }
+
+// A transparent fallback for English words that are outside the known
+// dictionary/model vocabulary. It is a reading-oriented script rendering,
+// not a claim that the word has a Kashmiri meaning.
+const UNKNOWN_ENGLISH_DIGRAPHS = [
+  ['tch', 'چ'], ['sch', 'ش'], ['sh', 'ش'], ['ch', 'چ'], ['kh', 'خ'], ['gh', 'غ'],
+  ['ph', 'ف'], ['th', 'تھ'], ['dh', 'دھ'], ['ng', 'نگ'], ['qu', 'کو'], ['ck', 'ک'],
+  ['ee', 'ی'], ['oo', 'و'], ['ou', 'او'], ['ow', 'او'], ['ai', 'ے'], ['ay', 'ے'],
+  ['ea', 'ی'], ['ei', 'ی'], ['ie', 'ی'], ['oa', 'و'], ['oi', 'و'], ['oy', 'و'],
+];
+const UNKNOWN_ENGLISH_LETTERS = {
+  a: 'ا', b: 'ب', c: 'ک', d: 'د', e: 'ے', f: 'ف', g: 'گ', h: 'ہ', i: 'ی', j: 'ج',
+  k: 'ک', l: 'ل', m: 'م', n: 'ن', o: 'و', p: 'پ', q: 'ق', r: 'ر', s: 'س', t: 'ت',
+  u: 'و', v: 'و', w: 'و', x: 'کس', y: 'ی', z: 'ز'
+};
+export function transliterateUnknownEnglish(input) {
+  return String(input || '').replace(/[A-Za-z][A-Za-z'-]*/g, word => {
+    let value = word.toLowerCase();
+    for (const [from, to] of UNKNOWN_ENGLISH_DIGRAPHS) value = value.replaceAll(from, to);
+    value = [...value].map(character => UNKNOWN_ENGLISH_LETTERS[character] || character).join('');
+    return value;
+  });
+}

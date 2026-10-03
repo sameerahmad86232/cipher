@@ -4,16 +4,19 @@ import path from 'node:path';
 const root = fs.existsSync('dist/assets/dictionary.json') ? 'dist' : '.';
 const { buildIndex, searchIndex, fold } = await import(path.resolve(root, 'assets/dictionary-search.mjs'));
 const { prepareText, finishText, sentenceChunks, normalizeKashmiri } = await import(path.resolve(root, 'assets/translation-text.mjs'));
-const records = JSON.parse(fs.readFileSync(path.join(root, 'assets/dictionary.json')));
+const records = [
+  JSON.parse(fs.readFileSync(path.join(root, 'assets/dictionary.json'))),
+  ...Array.from({ length: 8 }, (_, index) => `dictionary-kashir-${index + 1}.json`).filter(file => fs.existsSync(path.join(root, 'assets', file))).map(file => JSON.parse(fs.readFileSync(path.join(root, 'assets', file))))
+].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 29256);
-assert.equal(words.length, 20484);
+assert.equal(records.length, 47330);
+assert.equal(words.length, 38558);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
-assert.equal(records.filter(r => r.trGenerated).length, 15094);
-assert.equal(records.filter(r => r.ocrVocabulary).length, 5303);
+assert.equal(records.filter(r => r.trGenerated).length, 33168);
+assert.equal(records.filter(r => r.ocrVocabulary).length, 23377);
 assert.equal(records.filter(r => r.ocrObserved).length, 1447);
-assert.equal(records.filter(r => r.ocrVocabulary && r.e.startsWith('OCR vocabulary word')).length, 5303);
+assert.equal(records.filter(r => r.ocrVocabulary && r.e.startsWith('OCR vocabulary word')).length, 23377);
 assert.ok(searchIndex(words, 'water').some(w => w.senses.some(s => s.e.toLowerCase() === 'water')));
 assert.equal(searchIndex(words, 'تۆت')[0].k, 'تۆت');
 const example = words.find(w => w.k === 'تۆت');
@@ -35,9 +38,9 @@ assert.equal(orthography.metadata.ocrCharacterInventory.length, 38);
 const schoolOcr = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-school-textbooks-ocr.json')));
 assert.equal(schoolOcr.pages.length, 490);
 assert.ok(schoolOcr.pages.every(page => typeof page.normalizedText === 'string' && typeof page.transliteration === 'string'));
-assert.equal(records.reduce((count, row) => count + (row.references || []).filter(reference => reference.s?.startsWith('OCR occurrence')).length, 0), 28582);
-assert.equal(records.reduce((count, row) => count + (row.ocrVocabulary ? 1 : 0), 0), 5303);
-assert.equal(records.filter(r => r.ocrVocabulary && r.tr).length, 5303);
+assert.equal(records.reduce((count, row) => count + (row.references || []).filter(reference => reference.s?.startsWith('OCR occurrence')).length, 0), 68174);
+assert.equal(records.reduce((count, row) => count + (row.ocrVocabulary ? 1 : 0), 0), 23377);
+assert.equal(records.filter(r => r.ocrVocabulary && r.tr).length, 23377);
 const ocrOnly = records.find(r => r.ocrVocabulary && r.e.startsWith('OCR vocabulary word'));
 assert.ok(ocrOnly?.k && ocrOnly.tr);
 assert.ok(searchIndex(words, ocrOnly.k, { script: 'arabic' }).some(w => w.senses.some(s => s.ocrVocabulary)));

@@ -1,6 +1,7 @@
 import { buildIndex, searchIndex, normalize as norm, fold } from './dictionary-search.mjs';
 import { transliterateKashmiri } from './transliteration.mjs';
 import { autocorrectKashmiri } from './kashmiri-text.mjs';
+import { transliterateUnknownEnglish } from './translation-text.mjs';
 
 const $ = selector => document.querySelector(selector);
 const input = $('#search-input'), results = $('#results'), statusEl = $('#dictionary-status');
@@ -8,7 +9,7 @@ const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;
 const read = key => { try { const value = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter(x => typeof x === 'string') : []; } catch { return []; } };
 const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browser: dictionary still works. */ } };
 const sourceLink = row => { try { const url = new URL(row.url); return url.protocol === 'https:' ? `<a class="entry-source" href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(row.s)} · ${esc(row.license)}</a>` : ''; } catch { return ''; } };
-let words = [], historicalWords = [], bookOcr = [], schoolOcr = null, kashirOcr = null, matches = [], visible = 12, collection = '', browse = '', debounce;
+let words = [], historicalWords = [], bookOcr = [], schoolOcr = null, kashirOcr = null, englishTokens = new Set(), matches = [], visible = 12, collection = '', browse = '', debounce;
 const filters = () => ({ script: $('#script-filter').value, source: $('#source-filter').value, pos: $('#pos-filter').value });
 
 function sense(row) {
@@ -203,7 +204,7 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 // Neural translation is independent of dictionary loading and runs off the UI thread.
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence'), progress = $('#model-progress');
 let direction = 'ks-en', worker, busy = false, cacheWarning = '', readyDirection = '', translated = '';
-const initialNote = 'First use downloads about 260–310 MB per direction and caches the model when storage allows. Text stays in this browser. Common Kashmiri Arabic/OCR spelling variants are normalized before translation. AI translations can be wrong; review important text with a fluent speaker.';
+const initialNote = 'First use downloads about 260–310 MB per direction and caches the model when storage allows. Text stays in this browser. Common Kashmiri Arabic/OCR spelling variants are normalized before translation. English words outside the dictionary are rendered in Kashmiri script as a fallback. AI translations can be wrong; review important text with a fluent speaker.';
 const modelKey = () => `${direction}|${$('#model-size').value}`;
 const modelNote = () => $('#model-size').value === 'large' ? 'Large mode downloads about 1.1–1.2 GB per direction. Use a desktop with at least 8 GB RAM; unsupported devices may run out of memory. Greater model capacity does not guarantee a correct translation.' : initialNote;
 function countSentence() { $('#sentence-count').textContent = `${sentenceInput.value.length} / 1,000`; }
@@ -222,6 +223,23 @@ function renderTranslation(text) {
     const roman = document.createElement('span'); roman.className = 'translation-translit'; roman.textContent = `Romanized reading: ${transliterateKashmiri(text)}`;
     output.append(native, roman);
   } else output.textContent = text;
+}
+function applyUnknownEnglishFallback(source, result) {
+  if (direction !== 'en-ks') return { text: result, words: [] };
+  const unknown = [...source.matchAll(/\b[A-Za-z][A-Za-z'-]{2,}\b/g)].map(match => match[0]).filter((word, index, all) => {
+    const key = word.toLowerCase().replace(/^['-]|['-]$/g, '');
+    return key && !englishTokens.has(key) && all.findIndex(item => item.toLowerCase() === word.toLowerCase()) === index;
+  });
+  let text = result, added = [];
+  for (const word of unknown) {
+    const native = transliterateUnknownEnglish(word);
+    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const match = new RegExp(`\\b${escaped}\\b`, 'i');
+    if (match.test(text)) text = text.replace(match, native);
+    else if (!text.includes(native)) added.push(`${native} (${word})`);
+  }
+  if (added.length) text = `${text} · ${added.join(' · ')}`;
+  return { text, words: unknown };
 }
 function renderKoulReferences(query) {
   const box = $('#koul-references'), q = norm(query);
@@ -272,9 +290,10 @@ function getWorker() {
     if (data.type === 'cache-warning') cacheWarning = data.message;
     if (data.type === 'partial') { renderTranslation(data.text); output.classList.remove('empty'); }
     if (data.type === 'result') {
-      translated = data.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
+      const fallback = applyUnknownEnglishFallback(sentenceInput.value, data.text);
+      translated = fallback.text; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = !translated;
       readyDirection = modelKey(); progress.hidden = true;
-      note.textContent = `${data.model}. ${data.limited ? 'Output reached the model limit and may be incomplete. ' : ''}Automatic translation—check grammar, names and meaning with a fluent speaker. ${cacheWarning}`;
+      note.textContent = `${data.model}. ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}${data.limited ? 'Output reached the model limit and may be incomplete. ' : ''}Automatic translation—check grammar, names and meaning with a fluent speaker. ${cacheWarning}`;
       setBusy(false);
     }
     if (data.type === 'error') {
@@ -318,8 +337,10 @@ $('#copy-translation').addEventListener('click', async () => {
 });
 setDirection(direction);
 
-fetch('/assets/dictionary.json').then(response => { if (!response.ok) throw Error('Dictionary download failed'); return response.json(); }).then(records => {
+Promise.all(['/assets/dictionary.json', ...Array.from({ length: 8 }, (_, index) => `/assets/dictionary-kashir-${index + 1}.json`)].map(file => fetch(file).then(response => { if (!response.ok) throw Error(`Dictionary download failed: ${file}`); return response.json(); }))).then(parts => {
+  const records = parts.flat();
   words = buildIndex(records);
+  englishTokens = new Set(records.flatMap(record => [record.e, record.x, ...(record.examples || []).flatMap(example => [example.e])]).flatMap(text => String(text || '').toLowerCase().match(/[a-z][a-z'-]*/g) || []));
   const meanings = words.reduce((n, w) => n + w.senses.length, 0), forms = new Set(words.flatMap(w => w.forms.map(f => norm(f.word))));
   statusEl.textContent = `${words.length.toLocaleString()} searchable headwords`;
   $('#dictionary-stats').textContent = `${words.length.toLocaleString()} headwords · ${meanings.toLocaleString()} meanings · ${forms.size.toLocaleString()} sourced word forms`;
