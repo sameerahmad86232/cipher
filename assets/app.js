@@ -8,7 +8,7 @@ const esc = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;
 const read = key => { try { const value = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(value) ? value.filter(x => typeof x === 'string') : []; } catch { return []; } };
 const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browser: dictionary still works. */ } };
 const sourceLink = row => { try { const url = new URL(row.url); return url.protocol === 'https:' ? `<a class="entry-source" href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(row.s)} · ${esc(row.license)}</a>` : ''; } catch { return ''; } };
-let words = [], historicalWords = [], bookOcr = [], schoolOcr = null, matches = [], visible = 12, collection = '', browse = '', debounce;
+let words = [], historicalWords = [], bookOcr = [], schoolOcr = null, kashirOcr = null, matches = [], visible = 12, collection = '', browse = '', debounce;
 const filters = () => ({ script: $('#script-filter').value, source: $('#source-filter').value, pos: $('#pos-filter').value });
 
 function sense(row) {
@@ -79,8 +79,29 @@ async function loadSchoolOcr() {
   schoolOcr = await response.json();
   return Boolean(schoolOcr.pages?.length);
 }
+function searchKashirOcr(query) {
+  if (!kashirOcr) return [];
+  const q = norm(query), pages = [];
+  for (const page of kashirOcr.pages || []) {
+    const text = page.normalizedText || page.text || '', folded = norm(text);
+    if (q && !folded.includes(q)) continue;
+    const at = q ? folded.indexOf(q) : 0;
+    const start = q ? Math.max(0, at - 190) : 0;
+    const snippet = text.replace(/\s+/g, ' ').slice(start, start + 520).trim();
+    const book = (kashirOcr.books || []).find(item => item.id === page.book) || {};
+    pages.push({ k: `${book.title || page.book} · PDF page ${page.page}`, arabic: false, forms: [], senses: [{ e: snippet || '(This scanned page contains no OCR text.)', ocrTransliteration: transliterateKashmiri(snippet), p: 'Machine OCR · reference dictionary', s: book.creator || 'Kashir Dictionary', url: `${book.source || 'https://archive.org/'}\/page\/n${Math.max(0, page.page - 1)}\/mode\/1up`, license: `${book.license || 'Source license not stated'} · OCR requires review` }] });
+  }
+  return pages;
+}
+async function loadKashirOcr() {
+  if (kashirOcr?.pages?.length) return true;
+  const response = await fetch('/assets/kashir-dictionary-ocr.json');
+  if (!response.ok) throw Error('Kashir Dictionary OCR download failed');
+  kashirOcr = await response.json();
+  return Boolean(kashirOcr.pages?.length);
+}
 function render() {
-  const label = ['book-ocr', 'school-ocr'].includes(collection) ? 'page' : 'headword';
+  const label = ['book-ocr', 'school-ocr', 'kashir-ocr'].includes(collection) ? 'page' : 'headword';
   $('#result-count').textContent = `${matches.length.toLocaleString()} ${label}${matches.length === 1 ? '' : 's'}`;
   results.innerHTML = matches.length ? matches.slice(0, visible).map(card).join('') : '<div class="empty-state"><strong>No matching words found</strong><span>Try a shorter spelling, clear your filters, or search the other language.</span></div>';
   $('#load-more').hidden = visible >= matches.length;
@@ -95,11 +116,11 @@ function remember(query) {
 }
 function search(commit = false) {
   visible = 12; const q = input.value.trim(); $('#clear-button').hidden = !q;
-  matches = collection === 'book-ocr' ? searchBookOcr(q) : collection === 'school-ocr' ? searchSchoolOcr(q) : searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
+  matches = collection === 'book-ocr' ? searchBookOcr(q) : collection === 'school-ocr' ? searchSchoolOcr(q) : collection === 'kashir-ocr' ? searchKashirOcr(q) : searchIndex(collection === 'historical' ? historicalWords : words, q, filters());
   if (collection === 'calendar') matches = matches.filter(w => w.senses.some(s => s.topic === 'calendar'));
   if (browse) matches = matches.filter(w => $('#alphabet-select').value === 'en' ? w.senses.some(s => norm(s.e).startsWith(norm(browse))) : fold(w.k).startsWith(fold(browse)));
-  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : collection === 'book-ocr' ? 'Koul book OCR' : collection === 'school-ocr' ? 'Open Kashmiri books OCR' : browse ? `Words beginning with ${browse}` : 'Featured words';
-  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : collection === 'school-ocr' ? 'MACHINE OCR · OPEN LICENSED KASHMIRI BOOKS' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
+  $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : collection === 'book-ocr' ? 'Koul book OCR' : collection === 'school-ocr' ? 'Open Kashmiri books OCR' : collection === 'kashir-ocr' ? 'Kashir Dictionary · seven-volume OCR' : browse ? `Words beginning with ${browse}` : 'Featured words';
+  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : collection === 'school-ocr' ? 'MACHINE OCR · OPEN LICENSED KASHMIRI BOOKS' : collection === 'kashir-ocr' ? 'MACHINE OCR · 2,710 REFERENCE-DICTIONARY PAGES' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
   if (!q && !collection && !browse) matches = matches.slice(0, 12);
   if (commit) remember(q); render();
 }
@@ -148,8 +169,17 @@ $('#browse-school-ocr').addEventListener('click', async () => {
   }
   search();
 });
+$('#browse-kashir-ocr').addEventListener('click', async () => {
+  input.value = ''; browse = ''; collection = 'kashir-ocr';
+  $('#script-filter').value = 'all'; $('#pos-filter').value = 'all'; $('#source-filter').value = 'all';
+  if (!kashirOcr?.pages?.length) {
+    $('#results-title').textContent = 'Loading seven-volume Kashir Dictionary OCR…';
+    try { await loadKashirOcr(); } catch { $('#results-title').textContent = 'Kashir Dictionary OCR unavailable'; return; }
+  }
+  search();
+});
 for (const id of ['script-filter', 'source-filter', 'pos-filter']) $(`#${id}`).addEventListener('change', () => search());
-input.addEventListener('input', () => { clearTimeout(debounce); if (!['historical', 'book-ocr', 'school-ocr'].includes(collection)) collection = ''; browse = ''; debounce = setTimeout(search, 60); });
+input.addEventListener('input', () => { clearTimeout(debounce); if (!['historical', 'book-ocr', 'school-ocr', 'kashir-ocr'].includes(collection)) collection = ''; browse = ''; debounce = setTimeout(search, 60); });
 input.addEventListener('keydown', e => { if (e.key === 'Enter') search(true); });
 input.addEventListener('blur', () => remember(input.value.trim()));
 $('#clear-button').addEventListener('click', () => { query(''); input.focus(); });
