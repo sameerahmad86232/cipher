@@ -9,6 +9,12 @@ const { fold } = await import(path.resolve(root, 'assets/dictionary-search.mjs')
 const { transliterateKashmiri } = await import(path.resolve(root, 'assets/transliteration.mjs'));
 
 const records = JSON.parse(fs.readFileSync(dictionaryPath));
+for (const record of records) {
+  if (record.ocrVocabulary && !record.e.startsWith('OCR vocabulary word')) {
+    delete record.ocrVocabulary;
+    record.ocrObserved = true;
+  }
+}
 const ocr = JSON.parse(fs.readFileSync(ocrPath));
 const books = new Map((ocr.books || []).map(book => [book.id, book]));
 const koul = JSON.parse(fs.readFileSync(koulPath));
@@ -58,7 +64,8 @@ for (const { k, occurrences } of tokenData.values()) {
     for (const record of existing) {
       const prior = new Set((record.references || []).map(reference => `${reference.s}|${reference.url}`));
       record.references = [...(record.references || []), ...refs.filter(reference => !prior.has(`${reference.s}|${reference.url}`))];
-      record.ocrVocabulary = true;
+      if (record.e.startsWith('OCR vocabulary word')) delete record.ocrObserved;
+      else record.ocrObserved = true;
       updatedRecords++;
     }
     continue;
