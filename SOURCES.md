@@ -110,6 +110,10 @@ The import can be repeated with `node scripts/import-kaeshir.mjs /path/to/kaeshi
 
 This is an audit of useful candidates, not a claim that every resource online was found or licensed. No new training/fine-tuning has been performed. Corpus access, careful alignment, native-speaker review and held-out evaluation are necessary for a credible improvement in translation accuracy.
 
+## OCR and translation resource index
+
+`assets/kashmiri-resource-index.json` records the additional resources supplied for this project: [Koshur Pixel](https://huggingface.co/datasets/Omarrran/Koshur_Pixel), the [40K Kashmiri image dataset](https://huggingface.co/datasets/Omarrran/40K_kashmiri_text_and_image_dataset), [600K-KS-OCR](https://arxiv.org/abs/2601.01088), [IndicTrans2](https://github.com/AI4Bharat/IndicTrans2), [NLLB-200](https://huggingface.co/facebook/nllb-200-distilled-600M), and the [COIL-D Hindi–Kashmiri model](https://huggingface.co/COIL-D/translate-it2-hindi-kashmiri). The index preserves reported sizes and licenses. Gated raw files and model weights are not copied into this static site; the live translator continues to use the tested NLLB server endpoint.
+
 ## KS-LIT-3M pretraining corpus
 
 The paper [KS-LIT-3M](https://arxiv.org/abs/2601.01091) describes a **3.1 million-word** Perso-Arabic Kashmiri text stream with about **16.4 million characters** and **131,607 unique words**, spanning literary, journalistic, academic and religious writing. Its official dataset page is [Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM](https://huggingface.co/datasets/Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM). The raw files are currently access-restricted to this workspace, so the site stores the paper metadata in `assets/ks-lit-3m-reference.json` and links the official source.

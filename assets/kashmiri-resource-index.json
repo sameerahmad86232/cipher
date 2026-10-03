@@ -1,0 +1,50 @@
+{
+  "title": "Kashmiri OCR and translation resource index",
+  "resources": [
+    {
+      "name": "Koshur Pixel",
+      "type": "synthetic OCR dataset",
+      "url": "https://huggingface.co/datasets/Omarrran/Koshur_Pixel",
+      "license": "CC BY-ND 4.0",
+      "reportedSize": "613,078 image-text pairs",
+      "status": "Official metadata linked; raw files require Hugging Face approval"
+    },
+    {
+      "name": "40K Kashmiri Words with Images",
+      "type": "OCR dataset",
+      "url": "https://huggingface.co/datasets/Omarrran/40K_kashmiri_text_and_image_dataset",
+      "license": "Apache-2.0",
+      "reportedSize": "40,799 word-image pairs",
+      "status": "Official metadata linked; raw files require Hugging Face approval"
+    },
+    {
+      "name": "600K-KS-OCR",
+      "type": "OCR benchmark",
+      "url": "https://arxiv.org/abs/2601.01088",
+      "license": "Dataset terms require author/source confirmation",
+      "reportedSize": "about 602,000 word images",
+      "status": "Paper linked; raw benchmark not copied"
+    },
+    {
+      "name": "IndicTrans2",
+      "type": "translation toolkit and models",
+      "url": "https://github.com/AI4Bharat/IndicTrans2",
+      "license": "See the repository and model-card terms",
+      "status": "Reference toolkit; live public server currently uses NLLB-200"
+    },
+    {
+      "name": "NLLB-200 distilled 600M",
+      "type": "translation model",
+      "url": "https://huggingface.co/facebook/nllb-200-distilled-600M",
+      "license": "CC BY-NC 4.0",
+      "status": "Live server model for kas_Arab ↔ eng_Latn"
+    },
+    {
+      "name": "COIL-D Hindi ↔ Kashmiri",
+      "type": "translation model",
+      "url": "https://huggingface.co/COIL-D/translate-it2-hindi-kashmiri",
+      "license": "MIT card; access approval required",
+      "status": "Reference model; not used for English translation"
+    }
+  ]
+}
