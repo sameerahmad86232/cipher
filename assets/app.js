@@ -440,6 +440,67 @@ async function serverTranslate(text) {
     throw new Error('The server closed the translation stream before returning a result.');
   } finally { clearTimeout(timeout); }
 }
+
+const TTS_SPACE = 'https://gaash-lab-matcha-tts-kashmiri-demo.hf.space';
+function kashmiriSpeechText() {
+  return direction === 'ks-en' ? sentenceInput.value.trim() : translated.trim();
+}
+async function generateKashmiriSpeech(text, voice, quality) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 180000);
+  try {
+    const sessionHash = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+    const joined = await fetch(`${TTS_SPACE}/gradio_api/queue/join`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
+      body: JSON.stringify({ data: [text, false, voice, quality], fn_index: 0, session_hash: sessionHash })
+    });
+    if (!joined.ok) throw new Error(`Speech server rejected the request (${joined.status}).`);
+    const { event_id: eventId } = await joined.json();
+    const response = await fetch(`${TTS_SPACE}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`, {
+      signal: controller.signal, headers: { Accept: 'text/event-stream' }
+    });
+    if (!response.ok || !response.body) throw new Error(`Speech stream unavailable (${response.status}).`);
+    const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
+    while (true) {
+      const chunk = await reader.read(); if (chunk.done) break;
+      buffer += decoder.decode(chunk.value, { stream: true });
+      const events = buffer.split('\n\n'); buffer = events.pop() || '';
+      for (const event of events) {
+        const line = event.split('\n').find(item => item.startsWith('data: ')); if (!line) continue;
+        const message = JSON.parse(line.slice(6));
+        if (message.event_id && message.event_id !== eventId) continue;
+        if (message.msg === 'process_completed') {
+          if (!message.success || message.output?.error) throw new Error(message.output?.error || 'Speech generation failed.');
+          const [processedText, audioFile] = message.output.data || [];
+          const audioUrl = typeof audioFile === 'string' ? audioFile : audioFile?.url;
+          if (!audioUrl && !audioFile?.path) throw new Error('The speech model returned no audio file.');
+          return {
+            processedText,
+            audioUrl: audioUrl ? new URL(audioUrl, TTS_SPACE).href : `${TTS_SPACE}/gradio_api/file=${encodeURIComponent(audioFile.path)}`
+          };
+        }
+      }
+    }
+    throw new Error('The speech stream closed before returning audio.');
+  } finally { clearTimeout(timeout); }
+}
+$('#speak-kashmiri').addEventListener('click', async () => {
+  const button = $('#speak-kashmiri'), status = $('#tts-status'), audio = $('#tts-audio');
+  const text = kashmiriSpeechText();
+  if (!text) {
+    status.textContent = direction === 'en-ks' ? 'Translate the English sentence first, then generate speech.' : 'Enter a Kashmiri sentence first.';
+    return;
+  }
+  if (!/\p{Script=Arabic}/u.test(text)) { status.textContent = 'The speech model needs Kashmiri in Perso-Arabic script.'; return; }
+  button.disabled = true; button.textContent = 'Generating…'; audio.hidden = true; status.textContent = 'The Kashmiri voice model is generating audio…';
+  try {
+    const result = await generateKashmiriSpeech(text, $('#tts-voice').value, $('#tts-quality').value);
+    audio.src = result.audioUrl; audio.hidden = false; audio.load();
+    status.textContent = `Ready${result.processedText && result.processedText !== text ? ` · normalized as ${result.processedText}` : ''}.`;
+  } catch (error) {
+    status.textContent = error.name === 'AbortError' ? 'Speech generation timed out. Please try again.' : (error.message || 'Speech generation failed.');
+  } finally { button.disabled = false; button.textContent = 'Generate speech'; }
+});
 $('#swap-languages').addEventListener('click', () => setDirection(direction === 'ks-en' ? 'en-ks' : 'ks-en'));
 for (const id of ['source-language', 'target-language']) $(`#${id}`).addEventListener('click', () => {
   const next = $(`#${id}`).textContent === 'English' ? 'en-ks' : 'ks-en'; if (next !== direction) setDirection(next);
