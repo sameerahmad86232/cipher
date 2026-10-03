@@ -93,6 +93,12 @@ The import can be repeated with `node scripts/import-kaeshir.mjs /path/to/kaeshi
 | [Multilingual dictionary dataset](https://huggingface.co/datasets/Omarrran/kashmiri_multilingual_dictionary_dataset) | Manually gated | Not imported; access approval needed |
 | [Structured Grierson dictionary](https://huggingface.co/datasets/Omarrran/The_Grierson_Kashmiri_dictionary) | Manually gated, license unresolved | Not imported; no access bypass |
 | [Kashmiri Language Corpus](https://huggingface.co/datasets/nawabhussain/Kashmiri-Language-Corpus) | Ungated, Apache-2.0 card; mixed-source monolingual text | Not treated as English definitions or verified parallel translations |
+| [FLORES-200](https://huggingface.co/datasets/facebook/flores) | CC BY-SA 4.0; Hugging Face files require access approval in this environment | Evaluation resource recorded for future use; no files copied without access
+| [PALI PersoArabicLID](https://github.com/sinaahmadi/PersoArabicLID) | MIT; clean Perso-Arabic language-identification corpus | Imported only the `__label__kas` records with source and license metadata
+| [English–Kashmiri 1M translations](https://huggingface.co/datasets/Omarrran/english-kashmiri-1m-translations) | Manual access; no machine-readable license on the dataset card; machine-generated translations | Not imported into definitions or model assets
+| [Kashmiri multilingual dictionary](https://huggingface.co/datasets/Omarrran/kashmiri_multilingual_dictionary_dataset) | Apache-2.0 card; manual access approval required | Not downloaded; no access bypass
+| [KS-LIT-3M Kashmiri corpus](https://huggingface.co/datasets/Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM) | CC BY-SA 4.0 card; manual access approval required | Not downloaded; recorded as a future corpus source
+| [Kashmiri news snippets](https://github.com/DeheemBhat/Multiclass-Classification-of-Kashmiri-News-Snippets-Dataset-Creation-and-Comparative-Evaluations) | Repository has no explicit license | Not redistributed; source recorded for future rights clarification
 | [Kashmiri text dataset](https://huggingface.co/datasets/Aadilgani/kashmiri-text-dataset) | Ungated, no listed license | Not copied into this expansion |
 | Speech, instruction and synthetic reasoning datasets | Audio/transcripts or generated training examples are not necessarily reviewed lexical definitions | Not converted into fabricated word meanings |
 
