@@ -126,6 +126,38 @@
       "license": "GPL-3.0-or-later",
       "reportedSize": "1,934 text records imported into the licensed subset",
       "status": "Kashmiri text records are included in the project corpus; audio is not copied"
+    },
+    {
+      "name": "A Dictionary of the Kashmiri Language (Grierson, 1932)",
+      "type": "reference dictionary OCR",
+      "url": "https://archive.org/details/in.ernet.dli.2015.24175",
+      "license": "Archive metadata says public domain; DSAL edition has different terms",
+      "reportedSize": "1,290 OCR pages",
+      "status": "Page-level OCR added for source-linked review; definitions are not bulk-trained"
+    },
+    {
+      "name": "Kashur Grammer",
+      "type": "Kashmiri grammar OCR",
+      "url": "https://archive.org/details/dli.ernet.504533",
+      "license": "Archive metadata does not state a reuse license",
+      "reportedSize": "110 OCR pages",
+      "status": "Already included in the reading and grammar collection"
+    },
+    {
+      "name": "Kashmiri-English Dictionary for Second Language Learners",
+      "type": "learner dictionary OCR",
+      "url": "https://archive.org/details/dli.language.2243",
+      "license": "CC BY-NC 4.0 (Internet Archive metadata)",
+      "reportedSize": "130 OCR pages",
+      "status": "Added to page-level reading and review collection"
+    },
+    {
+      "name": "Kaishrik Grammer",
+      "type": "Kashmiri grammar OCR",
+      "url": "https://archive.org/details/dli.ernet.510105",
+      "license": "Archive metadata does not state a reuse license",
+      "reportedSize": "153 OCR pages",
+      "status": "Already included in the reading and grammar collection"
     }
   ]
 }

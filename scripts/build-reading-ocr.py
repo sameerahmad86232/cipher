@@ -11,11 +11,13 @@ items=[
  ('rAxf_raja-tarangini-kashmiri-translation-vol.-1-jk-culture-academy','raja-tarangini-kashmiri-translation','Raja Tarangini · Kashmiri translation, volume 1','Jammu and Kashmir Culture Academy','Translation','https://archive.org/details/rAxf_raja-tarangini-kashmiri-translation-vol.-1-jk-culture-academy'),
  ('JeYD_lole-gita-kashmiri-translation-mahishar-nath-raina','lole-gita-kashmiri-translation','Lole Gita · Kashmiri translation','Mahishar Nath Raina','Translation','https://archive.org/details/JeYD_lole-gita-kashmiri-translation-mahishar-nath-raina'),
  ('book-v-96-sumran-kashmiri-hindu-poetry-with-english-translation-lale-rukh-press','sumran-kashmiri-poetry','Sumran · Kashmiri Hindu poetry with English translation','Lale Rukh Press','Translation and poetry','https://archive.org/details/book-v-96-sumran-kashmiri-hindu-poetry-with-english-translation-lale-rukh-press'),
+ ('in.ernet.dli.2015.24175','grierson-dictionary-ocr','A Dictionary of the Kashmiri Language (Grierson, 1932)','George A. Grierson','Reference dictionary','https://archive.org/details/in.ernet.dli.2015.24175'),
+ ('dli.language.2243','koul-dli-ocr','Kashmiri-English Dictionary for Second Language Learners','Omkar N. Koul, Roop Krishen Bhat and S. N. Raina','Reference dictionary','https://archive.org/details/dli.language.2243'),
 ]
 books=[]; pages=[]; text=[]
 for iaid,bid,title,creator,category,source in items:
  p=base/(iaid+'.xml'); tree=ET.parse(p); objs=tree.findall('.//OBJECT')
- book={'id':bid,'title':title,'creator':creator,'category':category,'source':source,'pages':len(objs),'license':'Archive metadata does not state a reuse license; source-linked OCR for reading and review'}; books.append(book)
+ book={'id':bid,'title':title,'creator':creator,'category':category,'source':source,'pages':len(objs),'license': ('Archive metadata reports public domain; DSAL carries different dictionary terms; source-linked OCR for review' if bid == 'grierson-dictionary-ocr' else 'CC BY-NC 4.0 (Internet Archive metadata); source-linked OCR for reading and review' if bid == 'koul-dli-ocr' else 'Archive metadata does not state a reuse license; source-linked OCR for reading and review')}; books.append(book)
  for n,obj in enumerate(objs,1):
   lines=[]
   for line in obj.findall('.//LINE'):

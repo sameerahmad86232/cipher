@@ -36,7 +36,7 @@ assert.ok(searchIndex(buildIndex(historical), 'āb').some(w => w.k === 'āb' && 
 const resourceIndex = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-resource-index.json')));
 assert.ok(resourceIndex.resources.some(resource => resource.name === 'Koshur Pixel'));
 assert.ok(resourceIndex.resources.some(resource => resource.name === 'IndicTrans2'));
-for (const name of ['Kashmiri Nastaliq LLM', 'KoshurOCR', 'KoshurAI', 'Koshur Diacritizer ByT5-small', 'Bolbosh', 'Kashmiri Speech Corpus Utilities']) {
+for (const name of ['Kashmiri Nastaliq LLM', 'KoshurOCR', 'KoshurAI', 'Koshur Diacritizer ByT5-small', 'Bolbosh', 'Kashmiri Speech Corpus Utilities', 'A Dictionary of the Kashmiri Language (Grierson, 1932)', 'Kashur Grammer']) {
   assert.ok(resourceIndex.resources.some(resource => resource.name === name), `missing resource index entry: ${name}`);
 }
 if (fs.existsSync('server-data/phrase-memory.json')) {
@@ -53,6 +53,10 @@ assert.equal(orthography.examples.length, 504);
 assert.equal(orthography.metadata.ocrCharacterInventory.length, 38);
 const schoolOcr = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-school-textbooks-ocr.json')));
 assert.equal(schoolOcr.pages.length, 490);
+const readingOcr = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-reading-ocr.json')));
+assert.equal(readingOcr.pages.length, 2813);
+assert.ok(readingOcr.books.some(book => book.id === 'grierson-dictionary-ocr'));
+assert.ok(readingOcr.books.some(book => book.id === 'koul-dli-ocr'));
 assert.ok(schoolOcr.pages.every(page => typeof page.normalizedText === 'string' && typeof page.transliteration === 'string'));
 assert.equal(records.reduce((count, row) => count + (row.references || []).filter(reference => reference.s?.startsWith('OCR occurrence')).length, 0), 68174);
 assert.equal(records.reduce((count, row) => count + (row.ocrVocabulary ? 1 : 0), 0), 23377);
