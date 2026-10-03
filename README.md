@@ -12,6 +12,7 @@ A public Kashmiri–English dictionary and **real browser-based neural sentence 
 - Kashmiri and English alphabetical browsing; all seven weekdays and twelve traditional months.
 - Direct access to Koul, Raina and Bhat's 2000 scanned learner's dictionary, with page-linked checks and two manually added senses. The project owner reports rights-holder approval for public reuse; unreviewed OCR is not imported.
 - Complete page-preserving OCR for all 140 scanned pages is searchable under “Koul book OCR.” It is labeled machine output and is not treated as verified dictionary data.
+- The site also provides 490 pages of Kashmiri Perso-Arabic OCR from two openly licensed Internet Archive books: *Aagarnamah* (212 pages, CC BY 4.0) and *An Advance Course in Kashmiri* (278 pages, CC BY-NC 4.0). Use “Open Kashmiri books OCR” for page search. This is source context, not automatically verified dictionary meaning.
 - The Translator view can look up Koul OCR references for the sentence being translated. These references provide source context; they do not silently rewrite neural model output.
 - Kashmiri orthography data includes 118 character mappings and 504 attributed example glosses from the current v32 notes, used for lookup, spelling variants and writing guidance.
 - Every dictionary record has a transliteration: an existing source spelling is retained, while missing spellings are generated from the orthography character map and marked `trGenerated` in the data. The Translator view shows a Romanized reading beside Kashmiri output and beneath Kashmiri input.

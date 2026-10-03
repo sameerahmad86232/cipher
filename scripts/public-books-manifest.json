@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": "aagarnamah",
+      "grade": "Literary source",
+      "file": "public-books/Aagarnamah.pdf",
+      "title": "Aagarnamah",
+      "creator": "Ghulam Mohammad Lone",
+      "license": "CC BY 4.0",
+      "source": "https://archive.org/details/Aagarnamah"
+    },
+    {
+      "id": "advanced-course-kashmiri",
+      "grade": "Language course",
+      "file": "public-books/advanced-course-kashmiri.pdf",
+      "title": "An Advance Course in Kashmiri",
+      "creator": "Soom Nath Raina",
+      "license": "CC BY-NC 4.0",
+      "source": "https://archive.org/details/dli.language.2242"
+    }
+  ]
+}
