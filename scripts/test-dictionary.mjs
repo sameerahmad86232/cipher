@@ -36,6 +36,9 @@ assert.ok(searchIndex(buildIndex(historical), 'āb').some(w => w.k === 'āb' && 
 const resourceIndex = JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-resource-index.json')));
 assert.ok(resourceIndex.resources.some(resource => resource.name === 'Koshur Pixel'));
 assert.ok(resourceIndex.resources.some(resource => resource.name === 'IndicTrans2'));
+for (const name of ['Kashmiri Nastaliq LLM', 'KoshurOCR', 'KoshurAI', 'Koshur Diacritizer ByT5-small', 'Bolbosh', 'Kashmiri Speech Corpus Utilities']) {
+  assert.ok(resourceIndex.resources.some(resource => resource.name === name), `missing resource index entry: ${name}`);
+}
 const kslit = JSON.parse(fs.readFileSync(path.join(root, 'assets/ks-lit-3m-reference.json')));
 assert.equal(kslit.stats.words, 3100000);
 assert.equal(kslit.stats.uniqueWords, 131607);

@@ -45,6 +45,87 @@
       "url": "https://huggingface.co/COIL-D/translate-it2-hindi-kashmiri",
       "license": "MIT card; access approval required",
       "status": "Reference model; not used for English translation"
+    },
+    {
+      "name": "Kashmiri Nastaliq LLM",
+      "type": "Kashmiri text-generation model",
+      "url": "https://huggingface.co/megaketu555/kashmiri-nastaliq-llm",
+      "license": "Apache-2.0",
+      "reportedSize": "about 494M parameters",
+      "status": "Reference model; not used for translation without evaluation"
+    },
+    {
+      "name": "Bhasini AI Platform",
+      "type": "translation, ASR and TTS APIs",
+      "url": "https://kashmirairesearch.online/resources",
+      "license": "Platform terms and API access apply",
+      "status": "Resource hub linked; credentials, quotas and production terms require review"
+    },
+    {
+      "name": "KoshurOCR",
+      "type": "Kashmiri Nastaliq OCR framework",
+      "url": "https://github.com/Faizaniqbal52/KoshurOCR",
+      "license": "No repository license declared",
+      "status": "Open-source research reference; not copied into the live service"
+    },
+    {
+      "name": "Koshur-Pixel toolkit",
+      "type": "OCR dataset and code reference",
+      "url": "https://github.com/Faizaniqbal52/Koshur-Pixel",
+      "license": "No repository license declared; see linked dataset terms",
+      "status": "Reference only; no unlicensed code or images copied"
+    },
+    {
+      "name": "KoshurAI",
+      "type": "OCR, diacritic and translation stack",
+      "url": "https://github.com/Faizaniqbal52/KoshurAI",
+      "license": "No repository license declared",
+      "status": "Architecture reference; not copied into the live service"
+    },
+    {
+      "name": "Kashmiri OCR online",
+      "type": "hosted OCR utility",
+      "url": "https://ocr.ad/free-online-ocr-kashmiri",
+      "license": "Service terms apply",
+      "status": "External testing utility; no files or service dependency added"
+    },
+    {
+      "name": "Koshur Diacritizer ByT5-small",
+      "type": "diacritic-restoration model",
+      "url": "https://huggingface.co/Omarrran/koshur-diacritizer-byt5-small",
+      "license": "Apache-2.0",
+      "reportedSize": "23.7K aligned sentence pairs described by paper",
+      "status": "Reference model; live server uses conservative normalization until native-speaker evaluation"
+    },
+    {
+      "name": "Koshur Diacritizer dataset",
+      "type": "diacritic-restoration dataset",
+      "url": "https://huggingface.co/datasets/Omarrran/kashmiri_parallel_Diacratic_to_Non_diacratic_Text_dataset",
+      "license": "CC metadata; manual access approval required",
+      "reportedSize": "23,700 aligned pairs",
+      "status": "Official dataset linked; raw files require Hugging Face approval"
+    },
+    {
+      "name": "Bolbosh",
+      "type": "Kashmiri text-to-speech framework",
+      "url": "https://github.com/gaash-lab/Bolbosh",
+      "license": "MIT",
+      "status": "Speech reference; not required for text translation"
+    },
+    {
+      "name": "Kashmiri Speech Corpus Utilities",
+      "type": "speech-corpus processing toolkit",
+      "url": "https://github.com/erstan/kscp",
+      "license": "No repository license declared",
+      "status": "Reference toolkit; no audio copied"
+    },
+    {
+      "name": "OpenSLR 122 Kashmiri speech corpus",
+      "type": "speech corpus",
+      "url": "https://www.openslr.org/122/",
+      "license": "GPL-3.0-or-later",
+      "reportedSize": "1,934 text records imported into the licensed subset",
+      "status": "Kashmiri text records are included in the project corpus; audio is not copied"
     }
   ]
 }
