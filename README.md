@@ -1,74 +1,43 @@
 # Koshur Lughat
 
-A public Kashmiri–English dictionary and **real browser-based neural sentence translator** for Perso-Arabic Kashmiri.
+The current public dictionary and two-way browser translator live in `dist/`.
+It contains 57,912 modern-script records across 49,140 searchable headwords, including 23,953 meaning records, 23,377 OCR-only vocabulary records and 10,582 licensed corpus-vocabulary records. A separate 20,643-entry historical romanized lexicon is loaded on demand.
+English ↔ Perso-Arabic Kashmiri neural translation runs server-side in the public Hugging Face Space [Sameer0313/Koshur_lughat](https://huggingface.co/spaces/Sameer0313/Koshur_lughat), so visitors do not download model weights.
 
-## Dictionary
+Serve the site with `python3 -m http.server 8006 --directory dist`.
+The public GitHub edition is [sameerahmad86232/cipher](https://github.com/sameerahmad86232/cipher),
+which is directly importable into Vercel. See [source and model documentation](dist/SOURCES.md)
+for provenance, licensing, download requirements and accuracy limits.
+The site also provides a 4,166-sentence licensed Kashmiri corpus subset from Kashmiri Wikipedia and OpenSLR, plus source-linked vocabulary forms. The site also links to Koul, Raina and Bhat's scanned 2000 learner's dictionary for reference and includes manually checked data from it. The project owner reports rights-holder approval for public reuse; the scan's OCR is too noisy for unreviewed bulk import.
+The full 140-page machine OCR is preserved and searchable separately in the site.
+The Kashmiri orthography notes contribute 118 character mappings and 504 attributed example glosses, including vowel marks, aspirated digraphs, palatalisation and canonical-spelling guidance. The complete guide is bundled as `dist/orthography.html`. Every dictionary record now has a transliteration; generated values are marked in the JSON, and the translator shows a Romanized reading for Kashmiri text.
+The site also includes page-preserving OCR for 490 pages of openly licensed Kashmiri Perso-Arabic books: *Aagarnamah* and *An Advance Course in Kashmiri*. These pages are searchable source context and are labeled machine OCR.
+The OCR character inventory is also used to accept common Arabic-script spelling variants in dictionary search, translator input normalization, and transliteration fallback.
+OCR pages preserve raw text alongside conservative normalized text and transliteration. All 5,754 unique Arabic-script OCR words from the 630 combined pages are now searchable dictionary vocabulary records with generated transliteration and page references; existing definitions are retained, while OCR-only words are clearly labeled when the source supplies no English gloss.
+The OCR vocabulary layer carries 28,582 page-level references across known and OCR-only records.
+The site now includes a practical [Kashmiri language and proofreading guide](dist/language-guide.html) covering the Perso-Arabic script, sounds, word structure, cases, sentence patterns, verbs, agreement, negation, questions and an editorial checking workflow.
 
-- 29,256 modern-script records across 20,484 searchable headwords: 23,953 meaning records plus 5,303 OCR-only vocabulary records; 1,818 distinct sourced word-form spellings remain tracked separately.
-- A separate historical romanized lexicon has 20,643 entries across 20,532 headwords.
-- 322 additional sourced meaning records in this upgrade: 183 English Wiktionary translation pairs and 139 explicitly glossed related terms.
-- Multiple meanings grouped under each word, exact-match ranking, inflection-aware search, and script/source/grammar filters.
-- Transliteration, IPA, grammatical labels, paired examples, etymologies and related words where supplied by the source.
-- Kashmiri and English alphabetical browsing; all seven weekdays and twelve traditional months.
-- Direct access to Koul, Raina and Bhat's 2000 scanned learner's dictionary, with page-linked checks and two manually added senses. The project owner reports rights-holder approval for public reuse; unreviewed OCR is not imported.
-- Complete page-preserving OCR for all 140 scanned pages is searchable under “Koul book OCR.” It is labeled machine output and is not treated as verified dictionary data.
-- The site also provides 490 pages of Kashmiri Perso-Arabic OCR from two openly licensed Internet Archive books: *Aagarnamah* (212 pages, CC BY 4.0) and *An Advance Course in Kashmiri* (278 pages, CC BY-NC 4.0). Use “Open Kashmiri books OCR” for page search. This is source context, not automatically verified dictionary meaning.
-- OCR-observed Arabic-script variants are recorded in the orthography asset and accepted by dictionary search, translator normalization, and transliteration fallback mappings.
-- OCR pages preserve raw text alongside normalized text and page transliteration; the translator applies the same conservative correction layer before model input.
-- All 5,754 unique Arabic-script words found across the 630 combined OCR pages are included in dictionary search with generated transliteration and page references. Existing definitions are retained; OCR-only words are labeled as vocabulary when their source provides no English gloss.
-- The OCR vocabulary layer contains 28,582 page-level occurrence references from the three OCR sources.
-- The Translator view can look up Koul OCR references for the sentence being translated. These references provide source context; they do not silently rewrite neural model output.
-- Kashmiri orthography data includes 118 character mappings and 504 attributed example glosses from the current v32 notes, used for lookup, spelling variants and writing guidance.
-- Every dictionary record has a transliteration: an existing source spelling is retained, while missing spellings are generated from the orthography character map and marked `trGenerated` in the data. The Translator view shows a Romanized reading beside Kashmiri output and beneath Kashmiri input.
-- The complete source guide is available at [`/orthography.html`](./orthography.html), covering phonology, vowels, consonants, joining, encoding, direction, shaping, typography, layout and forms.
-- The practical [`language guide`](./language-guide.html) turns those writing rules into a working grammar and proofreading scheme: word order, noun phrases, case, agreement, TAM, negation, questions, transliteration and review fields.
+Import scripts under `scripts/` refresh Wiktionary definitions/forms, explicit English translation-table pairs and Kaeshir Dictionary data. `scripts/test-neural-browser.mjs` provides
+functional browser smoke tests, not a native-speaker accuracy benchmark.
 
-Counts include spelling alternatives and multiple senses. They are **not** counts of distinct Perso-Arabic Kashmiri concepts. Original vocabulary has unresolved licensing; attributed Wiktionary adaptations are CC BY-SA 4.0 and Kaeshir Dictionary data is MIT licensed. See [SOURCES.md](SOURCES.md).
+## Earlier local NLLB prototype
 
-## Translator
+A local Kashmiri (Perso-Arabic) to English translator powered by the int8 CTranslate2 build of Meta's NLLB-200 distilled 600M model.
 
-English ↔ Kashmiri sentence translation uses AI4Bharat IndicTrans2, with public MIT-licensed ONNX exports by Hari31416. The old longest-phrase word-substitution translator has been removed.
+## Run
 
-- Standard: 200M INT8 models; first download roughly 260–310 MB per direction.
-- Large: 1B INT8 models; first download roughly 1.1–1.2 GB per direction. Desktop only; at least 8 GB RAM recommended. Browser/model memory limits may still prevent it running.
-- Runs locally in a WASM web worker; three-beam decoding; on-demand downloads and best-effort browser caching.
-- No API key, paid translation server or sentence upload. Model/runtime downloads contact Hugging Face and jsDelivr.
-- Stop, retry and clear downloaded models. Models are released before changing direction/size.
-- Up to 1,000 characters, processed sentence by sentence; overlong source sentences are rejected explicitly and unfinished output is flagged.
-
-Use Perso-Arabic Kashmiri for sentence input. Romanized words can be searched in the dictionary, but romanized sentence translation is not supported.
-
-**This is a public beta, not a claim of world's-best accuracy.** It can omit information, misread words with multiple senses, repeat words or alter names/numbers. Native-speaker evaluation and properly licensed, reviewed parallel-corpus training are necessary for stronger accuracy. Functional smoke tests do not establish human translation quality.
-
-## Run locally
-
-```sh
-python3 -m http.server 8000
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
-Open <http://localhost:8000>. Use an HTTP server, not `file://`, for modules and workers.
+Open <http://127.0.0.1:8000>. The model is downloaded into `models/` on the first translation (roughly 600 MB), then reused locally.
 
-## Deploy on Vercel
+## Notes
 
-1. Open <https://vercel.com/new> and import `sameerahmad86232/cipher`.
-2. Keep Root Directory at the repository root. The included `vercel.json` uses the **Other** framework preset, skips install/build commands and serves `.` as output.
-3. Click **Deploy**. Linked pushes to `main` can trigger subsequent deployments.
-
-No environment variables or server-side model hosting are needed. Model weights are fetched from their pinned Hugging Face snapshots; they are not committed to GitHub or included in Vercel deployments. A reliable internet connection is required for the first model download. Caching is subject to browser storage limits and can be cleared or evicted.
-
-## Refresh sources
-
-```sh
-curl --fail -L https://kaikki.org/dictionary/Kashmiri/kaikki.org-dictionary-Kashmiri.jsonl -o /tmp/kashmiri.jsonl
-node scripts/import-wiktionary.mjs /tmp/kashmiri.jsonl
-node scripts/import-english-translations.mjs --download
-git clone https://github.com/izan-majeed/kaeshir-dictionary-data /tmp/kaeshir-dictionary-data
-node scripts/import-kaeshir.mjs /tmp/kaeshir-dictionary-data
-node scripts/ocr-koul-book.mjs /path/to/Koul.pdf dist/assets --tessdata-dir /path/to/tessdata
-```
-
-The English dump exceeds 3 GB; the importer streams it without retaining the entire dump. Imports preserve attribution and sense context; generated form/character-only entries without meanings are not mined as new definitions. Re-running the imports merges existing pairs rather than intentionally duplicating them.
-
-## Checks
-
-`node scripts/test-dictionary.mjs` checks sourced data, lookup and text processing. `scripts/test-neural-browser.mjs` runs functional Chromium smoke tests with Playwright; set `TEST_ORIGIN`, `PLAYWRIGHT_MODULE` and `CHROMIUM_PATH` for your environment. Pass `--large` to exercise the larger models. These tests require model downloads and are not a native-speaker accuracy benchmark.
+- Translation direction is explicitly `kas_Arab` to `eng_Latn`.
+- Input is NFC-normalized, but Kashmiri diacritics are preserved.
+- NLLB is a useful baseline rather than a Kashmiri-specialist model. Fine-tuning on a reviewed Kashmiri–English parallel corpus is the next quality step.
+- The selected converted NLLB model is published under CC BY-NC 4.0. Replace or separately license the model before commercial deployment.
