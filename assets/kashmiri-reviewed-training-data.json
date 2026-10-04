@@ -1,14 +1,14 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-04T11:53:26.866Z",
+  "generatedAt": "2026-10-04T13:10:49.436Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
-    "pairs": 125,
-    "lexicalMappings": 14255,
-    "distinctKashmiriHeadwords": 9564,
-    "distinctEnglishGlosses": 7179,
-    "humanReviewed": 0,
+    "pairs": 126,
+    "lexicalMappings": 14261,
+    "distinctKashmiriHeadwords": 9569,
+    "distinctEnglishGlosses": 7185,
+    "humanReviewed": 1,
     "pendingHumanReview": 125
   },
   "policy": [
@@ -2524,6 +2524,23 @@
       },
       "status": "source-attested",
       "humanReview": "pending"
+    },
+    {
+      "id": "ks-en-0126",
+      "kashmiri": "رَسوٗلُ اللہ صلی اللہ علیہ وسلمَن پؠٹھ وَحی نازِل سَپُد نیک تہٕ پوٚزَن خوابَن سۭتۍ شروٗع۔ نَبی کریم صلی اللہ علیہ وسلم یُس تہِ خواب اوس وُچھان، سُہ اوس صُبحُک گاشُک پٲٹھۍ صاف تہٕ پوٚز آسان۔ پَتہٕ آیہِ نَبی کریم صلی اللہ علیہ وسلمَن خَلوَت پَسند تہٕ تِم ٲس غارِ حرا ہَس منٛز کُنہِ زون آسان تہٕ ٲس اللہ تعالیٰ سٕنز عبادت کَران۔",
+      "english": "The commencement of the Divine Inspiration to Allah's Messenger was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to remain alone in the cave of Hira and worship Allah.",
+      "transliteration": "rasw˔lu ạ̄llh śly ạ̄llh ʔlyh wslman pʲʈʰ waħy nạ̄żil sapud nyk thɨ pwᵉżan xwạ̄ban sty ʃrw˔ʔ. naby krym śly ạ̄llh ʔlyh wslm yus thi xwạ̄b ạ̄ws wuʧʰạ̄n, suh ạ̄ws śubħuk gạ̄ʃuk pə̄ʈʰy śạ̄f thɨ pwᵉż ãsạ̄n. pathɨ ãyhi naby krym śly ạ̄llh ʔlyh wslman xalwat pasnd thɨ tim ə̄s ġạ̄ri ħrạ̄ has mnż kunhi żwn ãsạ̄n thɨ ə̄s ạ̄llh tʔạ̄ly sɨnż ʔbạ̄dt karạ̄n.",
+      "headword": "نیک خواب",
+      "partOfSpeech": "Noun phrase",
+      "grammar": [],
+      "forms": [],
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
     }
   ],
   "lexicon": [
@@ -216351,6 +216368,96 @@
       },
       "status": "source-attested",
       "humanReview": "pending"
+    },
+    {
+      "id": "lex-ks-en-14256",
+      "kashmiri": "پوٚز",
+      "english": "true; real",
+      "headword": "پوٚز",
+      "transliteration": "poz",
+      "partOfSpeech": "Adjective",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14257",
+      "kashmiri": "نیک خواب",
+      "english": "good dream",
+      "headword": "نیک خواب",
+      "transliteration": "nek khwaab",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14258",
+      "kashmiri": "صُبحُک گاش",
+      "english": "morning light; bright daylight",
+      "headword": "صُبحُک گاش",
+      "transliteration": "subhuk gaash",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14259",
+      "kashmiri": "خَلوَت",
+      "english": "seclusion; solitude",
+      "headword": "خَلوَت",
+      "transliteration": "khalwat",
+      "partOfSpeech": "Noun",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14260",
+      "kashmiri": "کُنہِ زون",
+      "english": "alone; by oneself",
+      "headword": "کُنہِ زون",
+      "transliteration": "kuni zon",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14261",
+      "kashmiri": "وَحی نازِل سَپدُن",
+      "english": "revelation to descend",
+      "headword": "وَحی نازِل سَپدُن",
+      "transliteration": "wahi naazil sapdun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
     }
   ]
 }

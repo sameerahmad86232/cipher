@@ -163,6 +163,10 @@ The Translator grammar pass now recognizes additional attested copula spellings,
 
 The writing-quality pass separately reports unsafe Unicode presentation forms, normalized Arabic/Urdu code-point variants and unexpected mixed Latin text. Its grammar review now tracks relative forms missing an explicit correlate, clause-level predicate signals, honorific expressions, coordination, English possessives, modality and relative clauses. These are editorial warnings rather than automatic rewrites: they direct a fluent reviewer to the relevant case, agreement or construction while preserving the writer's original sentence.
 
+### Project-owner reviewed corrections
+
+`training-data/user-reviewed-corrections.json` is the persistent correction memory for wording explicitly supplied or approved by the project owner. `scripts/add-user-reviewed-corrections.mjs` adds its reviewed words and phrases to the dictionary, publishes a browser-readable copy as `assets/kashmiri-reviewed-corrections.json`, and supplies exact paired passages to translation memory. These records are labeled `user-reviewed`/`approved-by-project-owner`, remain separate from raw OCR and source-attested-but-pending examples, and preserve the correction ID that introduced them. The first stored passage is the reviewed opening of Sahih al-Bukhari Hadith 3; its six lexical records include `پوٚز`, `نیک خواب`, `صُبحُک گاش`, `خَلوَت`, `کُنہِ زون`, and `وَحی نازِل سَپدُن`.
+
 ### *Kaishrik Grammer* OCR corpus
 
 The project owner reports direct permission from the rights holder to OCR Shok Shafiq's *Kaishrik Grammer* (N.S. Publications), use derived text for machine training and the public website, and redistribute the derived text. The source scan is [Internet Archive item `dli.ernet.510105`](https://archive.org/details/dli.ernet.510105). Attribution and this permission statement are retained with the derived corpus.

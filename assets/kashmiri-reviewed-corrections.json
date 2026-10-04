@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "policy": "Project-owner corrections are stored separately from source-attested and OCR material. They are preferred for future exact translation and remain traceable to the correction that introduced them.",
+  "source": {
+    "name": "Koshur Lughat project-owner language review",
+    "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+    "license": "Project-owner contribution · public reuse approved"
+  },
+  "corrections": [
+    {
+      "id": "bukhari-3-opening-r1",
+      "context": "Sahih al-Bukhari Hadith 3 opening",
+      "english": "The commencement of the Divine Inspiration to Allah's Messenger was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to remain alone in the cave of Hira and worship Allah.",
+      "kashmiri": "رَسوٗلُ اللہ صلی اللہ علیہ وسلمَن پؠٹھ وَحی نازِل سَپُد نیک تہٕ پوٚزَن خوابَن سۭتۍ شروٗع۔ نَبی کریم صلی اللہ علیہ وسلم یُس تہِ خواب اوس وُچھان، سُہ اوس صُبحُک گاشُک پٲٹھۍ صاف تہٕ پوٚز آسان۔ پَتہٕ آیہِ نَبی کریم صلی اللہ علیہ وسلمَن خَلوَت پَسند تہٕ تِم ٲس غارِ حرا ہَس منٛز کُنہِ زون آسان تہٕ ٲس اللہ تعالیٰ سٕنز عبادت کَران۔",
+      "status": "user-preferred",
+      "humanReview": "approved-by-project-owner",
+      "reviewDate": "2026-10-04",
+      "supersedes": [
+        "سَچ",
+        "صُبحُک گاش پٲٹھۍ",
+        "اَکیلے روزان"
+      ]
+    }
+  ],
+  "lexicon": [
+    {
+      "k": "پوٚز",
+      "e": "true; real",
+      "p": "Adjective",
+      "tr": "poz"
+    },
+    {
+      "k": "نیک خواب",
+      "e": "good dream",
+      "p": "Noun phrase",
+      "tr": "nek khwaab"
+    },
+    {
+      "k": "صُبحُک گاش",
+      "e": "morning light; bright daylight",
+      "p": "Noun phrase",
+      "tr": "subhuk gaash"
+    },
+    {
+      "k": "خَلوَت",
+      "e": "seclusion; solitude",
+      "p": "Noun",
+      "tr": "khalwat"
+    },
+    {
+      "k": "کُنہِ زون",
+      "e": "alone; by oneself",
+      "p": "Adverbial phrase",
+      "tr": "kuni zon"
+    },
+    {
+      "k": "وَحی نازِل سَپدُن",
+      "e": "revelation to descend",
+      "p": "Verb phrase",
+      "tr": "wahi naazil sapdun"
+    }
+  ]
+}

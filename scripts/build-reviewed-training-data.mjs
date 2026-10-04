@@ -37,8 +37,8 @@ for (const entry of entries) {
         transliteration: entry.tr || transliterateKashmiri(word),
         partOfSpeech: entry.p || '',
         source: { name: source.name || source.s || entry.s || 'Attributed dictionary source', url: source.url, license: source.license },
-        status: 'source-attested',
-        humanReview: 'pending'
+        status: entry.humanReview ? 'user-reviewed' : 'source-attested',
+        humanReview: entry.humanReview || 'pending'
       });
     }
   }
@@ -60,8 +60,8 @@ for (const entry of entries) {
       grammar: entry.grammar || [],
       forms: (entry.forms || []).map(form => ({ word: form.word, tags: form.tags || [] })),
       source: { name: source.name || source.s || entry.s || 'Attributed dictionary source', url: source.url, license: source.license },
-      status: 'source-attested',
-      humanReview: 'pending'
+      status: entry.humanReview ? 'user-reviewed' : 'source-attested',
+      humanReview: entry.humanReview || 'pending'
     });
   }
 }
@@ -76,7 +76,7 @@ const payload = {
     lexicalMappings: lexicon.length,
     distinctKashmiriHeadwords: new Set(lexicon.map(item => item.kashmiri)).size,
     distinctEnglishGlosses: new Set(lexicon.map(item => item.english.toLowerCase())).size,
-    humanReviewed: pairs.filter(pair => pair.humanReview === 'approved').length,
+    humanReviewed: pairs.filter(pair => pair.humanReview !== 'pending').length,
     pendingHumanReview: pairs.filter(pair => pair.humanReview === 'pending').length
   },
   policy: [

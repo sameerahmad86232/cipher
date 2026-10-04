@@ -11,8 +11,8 @@ const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets', 'dictionary-corpus.json')))
 ].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 58454);
-assert.equal(words.length, 49682);
+assert.equal(records.length, 58460);
+assert.equal(words.length, 49687);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
 assert.equal(records.filter(r => r.trGenerated).length, 44292);
@@ -64,7 +64,10 @@ assert.ok(trainingMemory.lexicon.length >= 10000);
 assert.ok(trainingMemory.pairs.every(pair => pair.kashmiri && pair.english && pair.transliteration && pair.source?.url && pair.source?.license));
 assert.ok(trainingMemory.lexicon.every(item => item.kashmiri && item.english && item.transliteration && item.source?.url && item.source?.license));
 assert.ok(trainingMemory.pairs.some(pair => pair.kashmiri === 'مےٚ پٔر اَکھ کِتاب' && pair.english === 'I read a book'));
+assert.ok(trainingMemory.pairs.some(pair => pair.kashmiri.includes('پوٚزَن خوابَن') && pair.humanReview === 'approved-by-project-owner'));
+assert.ok(trainingMemory.counts.humanReviewed >= 1);
 assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'کِتاب' && item.english === 'book'));
+assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'خَلوَت' && item.humanReview === 'approved-by-project-owner'));
 assert.ok(schoolOcr.pages.every(page => typeof page.normalizedText === 'string' && typeof page.transliteration === 'string'));
 assert.equal(records.reduce((count, row) => count + (row.references || []).filter(reference => reference.s?.startsWith('OCR occurrence')).length, 0), 68174);
 assert.equal(records.reduce((count, row) => count + (row.ocrVocabulary ? 1 : 0), 0), 23377);
