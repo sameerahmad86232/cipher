@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "description": "Hand-reviewed Kashmiri<->English sentence pairs supplied by a fluent speaker. These are CORRECTIONS, so they take precedence over pairs generated from dictionary examples. scripts/build-server-phrase-memory.py merges this file into server-data/phrase-memory.json, so reviewed corrections survive a rebuild. Never edit server-data/phrase-memory.json by hand: it is generated and will be overwritten.",
+  "reviewer": "Project owner (native Kashmiri speaker)",
+  "reviewDate": "2026-10-03",
+  "method": "Reviewer supplied a romanisation; it was rendered into Perso-Arabic and then checked with assets/kashmiri-text.mjs (documented-character test) and assets/transliteration.mjs. Every line reports zero undocumented characters and is stable under NFC.",
+  "pairs": [
+    {
+      "id": "bukhari-1-intention-and-migration",
+      "status": "reviewed",
+      "english": "The reward of deeds depends upon the intentions, and every person will get that which he intended. So whoever emigrated for a worldly benefit, or to marry a woman, his emigration is for that which he intended.",
+      "kashmiri": "اعمالَن ہُنْد دارومدار چھُ نیتہٕ مُطٲبِق، تہٕ ہر اِنسانَس چھِ سُہ مِلان یَمچ تٔمہٕ نیت آسہٕ کٔرمٕژ، تہٕ لِہٲزا یُس دُنیاوی فٲیدٕ موجِب یا کانْہہ زَنان سٕتؠ خانْدَر کَرنہٕ موجِب ہجرت کٔری، تٔمہٕ سٕنْز ہجرت چھِ تَمی موجِب یَمچ تٔمہٕ نیت آسہٕ کٔرمٕژ۔",
+      "romanization": "ạ̄ʔmạ̄lan huñd dạ̄rwmdạ̄r ʧʰu nythɨ muṫə̄biḱ, thɨ hr insạ̄nas ʧʰi suh milạ̄n yamʧ tᵊmhɨ nyt ãshɨ kᵊrmɨʦ, thɨ lihə̄żạ̄ yus dunyạ̄wy fə̄ydɨ mwʤib yạ̄ kạ̄ñhh żanạ̄n sɨtʲ xạ̄ñdar karnhɨ mwʤib hʤrt kᵊry, tᵊmhɨ sɨñż hʤrt ʧʰi tamy mwʤib yamʧ tᵊmhɨ nyt ãshɨ kᵊrmɨʦ.",
+      "reviewerOriginal": "aamaalan heund daramadar chu niyate mutabiq , te har insanas che soi melaan yeamch team niyat aase karmecx , te lihaza yous duniyaoi fayde moujoob ya kaanse zaanan seet khandar kaerne moujoob hijrat kariy team senx hijrat che teamai moujoub yeamch team niyat aaes karmexc",
+      "notCoveredByReview": "The clause about Allah and His Messenger (Arabic: لمن كانت هجرته إلى الله ورسوله) is NOT present in the reviewer's text and remains unreviewed. Do not present a machine rendering of it as reviewed.",
+      "rulesConfirmed": [
+        "Expressing 'X is by/according to Y' as a dependence: اعمالَن ہُنْد دارومدار چھُ نیتہٕ مُطٲبِق — literally 'the dependence of deeds is upon intentions'. A bare copula (اعمال چھِ ... مُطٲبِق) is not how this reviewer says it.",
+        "The possessor of something obtained takes the DATIVE with the copula: ہر اِنسانَس چھِ سُہ مِلان. This independently confirms Wade 1888 §114 ('to be' plus a dative means 'have').",
+        "The copula for a feminine or plural subject is آسہٕ (reviewer: aase). This resolves the open question between masculine اوس and the rejected اۆس: آسہٕ uses only documented characters. نیت is treated as feminine here.",
+        "The genitive agrees with the POSSESSED noun: تٔمہٕ سٕنْز ہجرت (feminine ہجرت). Independently confirms Wade 1888 §197.",
+        "'On account of / for the sake of' is موجِب, not خٲطرٕ: فٲیدٕ موجِب, خانْدَر کَرنہٕ موجِب.",
+        "'Worldly' is the relational adjective دُنیاوی, not دُنیاہُک.",
+        "'With' is سٕتؠ; 'some' is کانْہہ; 'therefore' is لِہٲزا; 'to get' is مِلُن (imperfective participle مِلان).",
+        "Past perfect is formed with the past copula plus the perfective participle: آسہٕ کٔرمٕژ ('had done').",
+        "Relative linkage: یَمچ ... تٔمہٕ ... carries 'that which ... his'. The reviewer places the relative clause after the head here, not before it."
+      ]
+    }
+  ]
+}
