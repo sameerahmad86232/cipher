@@ -314,9 +314,25 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
 let direction = 'ks-en', busy = false, translated = '', activeController, liveTimer, liveRequestText = '';
+let reviewedMemoryPromise;
 const initialNote = 'Online mode sends text to the public translator. Offline mode downloads a quantized NLLB-200 model once, then runs on this device. The model is large and translation may be slower on phones; review important text with a fluent speaker.';
 const OFFLINE_MODEL = 'Xenova/nllb-200-distilled-600M';
 let offlineTranslatorPromise, offlineModelReady = false;
+async function loadReviewedMemory() {
+  if (!reviewedMemoryPromise) reviewedMemoryPromise = fetch('/assets/kashmiri-reviewed-training-data.json')
+    .then(response => { if (!response.ok) throw Error('Training memory unavailable'); return response.json(); })
+    .then(data => ({
+      ksEn: new Map((data.pairs || []).map(pair => [norm(pair.kashmiri), pair])),
+      enKs: new Map((data.pairs || []).map(pair => [norm(pair.english), pair]))
+    }));
+  return reviewedMemoryPromise;
+}
+async function exactMemoryMatch(text) {
+  try {
+    const memory = await loadReviewedMemory();
+    return direction === 'ks-en' ? memory.ksEn.get(norm(text)) : memory.enKs.get(norm(text));
+  } catch { return undefined; }
+}
 async function loadOfflineTranslator() {
   if (offlineTranslatorPromise) return offlineTranslatorPromise;
   const status = $('#offline-status'), button = $('#download-offline-model');
@@ -589,6 +605,15 @@ async function translateCurrent(automatic = false) {
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
   liveRequestText = text; translated = ''; $('#copy-translation').disabled = true; setBusy(true); $('#live-status').textContent = automatic ? 'Translating…' : 'Sending…'; note.textContent = 'Sending your sentence to the server…';
   try {
+    const memoryPair = await exactMemoryMatch(text);
+    if (memoryPair) {
+      translated = direction === 'ks-en' ? memoryPair.english : memoryPair.kashmiri;
+      renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = false;
+      renderGrammarNote(analyzeSentence(text, direction).summary);
+      $('#dictionary-context').textContent = `${memoryPair.headword} · ${memoryPair.partOfSpeech || 'dictionary example'} · ${memoryPair.source.name}`;
+      note.textContent = `Exact attributed translation-memory match · ${memoryPair.source.license} · human review ${memoryPair.humanReview}.`;
+      return;
+    }
     const useOffline = $('#offline-translate').checked;
     if (useOffline && !offlineModelReady) await loadOfflineTranslator();
     const serverData = useOffline ? [await offlineTranslate(text), '', '', analyzeSentence(text, direction).summary, 'Offline model result. Dictionary matches remain available on this device.'] : await serverTranslate(text);
