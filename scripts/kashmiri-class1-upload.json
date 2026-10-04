@@ -1,0 +1,12 @@
+{
+  "books": [
+    {
+      "id": "jkbose-class-1-2024",
+      "grade": "Class 1",
+      "title": "Kashmiri for Class I (2024)",
+      "creator": "Jammu and Kashmir Board of School Education",
+      "file": "source-books/class-1.pdf",
+      "url": "https://jkbose.jk.gov.in/PageDoc/Kashmiri%20class%20I-2024.pdf"
+    }
+  ]
+}

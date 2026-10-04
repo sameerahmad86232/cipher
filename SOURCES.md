@@ -163,6 +163,12 @@ Internet Archive's supplied OCR is not used for training because it was generate
 
 The completed 252-page confidence pass reconstructed 4,431 candidate lines, but rejected 4,422; the remaining nine were repeated running headers rather than usable grammatical prose. Tests at lower thresholds admitted visibly corrupted text. Consequently, no lines from this scan are currently inserted into dictionary definitions, bilingual phrase memory, grammar rules or model-training data. The filter remains available for a better scan or Kashmiri-specific OCR model. This is a documented quality rejection, not neural fine-tuning of NLLB.
 
+### JKBOSE Class I textbook upload
+
+The 80-page image-only upload *Kashmiri for Class I (2024)* is attributed to the Jammu and Kashmir Board of School Education and linked to the [official JKBOSE PDF](https://jkbose.jk.gov.in/PageDoc/Kashmiri%20class%20I-2024.pdf). The project owner reports rights-holder permission. A fresh 300 DPI pass with `tessdata_best` Urdu recognition produced text on 75 pages: 15,604 OCR characters, including 10,472 Arabic-script characters. It is merged into the page-preserving reading collection as `jkbose-class-1-2024`, bringing that collection to 2,893 pages.
+
+The supplied PDF has no embedded text. Visual checks show that the generic Urdu model loses Kashmiri-specific diacritics, joins or splits words incorrectly and substitutes characters. The import is therefore searchable machine OCR with normalization and orthography-based transliteration—not verified textbook transcription, dictionary vocabulary, bilingual sentence data or neural training data. The reusable command now accepts an explicit OCR language (`--languages urd`) instead of forcing the older Arabic+English setting.
+
 ## Optional offline translation model
 
 The Translator view offers an opt-in browser/mobile offline mode using the ONNX conversion [`Xenova/nllb-200-distilled-600M`](https://huggingface.co/Xenova/nllb-200-distilled-600M), loaded through Transformers.js. It supports the project’s `kas_Arab` and `eng_Latn` directions and is cached on the device after the first download; the project does not bundle the large weight files. The model card identifies the underlying Meta NLLB model and **CC BY-NC 4.0** terms. Users must review those terms before redistribution or commercial use. Device memory, storage, browser support and translation speed vary; online mode remains available as a fallback.

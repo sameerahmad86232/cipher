@@ -6,10 +6,12 @@ import { promisify } from 'node:util';
 
 const run = promisify(execFile);
 const [manifestPath, outputDir, ...flags] = process.argv.slice(2);
-if (!manifestPath || !outputDir) throw Error('Usage: node scripts/ocr-school-textbooks.mjs MANIFEST.json OUTPUT_DIR [--tessdata-dir DIR] [--workers N]');
+if (!manifestPath || !outputDir) throw Error('Usage: node scripts/ocr-school-textbooks.mjs MANIFEST.json OUTPUT_DIR [--tessdata-dir DIR] [--languages urd] [--workers N]');
 const tessIndex = flags.indexOf('--tessdata-dir');
+const languagesIndex = flags.indexOf('--languages');
 const workersIndex = flags.indexOf('--workers');
 const tessdata = tessIndex >= 0 ? flags[tessIndex + 1] : '';
+const languages = languagesIndex >= 0 ? flags[languagesIndex + 1] : (tessdata ? 'ara+eng' : 'eng');
 const workerCount = Math.max(1, Number(workersIndex >= 0 ? flags[workersIndex + 1] : 4) || 4);
 const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
 const temporary = await fs.mkdtemp(path.join(os.tmpdir(), 'kashmiri-school-ocr-'));
@@ -33,7 +35,7 @@ async function worker() {
     const { book, page } = jobs[index];
     const prefix = path.join(temporary, `${book.id}-${page}`);
     await run('pdftoppm', ['-f', String(page), '-l', String(page), '-r', '300', '-png', '-singlefile', book.file, prefix], { maxBuffer: 1024 * 1024 });
-    const args = [`${prefix}.png`, 'stdout', '-l', tessdata ? 'ara+eng' : 'eng', '--psm', '3'];
+    const args = [`${prefix}.png`, 'stdout', '-l', languages, '--psm', '3'];
     if (tessdata) args.push('--tessdata-dir', tessdata);
     const { stdout } = await run('tesseract', args, { maxBuffer: 8 * 1024 * 1024 });
     result[index] = { book: book.id, grade: book.grade, part: book.part || '', page, text: stdout.replace(/\u000c/g, '').trim() };
@@ -51,7 +53,7 @@ const payload = {
   pages: result,
   source: 'Jammu and Kashmir Board of School Education (JKBOSE)',
   permission: 'Rights-holder permission reported by the project owner.',
-  method: `Tesseract OCR using ${tessdata ? 'Arabic + English traineddata' : 'English traineddata only'}; machine output requires human review.`
+  method: `Tesseract OCR using ${languages} traineddata; machine output requires human review.`
 };
 await fs.writeFile(path.join(outputDir, 'kashmiri-school-textbooks-ocr.json'), JSON.stringify(payload));
 await fs.writeFile(path.join(outputDir, 'kashmiri-school-textbooks-ocr.txt'), result.map(x => `\n===== ${x.book} · PDF PAGE ${x.page} =====\n\n${x.text}\n`).join(''));

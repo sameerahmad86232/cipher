@@ -1,4 +1,4 @@
-const CACHE = 'koshur-lughat-shell-v4';
+const CACHE = 'koshur-lughat-shell-v5';
 const SHELL = ['/', '/manifest.webmanifest', '/assets/styles.css', '/assets/expanded.css', '/assets/app.js'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
