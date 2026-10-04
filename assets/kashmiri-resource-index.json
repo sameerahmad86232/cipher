@@ -2,6 +2,14 @@
   "title": "Kashmiri OCR and translation resource index",
   "resources": [
     {
+      "name": "Kashmiri translation of the Noble Qur’an",
+      "type": "separate page-level OCR retrieval corpus",
+      "url": "https://archive.org/details/Ks_Translation_of_the_Noble_Quran_in_the_Kashmiri_Koshur_Language_www.TheChoice.one",
+      "license": "Public reuse permission reported by the project owner; archive item has no displayed license",
+      "reportedSize": "1,694 OCR pages",
+      "status": "Separate raw-OCR search and translator-reference layer; not neural training data"
+    },
+    {
       "name": "Koshur Pixel",
       "type": "synthetic OCR dataset",
       "url": "https://huggingface.co/datasets/Omarrran/Koshur_Pixel",
