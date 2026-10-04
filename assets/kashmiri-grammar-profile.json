@@ -1815,5 +1815,453 @@
       "text": "یِہ چھ آسان",
       "count": 6
     }
+  ],
+  "constructionEvidence": {
+    "copulas": {
+      "forms": [
+        {
+          "text": "چھِ",
+          "count": 2040
+        },
+        {
+          "text": "چھُ",
+          "count": 1255
+        },
+        {
+          "text": "اوس",
+          "count": 293
+        },
+        {
+          "text": "چُھ",
+          "count": 246
+        },
+        {
+          "text": "چِھ",
+          "count": 215
+        },
+        {
+          "text": "چھےٚ",
+          "count": 151
+        },
+        {
+          "text": "چُھس",
+          "count": 69
+        },
+        {
+          "text": "چُھکھ",
+          "count": 6
+        },
+        {
+          "text": "آسِ",
+          "count": 1
+        }
+      ],
+      "examples": [
+        {
+          "text": "0 (نَمبَر) یا صِفَر چھُ اَکھ نَمبَر یُس -1 کھوتہٕ بۆڈ چھُ تہٕ 1 کھوتہٕ لوکُٹ چھُ.",
+          "forms": [
+            "چھُ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "1 (نَمبَر) چھُ اَکھ نَمبَر یُس 0 کھوتہٕ بۆڈ چھُ تہٕ 2 کھوتہٕ لوکُٹ چھُ.",
+          "forms": [
+            "چھُ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "1- (نَمبَر) چھُ اَکھ نَمبَر یُس -2 کھوتہٕ بۆڈ چھُ تہٕ 0 کھوتہٕ لوکُٹ چھُ۔",
+          "forms": [
+            "چھُ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "negation": {
+      "forms": [
+        {
+          "text": "نٕہ",
+          "count": 107
+        },
+        {
+          "text": "چھن",
+          "count": 104
+        },
+        {
+          "text": "نہٕ",
+          "count": 37
+        },
+        {
+          "text": "نَہ",
+          "count": 19
+        },
+        {
+          "text": "چھُنہٕ",
+          "count": 12
+        },
+        {
+          "text": "چُھنہٕ",
+          "count": 2
+        }
+      ],
+      "examples": [
+        {
+          "text": "اِنتِظٲمؠ (Administrator) چھِ صٲرِف یِمَن خاص حق چھُ دِنہٕ یوان تاکہٕ تم دِین اَنجام کینٛہہ اَہم کامہِ وِکیٖپیٖڈیاہَس پؠٹھ۔ یم کامہِ چھِ بَس اِنتِظٲمؠ ہکن اَنجام دیت مِثآل صَفہٕ حزف یا غآر حزف تہٕ محفوظ یا غآر محفوظ کرن۔ وِکیٖپیٖڈیاہَس پؠٹھ چھِ کُل 1 اِنتِظٲمؠ۔ اِنتِظٲمؠ چِھنہٕ وِکیٖمیٖڈیا تَنظیٖمہٕ ہنٛد مُلأزِم آسآن؛ تیم چِھ آسآن رَضاکار صٲرِف ییٖم وِکیٖپیٖ",
+          "forms": [
+            "نہٕ",
+            "چھُنہٕ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "جماعت اِسلامی کشمیٖر چھُ جۄم تہٕ کٔشِیر مُنٛز اكھ مَزہَبي تہٕ سِیٲسَي تنظیٖم۔ یَتھ تنظیٖمہٕ مُطٲبِق جۄم تہٕ کٔشِیر چھُ نہٕ بارتُک حِصہٕ۔ جماعت اِسلامی کشمیٖرٕکؠ باني چھِ مولانا غلام احمد احرار، مولانا سعد الدین، مولانا مفتی محمد امین، مولانا حکیم غلام نبی، قاری سیف الدین تہٕ مولانا سلیمان صاحب۔",
+          "forms": [
+            "نہٕ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "جَواہَر لال نِہروٗ (ہِندی: [ˈdʒəʋɑːɦəɾˈlɑːl ˈneːɦɾuː] (بوٗزِو)، जवाहरलाल नेहरू)، یُس چھُ پَنٛڈِت نِہروٗ یا چاچا نِہروٗ ناوَن سٟتؠ تہِ زاننہٕ یِوان اوس اَكھ ہِندوستٲنؠ سِیاسَتھ دان، ؤکیٖل، أدیٖب تہٕ 1947 پؠٹھٕ 1964 تام گۄڈنیُٛک ہِندوستأنؠ ؤزیٖرِ اَعظَم۔ سُہ اوس وُہمہِ صٔدی یَس مَنٛز ہِندوستٲنؠ آزادی تٔحریٖکہٕ سُنٛد اَکھ سؠٹھا بۆڈ رَہنُما۔ نِہروٗ اوس 1929-1930",
+          "forms": [
+            "نہٕ",
+            "چھُنہٕ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "relatives": {
+      "forms": [
+        {
+          "text": "یۄس",
+          "count": 647
+        },
+        {
+          "text": "یُس",
+          "count": 387
+        },
+        {
+          "text": "یِم",
+          "count": 281
+        },
+        {
+          "text": "یَتھ",
+          "count": 129
+        }
+      ],
+      "examples": [
+        {
+          "text": "0 (نَمبَر) یا صِفَر چھُ اَکھ نَمبَر یُس -1 کھوتہٕ بۆڈ چھُ تہٕ 1 کھوتہٕ لوکُٹ چھُ.",
+          "forms": [
+            "یُس"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "1 (نَمبَر) چھُ اَکھ نَمبَر یُس 0 کھوتہٕ بۆڈ چھُ تہٕ 2 کھوتہٕ لوکُٹ چھُ.",
+          "forms": [
+            "یُس"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "1- (نَمبَر) چھُ اَکھ نَمبَر یُس -2 کھوتہٕ بۆڈ چھُ تہٕ 0 کھوتہٕ لوکُٹ چھُ۔",
+          "forms": [
+            "یُس"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "correlatives": {
+      "forms": [
+        {
+          "text": "سُہ",
+          "count": 303
+        },
+        {
+          "text": "تِم",
+          "count": 111
+        },
+        {
+          "text": "تتھ",
+          "count": 88
+        },
+        {
+          "text": "تَتھ",
+          "count": 26
+        }
+      ],
+      "examples": [
+        {
+          "text": "= ستیسار = ہِندوٗ کتابَن تہٕ کَلھننِہ راجترنگنی مَنٛز چھُ لیٚکھِتھ زِ کٔشیٖر ٲس گۄڈٕ اَکھ سَر- تَتھ سَرَس مَنٛز اوس اَکھ دؠو، جلودبھو روزان، أمؠ ٲسؠ ا ناگ لُکھ واریاہ ستٲومٔتؠ- ناگَن ہُنٛد شاہ اوس نیلناگ، ییمہ بُلوؤ پنن ٲشناو، کشیپ- کشیپن مور سہ دیو، بیٛے گرٲیے تیم وارمولکھ کوہ، ییمہ ونہ سیتھ بنییٛے وادی کشیر- = پرون دور = = اسلٲمؠ دور = = مۄغل دور = = سکھ ر",
+          "forms": [
+            "تَتھ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "اِنتِظٲمؠ (Administrator) چھِ صٲرِف یِمَن خاص حق چھُ دِنہٕ یوان تاکہٕ تم دِین اَنجام کینٛہہ اَہم کامہِ وِکیٖپیٖڈیاہَس پؠٹھ۔ یم کامہِ چھِ بَس اِنتِظٲمؠ ہکن اَنجام دیت مِثآل صَفہٕ حزف یا غآر حزف تہٕ محفوظ یا غآر محفوظ کرن۔ وِکیٖپیٖڈیاہَس پؠٹھ چھِ کُل 1 اِنتِظٲمؠ۔ اِنتِظٲمؠ چِھنہٕ وِکیٖمیٖڈیا تَنظیٖمہٕ ہنٛد مُلأزِم آسآن؛ تیم چِھ آسآن رَضاکار صٲرِف ییٖم وِکیٖپیٖ",
+          "forms": [
+            "تِم",
+            "تَتھ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "اہربل چھُ اَکھ سہأتی مقام یس جٔنوٗبی کشیر منر واقی چھُ۔ ہیِ جاے چھِ واریاہ خوبصورت۔ اور چھِ واریاہ لکھ چکرن گَزان۔ اَتھ چھُ بیٛاکھ ناو نگارا واٹرفال جغرأفی اہربل چھ جوم تہ کشیر کِس کولگوم ضلس مَنٛز واقع۔ یہِ چھ ویشو دریاوس نذدیک واقع۔ یہِ چھ سطح سمندر پؠٹھ 2266 میٖٹَر ہیور. اہربل آبشار اہربل چھُ آبشار ست مَشہوٗر۔ اَتھ چھُ واریاہ تھزرٕ پؠٹھ آب وسان یس ۲۵ میٖٹ",
+          "forms": [
+            "تتھ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "genitives": {
+      "forms": [
+        {
+          "text": "ہُنٛد",
+          "count": 222
+        },
+        {
+          "text": "سُنٛد",
+          "count": 47
+        },
+        {
+          "text": "سٕنٛز",
+          "count": 29
+        },
+        {
+          "text": "ہِنٛز",
+          "count": 8
+        }
+      ],
+      "examples": [
+        {
+          "text": "= ستیسار = ہِندوٗ کتابَن تہٕ کَلھننِہ راجترنگنی مَنٛز چھُ لیٚکھِتھ زِ کٔشیٖر ٲس گۄڈٕ اَکھ سَر- تَتھ سَرَس مَنٛز اوس اَکھ دؠو، جلودبھو روزان، أمؠ ٲسؠ ا ناگ لُکھ واریاہ ستٲومٔتؠ- ناگَن ہُنٛد شاہ اوس نیلناگ، ییمہ بُلوؤ پنن ٲشناو، کشیپ- کشیپن مور سہ دیو، بیٛے گرٲیے تیم وارمولکھ کوہ، ییمہ ونہ سیتھ بنییٛے وادی کشیر- = پرون دور = = اسلٲمؠ دور = = مۄغل دور = = سکھ ر",
+          "forms": [
+            "ہُنٛد"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "انکارا چھُ اَکھ شَہَر تہٕ تُرکی ہُنٛد رازدٲنؠ.",
+          "forms": [
+            "ہُنٛد"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "اَلبینِیَن وِکیٖپیٖڈیا چھُ وِکیٖپیٖڈیاہُک اَلبینِیَن زَبانہِ ہُنٛد مَنصوٗب۔ اَلبینِیَن وِکیٖپیٖڈیاہَس پؠٹھ چھِ 24 سَتَمبَر 2022 پؠٹھ کُل 86٬324 مَضموٗن تہٕ 144٬741 دَرٕج صٲرِف۔",
+          "forms": [
+            "ہُنٛد"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "postpositions": {
+      "forms": [
+        {
+          "text": "مَنٛز",
+          "count": 1580
+        },
+        {
+          "text": "منٛز",
+          "count": 545
+        },
+        {
+          "text": "پؠٹھ",
+          "count": 379
+        },
+        {
+          "text": "سٟتؠ",
+          "count": 142
+        },
+        {
+          "text": "سٲتِہ",
+          "count": 95
+        },
+        {
+          "text": "خٲطرٕ",
+          "count": 66
+        }
+      ],
+      "examples": [
+        {
+          "text": "'پب جی'(پریلس اننون بیٹلگروند) چہ اَکھ اندرواڈ تہ پیسی گیم - یہِ گیم چہ کرافٹن والو بنامعژ - یہِ چھ اَکھ یٹل راویل گیم - اَتھ مَنٛز چھ واریا قسمین ہنز مود تہ- اکس سادء گیم مَنٛز چھ ۱۰۰ پلیر اکس جاہی والنہ یوان- یمو مَنٛز خالی اَکھ نفر زینان چہُ- یہِ گیم چھ ۲۰۱۷ مَنٛز لانچ کرنہ آمژ-",
+          "forms": [
+            "مَنٛز"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "= ستیسار = ہِندوٗ کتابَن تہٕ کَلھننِہ راجترنگنی مَنٛز چھُ لیٚکھِتھ زِ کٔشیٖر ٲس گۄڈٕ اَکھ سَر- تَتھ سَرَس مَنٛز اوس اَکھ دؠو، جلودبھو روزان، أمؠ ٲسؠ ا ناگ لُکھ واریاہ ستٲومٔتؠ- ناگَن ہُنٛد شاہ اوس نیلناگ، ییمہ بُلوؤ پنن ٲشناو، کشیپ- کشیپن مور سہ دیو، بیٛے گرٲیے تیم وارمولکھ کوہ، ییمہ ونہ سیتھ بنییٛے وادی کشیر- = پرون دور = = اسلٲمؠ دور = = مۄغل دور = = سکھ ر",
+          "forms": [
+            "مَنٛز"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "آرٹری (اَنٛگریٖزی: Artery) چھُ تِمَن خوٗنہٕ رَگَن یِوان وَنہٕ یِم دِلَہٕ پؠٹھ خوٗن پَکنایَن نیبَر کُن۔ زیٛادٕ تَر چھِ آرٹری آکسیجَن دار خوٗن دِلَہٕ پؠٹھ تانن تام پَکناوَن؛ پَلمونیری تہٕ اَمبلایکَل آرٹری وَرٲے، یِم دونوٲے آرٹری چھِ آکسیجَن وَرٲے خوٗن پَکناوَن.",
+          "forms": [
+            "پؠٹھ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "comparatives": {
+      "forms": [
+        {
+          "text": "کھوتہٕ",
+          "count": 87
+        },
+        {
+          "text": "کھۄتہٕ",
+          "count": 22
+        }
+      ],
+      "examples": [
+        {
+          "text": "0 (نَمبَر) یا صِفَر چھُ اَکھ نَمبَر یُس -1 کھوتہٕ بۆڈ چھُ تہٕ 1 کھوتہٕ لوکُٹ چھُ.",
+          "forms": [
+            "کھوتہٕ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "1 (نَمبَر) چھُ اَکھ نَمبَر یُس 0 کھوتہٕ بۆڈ چھُ تہٕ 2 کھوتہٕ لوکُٹ چھُ.",
+          "forms": [
+            "کھوتہٕ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "1- (نَمبَر) چھُ اَکھ نَمبَر یُس -2 کھوتہٕ بۆڈ چھُ تہٕ 0 کھوتہٕ لوکُٹ چھُ۔",
+          "forms": [
+            "کھوتہٕ"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        }
+      ]
+    },
+    "questions": {
+      "forms": [
+        {
+          "text": "کیا",
+          "count": 91
+        },
+        {
+          "text": "کُس",
+          "count": 9
+        },
+        {
+          "text": "کِتھ",
+          "count": 6
+        },
+        {
+          "text": "کوٚس",
+          "count": 4
+        },
+        {
+          "text": "کٔتھ",
+          "count": 1
+        }
+      ],
+      "examples": [
+        {
+          "text": "کشمیر ریلوے کے ایک ریلوے کیا جا رہا ہے بھارت میں بنایا گیا کہ مُلُک کے باقی حصوں کے ساتھ جموں اور کشمیر کی حالت سے متصل لائن ہے۔ ریل جموں سے شروع ہوتا ہے اور 345 کلومیٹر (214 میٖل) ہے کشمیر میں بارامولا کے شَہَر کے لئے سفر کرے گا۔ اس منصوبہ کی لاگت کا تخمینہ تقریبا 60 ارب بھارتی روپے (امریکہ 1.3 ارب ڈالر) ہے. نقشہ زمرہ:کشمیر",
+          "forms": [
+            "کیا"
+          ],
+          "source": "https://ks.wikipedia.org/",
+          "dataset": "Kashmiri Wikipedia"
+        },
+        {
+          "text": "اؠچ اے ٹو فیفٹی سیکِس اؠس اؠچ اے کیا گو",
+          "forms": [
+            "کیا"
+          ],
+          "source": "https://openslr.org/122/",
+          "dataset": "OpenSLR 122 Kashmiri speech corpus"
+        },
+        {
+          "text": "اتھ منٛز کیا چُھ آسن یُس ڈیٹا چُھ آسن",
+          "forms": [
+            "کیا"
+          ],
+          "source": "https://openslr.org/122/",
+          "dataset": "OpenSLR 122 Kashmiri speech corpus"
+        }
+      ]
+    }
+  },
+  "pairedRelativeCorrelativeRecords": 106,
+  "reviewRules": [
+    {
+      "id": "predicate-late",
+      "statement": "Finite predicates and auxiliaries commonly occur late in the clause; marked information structure can vary the order.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "copula-agreement",
+      "statement": "Copula and auxiliary forms vary with person, number and gender; do not flatten every form to چھُ.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "past-ergative",
+      "statement": "Perfective transitive clauses require review for ergative agent marking and agreement controlled by the object or default agreement.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "dative-subject",
+      "statement": "Experiencer, possession and obligation constructions may use a dative subject.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "genitive-agreement",
+      "statement": "Genitive forms such as ہُنٛد/ہِنٛز and سُنٛد/سٕنٛز agree with the possessed expression, not simply with the possessor.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "relative-correlative",
+      "statement": "Relative forms often participate in a relative–correlative construction; check the matching main-clause expression.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "postpositions",
+      "statement": "Kashmiri uses postpositions and oblique/case-marked dependents rather than English preposition order.",
+      "status": "diagnostic-not-rewrite"
+    },
+    {
+      "id": "negation",
+      "statement": "Negative particles and fused negative copulas must be interpreted with the finite predicate; their surface position can vary.",
+      "status": "diagnostic-not-rewrite"
+    }
   ]
 }

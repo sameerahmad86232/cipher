@@ -2,15 +2,18 @@ import { autocorrectKashmiri } from './kashmiri-text.mjs';
 
 const ARABIC_WORD = /[\p{Script=Arabic}\p{M}][\p{Script=Arabic}\p{M}\u200c\u200d'’ʼ-]*/gu;
 const ENGLISH_WORD = /[A-Za-z][A-Za-z'-]*/g;
-const NEGATIVE_KASHMIRI = new Set(['نہ', 'نہٕ', 'نَہ', 'نَہٕ', 'نا', 'مَہ', 'مت']);
-const QUESTION_KASHMIRI = new Set(['کیا', 'کوٚس', 'کُس', 'کَتھ', 'کوت', 'کٔتھ', 'کِتھ']);
-const POSTPOSITIONS = new Set(['منٛز', 'مَنٛز', 'منز', 'پؠٹھ', 'سٕتۍ', 'سٟتؠ', 'سٲتِہ', 'سٕنٛد', 'سٕنٛز', 'خٲطرٕ', 'تھٲوُن', 'تھٲں']);
-const AUXILIARIES = new Set(['چھ', 'چُھ', 'چھِ', 'چِھ', 'چھُو', 'چھےٚ', 'چُھس', 'چُھکھ', 'آس', 'آسِ', 'آسُن', 'آسٕن', 'اوس']);
-const ERGATIVE_PRONOUNS = new Set(['مےٚ', 'تٔمۍ', 'تِمَو', 'اَسہِ', 'تُہۍ']);
-const DATIVE_FORMS = new Set(['مےٚ', 'تَس', 'تِمَن', 'اَسہِ', 'تُہۍ']);
-const PAST_AUXILIARIES = new Set(['اوس', 'آس', 'آسِ', 'آسٕن']);
-const RELATIVES = new Set(['یُس', 'یۄس', 'یِم', 'یَتھ']);
-const CORRELATIVES = new Set(['سُہ', 'تِم', 'تَتھ', 'تتھ']);
+const normalizedSet = values => new Set(values.map(value => value.normalize('NFC')));
+const NEGATIVE_KASHMIRI = normalizedSet(['نہ', 'نہٕ', 'نَہ', 'نَہٕ', 'نٕہ', 'نا', 'مَہ', 'مت', 'چھُنہٕ', 'چُھنہٕ', 'چھن']);
+const QUESTION_KASHMIRI = normalizedSet(['کیا', 'کوٚس', 'کُس', 'کَتھ', 'کوت', 'کٔتھ', 'کِتھ', 'کٔژ', 'کَمۍ']);
+const POSTPOSITIONS = normalizedSet(['منٛز', 'مَنٛز', 'منز', 'پؠٹھ', 'سٕتۍ', 'سٟتؠ', 'سٲتِہ', 'سٕنٛد', 'سٕنٛز', 'خٲطرٕ', 'تھٲوُن', 'تھٲں']);
+const AUXILIARIES = normalizedSet(['چھ', 'چھُ', 'چُھ', 'چھِ', 'چِھ', 'چھُو', 'چھےٚ', 'چُھس', 'چُھکھ', 'آس', 'آسِ', 'آسُن', 'آسٕن', 'اوس']);
+const ERGATIVE_PRONOUNS = normalizedSet(['مےٚ', 'تٔمۍ', 'تِمَو', 'اَسہِ', 'تُہۍ']);
+const DATIVE_FORMS = normalizedSet(['مےٚ', 'تَس', 'تِمَن', 'اَسہِ', 'تُہۍ']);
+const PAST_AUXILIARIES = normalizedSet(['اوس', 'آس', 'آسِ', 'آسٕن']);
+const RELATIVES = normalizedSet(['یُس', 'یۄس', 'یِم', 'یَتھ']);
+const CORRELATIVES = normalizedSet(['سُہ', 'تِم', 'تَتھ', 'تتھ']);
+const GENITIVES = normalizedSet(['ہُنٛد', 'ہِنٛز', 'ہُنٛز', 'سُنٛد', 'سٕنٛز']);
+const COMPARATIVES = normalizedSet(['کھۄتہٕ', 'کھوتہٕ']);
 
 function kashmiriTokens(value) {
   return [...String(value || '').normalize('NFC').matchAll(ARABIC_WORD)].map(match => match[0]);
@@ -35,17 +38,21 @@ export function analyzeKashmiriSentence(input) {
   const wordOrder = tokens.length < 3 ? 'short clause' : verbFinalSignal ? 'attested verb-final signal' : 'review predicate position (Kashmiri commonly places it late)';
   const hasRelative = lower.some(token => RELATIVES.has(token));
   const hasCorrelative = lower.some(token => CORRELATIVES.has(token));
+  const hasGenitive = lower.some(token => GENITIVES.has(token));
+  const hasComparative = lower.some(token => COMPARATIVES.has(token));
   const checks = [
     wordOrder,
     negative ? 'negative polarity' : 'affirmative polarity',
     question ? 'question construction' : 'statement construction',
     hasPostposition ? 'check case and postposition' : 'check case marking',
     hasAuxiliary ? 'check copula/auxiliary agreement' : 'check TAM and verb agreement',
-    ergativeAgent || pastAuxiliary ? 'check past-transitive ergative agreement' : 'no clear ergative-past signal',
+    pastAuxiliary ? 'past auxiliary detected; check transitivity, ergative case and agreement' : ergativeAgent ? 'possible ergative-shaped pronoun; apply ergative analysis only in a perfective transitive clause' : 'no clear ergative-past signal',
     dativeCandidate ? 'check dative subject/object interpretation' : 'no clear dative-pronoun signal',
-    hasRelative && !hasCorrelative ? 'relative form detected; check its matching main-clause correlate' : hasRelative ? 'relative–correlative construction detected' : 'no relative–correlative signal'
+    hasRelative && !hasCorrelative ? 'relative form detected; check its matching main-clause correlate' : hasRelative ? 'relative–correlative construction detected' : 'no relative–correlative signal',
+    hasGenitive ? 'check genitive agreement with the possessed noun' : 'no clear agreeing-genitive signal',
+    hasComparative ? 'comparative standard marker detected; check the comparison phrase' : 'no clear comparative marker'
   ];
-  return { normalized, tokens, question, negative, wordOrder, ergativeAgent, dativeCandidate, hasRelative, hasCorrelative, checks, summary: `Kashmiri grammar pass: ${checks.join(' · ')}.` };
+  return { normalized, tokens, question, negative, wordOrder, ergativeAgent, dativeCandidate, hasRelative, hasCorrelative, hasGenitive, hasComparative, checks, summary: `Kashmiri grammar pass: ${checks.join(' · ')}.` };
 }
 
 export function analyzeEnglishSentence(input) {

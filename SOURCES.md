@@ -151,6 +151,8 @@ The corpus contributes **8,336 sentences** for source-linked reading and **11,12
 
 `assets/kashmiri-grammar-profile.json` is generated from the licensed public corpus by `scripts/build-kashmiri-grammar-profile.mjs`. It deliberately excludes Qur’anic material, raw OCR, URL-like rows, markup-heavy rows and text dominated by Latin script. Of 8,336 source records, 4,500 pass these conservative filters. The profile stores the 150 most frequent words, bigrams and trigrams as attestation evidence and records the corpus’s domain skew; frequency is not treated as a universal grammar rule.
 
+The profile also counts attested copula/auxiliary, negation, relative–correlative, agreeing-genitive, postposition, comparison and question forms, and retains three short source-linked concordance samples per category. These counts are corpus evidence rather than a complete paradigm: spelling variation, dialect, genre imbalance and annotation-free text make automatic grammatical inference uncertain. The corresponding review rules therefore diagnose likely agreement/case issues but do not silently rewrite them.
+
 The Translator grammar pass now recognizes additional attested copula spellings, common postposition variants, likely clause-final predicates, relative–correlative constructions, dative candidates and past-transitive ergative signals. These diagnostics identify what a reviewer should check. They do not rewrite uncertain endings or claim that the neural model has been retrained.
 
 ## Optional offline translation model
