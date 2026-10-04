@@ -155,6 +155,14 @@ The profile also counts attested copula/auxiliary, negation, relative–correlat
 
 The Translator grammar pass now recognizes additional attested copula spellings, common postposition variants, likely clause-final predicates, relative–correlative constructions, dative candidates and past-transitive ergative signals. These diagnostics identify what a reviewer should check. They do not rewrite uncertain endings or claim that the neural model has been retrained.
 
+### *Kaishrik Grammer* OCR corpus
+
+The project owner reports direct permission from the rights holder to OCR Shok Shafiq's *Kaishrik Grammer* (N.S. Publications), use derived text for machine training and the public website, and redistribute the derived text. The source scan is [Internet Archive item `dli.ernet.510105`](https://archive.org/details/dli.ernet.510105). Attribution and this permission statement are retained with the derived corpus.
+
+Internet Archive's supplied OCR is not used for training because it was generated with a broad Persian/Pashto/English/Latin/Urdu/Kirghiz/Cyrillic model mixture and contains severe cross-script corruption. The reproducible fresh pass uses Tesseract 5 with `tessdata_best` Urdu recognition on all 252 page images. `scripts/build-kaishrik-grammar-corpus.mjs` reconstructs lines from confidence-scored OCR and accepts a line only when its mean word confidence is at least 75, it contains at least three Arabic-script words and twelve Arabic-script characters, and it contains no Latin or Cyrillic characters.
+
+The completed 252-page confidence pass reconstructed 4,431 candidate lines, but rejected 4,422; the remaining nine were repeated running headers rather than usable grammatical prose. Tests at lower thresholds admitted visibly corrupted text. Consequently, no lines from this scan are currently inserted into dictionary definitions, bilingual phrase memory, grammar rules or model-training data. The filter remains available for a better scan or Kashmiri-specific OCR model. This is a documented quality rejection, not neural fine-tuning of NLLB.
+
 ## Optional offline translation model
 
 The Translator view offers an opt-in browser/mobile offline mode using the ONNX conversion [`Xenova/nllb-200-distilled-600M`](https://huggingface.co/Xenova/nllb-200-distilled-600M), loaded through Transformers.js. It supports the project’s `kas_Arab` and `eng_Latn` directions and is cached on the device after the first download; the project does not bundle the large weight files. The model card identifies the underlying Meta NLLB model and **CC BY-NC 4.0** terms. Users must review those terms before redistribution or commercial use. Device memory, storage, browser support and translation speed vary; online mode remains available as a fallback.
