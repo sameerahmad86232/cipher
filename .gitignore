@@ -1,0 +1,10 @@
+# Internet Archive DjVu XML downloaded by scripts/build-reading-ocr.py.
+# These are large, re-fetchable build inputs and are not part of the site.
+source-ocr/
+
+# JKBOSE Kashmiri textbook scans (about 281 MB across 12 PDFs) and the page images
+# or JPEGs extracted from them for OCR. Re-fetchable build inputs, not site assets.
+source-books/
+
+# Hugging Face dataset downloads (word lists, OCR text) used as import sources.
+source-datasets/

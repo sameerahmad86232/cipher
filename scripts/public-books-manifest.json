@@ -18,5 +18,163 @@
       "license": "CC BY-NC 4.0",
       "source": "https://archive.org/details/dli.language.2242"
     }
+  ],
+  "grammarSources": [
+    {
+      "id": "wade-1888-grammar",
+      "iaid": "in.ernet.dli.2015.458430",
+      "title": "A Grammar of the Kashmiri Language, as spoken in the valley of Kashmir, North India",
+      "creator": "Rev. T. R. Wade, B.D., M.R.A.S.; with an introduction by Dr. Robert Cust",
+      "year": 1888,
+      "publisher": "Society for Promoting Christian Knowledge, London",
+      "license": "Public domain. Published 1888; the archive.org metadata records a copyright expiry date of 1888 and states no licence or rights restriction.",
+      "source": "https://archive.org/details/in.ernet.dli.2015.458430",
+      "textLayer": "The OCR text layer is 100% Latin romanization and contains zero Arabic-script characters, so this is a grammar and paradigm reference, not a Perso-Arabic reading source. It is therefore deliberately NOT part of readingLibrary. Unlike the Nastaliq scans, its text layer is clean and readable.",
+      "scope": "Describes spoken Kashmiri of 1888 in the author's own romanization. The preface states there was then no written authority for spelling, so forms are phonetic. Use it for STRUCTURE (case, alignment, paradigms) and cross-check actual spellings against the modern corpus and dictionary, not the reverse.",
+      "rulesUsed": [
+        { "rule": "Ergative/agentive alignment in the past transitive", "ref": "§190, §196", "quote": "The nominative case is used with intransitive verbs in all tenses, and with transitive verbs in the present, future, and past imperfect tenses.", "note": "Past perfect transitive is therefore NOT nominative: \"Meh mor haput\" I killed a he-bear, \"Meh mari hapata\" I killed she-bears. The agentive Meh is the modern مےٚ (contrast nominative بہٕ)." },
+        { "rule": "The past transitive verb agrees with the OBJECT", "ref": "§196", "quote": "After the past tense (not imperfect) of a transitive verb the accusative always agrees with the verb in number and gender.", "note": "Object agreement, not subject agreement, is why choosing a generic first-person ending produces an agreement error." },
+        { "rule": "\"have\" is expressed as \"to be\" + a dative", "ref": "§114", "quote": "The verb \"to be,\" with the dative pronominal affixes, is constantly used to denote possession, meaning \"I have,\" etc.", "note": "chhum = is to me = I have him; chhem = she is to me = I have her. So \"every person shall have\" is a dative possessor plus the copula, not a verb meaning \"obtain\"." },
+        { "rule": "The genitive agrees with the POSSESSED noun", "ref": "§197", "quote": "The genitive affixes, -sund, -hund, -uk, -un, and -ur, are all inflected and agree with the noun possessed in number and gender.", "note": "A feminine possessed noun therefore takes the feminine genitive, e.g. سُنٛد (m) beside سٕنٛز (f)." },
+        { "rule": "The copula follows the subject; the complement stays nominative", "ref": "§180, §192", "quote": "Nar chhu garni. Fire is hot. / Suh chhu mahnius. He is a man.", "note": "Subject then copula then predicate, matching the modern corpus template سٲری اِنسان چھِ آزاد زامٕتؠ." },
+        { "rule": "There are no articles", "ref": "§182, §183", "quote": "There are no words in the Kashmiri language exactly answering to the articles \"a,\" \"an,\" and \"the.\"", "note": "The bare noun covers both; akh (one) or kanh (some) may be added but are not required." },
+        { "rule": "Genitive and adjective precede the noun they modify", "ref": "§181", "quote": "A noun in the genitive case usually precedes its governing noun, and an adjective the substantive that it qualifies." },
+        { "rule": "The past copula inflects for gender", "ref": "§84 paradigm", "quote": "Past indefinite: Su os (he was) beside osa (she was / they were).", "note": "This is the open question for the modern form: the masculine is اوس (258 corpus hits); the feminine spelling in current text is not settled. Do not silently pick one." }
+      ]
+    }
+  ],
+  "readingLibrary": [
+    {
+      "id": "khabar-tagimi-wanoon",
+      "iaid": "dli.ernet.504536",
+      "title": "Khabar Tagimi Wanoon",
+      "creator": "Zareef Ahmad Zareef",
+      "license": "No reuse licence is stated in the archive.org metadata for this item; source-linked machine OCR for reading and review only.",
+      "source": "https://archive.org/details/dli.ernet.504536",
+      "category": "Prose",
+      "pages": 168,
+      "characters": 96240
+    }
+  ],
+  "readingLibraryRejected": [
+    {
+      "id": "intensive-course-kashmiri",
+      "iaid": "zxUO_an-intensive-course-in-kashmiri-omkar-n-koul",
+      "title": "An Intensive Course In Kashmiri Omkar N Koul",
+      "category": "Language course",
+      "source": "https://archive.org/details/zxUO_an-intensive-course-in-kashmiri-omkar-n-koul",
+      "pages": 496,
+      "charactersPerPage": 601.1,
+      "arabicLetterShare": 0.0,
+      "reasons": [
+        "Arabic-script share 0.00 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "hindi-kashmiri-dictionary",
+      "iaid": "dli.language.2232",
+      "title": "हिंदी-कश्मीरी सामान्य शब्दकोश",
+      "category": "Bilingual dictionary",
+      "source": "https://archive.org/details/dli.language.2232",
+      "pages": 301,
+      "charactersPerPage": 717.0,
+      "arabicLetterShare": 0.0,
+      "reasons": [
+        "Arabic-script share 0.00 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "veth-mia-chi-shongith-vakh",
+      "iaid": "wVzw_veth-mia-chi-shongith-a-collection-of-kashmiri-vakh-bimla-raina",
+      "title": "Veth Mia Chi Shongith A Collection Of Kashmiri Vakh Bimla Raina",
+      "category": "Proverbs",
+      "source": "https://archive.org/details/wVzw_veth-mia-chi-shongith-a-collection-of-kashmiri-vakh-bimla-raina",
+      "pages": 282,
+      "charactersPerPage": 416.7,
+      "arabicLetterShare": 0.134,
+      "reasons": [
+        "Arabic-script share 0.13 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "lol-te-rehe",
+      "iaid": "Mady_lol-te-rehe-kashmiri-jawahar-lal-saroor",
+      "title": "Lol Te Rehe Kashmiri Jawahar Lal Saroor",
+      "category": "Poetry",
+      "source": "https://archive.org/details/Mady_lol-te-rehe-kashmiri-jawahar-lal-saroor",
+      "pages": 136,
+      "charactersPerPage": 97.9,
+      "arabicLetterShare": 0.3735,
+      "reasons": [
+        "average 97.9 characters/page is below the 200 characters/page floor (no usable text layer)",
+        "Arabic-script share 0.37 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "kehwat-rehman-rahi",
+      "iaid": "ygBP_kehwat-kashmiri-urdu-rehman-rahi",
+      "title": "Kehwat ( Kashmiri) Rehman Rahi -Kashmir Treasure",
+      "category": "Poetry",
+      "source": "https://archive.org/details/ygBP_kehwat-kashmiri-urdu-rehman-rahi",
+      "pages": 314,
+      "charactersPerPage": 525.6,
+      "arabicLetterShare": 0.4959,
+      "reasons": [
+        "Arabic-script share 0.50 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "siya-rath-te-maete-khaab",
+      "iaid": "eMNf_siya-rath-te-maete-khaab-a-collection-of-kashmiri-short-stories-by-hameeda-shah-",
+      "title": "Siya Rath Te Maete Khaab A Collection Of Kashmiri Short Stories By Hameeda Shah Akhter Urdu And Kashmiri Kashmir Treasures",
+      "category": "Short stories",
+      "source": "https://archive.org/details/eMNf_siya-rath-te-maete-khaab-a-collection-of-kashmiri-short-stories-by-hameeda-shah-",
+      "pages": 146,
+      "charactersPerPage": 478.3,
+      "arabicLetterShare": 0.8762,
+      "reasons": [
+        "review override: mid-book pages are unreadable Nastaliq OCR word-salad (measured samples kept in the build report), so the item is rejected even though it clears the density and Arabic-share thresholds"
+      ]
+    },
+    {
+      "id": "kashir-gitanjali",
+      "iaid": "KashirGitanjaliKashmiriBySarvanandKoulPremiKashmiriJKCultureAcademy",
+      "title": "Kashir Gitanjali Kashmiri By Sarvanand Koul Premi Kashmiri JK Culture Academy",
+      "category": "Poetry",
+      "source": "https://archive.org/details/KashirGitanjaliKashmiriBySarvanandKoulPremiKashmiriJKCultureAcademy",
+      "pages": 125,
+      "charactersPerPage": 131.3,
+      "arabicLetterShare": 0.0,
+      "reasons": [
+        "average 131.3 characters/page is below the 200 characters/page floor (no usable text layer)",
+        "Arabic-script share 0.00 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "kashmiri-phonetic-reader",
+      "iaid": "dli.language.1685",
+      "title": "Kashmiri Phonetic Reader",
+      "category": "Language course",
+      "source": "https://archive.org/details/dli.language.1685",
+      "pages": 125,
+      "charactersPerPage": 677.2,
+      "arabicLetterShare": 0.0,
+      "reasons": [
+        "Arabic-script share 0.00 of letter characters is below 0.50 and this item is not a documented Romanised/Devanagari language course"
+      ]
+    },
+    {
+      "id": "yaath-na-beqayi-haaba",
+      "iaid": "yaath-na-beqayi-haaba-by-gulam-nabi-baba-kashmiri-afsana-short-stories-kashmir-treasure",
+      "title": "YAATH NA BEQAYI HAABA By GULAM NABI BABA (Kashmiri Afsana-Short Stories ) -Kashmir Treasure",
+      "category": "Short stories",
+      "source": "https://archive.org/details/yaath-na-beqayi-haaba-by-gulam-nabi-baba-kashmiri-afsana-short-stories-kashmir-treasure",
+      "pages": 111,
+      "charactersPerPage": 424.6,
+      "arabicLetterShare": 0.9897,
+      "reasons": [
+        "review override: mid-book pages are unreadable Nastaliq OCR word-salad (measured samples kept in the build report), so the item is rejected even though it clears the density and Arabic-share thresholds"
+      ]
+    }
   ]
 }
