@@ -161,6 +161,8 @@ The profile also counts attested copula/auxiliary, negation, relative–correlat
 
 The Translator grammar pass now recognizes additional attested copula spellings, common postposition variants, likely clause-final predicates, relative–correlative constructions, dative candidates and past-transitive ergative signals. These diagnostics identify what a reviewer should check. They do not rewrite uncertain endings or claim that the neural model has been retrained.
 
+The writing-quality pass separately reports unsafe Unicode presentation forms, normalized Arabic/Urdu code-point variants and unexpected mixed Latin text. Its grammar review now tracks relative forms missing an explicit correlate, clause-level predicate signals, honorific expressions, coordination, English possessives, modality and relative clauses. These are editorial warnings rather than automatic rewrites: they direct a fluent reviewer to the relevant case, agreement or construction while preserving the writer's original sentence.
+
 ### *Kaishrik Grammer* OCR corpus
 
 The project owner reports direct permission from the rights holder to OCR Shok Shafiq's *Kaishrik Grammer* (N.S. Publications), use derived text for machine training and the public website, and redistribute the derived text. The source scan is [Internet Archive item `dli.ernet.510105`](https://archive.org/details/dli.ernet.510105). Attribution and this permission statement are retained with the derived corpus.

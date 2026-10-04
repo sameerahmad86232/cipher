@@ -83,7 +83,11 @@ assert.ok(prepareText('مےٚ پٔر اَکھ کِتاب', 'ks-en').text.include
 assert.equal(normalizeKashmiri('ه ي ك'), 'ہ ی ک');
 assert.equal(normalizeKashmiri('أ إ ئ ة ك ي ى'), 'ا ا ی ہ ک ی ی');
 assert.equal(analyzeKashmiriSentence('مےٚ پٔر اَکھ کِتاب؟').question, true);
+assert.equal(analyzeKashmiriSentence('یُس کِتاب پَران چھُ').grammarWarnings.length > 0, true);
+assert.equal(analyzeKashmiriSentence('يہ کِتاب چھُ').encodingWarnings.length > 0, true);
 assert.equal(analyzeEnglishSentence('Why do they not come?').negative, true);
+assert.equal(analyzeEnglishSentence('His brother read the book.').possessive, true);
+assert.equal(analyzeEnglishSentence('His brother read the book.').transitivePast, true);
 assert.equal(applyGrammarOutput('اَمہٕ حالت۔', 'Is this good?', 'en-ks').endsWith('؟'), true);
 assert.equal(JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json'))).metadata.ocrCharacterInventory.length, 38);
 const forms = new Set(words.flatMap(w => w.forms.map(f => f.word)));
