@@ -4,11 +4,13 @@ const ARABIC_WORD = /[\p{Script=Arabic}\p{M}][\p{Script=Arabic}\p{M}\u200c\u200d
 const ENGLISH_WORD = /[A-Za-z][A-Za-z'-]*/g;
 const NEGATIVE_KASHMIRI = new Set(['نہ', 'نہٕ', 'نَہ', 'نَہٕ', 'نا', 'مَہ', 'مت']);
 const QUESTION_KASHMIRI = new Set(['کیا', 'کوٚس', 'کُس', 'کَتھ', 'کوت', 'کٔتھ', 'کِتھ']);
-const POSTPOSITIONS = new Set(['منٛز', 'پؠٹھ', 'سٕتۍ', 'سٕنٛد', 'سٕنٛز', 'خٲطرٕ', 'تھٲوُن', 'تھٲں', 'تہٕ']);
-const AUXILIARIES = new Set(['چھ', 'چُھ', 'چھِ', 'چھُو', 'آس', 'آسِ', 'آسُن', 'آسٕن', 'اتھ', 'اوس']);
+const POSTPOSITIONS = new Set(['منٛز', 'مَنٛز', 'منز', 'پؠٹھ', 'سٕتۍ', 'سٟتؠ', 'سٲتِہ', 'سٕنٛد', 'سٕنٛز', 'خٲطرٕ', 'تھٲوُن', 'تھٲں']);
+const AUXILIARIES = new Set(['چھ', 'چُھ', 'چھِ', 'چِھ', 'چھُو', 'چھےٚ', 'چُھس', 'چُھکھ', 'آس', 'آسِ', 'آسُن', 'آسٕن', 'اوس']);
 const ERGATIVE_PRONOUNS = new Set(['مےٚ', 'تٔمۍ', 'تِمَو', 'اَسہِ', 'تُہۍ']);
 const DATIVE_FORMS = new Set(['مےٚ', 'تَس', 'تِمَن', 'اَسہِ', 'تُہۍ']);
 const PAST_AUXILIARIES = new Set(['اوس', 'آس', 'آسِ', 'آسٕن']);
+const RELATIVES = new Set(['یُس', 'یۄس', 'یِم', 'یَتھ']);
+const CORRELATIVES = new Set(['سُہ', 'تِم', 'تَتھ', 'تتھ']);
 
 function kashmiriTokens(value) {
   return [...String(value || '').normalize('NFC').matchAll(ARABIC_WORD)].map(match => match[0]);
@@ -28,7 +30,11 @@ export function analyzeKashmiriSentence(input) {
   const ergativeAgent = lower.some(token => ERGATIVE_PRONOUNS.has(token));
   const dativeCandidate = lower.some(token => DATIVE_FORMS.has(token));
   const pastAuxiliary = lower.some(token => PAST_AUXILIARIES.has(token));
-  const wordOrder = tokens.length >= 3 ? 'likely verb-final / SOV' : 'short clause';
+  const last = lower.at(-1) || '';
+  const verbFinalSignal = AUXILIARIES.has(last) || /(?:ان|وان|مُت|مِت|وُن|نہٕ)$/u.test(last);
+  const wordOrder = tokens.length < 3 ? 'short clause' : verbFinalSignal ? 'attested verb-final signal' : 'review predicate position (Kashmiri commonly places it late)';
+  const hasRelative = lower.some(token => RELATIVES.has(token));
+  const hasCorrelative = lower.some(token => CORRELATIVES.has(token));
   const checks = [
     wordOrder,
     negative ? 'negative polarity' : 'affirmative polarity',
@@ -36,9 +42,10 @@ export function analyzeKashmiriSentence(input) {
     hasPostposition ? 'check case and postposition' : 'check case marking',
     hasAuxiliary ? 'check copula/auxiliary agreement' : 'check TAM and verb agreement',
     ergativeAgent || pastAuxiliary ? 'check past-transitive ergative agreement' : 'no clear ergative-past signal',
-    dativeCandidate ? 'check dative subject/object interpretation' : 'no clear dative-pronoun signal'
+    dativeCandidate ? 'check dative subject/object interpretation' : 'no clear dative-pronoun signal',
+    hasRelative && !hasCorrelative ? 'relative form detected; check its matching main-clause correlate' : hasRelative ? 'relative–correlative construction detected' : 'no relative–correlative signal'
   ];
-  return { normalized, tokens, question, negative, wordOrder, ergativeAgent, dativeCandidate, checks, summary: `Kashmiri grammar pass: ${checks.join(' · ')}.` };
+  return { normalized, tokens, question, negative, wordOrder, ergativeAgent, dativeCandidate, hasRelative, hasCorrelative, checks, summary: `Kashmiri grammar pass: ${checks.join(' · ')}.` };
 }
 
 export function analyzeEnglishSentence(input) {

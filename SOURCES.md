@@ -147,6 +147,12 @@ The site adds `assets/kashmiri-public-corpus.json`, a sentence-level reading col
 
 The corpus contributes **8,336 sentences** for source-linked reading and **11,124 unique corpus vocabulary forms** to `assets/dictionary-corpus.json`. These forms are labeled as corpus vocabulary and do not receive fabricated English meanings. Every record preserves its source URL and license. The reproducible import is `scripts/import-public-corpus.py`; `scripts/add-public-corpus-vocabulary.mjs` creates the dictionary vocabulary layer. This corpus is useful for search, reading and future licensed parallel-corpus evaluation; it does not retrain the live NLLB model automatically.
 
+### Non-Qur’anic grammar profile
+
+`assets/kashmiri-grammar-profile.json` is generated from the licensed public corpus by `scripts/build-kashmiri-grammar-profile.mjs`. It deliberately excludes Qur’anic material, raw OCR, URL-like rows, markup-heavy rows and text dominated by Latin script. Of 8,336 source records, 4,500 pass these conservative filters. The profile stores the 150 most frequent words, bigrams and trigrams as attestation evidence and records the corpus’s domain skew; frequency is not treated as a universal grammar rule.
+
+The Translator grammar pass now recognizes additional attested copula spellings, common postposition variants, likely clause-final predicates, relative–correlative constructions, dative candidates and past-transitive ergative signals. These diagnostics identify what a reviewer should check. They do not rewrite uncertain endings or claim that the neural model has been retrained.
+
 ## Optional offline translation model
 
 The Translator view offers an opt-in browser/mobile offline mode using the ONNX conversion [`Xenova/nllb-200-distilled-600M`](https://huggingface.co/Xenova/nllb-200-distilled-600M), loaded through Transformers.js. It supports the project’s `kas_Arab` and `eng_Latn` directions and is cached on the device after the first download; the project does not bundle the large weight files. The model card identifies the underlying Meta NLLB model and **CC BY-NC 4.0** terms. Users must review those terms before redistribution or commercial use. Device memory, storage, browser support and translation speed vary; online mode remains available as a fallback.
