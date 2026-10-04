@@ -183,7 +183,7 @@ function search(commit = false) {
   if (collection === 'calendar') matches = matches.filter(w => w.senses.some(s => s.topic === 'calendar'));
   if (browse) matches = matches.filter(w => $('#alphabet-select').value === 'en' ? w.senses.some(s => norm(s.e).startsWith(norm(browse))) : fold(w.k).startsWith(fold(browse)));
   $('#results-title').textContent = q ? `Results for “${q}”` : collection === 'calendar' ? 'Days & calendar' : collection === 'historical' ? 'Historical romanized dictionary' : collection === 'book-ocr' ? 'Koul book OCR' : collection === 'school-ocr' ? 'Open Kashmiri books OCR' : collection === 'kashir-ocr' ? 'Kashir Dictionary · seven-volume OCR' : collection === 'reading-ocr' ? 'Grammar, textbooks and translations' : collection === 'public-corpus' ? 'Licensed Kashmiri corpus' : browse ? `Words beginning with ${browse}` : 'Featured words';
-  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : collection === 'school-ocr' ? 'MACHINE OCR · OPEN LICENSED KASHMIRI BOOKS' : collection === 'kashir-ocr' ? 'MACHINE OCR · 2,710 REFERENCE-DICTIONARY PAGES' : collection === 'reading-ocr' ? 'MACHINE OCR · 2,813 READING AND DICTIONARY PAGES' : collection === 'public-corpus' ? 'LICENSED CORPUS · 8,336 SENTENCES' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
+  $('#results-eyebrow').textContent = collection === 'historical' ? 'HISTORICAL ROMANIZED KASHMIRI · GRIERSON' : collection === 'book-ocr' ? 'MACHINE OCR · 140 SCANNED PAGES' : collection === 'school-ocr' ? 'MACHINE OCR · OPEN LICENSED KASHMIRI BOOKS' : collection === 'kashir-ocr' ? 'MACHINE OCR · 2,710 REFERENCE-DICTIONARY PAGES' : collection === 'reading-ocr' ? 'MACHINE OCR · 2,981 READING AND DICTIONARY PAGES' : collection === 'public-corpus' ? 'LICENSED CORPUS · 8,336 SENTENCES' : q ? 'DICTIONARY SEARCH' : collection || browse ? 'EXPLORE THE DICTIONARY' : 'START EXPLORING';
   if (!q && !collection && !browse) matches = matches.slice(0, 12);
   if (commit) remember(q); render();
 }
@@ -283,8 +283,49 @@ letters(); renderRecent(); showView(location.hash.slice(1));
 
 // Server-side neural translation runs in the public Hugging Face Space.
 const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
+const TTS_SPACE = 'https://gaash-lab-matcha-tts-kashmiri-demo.hf.space';
+// Named endpoints are bound to the Space by name, so they survive a rebuild that
+// reorders components. The legacy queue API is keyed by fn_index instead.
+const TRANSLATE_API = 'translate', TTS_API = 'pipeline';
+const DIRECTION_LABELS = { 'ks-en': 'Kashmiri → English', 'en-ks': 'English → Kashmiri' };
+// A cold or sleeping Space can take a long time to answer, so the ceiling is
+// generous and the idle watchdog is what catches a stream that has really died.
+const SPACE_CEILING_MS = 300000, SPACE_IDLE_MS = 60000, SPACE_WAKE_HINT_MS = 5000;
+// This Space runs on scale-to-zero hardware, so the first request after a quiet
+// period is refused until the container is back up.
+const SPACE_WAKE_MS = 90000, SPACE_WAKE_POLL_MS = 3000;
+class SpaceError extends Error {
+  constructor(message, retryable = false, waking = false) { super(message); this.name = 'SpaceError'; this.retryable = retryable; this.waking = waking; }
+}
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+function spaceStatusMessage(status, body) {
+  const text = String(body || '').slice(0, 400);
+  if (/zerogpu|gpu runs limit|quota|exceeded your/i.test(text)) return 'The public model has used up its free GPU quota for now. Try again later, or turn on the offline model to translate on this device.';
+  if (status === 429) return 'The public model is rate limited right now. Wait a few seconds, then try again.';
+  if (status === 401 || status === 403) return 'The public model refused this request. The Space may have been made private.';
+  if (status === 404 || status === 405) return 'The public model server has changed its API and this app needs updating.';
+  if (status === 503 || /sleep|building|starting|runtime error|paused|no gpu/i.test(text)) return 'The public model server is asleep or still starting. It can take up to a minute to wake — try again shortly.';
+  if (status >= 500) return `The public model server reported a temporary error (${status}). Try again shortly.`;
+  return `The public model server rejected the request (${status}).`;
+}
+// Polls the cheap health endpoint until the container answers. This is what makes
+// a scale-to-zero Space usable: the queue endpoint refuses connections until then.
+async function waitForSpaceAwake(space, signal, status) {
+  // Nothing to wait for if the device itself is offline; fail fast and say so.
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) return false;
+  const deadline = Date.now() + SPACE_WAKE_MS;
+  while (Date.now() < deadline) {
+    try {
+      const probe = await fetch(`${space}/gradio_api/info`, { signal, cache: 'no-store' });
+      if (probe.ok) return true;
+    } catch (error) { if (error.name === 'AbortError' || signal?.aborted) throw error; }
+    status?.('The public model server is starting up. The first request after a quiet period can take up to a minute…');
+    await wait(SPACE_WAKE_POLL_MS);
+  }
+  return false;
+}
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
-let direction = 'ks-en', busy = false, translated = '', activeController, liveTimer, liveRequestText = '';
+let direction = 'ks-en', busy = false, translated = '', activeController, speechController, liveTimer, liveRequestText = '';
 const initialNote = 'Online mode sends text to the public translator. Offline mode downloads a quantized NLLB-200 model once, then runs on this device. The model is large and translation may be slower on phones; review important text with a fluent speaker.';
 const OFFLINE_MODEL = 'Xenova/nllb-200-distilled-600M';
 let offlineTranslatorPromise, offlineModelReady = false;
@@ -404,85 +445,161 @@ function setDirection(next) {
   $('#example-sentence').textContent = english ? 'The weather is good today.' : 'مےٚ پٔر اَکھ کِتاب'; countSentence(); setBusy(false);
 }
 function stop() {
-  clearTimeout(liveTimer); liveTimer = undefined; activeController?.abort(); activeController = undefined; translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty');
+  clearTimeout(liveTimer); liveTimer = undefined; activeController?.abort(); activeController = undefined;
+  speechController?.abort(); speechController = undefined;
+  translated = ''; output.textContent = 'Translation stopped.'; output.classList.add('empty');
   $('#copy-translation').disabled = true; note.textContent = 'Stopped. The server request was cancelled.'; setBusy(false);
   $('#live-status').textContent = 'Ready';
 }
+// One SSE frame is an optional "event:" name plus a JSON "data:" payload.
+function parseSseFrame(frame) {
+  let event = '', data;
+  for (const line of frame.split('\n')) {
+    if (line.startsWith('event:')) event = line.slice(6).trim();
+    else if (line.startsWith('data:')) data = data === undefined ? line.slice(5).trim() : `${data}\n${line.slice(5).trim()}`;
+  }
+  if (data === undefined) return null;
+  if (!data || data === 'null') return { event, data: null };
+  try { return { event, data: JSON.parse(data) }; } catch { return { event, data: null }; }
+}
+// The model's own error text is worth keeping, but GPU-quota exhaustion is a
+// dead end for the visitor, so it is rewritten as something they can act on.
+function modelErrorMessage(text) {
+  const message = String(text || '').trim();
+  if (!message) return '';
+  if (/zerogpu|gpu runs limit|quota|exceeded your/i.test(message)) return 'The public model has used up its free GPU quota for now. Try again later, or turn on the offline model to translate on this device.';
+  return message;
+}
+const isQuotaMessage = text => /zerogpu|gpu runs limit|quota|exceeded your/i.test(String(text || ''));
+// Consumes the event stream, honouring the caller's signal and giving up only
+// when the stream stops producing anything at all.
+async function readSpaceStream(response, signal, handleFrame) {
+  const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
+  try {
+    for (;;) {
+      if (signal?.aborted) throw signal.reason instanceof Error ? signal.reason : new DOMException('Stopped', 'AbortError');
+      let idle;
+      const chunk = await Promise.race([
+        reader.read(),
+        new Promise((_, reject) => { idle = setTimeout(() => reject(new SpaceError('The public model stopped responding. It may be waking up or overloaded — try again.', true)), SPACE_IDLE_MS); })
+      ]).finally(() => clearTimeout(idle));
+      if (chunk.done) break;
+      buffer += decoder.decode(chunk.value, { stream: true });
+      const frames = buffer.split('\n\n'); buffer = frames.pop() || '';
+      for (const frame of frames) { const parsed = parseSseFrame(frame); if (parsed && handleFrame(parsed) === true) return; }
+    }
+    const last = parseSseFrame(buffer); if (last) handleFrame(last);
+  } finally { reader.cancel().catch(() => {}); }
+}
+// Runs one Space job, preferring the named endpoint and falling back to the
+// legacy fn_index queue API when the Space build has no named API.
+async function runSpaceJob({ space, apiName, fnIndex, data, signal, status, errorHint }) {
+  const attempt = async named => {
+    const sessionHash = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+    const endpoint = named ? `${space}/gradio_api/call/${apiName}` : `${space}/gradio_api/queue/join`;
+    const payload = named ? { data } : { data, fn_index: fnIndex, session_hash: sessionHash };
+    let joined;
+    try {
+      joined = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal, body: JSON.stringify(payload) });
+    } catch (error) {
+      if (error.name === 'AbortError' || signal?.aborted) throw error;
+      throw new SpaceError('Could not reach the public model server. It may still be starting up, or your connection may be down.', true, true);
+    }
+    // An older Gradio build simply has no named API, so fall back quietly.
+    if (named && (joined.status === 404 || joined.status === 405)) return undefined;
+    if (!joined.ok) {
+      const body = await joined.text().catch(() => '');
+      const quota = isQuotaMessage(body);
+      throw new SpaceError(spaceStatusMessage(joined.status, body), !quota && (joined.status === 429 || joined.status >= 500), !quota && joined.status === 503);
+    }
+    const { event_id: eventId } = await joined.json().catch(() => ({}));
+    if (!eventId) throw new SpaceError('The public model server returned an unexpected response.', true);
+    const streamUrl = named ? `${endpoint}/${encodeURIComponent(eventId)}` : `${space}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`;
+    const wakeHint = setTimeout(() => status?.('The public model server is waking up. This can take up to a minute…'), SPACE_WAKE_HINT_MS);
+    try {
+      let response;
+      try {
+        response = await fetch(streamUrl, { headers: { Accept: 'text/event-stream' }, signal });
+      } catch (error) {
+        if (error.name === 'AbortError' || signal?.aborted) throw error;
+        throw new SpaceError('Lost the connection to the public model server. Try again.', true, true);
+      }
+      if (!response.ok || !response.body) throw new SpaceError(spaceStatusMessage(response.status, ''), true, response.status === 503);
+      let result;
+      await readSpaceStream(response, signal, ({ event, data: frame }) => {
+        if (named) {
+          if (event === 'error') throw new SpaceError(modelErrorMessage(typeof frame === 'string' ? frame : '') || errorHint || 'The public model rejected this request. Try again.');
+          if (event === 'complete') { result = frame; return true; }
+          return;
+        }
+        if (frame?.event_id && frame.event_id !== eventId) return;
+        if (frame?.msg === 'estimation' || frame?.msg === 'process_starts') status?.('The public model is translating…');
+        if (frame?.msg === 'process_completed') {
+          if (!frame.success || frame.output?.error) throw new SpaceError(modelErrorMessage(frame.output?.error) || 'The public model could not complete this request.');
+          result = frame.output?.data; return true;
+        }
+        if (frame?.msg === 'close_stream') return true;
+      });
+      if (!Array.isArray(result)) throw new SpaceError('The public model closed the connection before returning a result.', true);
+      return result;
+    } finally { clearTimeout(wakeHint); }
+  };
+  let failure, wokeUp = false;
+  // Named endpoint first, then the legacy fn_index queue API.
+  const plans = [{ named: true, tries: 0 }, { named: false, tries: 0 }];
+  while (plans.length) {
+    const plan = plans[0];
+    try {
+      const result = await attempt(plan.named);
+      if (result !== undefined) return result;
+      plans.shift();
+    } catch (error) {
+      if (error.name === 'AbortError' || signal?.aborted) throw error;
+      if (!(error instanceof SpaceError)) throw error;
+      failure = error;
+      if (!wokeUp && error.waking) {
+        wokeUp = true;
+        if (await waitForSpaceAwake(space, signal, status)) continue;
+      }
+      plan.tries += 1;
+      if (!error.retryable || plan.tries >= 2) { plans.shift(); continue; }
+      await wait(1500);
+    }
+  }
+  throw failure || new SpaceError('The public model server could not be reached. Try again shortly.', true, true);
+}
 async function serverTranslate(text) {
   const controller = new AbortController(); activeController = controller;
-  const timeout = setTimeout(() => controller.abort(), 120000);
+  const timeout = setTimeout(() => controller.abort(new DOMException('The public model server took too long to answer.', 'TimeoutError')), SPACE_CEILING_MS);
   try {
-    const sessionHash = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
-    const serverDirection = direction === 'ks-en' ? 'Kashmiri → English' : 'English → Kashmiri';
-    const joined = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/join`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
-      body: JSON.stringify({ data: [text, serverDirection], fn_index: 0, session_hash: sessionHash })
+    return await runSpaceJob({
+      space: TRANSLATOR_SPACE, apiName: TRANSLATE_API, fnIndex: 0, data: [text, DIRECTION_LABELS[direction]], signal: controller.signal,
+      errorHint: direction === 'ks-en' ? 'The translator rejected this text. For Kashmiri → English it needs Perso-Arabic Kashmiri script.' : 'The translator rejected this text. Check the sentence and try again.',
+      status: message => { note.textContent = message; $('#live-status').textContent = 'Translating…'; }
     });
-    if (!joined.ok) throw new Error(`Server queue rejected the request (${joined.status}).`);
-    const { event_id: eventId } = await joined.json();
-    const response = await fetch(`${TRANSLATOR_SPACE}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`, { signal: controller.signal, headers: { Accept: 'text/event-stream' } });
-    if (!response.ok || !response.body) throw new Error(`Server stream unavailable (${response.status}).`);
-    const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
-    while (true) {
-      const chunk = await reader.read(); if (chunk.done) break; buffer += decoder.decode(chunk.value, { stream: true });
-      const events = buffer.split('\n\n'); buffer = events.pop() || '';
-      for (const event of events) {
-        const line = event.split('\n').find(item => item.startsWith('data: ')); if (!line) continue;
-        const message = JSON.parse(line.slice(6)); if (message.event_id && message.event_id !== eventId) continue;
-        if (message.msg === 'process_starts') note.textContent = 'Server model is translating…';
-        if (message.msg === 'process_completed') {
-          if (!message.success || message.output?.error) throw new Error(message.output?.error || 'The server could not complete this translation.');
-          return message.output.data;
-        }
-        if (message.msg === 'close_stream') break;
-      }
-    }
-    throw new Error('The server closed the translation stream before returning a result.');
   } finally { clearTimeout(timeout); }
 }
 
-const TTS_SPACE = 'https://gaash-lab-matcha-tts-kashmiri-demo.hf.space';
 function kashmiriSpeechText() {
   return direction === 'ks-en' ? sentenceInput.value.trim() : translated.trim();
 }
 async function generateKashmiriSpeech(text, voice, quality) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 180000);
+  const controller = new AbortController(); speechController = controller;
+  const timeout = setTimeout(() => controller.abort(new DOMException('The speech model took too long to answer.', 'TimeoutError')), SPACE_CEILING_MS);
   try {
-    const sessionHash = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
-    const joined = await fetch(`${TTS_SPACE}/gradio_api/queue/join`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
-      body: JSON.stringify({ data: [text, false, voice, quality], fn_index: 0, session_hash: sessionHash })
+    const data = await runSpaceJob({
+      space: TTS_SPACE, apiName: TTS_API, fnIndex: 0, data: [text, false, voice, quality], signal: controller.signal,
+      errorHint: 'The speech model rejected this text. It needs Kashmiri in Perso-Arabic script.',
+      status: message => { $('#tts-status').textContent = message; }
     });
-    if (!joined.ok) throw new Error(`Speech server rejected the request (${joined.status}).`);
-    const { event_id: eventId } = await joined.json();
-    const response = await fetch(`${TTS_SPACE}/gradio_api/queue/data?session_hash=${encodeURIComponent(sessionHash)}`, {
-      signal: controller.signal, headers: { Accept: 'text/event-stream' }
-    });
-    if (!response.ok || !response.body) throw new Error(`Speech stream unavailable (${response.status}).`);
-    const reader = response.body.getReader(), decoder = new TextDecoder(); let buffer = '';
-    while (true) {
-      const chunk = await reader.read(); if (chunk.done) break;
-      buffer += decoder.decode(chunk.value, { stream: true });
-      const events = buffer.split('\n\n'); buffer = events.pop() || '';
-      for (const event of events) {
-        const line = event.split('\n').find(item => item.startsWith('data: ')); if (!line) continue;
-        const message = JSON.parse(line.slice(6));
-        if (message.event_id && message.event_id !== eventId) continue;
-        if (message.msg === 'process_completed') {
-          if (!message.success || message.output?.error) throw new Error(message.output?.error || 'Speech generation failed.');
-          const [processedText, audioFile] = message.output.data || [];
-          const audioUrl = typeof audioFile === 'string' ? audioFile : audioFile?.url;
-          if (!audioUrl && !audioFile?.path) throw new Error('The speech model returned no audio file.');
-          return {
-            processedText,
-            audioUrl: audioUrl ? new URL(audioUrl, TTS_SPACE).href : `${TTS_SPACE}/gradio_api/file=${encodeURIComponent(audioFile.path)}`
-          };
-        }
-      }
-    }
-    throw new Error('The speech stream closed before returning audio.');
-  } finally { clearTimeout(timeout); }
+    const [processedText, audioFile] = data;
+    const audioUrl = typeof audioFile === 'string' ? audioFile : audioFile?.url;
+    if (!audioUrl && !audioFile?.path) throw new SpaceError('The speech model returned no audio file.');
+    return {
+      processedText,
+      audioUrl: audioUrl ? new URL(audioUrl, TTS_SPACE).href : `${TTS_SPACE}/gradio_api/file=${encodeURIComponent(audioFile.path)}`
+    };
+  } finally { clearTimeout(timeout); speechController = undefined; }
 }
 $('#speak-kashmiri').addEventListener('click', async () => {
   const button = $('#speak-kashmiri'), status = $('#tts-status'), audio = $('#tts-audio');
@@ -498,7 +615,9 @@ $('#speak-kashmiri').addEventListener('click', async () => {
     audio.src = result.audioUrl; audio.hidden = false; audio.load();
     status.textContent = `Ready${result.processedText && result.processedText !== text ? ` · normalized as ${result.processedText}` : ''}.`;
   } catch (error) {
-    status.textContent = error.name === 'AbortError' ? 'Speech generation timed out. Please try again.' : (error.message || 'Speech generation failed.');
+    status.textContent = error.name === 'AbortError' ? 'Speech generation was stopped.'
+      : error.name === 'TimeoutError' ? 'Speech generation timed out. The speech server may be waking up — try again.'
+      : (error.message || 'Speech generation failed.');
   } finally { button.disabled = false; button.textContent = 'Generate speech'; }
 });
 $('#swap-languages').addEventListener('click', () => setDirection(direction === 'ks-en' ? 'en-ks' : 'ks-en'));
@@ -534,8 +653,13 @@ async function translateCurrent(automatic = false) {
     if (direction === 'ks-en' && normalized) $('#source-transliteration').textContent = `Normalized Kashmiri: ${normalized} · Romanized reading: ${romanized}`;
     renderGrammarNote(grammar); $('#dictionary-context').textContent = dictionaryContext || 'No exact dictionary entry found; the neural model supplied the translation.'; note.textContent = `${$('#offline-translate').checked ? 'Offline model: NLLB-200 600M.' : 'Server model: NLLB-200 600M.'} ${fallback.words.length ? `Unknown English words were rendered in Kashmiri script: ${fallback.words.join(', ')}. ` : ''}Automatic translation—check grammar, names and meaning with a fluent speaker.`;
   } catch (error) {
-    if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
-    else note.textContent = 'The server request timed out or was stopped. Try again.';
+    if (error.name === 'AbortError') note.textContent = 'The server request was stopped. Try again.';
+    else {
+      translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true;
+      note.textContent = error.name === 'TimeoutError'
+        ? 'The public model server took too long to answer. It may be waking up — try again in a moment.'
+        : (error.message || 'The server translation failed.');
+    }
   } finally { activeController = undefined; setBusy(false); $('#live-status').textContent = 'Ready'; }
 }
 run.addEventListener('click', () => translateCurrent(false));
