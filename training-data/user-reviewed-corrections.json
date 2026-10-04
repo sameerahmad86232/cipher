@@ -16,6 +16,16 @@
       "humanReview": "approved-by-project-owner",
       "reviewDate": "2026-10-04",
       "supersedes": ["سَچ", "صُبحُک گاش پٲٹھۍ", "اَکیلے روزان"]
+    },
+    {
+      "id": "bukhari-3-angel-r1",
+      "context": "Sahih al-Bukhari Hadith 3 — return to Khadija, the angel's command, and Quran 96:2",
+      "english": "He returned to Khadija. The angel caught me and pressed me strongly against himself, then released me and told me again to read. He caught me again a second time. He created man from a clot.",
+      "kashmiri": "تِم ٲس حَضرت خدیجہ رَضِیَ اللہُ عَنْہاؠس نِش واپس یِوان۔ فِرِشتَن روٚٹُس بہٕ پانَس سۭتۍ زور سان۔ پَتہٕ ترٛووُس بہٕ تٔمۍ تہٕ ووٚنُن بَیِہ: ”پَرٕ!“ پَتہٕ روٚٹُس بہٕ تٔمۍ بَیِہ دۄیمہِ لَٹہِ پانَس سۭتۍ زور سان۔ اِنسان کوٚر لَگِتھ کَمَتۍ خوٗنہٕ سۭتۍ پَیدٕ۔",
+      "status": "user-preferred",
+      "humanReview": "approved-by-project-owner",
+      "reviewDate": "2026-10-04",
+      "supersedes": ["رضی اللہ عنہا نِش", "فِرِشتَن دَرٛاو بہٕ", "ژھِچِہ پَیدا"]
     }
   ],
   "lexicon": [
@@ -24,6 +34,10 @@
     { "k": "صُبحُک گاش", "e": "morning light; bright daylight", "p": "Noun phrase", "tr": "subhuk gaash" },
     { "k": "خَلوَت", "e": "seclusion; solitude", "p": "Noun", "tr": "khalwat" },
     { "k": "کُنہِ زون", "e": "alone; by oneself", "p": "Adverbial phrase", "tr": "kuni zon" },
-    { "k": "وَحی نازِل سَپدُن", "e": "revelation to descend", "p": "Verb phrase", "tr": "wahi naazil sapdun" }
+    { "k": "وَحی نازِل سَپدُن", "e": "revelation to descend", "p": "Verb phrase", "tr": "wahi naazil sapdun" },
+    { "k": "پانَس سۭتۍ", "e": "against oneself; to oneself", "p": "Adverbial phrase", "tr": "paanas seth", "correctionId": "bukhari-3-angel-r1" },
+    { "k": "روٚٹُن", "e": "to catch; to hold", "p": "Verb", "tr": "rotun", "correctionId": "bukhari-3-angel-r1" },
+    { "k": "ترٛاوُن", "e": "to release; to let go", "p": "Verb", "tr": "traavun", "correctionId": "bukhari-3-angel-r1" },
+    { "k": "لَگِتھ کَمَتۍ خوٗنہٕ", "e": "a clot; clotted blood", "p": "Noun phrase", "tr": "lagith kameti khoon", "correctionId": "bukhari-3-angel-r1", "example": true }
   ]
 }

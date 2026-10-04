@@ -1,14 +1,14 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-04T13:10:49.436Z",
+  "generatedAt": "2026-10-04T13:32:42.365Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
-    "pairs": 126,
-    "lexicalMappings": 14261,
-    "distinctKashmiriHeadwords": 9569,
-    "distinctEnglishGlosses": 7185,
-    "humanReviewed": 1,
+    "pairs": 127,
+    "lexicalMappings": 14265,
+    "distinctKashmiriHeadwords": 9572,
+    "distinctEnglishGlosses": 7189,
+    "humanReviewed": 2,
     "pendingHumanReview": 125
   },
   "policy": [
@@ -2531,6 +2531,23 @@
       "english": "The commencement of the Divine Inspiration to Allah's Messenger was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to remain alone in the cave of Hira and worship Allah.",
       "transliteration": "rasw˔lu ạ̄llh śly ạ̄llh ʔlyh wslman pʲʈʰ waħy nạ̄żil sapud nyk thɨ pwᵉżan xwạ̄ban sty ʃrw˔ʔ. naby krym śly ạ̄llh ʔlyh wslm yus thi xwạ̄b ạ̄ws wuʧʰạ̄n, suh ạ̄ws śubħuk gạ̄ʃuk pə̄ʈʰy śạ̄f thɨ pwᵉż ãsạ̄n. pathɨ ãyhi naby krym śly ạ̄llh ʔlyh wslman xalwat pasnd thɨ tim ə̄s ġạ̄ri ħrạ̄ has mnż kunhi żwn ãsạ̄n thɨ ə̄s ạ̄llh tʔạ̄ly sɨnż ʔbạ̄dt karạ̄n.",
       "headword": "نیک خواب",
+      "partOfSpeech": "Noun phrase",
+      "grammar": [],
+      "forms": [],
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "ks-en-0127",
+      "kashmiri": "تِم ٲس حَضرت خدیجہ رَضِیَ اللہُ عَنْہاؠس نِش واپس یِوان۔ فِرِشتَن روٚٹُس بہٕ پانَس سۭتۍ زور سان۔ پَتہٕ ترٛووُس بہٕ تٔمۍ تہٕ ووٚنُن بَیِہ: ”پَرٕ!“ پَتہٕ روٚٹُس بہٕ تٔمۍ بَیِہ دۄیمہِ لَٹہِ پانَس سۭتۍ زور سان۔ اِنسان کوٚر لَگِتھ کَمَتۍ خوٗنہٕ سۭتۍ پَیدٕ۔",
+      "english": "He returned to Khadija. The angel caught me and pressed me strongly against himself, then released me and told me again to read. He caught me again a second time. He created man from a clot.",
+      "transliteration": "tim ə̄s ħaźrt xdyʤh raźiya ạ̄llhu ʔañhạ̄ʲs niʃ wạ̄ps yiwạ̄n. firiʃtan rwᵉʈus bhɨ pạ̄nas sty żwr sạ̄n. pathɨ trwwus bhɨ tᵊmy thɨ wwᵉnun bayih: ”parɨ!“ pathɨ rwᵉʈus bhɨ tᵊmy bayih dɔymhi laʈhi pạ̄nas sty żwr sạ̄n. ạ̄insạ̄n kwᵉr lagitʰ kamaty xw˔nhɨ sty paydɨ.",
+      "headword": "لَگِتھ کَمَتۍ خوٗنہٕ",
       "partOfSpeech": "Noun phrase",
       "grammar": [],
       "forms": [],
@@ -216451,6 +216468,66 @@
       "headword": "وَحی نازِل سَپدُن",
       "transliteration": "wahi naazil sapdun",
       "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14262",
+      "kashmiri": "پانَس سۭتۍ",
+      "english": "against oneself; to oneself",
+      "headword": "پانَس سۭتۍ",
+      "transliteration": "paanas seth",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14263",
+      "kashmiri": "روٚٹُن",
+      "english": "to catch; to hold",
+      "headword": "روٚٹُن",
+      "transliteration": "rotun",
+      "partOfSpeech": "Verb",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14264",
+      "kashmiri": "ترٛاوُن",
+      "english": "to release; to let go",
+      "headword": "ترٛاوُن",
+      "transliteration": "traavun",
+      "partOfSpeech": "Verb",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14265",
+      "kashmiri": "لَگِتھ کَمَتۍ خوٗنہٕ",
+      "english": "a clot; clotted blood",
+      "headword": "لَگِتھ کَمَتۍ خوٗنہٕ",
+      "transliteration": "lagith kameti khoon",
+      "partOfSpeech": "Noun phrase",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",

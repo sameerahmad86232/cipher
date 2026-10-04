@@ -18,10 +18,11 @@ for (const item of review.lexicon) {
   entry.url = source.url;
   entry.license = source.license;
   entry.humanReview = 'approved-by-project-owner';
-  entry.reviewCorrectionId = opening.id;
-  if (item.k === 'نیک خواب') {
-    entry.kx = opening.kashmiri;
-    entry.x = opening.english;
+  const correction = review.corrections.find(row => row.id === (item.correctionId || opening.id)) || opening;
+  entry.reviewCorrectionId = correction.id;
+  if (item.k === 'نیک خواب' || item.example) {
+    entry.kx = correction.kashmiri;
+    entry.x = correction.english;
   }
 }
 
