@@ -315,6 +315,14 @@ const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
 let direction = 'ks-en', busy = false, translated = '', activeController, liveTimer, liveRequestText = '';
 let reviewedMemoryPromise;
+function firstValueMap(items, keyOf) {
+  const map = new Map();
+  for (const item of items) {
+    const key = keyOf(item);
+    if (!map.has(key)) map.set(key, item);
+  }
+  return map;
+}
 const initialNote = 'Online mode sends text to the public translator. Offline mode downloads a quantized NLLB-200 model once, then runs on this device. The model is large and translation may be slower on phones; review important text with a fluent speaker.';
 const OFFLINE_MODEL = 'Xenova/nllb-200-distilled-600M';
 let offlineTranslatorPromise, offlineModelReady = false;
@@ -323,14 +331,19 @@ async function loadReviewedMemory() {
     .then(response => { if (!response.ok) throw Error('Training memory unavailable'); return response.json(); })
     .then(data => ({
       ksEn: new Map((data.pairs || []).map(pair => [norm(pair.kashmiri), pair])),
-      enKs: new Map((data.pairs || []).map(pair => [norm(pair.english), pair]))
+      enKs: new Map((data.pairs || []).map(pair => [norm(pair.english), pair])),
+      lexicalKsEn: firstValueMap(data.lexicon || [], item => norm(item.kashmiri)),
+      lexicalEnKs: firstValueMap(data.lexicon || [], item => norm(item.english))
     }));
   return reviewedMemoryPromise;
 }
 async function exactMemoryMatch(text) {
   try {
     const memory = await loadReviewedMemory();
-    return direction === 'ks-en' ? memory.ksEn.get(norm(text)) : memory.enKs.get(norm(text));
+    const key = norm(text);
+    return direction === 'ks-en'
+      ? memory.ksEn.get(key) || memory.lexicalKsEn.get(key)
+      : memory.enKs.get(key) || memory.lexicalEnKs.get(key);
   } catch { return undefined; }
 }
 async function loadOfflineTranslator() {
