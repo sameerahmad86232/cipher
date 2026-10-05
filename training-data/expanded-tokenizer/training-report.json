@@ -1,0 +1,45 @@
+{
+  "scope": "BPE tokenizer training; does not update NLLB translation weights",
+  "trainingSentences": 29245,
+  "vocabularySize": 12000,
+  "sources": {
+    "CorIL Hindi–Kashmiri / CC BY 4.0": 20954,
+    "PALI / MIT": 4341,
+    "Kashmiri Wikipedia / CC BY-SA 4.0": 2041,
+    "OpenSLR 122 Kashmiri speech corpus / GPL-3.0-or-later": 1909
+  },
+  "rejected": {
+    "script_or_markup": 185,
+    "duplicate": 8009
+  },
+  "trainingHeldoutOverlap": 0,
+  "developmentTestOverlap": 0,
+  "paliSource": "https://raw.githubusercontent.com/sinaahmadi/PersoArabicLID/main/datasets/0/train.txt",
+  "paliSha256": "f247ce92b7af3707353407c49993de8b13d1f393911b1e9ce1cc63b373e49303",
+  "evaluation": {
+    "dev": {
+      "previous": {
+        "sentences": 500,
+        "tokens": 13868,
+        "unknownTokenRate": 0.0
+      },
+      "expanded": {
+        "sentences": 500,
+        "tokens": 13367,
+        "unknownTokenRate": 0.0
+      }
+    },
+    "test": {
+      "previous": {
+        "sentences": 500,
+        "tokens": 13868,
+        "unknownTokenRate": 0.00021632535333141045
+      },
+      "expanded": {
+        "sentences": 500,
+        "tokens": 13340,
+        "unknownTokenRate": 0.0
+      }
+    }
+  }
+}

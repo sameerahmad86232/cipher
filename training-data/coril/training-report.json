@@ -1,0 +1,25 @@
+{
+  "model": "Kashmiri BPE tokenizer",
+  "vocabularySize": 8000,
+  "source": "https://huggingface.co/datasets/HimangY/CoRil-Parallel",
+  "revision": "1503f07f7262ea39385069aa3e1ba762c867abcb",
+  "license": "CC-BY-4.0",
+  "splitCounts": {
+    "train": 21103,
+    "dev": 500,
+    "test": 500
+  },
+  "evaluation": {
+    "dev": {
+      "sentences": 500,
+      "tokens": 13868,
+      "unknownTokenRate": 0.0
+    },
+    "test": {
+      "sentences": 500,
+      "tokens": 13868,
+      "unknownTokenRate": 0.00021632535333141045
+    }
+  },
+  "scope": "Tokenizer training only; the production translation model has not been fine-tuned."
+}
