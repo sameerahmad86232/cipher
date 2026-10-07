@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "approvedHadiths": 7,
+  "approvedPassagePairs": 7,
+  "approvedPreferencePairs": 9,
+  "approvedGrammarPatterns": 6,
+  "pendingReviewCandidates": 4,
+  "reviewedLexiconEntries": 36,
+  "trainingPolicy": {
+    "approvedPassageWeight": 8,
+    "pendingCandidatesUsedForTraining": false,
+    "rawDraftsUsedAsGold": false,
+    "recommendedUse": "Mix with broad parallel data; never fine-tune solely on seven Hadiths."
+  }
+}

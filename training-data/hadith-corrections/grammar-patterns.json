@@ -1,0 +1,38 @@
+[
+  {
+    "id": "question-command",
+    "meaning": "What does he command you?",
+    "pattern": "سُہ کیا چھُ توہہِ حُکم دِوان؟",
+    "rule": "Place کیا after the subject in this reviewed question."
+  },
+  {
+    "id": "question-war",
+    "meaning": "Did war ever occur between you and him?",
+    "pattern": "کیا توہہِ تہٕ تَمس دَرمیان سَپدوا زانہہ جَنگ؟",
+    "rule": "Use دَرمیان with the oblique pronoun تَمس."
+  },
+  {
+    "id": "family-status",
+    "meaning": "What is the status of his family among you?",
+    "pattern": "تُہۍ منٛز کیا چھِ تَمہِ سٕندِ خاندانٕچ حیثیت؟",
+    "rule": "Use the possessive construction خاندانٕچ حیثیت."
+  },
+  {
+    "id": "reported-question",
+    "meaning": "I asked you",
+    "pattern": "مےٚ پرژھٕے ژےٚ",
+    "rule": "Retain first-person past and second-person object marking."
+  },
+  {
+    "id": "conditional-report",
+    "meaning": "If what you said is true",
+    "pattern": "اَگر ژےٚ پوٗز ووٚنُتھ",
+    "rule": "Use ووٚنُتھ for the completed second-person report."
+  },
+  {
+    "id": "respectful-speech",
+    "meaning": "The Messenger of Allah said",
+    "pattern": "رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو",
+    "rule": "Use فَرموو and preserve the complete honorific."
+  }
+]
