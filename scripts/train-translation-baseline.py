@@ -1,11 +1,12 @@
 """Train bidirectional IBM Model 1 word translation probabilities on paired text."""
-import collections, hashlib, json, math, pathlib, re
+import collections, hashlib, json, math, pathlib, re, sys
 root = pathlib.Path(__file__).resolve().parents[1]
 out = root/'training-data/translation-baseline'
 out.mkdir(parents=True, exist_ok=True)
 def tokenize(text):
     return re.findall(r'[^\W\d_]+(?:[\u064b-\u065f\u0670][^\W\d_]*)*',text.lower(), re.UNICODE)
-rows = [json.loads(line) for line in (root/'training-data/reviewed-parallel.jsonl').read_text().splitlines() if line.strip()]
+input_path = (pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else root/'training-data/combined-parallel.jsonl').resolve()
+rows = [json.loads(line) for line in input_path.read_text().splitlines() if line.strip()]
 train, test = [], []
 for row in rows:
     pair = (tokenize(row['english']), tokenize(row['kashmiri']))
@@ -43,6 +44,6 @@ for direction,pairs,heldout in [('en-ks',train,test),('ks-en',[(b,a) for a,b in 
                 matches += prediction in target
     evaluation[direction] = {'heldoutSourceTokens':tokens,'coveredTokens':covered,'predictedWordPresentInReference':matches,'note':'Word coverage diagnostic; not a sentence translation accuracy score.'}
 (out/'model.json').write_text(json.dumps({'architecture':'IBM Model 1','iterations':30,'models':models},ensure_ascii=False))
-report = {'trainingPairs':len(train),'heldoutPairs':len(test),'iterations':30,'architecture':'IBM Model 1 bidirectional statistical word translation','evaluation':evaluation,'limitations':['Small source-attested corpus; most pairs are pending human review.','Word probabilities do not model Kashmiri grammar or sentence order.','Experimental artifact only; production NLLB weights and tokenizer unchanged.'],'sources':list({r['source']['url'] for r in rows})}
+report = {'trainingPairs':len(train),'heldoutPairs':len(test),'iterations':30,'architecture':'IBM Model 1 bidirectional statistical word translation','input':str(input_path.relative_to(root)),'evaluation':evaluation,'limitations':['Small source-attested corpus; some pairs remain pending human review.','Word probabilities do not model Kashmiri grammar or sentence order.','Experimental artifact only; production NLLB weights and tokenizer unchanged.'],'sources':list({r['source']['url'] for r in rows})}
 (out/'training-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps(report,ensure_ascii=False))

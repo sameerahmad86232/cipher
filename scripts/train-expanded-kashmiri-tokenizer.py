@@ -37,6 +37,10 @@ for line in raw.decode().splitlines():
 public = json.loads((root/'dist/assets/kashmiri-public-corpus.json').read_text())
 for row in public['records']:
     add(row['text'], row['dataset']+' / '+row['license'])
+additional = root/'training-data/additional-wikipedia.json'
+if additional.exists():
+    for row in json.loads(additional.read_text())['records']:
+        add(row['text'],row['dataset']+' / '+row['license'])
 tokenizer = Tokenizer(models.BPE(unk_token='[UNK]'))
 tokenizer.normalizer = normalizers.NFC()
 tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()

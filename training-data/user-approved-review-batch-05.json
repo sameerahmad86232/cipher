@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "source": "Project-owner review: skip 2; everything else correct",
+  "records": [
+    {"english": "Lift the rifle, the machine gun; bring your motherland to life.", "kashmiri": "تُل ژٕ رَفَل مَشیٖن گَن؛ زِنٛدٕ کَرُن پَنُن وَطَن", "genre": "poetic slogan", "review": "user-approved"},
+    {"english": "May lightning fall upon your head! (A common Kashmiri way of berating)", "kashmiri": "ترَٛٹھ پێیہِ ژےٚ کَلَس پؠٹھ!", "genre": "idiom", "review": "user-approved"},
+    {"english": "Measure this box's height", "kashmiri": "یَتھ ڈَبَس مین تھَزَر", "review": "user-approved"},
+    {"english": "My house", "kashmiri": "میٛون گَرٕ", "genre": "phrase", "review": "user-approved"},
+    {"english": "Nothing will be achieved now by killing oneself over this", "kashmiri": "یَتھ پؠٹھ پان مارنہٕ سٟتؠ اَنٛدِ نہٕ وۄنؠ کینٛہہ", "review": "user-approved", "note": "Literal versus figurative context unspecified"},
+    {"english": "Rama and Sita", "kashmiri": "رام تہٕ سیٖتا", "genre": "phrase", "review": "user-approved"},
+    {"english": "She is alive.", "kashmiri": "سۄ چھےٚ زِنٛدٕ", "review": "user-approved"},
+    {"english": "Shed the pheran, become a soldier", "kashmiri": "ترٛاو پھؠرَن سِپاہ بَن", "genre": "poetic slogan", "review": "user-approved"},
+    {"english": "Sit down", "kashmiri": "بێہہ پَتھَر", "review": "user-approved"}
+  ],
+  "excludedEnglish": ["Lord! If abandoning mother Sita is necessary, then why did we fight the war? Then why did Jatayu die? Then why did so many great braves from both sides die?"]
+}

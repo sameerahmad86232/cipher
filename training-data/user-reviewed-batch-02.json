@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "source": "Project-owner review in chat",
+  "approved": [
+    {"number": 1, "english": "Curse you!", "kashmiri": "ترَٛٹھ ژےٚ!", "review": "user-approved"},
+    {"number": 5, "english": "God will take away your sorrows.", "kashmiri": "خۄداے کاسی سٲری غَم", "review": "user-approved"},
+    {"number": 7, "english": "He came home after ten years", "kashmiri": "دَہَو ؤریَو پَتہٕ آو سہُ گَرٕ", "review": "user-approved"},
+    {"number": 9, "english": "He doesn't know Kashmiri.", "kashmiri": "تٔمِس چھُنٕہ کٲشُر تَگان۔", "review": "user-approved"},
+    {"number": 10, "english": "He doesn't know how to drive a car.", "kashmiri": "سُہ زانہِ نہٕ گٲڑؠ چَلاوٕنؠ", "review": "user-approved"}
+  ],
+  "correctionsPendingScriptReview": [
+    {"number": 3, "englishOriginal": "Did you find your stuff since?", "englishDraft": "Did you find your belongings after that?", "romanized_kashmiri": "teameii paeteee loubthaa cxaii panun samaaan", "kashmiriDraft": "تٔمہِ پَتہٕ لۆبتھا ژیہِ پَنُن سامان؟"},
+    {"number": 4, "englishOriginal": "Even though during the Dogra era, Urdu and English began becoming common …", "romanized_kashmiri": "haaalaaanke dograa douurasss manx heoutttun urdu te angreeze zaaabaan aeeem gasen", "kashmiriDraft": "حالانکہ ڈوٚگرٕ دَورَس منٛز ہیوٚتُن اُردوٗ تہٕ اَنٛگریٖزی زَبان عام گَژھُن…", "genre": "fragment"},
+    {"number": 6, "englishOriginal": "He became famous in the same village.", "romanized_kashmiri": "souu gov aeth gaaamaaes manx meaahshoou", "kashmiriDraft": "سُہ گوٚو اَتھ گامَس منٛز مَشہوٗر۔"}
+  ],
+  "excludedNumbers": [2, 8]
+}

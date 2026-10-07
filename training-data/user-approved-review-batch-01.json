@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "review": "All ten original pairs explicitly approved by the project owner in chat; not independently evaluated",
+  "records": [
+    {"english": "After praying, they would come home. Eat pierogs.", "kashmiri": "یَبادَتھ کٔرِتھ ٲسؠ تِم گَرٕ یِوان. پیٖروگی کھؠوان.", "genre": "mixed sentence", "review": "user-approved"},
+    {"english": "Are you Kashmiri?", "kashmiri": "ژٕ چھُکھا کٲشُر؟", "review": "user-approved"},
+    {"english": "Are you alright?", "kashmiri": "ژٕ چھَکھا ٹھیٖکھ؟", "review": "user-approved"},
+    {"english": "Aslam came here for the sake of Salim", "kashmiri": "اَسلَم آو سَلیٖمنہِ باپَتھ یور", "review": "user-approved"},
+    {"english": "Boats travel on the lake", "kashmiri": "ناوٕ چھےٚ سَرَس پؠٹھ پَکان", "review": "user-approved"},
+    {"english": "By hanging from the noose, he killed himself", "kashmiri": "پھاسہِ کھٔسِتھ مور تٔمؠ پان", "review": "user-approved"},
+    {"english": "Close the door.", "kashmiri": "دَروازٕ کَرتہٕ بَنٛد", "review": "user-approved"},
+    {"english": "Clouds catching fire, means tomorrow shall be sunny", "kashmiri": "اۆبرَس ہؠتُن نار، یانی پَگَہ آسِہ تاپ", "genre": "proverb", "review": "user-approved"},
+    {"english": "Come here", "kashmiri": "وَل یور", "review": "user-approved"},
+    {"english": "Come here, otherwise I will come there", "kashmiri": "ژٕ یہِ یور نَتہٕ یِمَے بہٕ اوٗرؠ", "review": "user-approved"}
+  ]
+}

@@ -120,6 +120,10 @@ The new resources are deliberately separated by function. The Nastaliq LLM is a 
 
 ## KS-LIT-3M pretraining corpus
 
+### Kashmiri Llama 3 adapter
+
+[MISHANM/Kashmiri_text_generation_Llama3_8B_instruct](https://huggingface.co/MISHANM/Kashmiri_text_generation_Llama3_8B_instruct) supplies a public LoRA adapter for `meta-llama/Meta-Llama-3-8B-Instruct`. The author reports about 49,000 instruction examples and Kashmiri generation/translation support, without evaluation scores. The adapter declares no license; the base model requires Meta access approval and its own terms. `scripts/translate-kashmiri-llama.py` loads the adapter at revision `6f4b6a4c5629894ec802ee3f267dd5999463a9e6`, follows the author's prompt format, and returns only generated text. This model has not been executed or deployed in this workspace.
+
 The paper [KS-LIT-3M](https://arxiv.org/abs/2601.01091) describes a **3.1 million-word** Perso-Arabic Kashmiri text stream with about **16.4 million characters** and **131,607 unique words**, spanning literary, journalistic, academic and religious writing. Its official dataset page is [Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM](https://huggingface.co/datasets/Omarrran/3.1Million_KASHMIRI_text_Pre_Training_Dataset_for_LLM_2026_by_HNM). The raw files are currently access-restricted to this workspace, so the site stores the paper metadata in `assets/ks-lit-3m-reference.json` and links the official source.
 
 The paper says the dataset is CC-BY-4.0, while the current Hugging Face card reports CC BY-SA 4.0. That license discrepancy must be resolved with the authors before copying the corpus, adding its words to the dictionary, or using it to train the translator. It is a monolingual pretraining corpus, so it would improve language fluency rather than provide English sentence alignments.

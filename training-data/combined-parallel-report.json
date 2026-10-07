@@ -1,0 +1,20 @@
+{
+  "combinedPairs": 140,
+  "ownerApprovedPairs": 47,
+  "pendingPairs": 93,
+  "inputs": [
+    "training-data/reviewed-parallel.jsonl",
+    "training-data/user-approved-grammar-pairs.json",
+    "training-data/user-approved-review-batch-01.json",
+    "training-data/user-approved-review-batch-03.json",
+    "training-data/user-approved-review-batch-05.json",
+    "training-data/user-reviewed-batch-02.json"
+  ],
+  "excluded": [
+    "raw OCR and monolingual books",
+    "dictionary glosses without sentence alignment",
+    "user-reviewed batch 08 entry 5, later explicitly skipped",
+    "held-out grammar diagnostics"
+  ],
+  "policy": "Only aligned English-Kashmiri pairs enter this corpus. Approval status is preserved per row."
+}

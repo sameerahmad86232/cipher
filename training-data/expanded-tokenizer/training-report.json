@@ -1,16 +1,17 @@
 {
   "scope": "BPE tokenizer training; does not update NLLB translation weights",
-  "trainingSentences": 29245,
+  "trainingSentences": 29331,
   "vocabularySize": 12000,
   "sources": {
     "CorIL Hindi–Kashmiri / CC BY 4.0": 20954,
     "PALI / MIT": 4341,
     "Kashmiri Wikipedia / CC BY-SA 4.0": 2041,
-    "OpenSLR 122 Kashmiri speech corpus / GPL-3.0-or-later": 1909
+    "OpenSLR 122 Kashmiri speech corpus / GPL-3.0-or-later": 1909,
+    "Kashmiri Wikipedia additional articles / CC BY-SA 4.0": 86
   },
   "rejected": {
     "script_or_markup": 185,
-    "duplicate": 8009
+    "duplicate": 8021
   },
   "trainingHeldoutOverlap": 0,
   "developmentTestOverlap": 0,
@@ -25,7 +26,7 @@
       },
       "expanded": {
         "sentences": 500,
-        "tokens": 13367,
+        "tokens": 13368,
         "unknownTokenRate": 0.0
       }
     },
@@ -37,7 +38,7 @@
       },
       "expanded": {
         "sentences": 500,
-        "tokens": 13340,
+        "tokens": 13348,
         "unknownTokenRate": 0.0
       }
     }

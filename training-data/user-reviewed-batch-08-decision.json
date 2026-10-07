@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "source": "Project-owner review in chat",
+  "decision": "All ten entries approved except correction to first sentence of entry 5",
+  "batchEnglishFirst": "The commencement of the Divine Inspiration to Allah's Messenger was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to remain alone in the cave of Hira and worship Allah.",
+  "entry5": {
+    "english": "Thunder and lightning must be endured. Even utter darkness in the middle of the day must be endured.",
+    "kashmiri": "گرج تٕے بجلی چھُ برداشت کرن زٕروری۔ ژالُن چھُ مَنٛدِنؠن گَٹہٕ کار",
+    "userSuppliedCorrection": "گرج تٕے بجلی چھُ برداشت کرن زٕروری۔",
+    "review": "First sentence user-corrected; second sentence retained from approved original",
+    "removedFromTarget": "Dates, author name, title and Roman transliteration",
+    "genre": "verse"
+  },
+  "approvedNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}

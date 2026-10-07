@@ -2,6 +2,14 @@
   "title": "Kashmiri OCR and translation resource index",
   "resources": [
     {
+      "name": "Kashmiri Llama 3 8B Instruct",
+      "type": "LoRA adapter for Kashmiri generation and translation",
+      "url": "https://huggingface.co/MISHANM/Kashmiri_text_generation_Llama3_8B_instruct",
+      "license": "Adapter license not declared; base model subject to Meta Llama 3 terms",
+      "reportedSize": "Author reports approximately 49,000 instruction training examples; requires Llama 3 8B base weights",
+      "status": "Experimental inference runner provided; translation accuracy and script coverage have not been independently evaluated"
+    },
+    {
       "name": "Kashmiri translation of the Noble Qur’an",
       "type": "separate page-level OCR retrieval corpus",
       "url": "https://archive.org/details/Ks_Translation_of_the_Noble_Quran_in_the_Kashmiri_Koshur_Language_www.TheChoice.one",

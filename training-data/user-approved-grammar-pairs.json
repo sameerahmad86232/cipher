@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "source": "Project-owner translations and explicit approval of Perso-Arabic spelling in chat",
+  "review": "user-approved; not independently evaluated",
+  "records": [
+    {"english": "I read a book.", "kashmiri": "مےٚ پٔر کِتاب", "tense": "past"},
+    {"english": "I read a book yesterday.", "kashmiri": "مےٚ پٔر راتھ کِتاب", "tense": "past"},
+    {"english": "I read books regularly.", "kashmiri": "بہٕ چھُس ہمیشہٕ کِتاب پَران", "tense": "habitual"},
+    {"english": "I wrote a letter yesterday.", "kashmiri": "مےٚ لیوٚکھ خَط راتھ۔", "tense": "past"},
+    {"english": "I write letters regularly.", "kashmiri": "بہٕ چھُس ہمیشہٕ خَط لیٚکھان۔", "tense": "habitual"},
+    {"english": "She read a book yesterday.", "kashmiri": "تٔمۍ پٔر راتھ کِتاب۔", "tense": "past"},
+    {"english": "She reads books regularly.", "kashmiri": "سۄ چھےٚ ہمیشہٕ کِتاب پَران۔", "tense": "habitual"},
+    {"english": "We went home yesterday.", "kashmiri": "اَسۍ گٔیۍ راتھ گَرٕ۔", "tense": "past"},
+    {"english": "We go to school every day.", "kashmiri": "اَسۍ چھِ پْرَتھ دۄہ سکوٗل گَژھان۔", "tense": "habitual"}
+  ]
+}

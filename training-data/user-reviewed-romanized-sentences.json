@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "source": "Translations supplied directly by the project owner in chat",
+  "policy": "Preserve supplied Roman spelling. Perso-Arabic transcription requires separate user review before kas_Arab training. These are examples, not universal grammar rules.",
+  "records": [
+    {"english": "I wrote a letter yesterday.", "romanized_kashmiri": "mea leaokh khat raat", "tense": "past", "subject": "I", "review": "user-supplied", "persoArabicReview": "pending"},
+    {"english": "I write letters regularly.", "romanized_kashmiri": "be chuoss hamaish kath leakhaan", "tense": "habitual", "subject": "I", "review": "user-supplied", "persoArabicReview": "pending"},
+    {"english": "She read a book yesterday.", "romanized_kashmiri": "team paer rath kitaaab", "tense": "past", "subject": "she", "review": "user-supplied", "persoArabicReview": "pending"},
+    {"english": "She reads books regularly.", "romanized_kashmiri": "se che hamaishe kitaaab paraaan", "tense": "habitual", "subject": "she", "review": "user-supplied", "persoArabicReview": "pending"},
+    {"english": "We went home yesterday.", "romanized_kashmiri": "aes gaiiie raaath ghaaare", "tense": "past", "subject": "we", "review": "user-supplied", "persoArabicReview": "pending"},
+    {"english": "We go to school every day.", "romanized_kashmiri": "aes che preath douh school gasan", "tense": "habitual", "subject": "we", "review": "user-supplied", "persoArabicReview": "pending"}
+  ]
+}

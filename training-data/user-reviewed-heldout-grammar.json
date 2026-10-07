@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "purpose": "User-corrected diagnostic tests; exclude from training. Collected after inspecting model outputs, so not an untouched benchmark.",
+  "script": "Romanized Kashmiri as supplied by user; Perso-Arabic transcription pending review",
+  "records": [
+    {"english": "She wrote a letter yesterday.", "romanized_kashmiri": "team leach raaaath akh kath", "review": "user-supplied"},
+    {"english": "We read books every day.", "romanized_kashmiri": "aes che preth douhh kitaaab paraaaaaaan", "review": "user-supplied"},
+    {"english": "I go home every day.", "romanized_kashmiri": "be chuus preath douuah ghre gasaan", "review": "user-supplied"}
+  ],
+  "additionalExample": {"english": "I go to school every day.", "romanized_kashmiri": "be chuuus preath douhh schoool gasan", "review": "user-supplied"}
+}

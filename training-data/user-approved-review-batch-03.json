@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "review": "Project-owner yes interpreted as approval of corrected entry 5 and remaining nine entries",
+  "records": [
+    {"english": "He is alive.", "kashmiri": "سُہ چھُ زِنٛدٕ", "review": "user-approved"},
+    {"english": "He is at a high point", "kashmiri": "سُہ چھُ تھَزرَس پؠٹھ", "review": "user-approved", "note": "Physical versus figurative context unspecified"},
+    {"english": "He is at the store.", "kashmiri": "سہُ چھُ وانَس پؠٹھ۔", "review": "user-approved"},
+    {"english": "He returned to Khadija. The angel caught me and pressed me strongly against himself, then released me and told me again to read. He caught me again a second time. He created man from a clot.", "kashmiri": "تِم ٲس حَضرت خدیجہ رَضِیَ اللہُ عَنْہاؠس نِش واپس یِوان۔ فِرِشتَن روٚٹُس بہٕ پانَس سۭتۍ زور سان۔ پَتہٕ ترٛووُس بہٕ تٔمۍ تہٕ ووٚنُن بَیِہ: ”پَرٕ!“ پَتہٕ روٚٹُس بہٕ تٔمۍ بَیِہ دۄیمہِ لَٹہِ پانَس سۭتۍ زور سان۔ اِنسان کوٚر لَگِتھ کَمَتۍ خوٗنہٕ سۭتۍ پَیدٕ۔", "review": "user-approved", "genre": "religious composite excerpt", "alignmentNote": "Habitual return and honorific detail differ from supplied English; preserve for review"},
+    {"english": "He went to the village to live", "kashmiri": "سُہ گوٚو گام روٗزنہٕ خٲطرٕ۔", "romanized_kashmiri": "su goov gaaam rouuuzne khaaatree", "review": "user-approved"},
+    {"english": "He/she gave me money for the girl", "kashmiri": "کورِ سٕنٛدِ مۄکھٕ دِتؠ تٔمؠ مےٚ پونٛسہٕ", "review": "user-approved"},
+    {"english": "I am coming from Mumbai.", "kashmiri": "بہٕ چھُس بَمبی پؠٹھ یِوان", "review": "user-approved"},
+    {"english": "I am eating", "kashmiri": "بہٕ چھُس کھؠوان", "review": "user-approved"},
+    {"english": "I couldn’t remember his name", "kashmiri": "مےٚ روٗد نٕہ تٔمؠ سُنٛد ناو وَنہِ", "review": "user-approved"},
+    {"english": "I know.", "kashmiri": "مےٚ چھےٚ پاے", "review": "user-approved"}
+  ]
+}
