@@ -1,13 +1,13 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-07T15:54:18.159Z",
+  "generatedAt": "2026-10-07T17:14:31.260Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
     "pairs": 127,
-    "lexicalMappings": 14283,
-    "distinctKashmiriHeadwords": 9602,
-    "distinctEnglishGlosses": 7207,
+    "lexicalMappings": 14292,
+    "distinctKashmiriHeadwords": 9611,
+    "distinctEnglishGlosses": 7216,
     "humanReviewed": 2,
     "pendingHumanReview": 125
   },
@@ -216798,6 +216798,141 @@
       "headword": "سوزنہٕ آمٕژِ ہواہِ کھۄتہٕ تہِ زیادٕ سَخی",
       "transliteration": "soznah aamizi hawaahi khotah ti zyaadah sakhi",
       "partOfSpeech": "Adjectival phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14284",
+      "kashmiri": "زوٚپٲر",
+      "english": "all around; surrounding",
+      "headword": "زوٚپٲر",
+      "transliteration": "zopaaer",
+      "partOfSpeech": "Adverb",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14285",
+      "kashmiri": "اَپوٗز",
+      "english": "false; untrue; a lie",
+      "headword": "اَپوٗز",
+      "transliteration": "apooz",
+      "partOfSpeech": "Adjective",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14286",
+      "kashmiri": "پوٗز",
+      "english": "true; correct; truth",
+      "headword": "پوٗز",
+      "transliteration": "pooz",
+      "partOfSpeech": "Adjective",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14287",
+      "kashmiri": "خاندانٕچ حیثیت",
+      "english": "family status",
+      "headword": "خاندانٕچ حیثیت",
+      "transliteration": "khaandaanich haisiyat",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14288",
+      "kashmiri": "مےٚ پرژھٕے ژےٚ",
+      "english": "I asked you",
+      "headword": "مےٚ پرژھٕے ژےٚ",
+      "transliteration": "me pruchhey tse",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14289",
+      "kashmiri": "تَمس نِش کھوژان",
+      "english": "afraid of him",
+      "headword": "تَمس نِش کھوژان",
+      "transliteration": "tamis nish khozaan",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14290",
+      "kashmiri": "دۄگنہٕ اَجر",
+      "english": "double reward",
+      "headword": "دۄگنہٕ اَجر",
+      "transliteration": "dogunah ajar",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14291",
+      "kashmiri": "تَمہِ سٕندۍ کھور",
+      "english": "his feet",
+      "headword": "تَمہِ سٕندۍ کھور",
+      "transliteration": "tami send khor",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14292",
+      "kashmiri": "یُس ہِدایت رَٹِ",
+      "english": "who follows the guidance",
+      "headword": "یُس ہِدایت رَٹِ",
+      "transliteration": "yus hidaayat rati",
+      "partOfSpeech": "Clause",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
