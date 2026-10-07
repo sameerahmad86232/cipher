@@ -13,6 +13,7 @@ APPROVED_FILES = [
     OUT / "user-approved-review-batch-03.json",
     OUT / "user-approved-review-batch-05.json",
     OUT / "user-reviewed-batch-02.json",
+    OUT / "user-reviewed-corrections.json",
 ]
 
 
@@ -39,7 +40,7 @@ for line in BASE.read_text().splitlines():
 
 for path in APPROVED_FILES:
     data = json.loads(path.read_text())
-    candidates = data.get("records", []) + data.get("approved", [])
+    candidates = data.get("records", []) + data.get("approved", []) + data.get("corrections", [])
     if path.name == "user-reviewed-batch-02.json":
         candidates += data.get("correctionsPendingScriptReview", [])
     for candidate in candidates:

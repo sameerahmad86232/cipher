@@ -1,6 +1,6 @@
 {
-  "combinedPairs": 140,
-  "ownerApprovedPairs": 47,
+  "combinedPairs": 143,
+  "ownerApprovedPairs": 50,
   "pendingPairs": 93,
   "inputs": [
     "training-data/reviewed-parallel.jsonl",
@@ -8,7 +8,8 @@
     "training-data/user-approved-review-batch-01.json",
     "training-data/user-approved-review-batch-03.json",
     "training-data/user-approved-review-batch-05.json",
-    "training-data/user-reviewed-batch-02.json"
+    "training-data/user-reviewed-batch-02.json",
+    "training-data/user-reviewed-corrections.json"
   ],
   "excluded": [
     "raw OCR and monolingual books",

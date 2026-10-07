@@ -11,8 +11,8 @@ const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets', 'dictionary-corpus.json')))
 ].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 58464);
-assert.equal(words.length, 49690);
+assert.equal(records.length, 58479);
+assert.equal(words.length, 49718);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
 assert.equal(records.filter(r => r.trGenerated).length, 44292);
@@ -69,6 +69,10 @@ assert.ok(trainingMemory.pairs.some(pair => pair.kashmiri.includes('فِرِشت
 assert.ok(trainingMemory.counts.humanReviewed >= 2);
 assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'کِتاب' && item.english === 'book'));
 assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'خَلوَت' && item.humanReview === 'approved-by-project-owner'));
+assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'بابٕتھٕر' && item.english.includes('nephew') && item.humanReview === 'approved-by-project-owner'));
+assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'دُنیا ترٛاوُن' && item.english.includes('leave this world') && item.humanReview === 'approved-by-project-owner'));
+assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'خَوف زَدٕ گَژھُن' && item.english.includes('frightened') && item.humanReview === 'approved-by-project-owner'));
+assert.ok(trainingMemory.lexicon.some(item => item.kashmiri === 'وَحی زور سان یِنۍ' && item.english.includes('forcefully') && item.humanReview === 'approved-by-project-owner'));
 assert.ok(schoolOcr.pages.every(page => typeof page.normalizedText === 'string' && typeof page.transliteration === 'string'));
 assert.equal(records.reduce((count, row) => count + (row.references || []).filter(reference => reference.s?.startsWith('OCR occurrence')).length, 0), 68174);
 assert.equal(records.reduce((count, row) => count + (row.ocrVocabulary ? 1 : 0), 0), 23377);
@@ -95,5 +99,5 @@ assert.equal(analyzeEnglishSentence('His brother read the book.').transitivePast
 assert.equal(applyGrammarOutput('اَمہٕ حالت۔', 'Is this good?', 'en-ks').endsWith('؟'), true);
 assert.equal(JSON.parse(fs.readFileSync(path.join(root, 'assets/kashmiri-orthography.json'))).metadata.ocrCharacterInventory.length, 38);
 const forms = new Set(words.flatMap(w => w.forms.map(f => f.word)));
-assert.equal(forms.size, 1818);
+assert.equal(forms.size, 1823);
 console.log(JSON.stringify({ result: 'passed', records: records.length, headwords: words.length, form_spellings: forms.size }));
