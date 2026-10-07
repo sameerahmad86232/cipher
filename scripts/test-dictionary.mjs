@@ -11,8 +11,8 @@ const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets', 'dictionary-corpus.json')))
 ].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 58479);
-assert.equal(words.length, 49718);
+assert.equal(records.length, 58482);
+assert.equal(words.length, 49721);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
 assert.equal(records.filter(r => r.trGenerated).length, 44292);
@@ -89,7 +89,7 @@ assert.match(finishText('Contact < ID1 > .', 'ks-en', prepared.entities), /test@
 assert.equal(sentenceChunks('One sentence. Two sentences.', 'en-ks').length, 2);
 assert.ok(prepareText('مےٚ پٔر اَکھ کِتاب', 'ks-en').text.includes('کتاب'));
 assert.equal(normalizeKashmiri('ه ي ك'), 'ہ ی ک');
-assert.equal(normalizeKashmiri('أ إ ئ ة ك ي ى'), 'ا ا ی ہ ک ی ی');
+assert.equal(normalizeKashmiri('أ إ ئ ة ك ي ى'), 'ا ا یٔ ہ ک ی ی');
 assert.equal(analyzeKashmiriSentence('مےٚ پٔر اَکھ کِتاب؟').question, true);
 assert.equal(analyzeKashmiriSentence('یُس کِتاب پَران چھُ').grammarWarnings.length > 0, true);
 assert.equal(analyzeKashmiriSentence('يہ کِتاب چھُ').encodingWarnings.length > 0, true);

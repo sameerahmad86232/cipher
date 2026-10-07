@@ -1,13 +1,13 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-04T13:32:42.365Z",
+  "generatedAt": "2026-10-07T15:54:18.159Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
     "pairs": 127,
-    "lexicalMappings": 14265,
-    "distinctKashmiriHeadwords": 9572,
-    "distinctEnglishGlosses": 7189,
+    "lexicalMappings": 14283,
+    "distinctKashmiriHeadwords": 9602,
+    "distinctEnglishGlosses": 7207,
     "humanReviewed": 2,
     "pendingHumanReview": 125
   },
@@ -22,7 +22,7 @@
       "id": "ks-en-0001",
       "kashmiri": "ناوٕ چھےٚ سَرَس پؠٹھ پَکان",
       "english": "Boats travel on the lake",
-      "transliteration": "nạ̄wɨ ʧʰē saras pʲʈʰ pakạ̄n",
+      "transliteration": "nạ̄wɨ ʧʰēٚ saras pʲʈʰ pakạ̄n",
       "headword": "ناو",
       "partOfSpeech": "N",
       "grammar": [
@@ -48,7 +48,7 @@
       "id": "ks-en-0002",
       "kashmiri": "مےٚ پٔر اَکھ کِتاب",
       "english": "I read a book",
-      "transliteration": "mē pᵊr ạ̄akʰ kitạ̄b",
+      "transliteration": "mēٚ pᵊr akʰ kitạ̄b",
       "headword": "کِتاب",
       "partOfSpeech": "N",
       "grammar": [
@@ -94,7 +94,7 @@
       "id": "ks-en-0004",
       "kashmiri": "مےٚ روٗد نٕہ تٔمؠ سُنٛد ناو وَنہِ",
       "english": "I couldn’t remember his name",
-      "transliteration": "mē rw˔d nɨh tᵊmʲ sund nạ̄w wanhi",
+      "transliteration": "mēٚ rw˔d nɨh tᵊmʲ suñd nạ̄w wanhi",
       "headword": "ناو",
       "partOfSpeech": "N",
       "grammar": [
@@ -120,7 +120,7 @@
       "id": "ks-en-0005",
       "kashmiri": "بیٚہہ تامَتھ تاپَس",
       "english": "Sit in the sunlight for now.",
-      "transliteration": "byhh tạ̄matʰ tạ̄pas",
+      "transliteration": "byٚhh tạ̄matʰ tạ̄pas",
       "headword": "تاپھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -184,7 +184,7 @@
       "id": "ks-en-0008",
       "kashmiri": "تَمہِ دِژ کرٛیکھ - \"ہَے بہٕ ہَسٲ چھَس پانَس کیُٛت روٗن ژھاران\"",
       "english": "she shouted, \"O, I am looking for a husband for myself\"",
-      "transliteration": "tamhi diʦ krykʰ - \"haē bhɨ hasə̄ ʧʰas pạ̄nas kyut rw˔n ʦʰạ̄rạ̄n\"",
+      "transliteration": "tamhi diʦ kr͞ykʰ - \"haē bhɨ hasə̄ ʧʰas pạ̄nas kyu͞t rw˔n ʦʰạ̄rạ̄n\"",
       "headword": "روٗن",
       "partOfSpeech": "N",
       "grammar": [
@@ -210,7 +210,7 @@
       "id": "ks-en-0009",
       "kashmiri": "ترٛاو پھؠرَن سِپاہ بَن",
       "english": "Shed the pheran, become a soldier",
-      "transliteration": "trạ̄w pʰʲran sipạ̄h ban",
+      "transliteration": "tr͞ạ̄w pʰʲran sipạ̄h ban",
       "headword": "سِپاہ",
       "partOfSpeech": "N",
       "grammar": [
@@ -335,7 +335,7 @@
       "id": "ks-en-0015",
       "kashmiri": "یہِ آزٲدی چھےٚ ترٛاوان مَغرِبَس کُن رَحمَتُک باران",
       "english": "this freedom pours the rain of mercy towards the west",
-      "transliteration": "yhi ãżə̄dy ʧʰē trạ̄wạ̄n maġribas kun raħmatuk bạ̄rạ̄n",
+      "transliteration": "yhi ãżə̄dy ʧʰēٚ tr͞ạ̄wạ̄n maġribas kun raħmatuk bạ̄rạ̄n",
       "headword": "باران",
       "partOfSpeech": "N",
       "grammar": [
@@ -373,7 +373,7 @@
       "id": "ks-en-0017",
       "kashmiri": "خۄدایہِ سٕنٛدِ پاسہٕ",
       "english": "for God's sake",
-      "transliteration": "xɔdạ̄yhi sɨndi pạ̄shɨ",
+      "transliteration": "xɔdạ̄yhi sɨñdi pạ̄shɨ",
       "headword": "پاس",
       "partOfSpeech": "N",
       "grammar": [
@@ -392,7 +392,7 @@
       "id": "ks-en-0018",
       "kashmiri": "گۄرٕے ماتا گۄرٕے پِتا گۄرٕے اَنہِ نؠترَن گاش",
       "english": "The guru is the mother and the guru is the father The guru alone brings light to the eyes.",
-      "transliteration": "gɔrɨē mạ̄tạ̄ gɔrɨē pitạ̄ gɔrɨē ạ̄anhi nʲtran gạ̄ʃ",
+      "transliteration": "gɔrɨē mạ̄tạ̄ gɔrɨē pitạ̄ gɔrɨē anhi nʲtran gạ̄ʃ",
       "headword": "گاش",
       "partOfSpeech": "N",
       "grammar": [
@@ -411,7 +411,7 @@
       "id": "ks-en-0019",
       "kashmiri": "[...] مَگَر لَقب اوس آمُت دِنہٕ أمِس بھاسکَر یانہِ سِرؠیِہ یُس گَٹہِ مَنٛز گاش اَنان چھُ۔",
       "english": "… but his title was \"Bhaskar\", the sun; who brings light to the darkness.",
-      "transliteration": "[...] magar laḱb ạ̄ws ãmut dinhɨ amis bʰạ̄skar yạ̄nhi sirʲyih yus gaʈhi manż gạ̄ʃ ạ̄anạ̄n ʧʰu.",
+      "transliteration": "[...] magar laḱb ạ̄ws ãmut dinhɨ ạ̄mis bʰạ̄skar yạ̄nhi sirʲyih yus gaʈhi mañż gạ̄ʃ anạ̄n ʧʰu.",
       "headword": "گاش",
       "partOfSpeech": "N",
       "grammar": [
@@ -430,7 +430,7 @@
       "id": "ks-en-0020",
       "kashmiri": "لَرِ پھِرٕنؠ دِوان دِوان آس گاش۔ بیٖب تہِ ؤژھ نێنٛدرِ۔",
       "english": "While tossing and turning on the bed, suddenly, daylight came. The wife also woke up.",
-      "transliteration": "lari pʰirɨnʲ diwạ̄n diwạ̄n ãs gạ̄ʃ. byˌb thi u͑ʦʰ nێndri.",
+      "transliteration": "lari pʰirɨnʲ diwạ̄n diwạ̄n ãs gạ̄ʃ. byˌb thi u͑ʦʰ nێñdri.",
       "headword": "گاش",
       "partOfSpeech": "N",
       "grammar": [
@@ -449,7 +449,7 @@
       "id": "ks-en-0021",
       "kashmiri": "نَفسَس پَتہٕ لَگُن چھُے أچھ مَنٛز سَرُن گاشٕچ وۄمید بٔرزِنہٕ زاہ",
       "english": "To run after the [the knowledge of] self is like putting a blade of grass in one's eye Never, ever fill yourself with the hope of [the light of] knowledge",
-      "transliteration": "nafsas pathɨ lagun ʧʰuē aʧʰ manż sarun gạ̄ʃɨʧ wɔmyd bᵊrżinhɨ żạ̄h",
+      "transliteration": "nafsas pathɨ lagun ʧʰuē ạ̄ʧʰ mañż sarun gạ̄ʃɨʧ wɔmyd bᵊrżinhɨ żạ̄h",
       "headword": "گاش",
       "partOfSpeech": "N",
       "grammar": [
@@ -527,7 +527,7 @@
       "id": "ks-en-0025",
       "kashmiri": "ژےٚ تَگِیِہ یِہ شیرُن؟",
       "english": "Can you fix this?",
-      "transliteration": "ʦē tagiyih yih ʃyrun?",
+      "transliteration": "ʦēٚ tagiyih yih ʃyrun?",
       "headword": "تَگُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -561,7 +561,7 @@
       "id": "ks-en-0027",
       "kashmiri": "یہِ پَران پَران چھُ اَسہِ نَنان زِ تٔمِس ٲس کٲشرِچ بٔڈ زان ٲسمٕژ",
       "english": "While reading this, we discover that he had had great knowledge of Kashmiri.",
-      "transliteration": "yhi parạ̄n parạ̄n ʧʰu ạ̄ashi nanạ̄n żi tᵊmis ə̄s kə̄ʃriʧ bᵊɖ żạ̄n ə̄smɨʦ",
+      "transliteration": "yhi parạ̄n parạ̄n ʧʰu ashi nanạ̄n żi tᵊmis ə̄s kə̄ʃriʧ bᵊɖ żạ̄n ə̄smɨʦ",
       "headword": "نَنُن",
       "partOfSpeech": "V",
       "grammar": [
@@ -604,7 +604,7 @@
       "id": "ks-en-0029",
       "kashmiri": "یہِ چھُ اَکھ گُر",
       "english": "this is a horse",
-      "transliteration": "yhi ʧʰu ạ̄akʰ gur",
+      "transliteration": "yhi ʧʰu akʰ gur",
       "headword": "چھُ",
       "partOfSpeech": "V",
       "grammar": [
@@ -704,7 +704,7 @@
       "id": "ks-en-0034",
       "kashmiri": "رام تہٕ سیٖتا",
       "english": "Rama and Sita",
-      "transliteration": "rạ̄m thɨ syˌtạ̄",
+      "transliteration": "rạ̄m thɨ syˌt",
       "headword": "تہٕ",
       "partOfSpeech": "Conjunction",
       "grammar": [],
@@ -721,7 +721,7 @@
       "id": "ks-en-0035",
       "kashmiri": "ژٕ کیٛازِ چھُکھ نہٕ بَتہٕ کھؠوان؟",
       "english": "Why are you not eating food?",
-      "transliteration": "ʦɨ kyạ̄żi ʧʰukʰ nhɨ bathɨ kʰʲwạ̄n?",
+      "transliteration": "ʦɨ ky͞ạ̄żi ʧʰukʰ nhɨ bathɨ kʰʲwạ̄n?",
       "headword": "کیٛازِ",
       "partOfSpeech": "Adv",
       "grammar": [],
@@ -738,7 +738,7 @@
       "id": "ks-en-0036",
       "kashmiri": "میٛون گَرٕ",
       "english": "My house",
-      "transliteration": "mywn garɨ",
+      "transliteration": "my͞wn garɨ",
       "headword": "گَرٕ",
       "partOfSpeech": "N",
       "grammar": [
@@ -778,7 +778,7 @@
       "id": "ks-en-0038",
       "kashmiri": "دُزۆنٛگ",
       "english": "two-legged, bipedal",
-      "transliteration": "dużwng",
+      "transliteration": "dużwñg",
       "headword": "زۆنٛگ",
       "partOfSpeech": "Adj",
       "grammar": [
@@ -797,7 +797,7 @@
       "id": "ks-en-0039",
       "kashmiri": "ژُزۆنٛگ",
       "english": "four-legged, quadrupedal",
-      "transliteration": "ʦużwng",
+      "transliteration": "ʦużwñg",
       "headword": "زۆنٛگ",
       "partOfSpeech": "Adj",
       "grammar": [
@@ -816,7 +816,7 @@
       "id": "ks-en-0040",
       "kashmiri": "ییٖژ کٲم کیٛازِ ٲڈرٕٛتھ ژےٚ اَکی ساتھہٕ",
       "english": "Why did you take up so much work at once?",
-      "transliteration": "yyˌʦ kə̄m kyạ̄żi ə̄ɖrɨtʰ ʦē ạ̄aky sạ̄tʰhɨ",
+      "transliteration": "yyˌʦ kə̄m ky͞ạ̄żi ə̄ɖr͞ɨtʰ ʦēٚ aky sạ̄tʰhɨ",
       "headword": "ٲڈرُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -850,7 +850,7 @@
       "id": "ks-en-0042",
       "kashmiri": "1320-1392, Lalleshwari, Lal-Vakhs ژالُن چھُ وُزٕمَلہٕ تہٕ ترَٛٹَے ژالُن چھُ مَنٛدِنؠن گَٹہٕ کار ċālun chu wuzụmalụ tụ traṭay ċālun chu mandinyan gaṭụkār",
       "english": "Thunder and lightning must be endured. Even utter darkness in the middle of the day must be endured.",
-      "transliteration": "1320-1392, Lalleshwari, Lal-Vakhs ʦạ̄lun ʧʰu wużɨmalhɨ thɨ traʈaē ʦạ̄lun ʧʰu mandinʲn gaʈhɨ kạ̄r ċālun chu wuzụmalụ tụ traṭay ċālun chu mandinyan gaṭụkār",
+      "transliteration": "1320-1392, Lalleshwari, Lal-Vakhs ʦạ̄lun ʧʰu wużɨmalhɨ thɨ tra͞ʈaē ʦạ̄lun ʧʰu mañdinʲn gaʈhɨ kạ̄r ċālun chu wuzụmalụ tụ traṭay ċālun chu mandinyan gaṭụkār",
       "headword": "ترَٛٹھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -869,7 +869,7 @@
       "id": "ks-en-0043",
       "kashmiri": "ترَٛٹھ پێیہِ ژےٚ کَلَس پؠٹھ!",
       "english": "May lightning fall upon your head! (A common Kashmiri way of berating)",
-      "transliteration": "traʈʰ pێyhi ʦē kalas pʲʈʰ!",
+      "transliteration": "tra͞ʈʰ pێyhi ʦēٚ kalas pʲʈʰ!",
       "headword": "ترَٛٹھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -888,7 +888,7 @@
       "id": "ks-en-0044",
       "kashmiri": "سۄ کوٗر چھےٚ ترَٛٹھ ہِش۔",
       "english": "That girl is like lightning.(A way of praising)",
-      "transliteration": "sɔ kw˔r ʧʰē traʈʰ hiʃ.",
+      "transliteration": "sɔ kw˔r ʧʰēٚ tra͞ʈʰ hiʃ.",
       "headword": "ترَٛٹھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -907,7 +907,7 @@
       "id": "ks-en-0045",
       "kashmiri": "ترَٛٹھ ژےٚ!",
       "english": "Curse you!",
-      "transliteration": "traʈʰ ʦē!",
+      "transliteration": "tra͞ʈʰ ʦēٚ!",
       "headword": "ترَٛٹھ",
       "partOfSpeech": "Interjection",
       "grammar": [
@@ -926,7 +926,7 @@
       "id": "ks-en-0046",
       "kashmiri": "گَراہ چھُک ژٕ ہیٛۆر کھَسان گَراہ چھُک ژٕ بۄن وَسان",
       "english": "Sometimes you go up, sometimes you come down.",
-      "transliteration": "garạ̄h ʧʰuk ʦɨ hywr kʰasạ̄n garạ̄h ʧʰuk ʦɨ bɔn wasạ̄n",
+      "transliteration": "garạ̄h ʧʰuk ʦɨ hy͞wr kʰasạ̄n garạ̄h ʧʰuk ʦɨ bɔn wasạ̄n",
       "headword": "گَراہ",
       "partOfSpeech": "Conjunction",
       "grammar": [],
@@ -950,7 +950,7 @@
       "id": "ks-en-0047",
       "kashmiri": "پرَٛتھ کانٛہہ",
       "english": "everyone",
-      "transliteration": "pratʰ kạ̄nhh",
+      "transliteration": "pra͞tʰ kạ̄ñhh",
       "headword": "پرَٛتھ",
       "partOfSpeech": "Determiner",
       "grammar": [],
@@ -967,7 +967,7 @@
       "id": "ks-en-0048",
       "kashmiri": "پرَٛتھ ساتہٕ",
       "english": "every time",
-      "transliteration": "pratʰ sạ̄thɨ",
+      "transliteration": "pra͞tʰ sạ̄thɨ",
       "headword": "پرَٛتھ",
       "partOfSpeech": "Determiner",
       "grammar": [],
@@ -984,7 +984,7 @@
       "id": "ks-en-0049",
       "kashmiri": "پرَٛتھ کُنہِ جایہِ",
       "english": "everywhere",
-      "transliteration": "pratʰ kunhi ʤạ̄yhi",
+      "transliteration": "pra͞tʰ kunhi ʤạ̄yhi",
       "headword": "پرَٛتھ",
       "partOfSpeech": "Determiner",
       "grammar": [],
@@ -1018,7 +1018,7 @@
       "id": "ks-en-0051",
       "kashmiri": "کٔشیٖرِ ہٕنٛدِس زَنمَس بارَس مَنٛز دَپتہٕ مےٚ کیٚنٛہہ",
       "english": "Tell me something about the formation of Kashmir",
-      "transliteration": "kᵊʃyˌri hɨndis żanmas bạ̄ras manż dapthɨ mē kynhh",
+      "transliteration": "kᵊʃyˌri hɨñdis żanmas bạ̄ras mañż dapthɨ mēٚ kyٚñhh",
       "headword": "زَنَم",
       "partOfSpeech": "N",
       "grammar": [
@@ -1037,7 +1037,7 @@
       "id": "ks-en-0052",
       "kashmiri": "سہُ پرَٛتھیٛوو أتھؠ گامَس مَنٛز",
       "english": "He became famous in the same village.",
-      "transliteration": "shu pratʰyww atʰʲ gạ̄mas manż",
+      "transliteration": "shu pra͞tʰy͞ww ạ̄tʰʲ gạ̄mas mañż",
       "headword": "پرَٛتھُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1054,7 +1054,7 @@
       "id": "ks-en-0053",
       "kashmiri": "مےٚ سٟتؠ",
       "english": "with me",
-      "transliteration": "mē sɨ̄tʲ",
+      "transliteration": "mēٚ sɨ̄tʲ",
       "headword": "سٟتؠ",
       "partOfSpeech": "Postposition",
       "grammar": [
@@ -1073,7 +1073,7 @@
       "id": "ks-en-0054",
       "kashmiri": "اَتھٕ سٟتؠ",
       "english": "with the hand",
-      "transliteration": "ạ̄atʰɨ sɨ̄tʲ",
+      "transliteration": "atʰɨ sɨ̄tʲ",
       "headword": "سٟتؠ",
       "partOfSpeech": "Postposition",
       "grammar": [
@@ -1109,7 +1109,7 @@
       "id": "ks-en-0056",
       "kashmiri": "کورِ سٕنٛدِ مۄکھٕ دِتؠ تٔمؠ مےٚ پونٛسہٕ",
       "english": "He/she gave me money for the girl",
-      "transliteration": "kwri sɨndi mɔkʰɨ ditʲ tᵊmʲ mē pwnshɨ",
+      "transliteration": "kwri sɨñdi mɔkʰɨ ditʲ tᵊmʲ mēٚ pwñshɨ",
       "headword": "مۄکھٕ",
       "partOfSpeech": "Postposition",
       "grammar": [],
@@ -1164,7 +1164,7 @@
       "id": "ks-en-0059",
       "kashmiri": "ژےٚ کیٛازِ ژٲرٕتھ ییٚمِس لؠکھ؟",
       "english": "Why did you abuse him?",
-      "transliteration": "ʦē kyạ̄żi ʦə̄rɨtʰ yymis lʲkʰ?",
+      "transliteration": "ʦēٚ ky͞ạ̄żi ʦə̄rɨtʰ yyٚmis lʲkʰ?",
       "headword": "لؠکھ ژارٕنؠ",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1200,7 +1200,7 @@
       "id": "ks-en-0061",
       "kashmiri": "حَبہٕ خوتوٗنہِ ہُنٛد اَصلی ناو اوس زوٗن۔",
       "english": "Habba Khatoon's real name was Zoon.",
-      "transliteration": "ħabhɨ xwtw˔nhi hund ạ̄aśly nạ̄w ạ̄ws żw˔n.",
+      "transliteration": "ħabhɨ xwtw˔nhi huñd aśly nạ̄w ạ̄ws żw˔n.",
       "headword": "زوٗن",
       "partOfSpeech": "Proper noun",
       "grammar": [
@@ -1274,7 +1274,7 @@
       "id": "ks-en-0065",
       "kashmiri": "پرَٛبھوٗ! اَگَر سیٖتا ماتایہِ تیٛاگ دیُٛن ضوروٗری چھُ تێلہِ کیٛازِ کۆر اَسہِ یۆد؟ تێلہِ کیٛازِ موٗد جَٹایو؟ تێلہِ کیٛازِ موٗدؠ دۄشوَے پَکھؠن ہٕنٛدؠ بٔڈؠ بٔڈؠ ویٖر؟",
       "english": "Lord! If abandoning mother Sita is necessary, then why did we fight the war? Then why did Jatayu die? Then why did so many great braves from both sides die?",
-      "transliteration": "prabʰw˔! ạ̄agar syˌtạ̄ mạ̄tạ̄yhi tyạ̄g dyun źwrw˔ry ʧʰu tێlhi kyạ̄żi kwr ạ̄ashi ywd? tێlhi kyạ̄żi mw˔d ʤaʈạ̄yw? tێlhi kyạ̄żi mw˔dʲ dɔʃwaē pakʰʲn hɨndʲ bᵊɖʲ bᵊɖʲ wyˌr?",
+      "transliteration": "pra͞bʰw˔! agar syˌtạ̄ mạ̄tạ̄yhi ty͞ạ̄g dyu͞n źwrw˔ry ʧʰu tێlhi ky͞ạ̄żi kwr ashi ywd? tێlhi ky͞ạ̄żi mw˔d ʤaʈạ̄yw? tێlhi ky͞ạ̄żi mw˔dʲ dɔʃwaē pakʰʲn hɨñdʲ bᵊɖʲ bᵊɖʲ wyˌr?",
       "headword": "یۆد",
       "partOfSpeech": "N",
       "grammar": [
@@ -1312,7 +1312,7 @@
       "id": "ks-en-0067",
       "kashmiri": "اَما پۆز یَلہِ ڈۆگرٕ عَہدَس مَنٛز اُردوٗ تہٕ اَنٛگریزی عام ہیٛۆتُن سَپدُن [...]",
       "english": "Even though during the Dogra era, Urdu and English began becoming common …",
-      "transliteration": "ạ̄amạ̄ pwż yalhi ɖwgrɨ ʔahdas manż ạ̄urdw˔ thɨ ạ̄angryży ʔạ̄m hywtun sapdun [...]",
+      "transliteration": "amạ̄ pwż yalhi ɖwgrɨ ʔahdas mañż urdw˔ thɨ añgryży ʔạ̄m hy͞wtun sapdun [...]",
       "headword": "سَپدُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1336,7 +1336,7 @@
       "id": "ks-en-0068",
       "kashmiri": "وُچھنہٕ چھُ آمُت زِ یێلہِ کانٛہہ بِدیسی بادشاہَت کُنہِ مُلکَس پؠٹھ قٲیِم چھےٚ سَپدان امیُک نۆو بادشاہ چھُ اَتھ جایہِ مُتلِق تَوٲریٖخی حالاتھ زانُن یَژھان۔",
       "english": "It has been seen that whenever a foreign empire becomes dominant over a nation, its new emperor wants to know the historical details of that place.",
-      "transliteration": "wuʧʰnhɨ ʧʰu ãmut żi yێlhi kạ̄nhh bidysy bạ̄dʃạ̄hat kunhi mulkas pʲʈʰ ḱə̄yim ʧʰē sapdạ̄n ạ̄myuk nww bạ̄dʃạ̄h ʧʰu ạ̄atʰ ʤạ̄yhi mutliḱ tawə̄ryˌxy ħạ̄lạ̄tʰ żạ̄nun yaʦʰạ̄n.",
+      "transliteration": "wuʧʰnhɨ ʧʰu ãmut żi yێlhi kạ̄ñhh bidysy bạ̄dʃạ̄hat kunhi mulkas pʲʈʰ ḱə̄yim ʧʰēٚ sapdạ̄n ạ̄myuk nww bạ̄dʃạ̄h ʧʰu atʰ ʤạ̄yhi mutliḱ tawə̄ryˌxy ħạ̄lạ̄tʰ żạ̄nun yaʦʰạ̄n.",
       "headword": "سَپدُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1360,7 +1360,7 @@
       "id": "ks-en-0069",
       "kashmiri": "رازٕ ہَمٕس ٲسِتھ سَپدُکھ کۆلٕے کُستام ژۆلُے کیٛاہ تام ہؠتھ گرَٛٹہٕ گَو بَنٛد تَے گرَٛٹَن ہیٛۆت گۆلُے گرَٛٹہٕ وول ژۆلُے پھَل پھۆل ہؠتھ",
       "english": "You have become mute, as though a royal swan Somebody took something and ran away; The mill stopped and its channel got choked The miller ran away taking the grain",
-      "transliteration": "rạ̄żɨ hamɨs ə̄sitʰ sapdukʰ kwlɨē kustạ̄m ʦwluē kyạ̄h tạ̄m hʲtʰ graʈhɨ gaw band taē graʈan hywt gwluē graʈhɨ wwl ʦwluē pʰal pʰwl hʲtʰ",
+      "transliteration": "rạ̄żɨ hamɨs ə̄sitʰ sapdukʰ kwlɨē kustạ̄m ʦwluē ky͞ạ̄h tạ̄m hʲtʰ gra͞ʈhɨ gaw bañd taē gra͞ʈan hy͞wt gwluē gra͞ʈhɨ wwl ʦwluē pʰal pʰwl hʲtʰ",
       "headword": "سَپدُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1384,7 +1384,7 @@
       "id": "ks-en-0070",
       "kashmiri": "ژےٚ چھُے یُس شوٗک رۆٹمُت دوٗر سَپدی مَنو کامَن ژےٚ اَمہِ سٟتؠ پوٗرٕ سَپدی",
       "english": "Your mind's desire will be completed Whatever grief you have will be pushed away",
-      "transliteration": "ʦē ʧʰuē yus ʃw˔k rwʈmut dw˔r sapdy manw kạ̄man ʦē ạ̄amhi sɨ̄tʲ pw˔rɨ sapdy",
+      "transliteration": "ʦēٚ ʧʰuē yus ʃw˔k rwʈmut dw˔r sapdy manw kạ̄man ʦēٚ amhi sɨ̄tʲ pw˔rɨ sapdy",
       "headword": "سَپدُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1408,7 +1408,7 @@
       "id": "ks-en-0071",
       "kashmiri": "امِچ کٲم أس جَنگَن مَنٛز سَپدَن واجِنہِ تَبٲہی ہُنٛد مُقابلہٕ کَرنہٕ عَلاوٕ وُجارٕ گٲمتؠن لوٗکَن ہٕنٛز نَوِ سَرٕ بَحٲلؠ تہٕ بَجٲیی خٲطرٕ اِنتِظام کَرُن۔",
       "english": "It's work was, alongside combating the destruction that occurs in war, to arrange for a new life for those affected by war.",
-      "transliteration": "ạ̄miʧ kə̄m as ʤangan manż sapdan wạ̄ʤinhi tabə̄hy hund muḱạ̄blhɨ karnhɨ ʔalạ̄wɨ wuʤạ̄rɨ gə̄mtʲn lw˔kan hɨnż nawi sarɨ baħə̄lʲ thɨ baʤə̄yy xə̄ṫrɨ ạ̄intiẑạ̄m karun.",
+      "transliteration": "ạ̄miʧ kə̄m ạ̄s ʤangan mañż sapdan wạ̄ʤinhi tabə̄hy huñd muḱạ̄blhɨ karnhɨ ʔalạ̄wɨ wuʤạ̄rɨ gə̄mtʲn lw˔kan hɨñż nawi sarɨ baħə̄lʲ thɨ baʤə̄yy xə̄ṫrɨ intiẑạ̄m karun.",
       "headword": "سَپدُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1432,7 +1432,7 @@
       "id": "ks-en-0072",
       "kashmiri": "[...] چھُ باسان زِ تِمَو تہِ چھُ وۄنؠ پَنٕنؠ ۂتھؠ یار ترٛوومُت تہٕ مونمُت زِ یہِ چھُ سَپدان تہِ چھُ ٹھیٖکھ سَپدان۔",
       "english": "… it seems as though they have cast away their weapons and assumed that whatever happens, happens for the best.",
-      "transliteration": "[...] ʧʰu bạ̄sạ̄n żi timaw thi ʧʰu wɔnʲ panɨnʲ htʰʲ yạ̄r trwwmut thɨ mwnmut żi yhi ʧʰu sapdạ̄n thi ʧʰu ʈʰyˌkʰ sapdạ̄n.",
+      "transliteration": "[...] ʧʰu bạ̄sạ̄n żi timaw thi ʧʰu wɔnʲ panɨnʲ htʰʲ yạ̄r tr͞wwmut thɨ mwnmut żi yhi ʧʰu sapdạ̄n thi ʧʰu ʈʰyˌkʰ sapdạ̄n.",
       "headword": "سَپدُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1456,7 +1456,7 @@
       "id": "ks-en-0073",
       "kashmiri": "یِہ کَڈ سورُے کُٹھِ مَنٛزٕ",
       "english": "Take all of this out of the room.",
-      "transliteration": "yih kaɖ swruē kuʈʰi manżɨ",
+      "transliteration": "yih kaɖ swruē kuʈʰi mañżɨ",
       "headword": "مَنٛزٕ",
       "partOfSpeech": "Postposition",
       "grammar": [],
@@ -1490,7 +1490,7 @@
       "id": "ks-en-0075",
       "kashmiri": "دَروازٕ کَرتہٕ بَنٛد",
       "english": "Close the door.",
-      "transliteration": "darwạ̄żɨ karthɨ band",
+      "transliteration": "darwạ̄żɨ karthɨ bañd",
       "headword": "دَروازٕ",
       "partOfSpeech": "N",
       "grammar": [
@@ -1533,7 +1533,7 @@
       "id": "ks-en-0077",
       "kashmiri": "شُرؠ چھِ مٲدانَس مَنٛز فُٹ بال گِنٛدان۔",
       "english": "The children are playing football in the park.",
-      "transliteration": "ʃurʲ ʧʰi mə̄dạ̄nas manż fuʈ bạ̄l gindạ̄n.",
+      "transliteration": "ʃurʲ ʧʰi mə̄dạ̄nas mañż fuʈ bạ̄l giñdạ̄n.",
       "headword": "مٲدان",
       "partOfSpeech": "N",
       "grammar": [
@@ -1586,7 +1586,7 @@
       "id": "ks-en-0080",
       "kashmiri": "راتھ تام اوس پَکان ٹھیٖکٕے. اَز کیٛاہ گووُس؟",
       "english": "It was working just fine till yesterday. What happened to it today?",
-      "transliteration": "rạ̄tʰ tạ̄m ạ̄ws pakạ̄n ʈʰyˌkɨē. ạ̄aż kyạ̄h gwwus?",
+      "transliteration": "rạ̄tʰ tạ̄m ạ̄ws pakạ̄n ʈʰyˌkɨē. aż ky͞ạ̄h gwwus?",
       "headword": "پَکُن",
       "partOfSpeech": "V",
       "grammar": [
@@ -1622,7 +1622,7 @@
       "id": "ks-en-0082",
       "kashmiri": "مےٚ پَزِ پۆز دَپُن",
       "english": "I should tell the truth",
-      "transliteration": "mē pażi pwż dapun",
+      "transliteration": "mēٚ pażi pwż dapun",
       "headword": "پَزُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1639,7 +1639,7 @@
       "id": "ks-en-0083",
       "kashmiri": "اَتھ مَکانَس کٟژا لاگَتھ؟",
       "english": "What's the cost of that house?",
-      "transliteration": "ạ̄atʰ makạ̄nas kɨ̄ʦạ̄ lạ̄gatʰ?",
+      "transliteration": "atʰ makạ̄nas kɨ̄ʦạ̄ lạ̄gatʰ?",
       "headword": "لاگَتھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -1658,7 +1658,7 @@
       "id": "ks-en-0084",
       "kashmiri": "تِمَو دیُْت اَسِہ سؠٹھا مۄلُل مَدَتھ",
       "english": "They provided us a lot of valuable help.",
-      "transliteration": "timaw dyu͞t ạ̄asih sʲʈʰạ̄ mɔlul madatʰ",
+      "transliteration": "timaw dyu͞t asih sʲʈʰạ̄ mɔlul madatʰ",
       "headword": "مۄلُل",
       "partOfSpeech": "Adj",
       "grammar": [
@@ -1684,7 +1684,7 @@
       "id": "ks-en-0085",
       "kashmiri": "زٔمیٖن چھَ سِرِیَس أنٛدؠ أنٛدؠ پھیران۔",
       "english": "The Earth revolves around the sun.",
-      "transliteration": "żᵊmyˌn ʧʰa siriyas andʲ andʲ pʰyrạ̄n.",
+      "transliteration": "żᵊmyˌn ʧʰa siriyas ạ̄ñdʲ ạ̄ñdʲ pʰyrạ̄n.",
       "headword": "أنٛدؠ أنٛدؠ",
       "partOfSpeech": "Postposition",
       "grammar": [
@@ -1703,7 +1703,7 @@
       "id": "ks-en-0086",
       "kashmiri": "مےٚ کۆرُن بیٛاکھ خۄش۔",
       "english": "I liked the other one.",
-      "transliteration": "mē kwrun byạ̄kʰ xɔʃ.",
+      "transliteration": "mēٚ kwrun by͞ạ̄kʰ xɔʃ.",
       "headword": "بیٛاکھ",
       "partOfSpeech": "Adj",
       "grammar": [
@@ -1742,7 +1742,7 @@
       "id": "ks-en-0088",
       "kashmiri": "گَنیٛومُت چھُم مَنَس چون باو۔ زَگَتھ ماتا، مےٚ دَرشُن ہاو۔",
       "english": "Devotion to thee is the only thing on my mind right now- O Mother of the universe, just grant me a glimpse of thee.",
-      "transliteration": "ganywmut ʧʰum manas ʧwn bạ̄w. żagatʰ mạ̄tạ̄, mē darʃun hạ̄w.",
+      "transliteration": "gany͞wmut ʧʰum manas ʧwn bạ̄w. żagatʰ mạ̄tạ̄, mēٚ darʃun hạ̄w.",
       "headword": "زَگَتھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -1781,7 +1781,7 @@
       "id": "ks-en-0090",
       "kashmiri": "میٚے تھِے چھُکھ نہٕ ژٕ رُت نَفَر",
       "english": "In my estimation, you are not a good person.",
-      "transliteration": "myē tʰiē ʧʰukʰ nhɨ ʦɨ rut nafar",
+      "transliteration": "myٚē tʰiē ʧʰukʰ nhɨ ʦɨ rut nafar",
       "headword": "تھِے",
       "partOfSpeech": "Postposition",
       "grammar": [
@@ -1856,7 +1856,7 @@
       "id": "ks-en-0094",
       "kashmiri": "سُنیتَہ اُشہِ سَرَہ اَنَلے دَجہِ سُدھَہ وَشُّنَہ جَن وَپَسَہ پَڈوسَہ",
       "english": "having heard this, Uṣā, burning in the lake of fire, as if had a rain of elixir fall on her body",
-      "transliteration": "sunytah ạ̄uʃhi sarah ạ̄analē daʤhi sudʰah waʃu˖nah ʤan wapasah paɖwsah",
+      "transliteration": "sunytah uʃhi sarah analē daʤhi sudʰah waʃu˖nah ʤan wapasah paɖwsah",
       "headword": "دَجہِ",
       "partOfSpeech": "V",
       "grammar": [
@@ -1880,7 +1880,7 @@
       "id": "ks-en-0095",
       "kashmiri": "لُکھ پیٚے حٲرتَن کورِ ہُنٛد حُسُن ڈیٖشِتھ",
       "english": "the people fell into amazement, having seen the beauty of the girl",
-      "transliteration": "lukʰ pyē ħə̄rtan kwri hund ħusun ɖyˌʃitʰ",
+      "transliteration": "lukʰ pyٚē ħə̄rtan kwri huñd ħusun ɖyˌʃitʰ",
       "headword": "ڈیشُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -1897,7 +1897,7 @@
       "id": "ks-en-0096",
       "kashmiri": "پرٛانؠن سِپاہَن تہٕ جَرنٲلَن ہٕندؠ کِنؠ آسہِ ہَے جَنٛگُک خاص وَجَہ...",
       "english": "the main cause of the war, according to the old soldiers and generals, would have been...",
-      "transliteration": "prạ̄nʲn sipạ̄han thɨ ʤarnə̄lan hɨndʲ kinʲ ãshi haē ʤanguk xạ̄ś waʤah...",
+      "transliteration": "pr͞ạ̄nʲn sipạ̄han thɨ ʤarnə̄lan hɨndʲ kinʲ ãshi haē ʤañguk xạ̄ś waʤah...",
       "headword": "جَرنٲل",
       "partOfSpeech": "N",
       "grammar": [
@@ -1916,7 +1916,7 @@
       "id": "ks-en-0097",
       "kashmiri": "تُل ژٕ رَفَل مَشیٖن گَن؛ زِنٛدٕ کَرُن پَنُن وَطَن",
       "english": "Lift the rifle, the machine gun; bring your motherland to life.",
-      "transliteration": "tul ʦɨ rafal maʃyˌn gan; żindɨ karun panun waṫan",
+      "transliteration": "tul ʦɨ rafal maʃyˌn gan; żiñdɨ karun panun waṫan",
       "headword": "رَفَل",
       "partOfSpeech": "N",
       "grammar": [
@@ -2021,7 +2021,7 @@
       "id": "ks-en-0102",
       "kashmiri": "وۄدکایہِ ہٕنٛدؠ ژٔٹِت وَسَن وٲلؠ کھٲسؠ",
       "english": "pegs of vodka that went down with a piercing sensation",
-      "transliteration": "wɔdkạ̄yhi hɨndʲ ʦᵊʈit wasan wə̄lʲ kʰə̄sʲ",
+      "transliteration": "wɔdkạ̄yhi hɨñdʲ ʦᵊʈit wasan wə̄lʲ kʰə̄sʲ",
       "headword": "وۄدکا",
       "partOfSpeech": "N",
       "grammar": [
@@ -2040,7 +2040,7 @@
       "id": "ks-en-0103",
       "kashmiri": "یِمَو رٔٹمٕژ چھےٚ پانَس سٟتؠ خَلوَتھ شایہِ آزٲدی",
       "english": "who have kept freedom with themselves at a secluded place",
-      "transliteration": "yimaw rᵊʈmɨʦ ʧʰē pạ̄nas sɨ̄tʲ xalwatʰ ʃạ̄yhi ãżə̄dy",
+      "transliteration": "yimaw rᵊʈmɨʦ ʧʰēٚ pạ̄nas sɨ̄tʲ xalwatʰ ʃạ̄yhi ãżə̄dy",
       "headword": "شاے",
       "partOfSpeech": "N",
       "grammar": [
@@ -2067,7 +2067,7 @@
       "id": "ks-en-0104",
       "kashmiri": "ییٚلہِ اَختابہٕ کھٔسِتھ ۂسؠ ہُشار گٔے",
       "english": "when, the sun having risen, the elephants woke up",
-      "transliteration": "yylhi ạ̄axtạ̄bhɨ kʰᵊsitʰ hsʲ huʃạ̄r gᵊē",
+      "transliteration": "yyٚlhi axtạ̄bhɨ kʰᵊsitʰ hsʲ huʃạ̄r gᵊē",
       "headword": "اَختابہٕ",
       "partOfSpeech": "N",
       "grammar": [
@@ -2094,7 +2094,7 @@
       "id": "ks-en-0105",
       "kashmiri": "کیٛاہ تام مٲنٛژٕ مُشُک چھُم یِوان",
       "english": "some sort of human smell is sensed by me",
-      "transliteration": "kyạ̄h tạ̄m mə̄nʦɨ muʃuk ʧʰum yiwạ̄n",
+      "transliteration": "ky͞ạ̄h tạ̄m mə̄ñʦɨ muʃuk ʧʰum yiwạ̄n",
       "headword": "مٲنٛژ",
       "partOfSpeech": "N",
       "grammar": [
@@ -2120,7 +2120,7 @@
       "id": "ks-en-0106",
       "kashmiri": "ییٚتہِ چھَس بٕے یوت اَکھ مَنوش",
       "english": "here, only I am a human",
-      "transliteration": "yythi ʧʰas bɨē ywt ạ̄akʰ manwʃ",
+      "transliteration": "yyٚthi ʧʰas bɨē ywt akʰ manwʃ",
       "headword": "مَنُش",
       "partOfSpeech": "N",
       "grammar": [
@@ -2152,7 +2152,7 @@
       "id": "ks-en-0107",
       "kashmiri": "تَوَے چھِ سٲری پٲز نارٕ دٕہَس پیٚٹھؠ گَتھ آسان دِوان",
       "english": "thus do all hawks circle over the smoke of fires",
-      "transliteration": "tawaē ʧʰi sə̄ry pə̄ż nạ̄rɨ dɨhas pyʈʰʲ gatʰ ãsạ̄n diwạ̄n",
+      "transliteration": "tawaē ʧʰi sə̄ry pə̄ż nạ̄rɨ dɨhas pyٚʈʰʲ gatʰ ãsạ̄n diwạ̄n",
       "headword": "پٲز",
       "partOfSpeech": "N",
       "grammar": [
@@ -2178,7 +2178,7 @@
       "id": "ks-en-0108",
       "kashmiri": "خوفہٕ ہۆت روٗد تۆتام پرٛاران...",
       "english": "frightened, he waited till...",
-      "transliteration": "xwfhɨ hwt rw˔d twtạ̄m prạ̄rạ̄n...",
+      "transliteration": "xwfhɨ hwt rw˔d twtạ̄m pr͞ạ̄rạ̄n...",
       "headword": "خوفہٕ ہۆت",
       "partOfSpeech": "Adj",
       "grammar": [
@@ -2197,7 +2197,7 @@
       "id": "ks-en-0109",
       "kashmiri": "اَتھ ہیٛۆر چھٔکؠ مٕتِس زٔمیٖنَس وۆن مٲہِرَو پَنگیہٕ",
       "english": "this land that had emerged out was called Pangaea by experts",
-      "transliteration": "ạ̄atʰ hywr ʧʰᵊkʲ mɨtis żᵊmyˌnas wwn mə̄hiraw pangyhɨ",
+      "transliteration": "atʰ hy͞wr ʧʰᵊkʲ mɨtis żᵊmyˌnas wwn mə̄hiraw pangyhɨ",
       "headword": "پَنگیہٕ",
       "partOfSpeech": "N",
       "grammar": [
@@ -2216,7 +2216,7 @@
       "id": "ks-en-0110",
       "kashmiri": "یِمَن دۄن ٹُکرَن وۆن مٲہِرَو گونٛڈوانا تہٕ لاوریسیہٕ",
       "english": "these two fragments were called Gondwana and Laurasia by experts",
-      "transliteration": "yiman dɔn ʈukran wwn mə̄hiraw gwnɖwạ̄nạ̄ thɨ lạ̄wrysyhɨ",
+      "transliteration": "yiman dɔn ʈukran wwn mə̄hiraw gwñɖwạ̄nạ̄ thɨ lạ̄wrysyhɨ",
       "headword": "لاوریسیہٕ",
       "partOfSpeech": "N",
       "grammar": [
@@ -2235,7 +2235,7 @@
       "id": "ks-en-0111",
       "kashmiri": "اَمہِ أنٛدرٕ بَچے مٕتِس وۆنُکھ پَنتھالاسہٕ",
       "english": "what was left in it was called Panthalassa",
-      "transliteration": "ạ̄amhi andrɨ baʧē mɨtis wwnukʰ pantʰạ̄lạ̄shɨ",
+      "transliteration": "amhi ạ̄ñdrɨ baʧē mɨtis wwnukʰ pantʰạ̄lạ̄shɨ",
       "headword": "پَنتھالاسہٕ",
       "partOfSpeech": "N",
       "grammar": [
@@ -2254,7 +2254,7 @@
       "id": "ks-en-0112",
       "kashmiri": "اَسلَم آو سَلیٖمنہِ باپَتھ یور",
       "english": "Aslam came here for the sake of Salim",
-      "transliteration": "ạ̄aslam ãw salyˌmnhi bạ̄patʰ ywr",
+      "transliteration": "aslam ãw salyˌmnhi bạ̄patʰ ywr",
       "headword": "باپَتھ",
       "partOfSpeech": "Postposition",
       "grammar": [],
@@ -2271,7 +2271,7 @@
       "id": "ks-en-0113",
       "kashmiri": "دُنؠ یا شاہرَگہِ اَتہٕ گَتھ",
       "english": "the world is the movement of breath, in and out",
-      "transliteration": "dunʲ yạ̄ ʃạ̄hraghi ạ̄athɨ gatʰ",
+      "transliteration": "dunʲ yạ̄ ʃạ̄hraghi athɨ gatʰ",
       "headword": "اَتہٕ گَتھ",
       "partOfSpeech": "N",
       "grammar": [
@@ -2290,7 +2290,7 @@
       "id": "ks-en-0114",
       "kashmiri": "آنٛگَن ناد کَران ہوٗنوٗ، بایَو مےٚ کُن شُنؠ تَو",
       "english": "from the courtyard, the dog is calling: O brothers, listen to me",
-      "transliteration": "ãngan nạ̄d karạ̄n hw˔nw˔, bạ̄yaw mē kun ʃunʲ taw",
+      "transliteration": "ãñgan nạ̄d karạ̄n hw˔nw˔, bạ̄yaw mēٚ kun ʃunʲ taw",
       "headword": "شُنُن",
       "partOfSpeech": "V",
       "grammar": [
@@ -2310,7 +2310,7 @@
       "id": "ks-en-0115",
       "kashmiri": "آدَم وۄپدووُن سۄباوٕ، آبہٕ واوٕ تہٕ نارٕ میٚژےٚ",
       "english": "He created Adam with the natural qualities, (of) water, air, fire, and soil",
-      "transliteration": "ãdam wɔpdwwun sɔbạ̄wɨ, ãbhɨ wạ̄wɨ thɨ nạ̄rɨ myʦē",
+      "transliteration": "ãdam wɔpdwwun sɔbạ̄wɨ, ãbhɨ wạ̄wɨ thɨ nạ̄rɨ myٚʦēٚ",
       "headword": "وۄپداوُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -2351,7 +2351,7 @@
       "id": "ks-en-0117",
       "kashmiri": "سُہ چھُ زِنٛدٕ",
       "english": "He is alive.",
-      "transliteration": "suh ʧʰu żindɨ",
+      "transliteration": "suh ʧʰu żiñdɨ",
       "headword": "چھا",
       "partOfSpeech": "V",
       "grammar": [
@@ -2371,7 +2371,7 @@
       "id": "ks-en-0118",
       "kashmiri": "سُہ چھا زِنٛدٕ؟",
       "english": "Is he alive?",
-      "transliteration": "suh ʧʰạ̄ żindɨ?",
+      "transliteration": "suh ʧʰạ̄ żiñdɨ?",
       "headword": "چھا",
       "partOfSpeech": "V",
       "grammar": [
@@ -2391,7 +2391,7 @@
       "id": "ks-en-0119",
       "kashmiri": "سۄ چھےٚ زِنٛدٕ",
       "english": "She is alive.",
-      "transliteration": "sɔ ʧʰē żindɨ",
+      "transliteration": "sɔ ʧʰēٚ żiñdɨ",
       "headword": "چھا",
       "partOfSpeech": "V",
       "grammar": [
@@ -2411,7 +2411,7 @@
       "id": "ks-en-0120",
       "kashmiri": "سۄ چھا زِنٛدٕ؟",
       "english": "Is she alive?",
-      "transliteration": "sɔ ʧʰạ̄ żindɨ?",
+      "transliteration": "sɔ ʧʰạ̄ żiñdɨ?",
       "headword": "چھا",
       "partOfSpeech": "V",
       "grammar": [
@@ -2431,7 +2431,7 @@
       "id": "ks-en-0121",
       "kashmiri": "کانٛہہ تہِ پیشہِ پانہٕ ناونہٕ سٟتؠ چھُنہٕ کانٛہہ ؤسؠ پایہِ بَنان",
       "english": "no one becomes lowly by taking up any profession",
-      "transliteration": "kạ̄nhh thi pyʃhi pạ̄nhɨ nạ̄wnhɨ sɨ̄tʲ ʧʰunhɨ kạ̄nhh u͑sʲ pạ̄yhi banạ̄n",
+      "transliteration": "kạ̄ñhh thi pyʃhi pạ̄nhɨ nạ̄wnhɨ sɨ̄tʲ ʧʰunhɨ kạ̄ñhh u͑sʲ pạ̄yhi banạ̄n",
       "headword": "پانہٕ ناوُن",
       "partOfSpeech": "V",
       "grammar": [],
@@ -2472,7 +2472,7 @@
       "id": "ks-en-0123",
       "kashmiri": "یَتھ پؠٹھ پان مارنہٕ سٟتؠ اَنٛدِ نہٕ وۄنؠ کینٛہہ",
       "english": "Nothing will be achieved now by killing oneself over this",
-      "transliteration": "yatʰ pʲʈʰ pạ̄n mạ̄rnhɨ sɨ̄tʲ ạ̄andi nhɨ wɔnʲ kynhh",
+      "transliteration": "yatʰ pʲʈʰ pạ̄n mạ̄rnhɨ sɨ̄tʲ añdi nhɨ wɔnʲ kyñhh",
       "headword": "پان مارُن",
       "partOfSpeech": "V",
       "grammar": [
@@ -2491,7 +2491,7 @@
       "id": "ks-en-0124",
       "kashmiri": "مےٚ چھےٚ پاے",
       "english": "I know.",
-      "transliteration": "mē ʧʰē pạ̄ē",
+      "transliteration": "mēٚ ʧʰēٚ pạ̄ē",
       "headword": "پاے",
       "partOfSpeech": "N",
       "grammar": [
@@ -2529,7 +2529,7 @@
       "id": "ks-en-0126",
       "kashmiri": "رَسوٗلُ اللہ صلی اللہ علیہ وسلمَن پؠٹھ وَحی نازِل سَپُد نیک تہٕ پوٚزَن خوابَن سۭتۍ شروٗع۔ نَبی کریم صلی اللہ علیہ وسلم یُس تہِ خواب اوس وُچھان، سُہ اوس صُبحُک گاشُک پٲٹھۍ صاف تہٕ پوٚز آسان۔ پَتہٕ آیہِ نَبی کریم صلی اللہ علیہ وسلمَن خَلوَت پَسند تہٕ تِم ٲس غارِ حرا ہَس منٛز کُنہِ زون آسان تہٕ ٲس اللہ تعالیٰ سٕنز عبادت کَران۔",
       "english": "The commencement of the Divine Inspiration to Allah's Messenger was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to remain alone in the cave of Hira and worship Allah.",
-      "transliteration": "rasw˔lu ạ̄llh śly ạ̄llh ʔlyh wslman pʲʈʰ waħy nạ̄żil sapud nyk thɨ pwᵉżan xwạ̄ban sty ʃrw˔ʔ. naby krym śly ạ̄llh ʔlyh wslm yus thi xwạ̄b ạ̄ws wuʧʰạ̄n, suh ạ̄ws śubħuk gạ̄ʃuk pə̄ʈʰy śạ̄f thɨ pwᵉż ãsạ̄n. pathɨ ãyhi naby krym śly ạ̄llh ʔlyh wslman xalwat pasnd thɨ tim ə̄s ġạ̄ri ħrạ̄ has mnż kunhi żwn ãsạ̄n thɨ ə̄s ạ̄llh tʔạ̄ly sɨnż ʔbạ̄dt karạ̄n.",
+      "transliteration": "rasw˔lu ạ̄llh śly ạ̄llh ʔlyh wslman pʲʈʰ waħy nạ̄żil sapud nyk thɨ pwᵉżan xwạ̄ban sۭtʲ ʃrw˔ʔ. naby krym śly ạ̄llh ʔlyh wslm yus thi xwạ̄b ạ̄ws wuʧʰạ̄n, suh ạ̄ws śubħuk gạ̄ʃuk pə̄ʈʰʲ śạ̄f thɨ pwᵉż ãsạ̄n. pathɨ ãyhi naby krym śly ạ̄llh ʔlyh wslman xalwat pasnd thɨ tim ə̄s ġạ̄ri ħrạ̄ has mñż kunhi żwn ãsạ̄n thɨ ə̄s ạ̄llh tʔạ̄lyٰ sɨnż ʔbạ̄dt karạ̄n.",
       "headword": "نیک خواب",
       "partOfSpeech": "Noun phrase",
       "grammar": [],
@@ -2546,7 +2546,7 @@
       "id": "ks-en-0127",
       "kashmiri": "تِم ٲس حَضرت خدیجہ رَضِیَ اللہُ عَنْہاؠس نِش واپس یِوان۔ فِرِشتَن روٚٹُس بہٕ پانَس سۭتۍ زور سان۔ پَتہٕ ترٛووُس بہٕ تٔمۍ تہٕ ووٚنُن بَیِہ: ”پَرٕ!“ پَتہٕ روٚٹُس بہٕ تٔمۍ بَیِہ دۄیمہِ لَٹہِ پانَس سۭتۍ زور سان۔ اِنسان کوٚر لَگِتھ کَمَتۍ خوٗنہٕ سۭتۍ پَیدٕ۔",
       "english": "He returned to Khadija. The angel caught me and pressed me strongly against himself, then released me and told me again to read. He caught me again a second time. He created man from a clot.",
-      "transliteration": "tim ə̄s ħaźrt xdyʤh raźiya ạ̄llhu ʔañhạ̄ʲs niʃ wạ̄ps yiwạ̄n. firiʃtan rwᵉʈus bhɨ pạ̄nas sty żwr sạ̄n. pathɨ trwwus bhɨ tᵊmy thɨ wwᵉnun bayih: ”parɨ!“ pathɨ rwᵉʈus bhɨ tᵊmy bayih dɔymhi laʈhi pạ̄nas sty żwr sạ̄n. ạ̄insạ̄n kwᵉr lagitʰ kamaty xw˔nhɨ sty paydɨ.",
+      "transliteration": "tim ə̄s ħaźrt xdyʤh raźiya ạ̄llhu ʔañhạ̄ʲs niʃ wạ̄ps yiwạ̄n. firiʃtan rwᵉʈus bhɨ pạ̄nas sۭtʲ żwr sạ̄n. pathɨ tr͞wwus bhɨ tᵊmʲ thɨ wwᵉnun bayih: ”parɨ!“ pathɨ rwᵉʈus bhɨ tᵊmʲ bayih dɔymhi laʈhi pạ̄nas sۭtʲ żwr sạ̄n. insạ̄n kwᵉr lagitʰ kamatʲ xw˔nhɨ sۭtʲ paydɨ.",
       "headword": "لَگِتھ کَمَتۍ خوٗنہٕ",
       "partOfSpeech": "Noun phrase",
       "grammar": [],
@@ -12628,9 +12628,9 @@
     },
     {
       "id": "lex-ks-en-00672",
-      "kashmiri": "پَتہٕ دورُن",
+      "kashmiri": "پَتہٕ د��رُن",
       "english": "chase",
-      "headword": "پَتہٕ دورُن",
+      "headword": "پَتہٕ د��رُن",
       "transliteration": "Pate dorun",
       "partOfSpeech": "N",
       "source": {
@@ -13129,7 +13129,7 @@
       "transliteration": "Goal goal",
       "partOfSpeech": "Adj",
       "source": {
-        "name": "Kaeshir Dictionary · Izan Majeed",
+        "name": "Kaeshir Dictionary �� Izan Majeed",
         "url": "https://github.com/izan-majeed/kaeshir-dictionary-data/blob/4222492fbac277321bc0a4bfc6cc790edc25566a/kashmiri/data/collected-words.json",
         "license": "MIT"
       },
@@ -21223,9 +21223,9 @@
     },
     {
       "id": "lex-ks-en-01245",
-      "kashmiri": "تَکلیٖف",
+      "kashmiri": "ت��کلیٖف",
       "english": "distress",
-      "headword": "تَکلیٖف",
+      "headword": "ت��کلیٖف",
       "transliteration": "Takle:f",
       "partOfSpeech": "N",
       "source": {
@@ -40483,9 +40483,9 @@
     },
     {
       "id": "lex-ks-en-02529",
-      "kashmiri": "عَدالتی",
+      "kashmiri": "ع��دالتی",
       "english": "judicial",
-      "headword": "عَدالتی",
+      "headword": "ع��دالتی",
       "transliteration": "Ada:lti",
       "partOfSpeech": "Adj",
       "source": {
@@ -45898,9 +45898,9 @@
     },
     {
       "id": "lex-ks-en-02890",
-      "kashmiri": "ڈاک",
+      "kashmiri": "ڈا��",
       "english": "mail",
-      "headword": "ڈاک",
+      "headword": "ڈا��",
       "transliteration": "Dak",
       "partOfSpeech": "N",
       "source": {
@@ -49348,9 +49348,9 @@
     },
     {
       "id": "lex-ks-en-03120",
-      "kashmiri": "قومی مِلکِیَت بَناوُن",
+      "kashmiri": "قومی مِلکِیَ�� بَناوُن",
       "english": "nationalise",
-      "headword": "قومی مِلکِیَت بَناوُن",
+      "headword": "قومی مِلکِیَ�� بَناوُن",
       "transliteration": "Qomi milkiyat bana:vun",
       "partOfSpeech": "V",
       "source": {
@@ -56788,9 +56788,9 @@
     },
     {
       "id": "lex-ks-en-03616",
-      "kashmiri": "مہربٲنی",
+      "kashmiri": "مہ��بٲنی",
       "english": "please",
-      "headword": "مہربٲنی",
+      "headword": "مہ��بٲنی",
       "transliteration": "Maharbaeni",
       "partOfSpeech": "Interj",
       "source": {
@@ -90943,9 +90943,9 @@
     },
     {
       "id": "lex-ks-en-05893",
-      "kashmiri": "پرٛٮ۪تھ ؤرِیِہ",
+      "kashmiri": "پرٛٮ۪تھ ؤرِ��ِہ",
       "english": "annually",
-      "headword": "پرٛٮ۪تھ ؤرِیِہ",
+      "headword": "پرٛٮ۪تھ ؤرِ��ِہ",
       "transliteration": "Praith wəri",
       "partOfSpeech": "Adv",
       "source": {
@@ -92053,9 +92053,9 @@
     },
     {
       "id": "lex-ks-en-05967",
-      "kashmiri": "ہُشیار",
+      "kashmiri": "ہُشی��ر",
       "english": "attention",
-      "headword": "ہُشیار",
+      "headword": "ہُشی��ر",
       "transliteration": "Husha:r",
       "partOfSpeech": "N",
       "source": {
@@ -98563,9 +98563,9 @@
     },
     {
       "id": "lex-ks-en-06401",
-      "kashmiri": "پھٲلُن",
+      "kashmiri": "پ��ٲلُن",
       "english": "creep",
-      "headword": "پھٲلُن",
+      "headword": "پ��ٲلُن",
       "transliteration": "Faelun",
       "partOfSpeech": "VI",
       "source": {
@@ -98908,9 +98908,9 @@
     },
     {
       "id": "lex-ks-en-06424",
-      "kashmiri": "کرٛنٹہٕ",
+      "kashmiri": "ک��ٛنٹہٕ",
       "english": "current",
-      "headword": "کرٛنٹہٕ",
+      "headword": "ک��ٛنٹہٕ",
       "transliteration": "Krente",
       "partOfSpeech": "N",
       "source": {
@@ -99448,9 +99448,9 @@
     },
     {
       "id": "lex-ks-en-06460",
-      "kashmiri": "دُشمَنِہ جان",
+      "kashmiri": "دُشمَنِہ ��ان",
       "english": "deadly",
-      "headword": "دُشمَنِہ جان",
+      "headword": "دُشمَنِہ ��ان",
       "transliteration": "Dushmani ja:n",
       "partOfSpeech": "Adj",
       "source": {
@@ -108703,9 +108703,9 @@
     },
     {
       "id": "lex-ks-en-07077",
-      "kashmiri": "اَتھہٕ روٚٹ",
+      "kashmiri": "اَتھہٕ رو��ٹ",
       "english": "help",
-      "headword": "اَتھہٕ روٚٹ",
+      "headword": "اَتھہٕ رو��ٹ",
       "transliteration": "Athe ro:t",
       "partOfSpeech": "N",
       "source": {
@@ -133549,7 +133549,7 @@
       "transliteration": "Pretshej",
       "partOfSpeech": "N",
       "source": {
-        "name": "Kaeshir Dictionary · Izan Majeed",
+        "name": "Kaeshir Dictionary �� Izan Majeed",
         "url": "https://github.com/izan-majeed/kaeshir-dictionary-data/blob/4222492fbac277321bc0a4bfc6cc790edc25566a/kashmiri/data/collected-words.json",
         "license": "MIT"
       },
@@ -133699,7 +133699,7 @@
       "transliteration": "Ketij",
       "partOfSpeech": "N",
       "source": {
-        "name": "Kaeshir Dictionary · Izan Majeed",
+        "name": "Kaeshir Dictionary �� Izan Majeed",
         "url": "https://github.com/izan-majeed/kaeshir-dictionary-data/blob/4222492fbac277321bc0a4bfc6cc790edc25566a/kashmiri/data/collected-words.json",
         "license": "MIT"
       },
@@ -144928,9 +144928,9 @@
     },
     {
       "id": "lex-ks-en-09492",
-      "kashmiri": "اَکہٕ وَنٛزاہ",
+      "kashmiri": "اَکہٕ وَنٛزا��",
       "english": "fifty-one",
-      "headword": "اَکہٕ وَنٛزاہ",
+      "headword": "اَکہٕ وَنٛزا��",
       "transliteration": "akụvanzāh",
       "partOfSpeech": "Number",
       "source": {
@@ -153823,9 +153823,9 @@
     },
     {
       "id": "lex-ks-en-10085",
-      "kashmiri": "پھۄکھ",
+      "kashmiri": "پ��ۄکھ",
       "english": "breath, exhaled air",
-      "headword": "پھۄکھ",
+      "headword": "پ��ۄکھ",
       "transliteration": "phọkh",
       "partOfSpeech": "N",
       "source": {
@@ -163033,9 +163033,9 @@
     },
     {
       "id": "lex-ks-en-10699",
-      "kashmiri": "نیٛوٗل",
+      "kashmiri": "نی��وٗل",
       "english": "green",
-      "headword": "نیٛوٗل",
+      "headword": "نی��وٗل",
       "transliteration": "nyūl",
       "partOfSpeech": "Adj",
       "source": {
@@ -163453,9 +163453,9 @@
     },
     {
       "id": "lex-ks-en-10727",
-      "kashmiri": "گۄڈٕ",
+      "kashmiri": "��ۄڈٕ",
       "english": "in the beginning",
-      "headword": "گۄڈٕ",
+      "headword": "��ۄڈٕ",
       "transliteration": "gọḍụ",
       "partOfSpeech": "Adv",
       "source": {
@@ -168088,9 +168088,9 @@
     },
     {
       "id": "lex-ks-en-11036",
-      "kashmiri": "بانہٕ ہال",
+      "kashmiri": "بانہٕ ہا��",
       "english": "Banihal, the name of a village and a pass located to the south of the Kashmir Valley in the Pir Panjal range.",
-      "headword": "بانہٕ ہال",
+      "headword": "بانہٕ ہا��",
       "transliteration": "Bānụhāl",
       "partOfSpeech": "Proper noun",
       "source": {
@@ -169183,9 +169183,9 @@
     },
     {
       "id": "lex-ks-en-11109",
-      "kashmiri": "وَتہِ ڈَلُن",
+      "kashmiri": "��َتہِ ڈَلُن",
       "english": "to move away from the path",
-      "headword": "وَتہِ ڈَلُن",
+      "headword": "��َتہِ ڈَلُن",
       "transliteration": "vati ḍalun",
       "partOfSpeech": "V",
       "source": {
@@ -193453,9 +193453,9 @@
     },
     {
       "id": "lex-ks-en-12727",
-      "kashmiri": "عٔلِم",
+      "kashmiri": "عٔلِ��",
       "english": "Learning",
-      "headword": "عٔلِم",
+      "headword": "عٔلِ��",
       "transliteration": "Alim",
       "partOfSpeech": "N",
       "source": {
@@ -204748,9 +204748,9 @@
     },
     {
       "id": "lex-ks-en-13480",
-      "kashmiri": "کوٗشِش کَرٕنؠ",
+      "kashmiri": "کوٗشِش ک��رٕنؠ",
       "english": "Seek",
-      "headword": "کوٗشِش کَرٕنؠ",
+      "headword": "کوٗشِش ک��رٕنؠ",
       "transliteration": "Kushish karen",
       "partOfSpeech": "V",
       "source": {
@@ -205153,9 +205153,9 @@
     },
     {
       "id": "lex-ks-en-13507",
-      "kashmiri": "تَھرٕ تَھرٕ",
+      "kashmiri": "ت��ھرٕ تَھرٕ",
       "english": "Shivering",
-      "headword": "تَھرٕ تَھرٕ",
+      "headword": "ت��ھرٕ تَھرٕ",
       "transliteration": "There there",
       "partOfSpeech": "",
       "source": {
@@ -205384,7 +205384,7 @@
       "transliteration": "Beme",
       "partOfSpeech": "",
       "source": {
-        "name": "Kaeshir Dictionary · Izan Majeed",
+        "name": "Kaeshir Dictionary �� Izan Majeed",
         "url": "https://github.com/izan-majeed/kaeshir-dictionary-data/blob/4222492fbac277321bc0a4bfc6cc790edc25566a/kashmiri/data/collected-words.json",
         "license": "MIT"
       },
@@ -207088,9 +207088,9 @@
     },
     {
       "id": "lex-ks-en-13636",
-      "kashmiri": "مُقابلہ ٕ کَرُن",
+      "kashmiri": "مُقابلہ ٕ کَر��ن",
       "english": "Strive",
-      "headword": "مُقابلہ ٕ کَرُن",
+      "headword": "مُقابلہ ٕ کَر��ن",
       "transliteration": "Muqa:ble e karun",
       "partOfSpeech": "V",
       "source": {
@@ -208054,7 +208054,7 @@
       "transliteration": "Yithe hiv",
       "partOfSpeech": "Adj",
       "source": {
-        "name": "Kaeshir Dictionary · Izan Majeed",
+        "name": "Kaeshir Dictionary �� Izan Majeed",
         "url": "https://github.com/izan-majeed/kaeshir-dictionary-data/blob/4222492fbac277321bc0a4bfc6cc790edc25566a/kashmiri/data/collected-words.json",
         "license": "MIT"
       },
@@ -216528,6 +216528,276 @@
       "headword": "لَگِتھ کَمَتۍ خوٗنہٕ",
       "transliteration": "lagith kameti khoon",
       "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14266",
+      "kashmiri": "بابٕتھٕر",
+      "english": "nephew; brother's son",
+      "headword": "بابٕتھٕر",
+      "transliteration": "baabuthur",
+      "partOfSpeech": "Noun",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14267",
+      "kashmiri": "پازؠن عِزت کَرُن",
+      "english": "to honour guests",
+      "headword": "پازؠن عِزت کَرُن",
+      "transliteration": "paazeyn izzat karun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14268",
+      "kashmiri": "دُنیا ترٛاوُن",
+      "english": "to leave this world; to die",
+      "headword": "دُنیا ترٛاوُن",
+      "transliteration": "duniya traavun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14269",
+      "kashmiri": "پَیغام ہؠتھ یُن",
+      "english": "to come bearing a message",
+      "headword": "پَیغام ہؠتھ یُن",
+      "transliteration": "paigaam hyeth yun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14270",
+      "kashmiri": "اِنجل لیٚکھُن",
+      "english": "to write the Gospel",
+      "headword": "اِنجل لیٚکھُن",
+      "transliteration": "Injeel lyekhun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14271",
+      "kashmiri": "آسمانَس کُن وُچھُن",
+      "english": "to look toward the sky",
+      "headword": "آسمانَس کُن وُچھُن",
+      "transliteration": "aasmaanas kun wuchhun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14272",
+      "kashmiri": "خَوف زَدٕ گَژھُن",
+      "english": "to become frightened",
+      "headword": "خَوف زَدٕ گَژھُن",
+      "transliteration": "khauf-zada gachhun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14273",
+      "kashmiri": "گَرٕ کُن تَشریٖف کَرُن",
+      "english": "to return home; respectfully, to proceed home",
+      "headword": "گَرٕ کُن تَشریٖف کَرُن",
+      "transliteration": "gari kun tashreef karun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14274",
+      "kashmiri": "وَحی زور سان یِنۍ",
+      "english": "revelation to begin coming forcefully",
+      "headword": "وَحی زور سان یِنۍ",
+      "transliteration": "wahi zor saan yini",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14275",
+      "kashmiri": "پَنٕنۍ پَلَو تھاوُن صاف",
+      "english": "to keep one's garment clean",
+      "headword": "پَنٕنۍ پَلَو تھاوُن صاف",
+      "transliteration": "panney pallav thaavun saaf",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14276",
+      "kashmiri": "وَحی نازِل گَژھنہٕ وِزِ زَبردست مُشکِلات سَپدُن",
+      "english": "to experience great difficulty when revelation descends",
+      "headword": "وَحی نازِل گَژھنہٕ وِزِ زَبردست مُشکِلات سَپدُن",
+      "transliteration": "wahi naazil gachhnah wiz zabardast mushkilaat sapdun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14277",
+      "kashmiri": "پَنٕنۍ وۄٹھ ہَلاوِتھ",
+      "english": "moving one's lips",
+      "headword": "پَنٕنۍ وۄٹھ ہَلاوِتھ",
+      "transliteration": "panen woth halaavith",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14278",
+      "kashmiri": "توہہِ یِہ یاد تھاوناوُن چھُ اَسہِ ذِمّہٕ",
+      "english": "making you retain it is Our responsibility",
+      "headword": "توہہِ یِہ یاد تھاوناوُن چھُ اَسہِ ذِمّہٕ",
+      "transliteration": "tohi yi yaad thaavnaavun chu ase zimah",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14279",
+      "kashmiri": "تَمیٚچ تِلاوَت وارٕ وارٕ",
+      "english": "follow its recitation carefully",
+      "headword": "تَمیٚچ تِلاوَت وارٕ وارٕ",
+      "transliteration": "tamech tilaawat waar waar",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14280",
+      "kashmiri": "تَمیُک بیان کَرُن تہِ چھُ اَسہِ ذِمّہٕ",
+      "english": "its explanation is also Our responsibility",
+      "headword": "تَمیُک بیان کَرُن تہِ چھُ اَسہِ ذِمّہٕ",
+      "transliteration": "tamyuk bayaan karun ti chu ase zimah",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14281",
+      "kashmiri": "پرٛتھ رٲژِ",
+      "english": "every night",
+      "headword": "پرٛتھ رٲژِ",
+      "transliteration": "prath raacz",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14282",
+      "kashmiri": "خیرات کَرنَس منٛز",
+      "english": "in giving charity",
+      "headword": "خیرات کَرنَس منٛز",
+      "transliteration": "khairaat karanas manz",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14283",
+      "kashmiri": "سوزنہٕ آمٕژِ ہواہِ کھۄتہٕ تہِ زیادٕ سَخی",
+      "english": "more generous than the dispatched wind",
+      "headword": "سوزنہٕ آمٕژِ ہواہِ کھۄتہٕ تہِ زیادٕ سَخی",
+      "transliteration": "soznah aamizi hawaahi khotah ti zyaadah sakhi",
+      "partOfSpeech": "Adjectival phrase",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",

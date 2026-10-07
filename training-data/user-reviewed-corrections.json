@@ -56,6 +56,16 @@
       "humanReview": "approved-by-project-owner",
       "reviewDate": "2026-10-07",
       "supersedes": ["ژھۄپ ژھۄپ یاد کَرنہٕ خٲطرٕ", "قبوٗل کَرنَس وِزِ", "قِراءت پَتہٕ کَرِو"]
+    },
+    {
+      "id": "bukhari-6-complete-r1",
+      "context": "Sahih al-Bukhari Hadith 6 — complete owner-reviewed translation",
+      "english": "Ibn Abbas narrated that Allah's Messenger was the most generous of all people. His generosity was greatest in Ramadan, when Gabriel met him every night and reviewed the Quran with him. Allah's Messenger was more generous in charity than the dispatched wind.",
+      "kashmiri": "حضرت اِبنِ عباس رضی اللہ عنہما چھِ روایت کَران: رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّم ٲس سٲریو اِنسانَن کھۄتہٕ زیادٕ سَخی۔ رمضانَس منٛز ٲس تِمَن سٕنز سخاوت ساروِے کھۄتہٕ زیادٕ گَژھان، ییلہِ فِرِشتہٕ جبرئیل علیہ السلام تِمَن نِش یِوان ٲس۔ فِرِشتہٕ جبرئیل علیہ السلام ٲس رمضانَس پرٛتھ رٲژِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن نِش یِوان تہٕ تِمَن سۭتۍ قرآنِ کریم دَہراوان۔ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّم ٲس سوزنہٕ آمٕژِ ہواہِ کھۄتہٕ تہِ زیادٕ سَخی، خیرات کَرنَس منٛز۔",
+      "status": "user-preferred",
+      "humanReview": "approved-by-project-owner",
+      "reviewDate": "2026-10-07",
+      "supersedes": ["ہَر رٲت", "خیر کَرنَس منٛز"]
     }
   ],
   "lexicon": [
@@ -84,5 +94,8 @@
     ,{ "k": "توہہِ یِہ یاد تھاوناوُن چھُ اَسہِ ذِمّہٕ", "e": "making you retain it is Our responsibility", "p": "Clause", "tr": "tohi yi yaad thaavnaavun chu ase zimah", "correctionId": "bukhari-5-complete-r1" }
     ,{ "k": "تَمیٚچ تِلاوَت وارٕ وارٕ", "e": "follow its recitation carefully", "p": "Clause", "tr": "tamech tilaawat waar waar", "correctionId": "bukhari-5-complete-r1" }
     ,{ "k": "تَمیُک بیان کَرُن تہِ چھُ اَسہِ ذِمّہٕ", "e": "its explanation is also Our responsibility", "p": "Clause", "tr": "tamyuk bayaan karun ti chu ase zimah", "correctionId": "bukhari-5-complete-r1" }
+    ,{ "k": "پرٛتھ رٲژِ", "e": "every night", "p": "Adverbial phrase", "tr": "prath raacz", "correctionId": "bukhari-6-complete-r1" }
+    ,{ "k": "خیرات کَرنَس منٛز", "e": "in giving charity", "p": "Adverbial phrase", "tr": "khairaat karanas manz", "correctionId": "bukhari-6-complete-r1" }
+    ,{ "k": "سوزنہٕ آمٕژِ ہواہِ کھۄتہٕ تہِ زیادٕ سَخی", "e": "more generous than the dispatched wind", "p": "Adjectival phrase", "tr": "soznah aamizi hawaahi khotah ti zyaadah sakhi", "correctionId": "bukhari-6-complete-r1" }
   ]
 }

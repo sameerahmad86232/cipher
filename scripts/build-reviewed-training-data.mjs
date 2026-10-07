@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { transliterateKashmiri } from '../dist/assets/transliteration.mjs';
+import { transliterateKashmiri } from '../assets/transliteration.mjs';
 
 const [dictionaryFile, jsonFile, jsonlFile] = process.argv.slice(2);
 if (!dictionaryFile || !jsonFile || !jsonlFile) throw Error('Usage: node scripts/build-reviewed-training-data.mjs DICTIONARY.json OUTPUT.json OUTPUT.jsonl');
