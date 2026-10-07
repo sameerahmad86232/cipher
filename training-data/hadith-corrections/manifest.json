@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "approvedHadiths": 7,
-  "approvedPassagePairs": 7,
-  "approvedPreferencePairs": 9,
-  "approvedGrammarPatterns": 6,
+  "approvedHadiths": 12,
+  "approvedPassagePairs": 12,
+  "approvedPreferencePairs": 15,
+  "approvedGrammarPatterns": 10,
   "pendingReviewCandidates": 4,
-  "reviewedLexiconEntries": 36,
+  "reviewedLexiconEntries": 46,
   "trainingPolicy": {
     "approvedPassageWeight": 8,
     "pendingCandidatesUsedForTraining": false,

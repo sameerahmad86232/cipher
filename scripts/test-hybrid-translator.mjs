@@ -15,8 +15,8 @@ const index = JSON.parse(fs.readFileSync(path.join(webRoot, 'assets/hybrid-trans
 const legacy = JSON.parse(fs.readFileSync(path.join(webRoot, 'assets/kashmiri-reviewed-training-data.json'), 'utf8'));
 const memory = createTranslationMemory(index.pairs, legacy.lexicon);
 
-assert.equal(index.counts.pairs, 145);
-assert.equal(index.counts.approved, 52);
+assert.equal(index.counts.pairs, 150);
+assert.equal(index.counts.approved, 57);
 assert.equal(normalizeTranslationText('  Come HERE! '), 'come here');
 
 const exact = findMemoryMatch(memory, 'Come here!', 'en-ks');

@@ -1,13 +1,13 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-07T17:14:31.260Z",
+  "generatedAt": "2026-10-07T17:50:08.845Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
     "pairs": 127,
-    "lexicalMappings": 14292,
-    "distinctKashmiriHeadwords": 9611,
-    "distinctEnglishGlosses": 7216,
+    "lexicalMappings": 14301,
+    "distinctKashmiriHeadwords": 9620,
+    "distinctEnglishGlosses": 7224,
     "humanReviewed": 2,
     "pendingHumanReview": 125
   },
@@ -71359,12 +71359,12 @@
       "transliteration": "śēṭh",
       "partOfSpeech": "Pron",
       "source": {
-        "name": "Wiktionary",
-        "url": "https://en.wiktionary.org/wiki/%D8%B4%DB%8C%D9%B9%DA%BE#Kashmiri",
-        "license": "CC BY-SA 4.0"
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
       },
-      "status": "source-attested",
-      "humanReview": "pending"
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
     },
     {
       "id": "lex-ks-en-04588",
@@ -216933,6 +216933,141 @@
       "headword": "یُس ہِدایت رَٹِ",
       "transliteration": "yus hidaayat rati",
       "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14293",
+      "kashmiri": "اللہ تعالہس",
+      "english": "apart from Allah; for Allah (inflected form)",
+      "headword": "اللہ تعالہس",
+      "transliteration": "Allah taalaahas",
+      "partOfSpeech": "Proper noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14294",
+      "kashmiri": "ایمانَس چھِ",
+      "english": "faith has",
+      "headword": "ایمانَس چھِ",
+      "transliteration": "imaanas chi",
+      "partOfSpeech": "Clause pattern",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14295",
+      "kashmiri": "مُسلمان چھُ سُہ",
+      "english": "a Muslim is the one who",
+      "headword": "مُسلمان چھُ سُہ",
+      "transliteration": "musalmaan chu su",
+      "partOfSpeech": "Clause pattern",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14296",
+      "kashmiri": "مُہاجِر چھُ سُہ",
+      "english": "an emigrant is the one who",
+      "headword": "مُہاجِر چھُ سُہ",
+      "transliteration": "muhaajir chu su",
+      "partOfSpeech": "Clause pattern",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14297",
+      "kashmiri": "اللہ تعالہَن",
+      "english": "Allah (ergative form)",
+      "headword": "اللہ تعالہَن",
+      "transliteration": "Allah taalaahan",
+      "partOfSpeech": "Proper noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14298",
+      "kashmiri": "کینژھو لُکو پرژھ",
+      "english": "some people asked",
+      "headword": "کینژھو لُکو پرژھ",
+      "transliteration": "kyenzho loko pruchh",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14299",
+      "kashmiri": "کَمہِ سُنٛد",
+      "english": "whose",
+      "headword": "کَمہِ سُنٛد",
+      "transliteration": "kami sund",
+      "partOfSpeech": "Interrogative phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14300",
+      "kashmiri": "اَکہِ شَخصَن پروژھ",
+      "english": "a man asked",
+      "headword": "اَکہِ شَخصَن پروژھ",
+      "transliteration": "aki shakhsan proozh",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14301",
+      "kashmiri": "لُکَن کھؠن دِیُن",
+      "english": "to give people food",
+      "headword": "لُکَن کھؠن دِیُن",
+      "transliteration": "lokan khyen diyun",
+      "partOfSpeech": "Verb phrase",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",

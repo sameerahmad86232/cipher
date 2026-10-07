@@ -34,5 +34,29 @@
     "meaning": "The Messenger of Allah said",
     "pattern": "رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو",
     "rule": "Use فَرموو and preserve the complete honorific."
+  },
+  {
+    "id": "predicate-identity",
+    "meaning": "A Muslim/emigrant is the one who",
+    "pattern": "مُسلمان چھُ سُہ / مُہاجِر چھُ سُہ",
+    "rule": "Place چھُ before سُہ in this reviewed identifying construction."
+  },
+  {
+    "id": "possessive-category",
+    "meaning": "Modesty is a branch of faith",
+    "pattern": "حَیا چھِ ایمانَچ اَکھ شاخ",
+    "rule": "Use the possessive/category form ایمانَچ."
+  },
+  {
+    "id": "plural-agent-question",
+    "meaning": "Some people asked",
+    "pattern": "کینژھو لُکو پرژھ",
+    "rule": "Preserve the reviewed plural-agent form."
+  },
+  {
+    "id": "singular-agent-question",
+    "meaning": "A man asked",
+    "pattern": "اَکہِ شَخصَن پروژھ",
+    "rule": "Use شَخصَن with the reviewed past verb پروژھ."
   }
 ]

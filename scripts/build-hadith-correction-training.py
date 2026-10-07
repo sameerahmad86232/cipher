@@ -39,6 +39,12 @@ preferences = [
     ("his feet", "تَمہِ سٕندۍ کھور", "تَمہِ سُنٛدۍ پاد", "Use the reviewed Kashmiri noun."),
     ("one who follows guidance", "یُس ہِدایت رَٹِ", "یُس ہِدایت پَتہٕ کَرِ", "Use the reviewed verb phrase."),
     ("I asked you", "مےٚ پرژھٕے ژےٚ", "مےٚ پرژھُتھ", "Preserve Kashmiri person marking and word order."),
+    ("sixty", "شیٹھ", "ساٹھ", "Use the owner-approved Kashmiri numeral."),
+    ("a Muslim is the one who", "مُسلمان چھُ سُہ", "مُسلمان سُہ چھُ", "Use the reviewed predicate order."),
+    ("an emigrant is the one who", "مُہاجِر چھُ سُہ", "مُہاجِر سُہ چھُ", "Use the reviewed predicate order."),
+    ("some people asked", "کینژھو لُکو پرژھ", "کینہہ لُکَن پرژھ", "Use the reviewed plural-agent construction."),
+    ("a man asked", "اَکہِ شَخصَن پروژھ", "اَکہِ مَہنؠو پرژھ", "Use the reviewed noun and verb spelling."),
+    ("to give people food", "لُکَن کھؠن دِیُن", "لُکَن کھؠن دِیِو", "Use the reviewed infinitive form."),
 ]
 preference_rows = [{
     "id": f"hadith-pref-{index:03d}",
@@ -57,6 +63,10 @@ patterns = [
     {"id": "reported-question", "meaning": "I asked you", "pattern": "مےٚ پرژھٕے ژےٚ", "rule": "Retain first-person past and second-person object marking."},
     {"id": "conditional-report", "meaning": "If what you said is true", "pattern": "اَگر ژےٚ پوٗز ووٚنُتھ", "rule": "Use ووٚنُتھ for the completed second-person report."},
     {"id": "respectful-speech", "meaning": "The Messenger of Allah said", "pattern": "رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو", "rule": "Use فَرموو and preserve the complete honorific."},
+    {"id": "predicate-identity", "meaning": "A Muslim/emigrant is the one who", "pattern": "مُسلمان چھُ سُہ / مُہاجِر چھُ سُہ", "rule": "Place چھُ before سُہ in this reviewed identifying construction."},
+    {"id": "possessive-category", "meaning": "Modesty is a branch of faith", "pattern": "حَیا چھِ ایمانَچ اَکھ شاخ", "rule": "Use the possessive/category form ایمانَچ."},
+    {"id": "plural-agent-question", "meaning": "Some people asked", "pattern": "کینژھو لُکو پرژھ", "rule": "Preserve the reviewed plural-agent form."},
+    {"id": "singular-agent-question", "meaning": "A man asked", "pattern": "اَکہِ شَخصَن پروژھ", "rule": "Use شَخصَن with the reviewed past verb پروژھ."},
 ]
 
 review_candidates = [
