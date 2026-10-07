@@ -27,6 +27,7 @@ import { transliterateKashmiri } from './transliteration.mjs';
 import { autocorrectKashmiri } from './kashmiri-text.mjs';
 import { transliterateUnknownEnglish } from './translation-text.mjs';
 import { analyzeSentence, applyGrammarOutput } from './grammar-engine.mjs';
+import { createTranslationMemory, findMemoryMatch, dictionaryDraft, reviewLabel } from './hybrid-translator.mjs';
 
 const $ = selector => document.querySelector(selector);
 const input = $('#search-input'), results = $('#results'), statusEl = $('#dictionary-status');
@@ -315,35 +316,23 @@ const TRANSLATOR_SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const sentenceInput = $('#sentence-input'), output = $('#sentence-output'), note = $('#translation-note'), run = $('#translate-sentence');
 let direction = 'ks-en', busy = false, translated = '', activeController, liveTimer, liveRequestText = '';
 let reviewedMemoryPromise;
-function firstValueMap(items, keyOf) {
-  const map = new Map();
-  for (const item of items) {
-    const key = keyOf(item);
-    if (!map.has(key)) map.set(key, item);
-  }
-  return map;
-}
 const initialNote = 'Online mode sends text to the public translator. Offline mode downloads a quantized NLLB-200 model once, then runs on this device. The model is large and translation may be slower on phones; review important text with a fluent speaker.';
 const OFFLINE_MODEL = 'Xenova/nllb-200-distilled-600M';
 let offlineTranslatorPromise, offlineModelReady = false;
 async function loadReviewedMemory() {
-  if (!reviewedMemoryPromise) reviewedMemoryPromise = fetch('/assets/kashmiri-reviewed-training-data.json')
-    .then(response => { if (!response.ok) throw Error('Training memory unavailable'); return response.json(); })
-    .then(data => ({
-      ksEn: new Map((data.pairs || []).map(pair => [norm(pair.kashmiri), pair])),
-      enKs: new Map((data.pairs || []).map(pair => [norm(pair.english), pair])),
-      lexicalKsEn: firstValueMap(data.lexicon || [], item => norm(item.kashmiri)),
-      lexicalEnKs: firstValueMap(data.lexicon || [], item => norm(item.english))
-    }));
+  if (!reviewedMemoryPromise) reviewedMemoryPromise = Promise.all([
+    fetch('/assets/kashmiri-reviewed-training-data.json').then(response => { if (!response.ok) throw Error('Training memory unavailable'); return response.json(); }),
+    fetch('/assets/hybrid-translation-index.json').then(response => response.ok ? response.json() : { pairs: [] })
+  ]).then(([data, supplemental]) => {
+    const pairs = [...(supplemental.pairs || []), ...(data.pairs || [])];
+    return createTranslationMemory(pairs, data.lexicon || []);
+  });
   return reviewedMemoryPromise;
 }
-async function exactMemoryMatch(text) {
+async function reviewedMemoryMatch(text) {
   try {
     const memory = await loadReviewedMemory();
-    const key = norm(text);
-    return direction === 'ks-en'
-      ? memory.ksEn.get(key) || memory.lexicalKsEn.get(key)
-      : memory.enKs.get(key) || memory.lexicalEnKs.get(key);
+    return findMemoryMatch(memory, text, direction);
   } catch { return undefined; }
 }
 async function loadOfflineTranslator() {
@@ -618,13 +607,18 @@ async function translateCurrent(automatic = false) {
   if (direction === 'ks-en' && !/\p{Script=Arabic}/u.test(text)) { note.textContent = 'For Kashmiri → English, enter Perso-Arabic Kashmiri. Romanized sentence translation is not supported by this model.'; return; }
   liveRequestText = text; translated = ''; $('#copy-translation').disabled = true; setBusy(true); $('#live-status').textContent = automatic ? 'Translating…' : 'Sending…'; note.textContent = 'Sending your sentence to the server…';
   try {
-    const memoryPair = await exactMemoryMatch(text);
-    if (memoryPair) {
-      translated = direction === 'ks-en' ? memoryPair.english : memoryPair.kashmiri;
+    const memoryMatch = await reviewedMemoryMatch(text);
+    if (memoryMatch) {
+      const memoryPair = memoryMatch.pair;
+      translated = memoryMatch.output;
       renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = false;
       renderGrammarNote(analyzeSentence(text, direction).summary);
-      $('#dictionary-context').textContent = `${memoryPair.headword} · ${memoryPair.partOfSpeech || 'dictionary example'} · ${memoryPair.source.name}`;
-      note.textContent = `Exact attributed translation-memory match · ${memoryPair.source.license} · human review ${memoryPair.humanReview}.`;
+      const sourceName = memoryPair.source?.name || 'reviewed project memory';
+      const license = memoryPair.source?.license ? ` · ${memoryPair.source.license}` : '';
+      $('#dictionary-context').textContent = `${memoryPair.headword || 'Sentence memory'} · ${memoryPair.partOfSpeech || 'parallel example'} · ${sourceName}`;
+      note.textContent = memoryMatch.kind === 'exact'
+        ? `${reviewLabel(memoryPair)} exact match · confidence ${Math.round(memoryMatch.confidence * 100)}%${license}.`
+        : `Close reviewed-memory match · confidence ${Math.round(memoryMatch.confidence * 100)}% · interpreted as “${memoryMatch.source}”. Check that this matches your intended sentence${license}.`;
       return;
     }
     const useOffline = $('#offline-translate').checked;
@@ -639,7 +633,17 @@ async function translateCurrent(automatic = false) {
     const quranText = direction === 'ks-en' ? text : translated;
     if (/\p{Script=Arabic}/u.test(quranText)) loadQuranCorpus().then(() => renderQuranReferences(quranText)).catch(() => {});
   } catch (error) {
-    if (error.name !== 'AbortError') { translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.'; }
+    if (error.name !== 'AbortError') {
+      const memory = await loadReviewedMemory().catch(() => undefined);
+      const draft = memory ? dictionaryDraft(memory, text, direction) : undefined;
+      if (draft) {
+        translated = draft.output; renderTranslation(translated); output.classList.remove('empty'); $('#copy-translation').disabled = false;
+        $('#dictionary-context').textContent = `${Math.round(draft.coverage * 100)}% direct lexical coverage${draft.unresolved.length ? ` · unresolved: ${draft.unresolved.join(', ')}` : ''}`;
+        note.textContent = 'Server unavailable. This is a dictionary-assisted word draft, not a grammatical sentence translation; have a fluent speaker review it.';
+      } else {
+        translated = ''; output.textContent = 'No completed translation.'; output.classList.add('empty'); $('#copy-translation').disabled = true; note.textContent = error.message || 'The server translation failed.';
+      }
+    }
     else note.textContent = 'The server request timed out or was stopped. Try again.';
   } finally { activeController = undefined; setBusy(false); $('#live-status').textContent = 'Ready'; }
 }

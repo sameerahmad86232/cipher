@@ -1,5 +1,5 @@
-const CACHE = 'koshur-lughat-shell-v12';
-const SHELL = ['/', '/manifest.webmanifest', '/assets/styles.css', '/assets/expanded.css', '/assets/app.js'];
+const CACHE = 'koshur-lughat-shell-v13';
+const SHELL = ['/', '/manifest.webmanifest', '/assets/styles.css', '/assets/expanded.css', '/assets/app.js', '/assets/hybrid-translator.mjs', '/assets/hybrid-translation-index.json'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
 });
