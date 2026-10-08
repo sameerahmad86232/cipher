@@ -1,0 +1,82 @@
+[
+  {
+    "number": "I",
+    "name": "Letters",
+    "numberedSectionCount": 6,
+    "sectionsWithExtractedText": 5,
+    "firstRule": 1,
+    "lastRule": 6
+  },
+  {
+    "number": "II",
+    "name": "Nouns",
+    "numberedSectionCount": 30,
+    "sectionsWithExtractedText": 28,
+    "firstRule": 7,
+    "lastRule": 36
+  },
+  {
+    "number": "III",
+    "name": "Adjectives",
+    "numberedSectionCount": 8,
+    "sectionsWithExtractedText": 8,
+    "firstRule": 37,
+    "lastRule": 44
+  },
+  {
+    "number": "IV",
+    "name": "Pronouns",
+    "numberedSectionCount": 36,
+    "sectionsWithExtractedText": 33,
+    "firstRule": 45,
+    "lastRule": 80
+  },
+  {
+    "number": "V",
+    "name": "Verbs",
+    "numberedSectionCount": 45,
+    "sectionsWithExtractedText": 44,
+    "firstRule": 81,
+    "lastRule": 125
+  },
+  {
+    "number": "VI",
+    "name": "Indeclinable Words",
+    "numberedSectionCount": 18,
+    "sectionsWithExtractedText": 15,
+    "firstRule": 126,
+    "lastRule": 143
+  },
+  {
+    "number": "VII",
+    "name": "Numbers",
+    "numberedSectionCount": 21,
+    "sectionsWithExtractedText": 20,
+    "firstRule": 144,
+    "lastRule": 164
+  },
+  {
+    "number": "VIII",
+    "name": "Derivation of Words",
+    "numberedSectionCount": 13,
+    "sectionsWithExtractedText": 13,
+    "firstRule": 165,
+    "lastRule": 177
+  },
+  {
+    "number": "IX",
+    "name": "Syntax",
+    "numberedSectionCount": 140,
+    "sectionsWithExtractedText": 131,
+    "firstRule": 178,
+    "lastRule": 317
+  },
+  {
+    "number": "X",
+    "name": "Example Sentences",
+    "numberedSectionCount": 2,
+    "sectionsWithExtractedText": 2,
+    "firstRule": 318,
+    "lastRule": 319
+  }
+]
