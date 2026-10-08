@@ -1,13 +1,13 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-08T03:04:40.789Z",
+  "generatedAt": "2026-10-08T03:28:31.469Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
     "pairs": 127,
-    "lexicalMappings": 14306,
-    "distinctKashmiriHeadwords": 9625,
-    "distinctEnglishGlosses": 7229,
+    "lexicalMappings": 14315,
+    "distinctKashmiriHeadwords": 9634,
+    "distinctEnglishGlosses": 7238,
     "humanReviewed": 2,
     "pendingHumanReview": 125
   },
@@ -217143,6 +217143,141 @@
       "headword": "سٲریو اِنسانَن کھۄتہٕ زیادٕ عزیز",
       "transliteration": "saaryo insaanan khotah zyaadah azeez",
       "partOfSpeech": "Adjectival phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14307",
+      "kashmiri": "ایمانٕچ شیرینی",
+      "english": "the sweetness of faith",
+      "headword": "ایمانٕچ شیرینی",
+      "transliteration": "imaanich sheerini",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14308",
+      "kashmiri": "صِرف اللہ تعالہ سٕندِ خٲطرٕ محبت کَرُن",
+      "english": "to love only for Allah’s sake",
+      "headword": "صِرف اللہ تعالہ سٕندِ خٲطرٕ محبت کَرُن",
+      "transliteration": "sirf Allah taalah sandi khaatiri muhabbat karun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14309",
+      "kashmiri": "اَنصارَن سۭتۍ محبت کَرُن",
+      "english": "to love the Ansar",
+      "headword": "اَنصارَن سۭتۍ محبت کَرُن",
+      "transliteration": "ansaaran seth muhabbat karun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14310",
+      "kashmiri": "مُنافقتٕچ نشانی",
+      "english": "a sign of hypocrisy",
+      "headword": "مُنافقتٕچ نشانی",
+      "transliteration": "munaafqatich nishaani",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14311",
+      "kashmiri": "شیٚن ہٕندِس جَمٲژ ہُنٛد رَہنما",
+      "english": "leader of a group of six",
+      "headword": "شیٚن ہٕندِس جَمٲژ ہُنٛد رَہنما",
+      "transliteration": "sheyan handis jamaats hund rahnuma",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14312",
+      "kashmiri": "جان کٲم (good deed)",
+      "english": "good deed",
+      "headword": "جان کٲم (good deed)",
+      "transliteration": "jaan kaam",
+      "partOfSpeech": "Noun phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14313",
+      "kashmiri": "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام",
+      "english": "do not accuse any person",
+      "headword": "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام",
+      "transliteration": "kaanse shakhsas peth mah lagaaviv ilzaam",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14314",
+      "kashmiri": "تَمسُنٛد گُناہ ژوٗرِ تھاوُن",
+      "english": "to keep his sin concealed",
+      "headword": "تَمسُنٛد گُناہ ژوٗرِ تھاوُن",
+      "transliteration": "tamisund gunaah tsoori thaavun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14315",
+      "kashmiri": "فِتنَن نِش پَنُن دیٖن بچاوُن",
+      "english": "to protect one’s faith from afflictions",
+      "headword": "فِتنَن نِش پَنُن دیٖن بچاوُن",
+      "transliteration": "fitnan nish panun deen bachaavun",
+      "partOfSpeech": "Verb phrase",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",

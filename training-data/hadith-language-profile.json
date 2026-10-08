@@ -3,9 +3,9 @@
   "title": "Kashmiri hadith translation language profile",
   "generatedFrom": {
     "corpusSentences": 21791,
-    "ownerReviewedCorrections": 15,
-    "ownerReviewedTerms": 51,
-    "approvedHadiths": 15,
+    "ownerReviewedCorrections": 19,
+    "ownerReviewedTerms": 60,
+    "approvedHadiths": 19,
     "draftHadithsExcludedFromGold": 0
   },
   "policy": [
@@ -3619,6 +3619,69 @@
       "p": "Adjectival phrase",
       "tr": "saaryo insaanan khotah zyaadah azeez",
       "correctionId": "bukhari-15-complete-r1"
+    },
+    {
+      "k": "ایمانٕچ شیرینی",
+      "e": "the sweetness of faith",
+      "p": "Noun phrase",
+      "tr": "imaanich sheerini",
+      "correctionId": "bukhari-16-complete-r1"
+    },
+    {
+      "k": "صِرف اللہ تعالہ سٕندِ خٲطرٕ محبت کَرُن",
+      "e": "to love only for Allah’s sake",
+      "p": "Verb phrase",
+      "tr": "sirf Allah taalah sandi khaatiri muhabbat karun",
+      "correctionId": "bukhari-16-complete-r1"
+    },
+    {
+      "k": "اَنصارَن سۭتۍ محبت کَرُن",
+      "e": "to love the Ansar",
+      "p": "Verb phrase",
+      "tr": "ansaaran seth muhabbat karun",
+      "correctionId": "bukhari-17-complete-r1"
+    },
+    {
+      "k": "مُنافقتٕچ نشانی",
+      "e": "a sign of hypocrisy",
+      "p": "Noun phrase",
+      "tr": "munaafqatich nishaani",
+      "correctionId": "bukhari-17-complete-r1"
+    },
+    {
+      "k": "شیٚن ہٕندِس جَمٲژ ہُنٛد رَہنما",
+      "e": "leader of a group of six",
+      "p": "Noun phrase",
+      "tr": "sheyan handis jamaats hund rahnuma",
+      "correctionId": "bukhari-18-complete-r1"
+    },
+    {
+      "k": "جان کٲم (good deed)",
+      "e": "good deed",
+      "p": "Noun phrase",
+      "tr": "jaan kaam",
+      "correctionId": "bukhari-18-complete-r1"
+    },
+    {
+      "k": "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام",
+      "e": "do not accuse any person",
+      "p": "Clause",
+      "tr": "kaanse shakhsas peth mah lagaaviv ilzaam",
+      "correctionId": "bukhari-18-complete-r1"
+    },
+    {
+      "k": "تَمسُنٛد گُناہ ژوٗرِ تھاوُن",
+      "e": "to keep his sin concealed",
+      "p": "Verb phrase",
+      "tr": "tamisund gunaah tsoori thaavun",
+      "correctionId": "bukhari-18-complete-r1"
+    },
+    {
+      "k": "فِتنَن نِش پَنُن دیٖن بچاوُن",
+      "e": "to protect one’s faith from afflictions",
+      "p": "Verb phrase",
+      "tr": "fitnan nish panun deen bachaavun",
+      "correctionId": "bukhari-19-complete-r1"
     }
   ],
   "approvedHadithStyleExamples": [
@@ -3660,7 +3723,7 @@
       "english": "Narrated Said bin Jubair: Ibn 'Abbas in the explanation of the statement of Allah \"Move not your tongue concerning (the Quran) to make haste therewith.\" (75.16) said \"Allah's Messenger (ﷺ) used to bear the revelation with great trouble and used to move his lips (quickly) with the Inspiration.\" Ibn 'Abbas moved his lips saying, \"I am moving my lips in front of you as Allah's Messenger (ﷺ) used to move his.\" Said moved his lips saying: \"I am moving my lips, as I saw Ibn 'Abbas moving his.\" Ibn 'Abbas added, \"So Allah revealed 'Move not your tongue concerning (the Qur'an) to make haste therewith. It is for Us to collect it and to give you (O Muhammad) the ability to recite it (the Quran)' (75.16-17) which means that Allah will make him (the Prophet) remember the portion of the Qur'an which was revealed at that time by heart and recite it. The statement of Allah: 'And when we have recited it to you (O Muhammad through Gabriel) then you follow its (Quran) recital' (75.18) means 'listen to it and be silent.' Then it is for Us (Allah) to make it clear to you' (75.19) means 'Then it is (for Allah) to make you recite it (and its meaning will be clear by itself through your tongue). Afterwards, Allah's Messenger (ﷺ) used to listen to Gabriel whenever he came and after his departure he used to recite it as Gabriel had recited it.\"",
       "kashmiri": "سعید بِن جُبیر چھِ روایت کَران زِ حضرت اِبنِ عباس رضی اللہ عنہمان اللہ تعالیٰ سُنٛدِس یَتھ فرمانَس مُتعلِق ووٚن: ”یِہ قرآن یاد تھاونہٕ موٗجوٗب مَہ ہَلاوِو تُہۍ پَنٕنۍ زَبان۔ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن ٲس وَحی نازِل گَژھنہٕ وِزِ زَبردست مُشکِلات سَپدان۔ تِم ٲس وَحی یاد تھاونہٕ موٗجوٗب پَنٕنۍ ہۄٹھ ہَلاوان۔“\n\nحضرت اِبنِ عباس رضی اللہ عنہمان پَنٕنۍ ہۄٹھ ہَلاوِتھ ووٚن: ”بہٕ چھُس توہہِ برونٛٹھ کَنۍ پَنٕنۍ ہۄٹھ تَتھے پٲٹھۍ ہَلاوان، یِتھ کٔنۍ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن ہَلاوان ٲس۔“ سعیدَن رضی اللہ عنہَن تہِ ووٚن، پَنٕنۍ وۄٹھ ہَلاوِتھ: ”بہٕ چھُس پَنٕنۍ وۄٹھ تَتھے پٲٹھۍ ہَلاوان، یِتھ کٔنۍ مےٚ حضرت اِبنِ عباس رضی اللہ عنہما ہَلاوان وُچھ۔“\n\nپَتہٕ کٔر اللہ تعالیٰن یِہ آیت نازِل: لَا تُحَرِّكْ بِهِ لِسَانَكَ لِتَعْجَلَ بِهِ ۝ إِنَّ عَلَيْنَا جَمْعَهُ وَقُرْآنَهُ۔ ”یِہ قرآن یاد تھاونہٕ موٗجوٗب مَہ ہَلاوِو تُہۍ پَنٕنۍ زَبان؛ تہٕ توہہِ یِہ یاد تھاوناوُن چھُ اَسہِ ذِمّہٕ۔“\n\nاللہ تعالیٰن فَرموو: فَإِذَا قَرَأْنَاهُ فَاتَّبِعْ قُرْآنَهُ۔ ”پَس ییلہِ اَسۍ یِہ پَرَو، تیلہِ کٔرِو تَمیٚچ تِلاوَت وارٕ وارٕ۔“ حضرت اِبنِ عباس رضی اللہ عنہمان ووٚن زِ یَمیُک مطلب چھُ: ”غورٕ سان بوٗزِو تہٕ ژھۄپ روزِو۔“ اللہ تعالیٰن پَتہٕ فَرموو: ثُمَّ إِنَّ عَلَيْنَا بَيَانَهُ۔ ”پَتہٕ تَمیُک بیان کَرُن تہِ چھُ اَسہِ ذِمّہٕ۔“\n\nاَمہِ پتہٕ ییلہِ فِرِشتہٕ جبرئیل علیہ السلام رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن نِش یِوان ٲس، تِم ٲس غورٕ سان بوٗزان؛ تہٕ ییلہِ جبرئیل علیہ السلام واپس گَژھان ٲس، تیلہِ ٲس رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّم تَتھے پٲٹھۍ پَران، یِتھ کٔنۍ جبرئیل علیہ السلامَن پَرِتھ اوس۔",
       "sourceUrl": "https://sunnah.com/bukhari:5",
-      "revision": 6
+      "revision": 7
     },
     {
       "id": "bukhari-6",
@@ -3668,7 +3731,7 @@
       "english": "Narrated Ibn 'Abbas: Allah's Messenger (ﷺ) was the most generous of all the people, and he used to reach the peak in generosity in the month of Ramadan when Gabriel met him. Gabriel used to meet him every night of Ramadan to teach him the Qur'an. Allah's Messenger (ﷺ) was the most generous person, even more generous than the strong uncontrollable wind (in readiness and haste to do charitable deeds).",
       "kashmiri": "حضرت اِبنِ عباس رضی اللہ عنہما چھِ روایت کَران: ”رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّم ٲس سٲریو اِنسانَن کھۄتہٕ زیادٕ سَخی۔ رمضانَس منٛز ٲس تِمَن سٕنز سخاوت ساروِے کھۄتہٕ زیادٕ گَژھان، ییلہِ فِرِشتہٕ جبرئیل علیہ السلام تِمَن نِش یِوان ٲس۔ فِرِشتہٕ جبرئیل علیہ السلام ٲس رمضانَس پرٛتھ رٲژِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن نِش یِوان تہٕ تِمَن سۭتۍ قرآنِ کریم دَہراوان۔ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّم ٲس سوزنہٕ آمٕژِ ہواہِ کھۄتہٕ تہِ زیادٕ سَخی، خیرات کَرنَس منٛز۔“",
       "sourceUrl": "https://sunnah.com/bukhari:6",
-      "revision": 7
+      "revision": 8
     },
     {
       "id": "bukhari-7",
@@ -3676,7 +3739,7 @@
       "english": "Narrated 'Abdullah bin 'Abbas: Abu Sufyan bin Harb informed me that Heraclius had sent a messenger to him while he had been accompanying a caravan from Quraish. They were merchants doing business in Sham (Syria, Palestine, Lebanon and Jordan), at the time when Allah's Messenger (ﷺ) had truce with Abu Sufyan and Quraish infidels. So Abu Sufyan and his companions went to Heraclius at Ilya (Jerusalem). Heraclius called them in the court and he had all the senior Roman dignitaries around him. He called for his translator who, translating Heraclius's question said to them, \"Who amongst you is closely related to that man who claims to be a Prophet?\" Abu Sufyan replied, \"I am the nearest relative to him (amongst the group).\" Heraclius said, \"Bring him (Abu Sufyan) close to me and make his companions stand behind him.\" Abu Sufyan added, Heraclius told his translator to tell my companions that he wanted to put some questions to me regarding that man (The Prophet) and that if I told a lie they (my companions) should contradict me.\" Abu Sufyan added, \"By Allah! Had I not been afraid of my companions labeling me a liar, I would not have spoken the truth about the Prophet. The first question he asked me about him was: 'What is his family status amongst you?' I replied, 'He belongs to a good (noble) family amongst us.' Heraclius further asked, 'Has anybody amongst you ever claimed the same (i.e. to be a Prophet) before him?' I replied, 'No.' He said, 'Was anybody amongst his ancestors a king?' I replied, 'No.' Heraclius asked, 'Do the nobles or the poor follow him?' I replied, 'It is the poor who follow him.' He said, 'Are his followers increasing decreasing (day by day)?' I replied, 'They are increasing.' He then asked, 'Does anybody amongst those who embrace his religion become displeased and renounce the religion afterwards?' I replied, 'No.' Heraclius said, 'Have you ever accused him of telling lies before his claim (to be a Prophet)?' I replied, 'No. ' Heraclius said, 'Does he break his promises?' I replied, 'No. We are at truce with him but we do not know what he will do in it.' I could not find opportunity to say anything against him except that. Heraclius asked, 'Have you ever had a war with him?' I replied, 'Yes.' Then he said, 'What was the outcome of the battles?' I replied, 'Sometimes he was victorious and sometimes we.' Heraclius said, 'What does he order you to do?' I said, 'He tells us to worship Allah and Allah alone and not to worship anything along with Him, and to renounce all that our ancestors had said. He orders us to pray, to speak the truth, to be chaste and to keep good relations with our Kith and kin.' Heraclius asked the translator to convey to me the following, I asked you about his family and your reply was that he belonged to a very noble family. In fact all the Apostles come from noble families amongst their respective peoples. I questioned you whether anybody else amongst you claimed such a thing, your reply was in the negative. If the answer had been in the affirmative, I would have thought that this man was following the previous man's statement. Then I asked you whether anyone of his ancestors was a king. Your reply was in the negative, and if it had been in the affirmative, I would have thought that this man wanted to take back his ancestral kingdom. I further asked whether he was ever accused of telling lies before he said what he said, and your reply was in the negative. So I wondered how a person who does not tell a lie about others could ever tell a lie about Allah. I, then asked you whether the rich people followed him or the poor. You replied that it was the poor who followed him. And in fact all the Apostle have been followed by this very class of people. Then I asked you whether his followers were increasing or decreasing. You replied that they were increasing, and in fact this is the way of true faith, till it is complete in all respects. I further asked you whether there was anybody, who, after embracing his religion, became displeased and discarded his religion. Your reply was in the negative, and in fact this is (the sign of) true faith, when its delight enters the hearts and mixes with them completely. I asked you whether he had ever betrayed. You replied in the negative and likewise the Apostles never betray. Then I asked you what he ordered you to do. You replied that he ordered you to worship Allah and Allah alone and not to worship any thing along with Him and forbade you to worship idols and ordered you to pray, to speak the truth and to be chaste. If what you have said is true, he will very soon occupy this place underneath my feet and I knew it (from the scriptures) that he was going to appear but I did not know that he would be from you, and if I could reach him definitely, I would go immediately to meet him and if I were with him, I would certainly wash his feet.' Heraclius then asked for the letter addressed by Allah's Apostle which was delivered by Dihya to the Governor of Busra, who forwarded it to Heraclius to read. The contents of the letter were as follows: \"In the name of Allah the Beneficent, the Merciful (This letter is) from Muhammad the slave of Allah and His Apostle to Heraclius the ruler of Byzantine. Peace be upon him, who follows the right path. Furthermore I invite you to Islam, and if you become a Muslim you will be safe, and Allah will double your reward, and if you reject this invitation of Islam you will be committing a sin of Arisiyin (tillers, farmers i.e. your people). And (Allah's Statement:) 'O people of the scripture! Come to a word common to you and us that we worship none but Allah and that we associate nothing in worship with Him, and that none of us shall take others as Lords beside Allah. Then, if they turn away, say: Bear witness that we are Muslims (those who have surrendered to Allah).' (3:64). Abu Sufyan then added, \"When Heraclius had finished his speech and had read the letter, there was a great hue and cry in the Royal Court. So we were turned out of the court. I told my companions that the question of Ibn-Abi-Kabsha) (the Prophet (ﷺ) Muhammad) has become so prominent that even the King of Bani Al-Asfar (Byzantine) is afraid of him. Then I started to become sure that he (the Prophet) would be the conqueror in the near future till I embraced Islam (i.e. Allah guided me to it).\" The sub narrator adds, \"Ibn An-Natur was the Governor of llya' (Jerusalem) and Heraclius was the head of the Christians of Sham. Ibn An-Natur narrates that once while Heraclius was visiting ilya' (Jerusalem), he got up in the morning with a sad mood. Some of his priests asked him why he was in that mood? Heraclius was a foreteller and an astrologer. He replied, 'At night when I looked at the stars, I saw that the leader of those who practice circumcision had appeared (become the conqueror). Who are they who practice circumcision?' The people replied, 'Except the Jews nobody practices circumcision, so you should not be afraid of them (Jews). 'Just Issue orders to kill every Jew present in the country.' While they were discussing it, a messenger sent by the king of Ghassan to convey the news of Allah's Messenger (ﷺ) to Heraclius was brought in. Having heard the news, he (Heraclius) ordered the people to go and see whether the messenger of Ghassan was circumcised. The people, after seeing him, told Heraclius that he was circumcised. Heraclius then asked him about the Arabs. The messenger replied, 'Arabs also practice circumcision.' (After hearing that) Heraclius remarked that sovereignty of the 'Arabs had appeared. Heraclius then wrote a letter to his friend in Rome who was as good as Heraclius in knowledge. Heraclius then left for Homs. (a town in Syrian and stayed there till he received the reply of his letter from his friend who agreed with him in his opinion about the emergence of the Prophet (ﷺ) and the fact that he was a Prophet. On that Heraclius invited all the heads of the Byzantines to assemble in his palace at Homs. When they assembled, he ordered that all the doors of his palace be closed. Then he came out and said, 'O Byzantines! If success is your desire and if you seek right guidance and want your empire to remain then give a pledge of allegiance to this Prophet (i.e. embrace Islam).' (On hearing the views of Heraclius) the people ran towards the gates of the palace like onagers but found the doors closed. Heraclius realized their hatred towards Islam and when he lost the hope of their embracing Islam, he ordered that they should be brought back in audience. (When they returned) he said, 'What already said was just to test the strength of your conviction and I have seen it.' The people prostrated before him and became pleased with him, and this was the end of Heraclius's story (in connection with his faith). Reference : Sahih al-Bukhari 7 In-book reference : Book 1, Hadith 7 USC-MSA web (English) reference : Vol. 1, Book 1, Hadith 6 (deprecated numbering scheme) Report Error | Share | Copy ▼ 6 8 About | News | Support | Developers | Contact | Donate var sc_project=7148282; var sc_invisible=1; var sc_security=\"63a57073\"; Hadith Text Arabic Translation Grade Reference Concise Detailed URL",
       "kashmiri": "حضرت اِبنِ عباس رضی اللہ عنہما چھِ روایت کَران زِ ابو سُفیان بِن حربَن ووٚن: ہِرقلَن سوز مےٚ نِش اَکھ قاصِد، تَمہِ وِزِ ییلہِ بہٕ قُریشَن ہِنٛدِس اَکِس تجارتی قافِلَس سۭتۍ شامَس منٛز اوسُس۔ یِہ کَتھ چھِ تَمہِ وَقتُک ییلہِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن تہٕ ابو سُفیانَس تہٕ قُریشَن ہٕنٛدؠن کافِرَن دَرمیان صُلح ٲس۔ ابو سُفیان تہٕ تَمہِ سُنٛدۍ ساتھی گٔیہِ ایلیا—یروٗشلم—منٛز ہِرقلَس نِش۔ ہِرقلَن بُلاو تِم دَربارَس منٛز، یَتہِ زوٚپٲر رومَن ہٕنٛدۍ بٔڈۍ بٔڈۍ سردار ٲسۍ۔ تَمہِ بُلاو پَنُن تَرجُمان تہٕ پَرژھُن: ”توہہِ منٛز کُس چھُ تَتھ مَردَس سٲریو کھۄتہٕ نزدیٖک رِشتہٕ دار، یُس پَنُن پان نَبی وَنان چھُ؟“ ابو سُفیانَن ووٚن: ”اَتھ جَماعَتَس منٛز چھُس بہٕ تَمس سٲریو کھۄتہٕ نزدیٖک رِشتہٕ دار۔“\n\nہِرقلَن دیُت حُکم: ”یِہ ابو سُفیان کٔرہوٗن مےٚ نزدیٖک تہٕ اَمہِ سٕندۍ ساتھی تھاوِہو اَمیِس پَتہٕ۔“ پَتہٕ ووٚنُن تَرجُمانَس: ”بہٕ چھُس رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَس مُتعلِق اَمیِس سَوال کَران؛ اَگر یِہ اَپوٗز وَنِ، تیلہِ کٔرِو اَمیِچ تَردیٖد۔“ ابو سُفیانَن ووٚن: ”خُدایہِ سُنٛد قَسَم، اَگر مےٚ پَننؠن یارَن نِش اَپوٗز وَنن وول بَدنٲمی ہُنٛد خوف نہٕ آسہٕ ہا، بہٕ وَنہٕ ہا تَمس مُتعلِق اَپوٗز۔“\n\nہِرقلَن گوٚڈٕ پرژھُم: ”تُہۍ منٛز کیا چھِ تَمہِ سٕندِ خاندانٕچ حیثیت؟“ مےٚ ووٚن: ”سُہ چھُ عزت دار خاندانُک۔“ تَمہِ پرژھ: ”یَمہِ برونٛہہ چھا توہہِ منٛز کانٛسہِ بَنومُت پَنُن پان نَبی؟“ مےٚ ووٚن: ”نہٕ۔“ تَمہِ پرژھ: ”تَمہِ سٕندؠن بُزرگَن منٛز اوسوا کانٛہہ بادشاہ؟“ مےٚ ووٚن: ”نہٕ۔“ تَمہِ پرژھ: ”تَمہِ پَتہٕ چھا شریٖف تہٕ اَمیٖر لُکھ گَژھان، کِنہٕ غریٖب؟“ مےٚ ووٚن: ”غریٖب لُکھ۔“ تَمہِ پرژھ: ”تَمہِ سُنٛدۍ پَیروکار چھا بڑان کِنہٕ گھَٹان؟“ مےٚ ووٚن: ”بڑان۔“ تَمہِ پرژھ: ”کیا تَمہِ سُنٛد دیٖن قبوٗل کٔرِتھ چھُ کانٛہہ اَمیِہ نِش ناخوش گَژھان تہٕ دیٖن ترٛاوان؟“ مےٚ ووٚن: ”نہٕ۔“ تَمہِ پرژھ: ”نَبوّتُک دعویٰ کَرنہٕ برونٛہہ کٔروا توہہِ زانہہ تَمس اَپوٗز وَننُک اِلزام؟“ مےٚ ووٚن: ”نہٕ۔“ تَمہِ پرژھ: ”کیا سُہ چھُ عہد شِکنی کَران؟“ مےٚ ووٚن: ”نہٕ۔ وۄنۍ چھُ اَسہِ تَمس سۭتۍ صُلح، تہٕ اَسہِ چھُنہٕ پَے زِ سُہ اَتھ دَورانَس منٛز کیا کَرِ۔“ ابو سُفیانَن ووٚن زِ یَمہِ یَکۍ جُملہٕ علاوٕ میول نہٕ مےٚ تَمس خِلاف کینٛہہ وَننُک موقَعہٕ۔\n\nہِرقلَن پرژھ: ”کیا توہہِ تہٕ تَمس دَرمیان سَپدوا زانہہ جَنگ؟“ مےٚ ووٚن: ”آ۔“ تَمہِ پرژھ: ”تُہُنٛد جَنگُک نتیٖجہٕ کِتھ پٲٹھۍ روٗد؟“ مےٚ ووٚن: ”کُنہِ ساتہٕ چھُ سُہ اَسہِ پؠٹھ غٲلِب گَژھان تہٕ کُنہِ ساتہٕ اَسۍ تَمس پؠٹھ۔“ تَمہِ پرژھ: ”سُہ کیا چھُ توہہِ حُکم دِوان؟“ مےٚ ووٚن: ”سُہ چھُ اَسہِ وَنان زِ صِرف اللہ تعالیٰ سٕنز عبادت کٔرِو، تَمس سۭتۍ کانٛہہ شریٖک مٲ تھاوِو، تہٕ یِم کَتھہٕ تُہٕنٛدۍ بُزرگ وَنان ٲسۍ تِم ترٛاوِو۔ سُہ چھُ اَسہِ نَماز قٲیم کَرنُک، پوٗز وَننُک، پاک دامن روزنُک تہٕ رِشتہٕ دارَن سۭتۍ اَصٕل سُلوٗک کَرنُک حُکم دِوان۔“\n\nپَتہٕ ووٚن ہِرقلَن تَرجُمانَس: ”یِمس وَن: مےٚ پرژھٕے ژےٚ تَمہِ سُنٛد خاندان تہٕ ژےٚ ووٚنُتھ زِ سُہ چھُ شریٖف خاندانَس منٛزٕ۔ تَمام رَسوٗل چھِ پَننؠن قَومَن ہٕنٛدؠن شریٖف خاندانَن منٛز پَیدا گژھان۔ مےٚ پرژھٕے ژےٚ زِ اَمہِ برونٛہہ کوٚروا کانٛہہ یِژھ دَعوت؛ ژےٚ ووٚنُتھ نہٕ۔ اَگر کانٛہہ کٔرِتھ آسہٕ ہا، بہٕ سَمجہٕ ہا زِ یِہ چھُ اَکھ گوٚڈلی کَتھ دَہراوان۔ مےٚ پرژھٕے ژےٚ زِ تَمہِ سُنٛدؠن بُزرگَن منٛز اوسُکھا کانٛہہ بادشاہ؛ ژےٚ ووٚنُتھ نہٕ۔ اَگر آسہٕ ہا، بہٕ سَمجہٕ ہا زِ یِہ چھُ پَننؠن بُزرگَن ہُنٛد مُلک واپس حٲصِل کَرُن یَژھان۔\n\n”مےٚ پرژھٕے ژےٚ زِ دعویٰ کَرنہٕ برونٛہہ کٔروا توہہِ تَمس اَپوٗز وَننُک اِلزام؛ ژےٚ ووٚنُتھ نہٕ۔ پَس مےٚ سَمجھ آو زِ یُس اِنسان لُکَن مُتعلِق اَپوٗز چھُنہٕ وَنان، سُہ کِتھ کٔنۍ ہؠکہِ اللہ تعالیٰ سُنٛدِس ناوَس پؠٹھ اَپوٗز وَنِتھ؟ مےٚ پرژھٕے ژےٚ زِ تَمس پَتہٕ چھا اَمیٖر لُکھ گَژھان کِنہٕ غریٖب؛ ژےٚ ووٚنُتھ غریٖب۔ رَسوٗلَن ہٕنٛدۍ پَیروکار چھِ ہمیشہٕ یِمے لُکھ ٲسمٕتۍ۔ مےٚ پرژھٕے ژےٚ زِ تَمہِ سُنٛدۍ پَیروکار چھا بڑان کِنہٕ گھَٹان؛ ژےٚ ووٚنُتھ بڑان۔ پوٗز دیٖن چھُ تَتھے پٲٹھۍ بڑان، یوتام سُہ مکمّل گَژھِ۔\n\n”مےٚ پرژھٕے ژےٚ زِ تَمہِ سُنٛد دیٖن قبوٗل کٔرِتھ چھُ کانٛہہ ناخوش گَژھان تہٕ دیٖن ترٛاوان؛ ژےٚ ووٚنُتھ نہٕ۔ پوٗز ایمان ییلہِ دِلَس منٛز داخِل گژھان تہٕ تَمس سۭتۍ رَلان چھُ، تیلہِ چھُ تَمیُک حال یِتھے آسان۔ مےٚ پرژھٕے ژےٚ زِ سُہ چھا عہد شِکنی کَران؛ ژےٚ ووٚنُتھ نہٕ۔ رَسوٗل چھِ نہٕ عہد شِکنی کَران۔ پَتہٕ مےٚ پرژھٕے ژےٚ زِ سُہ چھُ توہہِ کیا حُکم دِوان۔ ژےٚ ووٚنُتھ زِ سُہ چھُ توہہِ صِرف اللہ تعالیٰ سٕنز عبادت کَرنُک، تَمس سۭتۍ کانٛہہ شریٖک نہٕ تھاونُک، بُت پَرستی ترٛاونُک، نَماز قٲیم کَرنُک، پوٗز وَننُک تہٕ پاک دامن روزنُک حُکم دِوان۔\n\n”اَگر ژےٚ پوٗز ووٚنُتھ، یِہ نَبی کَرِ جلدے یَتھ جایہِ پؠٹھ تہِ حُکوٗمت، یَتھ میٲنۍ حُکوٗمت چھِ۔ مےٚ اوس اِلٰہی کِتابَن منٛز پَے زِ اَکھ نَبی چھُ یِنہٕ وول، مگر مےٚ اوس نہٕ خیال زِ سُہ آسِ توہہِ منٛزٕ۔ اَگر مےٚ یَقیٖن آسہٕ ہا زِ بہٕ واتہٕ تَمس نِش، بہٕ گَژھہٕ ہا فوٚری تَمس وُچھنہٕ؛ تہٕ اَگر بہٕ تَمس نِش آسہٕ ہا، بہٕ چھلہٕ ہا تَمہِ سٕندۍ کھور۔“\n\nپَتہٕ اَناو ہِرقلَن سُہ خَط، یُس رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن دِحیہ کلبی رضی اللہ عنہَس دِتھ بُصریٰ ہُندِس حاکِمَس نِش سوزمُت اوس تہٕ تَمہِ ہِرقلَس پَرنہٕ خٲطرٕ سوز۔ خَطَس منٛز اوس لیٚکھِتھ:\n\n”بسم اللہ الرحمٰن الرحیم۔ اللہ تعالیٰ سُنٛدِس بَنٛدَس تہٕ رَسوٗلَس محمدَس طرفہٕ، رومَن ہُنٛدِس بادشاہ ہِرقلَس ناو۔ سلام تَتھ اِنسانَس پؠٹھ، یُس ہِدایت رَٹِ۔ اَمہِ پتہٕ: بہٕ چھُس ژےٚ اِسلامَس کُن دَعوت دِوان۔ اِسلام قبوٗل کَر، سلامت روزِکھ تہٕ اللہ تعالیٰ دِیِکھ ژےٚ دۄگنہٕ اَجر۔ اَگر ژٕ یِہ دَعوت رَد کَرِکھ، تیلہِ آسِ ژےٚ پَننؠن رِعایَتَن ہُنٛد گُناہ تہِ۔ اے اَہلِ کِتاب! یِو تَتھ اَکِس کَلمَس کُن یُس اَسہِ تہٕ توہہِ دَرمیان یَکسان چھُ: اَسۍ کَرَو نہٕ عبادت مگر اللہ تعالیٰ سٕنز، اَسۍ تھاوَو نہٕ تَمس سۭتۍ کانٛہہ شریٖک، تہٕ اَسہِ منٛز بَنایِہ نہٕ کانٛہہ اَکِس تہِ اللہ تعالیٰ سوا شریٖک رَبَس۔ اَگر تِم پِھرَن، تیلہِ وَنِو: گواہ روزِو زِ اَسۍ چھِ مُسلمان۔“\n\nابو سُفیانَن ووٚن: ”ییلہِ ہِرقلَن پَنٕنۍ کَتھ مکلاو تہٕ خَط پَر، دَربارَس منٛز گوٚو بوٚڈ شور۔ اَسۍ آیہِ دَربارَس منٛزٕ نیبَر کَڑنہٕ۔ مےٚ ووٚن پَننؠن یارَن زِ ابو کبشہ سُنٛدِس پُترَس سٕنٛز کَتھ گٔیہِ اِتھ کَنۍ طاقت وَلی، زِ رومَن ہُنٛد بادشاہ تہِ چھُ تَمس نِش کھوژان۔ تَمہِ دۄہَس پؠٹھ ووت مےٚ یَقیٖن بڑُن زِ سُہ گَژھِ جلدے غٲلِب، یوتام بہٕ اللہ تعالیٰن اِسلامَس منٛز داخِل کوٚرُس۔“\n\nاِبنِ ناطورَن بیان کوٚر زِ ہِرقل ییلہِ ایلیا منٛز اوس، اَکِس صُبحَس وۄتھ سُہ پریشان۔ تَمہِ سٕندؠن کینہہ پادریَو ووٚنُس: ”اَز کٲژِ چھُکھ پریشان؟“ ہِرقل اوس نَجوٗمی تہٕ سِتارَن ہُنٛد عِلم زانان۔ تَمہِ ووٚن: ”مےٚ وُچھ راتَس سِتارَن کُن؛ خَتنہٕ کَرن والؠن ہُنٛد بادشاہ چھُ ظٲہِر گومُت۔ دُنیاہَس منٛز چھِ خَتنہٕ کَرناوان کَم؟“ تِمو ووٚن: ”یَہوٗدیَن علاوٕ چھُنہٕ کانٛہہ خَتنہٕ کَران؛ پَننِس مُلکَس منٛز یوتاہ تہِ یَہوٗدی چھِ، تِمَن مَرنُک حُکم دِہ۔“\n\nتِم یِہ کَتھ کَران ٲسۍ زِ غَسّان ہُنٛدِس بادشاہَس طرفہٕ آو اَکھ قاصِد، یُس رَسوٗلُ اللہ صلی اللہ علیہ وسلم سٕنز خبر ہؠتھ آمُت اوس۔ ہِرقلَن حُکم دِت زِ وُچھِو، یَمیِس چھا خَتنہٕ گژھِتھ کِنہٕ نہٕ۔ تِمو یَمیِس وُچھِتھ ہِرقلَس ووٚن زِ آ، یَمیِس چھِ خَتنہٕ گژھِتھ۔ ہِرقلَن پرژھ عربَن مُتعلِق؛ قاصِدَن ووٚن زِ عرب تہِ چھِ خَتنہٕ کَران۔ تیلہِ ووٚن ہِرقلَن: ”یِمَن لُکَن ہُنٛد بادشاہ چھُ ظٲہِر گومُت۔“\n\nپَتہٕ لیوٚکھ ہِرقلَن رومَس منٛز پَننِس اَکِس عِلم وٲلِس دوستَس خَط۔ سُہ گَو حِمصَس تہٕ روٗد تَتہِ پَننِس دوستَس سُنٛد جواب یِنہٕ تام۔ دوستَن کٔر تَمہِ سٕنز راے تٲیید زِ نَبی صلی اللہ علیہ وسلم چھِ ظٲہِر گٲمٕتۍ تہٕ تِم چھِ پوٗز نَبی۔ پَتہٕ بُلاو ہِرقلَن رومَن ہٕنٛدۍ سٲری سردار حِمصَس پَننِس مَحَلَس منٛز تہٕ دَروازٕ کٔر بَنٛد۔ پَتہٕ ووٚن: ”اے رومؠو! اَگر توہہ کامیٲبی، ہِدایت تہٕ پَنٕنۍ بادشاہت قٲیم روزُن یَژھان چھِو، تیلہِ کَرِو یَتھ نَبیَس بیعت تہٕ قبوٗل کَرِو اِسلام۔“\n\nیِہ بوٗزِتھ وٲتھ تِم دَروازَن کُن، مگر دَروازٕ ٲسۍ بَنٛد۔ ہِرقلَن ییلہِ تِمن ہُنٛد اِسلامَس خِلاف نَفرت وُچھ تہٕ تِمن ہُنٛد اِسلام قبوٗل کَرنُک اُمید مۄکل، حُکم دِت زِ تِم واپس اَنِو۔ ییلہِ تِم واپس آیہِ، تَمہِ ووٚن: ”مےٚ یُس کینٛہہ ووٚن، سُہ اوس صِرف تُہٕنٛد دیٖن پؠٹھ مَضبوٗطی آزماونہٕ خٲطرٕ؛ وۄنۍ وُچھ مےٚ سُہ۔“ پَتہٕ کٔر تِمو تَمس سَجدٕ تہٕ تِم گٔیہِ تَمس پؠٹھ خوش۔ یَتھ سۭتۍ گوٚو ہِرقل سُنٛد قصّہٕ خَتم۔",
       "sourceUrl": "https://sunnah.com/bukhari:7",
-      "revision": 6
+      "revision": 7
     },
     {
       "id": "bukhari-8",
@@ -3684,7 +3747,7 @@
       "english": "Narrated Ibn 'Umar: Allah's Messenger (ﷺ) said: Islam is based on (the following) five (principles): 1. To testify that none has the right to be worshipped but Allah and Muhammad is Allah's Messenger (ﷺ). 2. To offer the (compulsory congregational) prayers dutifully and perfectly. 3. To pay Zakat (i.e. obligatory charity) . 4. To perform Hajj. (i.e. Pilgrimage to Mecca) 5. To observe fast during the month of Ramadan. Reference : Sahih al-Bukhari 8 In-book reference : Book 2, Hadith 1 USC-MSA web (English) reference : Vol. 1, Book 2, Hadith 8 (deprecated numbering scheme) Report Error | Share | Copy ▼ 7 9",
       "kashmiri": "حضرت اِبنِ عُمر رضی اللہ عنہما چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”اِسلام چھُ پَنٛژ بُنیادَن پؠٹھ قٲیم: یِہ گواہی دِنۍ زِ اللہ تعالہس سوا چھُنہٕ کانٛہہ عبادتُک حَق دار تہٕ محمد صَلَّی اللہُ عَلَیہِ وَسَلَّم چھِ اللہ تعالہ سٕند رَسوٗل؛ نَماز قٲیم کَرُن؛ زَکات دِنۍ؛ حَج کَرُن؛ تہٕ رمضانَس منٛز روزٕ تھاوُن۔“",
       "sourceUrl": "https://sunnah.com/bukhari:8",
-      "revision": 7
+      "revision": 8
     },
     {
       "id": "bukhari-9",
@@ -3692,7 +3755,7 @@
       "english": "Narrated Abu Huraira: The Prophet (ﷺ) said, \"Faith (Belief) consists of more than sixty branches (i.e. parts). And Haya (This term \"Haya\" covers a large number of concepts which are to be taken together; amongst them are self respect, modesty, bashfulness, and scruple, etc.) is a part of faith.\"",
       "kashmiri": "حضرت ابو ہُریرہ رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”ایمانَس چھِ شیٹھ کھۄتہٕ زیادٕ شاخہٕ، تہٕ حَیا چھِ ایمانَچ اَکھ شاخ۔“",
       "sourceUrl": "https://sunnah.com/bukhari:9",
-      "revision": 7
+      "revision": 8
     },
     {
       "id": "bukhari-10",
@@ -3700,7 +3763,7 @@
       "english": "Narrated 'Abdullah bin 'Amr: The Prophet (ﷺ) said, \"A Muslim is the one who avoids harming Muslims with his tongue and hands. And a Muhajir (emigrant) is the one who gives up (abandons) all what Allah has forbidden.\"",
       "kashmiri": "حضرت عبداللہ بِن عَمرو رضی اللہ عنہما چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”مُسلمان چھُ سُہ، یَمہِ سٕندِ زَبان تہٕ اَتھہٕ نِش باقی مُسلمان محفوظ روزَن؛ تہٕ مُہاجِر چھُ سُہ، یُس تِم چیزٕ ترٛاوِ یِم اللہ تعالہَن منع کٔرمٕتۍ چھِ۔“",
       "sourceUrl": "https://sunnah.com/bukhari:10",
-      "revision": 7
+      "revision": 8
     },
     {
       "id": "bukhari-11",
@@ -3708,7 +3771,7 @@
       "english": "Narrated Abu Musa: Some people asked Allah's Messenger (ﷺ), \"Whose Islam is the best? i.e. (Who is a very good Muslim)?\" He replied, \"One who avoids harming the Muslims with his tongue and hands.\"",
       "kashmiri": "حضرت ابو موسیٰ رضی اللہ عنہ چھِ روایت کَران: کینژھو لُکو پرژھ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَس: ”کَمہِ سُنٛد اِسلام چھُ ساروِے کھۄتہٕ جان؟“ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”تَمہِ سُنٛد، یَمہِ سٕندِ زَبان تہٕ اَتھہٕ نِش مُسلمان محفوظ روزَن۔“",
       "sourceUrl": "https://sunnah.com/bukhari:11",
-      "revision": 2
+      "revision": 3
     },
     {
       "id": "bukhari-12",
@@ -3716,7 +3779,7 @@
       "english": "Narrated 'Abdullah bin 'Amr: A man asked the Prophet (ﷺ) , \"What sort of deeds or (what qualities of) Islam are good?\" The Prophet (ﷺ) replied, 'To feed (the poor) and greet those whom you know and those whom you do not Know (See Hadith No. 27).",
       "kashmiri": "حضرت عبداللہ بِن عَمرو رضی اللہ عنہما چھِ روایت کَران: اَکہِ شَخصَن پروژھ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَس: ”اِسلامَس منٛز کُس کٲم چھِ ساروِے کھۄتہٕ جان؟“ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”لُکَن کھؠن دِیُن تہٕ تَمس تہِ سلام کَرِو یَمس تُہۍ زانان چھِو، تہٕ تَمس تہِ یَمس تُہۍ چھِو نہٕ زانان۔“",
       "sourceUrl": "https://sunnah.com/bukhari:12",
-      "revision": 2
+      "revision": 3
     },
     {
       "id": "bukhari-13",
@@ -3724,7 +3787,7 @@
       "english": "Narrated Anas: The Prophet (ﷺ) said, \"None of you will have faith till he wishes for his (Muslim) brother what he likes for himself.\" 12 14",
       "kashmiri": "حضرت اَنس رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام سُہ پَننِس مُسلمان بایِس خٲطرٕ تےٚ پَسند کَرِ، یُس سُہ پَننِس پانَس خٲطرٕ پَسند چھُ کَران۔“",
       "sourceUrl": "https://sunnah.com/bukhari:13",
-      "revision": 1
+      "revision": 2
     },
     {
       "id": "bukhari-14",
@@ -3732,7 +3795,7 @@
       "english": "Narrated Abu Huraira: \"Allah's Messenger (ﷺ) said, \"By Him in Whose Hands my life is, none of you will have faith till he loves me more than his father and his children.\"",
       "kashmiri": "حضرت ابو ہُریرہ رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”قَسَم چھِ تَمی ذاتُک، یعنی اللہ تعالہ، یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ؛ توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام بہٕ تَمس پَننِس مولِس تہٕ پَننؠن شُرؠن کھۄتہٕ زیادٕ عزیز آسہٕ۔“",
       "sourceUrl": "https://sunnah.com/bukhari:14",
-      "revision": 1
+      "revision": 2
     },
     {
       "id": "bukhari-15",
@@ -3740,6 +3803,38 @@
       "english": "Narrated Anas: The Prophet (ﷺ) said \"None of you will have faith till he loves me more than his father, his children and all mankind.\"",
       "kashmiri": "حضرت اَنس رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام بہٕ تَمس پَننِس مولِس، پَننؠن شُرؠن تہٕ سٲریو اِنسانَن کھۄتہٕ زیادٕ عزیز آسہٕ۔“",
       "sourceUrl": "https://sunnah.com/bukhari:15",
+      "revision": 2
+    },
+    {
+      "id": "bukhari-16",
+      "hadithNumber": 16,
+      "english": "Narrated Anas: The Prophet (ﷺ) said, \"Whoever possesses the following three qualities will have the sweetness (delight) of faith: 1. The one to whom Allah and His Apostle becomes dearer than anything else. 2. Who loves a person and he loves him only for Allah's sake. 3. Who hates to revert to Atheism (disbelief) as he hates to be thrown into the fire.\" Reference : Sahih al-Bukhari 16 In-book reference : Book 2, Hadith 9 USC-MSA web (English) reference : Vol. 1, Book 2, Hadith 16 (deprecated numbering scheme) Report Error | Share | Copy ▼ 15 17",
+      "kashmiri": "حضرت اَنس رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”یَمس منٛز یِم ترٛے خصلتہٕ آسَن، تَمس میلہِ ایمانٕچ شیرینی: اللہ تعالہ تہٕ تَمی سُنٛد رَسوٗل تَمس باقی سٲریو چیزَو کھۄتہٕ زیادٕ عزیز آسَن؛ سُہ کانٛسہِ اِنسانَس صِرف اللہ تعالہ سٕندِ خٲطرٕ محبت کَرِ؛ تہٕ کُفرَس کُن واپس گَژھُن تَمس تَتھے پٲٹھۍ ناپَسند آسِ، یِتھ کٔنۍ نارِ منٛز ترٛاونہٕ یُن تَمس ناپَسند چھُ۔“",
+      "sourceUrl": "https://sunnah.com/bukhari:16",
+      "revision": 1
+    },
+    {
+      "id": "bukhari-17",
+      "hadithNumber": 17,
+      "english": "Narrated Anas: The Prophet (ﷺ) said, \"Love for the Ansar is a sign of faith and hatred for the Ansar is a sign of hypocrisy.\"",
+      "kashmiri": "حضرت اَنس رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”اَنصارَن سۭتۍ محبت کَرُن چھُ ایمانٕچ نشانی، تہٕ اَنصارَن سۭتۍ نفرت کَرُن چھُ مُنافقتٕچ نشانی۔“",
+      "sourceUrl": "https://sunnah.com/bukhari:17",
+      "revision": 1
+    },
+    {
+      "id": "bukhari-18",
+      "hadithNumber": 18,
+      "english": "Narrated 'Ubada bin As-Samit: who took part in the battle of Badr and was a Naqib (a person heading a group of six persons), on the night of Al-'Aqaba pledge: Allah's Apostle said while a group of his companions were around him, \"Swear allegiance to me for: 1. Not to join anything in worship along with Allah. 2. Not to steal. 3. Not to commit illegal sexual intercourse. 4. Not to kill your children. 5. Not to accuse an innocent person (to spread such an accusation among people). 6. Not to be disobedient (when ordered) to do good deed.\" The Prophet (ﷺ) added: \"Whoever among you fulfills his pledge will be rewarded by Allah. And whoever indulges in any one of them (except the ascription of partners to Allah) and gets the punishment in this world, that punishment will be an expiation for that sin. And if one indulges in any of them, and Allah conceals his sin, it is up to Him to forgive or punish him (in the Hereafter).\" 'Ubada bin As-Samit added: \"So we swore allegiance for these.\" (points to Allah's Apostle) Reference : Sahih al-Bukhari 18 In-book reference : Book 2, Hadith 11 USC-MSA web (English) reference : Vol. 1, Book 2, Hadith 18 (deprecated numbering scheme) Report Error | Share | Copy ▼ 17 19 About | News | Support | Developers | Contact | Donate var sc_project=7148282; var sc_invisible=1; var sc_security=\"63a57073\"; Hadith Text Arabic Translation Grade Reference Concise Detailed URL",
+      "kashmiri": "حضرت عُبادہ بِن صامت رضی اللہ عنہ، یِمو بَدر کِس جَنگَس مَنٛز حصہٕ نیوٗ تہٕ اوس نَقیٖب—شیٚن ہٕندِس جَمٲژ ہُنٛد رَہنما—عَقبہٕ عہد کِس رٲژ مَنٛز، چھِ روایت کَران:\n\nرَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو، تَمہِ وِزِ ییلہِ صحابہَن ہُنٛد اَکھ جماعت تِمَن زوٚپٲر ٲس: ”تُہۍ کَرِو مےٚ سۭتۍ یِمَن کَتھَن پؠٹھ بیعت: اللہ تعالہس سۭتۍ کانٛہہ شریٖک مَہ تھاوِو؛ ژور مَہ کَرِو؛ زِنا مَہ کَرِو؛ پَنٕنۍ شُرۍ مَہ مارِو؛ کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام، یُس بے گُناہ آسہِ، یا اَمہِ قٕسمٕچ اَفواہ پھٲلٲوِو؛ تہٕ جان کٲم (good deed) کَرنَس منٛز نافرمانی مَہ کَرِو۔“\n\nپَتہٕ فَرموو: ”توہہِ منٛز یُس یِہ عہد پوٗرٕ کَرِ، تَمس دِیِہ اللہ تعالہ اَجر۔ یُس یِموو منٛز کانٛہہ گُناہ کَرِ تہٕ میلہِس دُنیاہَس منٛز اَمیُک سزا، سۄ سزا بَنِ تَمہِ گُناہُک کفارہٕ۔ تہٕ یُس یِموو منٛز کانٛہہ گُناہ کَرِ تہٕ اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ، تیلہِ چھُ تَمیُک فیصلہٕ اللہ تعالہ سٕندِ اختیارَس منٛز؛ چاہے تَمس معاف کَرِ یا سزا دِیِس۔“\n\nحضرت عُبادہ بِن صامت رضی اللہ عنہَن ووٚن: ”پَتہٕ کٔر اَسہِ یِمَن کَتھَن پؠٹھ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَس بیعت۔“",
+      "sourceUrl": "https://sunnah.com/bukhari:18",
+      "revision": 1
+    },
+    {
+      "id": "bukhari-19",
+      "hadithNumber": 19,
+      "english": "Narrated Abu Said Al-Khudri: Allah's Messenger (ﷺ) said, \"A time will soon come when the best property of a Muslim will be sheep which he will take on the top of mountains and the places of rainfall (valleys) so as to flee with his religion from afflictions.\"",
+      "kashmiri": "حضرت ابو سعید خُدری رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”سُہ وَقت چھُ جلدے یِنہٕ وول، ییلہِ اَکِس مُسلمانَس سُنٛد ساروِے کھۄتہٕ بہتر مال کَٹھ آسِ، یِم سُہ پہاڑَن ہٕنٛدؠن تھَزرَن تہٕ روٗد پِوان جایَن کُن نِیِہ، فِتنَن نِش پَنُن دیٖن بچاونہٕ خٲطرٕ۔“",
+      "sourceUrl": "https://sunnah.com/bukhari:19",
       "revision": 1
     }
   ],

@@ -70,5 +70,23 @@
     "meaning": "By Him in Whose hand my life is",
     "pattern": "قَسَم چھِ تَمی ذاتُک، یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ",
     "rule": "Preserve the reviewed Kashmiri oath and life idiom."
+  },
+  {
+    "id": "negative-imperative",
+    "meaning": "Do not accuse an innocent person",
+    "pattern": "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام، یُس بے گُناہ آسہِ",
+    "rule": "Use مَہ with the reviewed imperative and relative clause."
+  },
+  {
+    "id": "worldly-punishment",
+    "meaning": "He receives its punishment in this world",
+    "pattern": "میلہِس دُنیاہَس منٛز اَمیُک سزا",
+    "rule": "Place the recipient-marked verb before the location and object."
+  },
+  {
+    "id": "concealed-sin",
+    "meaning": "Allah keeps his sin concealed",
+    "pattern": "اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ",
+    "rule": "Use تھاوِ plus ژوٗرِ for concealment."
   }
 ]

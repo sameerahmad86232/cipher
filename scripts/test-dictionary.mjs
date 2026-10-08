@@ -11,8 +11,8 @@ const records = [
   JSON.parse(fs.readFileSync(path.join(root, 'assets', 'dictionary-corpus.json')))
 ].flat();
 const words = buildIndex(records);
-assert.equal(records.length, 58505);
-assert.equal(words.length, 49744);
+assert.equal(records.length, 58514);
+assert.equal(words.length, 49753);
 assert.ok(records.every(r => r.k && r.e));
 assert.ok(records.every(r => r.tr));
 assert.equal(records.filter(r => r.trGenerated).length, 44292);

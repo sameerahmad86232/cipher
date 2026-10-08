@@ -48,6 +48,10 @@ preferences = [
     ("none of you has faith until", "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام", "توہہِ منٛز کانٛسہِ آسِ نہٕ ایمان، یوتام", "Use the reviewed negative existential and condition structure."),
     ("by that Being", "قَسَم چھِ تَمی ذاتُک", "قَسَم چھُ تَمہِ ذاتُک", "Use the owner-approved agreement and demonstrative form."),
     ("in Whose hand my life is", "یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ", "یَمہِ اَتھَس منٛز میٲنۍ جان چھِ", "Use the reviewed possessive and idiomatic term for life."),
+    ("leader of a group of six", "شیٚن ہٕندِس جَمٲژ ہُنٛد رَہنما", "اَکھ نَقیٖب", "Retain the project-owner explanation of the historical title."),
+    ("do not accuse an innocent person", "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام، یُس بے گُناہ آسہِ", "کانٛسہِ بے گُناہَس پؠٹھ تہمت مٲ لٲگِو", "Use the reviewed negative imperative and relative clause."),
+    ("if he is punished for it in this world", "میلہِس دُنیاہَس منٛز اَمیُک سزا", "دُنیاہَس منٛز تَمیُک سزا میلہِ", "Use the reviewed recipient-first word order."),
+    ("Allah keeps his sin concealed", "اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ", "اللہ تعالہ تَمیُک گُناہ ژھاوِ", "Use the reviewed concealment construction."),
 ]
 preference_rows = [{
     "id": f"hadith-pref-{index:03d}",
@@ -72,6 +76,9 @@ patterns = [
     {"id": "singular-agent-question", "meaning": "A man asked", "pattern": "اَکہِ شَخصَن پروژھ", "rule": "Use شَخصَن with the reviewed past verb پروژھ."},
     {"id": "faith-until-condition", "meaning": "None of you has faith until", "pattern": "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام", "rule": "Use the reviewed negative existential followed by یوتام."},
     {"id": "oath-life-idiom", "meaning": "By Him in Whose hand my life is", "pattern": "قَسَم چھِ تَمی ذاتُک، یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ", "rule": "Preserve the reviewed Kashmiri oath and life idiom."},
+    {"id": "negative-imperative", "meaning": "Do not accuse an innocent person", "pattern": "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام، یُس بے گُناہ آسہِ", "rule": "Use مَہ with the reviewed imperative and relative clause."},
+    {"id": "worldly-punishment", "meaning": "He receives its punishment in this world", "pattern": "میلہِس دُنیاہَس منٛز اَمیُک سزا", "rule": "Place the recipient-marked verb before the location and object."},
+    {"id": "concealed-sin", "meaning": "Allah keeps his sin concealed", "pattern": "اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ", "rule": "Use تھاوِ plus ژوٗرِ for concealment."},
 ]
 
 review_candidates = [
