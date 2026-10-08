@@ -88,5 +88,29 @@
     "meaning": "Allah keeps his sin concealed",
     "pattern": "اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ",
     "rule": "Use تھاوِ plus ژوٗرِ for concealment."
+  },
+  {
+    "id": "hell-removal-command",
+    "meaning": "Take those people out from Hell",
+    "pattern": "تِم لُکھ کَڑہوٗکھ جہنم منٛز",
+    "rule": "Use the reviewed imperative order and جہنم."
+  },
+  {
+    "id": "questioner-asked",
+    "meaning": "The questioner asked",
+    "pattern": "پرژھن وٲلۍ پروژھ",
+    "rule": "Use the reviewed agent phrase and past verb."
+  },
+  {
+    "id": "path-locative",
+    "meaning": "In the path of Allah",
+    "pattern": "اللہ تعالہ سٕندِ وَتہِ منٛز",
+    "rule": "Use the locative وَتہِ منٛز."
+  },
+  {
+    "id": "afterwards-account",
+    "meaning": "After that Allah will take their account",
+    "pattern": "اَمہِ پتہٕ کَرِ اللہ تعالیٰ تِمن ہُنٛد حساب",
+    "rule": "Use the reviewed temporal opening and possessive object."
   }
 ]

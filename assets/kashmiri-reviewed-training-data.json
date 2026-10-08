@@ -1,13 +1,13 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-08T03:28:31.469Z",
+  "generatedAt": "2026-10-08T03:59:33.699Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
     "pairs": 127,
-    "lexicalMappings": 14315,
-    "distinctKashmiriHeadwords": 9634,
-    "distinctEnglishGlosses": 7238,
+    "lexicalMappings": 14325,
+    "distinctKashmiriHeadwords": 9644,
+    "distinctEnglishGlosses": 7248,
     "humanReviewed": 2,
     "pendingHumanReview": 125
   },
@@ -217278,6 +217278,156 @@
       "headword": "فِتنَن نِش پَنُن دیٖن بچاوُن",
       "transliteration": "fitnan nish panun deen bachaavun",
       "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14316",
+      "kashmiri": "بوٗتھِس پؠٹھ ظٲہِر",
+      "english": "apparent on the face",
+      "headword": "بوٗتھِس پؠٹھ ظٲہِر",
+      "transliteration": "boothis peth zaahir",
+      "partOfSpeech": "Adjectival phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14317",
+      "kashmiri": "تِم لُکھ کَڑہوٗکھ جہنم منٛز",
+      "english": "take those people out from Hell",
+      "headword": "تِم لُکھ کَڑہوٗکھ جہنم منٛز",
+      "transliteration": "tim lokh kadihookh jahannam manz",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14318",
+      "kashmiri": "نارِ سۭتۍ کرٕہَن گٲمٕتۍ",
+      "english": "blackened by the fire",
+      "headword": "نارِ سۭتۍ کرٕہَن گٲمٕتۍ",
+      "transliteration": "naari seth karihan gaamti",
+      "partOfSpeech": "Adjectival phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14319",
+      "kashmiri": "بَتھِس پؠٹھ",
+      "english": "on the bank",
+      "headword": "بَتھِس پؠٹھ",
+      "transliteration": "bathis peth",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14320",
+      "kashmiri": "لیوٚدُر تہٕ ہج",
+      "english": "yellow and twisted",
+      "headword": "لیوٚدُر تہٕ ہج",
+      "transliteration": "lyodur ti haj",
+      "partOfSpeech": "Adjectival phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14321",
+      "kashmiri": "سوائے اسلامی قوانین",
+      "english": "except according to Islamic laws",
+      "headword": "سوائے اسلامی قوانین",
+      "transliteration": "siwaaye islaami qawaaneen",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14322",
+      "kashmiri": "اَمہِ پتہٕ کَرِ اللہ تعالیٰ تِمن ہُنٛد حساب",
+      "english": "after that Allah will take their account",
+      "headword": "اَمہِ پتہٕ کَرِ اللہ تعالیٰ تِمن ہُنٛد حساب",
+      "transliteration": "ami pati kari Allah taala timan hund hisaab",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14323",
+      "kashmiri": "پرژھن وٲلۍ پروژھ",
+      "english": "the questioner asked",
+      "headword": "پرژھن وٲلۍ پروژھ",
+      "transliteration": "prazhan waali proozh",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14324",
+      "kashmiri": "اللہ تعالہ سٕندِ وَتہِ منٛز",
+      "english": "in the path of Allah",
+      "headword": "اللہ تعالہ سٕندِ وَتہِ منٛز",
+      "transliteration": "Allah taalah sandi vati manz",
+      "partOfSpeech": "Adverbial phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14325",
+      "kashmiri": "حَجِ مَبروٗر",
+      "english": "an accepted and righteous Hajj",
+      "headword": "حَجِ مَبروٗر",
+      "transliteration": "haji mabroor",
+      "partOfSpeech": "Noun phrase",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",

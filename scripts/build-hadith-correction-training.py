@@ -52,6 +52,12 @@ preferences = [
     ("do not accuse an innocent person", "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام، یُس بے گُناہ آسہِ", "کانٛسہِ بے گُناہَس پؠٹھ تہمت مٲ لٲگِو", "Use the reviewed negative imperative and relative clause."),
     ("if he is punished for it in this world", "میلہِس دُنیاہَس منٛز اَمیُک سزا", "دُنیاہَس منٛز تَمیُک سزا میلہِ", "Use the reviewed recipient-first word order."),
     ("Allah keeps his sin concealed", "اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ", "اللہ تعالہ تَمیُک گُناہ ژھاوِ", "Use the reviewed concealment construction."),
+    ("apparent on his face", "تِمَن ہٕندِس بوٗتھِس پؠٹھ ظٲہِر", "تِمَن ہٕندِس چِہرَس پؠٹھ ظٲہِر", "Use the reviewed Kashmiri word for face."),
+    ("take those people out from Hell", "تِم لُکھ کَڑہوٗکھ جہنم منٛز", "تِم لُکھ جہنمَس منٛزٕ نِیبر کَڑِو", "Use جہنم and the reviewed imperative order."),
+    ("on the bank", "بَتھِس پؠٹھ", "کَنارَس پؠٹھ", "Use the reviewed Kashmiri locative noun."),
+    ("yellow and twisted", "لیوٚدُر تہٕ ہج", "لیوٚدُر تہٕ ۂژ", "Preserve the project-owner spelling ہج."),
+    ("the questioner asked", "پرژھن وٲلۍ پروژھ", "پروژھن وولَن بَیِہ پروژھ", "Use the reviewed agent phrase and verb."),
+    ("in the path of Allah", "اللہ تعالہ سٕندِ وَتہِ منٛز", "اللہ تعالہ سٕندِ راہَس منٛز", "Use وَتہِ for path in this construction."),
 ]
 preference_rows = [{
     "id": f"hadith-pref-{index:03d}",
@@ -79,6 +85,10 @@ patterns = [
     {"id": "negative-imperative", "meaning": "Do not accuse an innocent person", "pattern": "کٲنسہِ شَخصَس پؠٹھ مَہ لَگٲوِو اِلزام، یُس بے گُناہ آسہِ", "rule": "Use مَہ with the reviewed imperative and relative clause."},
     {"id": "worldly-punishment", "meaning": "He receives its punishment in this world", "pattern": "میلہِس دُنیاہَس منٛز اَمیُک سزا", "rule": "Place the recipient-marked verb before the location and object."},
     {"id": "concealed-sin", "meaning": "Allah keeps his sin concealed", "pattern": "اللہ تعالہ تھاوِ تَمسُنٛد گُناہ ژوٗرِ", "rule": "Use تھاوِ plus ژوٗرِ for concealment."},
+    {"id": "hell-removal-command", "meaning": "Take those people out from Hell", "pattern": "تِم لُکھ کَڑہوٗکھ جہنم منٛز", "rule": "Use the reviewed imperative order and جہنم."},
+    {"id": "questioner-asked", "meaning": "The questioner asked", "pattern": "پرژھن وٲلۍ پروژھ", "rule": "Use the reviewed agent phrase and past verb."},
+    {"id": "path-locative", "meaning": "In the path of Allah", "pattern": "اللہ تعالہ سٕندِ وَتہِ منٛز", "rule": "Use the locative وَتہِ منٛز."},
+    {"id": "afterwards-account", "meaning": "After that Allah will take their account", "pattern": "اَمہِ پتہٕ کَرِ اللہ تعالیٰ تِمن ہُنٛد حساب", "rule": "Use the reviewed temporal opening and possessive object."},
 ]
 
 review_candidates = [

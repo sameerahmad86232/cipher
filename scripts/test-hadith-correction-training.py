@@ -9,10 +9,10 @@ preferences = [json.loads(line) for line in (root / "preference-pairs.jsonl").re
 candidates = [json.loads(line) for line in (root / "review-candidates.jsonl").read_text(encoding="utf-8").splitlines()]
 patterns = json.loads((root / "grammar-patterns.json").read_text(encoding="utf-8"))
 
-assert manifest["approvedHadiths"] == 19
-assert len(passages) == 19 and all(row["weight"] == 8 for row in passages)
-assert len(preferences) == 22 and all(row["chosen"] != row["rejected"] for row in preferences)
-assert len(patterns) == 15
+assert manifest["approvedHadiths"] == 26
+assert len(passages) == 26 and all(row["weight"] == 8 for row in passages)
+assert len(preferences) == 28 and all(row["chosen"] != row["rejected"] for row in preferences)
+assert len(patterns) == 19
 assert candidates and all(row["status"] == "pending-human-review" for row in candidates)
 assert manifest["trainingPolicy"]["pendingCandidatesUsedForTraining"] is False
 print(json.dumps({"result": "passed", "passages": len(passages), "preferences": len(preferences), "patterns": len(patterns)}))
