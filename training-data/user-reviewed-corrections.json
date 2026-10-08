@@ -156,6 +156,43 @@
       "humanReview": "approved-by-project-owner",
       "reviewDate": "2026-10-07",
       "supersedes": []
+    },
+    {
+      "id": "bukhari-13-complete-r1",
+      "context": "Sahih al-Bukhari Hadith 13 — complete owner-reviewed translation",
+      "english": "Narrated Anas: The Prophet (ﷺ) said, \"None of you will have faith till he wishes for his (Muslim) brother what he likes for himself.\" 12 14",
+      "kashmiri": "حضرت اَنس رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام سُہ پَننِس مُسلمان بایِس خٲطرٕ تےٚ پَسند کَرِ، یُس سُہ پَننِس پانَس خٲطرٕ پَسند چھُ کَران۔“",
+      "status": "user-preferred",
+      "humanReview": "approved-by-project-owner",
+      "reviewDate": "2026-10-08",
+      "supersedes": [
+        "توہہِ منٛز کانٛسہِ آسِ نہٕ ایمان"
+      ]
+    },
+    {
+      "id": "bukhari-14-complete-r1",
+      "context": "Sahih al-Bukhari Hadith 14 — complete owner-reviewed translation",
+      "english": "Narrated Abu Huraira: \"Allah's Messenger (ﷺ) said, \"By Him in Whose Hands my life is, none of you will have faith till he loves me more than his father and his children.\"",
+      "kashmiri": "حضرت ابو ہُریرہ رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”قَسَم چھِ تَمی ذاتُک، یعنی اللہ تعالہ، یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ؛ توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام بہٕ تَمس پَننِس مولِس تہٕ پَننؠن شُرؠن کھۄتہٕ زیادٕ عزیز آسہٕ۔“",
+      "status": "user-preferred",
+      "humanReview": "approved-by-project-owner",
+      "reviewDate": "2026-10-08",
+      "supersedes": [
+        "قَسَم چھُ تَمہِ ذاتُک",
+        "یَمہِ اَتھَس منٛز میٲنۍ جان چھِ"
+      ]
+    },
+    {
+      "id": "bukhari-15-complete-r1",
+      "context": "Sahih al-Bukhari Hadith 15 — complete owner-reviewed translation",
+      "english": "Narrated Anas: The Prophet (ﷺ) said \"None of you will have faith till he loves me more than his father, his children and all mankind.\"",
+      "kashmiri": "حضرت اَنس رضی اللہ عنہ چھِ روایت کَران زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّمَن فَرموو: ”توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام بہٕ تَمس پَننِس مولِس، پَننؠن شُرؠن تہٕ سٲریو اِنسانَن کھۄتہٕ زیادٕ عزیز آسہٕ۔“",
+      "status": "user-preferred",
+      "humanReview": "approved-by-project-owner",
+      "reviewDate": "2026-10-08",
+      "supersedes": [
+        "توہہِ منٛز کانٛسہِ آسِ نہٕ ایمان"
+      ]
     }
   ],
   "lexicon": [
@@ -476,6 +513,41 @@
       "p": "Verb phrase",
       "tr": "lokan khyen diyun",
       "correctionId": "bukhari-12-complete-r1"
+    },
+    {
+      "k": "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام",
+      "e": "none of you has faith until",
+      "p": "Clause pattern",
+      "tr": "tohi manz chunah kaanse totaam imaan youtaam",
+      "correctionId": "bukhari-13-complete-r1"
+    },
+    {
+      "k": "پَننِس بایِس خٲطرٕ تےٚ پَسند کَرُن",
+      "e": "to like for one’s brother",
+      "p": "Verb phrase",
+      "tr": "pananis baayis khaatiri te pasand karun",
+      "correctionId": "bukhari-13-complete-r1"
+    },
+    {
+      "k": "قَسَم چھِ تَمی ذاتُک",
+      "e": "by that Being; an oath by Him",
+      "p": "Clause",
+      "tr": "qasam chi tami zaatuk",
+      "correctionId": "bukhari-14-complete-r1"
+    },
+    {
+      "k": "یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ",
+      "e": "in Whose hand my life is",
+      "p": "Clause",
+      "tr": "yami sandis athas manz myon zoo chu",
+      "correctionId": "bukhari-14-complete-r1"
+    },
+    {
+      "k": "سٲریو اِنسانَن کھۄتہٕ زیادٕ عزیز",
+      "e": "dearer than all mankind",
+      "p": "Adjectival phrase",
+      "tr": "saaryo insaanan khotah zyaadah azeez",
+      "correctionId": "bukhari-15-complete-r1"
     }
   ]
 }

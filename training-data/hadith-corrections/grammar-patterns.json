@@ -58,5 +58,17 @@
     "meaning": "A man asked",
     "pattern": "اَکہِ شَخصَن پروژھ",
     "rule": "Use شَخصَن with the reviewed past verb پروژھ."
+  },
+  {
+    "id": "faith-until-condition",
+    "meaning": "None of you has faith until",
+    "pattern": "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام",
+    "rule": "Use the reviewed negative existential followed by یوتام."
+  },
+  {
+    "id": "oath-life-idiom",
+    "meaning": "By Him in Whose hand my life is",
+    "pattern": "قَسَم چھِ تَمی ذاتُک، یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ",
+    "rule": "Preserve the reviewed Kashmiri oath and life idiom."
   }
 ]

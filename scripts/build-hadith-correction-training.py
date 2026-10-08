@@ -45,6 +45,9 @@ preferences = [
     ("some people asked", "کینژھو لُکو پرژھ", "کینہہ لُکَن پرژھ", "Use the reviewed plural-agent construction."),
     ("a man asked", "اَکہِ شَخصَن پروژھ", "اَکہِ مَہنؠو پرژھ", "Use the reviewed noun and verb spelling."),
     ("to give people food", "لُکَن کھؠن دِیُن", "لُکَن کھؠن دِیِو", "Use the reviewed infinitive form."),
+    ("none of you has faith until", "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام", "توہہِ منٛز کانٛسہِ آسِ نہٕ ایمان، یوتام", "Use the reviewed negative existential and condition structure."),
+    ("by that Being", "قَسَم چھِ تَمی ذاتُک", "قَسَم چھُ تَمہِ ذاتُک", "Use the owner-approved agreement and demonstrative form."),
+    ("in Whose hand my life is", "یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ", "یَمہِ اَتھَس منٛز میٲنۍ جان چھِ", "Use the reviewed possessive and idiomatic term for life."),
 ]
 preference_rows = [{
     "id": f"hadith-pref-{index:03d}",
@@ -67,6 +70,8 @@ patterns = [
     {"id": "possessive-category", "meaning": "Modesty is a branch of faith", "pattern": "حَیا چھِ ایمانَچ اَکھ شاخ", "rule": "Use the possessive/category form ایمانَچ."},
     {"id": "plural-agent-question", "meaning": "Some people asked", "pattern": "کینژھو لُکو پرژھ", "rule": "Preserve the reviewed plural-agent form."},
     {"id": "singular-agent-question", "meaning": "A man asked", "pattern": "اَکہِ شَخصَن پروژھ", "rule": "Use شَخصَن with the reviewed past verb پروژھ."},
+    {"id": "faith-until-condition", "meaning": "None of you has faith until", "pattern": "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام", "rule": "Use the reviewed negative existential followed by یوتام."},
+    {"id": "oath-life-idiom", "meaning": "By Him in Whose hand my life is", "pattern": "قَسَم چھِ تَمی ذاتُک، یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ", "rule": "Preserve the reviewed Kashmiri oath and life idiom."},
 ]
 
 review_candidates = [

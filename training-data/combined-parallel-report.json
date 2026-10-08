@@ -1,6 +1,6 @@
 {
-  "combinedPairs": 150,
-  "ownerApprovedPairs": 57,
+  "combinedPairs": 153,
+  "ownerApprovedPairs": 60,
   "pendingPairs": 93,
   "inputs": [
     "training-data/reviewed-parallel.jsonl",

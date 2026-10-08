@@ -1,13 +1,13 @@
 {
   "title": "Koshur Lughat persistent Kashmiri–English training memory",
   "version": 1,
-  "generatedAt": "2026-10-07T17:50:08.845Z",
+  "generatedAt": "2026-10-08T03:04:40.789Z",
   "purpose": "Versioned, attributed sentence pairs for translation-memory lookup and future model fine-tuning.",
   "counts": {
     "pairs": 127,
-    "lexicalMappings": 14301,
-    "distinctKashmiriHeadwords": 9620,
-    "distinctEnglishGlosses": 7224,
+    "lexicalMappings": 14306,
+    "distinctKashmiriHeadwords": 9625,
+    "distinctEnglishGlosses": 7229,
     "humanReviewed": 2,
     "pendingHumanReview": 125
   },
@@ -217068,6 +217068,81 @@
       "headword": "لُکَن کھؠن دِیُن",
       "transliteration": "lokan khyen diyun",
       "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14302",
+      "kashmiri": "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام",
+      "english": "none of you has faith until",
+      "headword": "توہہِ منٛز چھُنہٕ کانٛسہِ تۆتام ایمان، یوتام",
+      "transliteration": "tohi manz chunah kaanse totaam imaan youtaam",
+      "partOfSpeech": "Clause pattern",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14303",
+      "kashmiri": "پَننِس بایِس خٲطرٕ تےٚ پَسند کَرُن",
+      "english": "to like for one’s brother",
+      "headword": "پَننِس بایِس خٲطرٕ تےٚ پَسند کَرُن",
+      "transliteration": "pananis baayis khaatiri te pasand karun",
+      "partOfSpeech": "Verb phrase",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14304",
+      "kashmiri": "قَسَم چھِ تَمی ذاتُک",
+      "english": "by that Being; an oath by Him",
+      "headword": "قَسَم چھِ تَمی ذاتُک",
+      "transliteration": "qasam chi tami zaatuk",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14305",
+      "kashmiri": "یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ",
+      "english": "in Whose hand my life is",
+      "headword": "یَمی سٕندِس اَتھَس منٛز میون زوٗ چھُ",
+      "transliteration": "yami sandis athas manz myon zoo chu",
+      "partOfSpeech": "Clause",
+      "source": {
+        "name": "Koshur Lughat project-owner language review",
+        "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
+        "license": "Project-owner contribution · public reuse approved"
+      },
+      "status": "user-reviewed",
+      "humanReview": "approved-by-project-owner"
+    },
+    {
+      "id": "lex-ks-en-14306",
+      "kashmiri": "سٲریو اِنسانَن کھۄتہٕ زیادٕ عزیز",
+      "english": "dearer than all mankind",
+      "headword": "سٲریو اِنسانَن کھۄتہٕ زیادٕ عزیز",
+      "transliteration": "saaryo insaanan khotah zyaadah azeez",
+      "partOfSpeech": "Adjectival phrase",
       "source": {
         "name": "Koshur Lughat project-owner language review",
         "url": "https://github.com/sameerahmad86232/cipher/blob/main/training-data/user-reviewed-corrections.json",
