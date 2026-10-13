@@ -1,5 +1,28 @@
 # Dictionary sources
 
+## Licensing, reuse, and attribution
+
+**Project-owned code:** The project's original application code, utility scripts, and original documentation are made available under the [MIT License](LICENSE), but only where the copyright holder has the right to grant that license. Third-party portions embedded in any file retain their own terms. The root `LICENSE` is **not** a blanket license for all files, datasets, or models in the repository.
+
+**Data and research materials:** The `assets/`, `training-data/`, and `DATA-LICENSES/` trees include datasets, dictionaries, corpus excerpts, machine-OCR output, and third-party attribution files with **mixed licensing**. A generated copy, OCR, transliteration, or dataset merge does not eliminate underlying source rights. Review the source-linked records, original license, and the detailed provenance sections below before copying, redistributing, training on, or commercially using that content.
+
+| Resource / material | Stated terms or status | Reuse guidance |
+| --- | --- | --- |
+| Original Cipher code and original documentation | MIT, where project-owned | See [LICENSE](LICENSE); third-party components excluded |
+| [Kaeshir Dictionary Data](https://github.com/izan-majeed/kaeshir-dictionary-data) | MIT | Retain Izan Majeed attribution and [upstream notice](DATA-LICENSES/kaeshir-dictionary-MIT.txt) |
+| Wiktionary / Kaikki-derived entries | CC BY-SA 4.0 | Retain entry-level source attribution and comply with share-alike requirements for adaptations |
+| Kashmiri Wikipedia corpus subset | CC BY-SA 4.0 | Retain attribution and comply with applicable share-alike terms |
+| OpenSLR 122 corpus subset | GPL-3.0-or-later | Review GPL obligations before redistributing the relevant material |
+| PALI Kashmiri corpus subset | MIT | Retain upstream attribution and license notice |
+| *Aagarnamah* OCR-derived material | CC BY 4.0 stated for source | Follow source attribution conditions |
+| *An Advance Course in Kashmiri* OCR-derived material | CC BY-NC 4.0 stated for source | Non-commercial restrictions apply |
+| NLLB-200 / optional ONNX translation model | CC BY-NC 4.0 stated for model; weights not bundled | Review model terms separately, particularly for commercial usage |
+| Original Kashmiri Language Text Dataset | No license listed in source card | **No open-source or redistribution permission is implied** |
+| Koul dictionary, Kashir Dictionary scans, and other permission-based or unclearly licensed OCR sources | Rights-holder permission reported by project owner or reuse terms unresolved | **Not covered by MIT**; independently verify the written permission and its scope before redistribution or commercial reuse |
+
+Some records combine sources with different rights; an MIT-licensed entry or codebase does not make other records MIT-licensed. The project owner's reported rights-holder permissions are documented as reports, not an independently verified transferable public license. External linked services and model checkpoints retain their own licenses and terms. When rights are unclear, obtain permission or remove the affected material before distributing it.
+
+
 ## Koul, Raina and Bhat reference book
 
 We consulted [*Kashmiri–English Dictionary for Second Language Learners*](https://archive.org/details/tbjU_kashmiri-english-dictionary-for-second-language-learners-omkar-koul) by Omkar N. Koul, S. N. Raina and Roop Krishen Bhat (Central Institute of Indian Languages, 2000). It contains Perso-Arabic Kashmiri headwords, romanization and English glosses. The available PDF is a 140-page image scan; its OCR text is too unreliable for automated extraction. The archive item carries an uploader-supplied CC0 label, but the book’s printed copyright page (PDF p. 8) says reproduction requires the publisher’s written permission. The project owner reports rights-holder approval for public reuse of entries; the scan itself is linked, not redistributed. We are adding manually checked entries and page-linked verification rather than importing unreviewed OCR.
