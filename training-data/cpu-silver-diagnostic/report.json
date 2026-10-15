@@ -5,7 +5,7 @@
   "trainPairs": 9040,
   "validationPairs": 429,
   "parameters": 708741,
-  "lastRunSeconds": 645.6261575222015,
+  "lastRunSeconds": 651.8141965866089,
   "history": [
     {
       "epoch": 1,
@@ -16,12 +16,37 @@
       "epoch": 2,
       "trainLoss": 2.857265715261476,
       "validationLoss": 2.817560010486179
+    },
+    {
+      "epoch": 3,
+      "trainLoss": 2.7707788528594297,
+      "validationLoss": 2.757665272112246
+    },
+    {
+      "epoch": 4,
+      "trainLoss": 2.7267659659934256,
+      "validationLoss": 2.7211954063839383
     }
   ],
   "generationSmokeTest": {
-    "passed": false,
-    "finding": "Greedy decoding produced repetitive fragments rather than faithful translations on three unseen English prompts.",
-    "deploymentDecision": "Checkpoint rejected; do not publish or use for Hadith translation."
+    "status": "failed",
+    "decoder": "greedy character decoding, maximum 180 output characters",
+    "testedAfterEpoch": 4,
+    "examples": [
+      {
+        "english": "I read a book.",
+        "output": "کَرِو کَرِو کَر"
+      },
+      {
+        "english": "He is alive.",
+        "output": "مَمہٕ کَرِو کَر"
+      },
+      {
+        "english": "The children are playing in the park.",
+        "output": "repetitive character fragments; not a valid translation"
+      }
+    ],
+    "decision": "Reject checkpoint. Falling teacher-forced validation loss did not produce usable autoregressive translations."
   },
   "productionEligible": false
 }
