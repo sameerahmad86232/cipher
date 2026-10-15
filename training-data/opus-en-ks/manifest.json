@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "languagePair": "eng_Latn-kas_Arab",
+  "counts": {
+    "allAccepted": 8845,
+    "train": 8416,
+    "evaluation": 429
+  },
+  "sources": {
+    "translatewiki": {
+      "input": 5091,
+      "acceptedByScriptFilter": 2504,
+      "license": "CC BY 3.0",
+      "url": "https://object.pouta.csc.fi/OPUS-translatewiki/v2026-07-01/moses/en-ks.txt.zip"
+    },
+    "wikimedia": {
+      "input": 9900,
+      "acceptedByScriptFilter": 6730,
+      "license": "CC BY-SA 4.0",
+      "url": "https://object.pouta.csc.fi/OPUS-wikimedia/v20260327/moses/en-ks.txt.zip"
+    }
+  },
+  "filterPolicy": [
+    "Perso-Arabic ratio >= 65%",
+    "contains a Kashmiri-specific character or combining mark",
+    "2–120 whitespace tokens per side",
+    "length ratio 0.22–5",
+    "exact duplicates and conflicting targets removed"
+  ],
+  "qualityWarning": "Silver source-attested data, not native-speaker-approved gold. Software UI and Wikimedia alignments can contain unnatural or incorrect language.",
+  "redistribution": "Keep attribution and applicable source licenses. Wikimedia-derived rows remain CC BY-SA 4.0.",
+  "excluded": [
+    "GNOME Kashmiri in Devanagari",
+    "Tatoeba Kashmiri in Latin transliteration",
+    "raw books/OCR",
+    "synthetic translations"
+  ]
+}

@@ -34,6 +34,16 @@ for path in [ROOT/"training-data/approved-parallel.jsonl", ROOT/"training-data/h
         row=json.loads(line); en,ks=clean(row["english"]),clean(row["kashmiri"])
         if valid(en,ks): gold.append({"source":en,"target":ks,"src_lang":"eng_Latn","tier":"gold"})
 
+# Freely licensed, automatically filtered Perso-Arabic OPUS alignments. These
+# remain silver data and never replace the native-reviewed corrective stage.
+silver=[]
+opus_path=ROOT/"training-data/opus-en-ks/train-silver.jsonl"
+if opus_path.exists():
+    for line in opus_path.read_text(encoding="utf-8").splitlines():
+        if not line.strip(): continue
+        row=json.loads(line); en,ks=clean(row["english"]),clean(row["kashmiri"])
+        if valid(en,ks): silver.append({"source":en,"target":ks,"src_lang":"eng_Latn","tier":"opus-silver"})
+
 # CoRIL is Hindi→Kashmiri, not English→Kashmiri. It is used only as a
 # multilingual target-fluency auxiliary task; its test split is never trained.
 aux=[]
@@ -61,7 +71,7 @@ def unique(rows):
         if key not in seen: seen.add(key); out.append(row)
     return out
 
-gold=unique(gold); bpcc=unique(bpcc); aux=unique(aux)
+gold=unique(gold); bpcc=unique(bpcc); silver=unique(silver); aux=unique(aux)
 gold_train=[r for r in gold if split_key(r["source"],r["target"])>=15]
 gold_eval=[r for r in gold if split_key(r["source"],r["target"])<15]
 bpcc_train=[r for r in bpcc if split_key(r["source"],r["target"])>=5]
@@ -69,7 +79,7 @@ bpcc_eval=[r for r in bpcc if split_key(r["source"],r["target"])<5][:1000]
 
 # Oversampling makes the small native-reviewed set influence Stage A without
 # pretending it is a large corpus. Stage B then specializes only on gold data.
-stage_a=aux + bpcc_train + gold_train*12
+stage_a=aux + silver + bpcc_train + gold_train*12
 eval_rows=(bpcc_eval + gold_eval) or gold_eval
 
 tokenizer=AutoTokenizer.from_pretrained(MODEL_ID)
@@ -95,5 +105,5 @@ stage_a_metrics=trainer_a.evaluate()
 trainer_b=Seq2SeqTrainer(model=model,args=Seq2SeqTrainingArguments(output_dir=str(OUT/"stage-b"),num_train_epochs=8,learning_rate=8e-6,eval_strategy="epoch",save_strategy="epoch",load_best_model_at_end=True,metric_for_best_model="eval_loss",greater_is_better=False,**common),train_dataset=dataset(gold_train),eval_dataset=dataset(gold_eval),data_collator=collator)
 trainer_b.train(); stage_b_metrics=trainer_b.evaluate()
 model.save_pretrained(OUT/"adapter"); tokenizer.save_pretrained(OUT/"tokenizer")
-(OUT/"training-report.json").write_text(json.dumps({"baseModel":MODEL_ID,"goldPairs":len(gold),"auxCorilPairs":len(aux),"bpccPairs":len(bpcc),"stageAMetrics":stage_a_metrics,"stageBMetrics":stage_b_metrics,"exclusions":["raw OCR","dictionary glosses","synthetic corpora","unreviewed Hadith drafts","CoRIL dev/test"],"productionDeployed":False},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+(OUT/"training-report.json").write_text(json.dumps({"baseModel":MODEL_ID,"goldPairs":len(gold),"opusSilverPairs":len(silver),"auxCorilPairs":len(aux),"bpccPairs":len(bpcc),"stageAMetrics":stage_a_metrics,"stageBMetrics":stage_b_metrics,"exclusions":["raw OCR","dictionary glosses","synthetic corpora","unreviewed Hadith drafts","CoRIL dev/test"],"productionDeployed":False},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("Saved",OUT/"adapter")

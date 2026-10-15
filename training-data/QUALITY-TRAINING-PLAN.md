@@ -7,6 +7,7 @@ The Hadith 27–50 drafts exposed a serious quality gap. They must not be used a
 - 71 owner-approved general sentence pairs.
 - 26 owner-reviewed Hadith passages.
 - CoRIL 21,103 Hindi–Kashmiri pairs (CC BY 4.0), used only as an auxiliary Kashmiri-generation task.
+- OPUS TranslateWiki and Wikimedia Perso-Arabic candidates, retained as silver data with row-level provenance and licensing.
 - Optional BPCC English–Kashmiri pairs after the user accepts the gated publisher terms.
 
 ## Excluded from gold training
@@ -19,7 +20,7 @@ The Hadith 27–50 drafts exposed a serious quality gap. They must not be used a
 
 ## Training sequence
 
-1. Broad multilingual LoRA training: BPCC when available, CoRIL as an auxiliary Hindi→Kashmiri task, and approved pairs oversampled.
+1. Broad multilingual LoRA training: BPCC when available, filtered OPUS silver data, CoRIL as an auxiliary Hindi→Kashmiri task, and approved pairs oversampled.
 2. Corrective English→Kashmiri tuning on owner-approved pairs only, at a lower learning rate.
 3. Evaluation on untouched owner-reviewed sentences and BPCC validation data.
 4. Human review for meaning, negation, tense/aspect, case/agreement, honorific language, fluency and orthography.
