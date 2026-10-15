@@ -1,0 +1,27 @@
+{
+  "purpose": "CPU pipeline diagnostic only\u2014not deployable translation quality",
+  "approvedPairs": 78,
+  "includesOpusSilver": true,
+  "trainPairs": 9040,
+  "validationPairs": 429,
+  "parameters": 708741,
+  "lastRunSeconds": 645.6261575222015,
+  "history": [
+    {
+      "epoch": 1,
+      "trainLoss": 3.4084199728163997,
+      "validationLoss": 2.951408350909198
+    },
+    {
+      "epoch": 2,
+      "trainLoss": 2.857265715261476,
+      "validationLoss": 2.817560010486179
+    }
+  ],
+  "generationSmokeTest": {
+    "passed": false,
+    "finding": "Greedy decoding produced repetitive fragments rather than faithful translations on three unseen English prompts.",
+    "deploymentDecision": "Checkpoint rejected; do not publish or use for Hadith translation."
+  },
+  "productionEligible": false
+}
