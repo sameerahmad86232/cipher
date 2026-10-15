@@ -14,6 +14,7 @@ from datasets import Dataset
 from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (AutoModelForSeq2SeqLM, AutoTokenizer,
     DataCollatorForSeq2Seq, Seq2SeqTrainer, Seq2SeqTrainingArguments)
+from transformers.trainer_utils import get_last_checkpoint
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_ID = os.getenv("BASE_MODEL", "facebook/nllb-200-distilled-600M")
@@ -99,11 +100,28 @@ collator=DataCollatorForSeq2Seq(tokenizer,model=model)
 common=dict(per_device_train_batch_size=2,per_device_eval_batch_size=2,gradient_accumulation_steps=8,fp16=True,report_to="none",seed=42,save_total_limit=2)
 
 trainer_a=Seq2SeqTrainer(model=model,args=Seq2SeqTrainingArguments(output_dir=str(OUT/"stage-a"),num_train_epochs=2,learning_rate=5e-5,eval_strategy="epoch",save_strategy="epoch",**common),train_dataset=dataset(stage_a),eval_dataset=dataset(eval_rows),data_collator=collator)
-trainer_a.train()
+stage_a_checkpoint = get_last_checkpoint(str(OUT/"stage-a")) if (OUT/"stage-a").exists() else None
+trainer_a.train(resume_from_checkpoint=stage_a_checkpoint)
 stage_a_metrics=trainer_a.evaluate()
 
 trainer_b=Seq2SeqTrainer(model=model,args=Seq2SeqTrainingArguments(output_dir=str(OUT/"stage-b"),num_train_epochs=8,learning_rate=8e-6,eval_strategy="epoch",save_strategy="epoch",load_best_model_at_end=True,metric_for_best_model="eval_loss",greater_is_better=False,**common),train_dataset=dataset(gold_train),eval_dataset=dataset(gold_eval),data_collator=collator)
-trainer_b.train(); stage_b_metrics=trainer_b.evaluate()
+stage_b_checkpoint = get_last_checkpoint(str(OUT/"stage-b")) if (OUT/"stage-b").exists() else None
+trainer_b.train(resume_from_checkpoint=stage_b_checkpoint); stage_b_metrics=trainer_b.evaluate()
 model.save_pretrained(OUT/"adapter"); tokenizer.save_pretrained(OUT/"tokenizer")
-(OUT/"training-report.json").write_text(json.dumps({"baseModel":MODEL_ID,"goldPairs":len(gold),"opusSilverPairs":len(silver),"auxCorilPairs":len(aux),"bpccPairs":len(bpcc),"stageAMetrics":stage_a_metrics,"stageBMetrics":stage_b_metrics,"exclusions":["raw OCR","dictionary glosses","synthetic corpora","unreviewed Hadith drafts","CoRIL dev/test"],"productionDeployed":False},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+
+def translate(text):
+    tokenizer.src_lang="eng_Latn"
+    inputs=tokenizer(text,return_tensors="pt",truncation=True,max_length=256).to(model.device)
+    with torch.no_grad():
+        ids=model.generate(**inputs,forced_bos_token_id=tokenizer.convert_tokens_to_ids("kas_Arab"),max_new_tokens=128,num_beams=4,repetition_penalty=1.15,no_repeat_ngram_size=3)
+    return tokenizer.batch_decode(ids,skip_special_tokens=True)[0]
+
+smoke_prompts=[
+    "I read a book.",
+    "We go to school every day.",
+    "The children are playing football in the park.",
+    "Feed the poor and greet everyone.",
+]
+smoke=[{"english":text,"output":translate(text)} for text in smoke_prompts]
+(OUT/"training-report.json").write_text(json.dumps({"baseModel":MODEL_ID,"goldPairs":len(gold),"opusSilverPairs":len(silver),"auxCorilPairs":len(aux),"bpccPairs":len(bpcc),"stageAMetrics":stage_a_metrics,"stageBMetrics":stage_b_metrics,"generationSmokeTest":smoke,"exclusions":["raw OCR","dictionary glosses","synthetic corpora","unreviewed Hadith drafts","CoRIL dev/test"],"productionDeployed":False,"humanReviewRequired":True},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("Saved",OUT/"adapter")
