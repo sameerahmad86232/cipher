@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#092c2b">
+  <meta name="description" content="Edit, review and listen to Kashmiri Perso-Arabic text with Bolbosh speech.">
+  <title>Kashmiri Speech Proofreader · Koshur Hadith</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23092c2b'/%3E%3Cpath d='M18 16h28v32H18z' fill='none' stroke='%23dcb96b' stroke-width='4'/%3E%3Cpath d='M32 16v32' stroke='%23dcb96b' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/proofread.css"><link rel="stylesheet" href="/assets/workbench.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/"><span class="mark">ح</span><span><strong>Koshur Hadith</strong><small lang="ks-Arab" dir="rtl">کٲشُر حَدیٖث</small></span></a><a class="back" href="/">Hadith reader</a></header>
+  <main class="proof-main workbench">
+    <header class="proof-intro"><p class="eyebrow">ALIGN · CHECK · APPROVE</p><h1>Hadith translation review</h1><p>Compare the source and Kashmiri clause by clause. Corrections remain on this device until you export them; editing never marks a sacred-text translation as approved automatically.</p></header>
+    <section class="workbench-bar">
+      <label>Hadith<select id="hadith-select"></select></label>
+      <div class="status-summary"><strong id="review-progress">0 of 0 clauses reviewed</strong><span id="record-status"></span></div>
+      <button id="export-review" class="primary" type="button">Export corrections</button>
+      <button id="reset-review" type="button">Reset this review</button>
+    </section>
+    <section id="global-checks" class="global-checks" aria-live="polite"></section>
+    <section class="alignment-head" aria-hidden="true"><span>Arabic source</span><span>English reference</span><span>Kashmiri correction</span></section>
+    <section id="clause-list" class="clause-list"></section>
+    <section class="terminology-card"><h2>Approved terminology used here</h2><div id="terminology"></div></section>
+    <p class="model-note">Automatic checks locate possible omissions, negation changes, numbers and inconsistent reviewed forms. They assist review; they cannot certify religious meaning.</p>
+  </main>
+  <script type="module" src="/assets/workbench.js"></script>
+</body>
+</html>

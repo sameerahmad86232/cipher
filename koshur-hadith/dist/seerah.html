@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#092c2b" />
+    <meta
+      name="description"
+      content="Read The Sealed Nectar in careful Perso-Arabic Kashmiri, with source pages, editorial status and respectful historical illustrations."
+    />
+    <title>Koshur Seerah · کٲشُر سیٖرَت</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/navigation.css" />
+    <link rel="stylesheet" href="/assets/seerah.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Koshur Seerah home"
+        ><span class="mark">س</span
+        ><span
+          ><strong>Koshur Seerah</strong
+          ><small lang="ks-Arab" dir="rtl">کٲشُر سیٖرَت</small></span
+        ></a
+      >
+      <nav class="header-nav">
+        <a href="/">Hadith</a><a href="/proofread.html">Proofreader</a
+        ><span class="edition">Chapter-by-chapter edition</span>
+      </nav>
+    </header>
+
+    <main class="seerah-main">
+      <div class="reading-progress" aria-hidden="true">
+        <span id="reading-progress-bar"></span>
+      </div>
+      <section class="seerah-hero">
+        <img
+          src="/assets/seerah/arabian-peninsula.webp"
+          alt="Illustrated historical landscape of the Arabian Peninsula, its seas, mountains and caravan routes"
+        />
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">اَلرَّحیقُ المَختوٗم · THE SEALED NECTAR</p>
+          <h1>A careful Kashmiri<br /><em>Seerah edition.</em></h1>
+          <p>
+            Source-linked translation, respectful historical artwork and visible
+            human-review status. No sacred person is depicted.
+          </p>
+          <div class="hero-pills" aria-label="Edition features">
+            <span>کٲشُر Perso-Arabic</span><span>Visual maps</span
+            ><span>Word meanings</span>
+          </div>
+          <button id="continue-reading" class="continue-reading" type="button">
+            Continue reading <span>→</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="book-note">
+        <p>
+          <strong>Editorial note</strong>This is a translation workspace, not a
+          completed scholarly edition. Each installment remains visibly marked
+          until reviewed by a fluent Kashmiri editor and a qualified Seerah
+          scholar.
+        </p>
+        <p>
+          <strong>Current coverage</strong><span id="coverage">Loading…</span>
+        </p>
+        <p>
+          <strong>Source</strong>Saifur Rahman al-Mubarakpuri,
+          <em>Ar-Raheeq Al-Makhtum</em>, English edition supplied by the project
+          owner.
+        </p>
+      </section>
+
+      <section class="chapter-shell">
+        <aside class="chapter-list" aria-label="Chapter navigation">
+          <div class="contents-heading">
+            <div>
+              <p class="eyebrow">BOOK CONTENTS</p>
+              <h2>Contents</h2>
+            </div>
+            <span id="chapter-count"></span>
+            <button id="close-contents" class="close-contents" type="button" aria-label="Close contents">×</button>
+          </div>
+          <label class="contents-search"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="contents-search"
+              type="search"
+              placeholder="Search chapters or topics"
+          /></label>
+          <nav id="chapter-nav"></nav>
+        </aside>
+        <article id="chapter" class="chapter" aria-live="polite">
+          <header class="chapter-header">
+            <div>
+              <span id="chapter-number" class="number">01</span>
+              <p>
+                <strong id="chapter-title-en"></strong
+                ><small id="source-pages"></small>
+              </p>
+            </div>
+            <span id="review-status" class="draft-badge"></span>
+          </header>
+          <div class="chapter-meta">
+            <span id="reading-time"></span><span>Perso-Arabic Kashmiri</span
+            ><button id="bookmark-chapter" type="button" aria-pressed="false">
+              ♡ Bookmark
+            </button>
+          </div>
+          <h2 id="chapter-title-ks" lang="ks-Arab" dir="rtl"></h2>
+          <div
+            class="reading-tabs"
+            role="tablist"
+            aria-label="Reading language"
+          >
+            <button
+              class="reading-tab active"
+              data-language="kashmiri"
+              type="button"
+            >
+              کٲشُر
+            </button>
+            <button class="reading-tab" data-language="english" type="button">
+              English reference
+            </button>
+            <button
+              class="reading-tab"
+              data-language="comparison"
+              type="button"
+            >
+              Side by side
+            </button>
+          </div>
+          <div class="reader-tools" aria-label="Reading controls">
+            <label class="font-select"
+              >Typeface
+              <select id="font-mode">
+                <option value="naskh">Clear Naskh</option>
+                <option value="nastaliq">Traditional Nastaliq</option>
+              </select></label
+            >
+            <button
+              id="decrease-font"
+              type="button"
+              aria-label="Decrease text size"
+            >
+              A−
+            </button>
+            <button
+              id="increase-font"
+              type="button"
+              aria-label="Increase text size"
+            >
+              A+
+            </button>
+            <button id="toggle-theme" type="button" aria-pressed="false">
+              ☾ Night
+            </button>
+            <button id="toggle-focus" type="button" aria-pressed="false">
+              Focus reading
+            </button>
+          </div>
+          <div
+            id="chapter-body"
+            class="chapter-body"
+            lang="ks-Arab"
+            dir="rtl"
+          ></div>
+          <nav
+            class="chapter-pagination"
+            aria-label="Previous and next chapters"
+          >
+            <button id="previous-chapter" type="button"></button
+            ><button id="next-chapter" type="button"></button>
+          </nav>
+          <footer class="chapter-footer">
+            <p>
+              The English text is retained beside the draft so reviewers can
+              verify meaning line by line. Bolbosh audio is generated live;
+              word highlighting is an estimated reading guide because the
+              model does not return word timestamps.
+            </p>
+            <a href="mailto:?subject=Koshur%20Seerah%20review"
+              >Send review notes</a
+            >
+          </footer>
+        </article>
+      </section>
+    </main>
+    <nav class="mobile-reader-bar" aria-label="Mobile reading controls">
+      <button id="mobile-contents" type="button">☰ Contents</button
+      ><button id="mobile-bookmark" type="button">♡ Save</button
+      ><button id="mobile-theme" type="button">☾ Night</button>
+    </nav>
+    <dialog id="map-dialog" class="map-dialog" aria-labelledby="map-title">
+      <div class="map-dialog-card">
+        <header class="map-dialog-header">
+          <div>
+            <p class="eyebrow">INTERACTIVE REFERENCE</p>
+            <h2 id="map-title"></h2>
+            <p id="map-subtitle" lang="ks-Arab" dir="rtl"></p>
+          </div>
+          <button
+            id="close-map"
+            class="map-close"
+            type="button"
+            aria-label="Close map"
+          >
+            &#215;
+          </button>
+        </header>
+        <div class="map-layout">
+          <div class="map-canvas">
+            <img
+              id="boundary-map-image"
+              alt="Physical map of the Arabian Peninsula and surrounding seas"
+            />
+            <button
+              class="map-hotspot map-hotspot-north"
+              data-boundary="north"
+              type="button"
+            ></button>
+            <button
+              class="map-hotspot map-hotspot-east"
+              data-boundary="east"
+              type="button"
+            ></button>
+            <button
+              class="map-hotspot map-hotspot-south"
+              data-boundary="south"
+              type="button"
+            ></button>
+            <button
+              class="map-hotspot map-hotspot-west"
+              data-boundary="west"
+              type="button"
+            ></button>
+          </div>
+          <aside class="map-panel">
+            <div id="map-boundary-buttons" class="map-boundary-buttons"></div>
+            <div id="map-detail" class="map-detail" aria-live="polite"></div>
+            <p class="map-note">
+              Approximate historical-geographical orientation for reading;
+              modern political borders are intentionally omitted.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </dialog>
+    <dialog id="word-dialog" class="word-dialog" aria-labelledby="word-dialog-title">
+      <article>
+        <button id="close-word-dialog" class="word-dialog-close" type="button" aria-label="Close word meaning">×</button>
+        <p class="eyebrow">TAP-TO-TRANSLATE · لَفظُک مَطلَب</p>
+        <h2 id="word-dialog-title" lang="ks-Arab" dir="rtl"></h2>
+        <p id="word-meaning" class="word-meaning"></p>
+        <div class="word-context">
+          <strong>Meaning in this sentence</strong>
+          <p id="word-context-english"></p>
+        </div>
+        <small id="word-review-note">Meanings are contextual and remain open to human review.</small>
+      </article>
+    </dialog>
+    <footer class="site-footer">
+      <span>Koshur Seerah Library · کٲشُر سیٖرَت</span
+      ><span
+        >Religious and historical translations require qualified human review
+        before formal publication.</span
+      >
+    </footer>
+    <script type="module" src="/assets/seerah.js"></script>
+  </body>
+</html>

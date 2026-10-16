@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Human-approved Kashmiri corrections for future Seerah translation and model-training exports.",
+  "updated": "2026-10-16",
+  "terminology": [
+    {
+      "english": "crowned king",
+      "preferredKashmiri": "تاج پوش بادشاہ",
+      "avoid": "تاجدار بادشاہ"
+    },
+    {
+      "english": "outside / outward",
+      "preferredKashmiri": "نٮ۪بَر",
+      "avoid": "بؠرِم"
+    },
+    {
+      "english": "two sons",
+      "preferredKashmiri": "زٕ بجہ",
+      "avoid": "دۄ بَڈٕ شاخہٕ"
+    },
+    {
+      "english": "elephant / elephants",
+      "preferredKashmiri": "ہۄس / ہسہِ",
+      "note": "Project-owner pronunciation: houss (singular), haaesss (plural)."
+    },
+    {
+      "english": "support / assistance",
+      "preferredKashmiri": "مَدَت",
+      "avoid": "مدتہٕ"
+    }
+  ],
+  "approvedPairs": [
+    {
+      "english": "The people of Sheba were among the oldest nations of the pure Arabs living in Yemen. Archaeological discoveries indicate their existence twenty-five centuries before Christ. Their civilization flourished and their realm expanded around the eleventh century B.C.",
+      "kashmiri": "شیبا ہٕکۍ لوک ٲسۍ یمن منٛز روزن وٲل خالص عربن ہنٛد قدیم ترین گروپن منٛز اکھ۔ آثار قدیمہ ہٕکۍ دریافتو سۭتۍ چھُ پتہ لگان زِ تم ٲسۍ مسیح برونہہ تقریباً 2,500 ؤری برونٛہہ موجود۔ تہنز تہذیب چِھ ترقی کٔرمٕژ، تہٕ تہنز سلطنت بڑیو 11مہٕ صدی قبل مسیح آس پاس۔"
+    },
+    {
+      "english": "Before 650 B.C., their kings were called Makrib Sheba and their capital was Sarwah. During this period they began constructing the Ma'rib Dam, which held great importance in Yemeni history. Their rule was said to extend both inside and outside Arabia.",
+      "kashmiri": "650 قبل مسیح برونٛہہ، تہند بادشاہن اوس مکرب شیبا وننہٕ یوان تہٕ تہند دارالحکومت اوس سرواہ۔ تَمہِ وقتہٕ آس پاس کوٚر تِمو مارب ڈیم بناوُن شروع، یُس یمن کِس تٲریخس منٛز واقعی اہم بنیوو۔ یِہُنٛد اثر و رسوخ اوس مبینہ طور عربس اندر تہٕ نٮ۪بَر پھہلِتھ۔"
+    },
+    {
+      "english": "From 650 B.C. until 115 B.C., they stopped using the title Makrib and adopted the title Kings of Sheba. They also moved their capital from Sarwah to Ma'rib.",
+      "kashmiri": "650 قبل مسیح پیٹھہٕ 115 قبل مسیح تام، تمو تروو مکربُک لقب تہٕ امہٕ بدلہٕ لوگُکھ شیبا کِس بادشاہس سٕندِ طرفہٕ گژھُن شروع۔ تِمو کٔر پنٕنۍ دارالحکومت سروہ پٮ۪ٹھٕ مارب منتقل۔"
+    },
+    {
+      "english": "From 115 B.C. until 300 A.D., the tribe of Himyar conquered the kingdom of Sheba and made Redan its capital instead of Ma'rib. Redan was later called Zifar, and its ruins remain on Mudawwar Mountain near the town of Yarim.",
+      "kashmiri": "115 قبل مسیح پیٹھہٕ 300 عیسوی تام، ہمیر قبیلن کوٚر شیبا کس بادشٲہی پیٹھ قبضہٕ تہٕ بنووُن معریب بدلہٕ ریدان امچ دارالحکومت۔ ریدانس آو پتہٕ زیفر ناو تھونہٕ، تہٕ توہۍ ہیکِو وُنہِ تہِ یاریم شہرس نزدیک مدوار پہاڑس پیٹھ امکۍ کھنڈرات وچھتھ۔"
+    },
+    {
+      "english": "During this period their power began to decline. Trade weakened because the Nabataeans controlled northern Hijaz, the Romans dominated the sea routes after conquering Egypt, Syria and northern Hijaz, and wars continued among the tribes. These causes divided and scattered the families of Qahtan.",
+      "kashmiri": "اتھ وقتس دوران ہیوٚتُن تِہُند طاقت کم گژھن۔ تجارت گیہٕ سست تکیازِ نبطین اوس شمالی حجازس پیٹھ کنٹرول، رومیو کوٚر مصر، شام تہٕ شمالی حجاز فتح کرنہٕ پتہٕ سمندری وتن پیٹھ قبضہٕ، تہٕ قبیلن درمیان رود مسلسل جنگ۔ یِمو چیزو گٔیہِ قحتانٕکۍ خاندان تقسیم تہٕ منتشر۔"
+    },
+    {
+      "english": "From 300 A.D. until the rise of Islam, Yemen experienced disorder and civil war. The Romans conquered Aden and helped the Abyssinians occupy Yemen in 340 A.D., taking advantage of conflict between Hamdan and Himyar. The occupation lasted until 378 A.D., after which Yemen regained independence. Later, cracks appeared in the Ma'rib Dam and caused the great flood around 450 or 451 A.D. This disaster destroyed the old Yemeni civilization and scattered its people.",
+      "kashmiri": "300 عیسوی پیٹھہٕ اسلام شروع گژھنس تام رود یمن واریاہ افراتفری تہٕ خانہ جنگی منٛز۔ رومیو کوٚر عدنس پیٹھ قبضہٕ تہٕ ہمدان تہٕ ہمیارس درمیان تنازعہٕ ہنٛد فٲیدٕ تُلتھ کوٚرکھ 340 عیسویس منٛز حبشی باشندن یمن پیٹھ قبضہٕ کرنس منٛز مدد۔ یہٕ قبضہ رود 378 عیسوی تام جٲری، تہٕ پتہٕ گو یمن دوبارٕ آزاد۔ پتہٕ گٔیہٕ مارب ڈیمس منٛز دراڑٕ نمودار، یمہٕ سۭتۍ 450 یا 451 عیسوی منٛز آو اکھ زبردست سٔہلاب، یٔمۍ پرٲنۍ یمنی تہذیب ختم کٔر تہٕ امکۍ لوک منتشر گٔیہٕ۔"
+    },
+    {
+      "english": "In 523 A.D., Dhu Nuwas, a Jewish ruler, launched a campaign against the Christians of Najran to force them to embrace Judaism. They refused, so they were cast alive into a great ditch filled with fire. The Qur'an recalls this event in 85:4.",
+      "kashmiri": "523 عیسویس منٛز اکھ یہودی بادشاہ ذو نُواس گوو نَجرانَس منٛز عیسٲییَن پتہٕ، تاکہ تِم یہودی مَذہَب قَبوٗل کَرن۔ تِمو دِژ نہٕ رَضامَندی، لِہذا ترٛٲوۍ تِم زِنٛدٕ اَکِس بٔڑِس نارِ سۭتۍ بٔرِتھ گَرٹَس منٛز۔ قرآنَس منٛز چھُ اَمہِ واقِعَس ہُنٛد ذِکِر: گَرٹٕچؠن لوٗکَن پؠٹھ چھُ لَعنَت (85:4)۔"
+    },
+    {
+      "english": "The Romans supported the Abyssinians, whose army occupied Yemen in 525 A.D. under Aryat. Abraha later became ruler and led the Elephant campaign toward the Ka'bah.",
+      "kashmiri": "اَمہِ واقِعہٕ سۭتۍ گٔیہِ عیسٲیۍ، خاص پٲٹھۍ روٗمی شَہَنشاہ، پریشان۔ روٗمیَو کٔر حَبشہٕ کؠن باشِندَن ہٕنٛز حِمایَت؛ یِہُنٛد فَوجَن 525 عیسویس منٛز اَریاط کِس قیادتَس منٛز یَمَنَس پؠٹھ قَبضہٕ کوٚر۔ پتہٕ آو اَریاط پننِس اَکِس کَمانڈَر اَبرَہہ سٕندِس اَتھہٕ مارنہٕ، یٔمۍ پتہٕ یَمَنُک حُکمران بَنیوو۔ اَبرَہَن کٔر کَعبہٕ تَباہ کَرنہٕ خٲطرٕ اَکہِ فَوجٕچ قیادَت، تہٕ یِہ فَوج گوو ہسہِ ہٕنٛدؠن لوٗکَن ناوٕ سۭتۍ مَشہوٗر۔"
+    },
+    {
+      "english": "With Persian support, the Yemenis ended Abyssinian rule. Persian rule continued until Badhan accepted Islam around 628 A.D.",
+      "kashmiri": "ہسہِ ہٕنٛدِس واقِعَس پتہٕ کٔر یَمَنی باشِندَن فارِسیَن ہٕنٛدِ مَدَت سۭتۍ مَعدی کَرِب بِن سَیف ذو یَزَن حِمیَری سُنٛدِس قیادتَس منٛز حَبشہٕ کؠن باشِندَن خِلاف بغاوت۔ تِمو کٔر یَمَن ہٕنٛز آزٲدی دُبارٕ حٲصِل تہٕ بَناوُکھ مَعدی کَرِب بادشاہ۔ پتہٕ آو سُہ اَکِس حَبشی باشِندَن قَتل کَرنہٕ، یُس تَمی پننِس خِدمتَس تہٕ حِفاظتَس منٛز تھاوُمُت اوس۔ پتہٕ کوٚر فارِسی بادشاہ کِسرٰیَن صَنعاءَس پؠٹھ اَکھ فارِسی گَورنَر مُقَرَّر، یَمہٕ سۭتۍ یَمَن فارِسی حُکوٗمَتَس تَل تھوو۔ یِہ روٗد توٚتام جٲری یوٚتام آخری فارِسی گَورنَر باذانَن تَقریٖبَن 628 عیسویس منٛز اِسلام قَبوٗل کوٚر، یَمہِ سۭتۍ یَمَنَس منٛز فارِسی حُکمرٲنی خَتَم گٔیہِ۔"
+    }
+  ]
+}

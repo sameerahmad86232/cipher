@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "title": "Ar-Raheeq Al-Makhtum (The Sealed Nectar)",
+  "author": "Saifur Rahman al-Mubarakpuri",
+  "coverage": "Reviewed first batch plus continuing review batches from source pages 14–15",
+  "wordMeanings": {
+    "اَکھ": "one; a/an",
+    "اَتھ": "this; in this",
+    "اَمہِ": "this; because of this",
+    "اَمی": "this very; therefore",
+    "آو": "came; was",
+    "اوس": "was",
+    "ٲسۍ": "were",
+    "چھُ": "is",
+    "چھِ": "are",
+    "چھُنہٕ": "is not",
+    "تہٕ": "and",
+    "تِم": "they; them",
+    "تِمو": "they; by them",
+    "تَمی": "he; by him",
+    "سۭتۍ": "with; by means of",
+    "منٛز": "in; inside",
+    "پؠٹھ": "on; upon; from",
+    "کُن": "toward",
+    "پتہٕ": "after; afterwards",
+    "برونٛہہ": "before",
+    "خٲطرٕ": "for; for the purpose of",
+    "یُس": "who; which",
+    "یِہ": "this",
+    "یِمن": "whose; of these",
+    "ہُنٛد": "of; belonging to",
+    "کٔر": "did; made",
+    "کوٚر": "did; made",
+    "گوو": "became; happened",
+    "گٔیہِ": "became; went",
+    "لوٗکھ": "people",
+    "باشِندَن": "inhabitants",
+    "بادشاہ": "king",
+    "شَہَنشاہ": "emperor",
+    "حُکمران": "ruler",
+    "گَورنَر": "governor",
+    "قبیٖلہٕ": "tribes",
+    "عَرَب": "Arabs; Arabia",
+    "یَمَن": "Yemen",
+    "نَجران": "Najran",
+    "صَنعاء": "Sana'a",
+    "ذو": "Dhu; possessor of",
+    "نُواس": "Nuwas",
+    "اَریاط": "Aryat",
+    "اَبرَہہ": "Abraha",
+    "باذان": "Badhan",
+    "عیسویس": "A.D.; C.E.",
+    "قَبوٗل": "accept",
+    "مَذہَب": "religion",
+    "یہودی": "Jewish; Jew",
+    "عیسٲییَن": "Christians",
+    "فَوج": "army",
+    "قیادتَس": "leadership; command",
+    "قَبضہٕ": "occupation; control",
+    "مَدَت": "help; support",
+    "حِمایَت": "support; protection",
+    "بغاوت": "revolt; rebellion",
+    "آزٲدی": "freedom; independence",
+    "دُبارٕ": "again; restored",
+    "حُکوٗمَتَس": "government; rule",
+    "خَتَم": "ended; finished",
+    "واقِعَس": "event; incident",
+    "نارِ": "fire",
+    "زِنٛدٕ": "alive",
+    "قرآنَس": "the Qur'an",
+    "ذِکِر": "mention; remembrance",
+    "مَشہوٗر": "famous; known",
+    "ہسہِ": "elephants (plural; haaesss)",
+    "ہۄس": "elephant (singular; houss)",
+    "سٔہلاب": "flood",
+    "منتشر": "scattered",
+    "دارالحکومت": "capital city",
+    "تِجارَت": "trade",
+    "ثَقافَت": "culture",
+    "تَوحیٖد": "oneness of Allah; monotheism",
+    "نُبُوَّت": "Prophethood"
+  },
+  "editorialPolicy": "Drafts require fluent Kashmiri and qualified Seerah review before approval.",
+  "map": {
+    "titleEnglish": "Boundaries of the Arabian Peninsula",
+    "titleKashmiri": "جَزیٖرٕ نُمٲے عَرَبَچ حَدوٗد",
+    "openLabelEnglish": "Open the interactive boundary map",
+    "openLabelKashmiri": "حَدوٗد ہُنٛد اِنٹریکٹِو نَقشہٕ کھولِو",
+    "image": "/assets/seerah/arabian-boundaries.webp",
+    "boundaries": [
+      {
+        "id": "west",
+        "directionEnglish": "West",
+        "directionKashmiri": "مَغرِب",
+        "english": "The Red Sea and the Sinai Peninsula.",
+        "kashmiri": "مَغرِبَس کُن چھُ وَزُل سَمُندَر تہٕ سَینا۔"
+      },
+      {
+        "id": "east",
+        "directionEnglish": "East",
+        "directionKashmiri": "مَشرِق",
+        "english": "The Arabian Gulf.",
+        "kashmiri": "مَشرِقَس کُن چھُ خَلیٖجِ عَرَب۔"
+      },
+      {
+        "id": "south",
+        "directionEnglish": "South",
+        "directionKashmiri": "جَنوٗب",
+        "english": "The Arabian Sea, extending into the Indian Ocean.",
+        "kashmiri": "جَنوٗبَس کُن چھُ عَرَب سَمُندَر، یُس ہِند سَمُندرَس سۭتۍ مِلان چھُ۔"
+      },
+      {
+        "id": "north",
+        "directionEnglish": "North",
+        "directionKashmiri": "شُمال",
+        "english": "Old Syria and part of Iraq.",
+        "kashmiri": "شُمالَس کُن چھُ قَدیٖم شام تہٕ عِراقُک اَکھ حِصہٕ۔"
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "number": 1,
+      "titleEnglish": "Location and Nature of Arab Tribes",
+      "titleKashmiri": "عَرَب قبیٖلَن ہُنٛد جاے تہٕ بُنیٲدی ساخت",
+      "sourcePages": "8–9",
+      "translationStatus": "draft-native-and-scholarly-review-required",
+      "translationStatusLabel": "Draft · review required",
+      "illustrationPolicy": "Historical landscape only; no sacred-person depiction.",
+      "sections": [
+        {
+          "titleEnglish": "Chapter introduction",
+          "titleKashmiri": "بابُک تعارُف",
+          "glossary": [
+            { "term": "نُبُوَّت", "english": "Prophethood" },
+            { "term": "شِرکٕچِہ", "english": "polytheism" },
+            { "term": "تَوحیٖد", "english": "oneness of Allah" },
+            { "term": "پَس مَنظَر", "english": "background" }
+          ],
+          "english": [
+            "Beyond a shadow of doubt, the biography of Prophet Muhammad (peace be upon him) represents a comprehensive embodiment of the sublime Divine Message that he communicated to deliver humanity from the darkness of polytheism to the light of monotheism.",
+            "A sound and comprehensive understanding of that Message requires careful study of the background and events of his biography. This chapter therefore introduces the nature and development of the Arab tribes before Islam and the circumstances surrounding the beginning of the Prophetic mission."
+          ],
+          "kashmiri": [
+            "اَتھ منٛز چھُنہٕ کانٛہہ شَک زِ رَسوٗلُ اللہ صَلَّی اللہُ عَلَیہِ وَسَلَّم سٕنز سیٖرَت چھِ تَتھ بُلند اِلٰہی پَیغامُک اَکھ جامِع عملی نَقشہٕ، یُس تِمو اِنسانیَتَس شِرکٕچِہ گَٹہِ منٛزٕ کٔڈِنہٕ تہٕ تَوحیٖد کِس گاشَس کُن نِنہٕ خٲطرٕ سوٗز۔",
+            "سُہ صَحیٖح تہٕ جامِع پٲٹھۍ زاننہٕ خٲطرٕ چھُ سیٖرَتُک پَس مَنظَر تہٕ تَتھ منٛز آمٕتۍ واقِعات غور سان پَرُن ضٔروٗری۔ اَمی باپَتھ چھُ اَتھ بابَس منٛز اِسلامہٕ برونٛہہ عَرَب قبیٖلَن ہُنٛد مِزاج، تِمن ہٕنٛز تَرقی تہٕ سُہ ماحول بَیان کَرنہٕ یِوان، یَتھ منٛز نُبُوَّتُک مِشَن شُروٗع سَپُد۔"
+          ]
+        },
+        {
+          "titleEnglish": "Location of the Arabs",
+          "titleKashmiri": "عَرَبَن ہُنٛد جُغرافیٲیی مَقام",
+          "image": "/assets/seerah/arabian-boundaries.webp",
+          "imageAlt": "Historical-geographical map of the Arabian Peninsula and surrounding seas",
+          "imageCaptionEnglish": "The Arabian Peninsula at the meeting point of Africa and Asia",
+          "imageCaptionKashmiri": "اَفریٖقہٕ تہٕ ایشیاہَس دَرمیان جَزیٖرٕ نُمٲے عَرَب",
+          "glossary": [
+            { "term": "جَزیٖرٕ نُمٲے", "english": "peninsula" },
+            { "term": "حَدوٗد", "english": "boundaries" },
+            { "term": "خَلیٖج", "english": "gulf" }
+          ],
+          "english": [
+            "Linguistically, the word Arab refers to deserts and barren land with little water or vegetation. Since the beginning of recorded history, the Arabian Peninsula and its people have been known by this name.",
+            "The Arabian Peninsula is bounded by the Red Sea and Sinai in the west, the Arabian Gulf in the east, the Arabian Sea in the south, and old Syria and part of Iraq in the north. Its area is estimated at between one million and one and a quarter million square miles.",
+            "Its deserts and sandy interior made entry difficult for foreign armies and helped its inhabitants preserve liberty and independence despite the two great neighbouring empires. Its outward position connected it by land and sea with much of the old world, making it an important centre of trade, culture, religion and art."
+          ],
+          "kashmiri": [
+            "لُغوی اِعتِبار سان چھُ ”عَرَب“ لَفظُک مَطلَب رؠگِستان تہٕ بَنٛجَر زَمیٖن—یَتھ منٛز نَہ آب لَگ بَگ آسہِ تہٕ نہٕ سَبزار۔ تاریٖخَچ اِبتِدا پؠٹھ چھِ جَزیٖرٕ نُمٲے عَرَب تہٕ اَمہِ کۍ باشِندٕ اَمی ناوٕ سان زاننہٕ یِوان۔",
+            "جَزیٖرٕ نُمٲے عَرَبَس چھُ مَغرِبَس کُن وَزُل سَمُندَر تہٕ سَینا، مَشرِقَس کُن خَلیٖجِ عَرَب، جَنوٗبَس کُن عَرَب سَمُندَر، تہٕ شُمالَس کُن قَدیٖم شام تہٕ عِراقُک اَکھ حِصہٕ۔ اَمیُک رَقبہٕ چھُ تَقریٖبَن دَہ لَچھَن پؠٹھ باہہ پوینٛٹ پانٛژھ لَچھَن مُرَبَّع میٖل تام ماننہٕ یِوان۔",
+            "اَمیُک اَنٛدرُک زِیادٕ حِصہٕ چھُ رؠگِستان تہٕ سؠکہٕ سۭتۍ بَرِتھ۔ اَمہِ موجوٗب گوو گٲرِ مُلکی فَوجَن خٲطرٕ یور یُن مُشکِل، تہٕ دۄن بَڈؠن ہَمسایہِ مُلکَن باوَجوٗد تَگؠ اَتُکۍ لُکھ زَمانَن تام پنٕنۍ آزادی تہٕ خُودمُختاری بَرقرار تھاوِتھ۔ نؠبرِم سَمتہٕ چھُ یِہ عَلاقہٕ پُرانہِ دُنیاہُک مَرکَز آوُمُت تہٕ آبہٕ تہٕ خُشکی ہٕنٛدؠن وَتَن سۭتۍ واریاہَن قَومَن سۭتۍ جُڑِتھ۔ اَمی سِتراتیٖجی مَقامَن بَناوُکھ یِہ تِجارَت، ثَقافَت، مَذہَب تہٕ فَنُک اَکھ اَہم مَرکَز۔"
+          ],
+          "mapReference": true
+        },
+        {
+          "titleEnglish": "Arab Tribes",
+          "titleKashmiri": "عَرَب قبیٖلہٕ",
+          "glossary": [
+            { "term": "نَسَب", "english": "lineage" },
+            { "term": "قَدیٖم", "english": "ancient" },
+            { "term": "وابَستہٕ", "english": "associated" }
+          ],
+          "english": [
+            "Arab peoples have traditionally been divided by lineage into three groups: the perishing Arabs, ancient peoples of whom little history survives, including ‘Ad, Thamud, Tasm, Jadis and Imlaq; the pure or Qahtanian Arabs, descended from Ya‘rub bin Yashjub bin Qahtan; and the Arabized or ‘Adnanian Arabs, descended from Ishmael.",
+            "The Qahtanian Arabs originally lived in Yemen. Their best-known divisions included Himyar and Kahlan. Among the well-known branches associated with Kahlan were Hamdan, Anmar, Tai’, Madhhij, Kinda, Lakhm, Judham, Azd, Aws and Khazraj."
+          ],
+          "kashmiri": [
+            "نَسَبَس مُطابِق چھِ عَرَب لُکھ رِوایَتی پٲٹھۍ ترؠن گُروپَن منٛز تَقسیٖم کَرنہٕ آمٕتۍ: گۄڈٕنِچ چھِ ”خَتَم گَمٕتۍ عَرَب“—قَدیٖم قَومہٕ یِمن ہُنٛد تاریٖخ وَنہٕ کم مِلان چھُ؛ یِمن منٛز عاد، ثَموٗد، طَسَم، جَدیٖس تہٕ عِملاق شٲمِل چھِ۔ دۄیِم چھِ ”خٲلِص عَرَب“ یا قَحطانی عَرَب، یِم یَعرُب بِن یَشجُب بِن قَحطانَس سۭتۍ نَسَب تھاوان چھِ۔ ترٛیِم چھِ ”عَرَب بَنٲونہٕ آمٕتۍ عَرَب“ یا عَدنانی عَرَب، یِم حَضرَت اِسمٰعیٖل عَلَیہِ السَّلامَس سۭتۍ نَسَب تھاوان چھِ۔",
+            "قَحطانی عَرَبَن ہُنٛد اَصلی مَسکَن اوس یَمَن۔ تِمن ہٕنٛزِ زٕ بجہ ٲسۍ حِمیَر تہٕ کَہلان۔ کَہلانَس سۭتۍ وابَستہٕ مَشہوٗر شاخَن منٛز ٲسۍ ہَمدان، اَنمار، طَے، مَذحِج، کِندٕ، لَخم، جُذام، اَزد، اَوس تہٕ خَزرَج۔"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "titleEnglish": "Rulership and Princeship among the Arabs",
+      "titleKashmiri": "عَرَبَن منٛز بادشاہَت تہٕ سَرداری",
+      "sourcePages": "14",
+      "translationStatus": "draft-native-and-scholarly-review-required",
+      "translationStatusLabel": "New batch · please review",
+      "illustrationPolicy": "Historical places and objects only; no sacred-person depiction.",
+      "sections": [
+        {
+          "titleEnglish": "Political background before Islam",
+          "titleKashmiri": "اِسلامہٕ برونٛہہ سیاسی پَس مَنظَر",
+          "glossary": [
+            { "term": "سیاق و سَباق", "english": "context" },
+            { "term": "اَختِیار", "english": "authority" },
+            { "term": "مَراعات", "english": "privileges" },
+            { "term": "تاج پوش", "english": "crowned" }
+          ],
+          "english": [
+            "When discussing the Arabs before Islam, it is necessary to give a brief picture of their rulers, princes, tribal divisions and religious authority. This helps us understand the circumstances in which Islam appeared.",
+            "When the sun of Islam rose, Arabia had two kinds of rulers. Some were crowned kings, though they were not fully independent. Others were chiefs of tribes and clans. These chiefs possessed powers and privileges similar to kings and most of them were independent. The crowned kings ruled Yemen, Heerah and Ghassan; the remaining Arab rulers were uncrowned chiefs."
+          ],
+          "kashmiri": [
+            "اِسلامَس برونٛہہ عَرَبَن ہٕنٛز کَتھ کَرنہٕ وِزِ چھُ یِمن ہٕنٛدؠن حُکمرانَن، شَہزادَن، قبیٖلَن ہٕنٛزَن تَقسیٖمَن تہٕ مَذہبی رَہنماہَن ہُنٛد فوری جایزہٕ پیش کَرُن مَدَدگار۔ اَمہِ سۭتۍ چھُ اَسہِ سُہ سیاق و سَباق حٲصِل کَرنَس منٛز مَدَد سَپدان، یَتھ منٛز اِسلام آو سوزنہٕ۔",
+            "ییلہِ اِسلامُک آفتاب طلوٗع سَپُد، تیلہِ ٲسۍ عَرَبَس منٛز زٕ قِسمَن ہٕنٛدۍ حُکمران۔ کینہہ ٲسۍ تاج پوش بادشاہ، مگر تِم ٲسۍ نہٕ پوٗرٕ پٲٹھۍ آزاد۔ باقی ٲسۍ قبیٖلَن تہٕ خاندانَن ہٕنٛدۍ سَردار۔ یِمن نِش ٲسۍ بادشاہَن ہِش اَختِیار تہٕ مَراعات، تہٕ اَکثَر ٲسۍ آزاد۔ تاج پوش بادشاہ ٲسۍ یَمَن، حیٖرٕ تہٕ غَسّانَس منٛز؛ باقی عَرَب حُکمران ٲسۍ بے تاج سَردار۔"
+          ]
+        },
+        {
+          "titleEnglish": "Early rulership in Yemen",
+          "titleKashmiri": "یَمَنَس منٛز گۄڈَنِچ بادشاہَت",
+          "image": "/assets/seerah/marib-dam.webp",
+          "imageAlt": "Historical illustration of the ancient Ma'rib Dam, terraces and mountains of Yemen",
+          "imageCaptionEnglish": "Ma'rib Dam and the agricultural heartland of ancient Yemen",
+          "imageCaptionKashmiri": "قَدیٖم یَمَنُک مارِب ڈیم تہٕ زَرٲعتی عَلاقہٕ",
+          "glossary": [
+            { "term": "آثار قدیمہ", "english": "archaeology" },
+            { "term": "دارالحکومت", "english": "capital" },
+            { "term": "اثر و رسوخ", "english": "influence" },
+            { "term": "منتقل", "english": "relocated" },
+            { "term": "شیبا", "english": "Sheba" },
+            { "term": "مارب", "english": "Ma'rib" },
+            { "term": "سرواہ", "english": "Sarwah" }
+          ],
+          "english": [
+            "The people of Sheba were among the oldest nations of the pure Arabs living in Yemen. Archaeological discoveries indicate their existence twenty-five centuries before Christ. Their civilization flourished and their realm expanded around the eleventh century B.C.",
+            "Before 650 B.C., their kings were called Makrib Sheba and their capital was Sarwah. During this period they began constructing the Ma'rib Dam, which held great importance in Yemeni history. Their rule was said to extend both inside and outside Arabia.",
+            "From 650 B.C. until 115 B.C., they stopped using the title Makrib and adopted the title Kings of Sheba. They also moved their capital from Sarwah to Ma'rib."
+          ],
+          "kashmiri": [
+            "شیبا ہٕکۍ لوک ٲسۍ یمن منٛز روزن وٲل خالص عربن ہنٛد قدیم ترین گروپن منٛز اکھ۔ آثار قدیمہ ہٕکۍ دریافتو سۭتۍ چھُ پتہ لگان زِ تم ٲسۍ مسیح برونہہ تقریباً 2,500 ؤری برونٛہہ موجود۔ تہنز تہذیب چِھ ترقی کٔرمٕژ، تہٕ تہنز سلطنت بڑیو 11مہٕ صدی قبل مسیح آس پاس۔",
+            "650 قبل مسیح برونٛہہ، تہند بادشاہن اوس مکرب شیبا وننہٕ یوان تہٕ تہند دارالحکومت اوس سرواہ۔ تَمہِ وقتہٕ آس پاس کوٚر تِمو مارب ڈیم بناوُن شروع، یُس یمن کِس تٲریخس منٛز واقعی اہم بنیوو۔ یِہُنٛد اثر و رسوخ اوس مبینہ طور عربس اندر تہٕ نٮ۪بَر پھہلِتھ۔",
+            "650 قبل مسیح پیٹھہٕ 115 قبل مسیح تام، تمو تروو مکربُک لقب تہٕ امہٕ بدلہٕ لوگُکھ شیبا کِس بادشاہس سٕندِ طرفہٕ گژھُن شروع۔ تِمو کٔر پنٕنۍ دارالحکومت سروہ پٮ۪ٹھٕ مارب منتقل۔"
+          ]
+        },
+        {
+          "titleEnglish": "Himyar and the decline of Yemen",
+          "titleKashmiri": "حِمیَر تہٕ یَمَنُک زَوال",
+          "image": "/assets/seerah/marib-dam.webp",
+          "imageAlt": "Ancient stone irrigation works and mountain terraces in Yemen",
+          "imageCaptionEnglish": "The weakening of Himyar and the breach of the Ma'rib Dam",
+          "imageCaptionKashmiri": "حِمیَرُک زَوال تہٕ مارِب ڈیمَس منٛز دَراڑ",
+          "glossary": [
+            { "term": "زَوال", "english": "decline" },
+            { "term": "خانہ جنگی", "english": "civil war" },
+            { "term": "سٔہلاب", "english": "flood" },
+            { "term": "منتشر", "english": "scattered" },
+            { "term": "حِمیَر", "english": "Himyar" },
+            { "term": "ریدان", "english": "Redan" },
+            { "term": "یمن", "english": "Yemen" }
+          ],
+          "english": [
+            "From 115 B.C. until 300 A.D., the tribe of Himyar conquered the kingdom of Sheba and made Redan its capital instead of Ma'rib. Redan was later called Zifar, and its ruins remain on Mudawwar Mountain near the town of Yarim.",
+            "During this period their power began to decline. Trade weakened because the Nabataeans controlled northern Hijaz, the Romans dominated the sea routes after conquering Egypt, Syria and northern Hijaz, and wars continued among the tribes. These causes divided and scattered the families of Qahtan.",
+            "From 300 A.D. until the rise of Islam, Yemen experienced disorder and civil war. The Romans conquered Aden and helped the Abyssinians occupy Yemen in 340 A.D., taking advantage of conflict between Hamdan and Himyar. The occupation lasted until 378 A.D., after which Yemen regained independence. Later, cracks appeared in the Ma'rib Dam and caused the great flood around 450 or 451 A.D. This disaster destroyed the old Yemeni civilization and scattered its people."
+          ],
+          "kashmiri": [
+            "115 قبل مسیح پیٹھہٕ 300 عیسوی تام، ہمیر قبیلن کوٚر شیبا کس بادشٲہی پیٹھ قبضہٕ تہٕ بنووُن معریب بدلہٕ ریدان امچ دارالحکومت۔ ریدانس آو پتہٕ زیفر ناو تھونہٕ، تہٕ توہۍ ہیکِو وُنہِ تہِ یاریم شہرس نزدیک مدوار پہاڑس پیٹھ امکۍ کھنڈرات وچھتھ۔",
+            "اتھ وقتس دوران ہیوٚتُن تِہُند طاقت کم گژھن۔ تجارت گیہٕ سست تکیازِ نبطین اوس شمالی حجازس پیٹھ کنٹرول، رومیو کوٚر مصر، شام تہٕ شمالی حجاز فتح کرنہٕ پتہٕ سمندری وتن پیٹھ قبضہٕ، تہٕ قبیلن درمیان رود مسلسل جنگ۔ یِمو چیزو گٔیہِ قحتانٕکۍ خاندان تقسیم تہٕ منتشر۔",
+            "300 عیسوی پیٹھہٕ اسلام شروع گژھنس تام رود یمن واریاہ افراتفری تہٕ خانہ جنگی منٛز۔ رومیو کوٚر عدنس پیٹھ قبضہٕ تہٕ ہمدان تہٕ ہمیارس درمیان تنازعہٕ ہنٛد فٲیدٕ تُلتھ کوٚرکھ 340 عیسویس منٛز حبشی باشندن یمن پیٹھ قبضہٕ کرنس منٛز مدد۔ یہٕ قبضہ رود 378 عیسوی تام جٲری، تہٕ پتہٕ گو یمن دوبارٕ آزاد۔ پتہٕ گٔیہٕ مارب ڈیمس منٛز دراڑٕ نمودار، یمہٕ سۭتۍ 450 یا 451 عیسوی منٛز آو اکھ زبردست سٔہلاب، یٔمۍ پرٲنۍ یمنی تہذیب ختم کٔر تہٕ امکۍ لوک منتشر گٔیہٕ۔"
+          ]
+    },
+    {
+      "titleEnglish": "Dhu Nuwas, Abraha and the end of foreign rule in Yemen",
+      "titleKashmiri": "ذو نُواس، اَبرَہہ تہٕ یَمَنَس منٛز نٮ۪بَرِم حُکمرانی ہُنٛد اَنت",
+      "image": "/assets/seerah/najran-oasis.webp",
+      "imageSecondary": "/assets/seerah/elephant-campaign.webp",
+      "imageAlt": "Historically inspired landscape of the ancient Najran oasis",
+      "imageSecondaryAlt": "Distant historical illustration of the Elephant campaign crossing an Arabian valley",
+      "imageCaptionEnglish": "Najran, the Abyssinian occupation and the Elephant campaign",
+      "imageCaptionKashmiri": "نَجران، حَبشی قَبضہٕ تہٕ اَصحابُ الفیٖلُک مہم",
+      "glossary": [
+        { "term": "مہم", "english": "campaign" },
+        { "term": "بَحری بیڑَس", "english": "naval fleet" },
+        { "term": "قیادتَس", "english": "leadership" },
+        { "term": "بغاوت", "english": "revolt" },
+        { "term": "حِفاظتَس", "english": "protection" },
+        { "term": "ذو نُواس", "english": "Dhu Nuwas" },
+        { "term": "نَجران", "english": "Najran" },
+        { "term": "اَریاط", "english": "Aryat" },
+        { "term": "اَبرَہہ", "english": "Abraha" },
+        { "term": "صَنعاء", "english": "Sana'a" },
+        { "term": "باذان", "english": "Badhan" },
+        { "term": "ہسہِ", "english": "elephants" }
+      ],
+      "english": [
+        "In 523 A.D., Dhu Nuwas, a Jewish ruler, launched a campaign against the Christians of Najran to force them to embrace Judaism. They refused, so they were cast alive into a great ditch filled with fire. The Qur'an recalls this event in the words: ‘Cursed were the people of the ditch’ (85:4).",
+        "This event angered the Christians, especially the Roman emperors. The Romans encouraged and supported the Abyssinians, whose army occupied Yemen in 525 A.D. under the command of Aryat. Aryat was later killed by Abraha, a commander in his army, and Abraha became the ruler of Yemen. He marched with an army to demolish the Ka‘bah; this force became known as the People of the Elephant.",
+        "After the event of the Elephant, the Yemenis revolted against the Abyssinians under Ma‘dikarib bin Saif Dhu Yazin Al-Himyari with Persian support. They restored Yemen's independence and made Ma‘dikarib king. He was later assassinated by an Abyssinian whom he had retained in his service and protection. The Persian king Kisra then appointed a Persian governor over Sana‘a, and Yemen came under Persian rule. This continued until Badhan, the last Persian governor, accepted Islam around 628 A.D., bringing Persian rule over Yemen to an end."
+      ],
+      "kashmiri": [
+        "523 عیسویس منٛز اکھ یہودی بادشاہ ذو نُواس گوو نَجرانَس منٛز عیسٲییَن پتہٕ، تاکہ تِم یہودی مَذہَب قَبوٗل کَرن۔ تِمو دِژ نہٕ رَضامَندی، لِہذا ترٛٲوۍ تِم زِنٛدٕ اَکِس بٔڑِس نارِ سۭتۍ بٔرِتھ گَرٹَس منٛز۔ قرآنَس منٛز چھُ اَمہِ واقِعَس ہُنٛد ذِکِر: گَرٹٕچؠن لوٗکَن پؠٹھ چھُ لَعنَت (85:4)۔",
+        "اَمہِ واقِعہٕ سۭتۍ گٔیہِ عیسٲیۍ، خاص پٲٹھۍ روٗمی شَہَنشاہ، پریشان۔ روٗمیَو کٔر حَبشہٕ کؠن باشِندَن ہٕنٛز حِمایَت؛ یِہُنٛد فَوجَن 525 عیسویس منٛز اَریاط کِس قیادتَس منٛز یَمَنَس پؠٹھ قَبضہٕ کوٚر۔ پتہٕ آو اَریاط پننِس اَکِس کَمانڈَر اَبرَہہ سٕندِس اَتھہٕ مارنہٕ، یٔمۍ پتہٕ یَمَنُک حُکمران بَنیوو۔ اَبرَہَن کٔر کَعبہٕ تَباہ کَرنہٕ خٲطرٕ اَکہِ فَوجٕچ قیادَت، تہٕ یِہ فَوج گوو ہسہِ ہٕنٛدؠن لوٗکَن ناوٕ سۭتۍ مَشہوٗر۔",
+        "ہسہِ ہٕنٛدِس واقِعَس پتہٕ کٔر یَمَنی باشِندَن فارِسیَن ہٕنٛدِ مَدَت سۭتۍ مَعدی کَرِب بِن سَیف ذو یَزَن حِمیَری سُنٛدِس قیادتَس منٛز حَبشہٕ کؠن باشِندَن خِلاف بغاوت۔ تِمو کٔر یَمَن ہٕنٛز آزٲدی دُبارٕ حٲصِل تہٕ بَناوُکھ مَعدی کَرِب بادشاہ۔ پتہٕ آو سُہ اَکِس حَبشی باشِندَن قَتل کَرنہٕ، یُس تَمی پننِس خِدمتَس تہٕ حِفاظتَس منٛز تھاوُمُت اوس۔ پتہٕ کوٚر فارِسی بادشاہ کِسرٰیَن صَنعاءَس پؠٹھ اَکھ فارِسی گَورنَر مُقَرَّر، یَمہٕ سۭتۍ یَمَن فارِسی حُکوٗمَتَس تَل تھوو۔ یِہ روٗد توٚتام جٲری یوٚتام آخری فارِسی گَورنَر باذانَن تَقریٖبَن 628 عیسویس منٛز اِسلام قَبوٗل کوٚر، یَمہِ سۭتۍ یَمَنَس منٛز فارِسی حُکمرٲنی خَتَم گٔیہِ۔"
+      ]
+        }
+      ]
+    }
+  ]
+}
