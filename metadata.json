@@ -1,0 +1,8 @@
+{
+  "name": "Koshur Lughat — Kashmiri English Dictionary",
+  "description": "Comprehensive Kashmiri-English dictionary, Perso-Arabic orthography guide, and neural sentence translator.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
