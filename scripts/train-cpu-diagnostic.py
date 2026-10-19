@@ -72,7 +72,21 @@ for epoch in range(int(os.getenv("EPOCHS","12"))):
         for src,tgt in valloader:
             loss=lossfn(model(src,tgt[:,:-1]).reshape(-1,len(itos)),tgt[:,1:].reshape(-1)); vt+=loss.item(); vc+=1
     row={"epoch":start_epoch+epoch+1,"trainLoss":total/count,"validationLoss":vt/max(vc,1)}; history.append(row); print(row,flush=True)
+def generate(source,max_chars=80):
+    model.eval()
+    src=torch.tensor(encode(source))[None]
+    result=[1]
+    with torch.no_grad():
+        for _ in range(max_chars):
+            logits=model(src,torch.tensor(result)[None])
+            token=int(logits[0,-1].argmax())
+            if token==2: break
+            result.append(token)
+    return "".join(itos[token] for token in result[1:] if token>=4)
+smoke_inputs=["I read a book.","He is alive.","The children are playing in the park."]
+smoke_test={source:generate(source) for source in smoke_inputs}
+print("generation smoke test:",smoke_test,flush=True)
 OUT.mkdir(parents=True,exist_ok=True)
 torch.save({"state_dict":model.state_dict(),"vocabulary":itos,"config":{"dModel":96,"layers":2}},OUT/"diagnostic.pt")
-(OUT/"report.json").write_text(json.dumps({"purpose":"CPU pipeline diagnostic only—not deployable translation quality","approvedPairs":len(gold_pairs),"includesOpusSilver":USE_SILVER,"trainPairs":len(train_pairs),"validationPairs":len(val_pairs),"parameters":sum(p.numel() for p in model.parameters()),"lastRunSeconds":time.time()-started,"history":previous+history,"productionEligible":False},indent=2)+"\n")
+(OUT/"report.json").write_text(json.dumps({"purpose":"CPU pipeline diagnostic only—not deployable translation quality","approvedPairs":len(gold_pairs),"includesOpusSilver":USE_SILVER,"trainPairs":len(train_pairs),"validationPairs":len(val_pairs),"parameters":sum(p.numel() for p in model.parameters()),"lastRunSeconds":time.time()-started,"history":previous+history,"generationSmokeTest":smoke_test,"generationDecision":"Manual review required; do not deploy based on falling teacher-forced loss alone.","productionEligible":False},ensure_ascii=False,indent=2)+"\n")
 print("saved",OUT)

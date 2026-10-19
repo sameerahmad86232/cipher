@@ -1,0 +1,93 @@
+{
+  "purpose": "CPU pipeline diagnostic only—not deployable translation quality",
+  "approvedPairs": 78,
+  "includesOpusSilver": false,
+  "trainPairs": 66,
+  "validationPairs": 12,
+  "parameters": 479650,
+  "lastRunSeconds": 0.824211835861206,
+  "history": [
+    {
+      "epoch": 1,
+      "trainLoss": 4.691262497621424,
+      "validationLoss": 4.356662114461263
+    },
+    {
+      "epoch": 2,
+      "trainLoss": 4.077252023360309,
+      "validationLoss": 4.045251210530599
+    },
+    {
+      "epoch": 3,
+      "trainLoss": 3.8213378822102264,
+      "validationLoss": 3.8753178119659424
+    },
+    {
+      "epoch": 4,
+      "trainLoss": 3.6793042491464054,
+      "validationLoss": 3.7529794375101724
+    },
+    {
+      "epoch": 5,
+      "trainLoss": 3.5476354851442227,
+      "validationLoss": 3.636916240056356
+    },
+    {
+      "epoch": 6,
+      "trainLoss": 3.4412356965682087,
+      "validationLoss": 3.5232323010762534
+    },
+    {
+      "epoch": 7,
+      "trainLoss": 3.3420291087206673,
+      "validationLoss": 3.434453328450521
+    },
+    {
+      "epoch": 8,
+      "trainLoss": 3.2769445812000946,
+      "validationLoss": 3.3369552294413247
+    },
+    {
+      "epoch": 9,
+      "trainLoss": 3.1357570115257714,
+      "validationLoss": 3.258902390797933
+    },
+    {
+      "epoch": 10,
+      "trainLoss": 3.094372468836167,
+      "validationLoss": 3.176909605662028
+    },
+    {
+      "epoch": 11,
+      "trainLoss": 2.9952003535102394,
+      "validationLoss": 3.1100818316141763
+    },
+    {
+      "epoch": 12,
+      "trainLoss": 2.9617988502278045,
+      "validationLoss": 3.0365091959635415
+    },
+    {
+      "epoch": 13,
+      "trainLoss": 2.8934364318847656,
+      "validationLoss": 2.9979663689931235
+    },
+    {
+      "epoch": 14,
+      "trainLoss": 2.829968634773703,
+      "validationLoss": 2.9390016396840415
+    },
+    {
+      "epoch": 15,
+      "trainLoss": 2.7769164478077606,
+      "validationLoss": 2.883732795715332
+    }
+  ],
+  "generationSmokeTest": {
+    "I read a book.": "حر ر ان ر روانہ الہ الہ ان کھ کہ کھِ تہٕ رَران کھ ان ان انہٕ انہٕ کھِ انَن تہٕ ا",
+    "He is alive.": "حضرت ان رَس روٗلہٕ ان کھ کھُنہٕ کھُہٕ انہٕ روانہٕ انہٕ انٛد کھ کھ کھُن تہ انہٕ ک",
+    "The children are playing in the park.": "حضرت ان انہ انہ انہ ان ت انہٕ ر ر س رَن رنہ ان رَس ان ان رَنہ ان ان ان تہ انہ ان"
+  },
+  "generationDecision": "Manual review required; do not deploy based on falling teacher-forced loss alone.",
+  "productionEligible": false
+}
