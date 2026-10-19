@@ -1,0 +1,253 @@
+{
+  "method": "Exact token/co-occurrence counts; descriptive evidence, not validated grammatical rules or model training.",
+  "sources": {
+    "ownerApproved": {
+      "pairs": 71,
+      "patternCounts": {
+        "locativePostposition": 24,
+        "firstPersonPastAgent": 12,
+        "negation": 12,
+        "genitive": 9,
+        "firstPersonPresent": 7,
+        "thirdPersonPresent": 6,
+        "relative": 15,
+        "pluralPresent": 4
+      },
+      "examples": {
+        "locativePostposition": {
+          "english": "Boats travel on the lake",
+          "kashmiri": "ناوٕ چھےٚ سَرَس پؠٹھ پَکان"
+        },
+        "firstPersonPastAgent": {
+          "english": "I couldn’t remember his name",
+          "kashmiri": "مےٚ روٗد نٕہ تٔمؠ سُنٛد ناو وَنہِ"
+        },
+        "negation": {
+          "english": "I couldn’t remember his name",
+          "kashmiri": "مےٚ روٗد نٕہ تٔمؠ سُنٛد ناو وَنہِ"
+        },
+        "genitive": {
+          "english": "I couldn’t remember his name",
+          "kashmiri": "مےٚ روٗد نٕہ تٔمؠ سُنٛد ناو وَنہِ"
+        },
+        "firstPersonPresent": {
+          "english": "I am eating",
+          "kashmiri": "بہٕ چھُس کھؠوان"
+        },
+        "thirdPersonPresent": {
+          "english": "He is at a high point",
+          "kashmiri": "سُہ چھُ تھَزرَس پؠٹھ"
+        },
+        "relative": {
+          "english": "The commencement of the Divine Inspiration to Allah's Messenger was in the form of good dreams which came true like bright daylight, and then the love of seclusion was bestowed upon him. He used to remain alone in the cave of Hira and worship Allah.",
+          "kashmiri": "رَسوٗلُ اللہ صلی اللہ علیہ وسلمَن پؠٹھ وَحی نازِل سَپُد نیک تہٕ پوٚزَن خوابَن سۭتۍ شروٗع۔ نَبی کریم صلی اللہ علیہ وسلم یُس تہِ خواب اوس وُچھان، سُہ اوس صُبحُک گاشُک پٲٹھۍ صاف تہٕ پوٚز آسان۔ پَتہٕ آیہِ نَبی کریم صلی اللہ علیہ وسلمَن خَلوَت پَسند تہٕ تِم ٲس غارِ حرا ہَس منٛز کُنہِ زون آسان تہٕ ٲس اللہ تعالیٰ سٕنز عبادت کَران۔"
+        },
+        "pluralPresent": {
+          "english": "We go to school every day.",
+          "kashmiri": "اَسۍ چھِ پْرَتھ دۄہ سکوٗل گَژھان۔"
+        }
+      },
+      "topTokens": [
+        [
+          "اللہ",
+          119
+        ],
+        [
+          "تہٕ",
+          86
+        ],
+        [
+          "زِ",
+          54
+        ],
+        [
+          "مےٚ",
+          52
+        ],
+        [
+          "منٛز",
+          49
+        ],
+        [
+          "چھِ",
+          44
+        ],
+        [
+          "اللہُ",
+          40
+        ],
+        [
+          "چھُ",
+          39
+        ],
+        [
+          "رَسوٗلُ",
+          39
+        ],
+        [
+          "صَلَّی",
+          38
+        ],
+        [
+          "عَلَیہِ",
+          38
+        ],
+        [
+          "تَمس",
+          35
+        ],
+        [
+          "سُہ",
+          33
+        ],
+        [
+          "تَمہِ",
+          33
+        ],
+        [
+          "رضی",
+          30
+        ],
+        [
+          "ووٚن",
+          30
+        ],
+        [
+          "بہٕ",
+          29
+        ],
+        [
+          "تِم",
+          28
+        ],
+        [
+          "حضرت",
+          27
+        ],
+        [
+          "پَتہٕ",
+          26
+        ]
+      ]
+    },
+    "opusSilver": {
+      "pairs": 8416,
+      "patternCounts": {
+        "locativePostposition": 4822,
+        "relative": 1111,
+        "genitive": 936,
+        "negation": 412,
+        "thirdPersonPresent": 93,
+        "firstPersonPastAgent": 18
+      },
+      "examples": {
+        "locativePostposition": {
+          "english": "Tell us what you were doing, then share it via email to us. Will help us fix it!",
+          "kashmiri": "ؤنِیوٚ اَسہِ توٚہہِ کیاہ ٲسِیوٚ کران، تہٕ کٕریٚو تہِ اَسہِ سٕتی شیر بذریعہِ برقی خط. یُس مَدَتھ کَرِ اَسہِ اَتھ شہَرنَس منٛز!"
+        },
+        "relative": {
+          "english": "Tell us what you were doing, then share it via email to us. Will help us fix it!",
+          "kashmiri": "ؤنِیوٚ اَسہِ توٚہہِ کیاہ ٲسِیوٚ کران، تہٕ کٕریٚو تہِ اَسہِ سٕتی شیر بذریعہِ برقی خط. یُس مَدَتھ کَرِ اَسہِ اَتھ شہَرنَس منٛز!"
+        },
+        "genitive": {
+          "english": "Language Description",
+          "kashmiri": "زبٲنی ہِنٛز وضاحت"
+        },
+        "negation": {
+          "english": "<em>This category currently contains no pages or media.</em>",
+          "kashmiri": "<em>ییتھ زٲژ مَنٛز چھُ نہٕ کانہہ صَفہٕ یا میڈیا. </em>"
+        },
+        "thirdPersonPresent": {
+          "english": "It is recommended to use a unique password that you are not using on any other website.",
+          "kashmiri": "یہِ چھُ مشوَرٕ دِنہٕ یِوان زِ سُہ پاس وٲرڈ کٔرِو اِستِمال یُس نہٕ تُہؠ کُنہِ بییہِ ویب سائٹہِ پؠٹھ اِستِمال کران چھِو۔"
+        },
+        "firstPersonPastAgent": {
+          "english": "This is my own work",
+          "kashmiri": "یہِ چھِ مےٚ پَنٕنؠ کٲم"
+        }
+      },
+      "topTokens": [
+        [
+          "منٛز",
+          9238
+        ],
+        [
+          "تہٕ",
+          9152
+        ],
+        [
+          "چھ",
+          5944
+        ],
+        [
+          "اکھ",
+          3981
+        ],
+        [
+          "چھِ",
+          2502
+        ],
+        [
+          "چھُ",
+          2172
+        ],
+        [
+          "کس",
+          1843
+        ],
+        [
+          "پؠٹھ",
+          1529
+        ],
+        [
+          "اوس",
+          1477
+        ],
+        [
+          "سۭتۍ",
+          1286
+        ],
+        [
+          "کرنہٕ",
+          1259
+        ],
+        [
+          "خٲطرٕ",
+          1239
+        ],
+        [
+          "یہ",
+          1227
+        ],
+        [
+          "یا",
+          1161
+        ],
+        [
+          "ہنٛد",
+          1155
+        ],
+        [
+          "پیٹھ",
+          1150
+        ],
+        [
+          "یس",
+          1095
+        ],
+        [
+          "کہ",
+          1053
+        ],
+        [
+          "یتھ",
+          1046
+        ],
+        [
+          "یُس",
+          924
+        ]
+      ]
+    }
+  }
+}
