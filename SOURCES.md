@@ -227,6 +227,19 @@ No raw pages were committed or added to production training; first resolve
 rights, deduplicate, filter language/quality, and keep evaluation splits out of
 training.
 
+## Nawab Kashmiri monolingual corpus
+
+[Nawab's Kashmiri Language Corpus](https://huggingface.co/datasets/nawabhussain/Kashmiri-Language-Corpus)
+is publicly readable and its card says Apache-2.0. Its CSV has 47,344
+Kashmiri-only rows, although the card says 46,748 cleaned sentences. The
+source column identifies SMUQamar, allenai/nllb, mzmmoazam, Kashmiri
+Wikipedia and OpenSLR 122. Those upstream sources have different or unresolved
+reuse terms, so the aggregate Apache label is not sufficient clearance for
+commercial training or redistribution. It also does not contain English
+sentence alignments. Source counts and the review-only decision are recorded
+in `training-data/nawab-kashmiri-corpus-audit.json`; no raw CSV was added to
+the production training corpus.
+
 ## Kashmiri text to speech
 
 The Translator view can synthesize the Kashmiri side of a translation through GAASH Lab's public [`Matcha-TTS-Kashmiri`](https://huggingface.co/GAASH-Lab/Matcha-TTS-Kashmiri) model and [`Bolbosh`](https://github.com/gaash-lab/Bolbosh) framework. The released model supports Perso-Arabic Kashmiri, male and female speaker choices, and several inference-quality settings. The model card and repository identify the release as MIT licensed. Audio generation runs on GAASH Lab's public demo service; this project does not claim to have trained that checkpoint. Bolbosh reports training on 33,182 utterances, validation on 4,542 utterances, and testing on 2,272 utterances from Rasa and IndicVoices. Generated speech remains automatic output and should be reviewed by fluent speakers.

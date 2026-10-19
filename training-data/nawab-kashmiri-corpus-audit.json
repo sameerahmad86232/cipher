@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-19",
+  "dataset": "https://huggingface.co/datasets/nawabhussain/Kashmiri-Language-Corpus",
+  "revision": "92c2609fcdccc848d754098c48bd67444a8f3a14",
+  "access": "public",
+  "cardLicense": "Apache-2.0",
+  "format": "CSV with sentence, source, word_count columns; monolingual Kashmiri, no English alignment",
+  "csvRowsObserved": 47344,
+  "cardCleanedSentenceCount": 46748,
+  "sourceRowsObserved": {
+    "SMUQamar_Kashmiri_English_Parallel_Corpus": 27951,
+    "allenai_nllb": 12175,
+    "mzmmoazam_kashmiri_dataset": 3052,
+    "Kashmiri_Wikipedia": 2232,
+    "OpenSLR_122": 1934
+  },
+  "rightsAndQualityCautions": [
+    "The Apache-2.0 dataset-card label does not override terms of the five upstream sources",
+    "SMUQamar's corpus is gated and marked CC BY-NC-SA 4.0 on its own card",
+    "mzmmoazam's repository has no top-level reuse license and republishes third-party material",
+    "OpenSLR 122 has GPL-3.0-or-later terms; check whether those terms cover these transcripts",
+    "Wikipedia content needs its own attribution/share-alike handling and likely overlaps the project's existing Wikipedia corpus",
+    "The corpus card warns that Urdu and Persian contamination may remain",
+    "The CSV row count differs from the card's cleaned-sentence count"
+  ],
+  "decision": "Use as a provenance-tagged review/index candidate only. Do not train or redistribute the aggregate as Apache-2.0 or treat it as English-Kashmiri parallel data."
+}
