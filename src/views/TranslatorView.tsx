@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import reviewedMemoryUrl from '../../assets/kashmiri-reviewed-training-data.json?url';
+import hybridMemoryUrl from '../../assets/hybrid-translation-index.json?url';
 import type { WordEntry, TranslationMemory, OCRDataset } from '../types';
 import { autocorrectKashmiri } from '../lib/kashmiriText';
 import { transliterateKashmiri } from '../lib/transliteration';
@@ -93,8 +95,8 @@ export const TranslatorView: React.FC<TranslatorViewProps> = ({ words, englishTo
     if (translationMemoryRef.current) return translationMemoryRef.current;
     try {
       const [res1, res2] = await Promise.all([
-        fetch('/assets/kashmiri-reviewed-training-data.json').then(r => (r.ok ? r.json() : { pairs: [], lexicon: [] })),
-        fetch('/assets/hybrid-translation-index.json').then(r => (r.ok ? r.json() : { pairs: [] }))
+        fetch(reviewedMemoryUrl).then(r => (r.ok ? r.json() : { pairs: [], lexicon: [] })),
+        fetch(hybridMemoryUrl).then(r => (r.ok ? r.json() : { pairs: [] }))
       ]);
       const combinedPairs = [...(res2.pairs || []), ...(res1.pairs || [])];
       const mem = createTranslationMemory(combinedPairs, res1.lexicon || []);
