@@ -8,8 +8,9 @@ import { TranslatorView } from './views/TranslatorView';
 import { AboutView } from './views/AboutView';
 import { LanguageGuideView } from './views/LanguageGuideView';
 import { OrthographyView } from './views/OrthographyView';
+import { SeerahView } from './views/SeerahView';
 
-type ViewMode = 'dictionary' | 'translator' | 'about' | 'guide' | 'orthography';
+type ViewMode = 'dictionary' | 'translator' | 'about' | 'guide' | 'orthography' | 'seerah';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewMode>(() => {
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
     if (hash === 'about') return 'about';
     if (hash === 'guide' || hash === 'language-guide') return 'guide';
     if (hash === 'orthography') return 'orthography';
+    if (hash === 'seerah') return 'seerah';
     return 'dictionary';
   });
 
@@ -34,6 +36,7 @@ export const App: React.FC = () => {
       else if (hash === 'about') setCurrentView('about');
       else if (hash === 'guide' || hash === 'language-guide') setCurrentView('guide');
       else if (hash === 'orthography') setCurrentView('orthography');
+      else if (hash === 'seerah') setCurrentView('seerah');
       else setCurrentView('dictionary');
     };
     window.addEventListener('hashchange', handleHashChange);
@@ -118,6 +121,7 @@ export const App: React.FC = () => {
             onGoToLanguageGuide={() => handleSelectView('guide')}
           />
         )}
+        {currentView === 'seerah' && <SeerahView />}
       </main>
 
       <Footer totalRecords={totalRecords} />
