@@ -32,7 +32,20 @@
 .kashmiri-text { margin-top:24px; padding:22px; border-radius:16px; background:var(--lime); font:24px/2 "Noto Nastaliq Urdu",serif; color:var(--forest); }
 .reading-footer { align-items:center; margin-top:22px; }
 .small-button { border:1px solid var(--line); border-radius:999px; background:white; padding:9px 13px; cursor:pointer; color:var(--ink); }
+.seerah-contents { align-self:start; position:sticky; top:24px; }
+.seerah-contents .chapter-pill { gap:16px; }
+.seerah-contents .chapter-pill small { color:var(--orange); font-size:11px; margin-right:8px; }
+.seerah-reading-list { min-width:0; display:grid; gap:32px; }
+.seerah-reading-section { display:grid; gap:16px; scroll-margin-top:24px; }
+.reading-section-heading { padding:6px 4px 8px; border-bottom:1px solid var(--line); }
+.reading-section-heading h2 { margin:10px 0 5px; font-size:clamp(27px,3vw,36px); }
+.reading-section-heading > span:last-child { color:var(--muted); font-size:13px; }
+.seerah-reading-section .reading-card { padding:24px; }
+.seerah-reading-section .kashmiri-text { white-space:pre-wrap; overflow-wrap:anywhere; }
+.seerah-reading-section .reading-footer { justify-content:flex-end; }
+.seerah-next-batch { border:1px dashed var(--line); border-radius:16px; padding:20px; color:var(--muted); text-align:center; }
 @media (max-width: 760px) { .seerah-hero,.chapter-grid { grid-template-columns:1fr; } .seerah-scene { min-height:230px; } .seerah-actions { flex-wrap:wrap; } }
+@media (max-width: 760px) { .seerah-contents { position:static; } .seerah-reading-section .reading-card { padding:18px; } .seerah-reading-section .kashmiri-text { font-size:21px; } }
 
 * {
   box-sizing: border-box;
