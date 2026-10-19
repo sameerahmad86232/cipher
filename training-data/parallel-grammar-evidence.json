@@ -1,8 +1,9 @@
 {
-  "method": "Exact token/co-occurrence counts; descriptive evidence, not validated grammatical rules or model training.",
+  "method": "Exact token/co-occurrence counts across parallel and monolingual text; descriptive evidence, not validated grammatical rules or model training.",
   "sources": {
     "ownerApproved": {
-      "pairs": 71,
+      "records": 71,
+      "parallel": true,
       "patternCounts": {
         "locativePostposition": 24,
         "firstPersonPastAgent": 12,
@@ -131,7 +132,8 @@
       ]
     },
     "opusSilver": {
-      "pairs": 8416,
+      "records": 8416,
+      "parallel": true,
       "patternCounts": {
         "locativePostposition": 4822,
         "relative": 1111,
@@ -246,6 +248,126 @@
         [
           "یُس",
           924
+        ]
+      ]
+    },
+    "paliWikiMonolingual": {
+      "records": 933,
+      "parallel": false,
+      "patternCounts": {
+        "locativePostposition": 473,
+        "relative": 307,
+        "thirdPersonPresent": 3,
+        "genitive": 82,
+        "negation": 10,
+        "firstPersonPastAgent": 1
+      },
+      "examples": {
+        "locativePostposition": {
+          "english": null,
+          "kashmiri": "مومَل شیخ چھِ اَکھ پاکِستٲنؠ اَداکارہ یۄس فِلمَن مَنٛز چھِ کٲم کَران۔"
+        },
+        "relative": {
+          "english": null,
+          "kashmiri": "مومَل شیخ چھِ اَکھ پاکِستٲنؠ اَداکارہ یۄس فِلمَن مَنٛز چھِ کٲم کَران۔"
+        },
+        "thirdPersonPresent": {
+          "english": null,
+          "kashmiri": "بُلاگر چھُ گوُگلُک اَکھ سُہ پَلیٹ فارم یَتھ پؠٹھ اَکھ انسان اَکھ بُلاگ ہیکِ بناوتھ"
+        },
+        "genitive": {
+          "english": null,
+          "kashmiri": "محمود گامی اوس اَکھ 19 سدی ہُنٛد کٲشُر شٲیِر یس ڈورو شاہباد پؠٹھ اوس.امہٕ اون کاشرس ادبس مَنٛز فارسی"
+        },
+        "negation": {
+          "english": null,
+          "kashmiri": "جِسمٕچ ایناٹمی خٲطرٕ چھُنہٕ کَنٹراسٹ اَجَنٹ اِستِمال کَرنہٕ یِوان چۄنٛکہِ تانَن ہٕنٛز بَناوَٹھ چھِ تَصویٖر مَنٛز کَنٹراسٹ ہُنٛد کٲم کَران۔"
+        },
+        "firstPersonPastAgent": {
+          "english": null,
+          "kashmiri": "سیاه کارس کٔرِو وُنکیٛن مےٚ امداد"
+        }
+      },
+      "topTokens": [
+        [
+          "چھِ",
+          673
+        ],
+        [
+          "اَکھ",
+          521
+        ],
+        [
+          "مَنٛز",
+          462
+        ],
+        [
+          "تہٕ",
+          291
+        ],
+        [
+          "اَداکارہ",
+          273
+        ],
+        [
+          "چھُ",
+          246
+        ],
+        [
+          "یۄس",
+          245
+        ],
+        [
+          "کٲم",
+          231
+        ],
+        [
+          "فِلمَن",
+          224
+        ],
+        [
+          "ہِندوستٲنؠ",
+          194
+        ],
+        [
+          "کَران",
+          169
+        ],
+        [
+          "یہِ",
+          80
+        ],
+        [
+          "پؠٹھ",
+          71
+        ],
+        [
+          "ہُنٛد",
+          70
+        ],
+        [
+          "کَران۔",
+          63
+        ],
+        [
+          "پاکِستٲنؠ",
+          54
+        ],
+        [
+          "کٔشیٖر",
+          52
+        ],
+        [
+          "گُلوکار",
+          51
+        ],
+        [
+          "اوس",
+          50
+        ],
+        [
+          "اَمریٖکی",
+          50
         ]
       ]
     }

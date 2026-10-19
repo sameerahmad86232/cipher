@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "ownerApproved": ROOT / "training-data/approved-parallel.jsonl",
     "opusSilver": ROOT / "training-data/opus-en-ks/train-silver.jsonl",
+    "paliWikiMonolingual": ROOT / "training-data/pali-wiki-monolingual.jsonl",
 }
 PATTERNS = {
     "firstPersonPresent": ("بہٕ", "چھُس"),
@@ -29,7 +30,7 @@ def words(text):
 
 
 def report():
-    result = {"method": "Exact token/co-occurrence counts; descriptive evidence, not validated grammatical rules or model training.", "sources": {}}
+    result = {"method": "Exact token/co-occurrence counts across parallel and monolingual text; descriptive evidence, not validated grammatical rules or model training.", "sources": {}}
     for name, path in SOURCES.items():
         counts = collections.Counter()
         examples = {}
@@ -39,7 +40,7 @@ def report():
             if not line.strip():
                 continue
             row = json.loads(line)
-            english, kashmiri = row["english"], row["kashmiri"]
+            english, kashmiri = row.get("english"), row.get("kashmiri", row.get("text", ""))
             sequence = words(kashmiri)
             present = set(sequence)
             records += 1
@@ -50,7 +51,7 @@ def report():
                         else any(form in present for form in forms)):
                     counts[label] += 1
                     examples.setdefault(label, {"english": english, "kashmiri": kashmiri})
-        result["sources"][name] = {"pairs": records, "patternCounts": dict(counts),
+        result["sources"][name] = {"records": records, "parallel": name != "paliWikiMonolingual", "patternCounts": dict(counts),
                                     "examples": examples, "topTokens": tokens.most_common(20)}
     return result
 

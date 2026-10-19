@@ -1,6 +1,7 @@
 # Kashmiri grammar evidence from parallel sentences
 
-Generated from 71 owner-approved pairs and 8,416 OPUS silver pairs by
+Generated from 71 owner-approved pairs, 8,416 OPUS silver pairs and 933
+additional PALI Kashmiri Wikipedia lines by
 `python scripts/analyze-parallel-grammar.py`. Exact counts and examples are in
 `parallel-grammar-evidence.json`. These counts show attested forms, **not** a
 complete grammar or proof that every OPUS translation is correct.
@@ -33,6 +34,8 @@ complete grammar or proof that every OPUS translation is correct.
 
 - OPUS silver text has variable orthography, topics and quality. The exact
   form detector misses spelling variants and cannot infer syntactic roles.
+- The extra PALI lines are Kashmiri-only; they cannot train translation
+  alignment. They are heavily skewed toward short film/actor biographies.
 - The approved set is small and includes long religious passages. It is not a
   balanced sample of spoken or literary Kashmiri.
 - These findings should prompt review of model output, not silently rewrite it.
