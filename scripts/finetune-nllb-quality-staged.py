@@ -64,6 +64,19 @@ if bpcc_path.exists():
             if row.get("src_lang")=="eng_Latn" and row.get("tgt_lang")=="kas_Arab" and valid(en,ks):
                 bpcc.append({"source":en,"target":ks,"src_lang":"eng_Latn","tier":"bpcc"})
 
+# Optionally use the permission-checked preparation output. It can include
+# BPCC and noncommercial Qamar data, but FLORES remains evaluation-only.
+prepared_train=[]; prepared_eval=[]
+prepared_dir=Path(os.getenv("PREPARED_PARALLEL_DIR", "")) if os.getenv("PREPARED_PARALLEL_DIR") else None
+if prepared_dir:
+    for name, destination in (("train.jsonl", prepared_train), ("validation.jsonl", prepared_eval)):
+        for line in (prepared_dir/name).read_text(encoding="utf-8").splitlines():
+            row=json.loads(line)
+            en,ks=clean(row["english"]),clean(row["kashmiri"])
+            if valid(en,ks): destination.append({"source":en,"target":ks,"src_lang":"eng_Latn","tier":row["tier"]})
+    # Do not read BPCC a second time when a prepared bundle is supplied.
+    bpcc=[]
+
 seen=set()
 def unique(rows):
     out=[]
@@ -72,7 +85,7 @@ def unique(rows):
         if key not in seen: seen.add(key); out.append(row)
     return out
 
-gold=unique(gold); bpcc=unique(bpcc); silver=unique(silver); aux=unique(aux)
+gold=unique(gold); bpcc=unique(bpcc); prepared_train=unique(prepared_train); silver=unique(silver); aux=unique(aux)
 gold_train=[r for r in gold if split_key(r["source"],r["target"])>=15]
 gold_eval=[r for r in gold if split_key(r["source"],r["target"])<15]
 bpcc_train=[r for r in bpcc if split_key(r["source"],r["target"])>=5]
@@ -80,8 +93,14 @@ bpcc_eval=[r for r in bpcc if split_key(r["source"],r["target"])<5][:1000]
 
 # Oversampling makes the small native-reviewed set influence Stage A without
 # pretending it is a large corpus. Stage B then specializes only on gold data.
-stage_a=aux + silver + bpcc_train + gold_train*12
-eval_rows=(bpcc_eval + gold_eval) or gold_eval
+prepared_eval=[r for r in prepared_eval if r["source"].casefold() not in {x["source"].casefold() for x in gold_train}]
+eval_rows=(prepared_eval + bpcc_eval + gold_eval) or gold_eval
+heldout_english={r["source"].casefold() for r in eval_rows if r["src_lang"]=="eng_Latn"}
+gold_train=[r for r in gold_train if r["source"].casefold() not in heldout_english]
+stage_a=[r for r in (aux + silver + bpcc_train + prepared_train + gold_train*12)
+         if r["src_lang"]!="eng_Latn" or r["source"].casefold() not in heldout_english]
+if not stage_a or not eval_rows or not gold_train or not gold_eval:
+    raise SystemExit("Insufficient training/evaluation data; check prepared and approved corpora.")
 
 tokenizer=AutoTokenizer.from_pretrained(MODEL_ID)
 base=AutoModelForSeq2SeqLM.from_pretrained(MODEL_ID)
@@ -123,5 +142,5 @@ smoke_prompts=[
     "Feed the poor and greet everyone.",
 ]
 smoke=[{"english":text,"output":translate(text)} for text in smoke_prompts]
-(OUT/"training-report.json").write_text(json.dumps({"baseModel":MODEL_ID,"goldPairs":len(gold),"opusSilverPairs":len(silver),"auxCorilPairs":len(aux),"bpccPairs":len(bpcc),"stageAMetrics":stage_a_metrics,"stageBMetrics":stage_b_metrics,"generationSmokeTest":smoke,"exclusions":["raw OCR","dictionary glosses","synthetic corpora","unreviewed Hadith drafts","CoRIL dev/test"],"productionDeployed":False,"humanReviewRequired":True},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+(OUT/"training-report.json").write_text(json.dumps({"baseModel":MODEL_ID,"goldPairs":len(gold),"opusSilverPairs":len(silver),"auxCorilPairs":len(aux),"bpccPairs":len(bpcc),"preparedPairs":len(prepared_train),"preparedValidationPairs":len(prepared_eval),"stageAMetrics":stage_a_metrics,"stageBMetrics":stage_b_metrics,"generationSmokeTest":smoke,"exclusions":["raw OCR","dictionary glosses","synthetic corpora","unreviewed Hadith drafts","CoRIL dev/test","FLORES train"],"productionDeployed":False,"humanReviewRequired":True},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("Saved",OUT/"adapter")
