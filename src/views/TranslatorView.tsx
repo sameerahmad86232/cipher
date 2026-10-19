@@ -11,6 +11,7 @@ import {
   dictionaryDraft,
   reviewLabel
 } from '../lib/hybridTranslator';
+import { normalizeTranslationText } from '../lib/hybridTranslator';
 import {
   serverTranslate,
   offlineTranslate,
@@ -83,6 +84,7 @@ export const TranslatorView: React.FC<TranslatorViewProps> = ({ words, englishTo
   const abortControllerRef = useRef<AbortController | null>(null);
   const liveTimerRef = useRef<any>(null);
   const translationMemoryRef = useRef<TranslationMemory | null>(null);
+  const opusMemoryRef = useRef<any>(null);
   const bookOcrCacheRef = useRef<any[] | null>(null);
   const quranCorpusCacheRef = useRef<OCRDataset | null>(null);
 
@@ -231,6 +233,37 @@ export const TranslatorView: React.FC<TranslatorViewProps> = ({ words, englishTo
             );
             return;
           }
+        }
+
+        // Source-attributed OPUS pairs are lower-trust than reviewed memory.
+        // Use exact sentences only; never infer grammar from a nearby match.
+        if (!opusMemoryRef.current) {
+          try {
+            const response = await fetch('./assets/opus-exact-memory.json');
+            if (response.ok) {
+              const payload = await response.json();
+              const englishToKashmiri: Record<string, any> = {};
+              const kashmiriToEnglish: Record<string, any> = {};
+              for (const [english, kashmiri, source, license] of payload.pairs || []) {
+                englishToKashmiri[normalizeTranslationText(english)] = { text: kashmiri, source, license };
+                kashmiriToEnglish[normalizeTranslationText(kashmiri)] = { text: english, source, license };
+              }
+              opusMemoryRef.current = { englishToKashmiri, kashmiriToEnglish };
+            }
+          } catch (error) {
+            console.warn('OPUS exact-match memory unavailable:', error);
+          }
+        }
+        const opusIndex = direction === 'en-ks'
+          ? opusMemoryRef.current?.englishToKashmiri
+          : opusMemoryRef.current?.kashmiriToEnglish;
+        const opusMatch = opusIndex?.[normalizeTranslationText(text)];
+        if (opusMatch) {
+          setTranslatedText(opusMatch.text);
+          setGrammarNote(analyzeSentence(text, direction).summary);
+          setDictionaryContext(`OPUS ${opusMatch.source} · ${opusMatch.license}`);
+          setTranslationNote('Exact corpus match (silver data). This translation has not been approved by a native reviewer.');
+          return;
         }
 
         // 2. Perform offline or server translation
