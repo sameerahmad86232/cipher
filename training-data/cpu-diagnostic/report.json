@@ -5,7 +5,7 @@
   "trainPairs": 66,
   "validationPairs": 12,
   "parameters": 479650,
-  "lastRunSeconds": 0.824211835861206,
+  "lastRunSeconds": 35.07182812690735,
   "history": [
     {
       "epoch": 1,
@@ -81,12 +81,87 @@
       "epoch": 15,
       "trainLoss": 2.7769164478077606,
       "validationLoss": 2.883732795715332
+    },
+    {
+      "epoch": 16,
+      "trainLoss": 2.7229582702412323,
+      "validationLoss": 2.8573484420776367
+    },
+    {
+      "epoch": 17,
+      "trainLoss": 2.6727467564975513,
+      "validationLoss": 2.8174362182617188
+    },
+    {
+      "epoch": 18,
+      "trainLoss": 2.638102839974796,
+      "validationLoss": 2.777045965194702
+    },
+    {
+      "epoch": 19,
+      "trainLoss": 2.593379960340612,
+      "validationLoss": 2.7540417512257895
+    },
+    {
+      "epoch": 20,
+      "trainLoss": 2.5682417645173916,
+      "validationLoss": 2.7172882556915283
+    },
+    {
+      "epoch": 21,
+      "trainLoss": 2.4945175928228043,
+      "validationLoss": 2.692866404851278
+    },
+    {
+      "epoch": 22,
+      "trainLoss": 2.4929010727826286,
+      "validationLoss": 2.662745237350464
+    },
+    {
+      "epoch": 23,
+      "trainLoss": 2.425910809460808,
+      "validationLoss": 2.6408897240956626
+    },
+    {
+      "epoch": 24,
+      "trainLoss": 2.426965685451732,
+      "validationLoss": 2.6109249591827393
+    },
+    {
+      "epoch": 25,
+      "trainLoss": 2.389824222115909,
+      "validationLoss": 2.602229197820028
+    },
+    {
+      "epoch": 26,
+      "trainLoss": 2.3640775400049545,
+      "validationLoss": 2.568837324778239
+    },
+    {
+      "epoch": 27,
+      "trainLoss": 2.3293912831474755,
+      "validationLoss": 2.553940216700236
+    },
+    {
+      "epoch": 28,
+      "trainLoss": 2.3119934727163876,
+      "validationLoss": 2.5432600180308023
+    },
+    {
+      "epoch": 29,
+      "trainLoss": 2.273573637008667,
+      "validationLoss": 2.5268026192982993
+    },
+    {
+      "epoch": 30,
+      "trainLoss": 2.2529062102822697,
+      "validationLoss": 2.5029942989349365
     }
   ],
   "generationSmokeTest": {
-    "I read a book.": "حر ر ان ر روانہ الہ الہ ان کھ کہ کھِ تہٕ رَران کھ ان ان انہٕ انہٕ کھِ انَن تہٕ ا",
-    "He is alive.": "حضرت ان رَس روٗلہٕ ان کھ کھُنہٕ کھُہٕ انہٕ روانہٕ انہٕ انٛد کھ کھ کھُن تہ انہٕ ک",
-    "The children are playing in the park.": "حضرت ان انہ انہ انہ ان ت انہٕ ر ر س رَن رنہ ان رَس ان ان رَنہ ان ان ان تہ انہ ان"
+    "I read a book.": "حضرت ابت رَرَرت ابہ ان کَس کھِ کھِنٛد انِ رَسالہٕ انٛدِ ان",
+    "He is alive.": "سُہ چھُ کھُنٛزِموٗلہٕ کھ چھُن",
+    "The children are playing in the park.": "حضرت ان انہ رتہ انہ انٛد عنہ کھِ انٛز انِن رَن کھ انٛدِن"
   },
   "generationDecision": "Manual review required; do not deploy based on falling teacher-forced loss alone.",
   "productionEligible": false
