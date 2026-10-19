@@ -1,0 +1,3 @@
+# MIT upstream; pin the audited source, since package version 0.1.0 is reused.
+KashmiriNormalizer @ git+https://github.com/abdulmuizz0903/KashmiriNormalizer.git@9bb966e76b88caf875bfb9facf3036bef706427e
+regex==2026.9.29

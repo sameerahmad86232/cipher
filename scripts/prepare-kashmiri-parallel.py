@@ -21,9 +21,10 @@ def valid(en, ks):
 
 
 def add(rows, en, ks, source, tier):
+    original_ks = str(ks)
     en, ks = normalize(en), normalize(ks)
     if valid(en, ks):
-        rows.append({"english": en, "kashmiri": ks, "source": source, "tier": tier})
+        rows.append({"english": en, "kashmiri": ks, "kashmiriOriginal": original_ks, "source": source, "tier": tier})
 
 
 def paired_lines(rows, english_path, kashmiri_path, source, tier):
@@ -79,11 +80,33 @@ def prepare(args):
                 row = json.loads(line)
                 add(train, row["english"], row["kashmiri"], "owner-approved", "gold")
 
+    normalization_report = None
+    if getattr(args, "normalize_kashmiri", False):
+        from kashmiri_normalization import normalize_kashmiri, normalizer_metadata
+        normalization_report = {"normalizer": normalizer_metadata(), "records": 0,
+                                "changed": 0, "warnings": 0, "goldTargetsPreserved": True}
+        for row in train + evaluation:
+            original = row["kashmiriOriginal"]
+            result = normalize_kashmiri(original)
+            row["kashmiriOriginal"] = original
+            row["kashmiriNormalized"] = result["normalized"]
+            row["normalizationWarnings"] = result["warnings"]
+            # Keep owner-reviewed targets and evaluation references unchanged.
+            if row["tier"] not in ("gold", "eval"):
+                row["kashmiri"] = result["normalized"]
+            else:
+                row["kashmiri"] = original
+            normalization_report["records"] += 1
+            normalization_report["changed"] += int(result["changed"])
+            normalization_report["warnings"] += int(bool(result["warnings"]))
+        # When normalization reveals a duplicate, keep the reviewed target.
+        train.sort(key=lambda row: row["tier"] != "gold")
+
     eval_english = {row["english"].casefold() for row in evaluation}
     seen = set()
     unique_train = []
     for row in train:
-        key = (row["english"].casefold(), row["kashmiri"])
+        key = (row["english"].casefold(), normalize(row.get("kashmiriNormalized", row["kashmiri"])))
         if key not in seen and row["english"].casefold() not in eval_english:
             seen.add(key)
             unique_train.append(row)
@@ -100,6 +123,8 @@ def prepare(args):
               "sources": {source: sum(row["source"] == source for row in unique_train)
                           for source in sorted({row["source"] for row in unique_train})},
               "note": "No training occurred. Synthetic 1M excluded: license unspecified. FLORES is evaluation-only."}
+    if normalization_report is not None:
+        report["normalization"] = normalization_report
     (args.output / "manifest.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     return report
 
@@ -110,6 +135,7 @@ if __name__ == "__main__":
     parser.add_argument("--qamar30", type=Path, help="Directory with English.txt and Kashmiri.txt")
     parser.add_argument("--qamar270", type=Path, help="Directory with English.txt and Kashmiri.txt")
     parser.add_argument("--allow-noncommercial", action="store_true")
+    parser.add_argument("--normalize-kashmiri", action="store_true", help="Use the pinned normalizer; retain original text and gold/evaluation targets")
     parser.add_argument("--flores", type=Path, help="Local kas_Arab–eng_Latn TSV")
     parser.add_argument("--flores-plus", type=Path, help="Local kas_Arab–eng_Latn TSV")
     parser.add_argument("--approved", type=Path, default=Path(__file__).resolve().parents[1] / "training-data/approved-parallel.jsonl")

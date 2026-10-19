@@ -56,3 +56,36 @@ npm run dev
 # Build production bundle
 npm run build
 ```
+
+## Kashmiri text normalization
+
+Install the MIT-licensed KashmiriNormalizer integration in your Python environment:
+
+```bash
+python -m pip install -r requirements-normalization.txt
+python scripts/normalize-kashmiri-corpus.py --text "١٢٣ ، کِتاب ۔"
+python scripts/normalize-kashmiri-corpus.py \
+  --input training-data/combined-parallel.jsonl \
+  --output /tmp/kashmiri-normalized-review.jsonl
+```
+
+The corpus command retains the original fields, adds `kashmiriNormalized`, and
+writes a report beside the output. For monolingual OCR or corpus JSONL, pass
+`--field text`; only that field is processed. Keep Quranic Arabic in its own
+field because its spelling conventions differ from Kashmiri. Vowel marks are
+preserved, and any transformation that removes combining marks is blocked.
+The upstream TTS digit-by-digit word conversion and character filter are not used.
+
+To use the integration during parallel-data preparation:
+
+```bash
+python scripts/prepare-kashmiri-parallel.py \
+  --normalize-kashmiri --output /tmp/kashmiri-prepared-normalized
+python scripts/test-kashmiri-normalization.py
+python scripts/test-prepare-kashmiri-parallel.py
+```
+
+Normalized duplicate detection prioritizes owner-reviewed rows. Reviewed training
+targets and evaluation references retain their wording; other targets get the
+normalized copy and retain `kashmiriOriginal`. Existing browser search cleanup
+continues to use the shared TypeScript helpers.

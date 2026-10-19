@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-19",
+  "library": "KashmiriNormalizer",
+  "version": "0.1.0",
+  "verifiedInstalledRevision": "9bb966e76b88caf875bfb9facf3036bef706427e",
+  "corpusRun": {
+    "input": "training-data/combined-parallel.jsonl",
+    "records": 201,
+    "normalizedCopiesChanged": 27,
+    "transformationsBlockedForCombiningMarkLoss": 2,
+    "protectedRecordIds": [
+      "seerah-ch1-migration-08",
+      "seerah-ch1-abraham-01"
+    ],
+    "originalFieldsVerifiedUnchanged": 201,
+    "distinctNormalizedTexts": 201
+  },
+  "preparationRun": {
+    "approvedInputRows": 71,
+    "validGoldTrainingRows": 68,
+    "goldNormalizedCopiesChanged": 21,
+    "goldTrainingTargetsPreserved": true,
+    "combiningMarkLossWarnings": 0
+  },
+  "verification": {
+    "normalizerRegressionTestsPassed": 5,
+    "parallelPreparationTestsPassed": 2,
+    "sourceFilesModified": false,
+    "modelTrainingPerformed": false
+  }
+}

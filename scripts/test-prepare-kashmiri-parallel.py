@@ -13,6 +13,38 @@ spec.loader.exec_module(prepare_module)
 
 
 class ParallelPreparationTests(unittest.TestCase):
+    @unittest.skipUnless(importlib.util.find_spec("KashmiriNormalizer"), "Install requirements-normalization.txt")
+    def test_normalization_keeps_gold_and_eval_targets_and_prioritizes_gold_duplicates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bpcc = root / "bpcc.tsv"
+            bpcc.write_text("src\ttgt\tsrc_lang\ttgt_lang\n"
+                            "I read books.\tبہٕ چھُس کِتاب پَران\teng_Latn\tkas_Arab\n"
+                            "We read books.\tاَسۍ چھِ كِتاب پَران\teng_Latn\tkas_Arab\n", encoding="utf-8")
+            gold_text = " بہٕ  چھُس كِتاب پَران "
+            approved = root / "gold.jsonl"
+            approved.write_text(json.dumps({"english": "I read books.", "kashmiri": gold_text}) + "\n", encoding="utf-8")
+            flores = root / "flores.tsv"
+            eval_text = "تِم چھِ كِتاب پَران"
+            flores.write_text("sentence_eng_Latn\tsentence_kas_Arab\nThey read books.\t" + eval_text + "\n", encoding="utf-8")
+            args = argparse.Namespace(bpcc=bpcc, qamar30=None, qamar270=None, flores=flores,
+                                      flores_plus=None, approved=approved, output=root / "out",
+                                      allow_noncommercial=False, normalize_kashmiri=True)
+            report = prepare_module.prepare(args)
+            rows = [json.loads(line) for name in ("train.jsonl", "validation.jsonl")
+                    for line in (args.output / name).read_text().splitlines()]
+            self.assertEqual(len(rows), 2)
+            gold = next(row for row in rows if row["english"] == "I read books.")
+            self.assertEqual(gold["tier"], "gold")
+            self.assertEqual(gold["kashmiri"], gold_text)
+            self.assertNotEqual(gold["kashmiriNormalized"], gold_text)
+            silver = next(row for row in rows if row["english"] == "We read books.")
+            self.assertIn("كِتاب", silver["kashmiriOriginal"])
+            self.assertIn("کِتاب", silver["kashmiri"])
+            evaluation = json.loads((args.output / "flores-evaluation.jsonl").read_text())
+            self.assertEqual(evaluation["kashmiri"], eval_text)
+            self.assertTrue(report["normalization"]["goldTargetsPreserved"])
+
     def test_eval_never_enters_training_and_noncommercial_requires_opt_in(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
