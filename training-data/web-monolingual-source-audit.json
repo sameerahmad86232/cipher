@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-19",
+  "purpose": "Kashmiri Perso-Arabic fluency-corpus candidates; not English-Kashmiri parallel data",
+  "fineweb2": {
+    "dataset": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2",
+    "config": "kas_Arab",
+    "cardLicense": "ODC-By-1.0",
+    "trainDocumentsReportedByViewer": 260,
+    "testDocumentsReportedByViewer": 4,
+    "observedFirst100WithDevanagari": 7,
+    "cautions": [
+      "Web crawl text, not reviewed Kashmiri or aligned translation pairs",
+      "Check original-page rights, privacy and content quality before commercial model training",
+      "The test split must not enter training"
+    ]
+  },
+  "dcad2000": {
+    "dataset": "https://huggingface.co/datasets/openbmb/DCAD-2000",
+    "config": "kas_Arab",
+    "cardLicense": "other",
+    "licenseFileLinkedByCardButNotRetrievable": true,
+    "fineweb2KeepFileDocumentsObserved": 419,
+    "observedDocumentsWithDevanagari": 8,
+    "cautions": [
+      "The checked file is FineWeb2-derived and overlaps the FineWeb2 Kashmiri slice",
+      "Custom license and upstream rights must be resolved before training or redistribution",
+      "Use only keep files if access and rights are cleared; remove and statistics files are not training text"
+    ]
+  },
+  "overlapCheck": {
+    "fineweb2TrainSampleSize": 100,
+    "exactMatchesInDcadFineweb2Keep": 62,
+    "method": "Exact Unicode string comparison of the first 100 FineWeb2 viewer rows against the DCAD kas_Arab/fineweb-2_000001_keep.jsonl text field"
+  },
+  "decision": "Record as separate monolingual fluency candidates only. Do not add to approved English-Kashmiri sentence pairs or production training until rights, overlap and language quality are checked."
+}

@@ -212,6 +212,21 @@ The supplied PDF has no embedded text. Visual checks show that the generic Urdu 
 
 The Translator view offers an opt-in browser/mobile offline mode using the ONNX conversion [`Xenova/nllb-200-distilled-600M`](https://huggingface.co/Xenova/nllb-200-distilled-600M), loaded through Transformers.js. It supports the project’s `kas_Arab` and `eng_Latn` directions and is cached on the device after the first download; the project does not bundle the large weight files. The model card identifies the underlying Meta NLLB model and **CC BY-NC 4.0** terms. Users must review those terms before redistribution or commercial use. Device memory, storage, browser support and translation speed vary; online mode remains available as a fallback.
 
+## FineWeb2 and DCAD-2000 Kashmiri web-text candidates
+
+[FineWeb2](https://huggingface.co/datasets/HuggingFaceFW/fineweb-2) exposes a
+`kas_Arab` slice under an ODC-By-1.0 dataset card; its viewer reports 260 train
+and four test documents. [DCAD-2000](https://huggingface.co/datasets/openbmb/DCAD-2000)
+offers a `kas_Arab` FineWeb2-derived keep file with 419 documents, but its card
+uses `license: other` and the linked license file could not be retrieved.
+These are monolingual web documents, not translation pairs. A 100-document
+FineWeb2 sample had 62 exact-text matches in DCAD's keep file, so the two
+must not be blindly concatenated. Mixed-script text also occurs. The measured
+counts and review decision are in `training-data/web-monolingual-source-audit.json`.
+No raw pages were committed or added to production training; first resolve
+rights, deduplicate, filter language/quality, and keep evaluation splits out of
+training.
+
 ## Kashmiri text to speech
 
 The Translator view can synthesize the Kashmiri side of a translation through GAASH Lab's public [`Matcha-TTS-Kashmiri`](https://huggingface.co/GAASH-Lab/Matcha-TTS-Kashmiri) model and [`Bolbosh`](https://github.com/gaash-lab/Bolbosh) framework. The released model supports Perso-Arabic Kashmiri, male and female speaker choices, and several inference-quality settings. The model card and repository identify the release as MIT licensed. Audio generation runs on GAASH Lab's public demo service; this project does not claim to have trained that checkpoint. Bolbosh reports training on 33,182 utterances, validation on 4,542 utterances, and testing on 2,272 utterances from Rasa and IndicVoices. Generated speech remains automatic output and should be reviewed by fluent speakers.
