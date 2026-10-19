@@ -1,0 +1,17 @@
+{
+  "name": "Koshur Lughat — Kashmiri English Dictionary",
+  "short_name": "Koshur Lughat",
+  "description": "A Kashmiri–English dictionary and live sentence translator.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f4ec",
+  "theme_color": "#12372b",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
