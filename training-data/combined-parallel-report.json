@@ -1,7 +1,8 @@
 {
-  "combinedPairs": 164,
+  "combinedPairs": 201,
   "ownerApprovedPairs": 71,
-  "pendingPairs": 93,
+  "pendingPairs": 130,
+  "seerahReviewPairs": 37,
   "inputs": [
     "training-data/reviewed-parallel.jsonl",
     "training-data/user-approved-grammar-pairs.json",
@@ -9,13 +10,15 @@
     "training-data/user-approved-review-batch-03.json",
     "training-data/user-approved-review-batch-05.json",
     "training-data/user-reviewed-batch-02.json",
-    "training-data/user-reviewed-corrections.json"
+    "training-data/user-reviewed-corrections.json",
+    "training-data/seerah-chapter1-parallel-review.jsonl"
   ],
   "excluded": [
     "raw OCR and monolingual books",
     "dictionary glosses without sentence alignment",
     "user-reviewed batch 08 entry 5, later explicitly skipped",
-    "held-out grammar diagnostics"
+    "held-out grammar diagnostics",
+    "Seerah review pairs from the gold/approved training file until source alignment is checked"
   ],
   "policy": "Only aligned English-Kashmiri pairs enter this corpus. Approval status is preserved per row."
 }

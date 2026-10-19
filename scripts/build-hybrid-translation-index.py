@@ -6,8 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "training-data" / "combined-parallel.jsonl"
-WEB_ROOT = ROOT / "dist" if (ROOT / "dist" / "assets").is_dir() else ROOT
-OUTPUT = WEB_ROOT / "assets" / "hybrid-translation-index.json"
+OUTPUT = ROOT / "assets" / "hybrid-translation-index.json"
 
 
 def main():
@@ -20,6 +19,7 @@ def main():
             continue
         seen.add(key)
         pairs.append({
+            "id": row.get("id", ""),
             "english": row["english"],
             "kashmiri": row["kashmiri"],
             "transliteration": row.get("transliteration", ""),
@@ -27,6 +27,7 @@ def main():
             "partOfSpeech": row.get("partOfSpeech", ""),
             "humanReview": row.get("humanReview", "pending"),
             "status": row.get("status", "source-attested"),
+            "trainingTier": row.get("trainingTier", ""),
             "source": row.get("source", {}),
         })
 

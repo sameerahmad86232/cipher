@@ -18,8 +18,10 @@ approved Kashmiri training data or a claim that the latest chat draft is final.
 
 ## Training decision
 
-Do not feed this chapter's unreviewed new draft into LoRA training. The
-owner-reviewed passages are valuable but contain source-alignment omissions;
+The 37 owner-reviewed wording pairs are exported to
+`seerah-chapter1-parallel-review.jsonl` and indexed for exact lookup, but are
+not in the gold/approved training file. Do not feed this chapter's unreviewed
+new draft into LoRA training. The owner-reviewed passages are valuable but contain source-alignment omissions;
 the priority is native-speaker correction and a verified sentence-pair table.
 Additional model weights or noisy synthetic data cannot repair a wrong target.
 
@@ -33,5 +35,6 @@ Additional model weights or noisy synthetic data cannot repair a wrong target.
   Hugging Face session. Their licenses/access terms must still be followed.
 - IndicTrans2 is gated; BhashaVerse is public but about 1.1B parameters.
   Neither has been downloaded, benchmarked or fine-tuned in this workspace.
-- This workspace has no CUDA GPU, PyTorch or Transformers installation. No
-  second neural model was trained here.
+- This workspace has no CUDA GPU. A CPU-only PyTorch diagnostic was trained on
+  other reviewed pairs, but failed the generation smoke test; it does not
+  establish translation quality for the Seerah material.

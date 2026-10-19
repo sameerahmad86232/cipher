@@ -116,6 +116,7 @@ export function findMemoryMatch(
   let candidate: TranslationPair | undefined;
   let score = 0;
   for (const pair of memory.pairs) {
+    if (pair.humanReview === 'pending-source-alignment') continue;
     const source = direction === 'en-ks' ? pair.english : pair.kashmiri;
     const similarity = tokenScore(text, source);
     const approvedBoost = pair.humanReview === 'approved-by-project-owner' ? 0.01 : 0;
@@ -161,6 +162,8 @@ export function dictionaryDraft(
 }
 
 export function reviewLabel(pair: TranslationPair): string {
+  if (pair.humanReview === 'pending-source-alignment')
+    return 'Seerah wording reviewed; source alignment pending';
   return pair.humanReview === 'approved-by-project-owner'
     ? 'Owner-approved project review'
     : 'Community-reviewed corpus entry';

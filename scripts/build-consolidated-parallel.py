@@ -7,6 +7,7 @@ import unicodedata
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "training-data"
 BASE = OUT / "reviewed-parallel.jsonl"
+SEERAH_REVIEW = OUT / "seerah-chapter1-parallel-review.jsonl"
 APPROVED_FILES = [
     OUT / "user-approved-grammar-pairs.json",
     OUT / "user-approved-review-batch-01.json",
@@ -73,6 +74,18 @@ for path in APPROVED_FILES:
             "reviewSourceFile": path.name,
         })
 
+seerah_added = 0
+for line in SEERAH_REVIEW.read_text(encoding="utf-8").splitlines():
+    if not line.strip():
+        continue
+    row = json.loads(line)
+    pair_key = key(row)
+    if pair_key in seen:
+        continue
+    seen.add(pair_key)
+    rows.append(row)
+    seerah_added += 1
+
 combined_path = OUT / "combined-parallel.jsonl"
 approved_path = OUT / "approved-parallel.jsonl"
 combined_path.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n")
@@ -82,12 +95,14 @@ report = {
     "combinedPairs": len(rows),
     "ownerApprovedPairs": len(approved_rows),
     "pendingPairs": len(rows) - len(approved_rows),
-    "inputs": [str(BASE.relative_to(ROOT))] + [str(p.relative_to(ROOT)) for p in APPROVED_FILES],
+    "seerahReviewPairs": seerah_added,
+    "inputs": [str(BASE.relative_to(ROOT))] + [str(p.relative_to(ROOT)) for p in APPROVED_FILES] + [str(SEERAH_REVIEW.relative_to(ROOT))],
     "excluded": [
         "raw OCR and monolingual books",
         "dictionary glosses without sentence alignment",
         "user-reviewed batch 08 entry 5, later explicitly skipped",
         "held-out grammar diagnostics",
+        "Seerah review pairs from the gold/approved training file until source alignment is checked",
     ],
     "policy": "Only aligned English-Kashmiri pairs enter this corpus. Approval status is preserved per row.",
 }
