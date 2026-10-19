@@ -1,0 +1,289 @@
+{"source": "I", "target": "بٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "This is my book.", "target": "یٕ چھٕ مین کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Possession"}
+{"source": "I read a book.", "target": "می پرٕ کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Present tense"}
+{"source": "I read a book yesterday.", "target": "می پرٕ راتھ کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Past tense"}
+{"source": "I will read a book tomorrow.", "target": "بٕ پرٕ پگه کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Future tense"}
+{"source": "She is reading a book.", "target": "سٕ  چھٕ کتاب پران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Progressive"}
+{"source": "They have finished the work.", "target": "تمو مکلو کام", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Perfect"}
+{"source": "I do not know.", "target": "می چھنه پے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "Are you Kashmiri?", "target": "زٕ  چھکھا کوشر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Question"}
+{"source": "Where are you going?", "target": "ژٕ کوت چھکھ گسان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Wh-question"}
+{"source": "Close the door.", "target": "درواز کر بند", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Command"}
+{"source": "Please help me.", "target": "مهربانی کرتھ کر مے مدد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Request"}
+{"source": "If it rains we will stay home.", "target": "اگرے رود پیو  تیلٕ روز بٕ گھرے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Conditional"}
+{"source": "I came and sat down.", "target": "بٕ آوس تٕ بوٹھوس پتھر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Coordination"}
+{"source": "Because he was ill he stayed home.", "target": "تکیازٕ سُ اووس بیمار تٕ سُبیوٹھ گھرے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Subordination"}
+{"source": "The book is on the table.", "target": "کتاب چھ مےزس پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postposition"}
+{"source": "He came from the market.", "target": "سُ آوو بازرٕ پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postposition"}
+{"source": "Give this to her.", "target": "یے دٕ تیمس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postposition"}
+{"source": "This is for my brother.", "target": "یٕ چھ مینس بآیس خهتره", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postposition"}
+{"source": "I saw the child.", "target": "مئ وچھ شر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Case"}
+{"source": "The boy came.", "target": "لرکٕ آو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Gender"}
+{"source": "The girl came.", "target": "لرکی آے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Gender"}
+{"source": "The children are playing.", "target": "شور چھ غندان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Number"}
+{"source": "He went to the village to live.", "target": "سُ گو کام روزنه خاترة", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Motion"}
+{"source": "We go to school every day.", "target": "اءس چھ دوهے سکول گسان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Time"}
+{"source": "It started to rain.", "target": "رود لوگگن", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather"}
+{"source": "There is water in the house.", "target": "مکانس منز چھ آب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Existence"}
+{"source": "This is better than that.", "target": "یٕ چھ همے خوتٕ اصل", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparison"}
+{"source": "I have two books.", "target": "میٕ چھ زٕ کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Quantity"}
+{"source": "The man who came yesterday is my teacher.", "target": "سُ مهنوں یوس راتھ آو چھ مے استاد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Relative clause"}
+{"source": "Translate a short hadith.", "target": "لکٹس حدیسس کر ترجم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religious"}
+{"source": "Allah is the Most Merciful.", "target": "الله تعالی چھ رحم کرن وول", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religious"}
+{"source": "The king ruled the country for ten years.", "target": "بادشاهن کر دههن وورین  ورین اتھ ملکس پیٹھ حکومت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Historical"}
+{"source": "The river flows through the valley.", "target": "کول چھ گامٕ منز پکان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Geography"}
+{"source": "The student wrote a letter.", "target": "طالب علمن لیوکھ خط", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Education"}
+{"source": "He is feeling sick today.", "target": "س چھ بیمار باسان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health"}
+{"source": "The government announced a new policy.", "target": "گورنمنٹن کٕر نیی پالسی هوند انقاد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "News"}
+{"source": "Send the message by email.", "target": "مسیج کر اےمیل زریعه", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Technology"}
+{"source": "Curse you!", "target": "لعنت زے پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Idioms"}
+{"source": "Write the Kashmiri form of this place name.", "target": "یمٕ جایٕ هند لیکھو کوشر ناو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Names"}
+{"source": "book", "target": "کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "house", "target": "گھرٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "water", "target": "آب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "help", "target": "مدد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "army", "target": "فوج", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "king", "target": "بادشاه", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "elephant", "target": "هوس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "tiger", "target": "شییر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Lexicon"}
+{"source": "I am reading a book.", "target": "بہٕ چھُس کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "present"}
+{"source": "You are reading a book.", "target": "ژٕ چھُکھ کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "present"}
+{"source": "He is reading a book.", "target": "سُہ چُھ کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "present"}
+{"source": "She is reading a book.", "target": "سۄ چِھ کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "present"}
+{"source": "We are reading books.", "target": "اَسۍ چِھ کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "present"}
+{"source": "I am going home.", "target": "بہٕ چھُس گَرٕ گساان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "present"}
+{"source": "I read a book yesterday.", "target": "مےٚ پٔر راتھ کِتاب", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "past"}
+{"source": "I wrote a letter yesterday.", "target": "مےٚ لیوٚکھ خَط راتھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "past"}
+{"source": "She came from the village.", "target": "سۄ آیہِ گامہ پیٹھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "past"}
+{"source": "We went home yesterday.", "target": "اَسۍ گٔیۍ راتھ گَرٕ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "past"}
+{"source": "They brought food.", "target": "تِمو اوون کھؠن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "past"}
+{"source": "I gave the book to him.", "target": "مےٚ  دیژ کِتاب تَمس", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "past"}
+{"source": "I read books every day.", "target": "بہٕ چھُس  دۄہے کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "habitual"}
+{"source": "She reads books regularly.", "target": "سۄ  جھ دوہے کِتاب پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "habitual"}
+{"source": "We go to school every day.", "target": "اَسۍ چِھ دۄہٕے سکوٗل گَژھان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "habitual"}
+{"source": "I will go tomorrow.", "target": "بہٕ گَژھٕ پَگاہ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "future"}
+{"source": "She will come in the evening.", "target": "سۄ یِیِہ شامنس", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "future"}
+{"source": "We will stay at home.", "target": "اَسۍ روزَو گھرے", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "future"}
+{"source": "I am in the room.", "target": "بہٕ چھُس کَمرس مَنٛز", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "locative"}
+{"source": "The book is on the table.", "target": "کِتاب چِھ میزَس پؠٹھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "locative"}
+{"source": "He came from the city.", "target": "سُہ آو شَہرٕ پؠٹھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "locative"}
+{"source": "She went toward the river.", "target": "سۄ گے کُلِیہ کُن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "locative"}
+{"source": "We stayed near the house.", "target": "اَسۍ روٗد مکانس  نِش", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "locative"}
+{"source": "They travelled until evening.", "target": "تمو کوور شام تام سفر", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "locative"}
+{"source": "This is my house.", "target": "یہ چُھ میون مکاان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "possessive"}
+{"source": "That is your book.", "target": "ہُ اکھ چِھ چئن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "possessive"}
+{"source": "This is his brother's house.", "target": "یہ چِھ ہوم سووندس بھاۓ سند مکان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "possessive"}
+{"source": "These are our books.", "target": "یِم چِھ سانہ کِتاب", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "possessive"}
+{"source": "I wrote with a pen.", "target": "مےٚ لیوکھ قَلَمِہِ سۭتۍ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "instrumental"}
+{"source": "She came with her sister.", "target": "سۄ آیہِ پَنٕنِس بینی سۭتۍ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "instrumental"}
+{"source": "I came for your help.", "target": "بہٕ آوس ژےٚ مَدَت کَرنٕ خٲطرٕ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "purpose"}
+{"source": "They went to the market to buy food.", "target": "تِم گٔیۍ بازار کھؠن اننہ خٲطرٕ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "purpose"}
+{"source": "I am not reading.", "target": "بہٕ چھُس نہٕ پَران", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "negative"}
+{"source": "He did not come yesterday.", "target": "سُہ آونہ راتھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "negative"}
+{"source": "We will not go there.", "target": "اَسۍ گاسوہ نہ تور", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "negative"}
+{"source": "Nobody saw him.", "target": "سہ ووچھ نہ کاانسے", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "negative"}
+{"source": "Come here.", "target": "وَل یوور", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "imperative"}
+{"source": "Sit down.", "target": "بێہہ پَتھَر", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "imperative"}
+{"source": "Do not open the door.", "target": "یینہ دروازء کھولکھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "imperative"}
+{"source": "Please help the old man.", "target": "مِہربانی کَرِتھ کر  بُزُرگ نَفَرَس مَدَت", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "imperative"}
+{"source": "Are you Kashmiri?", "target": "ژء چھکاہ کوشر", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "question"}
+{"source": "Did you see him?", "target": "ژےٚ وُچھتھ نا سُہ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "question"}
+{"source": "Who asked this question?", "target": "یِہ سَوال کِیٛم ووٚن (پرٛژھ)", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "question"}
+{"source": "Where did they go?", "target": "تِم کوت گٔیۍ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "question"}
+{"source": "Whose house is this?", "target": "یِہ کیم سوند مکان چھُ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "question"}
+{"source": "If it rains, we will stay at home.", "target": "اَگَر رود  لَوگُن تیلہِ روزَو اَسۍ گَرٕ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "conditional"}
+{"source": "If you work hard, you will succeed.", "target": "اگر ژء محنت تہ مشکت کرکھ تیلہ گسگھ ژء کامیاب", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "conditional"}
+{"source": "When the rain stops, we will leave.", "target": "یلہ رود گسہ بند تیلے نیروہ اسہ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "temporal"}
+{"source": "After praying, they came home.", "target": "عِبادَت کَرِتھ اااے تم گھرء", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "temporal"}
+{"source": "Although he was tired, he continued working.", "target": "اَلبَتہٕ سُہ اوس تھَوکْمُت مگر  تِم تھو کٲم جٲری", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "concession"}
+{"source": "He came and sat down.", "target": "سُہ آوو تہ بیوٹھ پتھر", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "coordination"}
+{"source": "This house is bigger than that house.", "target": "یہ گھرہ چھُ ہومی گرء خوتہ بوڈ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "comparison"}
+{"source": "You should speak the truth.", "target": "ژےٚ پَزِ پوٗز وَنُن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "modal"}
+{"source": "The letter was written yesterday.", "target": "خَط آو راتھ لیکھنہ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "passive"}
+{"source": "The teacher made the child read.", "target": "اوستادن ہیشنوو شُر پِرُن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "causative"}
+{"source": "He washed himself.", "target": "تِم چھول پنون پان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "reflexive"}
+{"source": "The Messenger of Allah said.", "target": "رسول رسول صلى الله عليه وسلو فرمو", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "honorific"}
+{"source": "The Prophet, peace be upon him, arrived.", "target": "پیٖغَمبَر صَلَّی اللہُ عَلَیہِ وَسَلَّمو اوون تَشریٖف", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "honorific"}
+{"source": "The reward depends on intentions.", "target": "اَجر چُھ نِیَتَن پؠٹھ دارومَدار تھاوان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "religious"}
+{"source": "The king sent a letter to the governor.", "target": "بادشاہَن سوزُ گَورنَرَس خط", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "historical"}
+{"source": "The army crossed the desert.", "target": "فَوجوٚو کور رؠگِستان پار", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "historical"}
+{"source": "The ruler appointed a governor.", "target": "حُکُمرانَن کور گورنر مقرر", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "historical"}
+{"source": "He said that he had seen the angel.", "target": "تِم ووٚن ژٕ مےٚ ووچھ فرشتہ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "discourse"}
+{"source": "The narrator reported the incident.", "target": "راوِیَن دِیُتھ امی واقعہ متلعق جانکاری", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "discourse"}
+{"source": "This sentence is not yet complete.", "target": "یے جملہ چھُ نا مقممل", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "proofreading"}
+{"source": "This expression sounds unnatural.", "target": "یِہ وَنُن چھ عَجیٖب بَسان", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "proofreading"}
+{"source": "Please translate this respectfully.", "target": "اتھ کر عزت سان ترجم", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "register"}
+{"source": "Use everyday Kashmiri for this sentence.", "target": "روزانٕہٕ کٲشُر کَرِ اِستِعمال یِمِه خٲطرٕ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "register"}
+{"source": "Leave an unknown English name unchanged.", "target": " غَیر مَعلوٗم اَنٛگریٖزی ناو تَرٛاوُن یُتھ سُہ چھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "translation"}
+{"source": "Use the approved term from the glossary.", "target": "لُغَت پیٹھ مَنزوٗر شُدٕہ اِصطِلاح کرو استعمال", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "translation"}
+{"source": "Preserve the original meaning even if word order changes.", "target": "اَصلی مَعنٕی تھاَوُن, چاہے لَفظَن ہٕنٛز تَرتیٖب آسٕ مُختَلِف", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "translation"}
+{"source": "Two years passed.", "target": "ژٕ ؤری گٔیۍ پتھ کُن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "numbers"}
+{"source": "Five people came from the village.", "target": "پانٛژھ نَفَر آیہِ گامٕ پؠٹھ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "numbers"}
+{"source": "One elephant crossed the road.", "target": "اَک ہۄس   کؤر پار", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "animals"}
+{"source": "Many elephants crossed the road.", "target": "ہوسہیِ کَرِ سڈکھ پار", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "animals"}
+{"source": "The king of Persia sent an envoy.", "target": "فارِسی بادشاہَن سوزُ سفیٖر", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "names"}
+{"source": "The messenger arrived and delivered the letter.", "target": "قاصِد آو ته تم کر چٹھ حَوال", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "The people gathered around the leader.", "target": "لوٗکھ گٔیہِ لیڈرس أندۍ پٔکھۍ جمه", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "The ruler became angry after reading the letter.", "target": "حُکُمران گوٚو چِٹھہِ پٔرِتھ پاگل۔  ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "The envoy returned with the king's answer.", "target": "قاصِد آو بادشاه  سُنٛد جواب هیتھ ", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "The people accepted Islam after hearing the message.", "target": "  یِہ پَیغام بوٗزِتھ کورلوکوو اسلام  قَبوٗل", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "The governor ordered the soldiers to leave.", "target": "گورنرن   ووٚن فوجن  نِیٚرِوِو", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "The letter was kept in a box.", "target": "خَط آو دَبَس مَنٛز تھاَوُن", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "After this event, the kingdom became independent.", "target": "امہِ واقعہٕ پتہٕ گٔیہِ سلطنت آزاد۔", "source_language": "eng_Latn", "target_language": "kas_Arab", "status": "approved-by-project-owner", "category": "story"}
+{"source": "You (singular)", "target": "زٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "You (plural/respectful)", "target": "توهے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "He", "target": "هُ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "She", "target": "سِٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "We", "target": "اءس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "They", "target": "تیم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "This is mine.", "target": "یه چھ میون", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "That is yours.", "target": "یه چھ چوون", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Pronouns"}
+{"source": "I read a book.", "target": "میه پرٕ کتاب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - present"}
+{"source": "She writes letters.", "target": "سِٕ جھ خط لیکھان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - present"}
+{"source": "We go to school every day.", "target": "إ چھ هپرتھ دوه سکول گسان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - present"}
+{"source": "They are eating food.", "target": "تم چھ کھین کھیوان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - present"}
+{"source": "He lives in the village.", "target": "سُ چھ گام روزان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - present"}
+{"source": "I am learning Kashmiri.", "target": "به چھس کوشر پران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - present"}
+{"source": "I read a book yesterday.", "target": "میه پر کتاب راتھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - past"}
+{"source": "She wrote a letter yesterday.", "target": "میه  لیوکھ خط راتھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - past"}
+{"source": "We went home last night.", "target": "إس گی گھرٕ راتھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - past"}
+{"source": "They ate breakfast.", "target": "تمو کھو دوهلیک بته", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - past"}
+{"source": "He came from the market.", "target": "س آوو بازر پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - past"}
+{"source": "I saw the child.", "target": "میی ووچھ شر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - past"}
+{"source": "I will go tomorrow.", "target": "په گسه سُبن", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - future"}
+{"source": "She will write a letter.", "target": "سٕ لیکھه  خط", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - future"}
+{"source": "We will meet next week.", "target": "إس  میلوو بییه هفته", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - future"}
+{"source": "They will come in the evening.", "target": "تم  یٕن شامنس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - future"}
+{"source": "He will finish the work.", "target": "سُ مکلآے کام", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - future"}
+{"source": "I will learn this sentence.", "target": "بٕ پرٕ  ییه جمله", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Tense - future"}
+{"source": "I am reading now.", "target": "بٕ چھس پران ونکیس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Aspect"}
+{"source": "She was writing then.", "target": "سٕ إٓس لیکھان تیمساتٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Aspect"}
+{"source": "They have finished the work.", "target": "تموو إٓس کام مکلومژ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Aspect"}
+{"source": "He had already left.", "target": "سُ  آوس غورے دراموت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Aspect"}
+{"source": "We keep studying.", "target": "آءس روود پران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Aspect"}
+{"source": "I do not know.", "target": "میہ چھنہ پاے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "She does not read Kashmiri.", "target": "سٕ چھنه هکان کوشر پرتھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "He did not come.", "target": "سُ آو نہ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "We will not go there.", "target": "آءس غسو نہ توور", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "Do not open the door.", "target": "ینہ درواز کھولکھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "Nobody came.", "target": "کنھں آو نہ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Negation"}
+{"source": "Are you Kashmiri?", "target": "زء چھکھا کوشر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "Are you alright?", "target": "زٕ چھکھا ٹھیکھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "Where are you going?", "target": "زٕ کوت چھکھ گسآن", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "When did he come?", "target": "س کر آوو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "Who wrote this?", "target": "ی کیم لیوکھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "Why did they leave?", "target": "تم کیازٕ درآے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "How much does it cost?", "target": "یتھ کوتاه کٕمت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "What is this called?", "target": "یتھ کیا چھ ونان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Questions"}
+{"source": "Come here.", "target": "ول یوور", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "Sit down.", "target": "بیھ پتھر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "Open the door.", "target": "درواز کھول", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "Please help me.", "target": "میربانی کرتھ کر می مدد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "Give me water.", "target": "مییه د آب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "Listen carefully.", "target": "غور سان بوز", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "Do not speak loudly.", "target": "ینه زوورٕ وننکھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Commands and requests"}
+{"source": "The book is on the table.", "target": "کتاب چھ میزس پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "He came from the market.", "target": "س آو بازرٕ پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "Give this to her.", "target": "یٕ دٕ همس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "This is for my brother.", "target": "یٕ چھ  مینیس بھایس کھاتره", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "She lives in the house.", "target": "سٕ چھ مکانس منز روزان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "We walked through the village.", "target": "إس إٓس  گامٕ منز پکان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "The child is near the school.", "target": "شر چھ سکولس نیش", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Postpositions and cases"}
+{"source": "The boy came.", "target": "لرکه آوو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "The girl came.", "target": "لرکی آاے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "The boys came.", "target": "لرکه آے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "The girls came.", "target": "لرکی آے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "The child is playing.", "target": "شر چھ غندان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "The children are playing.", "target": "شر چھ  غندان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "One book is here.", "target": "اکھ کتاب چھ یکے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "Two books are here.", "target": "زٕ کتاب چھ یکے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Agreement and number"}
+{"source": "I am a student.", "target": "بٕ چھس  طالبعلم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "He is alive.", "target": "س چھ زندے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "She is at the store.", "target": "س چھ دکانس پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "There is water in the house.", "target": "گھرس منز چھ آب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "There are many people here.", "target": "یته چھ وریاه خلق", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "This work is complete.", "target": "یٕ کام گی ختم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "This work is not complete.", "target": "یٕ کام گی نه  ختم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Copula and existence"}
+{"source": "I am coming from Mumbai.", "target": "به چھوس بمبوے پیٹھ یوان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Motion and location"}
+{"source": "He went to the village to live.", "target": "س گو گام روزنه ختره", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Motion and location"}
+{"source": "We go to school every day.", "target": "إ س چھ دوهے سکول گسان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Motion and location"}
+{"source": "She returned home.", "target": "س آے گھرٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Motion and location"}
+{"source": "They went up the mountain.", "target": "تم خٕت پھاڑس پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Motion and location"}
+{"source": "The man who came yesterday is my teacher.", "target": "س نفر یوس راتھ آو چھ می استاد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Conditionals and clauses"}
+{"source": "Although it was cold, we went outside.", "target": "البته تٕر إٓس  إٓس زاے اندر", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Conditionals and clauses"}
+{"source": "It is one o’clock.", "target": "اکھ بجے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Numbers and time"}
+{"source": "Two years passed.", "target": "زٕ وریے گے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Numbers and time"}
+{"source": "He came after ten years.", "target": "س آو  دهِ واری بعد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Numbers and time"}
+{"source": "I arrived at noon.", "target": "بہ آوس دوہلہ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Numbers and time"}
+{"source": "We will leave tomorrow morning.", "target": "آس نیروو سبن سلے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Numbers and time"}
+{"source": "She reads every evening.", "target": "س چھ پرتھ شامنس پران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Numbers and time"}
+{"source": "This is better than that.", "target": "ی چھ بہتر ہمیہ خوت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparisons and quantities"}
+{"source": "He is taller than me.", "target": "سُ چھ میانہ خوتء بوڈ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparisons and quantities"}
+{"source": "There are many books.", "target": "یتہ چھ واریاہ کتابء", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparisons and quantities"}
+{"source": "I have a little water.", "target": "مے چھ کمی آب", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparisons and quantities"}
+{"source": "How many people came?", "target": "کءتیاہ لوکھ آیے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparisons and quantities"}
+{"source": "The house is very big.", "target": "مکان چھ واریاہ بوڈ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Comparisons and quantities"}
+{"source": "It started to rain.", "target": "روود لوگن", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather and nature"}
+{"source": "The water is cold.", "target": "آب چھ تھنڈہ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather and nature"}
+{"source": "The sun is shining.", "target": "آفتاب چھ زوتان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather and nature"}
+{"source": "Thunder and lightning appeared.", "target": "گگراے تہ ترٹھ  گے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather and nature"}
+{"source": "The earth revolves around the sun.", "target": "زمیین چھ آفتابس اند پوکھ گردش کران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather and nature"}
+{"source": "The river flows through the valley.", "target": "کول چھ  گامء منز یوان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Weather and nature"}
+{"source": "What are you doing?", "target": "زٕ کیاه کران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "I am eating.", "target": "بٕ چھس کھیوان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "I am tired.", "target": "بٕ چھس تھکموت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "I liked the other one.", "target": "می غو بیاکھ خوش", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "Please wait here.", "target": "مهربانی کرتھ پیریو یتهتھس", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "Let us go home.", "target": "چلو گھرٕ گسوو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "I understand.", "target": "می چھ پاے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "I do not understand.", "target": "میه چھنه پاے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "Thank you.", "target": "شکریا", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "You are welcome.", "target": "خوشامدید چوون", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Daily conversation"}
+{"source": "The teacher explained the lesson.", "target": "استادن سمجووو سبق", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Education and work"}
+{"source": "I read books regularly.", "target": "بٕ چھس همیش کتاب پران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Education and work"}
+{"source": "He works at the store.", "target": "س چھ دکانس پیٹھ کام کران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Education and work"}
+{"source": "She finished her work.", "target": "تیم مکلوو پنن کام", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Education and work"}
+{"source": "We are studying grammar.", "target": "إ س چھ گریمر پران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Education and work"}
+{"source": "He is feeling sick today.", "target": "س چھ بیمار", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health and emergency"}
+{"source": "Call the doctor.", "target": "ڈاکٹرس کر پھون", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health and emergency"}
+{"source": "She has a fever.", "target": "تیمس چھ تف", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health and emergency"}
+{"source": "Help this injured person.", "target": "یمس چھوکهلدس کر مدد", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health and emergency"}
+{"source": "Do not worry.", "target": "مٔ بر گم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health and emergency"}
+{"source": "He recovered after treatment.", "target": "س گو ٹھیکھ علاج پت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Health and emergency"}
+{"source": "Translate this hadith.", "target": "یتھ حدیثس کروو ترجم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religion and respectful style"}
+{"source": "The Prophet said this.", "target": "رسوولو فرموو یٕ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religion and respectful style"}
+{"source": "They performed prayer.", "target": "تموو کر عبادت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religion and respectful style"}
+{"source": "He gave charity to the poor.", "target": "تیم دےوت غریبس زکاة", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religion and respectful style"}
+{"source": "May Allah guide us.", "target": "الله تعلی هعین پنن واتھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religion and respectful style"}
+{"source": "The verse was revealed.", "target": "آیت گیی نازل", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Religion and respectful style"}
+{"source": "The king ruled the country for ten years.", "target": "بادشاهن کر دهن ورین ملکس پیٹھ حکومت", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "History and biography"}
+{"source": "The army entered the city.", "target": "فوج ژاوو شهرس منز", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "History and biography"}
+{"source": "The people migrated to another land.", "target": "لکوو کر هجرت بییس ملکس منز", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "History and biography"}
+{"source": "He was born in 1914.", "target": "س زاو 1914", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "History and biography"}
+{"source": "The empire expanded.", "target": "سلطنت پھلیے", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "History and biography"}
+{"source": "The battle ended after many days.", "target": "جنگ مکلیوو واریاهو دوهه پته", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "History and biography"}
+{"source": "The city is between two mountains.", "target": "شهر چھ دون پھاڈن درمیانه", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Geography and places"}
+{"source": "The village is near the lake.", "target": "گام چھ سمندرس نیش", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Geography and places"}
+{"source": "The road leads to Srinagar.", "target": "یی وتھ چھ واتناوان سرینگر تام", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Geography and places"}
+{"source": "The country shares a border with India.", "target": "یی ملک چھ  هندوستانس ستی  بارڈر باگراوان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Geography and places"}
+{"source": "Send the message by email.", "target": "مسیج واتناو إمیل زریع", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Modern terminology"}
+{"source": "Open the website.", "target": "ویب سیٹ کھولیو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Modern terminology"}
+{"source": "The phone battery is low.", "target": "پھونج بیٹری چھ کم", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Modern terminology"}
+{"source": "Download the file.", "target": "فییل کرن ڈونلوڈ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Modern terminology"}
+{"source": "The computer is working.", "target": "کمپیوٹر چھ کام کران", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Modern terminology"}
+{"source": "The video is playing.", "target": "ویڈیو چھ چلان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Modern terminology"}
+{"source": "The elephant is large.", "target": "هوس چھ بوڈ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Animals and nature vocabulary"}
+{"source": "The tiger is dangerous.", "target": "سه چھ خترناخ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Animals and nature vocabulary"}
+{"source": "The birds are flying.", "target": "جاناور چھ وڈان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Animals and nature vocabulary"}
+{"source": "sheep", "target": "کٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Animals and nature vocabulary"}
+{"source": "The horse is running.", "target": "غور چھ پکان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Animals and nature vocabulary"}
+{"source": "Curse you!", "target": "لعنت ژے پیٹھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Idioms and register"}
+{"source": "God will take away your sorrows.", "target": "خدا کرِ تُہند غم دور", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Idioms and register"}
+{"source": "That girl is like lightning.", "target": "سۅ لڑکی چھیہ ترٹھا ہچھ۔", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Idioms and register"}
+{"source": "Nothing will be achieved by killing oneself over this.", "target": "کنه ته هکه نه حاصل گستھ پنون پان اتھ پیٹھ مارتھ", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Idioms and register"}
+{"source": "In my opinion, he is not a good person.", "target": "میہ چھہ باسان سہ چھہ نہ جان انسان", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Idioms and register"}
+{"source": "Provide Roman transliteration for this sentence.", "target": "یَتھ جملَس خٲطرٕ کٔرِو رومن ترجمہٕ۔", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Transliteration and proofreading"}
+{"source": "Give the word-by-word meaning.", "target": "پریتھ لفظک معنی دِییوو", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Transliteration and proofreading"}
+{"source": "Correct this Kashmiri sentence without changing its meaning.", "target": "اَمیُک مَطلَب بَدلاونہٕ ورٲے کٔرِو یہِ کٲشِرۍ جملہٕ صحیح۔", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Transliteration and proofreading"}
+{"source": "Rewrite this in natural native Kashmiri.", "target": "یہِ لیکھو کٔشیٖرِ زَبانَه‌منز۔", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Transliteration and proofreading"}
+{"source": "Explain the grammar of this sentence.", "target": "یَمہِ جملٕچ گرٛامَر کٔرِو وضاحت۔", "src_lang": "eng_Latn", "tgt_lang": "kas_Arab", "category": "Transliteration and proofreading"}

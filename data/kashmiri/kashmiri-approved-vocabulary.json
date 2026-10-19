@@ -1,0 +1,515 @@
+{
+  "source": "user-approved workbook",
+  "pair_count": 48,
+  "unique_tokens": 127,
+  "tokens": [
+    {
+      "word": "چھ",
+      "count": 11
+    },
+    {
+      "word": "کتاب",
+      "count": 8
+    },
+    {
+      "word": "کر",
+      "count": 5
+    },
+    {
+      "word": "بٕ",
+      "count": 4
+    },
+    {
+      "word": "سُ",
+      "count": 4
+    },
+    {
+      "word": "پیٹھ",
+      "count": 4
+    },
+    {
+      "word": "یٕ",
+      "count": 3
+    },
+    {
+      "word": "می",
+      "count": 3
+    },
+    {
+      "word": "پرٕ",
+      "count": 3
+    },
+    {
+      "word": "چھٕ",
+      "count": 2
+    },
+    {
+      "word": "راتھ",
+      "count": 2
+    },
+    {
+      "word": "کام",
+      "count": 2
+    },
+    {
+      "word": "زٕ",
+      "count": 2
+    },
+    {
+      "word": "کوشر",
+      "count": 2
+    },
+    {
+      "word": "گسان",
+      "count": 2
+    },
+    {
+      "word": "مے",
+      "count": 2
+    },
+    {
+      "word": "مدد",
+      "count": 2
+    },
+    {
+      "word": "رود",
+      "count": 2
+    },
+    {
+      "word": "گھرے",
+      "count": 2
+    },
+    {
+      "word": "تٕ",
+      "count": 2
+    },
+    {
+      "word": "بیمار",
+      "count": 2
+    },
+    {
+      "word": "آو",
+      "count": 2
+    },
+    {
+      "word": "منز",
+      "count": 2
+    },
+    {
+      "word": "آب",
+      "count": 2
+    },
+    {
+      "word": "مین",
+      "count": 1
+    },
+    {
+      "word": "پگه",
+      "count": 1
+    },
+    {
+      "word": "سٕ",
+      "count": 1
+    },
+    {
+      "word": "پران",
+      "count": 1
+    },
+    {
+      "word": "تمو",
+      "count": 1
+    },
+    {
+      "word": "مکلو",
+      "count": 1
+    },
+    {
+      "word": "چھنه",
+      "count": 1
+    },
+    {
+      "word": "پے",
+      "count": 1
+    },
+    {
+      "word": "چھکھا",
+      "count": 1
+    },
+    {
+      "word": "ژٕ",
+      "count": 1
+    },
+    {
+      "word": "کوت",
+      "count": 1
+    },
+    {
+      "word": "چھکھ",
+      "count": 1
+    },
+    {
+      "word": "درواز",
+      "count": 1
+    },
+    {
+      "word": "بند",
+      "count": 1
+    },
+    {
+      "word": "مهربانی",
+      "count": 1
+    },
+    {
+      "word": "کرتھ",
+      "count": 1
+    },
+    {
+      "word": "اگرے",
+      "count": 1
+    },
+    {
+      "word": "پیو",
+      "count": 1
+    },
+    {
+      "word": "تیلٕ",
+      "count": 1
+    },
+    {
+      "word": "روز",
+      "count": 1
+    },
+    {
+      "word": "آوس",
+      "count": 1
+    },
+    {
+      "word": "بوٹھوس",
+      "count": 1
+    },
+    {
+      "word": "پتھر",
+      "count": 1
+    },
+    {
+      "word": "تکیازٕ",
+      "count": 1
+    },
+    {
+      "word": "اووس",
+      "count": 1
+    },
+    {
+      "word": "سُبیوٹھ",
+      "count": 1
+    },
+    {
+      "word": "مےزس",
+      "count": 1
+    },
+    {
+      "word": "آوو",
+      "count": 1
+    },
+    {
+      "word": "بازرٕ",
+      "count": 1
+    },
+    {
+      "word": "یے",
+      "count": 1
+    },
+    {
+      "word": "دٕ",
+      "count": 1
+    },
+    {
+      "word": "تیمس",
+      "count": 1
+    },
+    {
+      "word": "مینس",
+      "count": 1
+    },
+    {
+      "word": "بآیس",
+      "count": 1
+    },
+    {
+      "word": "خهتره",
+      "count": 1
+    },
+    {
+      "word": "مئ",
+      "count": 1
+    },
+    {
+      "word": "وچھ",
+      "count": 1
+    },
+    {
+      "word": "شر",
+      "count": 1
+    },
+    {
+      "word": "لرکٕ",
+      "count": 1
+    },
+    {
+      "word": "لرکی",
+      "count": 1
+    },
+    {
+      "word": "آے",
+      "count": 1
+    },
+    {
+      "word": "شور",
+      "count": 1
+    },
+    {
+      "word": "غندان",
+      "count": 1
+    },
+    {
+      "word": "گو",
+      "count": 1
+    },
+    {
+      "word": "روزنه",
+      "count": 1
+    },
+    {
+      "word": "خاترة",
+      "count": 1
+    },
+    {
+      "word": "اءس",
+      "count": 1
+    },
+    {
+      "word": "دوهے",
+      "count": 1
+    },
+    {
+      "word": "سکول",
+      "count": 1
+    },
+    {
+      "word": "لوگگن",
+      "count": 1
+    },
+    {
+      "word": "مکانس",
+      "count": 1
+    },
+    {
+      "word": "همے",
+      "count": 1
+    },
+    {
+      "word": "خوتٕ",
+      "count": 1
+    },
+    {
+      "word": "اصل",
+      "count": 1
+    },
+    {
+      "word": "میٕ",
+      "count": 1
+    },
+    {
+      "word": "مهنوں",
+      "count": 1
+    },
+    {
+      "word": "یوس",
+      "count": 1
+    },
+    {
+      "word": "استاد",
+      "count": 1
+    },
+    {
+      "word": "لکٹس",
+      "count": 1
+    },
+    {
+      "word": "حدیسس",
+      "count": 1
+    },
+    {
+      "word": "ترجم",
+      "count": 1
+    },
+    {
+      "word": "الله",
+      "count": 1
+    },
+    {
+      "word": "تعالی",
+      "count": 1
+    },
+    {
+      "word": "رحم",
+      "count": 1
+    },
+    {
+      "word": "کرن",
+      "count": 1
+    },
+    {
+      "word": "وول",
+      "count": 1
+    },
+    {
+      "word": "بادشاهن",
+      "count": 1
+    },
+    {
+      "word": "دههن",
+      "count": 1
+    },
+    {
+      "word": "وورین",
+      "count": 1
+    },
+    {
+      "word": "ورین",
+      "count": 1
+    },
+    {
+      "word": "اتھ",
+      "count": 1
+    },
+    {
+      "word": "ملکس",
+      "count": 1
+    },
+    {
+      "word": "حکومت",
+      "count": 1
+    },
+    {
+      "word": "کول",
+      "count": 1
+    },
+    {
+      "word": "گامٕ",
+      "count": 1
+    },
+    {
+      "word": "پکان",
+      "count": 1
+    },
+    {
+      "word": "طالب",
+      "count": 1
+    },
+    {
+      "word": "علمن",
+      "count": 1
+    },
+    {
+      "word": "لیوکھ",
+      "count": 1
+    },
+    {
+      "word": "خط",
+      "count": 1
+    },
+    {
+      "word": "س",
+      "count": 1
+    },
+    {
+      "word": "باسان",
+      "count": 1
+    },
+    {
+      "word": "گورنمنٹن",
+      "count": 1
+    },
+    {
+      "word": "کٕر",
+      "count": 1
+    },
+    {
+      "word": "نیی",
+      "count": 1
+    },
+    {
+      "word": "پالسی",
+      "count": 1
+    },
+    {
+      "word": "هوند",
+      "count": 1
+    },
+    {
+      "word": "انقاد",
+      "count": 1
+    },
+    {
+      "word": "مسیج",
+      "count": 1
+    },
+    {
+      "word": "اےمیل",
+      "count": 1
+    },
+    {
+      "word": "زریعه",
+      "count": 1
+    },
+    {
+      "word": "لعنت",
+      "count": 1
+    },
+    {
+      "word": "زے",
+      "count": 1
+    },
+    {
+      "word": "یمٕ",
+      "count": 1
+    },
+    {
+      "word": "جایٕ",
+      "count": 1
+    },
+    {
+      "word": "هند",
+      "count": 1
+    },
+    {
+      "word": "لیکھو",
+      "count": 1
+    },
+    {
+      "word": "ناو",
+      "count": 1
+    },
+    {
+      "word": "گھرٕ",
+      "count": 1
+    },
+    {
+      "word": "فوج",
+      "count": 1
+    },
+    {
+      "word": "بادشاه",
+      "count": 1
+    },
+    {
+      "word": "هوس",
+      "count": 1
+    },
+    {
+      "word": "شییر",
+      "count": 1
+    }
+  ]
+}
