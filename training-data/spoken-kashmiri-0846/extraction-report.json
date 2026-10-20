@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-20",
+  "title": "Spoken Kashmiri: A Language Course",
+  "author": "Omkar N. Koul",
+  "source": "https://archive.org/details/dli.language.0846",
+  "firstPublished": 1987,
+  "editionShownInPDF": 2005,
+  "archiveReportedLicense": "CC BY-NC 4.0",
+  "script": "Roman phonetic transcription with English",
+  "pdfPages": 134,
+  "freshOCRPages": 134,
+  "lessons": 20,
+  "vocabularyCandidates": 1080,
+  "parallelLayoutCandidates": 702,
+  "numeralCandidates": 107,
+  "grammarNotePageSegments": 44,
+  "headingCandidates": 291,
+  "unclassifiedRawTokens": 8323,
+  "characters": {
+    "embeddedText": 178247,
+    "archiveOCR": 146886,
+    "freshOCR": 148646
+  },
+  "freshOCREngine": "tesseract 5.5.0",
+  "freshOCRSettings": {"language": "eng", "dpi": 300, "psm": 3},
+  "pdfSHA256": "2b54eda6985b3472198314b38b63780baa7df3c13759f1cbc7f6e19cf9bb8881",
+  "sourceAnomaly": "Printed page 128 repeats the label 21 where the second label is expected to be 22.",
+  "trainingEligible": false,
+  "commercialTrainingEligible": false,
+  "status": "Complete extraction; OCR symbols and layout alignments require review. No model training performed."
+}

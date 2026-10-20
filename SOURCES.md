@@ -252,6 +252,22 @@ originals and combining marks, excludes Arabic Quran fields from automatic
 processing, and avoids upstream TTS number expansion and character filtering.
 No corpus approval or translation-quality claim follows from normalization.
 
+## Spoken Kashmiri language course (dli.language.0846)
+
+[Omkar N. Koul's *Spoken Kashmiri: A Language Course*](https://archive.org/details/dli.language.0846)
+contains 134 PDF pages, 20 lessons, grammar notes and classified vocabulary.
+Although the Archive date is 1987, the PDF identifies this as the 2005 second
+edition. The book uses Roman/phonetic Kashmiri and English. All 134 pages were
+independently OCRed at 300 DPI with Tesseract English, and the Archive OCR and
+embedded text were preserved separately. Structured output includes 1,080
+vocabulary candidates and 702 same-row English/Roman alignment candidates;
+these counts are not verified unique words or sentence pairs. Custom-font
+extraction and OCR can both corrupt phonetic symbols. The Archive metadata
+reports CC BY-NC 4.0, so the raw output remains a separate private review
+collection. Source-linked grammar notes and reproducibility details are in
+`training-data/spoken-kashmiri-0846/`; the book has not been imported into
+commercial training or the approved Perso-Arabic parallel corpus.
+
 ## Kashmiri text to speech
 
 The Translator view can synthesize the Kashmiri side of a translation through GAASH Lab's public [`Matcha-TTS-Kashmiri`](https://huggingface.co/GAASH-Lab/Matcha-TTS-Kashmiri) model and [`Bolbosh`](https://github.com/gaash-lab/Bolbosh) framework. The released model supports Perso-Arabic Kashmiri, male and female speaker choices, and several inference-quality settings. The model card and repository identify the release as MIT licensed. Audio generation runs on GAASH Lab's public demo service; this project does not claim to have trained that checkpoint. Bolbosh reports training on 33,182 utterances, validation on 4,542 utterances, and testing on 2,272 utterances from Rasa and IndicVoices. Generated speech remains automatic output and should be reviewed by fluent speakers.
