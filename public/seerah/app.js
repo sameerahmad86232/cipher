@@ -17,7 +17,7 @@
   const updateTheme = () => { const night=document.body.classList.contains('night');$('#theme-toggle').textContent=night?'☀':'☾';$('#theme-toggle').setAttribute('aria-label',night?'دۄہُک رَنٛگ تھاوِو':'راتُک رَنٛگ تھاوِو'); };
   if(stored.theme==='night')document.body.classList.add('night');updateTheme();
   const updateProgress = () => { $('#progress-bar').style.width=`${readingPosition}%`;$('#progress-text').textContent=`${Math.round(readingPosition)}%`; };
-  const toggleMenu = open => { $('#sidebar').classList.toggle('open',open);$('#scrim').hidden=!open; $('[data-action="menu"]').setAttribute('aria-expanded',String(open)); };
+  const toggleMenu = open => { $('#sidebar').classList.toggle('open',open);$('#scrim').hidden=!open; document.querySelectorAll('[data-action="menu"]').forEach(b=>b.setAttribute('aria-expanded',String(open))); };
   const showDialog = selector => { toggleMenu(false);const dialog=$(selector);if(!dialog.open)dialog.showModal(); };
   const sourceLabel = p => `صَفہٕ ${p.page}`;
   const download = (filename,text,type) => { const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000); };
@@ -30,7 +30,7 @@
     $('#section-range').textContent=`صَفہٕ ${passages[0].page}${passages[0].page!==passages.at(-1).page?'–'+passages.at(-1).page:''}`;
     $('#section-count').textContent=`${String(index+1).padStart(2,'0')} / 07`;
     $('#previous-section').disabled=index===0;$('#next-section').textContent=index===data.sections.length-1?'گوڈٕ پیٹھٕ پَرِو ↗':'اَگلہِ حِصّہٕ →';
-    document.querySelectorAll('.section-link').forEach(b=>{const active=b.dataset.section===id;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
+    document.querySelectorAll('[data-section]').forEach(b=>{const active=b.dataset.section===id;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
     $('#passages').innerHTML=passages.map(p=>`<article id="${p.id}" class="passage${[26,40,42].includes(Number(p.id.slice(-2)))?' quotation':''}"><div class="passage-meta"><span>حِصّہٕ ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p></article>`).join('');
     updateLanguage();toggleMenu(false);save();
     if(scroll) requestAnimationFrame(()=>{const target=passageId?document.getElementById(passageId):$('#reader');target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});if(passageId){target?.classList.add('highlighted');setTimeout(()=>target?.classList.remove('highlighted'),2400);}});
@@ -59,6 +59,7 @@
     if(action==='about')showDialog('#about-dialog');
     if(action==='theme'){document.body.classList.toggle('night');updateTheme();save();}
     if(action==='menu')toggleMenu(!$('#sidebar').classList.contains('open'));
+    if(action==='read')$('#reader').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
     if(action==='map'){selectPlace(0);showDialog('#map-dialog');}
 
     const sec=event.target.closest('[data-section]')?.dataset.section;if(sec){renderSection(sec,true);}
@@ -82,6 +83,7 @@
   fetch('./chapter-one.json').then(r=>{if(!r.ok)throw new Error('Chapter could not be loaded');return r.json();}).then(j=>{
     data=j;const ids=new Set(data.passages.map(p=>p.id));bookmarks=new Set([...bookmarks].filter(id=>ids.has(id)));$('#saved-count').textContent=bookmarks.size;
     $('#contents').innerHTML=data.sections.map(s=>`<button class="section-link" data-section="${s.id}">${escape(s.kashmiriTitle)}</button>`).join('');
+    $('#section-shortcuts').innerHTML=data.sections.map((s,i)=>`<button class="section-shortcut" data-section="${s.id}"><span>${String(i+1).padStart(2,'0')}</span><strong>${escape(s.kashmiriTitle)}</strong><span>↗</span></button>`).join('');
     $('#map-places').innerHTML=places.map((p,i)=>`<button data-place="${i}" aria-pressed="${i===0}">${p.ks}</button>`).join('');
     $('#read-time').textContent=Math.ceil(data.passages.reduce((n,p)=>n+p.kashmiri.split(/\s+/).length,0)/150);
     $('#resume-reading').hidden=!lastPassage||!ids.has(lastPassage);updateProgress();renderSection(data.sections.some(s=>s.id===stored.section)?stored.section:'introduction');

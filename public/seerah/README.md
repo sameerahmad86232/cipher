@@ -43,3 +43,5 @@ Kashmiri is the default reading language. In bilingual mode the Kashmiri transla
 The current website is Kashmiri-only: English passage rendering and the language switch have been removed. Original English source records remain in Git for provenance. The Pages workflow publishes a sanitized JSON without English passage fields or source blocks. `.github/workflows/pages.yml` in zameer deploys the static reader through GitHub Actions.
 
 Kashmiri text is rendered with locally hosted Noto Nastaliq Urdu (SIL OFL); enlarged leading accommodates Nastaliq letterforms and vowel marks. No external font request is required.
+
+The reader design now includes a deep-green illustrated opening panel, horizontal section shortcuts, sticky reading controls, individual passage cards, and a touch-friendly four-action bottom dock on phones. Text and source records are unchanged by this visual update.
