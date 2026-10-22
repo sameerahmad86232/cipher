@@ -1,0 +1,56 @@
+{
+  "purpose": "CPU neural training diagnostic, not production translation",
+  "pytorchVersion": "2.14.1+cpu",
+  "device": "cpu",
+  "seed": 42,
+  "inputSHA256": "43d280e5099fe53e4a1735a9397a1ef48930760327af96300457be54acae9f13",
+  "trainPairs": 3267,
+  "validationPairs": 432,
+  "excludedPairs": 509,
+  "splitPolicy": "Parent source+alignment line hash; siblings stay together. Conflicting targets excluded. Vocabulary fitted on training only.",
+  "epochs": 3,
+  "parameters": 275021,
+  "baselineValidationTokenLoss": 6.5104097013283715,
+  "history": [
+    {
+      "epoch": 1,
+      "trainTokenLoss": 3.783072239554706,
+      "validationTokenLoss": 3.1082403347070304
+    },
+    {
+      "epoch": 2,
+      "trainTokenLoss": 2.902566204572355,
+      "validationTokenLoss": 2.7624392146027352
+    },
+    {
+      "epoch": 3,
+      "trainTokenLoss": 2.6572266136373375,
+      "validationTokenLoss": 2.586069516854535
+    }
+  ],
+  "seconds": 109.15050387382507,
+  "generationSamples": [
+    {
+      "english": "It already exists.",
+      "reference": "یہِ چھُ گۄڈے موٗجوٗد۔",
+      "generated": "یہ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ ان"
+    },
+    {
+      "english": "Thanks for helping!",
+      "reference": "مدد کرنہٕ باپتھ شُکریہ!",
+      "generated": "یہ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ ان"
+    },
+    {
+      "english": "She retired in 1986.",
+      "reference": "سۄ گٔیہٕ 1986 منٛز رِٹٲر۔",
+      "generated": "یہ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ انہٕ ان"
+    }
+  ],
+  "pretrainedModelFineTuning": false,
+  "neuralTrainingPerformed": true,
+  "productionEligible": false,
+  "qualityDecision": "Experimental only. Falling character loss does not establish translation quality. Do not deploy these weights as the translator.",
+  "licensePolicy": "Retain underlying CC BY and CC BY-SA attribution and obligations; checkpoint is not claimed to have independent permissive clearance.",
+  "distinctGeneratedSamples": 1,
+  "observedGenerationFailure": "All three distinct validation inputs produced the same repetitive output; translations are unusable."
+}
