@@ -1,0 +1,12 @@
+{
+  "reviewedPairs": 79,
+  "grammarPatterns": 19,
+  "terminologyPreferences": 28,
+  "aiCandidatesPendingReview": 5,
+  "uniqueSurfaceTokens": 1342,
+  "conflictingEnglishKeys": 1,
+  "excludedDiagnosticRows": 0,
+  "neuralTrainingPerformed": false,
+  "commercialTrainingEligiblePairs": 0,
+  "policy": "Preserve source rights. Unspecified licenses require review; approval of language is not a license grant. AI candidates are never gold. Keep diagnostic inputs out of training. Do not strip diacritics or overwrite spelling."
+}
