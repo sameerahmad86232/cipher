@@ -89,3 +89,10 @@ Normalized duplicate detection prioritizes owner-reviewed rows. Reviewed trainin
 targets and evaluation references retain their wording; other targets get the
 normalized copy and retain `kashmiriOriginal`. Existing browser search cleanup
 continues to use the shared TypeScript helpers.
+
+## Nectar: complete first-chapter reading edition
+
+The standalone Seerah reader lives in `public/seerah/` and is embedded in the existing `#seerah` view. Open `/seerah/` for the full-screen edition. It includes the complete Chapter 1 (printed pages8–13), 52 bilingual passages, section navigation, local bookmarks, search, a schematic place guide, font controls and a night theme. New complete-chapter translations remain review drafts; the original 37 reviewed excerpts are unchanged.
+
+Source coverage: `python scripts/test-seerah-firstchapter.py [path-to-the-supplied-PDF]`.
+Reader interactions: `scripts/test-seerah-reader.cjs` requires a separate Playwright installation and a running static server; see `public/seerah/README.md` for the reader structure and rights boundaries. The same static reader is published as source in `sameerahmad86232/zameer`.
