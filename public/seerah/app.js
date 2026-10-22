@@ -1,10 +1,14 @@
 'use strict';
 (() => {
   const $ = (s) => document.querySelector(s);
-  const storageKey = 'nectar-reader-v1';
+  const chapter = new URLSearchParams(location.search).get('chapter') === '2' ? 2 : 1;
+  const chapterFile = chapter === 2 ? 'chapter-two' : 'chapter-one';
+  const firstSection = chapter === 2 ? 'overview' : 'introduction';
+  const chapterLabel = chapter === 2 ? 'باب ۲' : 'باب ۱';
+  const storageKey = chapter === 2 ? 'nectar-reader-ch2-v1' : 'nectar-reader-v1';
   const readStored = () => { try { return JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch { return {}; } };
   const stored = readStored();
-  let data, current = 'introduction', bookmarks = new Set(Array.isArray(stored.bookmarks) ? stored.bookmarks.filter(x => typeof x === 'string') : []);
+  let data, current = firstSection, bookmarks = new Set(Array.isArray(stored.bookmarks) ? stored.bookmarks.filter(x => typeof x === 'string') : []);
   const language = 'ks';
   let fontSize = Number.isFinite(stored.fontSize) ? Math.min(33,Math.max(21,stored.fontSize)) : 25;
   let readingPosition = Math.min(100,Math.max(0,Number(stored.progress) || 0));
@@ -26,12 +30,12 @@
     if(!data)return;
     const section=data.sections.find(s=>s.id===id);if(!section)return;
     current=id;const index=data.sections.indexOf(section);const passages=data.passages.filter(p=>p.section===id);
-    $('#section-number').textContent=String(index+1).padStart(2,'0');$('#section-label').textContent='باب ۱';$('#section-title').textContent=section.kashmiriTitle;$('#section-ks').textContent='';
+    $('#section-number').textContent=String(index+1).padStart(2,'0');$('#section-label').textContent=chapterLabel;$('#section-title').textContent=section.kashmiriTitle;$('#section-ks').textContent='';
     $('#section-range').textContent=`صَفہٕ ${passages[0].page}${passages[0].page!==passages.at(-1).page?'–'+passages.at(-1).page:''}`;
-    $('#section-count').textContent=`${String(index+1).padStart(2,'0')} / 07`;
+    $('#section-count').textContent=`${String(index+1).padStart(2,'0')} / ${String(data.sections.length).padStart(2,'0')}`;
     $('#previous-section').disabled=index===0;$('#next-section').textContent=index===data.sections.length-1?'گوڈٕ پیٹھٕ پَرِو ↗':'اَگلہِ حِصّہٕ →';
     document.querySelectorAll('[data-section]').forEach(b=>{const active=b.dataset.section===id;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
-    $('#passages').innerHTML=passages.map(p=>`<article id="${p.id}" class="passage${[26,40,42].includes(Number(p.id.slice(-2)))?' quotation':''}"><div class="passage-meta"><span>حِصّہٕ ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p></article>`).join('');
+    $('#passages').innerHTML=passages.map(p=>`<article id="${p.id}" class="passage${(chapter===1?[26,40,42]:[6]).includes(Number(p.id.slice(-2)))?' quotation':''}"><div class="passage-meta"><span>حِصّہٕ ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p></article>`).join('');
     updateLanguage();toggleMenu(false);save();
     if(scroll) requestAnimationFrame(()=>{const target=passageId?document.getElementById(passageId):$('#reader');target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});if(passageId){target?.classList.add('highlighted');setTimeout(()=>target?.classList.remove('highlighted'),2400);}});
   }
@@ -41,9 +45,15 @@
     if(!rows.length){const p=document.createElement('p');p.className='empty-results';p.textContent=empty;target.append(p);return;}
     rows.forEach(p=>{const button=document.createElement('button');button.className='result-button';const label=document.createElement('small');label.textContent=`${data.sections.find(s=>s.id===p.section).kashmiriTitle} · صَفہٕ ${p.page} · حِصّہٕ ${p.id.slice(-2)}`;const ks=document.createElement('span');ks.className='result-ks';ks.lang='ks-Arab';ks.dir='rtl';ks.textContent=p.kashmiri.length>120?p.kashmiri.slice(0,120)+'…':p.kashmiri;button.append(label,ks);button.addEventListener('click',()=>goToPassage(p.id));target.append(button);});
   }
-  const search = () => {if(!data)return;const q=fold($('#search-input').value.trim());const results=q?data.passages.filter(p=>fold(p.kashmiri).includes(q)):[];renderResults('#search-results',results,q?'کانٛہہ حِصّہٕ میول نہٕ؛ بیاکھ لفظ چھانڈِو۔':'اَتھ بابُکۍ ۵۲ حِصّہٕ چھانڈِو۔');};
+  const search = () => {if(!data)return;const q=fold($('#search-input').value.trim());const results=q?data.passages.filter(p=>fold(p.kashmiri).includes(q)):[];renderResults('#search-results',results,q?'کانٛہہ حِصّہٕ میول نہٕ؛ بیاکھ لفظ چھانڈِو۔':`اَتھ بابُکۍ ${data.passages.length} حِصّہٕ چھانڈِو۔`);};
   const showBookmarks = () => {if(!data)return;renderResults('#bookmark-results',data.passages.filter(p=>bookmarks.has(p.id)),'محفوظ حِصّہٕ یِن یَتھ ہاونہٕ۔ محفوظ کَرنہٕ خٲطرٕ کٔرِو حِصّس نِش ہیٖرٕ نِشانَس پؠٹھ کلک۔');$('#export-bookmarks').hidden=bookmarks.size===0;showDialog('#bookmarks-dialog');};
-  const places=[
+  const places=chapter===2 ? [
+    {ks:'یمن',detail:'شیبا، حِمیَر تہٕ یمنٕچ حُکمرٲنی۔',section:'yemen'},
+    {ks:'مکہ',detail:'حجاز، قُریش تہٕ مکہ کۍ اِدارٕ۔',section:'hijaz'},
+    {ks:'شام',detail:'غَسّان تہٕ شامٕچ حُکمرٲنی۔',section:'syria'},
+    {ks:'حیرہ',detail:'عراق نِش حیرہٕچ بادشٲہی۔',section:'heerah'},
+    {ks:'عراق',detail:'حیرہ تہٕ فارسی بادشاہن ہُنٛد اَثَر۔',section:'heerah'}
+  ] : [
     {name:'Yemen',ks:'یمن',detail:'قحطٲنی عَرَبَن ہُنٛد جَنوٗبی وَطَن۔ اَتھ بابَس منٛز چھُ کہلان سٕنٛزِ ہجرت تہٕ حِمیَر سٕندِ یمنَس منٛز روزنُک ذِکر۔',section:'migration'},
     {name:'Makkah',ks:'مکہ',detail:'پاک وادی، یَتھ سۭتۍ ہاجرہ، اسماعیل، زَمزَم تہٕ کعبہٕ شَریفٕچ تعمیٖر جُڑمٕژ چھےٚ۔ اَتھ منٛز چھُ قُریشَن ہُنٛد تہِ ذِکر۔',section:'abraham'},
     {name:'Syria',ks:'شام',detail:'اَتھ بابَس منٛز آمٕتۍ شُمالی علاقہٕ۔ جَفنہ تہٕ تَمہِ سُنٛد خاندان گوٚو یَتھ کُن، تہٕ تِمو ترٲو غَسّان بادشٲہی ہٕنٛز بُنیاد۔',section:'migration'},
@@ -68,25 +78,39 @@
     const bookmark=event.target.closest('[data-bookmark]');if(bookmark){const id=bookmark.dataset.bookmark;if(bookmarks.has(id))bookmarks.delete(id);else bookmarks.add(id);bookmark.setAttribute('aria-pressed',String(bookmarks.has(id)));bookmark.setAttribute('aria-label',`${bookmarks.has(id)?'Unsave':'Save'} passage ${id.slice(-2)}`);bookmark.textContent=bookmarks.has(id)?'◆':'◇';$('#saved-count').textContent=bookmarks.size;save();notify(bookmarks.has(id)?'یہِ حِصّہٕ آو محفوظ کَرنہٕ':'یہِ حِصّہٕ آو محفوظ حِصّن منٛزٕ کَڑنہٕ');}
     const copy=event.target.closest('[data-copy]')?.dataset.copy;if(copy){const p=data.passages.find(p=>p.id===copy);try{await navigator.clipboard.writeText(p.kashmiri);notify('کٲشُر متن آو نَقل کَرنہٕ');}catch{notify('متن چُنِو تہٕ نَقل کَرِو۔');}}
   });
+  $('#chapter-select').addEventListener('change',event=>{const url=new URL(location.href);url.searchParams.set('chapter',event.target.value);url.hash='';location.assign(url.href);});
   $('#search-input').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(search,100);});
   $('#scrim').addEventListener('click',()=>toggleMenu(false));
-  $('#start-reading').addEventListener('click',()=>renderSection('introduction',true));
-  $('#resume-reading').addEventListener('click',()=>{const p=data?.passages.find(p=>p.id===lastPassage);renderSection(p?.section||stored.section||'introduction',true,p?.id);});
+  $('#start-reading').addEventListener('click',()=>renderSection(firstSection,true));
+  $('#resume-reading').addEventListener('click',()=>{const p=data?.passages.find(p=>p.id===lastPassage);renderSection(p?.section||stored.section||firstSection,true,p?.id);});
   $('#previous-section').addEventListener('click',()=>{const i=data.sections.findIndex(s=>s.id===current);if(i>0)renderSection(data.sections[i-1].id,true);});
   $('#next-section').addEventListener('click',()=>{const i=data.sections.findIndex(s=>s.id===current);renderSection(data.sections[(i+1)%data.sections.length].id,true);});
   $('#font-smaller').addEventListener('click',()=>{fontSize=Math.max(21,fontSize-2);updateLanguage();save();});$('#font-larger').addEventListener('click',()=>{fontSize=Math.min(33,fontSize+2);updateLanguage();save();});
-  $('#export-bookmarks').addEventListener('click',()=>download('nectar-saved-passages.json',JSON.stringify({chapter:1,reviewStatus:data.reviewStatus,passages:data.passages.filter(p=>bookmarks.has(p.id))},null,2),'application/json'));
+  $('#export-bookmarks').addEventListener('click',()=>download('nectar-saved-passages.json',JSON.stringify({chapter:data.chapter,reviewStatus:data.reviewStatus,passages:data.passages.filter(p=>bookmarks.has(p.id))},null,2),'application/json'));
   document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false);if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)&&!document.activeElement.isContentEditable&&!document.querySelector('dialog[open]')){e.preventDefault();showDialog('#search-dialog');$('#search-input').focus();search();}});
   document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
   let scrollScheduled=false;
   window.addEventListener('scroll',()=>{if(scrollScheduled||!data)return;scrollScheduled=true;requestAnimationFrame(()=>{scrollScheduled=false;const article=[...document.querySelectorAll('.passage')].find(a=>{const r=a.getBoundingClientRect();return r.top<innerHeight*.65&&r.bottom>innerHeight*.2;});if(!article)return;const p=data.passages.find(p=>p.id===article.id);lastPassage=p.id;const index=data.passages.indexOf(p);readingPosition=Math.round(index/(data.passages.length-1)*100);updateProgress();save();});},{passive:true});
-  fetch('./chapter-one.json').then(r=>{if(!r.ok)throw new Error('Chapter could not be loaded');return r.json();}).then(j=>{
-    data=j;const ids=new Set(data.passages.map(p=>p.id));bookmarks=new Set([...bookmarks].filter(id=>ids.has(id)));$('#saved-count').textContent=bookmarks.size;
+  fetch(`./${chapterFile}.json`, {cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error('Chapter could not be loaded');return r.json();}).then(j=>{
+    data=j;
+    $('#chapter-select').value=String(chapter);
+    document.querySelectorAll('[data-chapter-label]').forEach(el=>el.textContent=chapterLabel);
+    $('#chapter-section-total').textContent=String(data.sections.length).padStart(2,'0');
+    $('#chapter-passage-total').textContent=data.passages.length;
+    $('#chapter-download').href=`./${chapterFile}-kashmiri.txt`;
+    if(chapter===2){
+      $('.side-chapter').innerHTML='<span>02</span><div>عَرَبَن منٛز حُکمرٲنی<small>حُکمران، قبیلہٕ تہٕ سیاسی حالت</small></div>';
+      $('.chapter-marker').innerHTML='02<span>باب ۲</span>';
+      $('.chapter-intro h2').textContent=data.kashmiriTitle;
+      $('.chapter-intro p').textContent='یمن، حیرہ، شام تہٕ حجاز کٮ۪ن حُکمرانَن تہٕ اسلامَس برونٛہہ عَرَبَن ہٕنٛزِ سیاسی حالتہِ ہُنٛد جائزٕ۔';
+      $('#about-source').textContent='الرحيق المختوم، صفی الرحمٰن مبارکپوری سٕنٛز کِتابہِ ہُنٛد دۄیم باب۔ اَتھ منٛز چھِ اَصل کِتابہِ ہٕندۍ صَفہٕ ۱۴–۲۱ کٲشرِس منٛز ترجمہٕ کَرنہٕ آمٕتۍ۔ یہِ چھُ نظرِ ثٲنی خٲطرٕ مَسوَدٕ۔ تاریخی بیان چھِ اَصل متنہٕ مُطٲبِق؛ یِمَن ہٕنٛز آزاد تَصدیٖق چھےٚ باقی۔';
+    }
+    const ids=new Set(data.passages.map(p=>p.id));bookmarks=new Set([...bookmarks].filter(id=>ids.has(id)));$('#saved-count').textContent=bookmarks.size;
     $('#contents').innerHTML=data.sections.map(s=>`<button class="section-link" data-section="${s.id}">${escape(s.kashmiriTitle)}</button>`).join('');
     $('#section-shortcuts').innerHTML=data.sections.map((s,i)=>`<button class="section-shortcut" data-section="${s.id}"><span>${String(i+1).padStart(2,'0')}</span><strong>${escape(s.kashmiriTitle)}</strong><span>↗</span></button>`).join('');
     $('#map-places').innerHTML=places.map((p,i)=>`<button data-place="${i}" aria-pressed="${i===0}">${p.ks}</button>`).join('');
     $('#read-time').textContent=Math.ceil(data.passages.reduce((n,p)=>n+p.kashmiri.split(/\s+/).length,0)/150);
-    $('#resume-reading').hidden=!lastPassage||!ids.has(lastPassage);updateProgress();renderSection(data.sections.some(s=>s.id===stored.section)?stored.section:'introduction');
+    $('#resume-reading').hidden=!lastPassage||!ids.has(lastPassage);updateProgress();renderSection(data.sections.some(s=>s.id===stored.section)?stored.section:firstSection);
     const target=location.hash.slice(1);if(ids.has(target))goToPassage(target);
   }).catch(error=>{const p=document.createElement('p');p.className='empty-results';p.textContent='باب کھُل نہٕ؛ رابطہٕ وُچھِو تہٕ صَفہٕ بیٚیہِ کھولِو۔';$('#passages').replaceChildren(p);$('#start-reading').disabled=true;$('#resume-reading').hidden=true;console.error(error);});
 })();
