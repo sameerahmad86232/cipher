@@ -1,0 +1,930 @@
+{
+  "inputPairs": 4208,
+  "inputSHA256": "43d280e5099fe53e4a1735a9397a1ef48930760327af96300457be54acae9f13",
+  "method": "Descriptive Arabic-token counts with combining marks removed for matching only. Original text preserved. No dependency parser, word alignment or inference of universal grammar rules. Counts overlap.",
+  "sourceCounts": {
+    "translatewiki": 240,
+    "wikimedia": 3968
+  },
+  "conflictingRows": 36,
+  "englishTokenCount": 91570,
+  "kashmiriWhitespaceTokenCount": 94186,
+  "uniqueOriginalWhitespaceTokens": 23530,
+  "uniqueMarkFoldedArabicTokens": 16261,
+  "topFoldedTokens": [
+    [
+      "چھ",
+      3778
+    ],
+    [
+      "منز",
+      3501
+    ],
+    [
+      "تہ",
+      3259
+    ],
+    [
+      "اکھ",
+      1407
+    ],
+    [
+      "کس",
+      942
+    ],
+    [
+      "یہ",
+      852
+    ],
+    [
+      "ہند",
+      721
+    ],
+    [
+      "یس",
+      648
+    ],
+    [
+      "پؠٹھ",
+      585
+    ],
+    [
+      "ستۍ",
+      523
+    ],
+    [
+      "اوس",
+      517
+    ],
+    [
+      "کرنہ",
+      489
+    ],
+    [
+      "پیٹھ",
+      455
+    ],
+    [
+      "خٲطر",
+      438
+    ],
+    [
+      "یتھ",
+      419
+    ],
+    [
+      "کہ",
+      399
+    ],
+    [
+      "چھ۔",
+      396
+    ],
+    [
+      "ہنز",
+      394
+    ],
+    [
+      "سند",
+      379
+    ],
+    [
+      "ہس",
+      355
+    ],
+    [
+      "و",
+      326
+    ],
+    [
+      "امہ",
+      315
+    ],
+    [
+      "کشمیر",
+      315
+    ],
+    [
+      "پتہ",
+      306
+    ],
+    [
+      "زیاد",
+      303
+    ],
+    [
+      "یا",
+      286
+    ],
+    [
+      "سہ",
+      285
+    ],
+    [
+      "جموں",
+      285
+    ],
+    [
+      "۔",
+      280
+    ],
+    [
+      "طور",
+      276
+    ],
+    [
+      "کر",
+      267
+    ],
+    [
+      "او",
+      258
+    ],
+    [
+      "ز",
+      253
+    ],
+    [
+      "،",
+      253
+    ],
+    [
+      "یوان",
+      248
+    ],
+    [
+      "ٲس",
+      243
+    ],
+    [
+      "اتھ",
+      225
+    ],
+    [
+      "تام",
+      223
+    ],
+    [
+      "کور",
+      209
+    ],
+    [
+      "کھۄتہ",
+      206
+    ]
+  ],
+  "topBigrams": [
+    {
+      "tokens": [
+        "چھ",
+        "اکھ"
+      ],
+      "count": 415
+    },
+    {
+      "tokens": [
+        "یہ",
+        "چھ"
+      ],
+      "count": 385
+    },
+    {
+      "tokens": [
+        "منز",
+        "چھ"
+      ],
+      "count": 318
+    },
+    {
+      "tokens": [
+        "ہس",
+        "منز"
+      ],
+      "count": 274
+    },
+    {
+      "tokens": [
+        "جموں",
+        "و"
+      ],
+      "count": 274
+    },
+    {
+      "tokens": [
+        "و",
+        "کشمیر"
+      ],
+      "count": 209
+    },
+    {
+      "tokens": [
+        "یتھ",
+        "منز"
+      ],
+      "count": 174
+    },
+    {
+      "tokens": [
+        "منز",
+        "اکھ"
+      ],
+      "count": 165
+    },
+    {
+      "tokens": [
+        "تہ",
+        "چھ"
+      ],
+      "count": 149
+    },
+    {
+      "tokens": [
+        "زیر",
+        "انتظام"
+      ],
+      "count": 117
+    },
+    {
+      "tokens": [
+        "ساروی",
+        "کھوتہ"
+      ],
+      "count": 107
+    },
+    {
+      "tokens": [
+        "کھۄتہ",
+        "زیاد"
+      ],
+      "count": 105
+    },
+    {
+      "tokens": [
+        "سہ",
+        "چھ"
+      ],
+      "count": 105
+    },
+    {
+      "tokens": [
+        "طورس",
+        "پیٹھ"
+      ],
+      "count": 101
+    },
+    {
+      "tokens": [
+        "اوس",
+        "اکھ"
+      ],
+      "count": 92
+    },
+    {
+      "tokens": [
+        "ساروے",
+        "کھۄتہ"
+      ],
+      "count": 89
+    },
+    {
+      "tokens": [
+        "کشمیر",
+        "کس"
+      ],
+      "count": 88
+    },
+    {
+      "tokens": [
+        "عام",
+        "طور"
+      ],
+      "count": 84
+    },
+    {
+      "tokens": [
+        "زیاد",
+        "تر"
+      ],
+      "count": 74
+    },
+    {
+      "tokens": [
+        "پؠٹھ",
+        "کلومیٹر"
+      ],
+      "count": 74
+    },
+    {
+      "tokens": [
+        "کھوتہ",
+        "زیاد"
+      ],
+      "count": 73
+    },
+    {
+      "tokens": [
+        "طور",
+        "پٲٹھۍ"
+      ],
+      "count": 73
+    },
+    {
+      "tokens": [
+        "مرکزی",
+        "زیر"
+      ],
+      "count": 72
+    },
+    {
+      "tokens": [
+        "کرنہ",
+        "خٲطر"
+      ],
+      "count": 69
+    },
+    {
+      "tokens": [
+        "انتظام",
+        "علاقہ"
+      ],
+      "count": 68
+    },
+    {
+      "tokens": [
+        "یمن",
+        "منز"
+      ],
+      "count": 67
+    },
+    {
+      "tokens": [
+        "کس",
+        "طورس"
+      ],
+      "count": 66
+    },
+    {
+      "tokens": [
+        "کلومیٹر",
+        "میل"
+      ],
+      "count": 66
+    },
+    {
+      "tokens": [
+        "ہندوستان",
+        "کس"
+      ],
+      "count": 64
+    },
+    {
+      "tokens": [
+        "تہ",
+        "ونان"
+      ],
+      "count": 63
+    }
+  ],
+  "topTrigrams": [
+    {
+      "tokens": [
+        "جموں",
+        "و",
+        "کشمیر"
+      ],
+      "count": 208
+    },
+    {
+      "tokens": [
+        "مرکزی",
+        "زیر",
+        "انتظام"
+      ],
+      "count": 72
+    },
+    {
+      "tokens": [
+        "و",
+        "کشمیر",
+        "کس"
+      ],
+      "count": 71
+    },
+    {
+      "tokens": [
+        "زیر",
+        "انتظام",
+        "علاقہ"
+      ],
+      "count": 68
+    },
+    {
+      "tokens": [
+        "کس",
+        "طورس",
+        "پیٹھ"
+      ],
+      "count": 55
+    },
+    {
+      "tokens": [
+        "انتظام",
+        "علاقہ",
+        "جموں"
+      ],
+      "count": 53
+    },
+    {
+      "tokens": [
+        "علاقہ",
+        "جموں",
+        "و"
+      ],
+      "count": 53
+    },
+    {
+      "tokens": [
+        "اتھ",
+        "منز",
+        "چھ"
+      ],
+      "count": 41
+    },
+    {
+      "tokens": [
+        "چھ",
+        "عام",
+        "طور"
+      ],
+      "count": 41
+    },
+    {
+      "tokens": [
+        "پؠٹھ",
+        "کلومیٹر",
+        "میل"
+      ],
+      "count": 38
+    },
+    {
+      "tokens": [
+        "کہ",
+        "ناو",
+        "ستۍ"
+      ],
+      "count": 34
+    },
+    {
+      "tokens": [
+        "ساروی",
+        "کھوتہ",
+        "زیاد"
+      ],
+      "count": 34
+    },
+    {
+      "tokens": [
+        "تہ",
+        "ونان",
+        "چھ،"
+      ],
+      "count": 32
+    },
+    {
+      "tokens": [
+        "چھ",
+        "جموں",
+        "و"
+      ],
+      "count": 32
+    },
+    {
+      "tokens": [
+        "ساروے",
+        "کھۄتہ",
+        "زیاد"
+      ],
+      "count": 31
+    },
+    {
+      "tokens": [
+        "جموں",
+        "و",
+        "کشمیرس"
+      ],
+      "count": 31
+    },
+    {
+      "tokens": [
+        "ونان",
+        "چھ،",
+        "چھ"
+      ],
+      "count": 29
+    },
+    {
+      "tokens": [
+        "اکھ",
+        "جنوبی",
+        "کوریايی"
+      ],
+      "count": 28
+    },
+    {
+      "tokens": [
+        "منز",
+        "ساروے",
+        "کھۄتہ"
+      ],
+      "count": 27
+    },
+    {
+      "tokens": [
+        "منز",
+        "واقع",
+        "چھ۔"
+      ],
+      "count": 26
+    }
+  ],
+  "constructionEvidence": {
+    "copula_or_auxiliary": {
+      "matchingRows": 2692,
+      "shareOfRows": 0.6397,
+      "matchingFormsAfterMarkFolding": [
+        "چھ",
+        "چھس",
+        "چھہ",
+        "چھے"
+      ],
+      "interpretation": "Copula/auxiliary family. Exact inflection and agreement need context.",
+      "examples": [
+        {
+          "id": "opus-sentence-05db37405c0eee72024c",
+          "english": "It is regarded as the guiding principle of Pakistan's nationhood.[1]",
+          "kashmiri": "یہ چھ پاکستان چہ قومیتک رہنما اصوٗل ماننہٕ یوان۔[1]"
+        },
+        {
+          "id": "opus-sentence-078f9e5b4432031dbd18",
+          "english": "Harrison Ford (born July 13, 1942) is an American actor.",
+          "kashmiri": "ہیریسن فورڈ (پیدائش 13 جولائی 1942) چھِ اکھ امریکی اداکار۔"
+        },
+        {
+          "id": "opus-sentence-0e610384a178746c58a3",
+          "english": "Biopharmaceuticals, such as monoclonal antibodies, differ biologically from small-molecule drugs.",
+          "kashmiri": "بائیوفرماسیوٹیکلز، یتھ کٔنؠ ز نمونوکلونل اینٹی باڈیز چھ حیاتیاتی طور پٲٹھؠ لوکٹھ مالیکیول ادویات نش مختلف۔"
+        },
+        {
+          "id": "opus-sentence-101cbbb068532d68e53c",
+          "english": "The film stars Ranveer Singh, Arjun Rampal, Sanjay Dutt, R.",
+          "kashmiri": "یہِ چھےٚ جِیو سٹوڈیوَس تہٕ بی 62 سٹوڈیوَس تحت دھر، لوکیش دھر، تہٕ جیوتی دیش پانٛڈے یَن پروڈیوس کٔرمٕژ۔"
+        },
+        {
+          "id": "opus-sentence-10a9772dc48843efe589",
+          "english": "Extensions are in the \"More Blocks\" section of the palette.[1]",
+          "kashmiri": "ایکسٹینشن چھ پیلٹ کس \" مور بلاکس \" سیکشنس منٛز۔[1]"
+        }
+      ]
+    },
+    "past_auxiliary": {
+      "matchingRows": 464,
+      "shareOfRows": 0.1103,
+      "matchingFormsAfterMarkFolding": [
+        "اس",
+        "اسی",
+        "اسے",
+        "اوس"
+      ],
+      "interpretation": "Forms compatible with past copular/auxiliary constructions; tense is not proven by token presence.",
+      "examples": [
+        {
+          "id": "opus-sentence-1e48403714522dc201e7",
+          "english": "Bemina was settled on the local floodplains of adjoining rivers.",
+          "kashmiri": "بیٚمُیٛن اوس ہمسایہ دٔریاون ہنٛد مقٲمی سٔہلٲبی مٲدانن منٛز آباد گومُت۔"
+        },
+        {
+          "id": "opus-sentence-bc83ebb81cd1467729d9",
+          "english": "He was famously called Budshah (Great King) by his subjects.[1][2]",
+          "kashmiri": "تس اوس پنٛنہ رعایاو طرفہٕ مشہور پٲٹھی بدشاہ (عظیم بادشاہ) وننہٕ یوان۔[1][2]"
+        },
+        {
+          "id": "opus-sentence-da6d2d2f8035b07fd33d",
+          "english": "Dadasara is believed to have been once a deep lake.",
+          "kashmiri": "مانٛنہٕ چھ یوان زِ دادا سر اوس کُنہِ زمانس منٛز اکھ سرٛۄن سَر۔"
+        },
+        {
+          "id": "opus-sentence-f39db0a4cf2f5a09ed9b",
+          "english": "He was youngest son of Hanafi scholar Anwar Shah Kashmiri.",
+          "kashmiri": "سُہ اوس حنفی سُکالر انور شاہ کشمیری سُنٛد سارِوٕے کھۄتہٕ لۄکٹ نیٚچو۔"
+        },
+        {
+          "id": "opus-sentence-f872e5df45691dd7b64b",
+          "english": "Goodall was an honorary member of the World Future Council.",
+          "kashmiri": "گُڈال اوس ورلڈ فیوچر کونسل اعزازی رکن۔"
+        }
+      ]
+    },
+    "interior_postposition": {
+      "matchingRows": 2277,
+      "shareOfRows": 0.5411,
+      "matchingFormsAfterMarkFolding": [
+        "منز"
+      ],
+      "interpretation": "Noun/pronoun followed by منز often expresses in/within; case and direction vary.",
+      "examples": [
+        {
+          "id": "opus-sentence-06292305c10bfab77684",
+          "english": "You must be logged in to translate in this page.",
+          "kashmiri": "یَتھ صَفس مَنٛز تَرجَمہٕ کَرنہٕ خٲطرٕ گژھِو تُہؠ دٲخِل آسٕنی."
+        },
+        {
+          "id": "opus-sentence-0e0b622b367122c54f8b",
+          "english": "He made his acting debut with Kasamh Se in 2008.",
+          "kashmiri": "أمہ کٔر 2008 ہَس منٛز قسم سے سٕتؠ پننہِ اداکٲری ہنٛز شروٗعات۔"
+        },
+        {
+          "id": "opus-sentence-12cc6a045cc104559e92",
+          "english": "External carotid artery supplies blood to the face and neck.[1]",
+          "kashmiri": "ایکسٹرنَل کیروٹِڑ آرٹری چھِ کَلہٕ کین باقی حِصَن خوٗن واتناوان یِمَن مَنٛز بۄتھ، تال مینَنجی یِوان چھِ."
+        },
+        {
+          "id": "opus-sentence-1e48403714522dc201e7",
+          "english": "Bemina was settled on the local floodplains of adjoining rivers.",
+          "kashmiri": "بیٚمُیٛن اوس ہمسایہ دٔریاون ہنٛد مقٲمی سٔہلٲبی مٲدانن منٛز آباد گومُت۔"
+        },
+        {
+          "id": "opus-sentence-2232c50da93d5812e88e",
+          "english": "The list's articles are categorized by topic to aid navigation.",
+          "kashmiri": "فہرستٕک مضامیٖن چھِ نیویگیشن منٛز مدد کرنہٕ خٲطرٕ موضوع کِس لحاظٕ سۭتۍ درجہٕ بندی کرنہٕ یِوان۔"
+        }
+      ]
+    },
+    "surface_or_source_postposition": {
+      "matchingRows": 827,
+      "shareOfRows": 0.1965,
+      "matchingFormsAfterMarkFolding": [
+        "پؠٹھ",
+        "پیٹھ"
+      ],
+      "interpretation": "Often on/from; select meaning from the predicate and context.",
+      "examples": [
+        {
+          "id": "opus-sentence-4ef7e1c2d04b24c9ffc7",
+          "english": "He is also the member of parliament (MP) for Gandhinagar.",
+          "kashmiri": "تٔمہ کٔر 2014 پؠٹھٕ 2020 تام بھارتیہ جنتا پارٹی (بی جے پی) ہٗک 10 ہم صدر بننٕچ کٲم۔"
+        },
+        {
+          "id": "opus-sentence-6291b7a789717c36f7d4",
+          "english": "The city is divided for administration into 22 municipal districts.",
+          "kashmiri": "2025 کہ تخمینہٕ مطٲبق چھ شہرٕچ آبٲدی [4] عصری دورس منٛز، کابُل چِھ افغانستانُک سیٲسی، ثقافتی تہٕ اقتصادی مرکز کس طورس پؠٹھ کٲم کران۔[1]"
+        },
+        {
+          "id": "opus-sentence-9b51b2d830a07e65223e",
+          "english": "Rajbagh is situated along the river banks of Jehlum River.",
+          "kashmiri": "راج باغ چھ جہلم دٔریاو کس بٔٹھس پؠٹھ واقعہٕ۔"
+        },
+        {
+          "id": "opus-sentence-9ea70eb4045ffb58dc97",
+          "english": "Contents for a topic can be different on each language.",
+          "kashmiri": "کُنہٕ موضوٗعک مُواد ہیٚکہِ پرؠتھ زَبانہِ پؠٹھ مُختلف أسِتھ۔"
+        },
+        {
+          "id": "opus-sentence-a6e1aaf772c2e13afcb4",
+          "english": "They are natively found in Australasia, Wallacea, and the Americas.",
+          "kashmiri": "یم چھ مقٲمی طورس پیٹھ آسٹریلیا، والیسا تہٕ امریکہ: منز لبنہٕ یوان۔"
+        }
+      ]
+    },
+    "negation": {
+      "matchingRows": 141,
+      "shareOfRows": 0.0335,
+      "matchingFormsAfterMarkFolding": [
+        "نہ",
+        "چھنہ"
+      ],
+      "interpretation": "Negation may appear separately or attached to an auxiliary; scope requires clause analysis.",
+      "examples": [
+        {
+          "id": "opus-sentence-2bff6da9940d33606a7e",
+          "english": "This page is missing in some languages you may know.",
+          "kashmiri": "یہِ صفہ چھُنہٕ کینٛہہ زَبانَن مَنز موجود یِم تُہؠ زانان ٲسِو۔"
+        },
+        {
+          "id": "opus-sentence-95576f617f19724fe521",
+          "english": "These dates do not correspond to the modern Gregorian calendar.",
+          "kashmiri": "یم تٲریخ چھنہٕ جدید گریگورین کیلنڈرس سۭتۍ مطابقت تھاوان۔"
+        },
+        {
+          "id": "opus-sentence-d2e93c059110be414ed6",
+          "english": "Unfortunately, grouping results by page is not available on mobile.",
+          "kashmiri": "بدقسمتی سان، صَفہٕ لحاظہٕ نٔتیٖجہٕ گروپ کَرُن چھُنہٕ موبایلَس پؠٹھ دٔستِیاب۔"
+        },
+        {
+          "id": "opus-sentence-d4c257f1d9139b0ab6e0",
+          "english": "Untreated solid waste is present in the city and outskirts.",
+          "kashmiri": "علاج نہٕ کرنہٕ آمُت ٹھوس فضلہٕ چُھ شہرس تہٕ مضافاتس منٛز موجود۔"
+        },
+        {
+          "id": "opus-sentence-ef7ab55fd0f3542fb294",
+          "english": "Changes have not been saved yet and will be lost.",
+          "kashmiri": "تبدیٖلی چھِ نہٕ ؤنہِ محفوٗظ کرنہٕ آمٔتؠ تہٕ یِن راونہٕ۔"
+        }
+      ]
+    },
+    "coordination": {
+      "matchingRows": 2219,
+      "shareOfRows": 0.5273,
+      "matchingFormsAfterMarkFolding": [
+        "تہ"
+      ],
+      "interpretation": "Often coordinates phrases or clauses as and; not always an English word-for-word alignment.",
+      "examples": [
+        {
+          "id": "opus-sentence-04ce146dde3609e41d36",
+          "english": "There she learned to read and speak Sanskrit and English.",
+          "kashmiri": "تتیٚتھ ہیٚچھ تٔمہ سنسکرت تہٕ انگریزی پرٕنۍ تہٕ بولن۔"
+        },
+        {
+          "id": "opus-sentence-095f606e2c7a161a5e30",
+          "english": "Harishchandra also got her to compose Geet Govind by Jaidev.",
+          "kashmiri": "ہَریٖچندراہن کٕری یِمہٕ منتخب گیٖت گووِنٛد خٲطرٕ تہِ."
+        },
+        {
+          "id": "opus-sentence-0c98877da635731622a9",
+          "english": "Subsequently, Cairo was founded by the Fatimid dynasty in 969.",
+          "kashmiri": "امہ پتہٕ کوٚر أیوبید تہٕ مملوک دورس (12 مہٕ-16 مہٕ صدی) دوران فوستاتس بطور اہم شہری مرکز برخاست۔[8]"
+        },
+        {
+          "id": "opus-sentence-101cbbb068532d68e53c",
+          "english": "The film stars Ranveer Singh, Arjun Rampal, Sanjay Dutt, R.",
+          "kashmiri": "یہِ چھےٚ جِیو سٹوڈیوَس تہٕ بی 62 سٹوڈیوَس تحت دھر، لوکیش دھر، تہٕ جیوتی دیش پانٛڈے یَن پروڈیوس کٔرمٕژ۔"
+        },
+        {
+          "id": "opus-sentence-1910a3af57bf18cf4422",
+          "english": "four of the face, two maxillae; and two palatine bones.",
+          "kashmiri": "ژؤر بھُتھچہ أدجہِ، زٕ ماکسلای تہٕ زٕ پلاٹائن أڈجہِ۔"
+        }
+      ]
+    },
+    "relative_forms": {
+      "matchingRows": 827,
+      "shareOfRows": 0.1965,
+      "matchingFormsAfterMarkFolding": [
+        "یس",
+        "یم",
+        "یوس",
+        "یوسہ"
+      ],
+      "interpretation": "Potential relative/correlative forms; noun/number/context determine reading.",
+      "examples": [
+        {
+          "id": "opus-sentence-21e139e8e2c7f34c92ce",
+          "english": "Radiocontrast agents are typically iodine, or more rarely barium sulfate.",
+          "kashmiri": "ریڈیوکَنٹراسٹ اَجَنٹ چھِ عام طور ایوڑین یس بیرِیَم سَلفیٹ آسَن."
+        },
+        {
+          "id": "opus-sentence-2bff6da9940d33606a7e",
+          "english": "This page is missing in some languages you may know.",
+          "kashmiri": "یہِ صفہ چھُنہٕ کینٛہہ زَبانَن مَنز موجود یِم تُہؠ زانان ٲسِو۔"
+        },
+        {
+          "id": "opus-sentence-806ae3a6d2c0a1198ce6",
+          "english": "CAU consists of 16 undergraduate colleges and 16 graduate schools.",
+          "kashmiri": "سی اے یو یس منٛز چھ 16 انڈرگریجویٹ کالج تہٕ 16 گریجویٹ سکول۔"
+        },
+        {
+          "id": "opus-sentence-84e1bb747ddec7ab42db",
+          "english": "The nearest major town is Uri, located 25 km away.[1]",
+          "kashmiri": "ساروی کھوتہٕ نزدیٖک بوٚڑ شہر چھ اوٗڑی، یُس 25 کلومیٹر دوٗر واقع چھُ۔[1]"
+        },
+        {
+          "id": "opus-sentence-931793de457df9a62b4d",
+          "english": "Loss of wetland habitat threatens dragonfly populations around the world.",
+          "kashmiri": "سٕژن چھ اکھ وُڑن وول کیٚوم یُس اودوناٹا آرڈر۔"
+        }
+      ]
+    },
+    "genitive_forms": {
+      "matchingRows": 1257,
+      "shareOfRows": 0.2987,
+      "matchingFormsAfterMarkFolding": [
+        "سند",
+        "سنز",
+        "ہند",
+        "ہنز"
+      ],
+      "interpretation": "Genitive constructions have agreement-sensitive forms; do not replace every English possessive with one fixed form.",
+      "examples": [
+        {
+          "id": "opus-sentence-0e0b622b367122c54f8b",
+          "english": "He made his acting debut with Kasamh Se in 2008.",
+          "kashmiri": "أمہ کٔر 2008 ہَس منٛز قسم سے سٕتؠ پننہِ اداکٲری ہنٛز شروٗعات۔"
+        },
+        {
+          "id": "opus-sentence-1bd2ebe072ead152bfe6",
+          "english": "This overlaps with August or September of the Gregorian calendar.[1]",
+          "kashmiri": "سنٛد ٲٹھم اوتار کِرٛشنا سنٛد زؠنہٕ دۄہ طور مناونہٕ یوان ۔"
+        },
+        {
+          "id": "opus-sentence-1e48403714522dc201e7",
+          "english": "Bemina was settled on the local floodplains of adjoining rivers.",
+          "kashmiri": "بیٚمُیٛن اوس ہمسایہ دٔریاون ہنٛد مقٲمی سٔہلٲبی مٲدانن منٛز آباد گومُت۔"
+        },
+        {
+          "id": "opus-sentence-229b577c63fabc07423c",
+          "english": "In the late 16th century, machine-knit socks were first produced.",
+          "kashmiri": "قدیٖم زمانس منٛز ٲس موزٕہ چمڑٕ یا چٹتھ جانورن ہنٛد والو سۭتۍ بناونہٕ یوان۔"
+        },
+        {
+          "id": "opus-sentence-3a28ad074fccc8d39edf",
+          "english": "Its early locomotives were manufactured by Sharp, Stewart and Company.",
+          "kashmiri": "ایمکہ ابتدٲئی انجن ٲس شارپ، سٹیورٹ تہٕ کمپنی ہند ذریعہ تیار کرنہٕ آمت۔"
+        }
+      ]
+    },
+    "subordinator_zi": {
+      "matchingRows": 225,
+      "shareOfRows": 0.0535,
+      "matchingFormsAfterMarkFolding": [
+        "ز"
+      ],
+      "interpretation": "Potential complement/clause introducer; single-letter matches may be ambiguous.",
+      "examples": [
+        {
+          "id": "opus-sentence-0e610384a178746c58a3",
+          "english": "Biopharmaceuticals, such as monoclonal antibodies, differ biologically from small-molecule drugs.",
+          "kashmiri": "بائیوفرماسیوٹیکلز، یتھ کٔنؠ ز نمونوکلونل اینٹی باڈیز چھ حیاتیاتی طور پٲٹھؠ لوکٹھ مالیکیول ادویات نش مختلف۔"
+        },
+        {
+          "id": "opus-sentence-1910a3af57bf18cf4422",
+          "english": "four of the face, two maxillae; and two palatine bones.",
+          "kashmiri": "ژؤر بھُتھچہ أدجہِ، زٕ ماکسلای تہٕ زٕ پلاٹائن أڈجہِ۔"
+        },
+        {
+          "id": "opus-sentence-9f5ad46d554f185e8c12",
+          "english": "The dialect of Punjabi spoken in Doaba is called Doabi.",
+          "kashmiri": "لَفط \"دوآبہ\" چھُ فارسی زَبانہِ ہُنٛد، یَتھ مَنٛز \"دو\" مطلب زٕ \"آب\" مطلب پونؠ یا دٔرؠ یاو مَطلب چھُ۔"
+        },
+        {
+          "id": "opus-sentence-da6d2d2f8035b07fd33d",
+          "english": "Dadasara is believed to have been once a deep lake.",
+          "kashmiri": "مانٛنہٕ چھ یوان زِ دادا سر اوس کُنہِ زمانس منٛز اکھ سرٛۄن سَر۔"
+        },
+        {
+          "id": "opus-sentence-415514a5485f878ba812",
+          "english": "A genetic study published in 2017 indicates that C.",
+          "kashmiri": "2017 منٛز شائع گژھن وول اکھ جینیٲتی مطالعہٕ چھٕ یمہٕ کتھؠ ہنٛز نشاندہی کران ز سی۔"
+        }
+      ]
+    },
+    "purpose_expressions": {
+      "matchingRows": 48,
+      "shareOfRows": 0.0114,
+      "matchingFormsAfterMarkFolding": [
+        "باپت",
+        "خاطر",
+        "خاطرہ"
+      ],
+      "interpretation": "Purpose or benefit expressions; English for can also have other meanings.",
+      "examples": [
+        {
+          "id": "opus-sentence-d843e9958d62979af38e",
+          "english": "He was known for his finishing, pace, dribbling ability, and work rate.[1][2]",
+          "kashmiri": "سہٕ اوس پننہٕ فنشنگ، رفتار، ڈرببلنگ ہنٛز صلاحیت، تہٕ کٲمہٕ ہنٛدٕ شرح خاطرٕ مشہور۔[1][2]"
+        },
+        {
+          "id": "opus-sentence-4df2ff31df10e79b8861",
+          "english": "A web browser, often shortened to browser, is an application for accessing websites.",
+          "kashmiri": "اکھ ویب براؤزر یُس اکثر براؤزر سۭتۍ مختصر چھ یوان کرنہٕ، چھ ویب سائٹس تام رسٲیی خاطرٕ اکھ ایپلیکیشن۔"
+        },
+        {
+          "id": "opus-sentence-517b54ca93d5562621e5",
+          "english": "They checked for circumcisions to identify and spare Muslims, ensuring they were targeting non-Muslims.[2][3]",
+          "kashmiri": "تمو کٔر مسلمانن ہنٛز پہچان ختنہ تہٕ بچاونہٕ خأطرٕ ختنن ہنٛز جانٛچ، یقینی بناوان زِ تم کرن غٲر مسلمانن نشانہٕ بناون۔[1][2]"
+        },
+        {
+          "id": "opus-sentence-3b88606842cc26c8e83a",
+          "english": "Iterative reconstruction refers to iterative algorithms used to reconstruct 2D and 3D images in certain imaging techniques.",
+          "kashmiri": "تکراری تعمیر نو (Iterative Reconstruction) چھُ تکراری الگورتھم یُس کیٚنٛہہ تَصویٖر سٲزی تکنیکن منٛز 2D تہٕ 3D تَصویٖرن ہٕنٛز تعمیر نو خأطرٕ استعمال چھُ یوان کرنہٕ۔مثلن، کمپیوٹیڈ ٹومیگرافی منٛز، اکھ تصویر گژھِ کنہٕ چیزک پروجیکشنن سٟتؠ دوبارٕ بناونہٕ یِنؠ۔"
+        },
+        {
+          "id": "opus-sentence-2275010808417085bdd4",
+          "english": "Muslims worldwide celebrate Eid al Adha to commemorate both the devotion of Abraham and the survival of Ishmael.[1][2][3]",
+          "kashmiri": "پورٕ دنیاہس منٛز چھِ مُسلمان ابراہیم سٕنٛز عقیدت تہٕ اسماعیل سنٛز بقا یاد خاطرٕ عید الاضحی مناوان ۔[1][2][3]"
+        }
+      ]
+    }
+  },
+  "qualityFlags": {
+    "endsWithoutSentencePunctuation": 788,
+    "englishGreaterThanDoubleTargetWordCount": 140
+  },
+  "limitations": [
+    "Corpus vocabulary is heavily encyclopedic and software-interface language.",
+    "Punctuation segmentation can misalign translations despite owner approval.",
+    "Raw tokens are not dictionary lemmas, bilingual word meanings or grammatical tags.",
+    "No defensible word-order percentages or tense/gender labels can be obtained from these token counts alone.",
+    "Apparent alignment issues require review before using examples as authoritative grammar."
+  ],
+  "neuralTrainingPerformed": false
+}
