@@ -5,14 +5,14 @@
   const readStored = () => { try { return JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch { return {}; } };
   const stored = readStored();
   let data, current = 'introduction', bookmarks = new Set(Array.isArray(stored.bookmarks) ? stored.bookmarks.filter(x => typeof x === 'string') : []);
-  let language = ['both','ks','en'].includes(stored.language) ? stored.language : 'both';
+  let language = stored.languagePreferenceVersion === 2 && ['both','ks','en'].includes(stored.language) ? stored.language : 'ks';
   let fontSize = Number.isFinite(stored.fontSize) ? Math.min(33,Math.max(21,stored.fontSize)) : 25;
   let readingPosition = Math.min(100,Math.max(0,Number(stored.progress) || 0));
   let lastPassage = typeof stored.lastPassage === 'string' ? stored.lastPassage : null;
   let toastTimer, searchTimer;
   const escape = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fold = s => String(s).normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase().replace(/\s+/g,' ');
-  const save = () => { try { localStorage.setItem(storageKey,JSON.stringify({bookmarks:[...bookmarks],language,fontSize,theme:document.body.classList.contains('night')?'night':'day',progress:readingPosition,lastPassage,section:current})); } catch { /* Reading remains available when browser storage is disabled. */ } };
+  const save = () => { try { localStorage.setItem(storageKey,JSON.stringify({bookmarks:[...bookmarks],language,languagePreferenceVersion:2,fontSize,theme:document.body.classList.contains('night')?'night':'day',progress:readingPosition,lastPassage,section:current})); } catch { /* Reading remains available when browser storage is disabled. */ } };
   const notify = message => { $('#toast').textContent=message; $('#toast').classList.add('visible'); clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),2600); };
   const updateTheme = () => { const night=document.body.classList.contains('night');$('#theme-toggle').textContent=night?'☀':'☾';$('#theme-toggle').setAttribute('aria-label',night?'Switch to day theme':'Switch to night theme'); };
   if(stored.theme==='night')document.body.classList.add('night');updateTheme();
@@ -31,7 +31,7 @@
     $('#section-count').textContent=`${String(index+1).padStart(2,'0')} / 07`;
     $('#previous-section').disabled=index===0;$('#next-section').textContent=index===data.sections.length-1?'Back to the beginning ↗':'Next section →';
     document.querySelectorAll('.section-link').forEach(b=>{const active=b.dataset.section===id;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
-    $('#passages').innerHTML=passages.map(p=>`<article id="${p.id}" class="passage${[26,40,42].includes(Number(p.id.slice(-2)))?' quotation':''}"><div class="passage-meta"><span>PASSAGE ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="english" lang="en">${escape(p.english)}</p><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p></article>`).join('');
+    $('#passages').innerHTML=passages.map(p=>`<article id="${p.id}" class="passage${[26,40,42].includes(Number(p.id.slice(-2)))?' quotation':''}"><div class="passage-meta"><span>PASSAGE ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p><p class="english" lang="en">${escape(p.english)}</p></article>`).join('');
     updateLanguage();toggleMenu(false);save();
     if(scroll) requestAnimationFrame(()=>{const target=passageId?document.getElementById(passageId):$('#reader');target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});if(passageId){target?.classList.add('highlighted');setTimeout(()=>target?.classList.remove('highlighted'),2400);}});
   }

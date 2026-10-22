@@ -37,3 +37,5 @@ Book text and its translations have separate rights from website code. No public
 - `chapter-one.json`: authoritative bilingual passages, IDs, original source blocks, chapter structure and review status. Correct translations here, retaining IDs and provenance. Do not mark a passage owner-approved without an actual review.
 
 No audio button is included because Kashmiri audio has not been generated. No pretrained model or scratch-training weights are presented as a working translator.
+
+Kashmiri is the default reading language. In bilingual mode the Kashmiri translation appears before the English source. The Kashmiri-only text is also available as `chapter-one-kashmiri.txt`. Existing browser preferences from the initial English-first edition are migrated to Kashmiri on the first updated visit.
