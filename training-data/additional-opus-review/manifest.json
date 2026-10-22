@@ -1,0 +1,27 @@
+{
+  "additionalPairsForReview": 478,
+  "sourceStats": {
+    "wikimedia": {
+      "inputAlignments": 9900,
+      "sha256": "a51f58b57bff065c3272c7fdcc1893e00be1e2f7999fb4f8bc13604f250f395f",
+      "newReviewCandidates": 330,
+      "existingEnglishExcluded": 6572
+    },
+    "translatewiki": {
+      "inputAlignments": 5091,
+      "sha256": "0064ea2a6e212f0551dc6fce3ce2e7abca8b6d816c738d9d414afb17129a26a1",
+      "existingEnglishExcluded": 2433,
+      "newReviewCandidates": 148
+    }
+  },
+  "trainingPerformed": false,
+  "automaticTrainingImport": false,
+  "auditDate": "2026-10-22",
+  "unavailableSource": {
+    "repo": "SMUQamar/Kashmiri-English-Parallel-Corpus",
+    "gated": "manual",
+    "listedLicense": "cc-by-nc-sa-4.0",
+    "rawREADMEHTTPStatus": 401
+  },
+  "policy": "Retain attribution and share-alike terms; review all new alignments. No gold status or automatic commercial-use clearance."
+}
