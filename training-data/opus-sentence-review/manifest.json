@@ -1,0 +1,15 @@
+{
+  "additionalSentenceCandidates": 4208,
+  "fromExistingSilverParagraphs": true,
+  "newIndependentSourcePairs": false,
+  "sources": {
+    "translatewiki": 240,
+    "wikimedia": 3968
+  },
+  "filters": {
+    "existingOrEvaluationExcluded": 21
+  },
+  "automaticTrainingImport": false,
+  "trainingPerformed": false,
+  "warning": "Equal sentence counts do not prove semantic alignment. Abbreviations and punctuation can split incorrectly. Review both parent paragraphs."
+}
