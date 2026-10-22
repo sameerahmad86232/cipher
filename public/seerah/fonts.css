@@ -1,3 +1,4 @@
+@font-face{font-family:'Noto Nastaliq Urdu';font-style:normal;font-weight:400;font-display:swap;src:url('./assets/nastaliq.ttf') format('truetype')}
 @font-face{font-family:'Noto Naskh Arabic';font-style:normal;font-weight:100 900;font-display:swap;src:url('./assets/naskh.ttf') format('truetype')}
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('./assets/sans.ttf') format('truetype')}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:100 900;font-display:swap;src:url('./assets/serif.ttf') format('truetype')}
