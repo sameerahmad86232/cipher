@@ -18,7 +18,9 @@ for r in rows:
  i=r['segmentIndex']-1
  assert r['english']==m.split(p['english'])[i] and r['kashmiri']==m.split(p['kashmiri'])[i]
  assert m.key(r['english']) not in protected
- assert not r['trainingEligible'] and not r['alignmentVerified']
+ assert not r['alignmentVerified'] and not r['independentlyValidated']
+ assert r['trainingEligible']==(r['ownerApproved'] and not r['conflictingTargets'])
+ if r['ownerApproved']:assert r['review']=='approved-by-project-owner'
  assert r['conflictingTargets']==(counts[m.key(r['english'])]>1)
 ws=load_workbook(m.OUT/'review.xlsx',read_only=True).active
 assert ws.max_row==len(rows)+1
@@ -26,3 +28,5 @@ assert all(c.data_type!='f' for row in ws for c in row)
 assert len(m.split('One sentence. Another sentence.'))==2
 assert len(m.split('اکھ کتھ۔ بیاکھ کتھ۔'))==2
 print(f'PASS: {len(rows)} candidate segments match their parents; licenses, evaluation isolation and workbook checked.')
+
+assert len(m.read(m.OUT/'approved-pairs.jsonl'))==sum(r['ownerApproved'] for r in rows)

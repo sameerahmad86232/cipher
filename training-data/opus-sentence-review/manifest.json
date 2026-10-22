@@ -9,6 +9,8 @@
   "filters": {
     "existingOrEvaluationExcluded": 21
   },
+  "ownerApprovedPairs": 4208,
+  "eligibleNonconflictingPairs": 4172,
   "automaticTrainingImport": false,
   "trainingPerformed": false,
   "warning": "Equal sentence counts do not prove semantic alignment. Abbreviations and punctuation can split incorrectly. Review both parent paragraphs."

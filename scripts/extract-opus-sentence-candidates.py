@@ -41,12 +41,26 @@ def build():
    seen.add(pair)
    rows.append({'id':'opus-sentence-'+hashlib.sha256((en+'\0'+ks).encode()).hexdigest()[:20],'english':en,'kashmiri':ks,'source':r['source'],'sourceVersion':r['sourceVersion'],'license':r['license'],'parentSourceFile':'training-data/opus-en-ks/train-silver.jsonl','alignmentLine':r['alignmentLine'],'segmentIndex':i,'parentEnglish':r['english'],'parentKashmiri':r['kashmiri'],'alignmentMethod':'equal-count-punctuation-segments','review':'pending-native-speaker-review','trainingEligible':False,'alignmentVerified':False})
  targets=Counter(key(r['english']) for r in rows)
- for r in rows:r['conflictingTargets']=targets[key(r['english'])]>1
+ approval_path=OUT/'owner-review.json'
+ approval=json.loads(approval_path.read_text()) if approval_path.exists() else {}
+ approved_hashes=approval.get('approvedContentHashes',{})
+ for r in rows:
+  r['conflictingTargets']=targets[key(r['english'])]>1
+  content_hash=hashlib.sha256((r['english']+'\0'+r['kashmiri']).encode()).hexdigest()
+  r['ownerApproved']=approval.get('decision')=='approved' and approved_hashes.get(r['id'])==content_hash
+  if r['ownerApproved']:
+   r['review']='approved-by-project-owner'
+   r['reviewEvidence']=approval['evidence']
+  r['independentlyValidated']=False
+  r['trainingEligible']=r['ownerApproved'] and not r['conflictingTargets']
+  r['usageCondition']='Preserve original license, attribution and applicable share-alike obligations.'
+ approved=[r for r in rows if r['ownerApproved']]
+ (OUT/'approved-pairs.jsonl').write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in approved),encoding='utf-8')
  (OUT/'candidates.jsonl').write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in rows),encoding='utf-8')
- manifest={'additionalSentenceCandidates':len(rows),'fromExistingSilverParagraphs':True,'newIndependentSourcePairs':False,'sources':dict(Counter(r['source'] for r in rows)),'filters':dict(stats),'automaticTrainingImport':False,'trainingPerformed':False,'warning':'Equal sentence counts do not prove semantic alignment. Abbreviations and punctuation can split incorrectly. Review both parent paragraphs.'}
+ manifest={'additionalSentenceCandidates':len(rows),'fromExistingSilverParagraphs':True,'newIndependentSourcePairs':False,'sources':dict(Counter(r['source'] for r in rows)),'filters':dict(stats),'ownerApprovedPairs':len(approved),'eligibleNonconflictingPairs':sum(r['trainingEligible'] for r in rows),'automaticTrainingImport':False,'trainingPerformed':False,'warning':'Equal sentence counts do not prove semantic alignment. Abbreviations and punctuation can split incorrectly. Review both parent paragraphs.'}
  (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  wb=Workbook();ws=wb.active;ws.title='Sentence review'
- columns=['id','english','kashmiri','correction','decision','source','license','alignmentLine','segmentIndex','parentEnglish','parentKashmiri']
+ columns=['id','english','kashmiri','correction','review','source','license','alignmentLine','segmentIndex','parentEnglish','parentKashmiri']
  ws.append(columns)
  for r in rows:
   ws.append([r.get(c,'') for c in columns])
