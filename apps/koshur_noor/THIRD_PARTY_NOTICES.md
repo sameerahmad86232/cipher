@@ -5,6 +5,7 @@
 - timezone: BSD-2-Clause; uses the IANA timezone database. Package licences included by Flutter's licence registry.
 - shared_preferences and platform implementations: Flutter/Dart ecosystem BSD-style licences; see runtime Open-source licences screen and pubspec.lock.
 - intl: BSD-3-Clause; see package licence and runtime registry.
+- Cormorant Garamond Medium: Cormorant Project Authors, SIL Open Font License 1.1. Font reused from the project’s licensed reader assets; full notice in assets/fonts/classical-serif-OFL.txt and registered in-app.
 - Amiri Regular: The Amiri Project Authors, SIL Open Font License 1.1. Downloaded from google/fonts/ofl/amiri; full notice in assets/fonts/amiri-OFL.txt, registered in-app.
 - Noto Nastaliq Urdu and Noto Naskh Arabic: SIL Open Font License 1.1. Fonts and full notices are in assets/fonts. Also registered in-app.
 - Arabic Quran excerpts are scripture, manually entered here with verse references; no third-party translation corpus or audio is included. Arabic transcription and references should be reviewed alongside meanings.

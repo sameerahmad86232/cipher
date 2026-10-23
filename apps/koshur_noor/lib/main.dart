@@ -10,17 +10,21 @@ import 'app_state.dart';
 import 'prayer_service.dart';
 import 'artwork.dart';
 
-const forest = Color(0xff214e45),
-    gold = Color(0xffae7d3b),
-    paper = Color(0xfff7f5ef);
+const forest = Color(0xff183f35),
+    gold = Color(0xff986d32),
+    paper = Color(0xfff4edde);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   tzdata.initializeTimeZones();
   LicenseRegistry.addLicense(() async* {
-    for (final name in ['nastaliq', 'naskh', 'amiri']) {
+    for (final name in ['nastaliq', 'naskh', 'amiri', 'classical-serif']) {
       final text = await rootBundle.loadString('assets/fonts/$name-OFL.txt');
       yield LicenseEntryWithLineBreaks([
-        name == 'amiri' ? 'Amiri Arabic font' : 'Noto $name font',
+        name == 'amiri'
+            ? 'Amiri Arabic font'
+            : name == 'classical-serif'
+            ? 'Cormorant Garamond classical serif font'
+            : 'Noto $name font',
       ], text);
     }
   });
@@ -77,8 +81,8 @@ class NoorApp extends StatelessWidget {
       useMaterial3: true,
       colorScheme: scheme,
       scaffoldBackgroundColor: dark ? const Color(0xff122421) : paper,
-      cardColor: dark ? const Color(0xff1c332e) : Colors.white,
-      dividerColor: dark ? Colors.white12 : const Color(0xffe7e6dd),
+      cardColor: dark ? const Color(0xff20372e) : const Color(0xfffffaf0),
+      dividerColor: dark ? const Color(0xff49604b) : const Color(0xffd4c4a0),
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
@@ -92,16 +96,25 @@ class NoorApp extends StatelessWidget {
                 ? const Color(0xffe5e9de)
                 : const Color(0xff243e36),
           ),
+      chipTheme: ChipThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: dark ? const Color(0xff1c332e) : Colors.white,
+        fillColor: dark ? const Color(0xff20372e) : const Color(0xfffffaf0),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: gold.withValues(alpha: 0.3)),
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: dark ? const Color(0xff182c27) : Colors.white,
+        backgroundColor: dark
+            ? const Color(0xff182c27)
+            : const Color(0xfff8f1e4),
+        height: 76,
+        indicatorShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7),
+        ),
         indicatorColor: dark
             ? const Color(0xff35554a)
             : const Color(0xffe4eee5),
@@ -111,6 +124,37 @@ class NoorApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class ClassicalInvocation extends StatelessWidget {
+  const ClassicalInvocation({super.key});
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 4),
+    child: Row(
+      children: [
+        Expanded(child: Divider(color: gold.withValues(alpha: 0.45))),
+        Expanded(
+          flex: 8,
+          child: Text(
+            'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Arabic',
+              fontFamilyFallback: const ['NaskhFallback'],
+              fontSize: 23,
+              height: 1.8,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? const Color(0xffd3b476)
+                  : forest,
+            ),
+          ),
+        ),
+        Expanded(child: Divider(color: gold.withValues(alpha: 0.45))),
+      ],
+    ),
+  );
 }
 
 class Ks extends StatelessWidget {
@@ -239,12 +283,21 @@ class _HomeState extends State<Home> {
   }) => Material(
     color: Theme.of(context).cardColor,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(9),
       side: BorderSide(
         color: Theme.of(context).dividerColor.withValues(alpha: 0.6),
       ),
     ),
-    child: Padding(padding: padding, child: child),
+    child: Stack(
+      children: [
+        Positioned.fill(
+          child: IgnorePointer(
+            child: CustomPaint(painter: ManuscriptBorderPainter(gold)),
+          ),
+        ),
+        Padding(padding: padding, child: child),
+      ],
+    ),
   );
   TextStyle arabicStyle(double size) => TextStyle(
     fontFamily: 'Arabic',
@@ -274,9 +327,10 @@ class _HomeState extends State<Home> {
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -1,
+                  fontFamily: 'ClassicalSerif',
+                  fontSize: 35,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: -.5,
                 ),
               ),
             ],
@@ -306,7 +360,7 @@ class _HomeState extends State<Home> {
               height: 42,
               decoration: BoxDecoration(
                 color: forest,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(7),
               ),
               child: const Icon(
                 Icons.nights_stay_outlined,
@@ -322,13 +376,14 @@ class _HomeState extends State<Home> {
                   Text(
                     'NOOR',
                     style: TextStyle(
-                      letterSpacing: 4,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 16,
+                      fontFamily: 'ClassicalSerif',
+                      letterSpacing: 5,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 23,
                     ),
                   ),
                   Text(
-                    'A little closer, every day.',
+                    'A companion for the devoted heart.',
                     style: TextStyle(fontSize: 11, color: Colors.grey),
                   ),
                 ],
@@ -341,7 +396,9 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 16),
+        const ClassicalInvocation(),
+        const SizedBox(height: 22),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -361,10 +418,11 @@ class _HomeState extends State<Home> {
                   const Text(
                     'Make space\nfor peace.',
                     style: TextStyle(
-                      fontSize: 35,
-                      height: 1.15,
-                      letterSpacing: -1.3,
-                      fontWeight: FontWeight.w500,
+                      fontFamily: 'ClassicalSerif',
+                      fontSize: 43,
+                      height: 1.05,
+                      letterSpacing: -.6,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
@@ -378,13 +436,13 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 22),
         ClipRRect(
-          borderRadius: BorderRadius.circular(27),
+          borderRadius: BorderRadius.circular(10),
           child: SizedBox(
-            height: 258,
+            height: 270,
             child: Stack(
               fit: StackFit.expand,
               children: [
-                const CustomPaint(painter: ValleyPainter()),
+                const CustomPaint(painter: ClassicCoverPainter()),
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -413,13 +471,18 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                       const SizedBox(height: 9),
-                      Text(
-                        time(next.instant),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 38,
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: -1,
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          time(next.instant),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'ClassicalSerif',
+                            fontSize: 47,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: -1,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -490,7 +553,8 @@ class _HomeState extends State<Home> {
               child: Text(
                 'Your prayer rhythm',
                 style: TextStyle(
-                  fontSize: 21,
+                  fontFamily: 'ClassicalSerif',
+                  fontSize: 27,
                   fontWeight: FontWeight.w600,
                   letterSpacing: -.5,
                 ),
@@ -598,7 +662,11 @@ class _HomeState extends State<Home> {
             const Expanded(
               child: Text(
                 'A moment of remembrance',
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  fontFamily: 'ClassicalSerif',
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             TextButton(
@@ -609,7 +677,7 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 9),
         InkWell(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(9),
           onTap: () => showDua(widget.duas.first),
           child: surface(
             Column(
@@ -757,7 +825,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.only(bottom: 14),
             child: InkWell(
               onTap: () => showDua(d),
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(9),
               child: surface(
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -892,7 +960,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.only(bottom: 12),
             child: InkWell(
               onTap: () => showDua(d),
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(9),
               child: surface(
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1399,7 +1467,7 @@ class _HomeState extends State<Home> {
               onPressed: () => showLicensePage(
                 context: context,
                 applicationName: 'Koshur Noor',
-                applicationVersion: '1.1.0',
+                applicationVersion: '1.2.0',
               ),
               child: const Text('Open-source licences'),
             ),

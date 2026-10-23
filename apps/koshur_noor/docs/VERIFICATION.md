@@ -15,3 +15,9 @@ Kashmiri meanings have not been independently reviewed. They remain explicitly m
 - Amiri Regular from Google Fonts: SIL OFL verified and bundled. Arabic remains RTL, selectable and independently resizable; Kashmiri remains Nastaliq.
 - Eight hadiths, with narrator and collection/number; chain omission and excerpts are explicitly labelled. Kashmiri meanings remain review drafts. Live source pages returned HTTP 403, so this is not a claim of independent scholarly verification.
 - Mobile web preview inspected: hadith library and Arabic reader rendered with no JavaScript exceptions. APK and web production builds checked after final layout changes. Physical device installation remains untested.
+
+## Version 1.2: Classical manuscript design
+
+- Ivory/forest/antique-gold palette, Cormorant Garamond headings, locally painted illuminated frames, architectural prayer cover and Arabic invocation header. Arabic and Kashmiri content are unchanged. Decorative paintings ignore pointer events.
+- Twelve tests passed after fixing the prayer clock’s narrow-width layout. Existing 320px large-text, search, saved content, counter, prayer calculation and reader controls continue to pass. Analyzer clean.
+- Final Android and web release builds succeeded. Mobile screenshots inspected at 390×844; browser reported no JavaScript exceptions. APK signature verified; application version 1.2.0, build 3. No physical-device installation test was available.

@@ -153,3 +153,113 @@ class CompassPainter extends CustomPainter {
   bool shouldRepaint(covariant CompassPainter old) =>
       old.bearing != bearing || old.ink != ink;
 }
+
+/// Restrained geometric illumination, drawn locally rather than as image assets.
+class ManuscriptBorderPainter extends CustomPainter {
+  final Color color;
+  const ManuscriptBorderPainter(this.color);
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p = Paint()
+      ..color = color.withValues(alpha: .38)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .7;
+    final inset = Rect.fromLTWH(5, 5, size.width - 10, size.height - 10);
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(inset, const Radius.circular(5)),
+      p,
+    );
+    for (final point in [
+      const Offset(13, 13),
+      Offset(size.width - 13, 13),
+      Offset(13, size.height - 13),
+      Offset(size.width - 13, size.height - 13),
+    ]) {
+      canvas.save();
+      canvas.translate(point.dx, point.dy);
+      canvas.rotate(math.pi / 4);
+      canvas.drawRect(
+        const Rect.fromLTWH(-2.2, -2.2, 4.4, 4.4),
+        Paint()..color = color.withValues(alpha: .45),
+      );
+      canvas.restore();
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant ManuscriptBorderPainter old) =>
+      old.color != color;
+}
+
+class ClassicCoverPainter extends CustomPainter {
+  const ClassicCoverPainter();
+  @override
+  void paint(Canvas canvas, Size size) {
+    const ValleyPainter().paint(canvas, size);
+    canvas.drawRect(
+      Offset.zero & size,
+      Paint()..color = const Color(0xff12382f).withValues(alpha: .27),
+    );
+    final pen = Paint()
+      ..color = const Color(0xffd5b671).withValues(alpha: .75)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .8;
+    for (final i in [7.0, 11.0]) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(i, i, size.width - 2 * i, size.height - 2 * i),
+          const Radius.circular(4),
+        ),
+        pen,
+      );
+    }
+    for (final o in [
+      const Offset(18, 18),
+      Offset(size.width - 18, 18),
+      Offset(18, size.height - 18),
+      Offset(size.width - 18, size.height - 18),
+    ]) {
+      canvas.save();
+      canvas.translate(o.dx, o.dy);
+      for (final angle in [0.0, math.pi / 4]) {
+        canvas.save();
+        canvas.rotate(angle);
+        canvas.drawRect(const Rect.fromLTWH(-4, -4, 8, 8), pen);
+        canvas.restore();
+      }
+      canvas.restore();
+    }
+    // An arch-shaped architectural frame around the distant mosque.
+    final x = size.width * .65, y = size.height * .96, w = size.width * .49;
+    final arch = Path()
+      ..moveTo(x - w / 2, y)
+      ..lineTo(x - w / 2, size.height * .67)
+      ..cubicTo(
+        x - w / 2,
+        size.height * .53,
+        x - w * .12,
+        size.height * .52,
+        x,
+        size.height * .40,
+      )
+      ..cubicTo(
+        x + w * .12,
+        size.height * .52,
+        x + w / 2,
+        size.height * .53,
+        x + w / 2,
+        size.height * .67,
+      )
+      ..lineTo(x + w / 2, y);
+    canvas.drawPath(
+      arch,
+      Paint()
+        ..color = const Color(0xffd5b671).withValues(alpha: .32)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant ClassicCoverPainter old) => false;
+}

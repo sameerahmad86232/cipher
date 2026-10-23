@@ -1,12 +1,12 @@
 # Koshur Noor — نوٗر
 
-A Flutter Android/web prayer companion with offline astronomical prayer calculations, Kashmir-first locations, Arabic duas and Kashmiri meaning drafts in bundled Nastaliq. Original vector valley/mosque illustrations, warm paper/forest theme, night palette and larger-text option.
+A Flutter Android/web prayer companion with offline astronomical prayer calculations, Kashmir-first locations, Arabic duas and Kashmiri meaning drafts in bundled Nastaliq. Classical manuscript styling with warm ivory pages, antique-gold illuminated borders, Cormorant Garamond headings, a framed mosque cover, Amiri Arabic and Nastaliq Kashmiri. Night palette and larger-text options remain available.
 
 ## Download preview
 
 [Android arm64 APK](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Android-arm64.apk) · [Flutter source ZIP](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Flutter-source.zip)
 
-Android 7.0+ on a 64-bit ARM phone. Open the downloaded APK and allow installation from your browser if Android asks. This is a development-signed test preview; the Kashmiri meaning drafts await review. Verified APK SHA-256: `cbe25493ca476fd76b62d5fc199623b2d7e60a17d1881e33b1884c8e51be9a99`.
+Android 7.0+ on a 64-bit ARM phone. Open the downloaded APK and allow installation from your browser if Android asks. This is a development-signed test preview; the Kashmiri meaning drafts await review. Verified APK SHA-256: `9477cb3651a7e4ce9f80019f68e18c892c463ae60c3c90710bd6d12011d502af`.
 
 ## Working features
 
