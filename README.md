@@ -1,6 +1,6 @@
-# Koshur Noor 1.1 — Android preview
+# Koshur Noor 1.2 — Android preview
 
-Download **Koshur-Noor-Android-arm64.apk** for a 64-bit ARM Android phone (Android 7.0+). Version 1.1 adds eight hadiths with Arabic prophetic text, narrators and references, Kashmiri meaning drafts, search, category filters and saved favourites. Arabic now uses the bundled Amiri Naskh font with persistent size controls; Kashmiri remains Nastaliq.
+Download **Koshur-Noor-Android-arm64.apk** for a 64-bit ARM Android phone (Android 7.0+). Version 1.2 introduces a classical manuscript design: ivory pages, antique-gold borders, Cormorant Garamond headings and a framed mosque cover. It retains eight hadiths with Arabic prophetic text, narrators and references, Kashmiri meaning drafts, search, category filters and saved favourites. Arabic now uses the bundled Amiri Naskh font with persistent size controls; Kashmiri remains Nastaliq.
 
 Also includes offline prayer times, Kashmir-first locations, next-prayer countdown, monthly timetable, Qibla bearing guide, twelve duas, a private prayer log, tasbih and night palette.
 
@@ -10,4 +10,4 @@ Kashmiri meanings are drafts awaiting review. Hadith excerpts and omitted narrat
 
 Validation: twelve Flutter tests passed; analyzer clean; Android and web release builds succeeded; mobile browser render inspected; APK signature verified. Physical Android installation testing was unavailable.
 
-Source: apps/koshur_noor on main or the attached Flutter source ZIP. See screenshots noor-hadiths.png and noor-arabic-reader.png.
+Source: apps/koshur_noor on main or the attached Flutter source ZIP. See noor-classical-home.png, noor-hadiths.png and noor-arabic-reader.png.
