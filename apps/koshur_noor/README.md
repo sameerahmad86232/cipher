@@ -21,11 +21,11 @@ flutter pub get
 flutter analyze
 flutter test
 flutter run
-flutter build apk --debug
+flutter build apk --release --target-platform android-arm64
 flutter build web --release --no-web-resources-cdn
 ```
 
-The debug APK is for sideloading/testing. Configure your own signing key for Play Store distribution; never commit a keystore or signing passwords. Existing generated release configuration uses the development signing key and is not a production publishing setup.
+The delivered arm64 APK is a development-signed release-mode preview for sideloading/testing (Android 7.0+, 64-bit ARM). Configure your own signing key for Play Store distribution; never commit a keystore or signing passwords. Existing generated release configuration uses the development signing key and is not a production publishing setup.
 
 ## Content review
 
