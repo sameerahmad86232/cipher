@@ -258,9 +258,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
       ),
       body: Stack(
         children: [
-          const Positioned.fill(
-            child: CustomPaint(painter: SunsetBackdropPainter()),
-          ),
+          const Positioned.fill(child: MosqueBackdrop()),
           SafeArea(
             child: ListView(
               padding: const EdgeInsets.fromLTRB(24, 64, 24, 32),

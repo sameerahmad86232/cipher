@@ -10,6 +10,8 @@ import 'app_state.dart';
 import 'prayer_service.dart';
 import 'reference_art.dart';
 import 'qibla_screen.dart';
+import 'glass_panel.dart';
+import 'custom_times.dart';
 
 const forest = Color(0xff763f2b),
     gold = Color(0xffa24e36),
@@ -237,6 +239,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) => Scaffold(
     body: Container(
       decoration: BoxDecoration(
+        image: DecorationImage(
+          image: const AssetImage('assets/images/jamia-inspired.png'),
+          fit: BoxFit.cover,
+          opacity: s.dark ? .12 : .14,
+        ),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -310,16 +317,7 @@ class _HomeState extends State<Home> {
   Widget surface(
     Widget child, {
     EdgeInsets padding = const EdgeInsets.all(20),
-  }) => Material(
-    color: Theme.of(context).cardColor,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(22),
-      side: BorderSide(
-        color: Theme.of(context).dividerColor.withValues(alpha: 0.6),
-      ),
-    ),
-    child: Padding(padding: padding, child: child),
-  );
+  }) => GlassPanel(enabled: s.glass, padding: padding, child: child);
   TextStyle arabicStyle(double size) => TextStyle(
     fontFamily: 'Arabic',
     fontFamilyFallback: const ['NaskhFallback'],
@@ -463,7 +461,16 @@ class _HomeState extends State<Home> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                const CustomPaint(painter: SunsetBackdropPainter()),
+                const MosqueBackdrop(),
+                const DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Color(0x993b241e), Color(0x003b241e)],
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -686,7 +693,9 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 12),
         Text(
-          '${s.method} · ${s.hanafi ? 'Hanafi' : 'Standard'} Asr · ${s.city.zone}\nCalculated times; confirm with your local mosque. Sunrise is not a prayer.',
+          s.customTimes != null
+              ? 'Custom daily timetable · ${s.city.zone}\nRepeats daily until edited. Sunrise is calculated.'
+              : '${s.method} · ${s.hanafi ? 'Hanafi' : 'Standard'} Asr · ${s.city.zone}\nCalculated times; confirm with your local mosque. Sunrise is not a prayer.',
           style: const TextStyle(fontSize: 10, height: 1.7, color: Colors.grey),
         ),
         const SizedBox(height: 26),
@@ -1390,6 +1399,26 @@ class _HomeState extends State<Home> {
     children: [
       heading('Made for your rhythm', 'Make Noor yours.'),
       surface(
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.edit_calendar),
+          title: const Text('Custom prayer times'),
+          subtitle: Text(
+            s.customTimes == null
+                ? 'Use your local mosque timetable'
+                : 'Custom daily timetable active',
+          ),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (_) => CustomTimesScreen(state: s),
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 16),
+      surface(
         Column(
           children: [
             ListTile(
@@ -1425,7 +1454,9 @@ class _HomeState extends State<Home> {
                         ),
                       )
                       .toList(),
-              onChanged: (v) => s.update(() => s.method = v!),
+              onChanged: s.customTimes != null
+                  ? null
+                  : (v) => s.update(() => s.method = v!),
             ),
             const SizedBox(height: 12),
             SwitchListTile(
@@ -1436,7 +1467,9 @@ class _HomeState extends State<Home> {
                 style: TextStyle(fontSize: 11),
               ),
               value: s.hanafi,
-              onChanged: (v) => s.update(() => s.hanafi = v),
+              onChanged: s.customTimes != null
+                  ? null
+                  : (v) => s.update(() => s.hanafi = v),
             ),
             const Divider(),
             Text(
@@ -1449,7 +1482,9 @@ class _HomeState extends State<Home> {
               max: 15,
               divisions: 30,
               label: '${s.adjustment} min',
-              onChanged: (v) => s.update(() => s.adjustment = v.round()),
+              onChanged: s.customTimes != null
+                  ? null
+                  : (v) => s.update(() => s.adjustment = v.round()),
             ),
             const Text(
               'Applies to the five prayers, not sunrise. Match your trusted local timetable.',
@@ -1462,6 +1497,12 @@ class _HomeState extends State<Home> {
       surface(
         Column(
           children: [
+            SwitchListTile(
+              title: const Text('Frosted glass'),
+              subtitle: const Text('Soft translucent cards'),
+              value: s.glass,
+              onChanged: (v) => s.update(() => s.glass = v),
+            ),
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
               title: const Text('Night palette'),
@@ -1520,7 +1561,7 @@ class _HomeState extends State<Home> {
               onPressed: () => showLicensePage(
                 context: context,
                 applicationName: 'Koshur Noor',
-                applicationVersion: '1.3.0',
+                applicationVersion: '1.4.0',
               ),
               child: const Text('Open-source licences'),
             ),
@@ -1656,7 +1697,9 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  '${s.method} · ${s.hanafi ? 'Hanafi' : 'Standard'} Asr\nConfirm local prayer and iqamah times with your mosque.',
+                  s.customTimes != null
+                      ? 'Custom daily times repeat until edited. Isha before Fajr belongs to the following day. Sunrise is calculated.'
+                      : '${s.method} · ${s.hanafi ? 'Hanafi' : 'Standard'} Asr\nConfirm local prayer and iqamah times with your mosque.',
                   style: const TextStyle(
                     fontSize: 11,
                     color: Colors.grey,

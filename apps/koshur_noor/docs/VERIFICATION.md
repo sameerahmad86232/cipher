@@ -32,3 +32,15 @@ Kashmiri meanings have not been independently reviewed. They remain explicitly m
 - The default Flutter 8 GB Gradle heap caused memory contention when checks overlapped in this environment; build memory was reduced to a 3 GB heap with two workers, and the final build was rerun. No application feature was disabled to work around it.
 
 Final 1.3 delivery checks: `flutter analyze` clean; 18 tests passed; web release and Android arm64 release builds succeeded. APK version 1.3.0/build 4 verified with aapt; signature verified and identical to the prior preview. DEX contains the native true-compass channel. Manifest contains coarse/fine location permission, no background-location permission and no INTERNET permission. Browser screenshots of all tabs and reference-only Qibla had zero JavaScript exceptions. The APK remains a development-signed preview, with physical sensors/GPS testing outstanding.
+
+## Version 1.4 — Sunset Glass and custom daily timetable
+- Analyzer clean; all 23 tests passed, including custom schedule persistence,
+  location scope/reset, corrupt preferences, validation, custom editor saving,
+  unchanged calculated sunrise and next-prayer rollover for after-midnight Isha.
+- Android ARM64 and web release builds succeeded. APK verified as 1.4.0/build 5,
+  Android 7.0+, with the same signing certificate as the prior preview.
+- Browser inspected at 390×844 across all tabs, Qibla and custom editor; no
+  JavaScript exceptions. Background is generated Jamia Masjid-inspired artwork,
+  not an actual photograph. Bounded blur automatically disables in high contrast.
+- Physical-device sensor/GPS accuracy remains untested. This is a development-
+  signed preview. Kashmiri meanings remain drafts awaiting review.

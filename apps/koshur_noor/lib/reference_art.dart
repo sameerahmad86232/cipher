@@ -122,3 +122,15 @@ class SunsetBackdropPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant SunsetBackdropPainter old) => old.dark != dark;
 }
+
+/// Generated Jamia Masjid-inspired illustration, not an architectural photograph.
+class MosqueBackdrop extends StatelessWidget {
+  const MosqueBackdrop({super.key});
+  @override
+  Widget build(BuildContext context) => Image.asset(
+    'assets/images/jamia-inspired.png',
+    fit: BoxFit.cover,
+    alignment: Alignment.bottomCenter,
+    excludeFromSemantics: true,
+  );
+}

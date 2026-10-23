@@ -21,3 +21,8 @@ No recorded audio, commercial corpus, non-commercial model weights, or neural mo
 - flutter_timezone 5.1.1: Apache-2.0; full notice in licenses/flutter_timezone-Apache-2.0.txt. Used only to identify the device’s timezone for GPS prayer dates.
 - Native true-north sensor bridge and all sunset/mosque/compass vector artwork: original project code. Android SensorManager and GeomagneticField platform APIs are used; no third-party heading model or compass dataset is bundled.
 - Dependency licences are also bundled in Flutter’s generated licence registry. The reference image inspired the palette and layout; no reference image file is embedded in the app.
+
+## Sunset background (1.4)
+`assets/images/jamia-inspired.png` is generated artwork inspired by Jamia Masjid,
+Srinagar, created for this app. It is an illustrative reconstruction, not a
+photograph, surveyed architectural record, or third-party licensed photo.

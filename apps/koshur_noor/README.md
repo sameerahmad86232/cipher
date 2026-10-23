@@ -2,7 +2,7 @@
 
 A Flutter prayer companion inspired by the supplied Qibla reference: coral-to-peach gradients, cream reading cards, cocoa mosque silhouettes, a detailed compass face and matching launcher icon. Amiri Arabic and Nastaliq Kashmiri remain bundled for offline reading.
 
-[Android arm64 preview APK](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Android-arm64.apk?v=1.3.0) · [Flutter source ZIP](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Flutter-source.zip)
+[Android arm64 preview APK](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Android-arm64.apk?v=1.4.0) · [Flutter source ZIP](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Flutter-source.zip)
 
 Android 7.0+, 64-bit ARM. Development-signed preview for sideloading and testing; configure your own signing key before production distribution. Never commit signing secrets.
 
@@ -44,4 +44,14 @@ Android entry: `android/app/src/main/kotlin/com/koshur/koshur_noor/MainActivity.
 
 See [verification](docs/VERIFICATION.md), [translation review](docs/TRANSLATION_REVIEW.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-Verified 1.3 APK SHA-256: `1f8ed7d15179d4f17a077cfb84823d505760705926c68f8d5cb782e0524bd97a`.
+Verified 1.4 APK SHA-256: `6f7c2ac34b43de7b1bbff6380a3c95099cec9557fdc31dc783d8e5cfd6947617`.
+
+### Version 1.4 — Sunset Glass
+- Jamia Masjid–inspired generated sunset illustration (not a photograph).
+- Bounded frosted-glass cards; turn off under Settings → Frosted glass. High
+  contrast accessibility automatically uses solid cards.
+- Settings → Custom prayer times lets you enter all five daily prayer times
+  from your local mosque, saved per location. They repeat daily until edited.
+  Switch back with “Use calculated times instead”; sunrise remains calculated.
+  An Isha time before Fajr is assigned to the following civil day. Calculated
+  method, Asr school and minute offset do not override custom times.

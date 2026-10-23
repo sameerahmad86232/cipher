@@ -48,11 +48,13 @@ class PrayerService {
   final String method;
   final bool hanafi;
   final int adjustment;
+  final List<int>? customTimes;
   const PrayerService({
     required this.city,
     this.method = 'Karachi',
     this.hanafi = true,
     this.adjustment = 0,
+    this.customTimes,
   });
   tz.Location get location => tz.getLocation(city.zone);
   tz.TZDateTime local(DateTime instant) =>
@@ -80,7 +82,7 @@ class PrayerService {
       calculationParameters: params,
     );
     DateTime adjust(DateTime t) => t.add(Duration(minutes: adjustment));
-    return [
+    final rows = [
       PrayerEntry('fajr', 'Fajr', 'فَجَر', adjust(p.fajr)),
       PrayerEntry(
         'sunrise',
@@ -94,14 +96,33 @@ class PrayerService {
       PrayerEntry('maghrib', 'Maghrib', 'مَغرِب', adjust(p.maghrib)),
       PrayerEntry('isha', 'Isha', 'عِشا', adjust(p.isha)),
     ];
+    final custom = customTimes;
+    if (custom == null) return rows;
+    var index = 0;
+    return rows.map((row) {
+      if (!row.isPrayer) return row;
+      final i = index++;
+      final minute = custom[i];
+      final date = tz.TZDateTime(
+        location,
+        civilDate.year,
+        civilDate.month,
+        civilDate.day + (i == 4 && minute < custom[0] ? 1 : 0),
+        minute ~/ 60,
+        minute % 60,
+      );
+      return PrayerEntry(row.id, row.name, row.nativeName, date);
+    }).toList();
   }
 
   PrayerEntry next(DateTime now) {
     final today = day(now);
-    return [
+    final upcoming = [
+      ...forDate(today.subtract(const Duration(days: 1))),
       ...forDate(today),
       ...forDate(today.add(const Duration(days: 1))),
-    ].firstWhere((p) => p.isPrayer && p.instant.isAfter(now));
+    ]..sort((a, b) => a.instant.compareTo(b.instant));
+    return upcoming.firstWhere((p) => p.isPrayer && p.instant.isAfter(now));
   }
 
   double get bearing => Qibla.qibla(Coordinates(city.latitude, city.longitude));

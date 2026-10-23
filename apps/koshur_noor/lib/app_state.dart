@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'prayer_service.dart';
+import 'custom_times.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class AppState extends ChangeNotifier {
@@ -9,6 +10,11 @@ class AppState extends ChangeNotifier {
   late City city;
   late String method;
   late bool hanafi, dark, clock24, large;
+  bool glass = true;
+  final Map<String, List<int>> customSchedules = {};
+  String get scheduleKey =>
+      "${city.name}:${city.latitude.toStringAsFixed(1)}:${city.longitude.toStringAsFixed(1)}:${city.zone}";
+  List<int>? get customTimes => customSchedules[scheduleKey];
   late int adjustment, count, target;
   late double arabicScale;
   late Set<String> favourites, completed;
@@ -53,6 +59,18 @@ class AppState extends ChangeNotifier {
     ].contains(method)) {
       method = 'Karachi';
     }
+    glass = prefs.getBool('glass') ?? true;
+    try {
+      final raw = jsonDecode(prefs.getString('customSchedules') ?? '{}') as Map;
+      for (final e in raw.entries) {
+        if (e.value is List && (e.value as List).every((v) => v is int)) {
+          final t = List<int>.from(e.value);
+          if (validCustomTimes(t)) customSchedules[e.key as String] = t;
+        }
+      }
+    } catch (_) {
+      /* Ignore corrupt custom settings. */
+    }
     hanafi = prefs.getBool('hanafi') ?? true;
     dark = prefs.getBool('dark') ?? false;
     arabicScale = (prefs.getDouble('arabicScale') ?? 1).clamp(0.85, 1.35);
@@ -70,6 +88,7 @@ class AppState extends ChangeNotifier {
     method: method,
     hanafi: hanafi,
     adjustment: adjustment,
+    customTimes: customTimes,
   );
   String completionKey(String id, DateTime now) =>
       '${city.name}:${service.day(now).toIso8601String().substring(0, 10)}:$id';
@@ -89,6 +108,8 @@ class AppState extends ChangeNotifier {
       prefs.setString('method', method),
       prefs.setBool('hanafi', hanafi),
       prefs.setBool('dark', dark),
+      prefs.setBool('glass', glass),
+      prefs.setString('customSchedules', jsonEncode(customSchedules)),
       prefs.setDouble('arabicScale', arabicScale),
       prefs.setBool('clock24', clock24),
       prefs.setBool('large', large),

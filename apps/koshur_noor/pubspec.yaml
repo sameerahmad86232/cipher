@@ -1,7 +1,7 @@
 name: koshur_noor
 description: Offline prayer companion with Kashmiri dua meanings.
 publish_to: none
-version: 1.3.0+4
+version: 1.4.0+5
 environment:
   sdk: '>=3.10.0 <4.0.0'
 dependencies:
@@ -20,6 +20,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/images/jamia-inspired.png
     - assets/data/duas.json
     - assets/data/hadiths.json
     - assets/fonts/amiri-OFL.txt
