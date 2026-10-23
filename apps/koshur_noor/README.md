@@ -2,6 +2,12 @@
 
 A Flutter Android/web prayer companion with offline astronomical prayer calculations, Kashmir-first locations, Arabic duas and Kashmiri meaning drafts in bundled Nastaliq. Original vector valley/mosque illustrations, warm paper/forest theme, night palette and larger-text option.
 
+## Download preview
+
+[Android arm64 APK](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Android-arm64.apk) · [Flutter source ZIP](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Flutter-source.zip)
+
+Android 7.0+ on a 64-bit ARM phone. Open the downloaded APK and allow installation from your browser if Android asks. This is a development-signed test preview; the Kashmiri meaning drafts await review. Verified APK SHA-256: `31d8d6ed93f5137e734fbe4c0e3fa3f48199cdf80d3f405321abccf6cb2075cf`.
+
 ## Working features
 
 - Five prayers plus clearly distinguished sunrise, next-prayer countdown and date rollover.
