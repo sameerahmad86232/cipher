@@ -8,11 +8,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'app_state.dart';
 import 'prayer_service.dart';
-import 'artwork.dart';
+import 'reference_art.dart';
+import 'qibla_screen.dart';
 
-const forest = Color(0xff183f35),
-    gold = Color(0xff986d32),
-    paper = Color(0xfff4edde);
+const forest = Color(0xff763f2b),
+    gold = Color(0xffa24e36),
+    paper = Color(0xfffff2e3);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   tzdata.initializeTimeZones();
@@ -80,8 +81,8 @@ class NoorApp extends StatelessWidget {
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
-      scaffoldBackgroundColor: dark ? const Color(0xff122421) : paper,
-      cardColor: dark ? const Color(0xff20372e) : const Color(0xfffffaf0),
+      scaffoldBackgroundColor: dark ? const Color(0xff30211e) : paper,
+      cardColor: dark ? const Color(0xff493129) : const Color(0xfffffaf5),
       dividerColor: dark ? const Color(0xff49604b) : const Color(0xffd4c4a0),
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
@@ -91,17 +92,17 @@ class NoorApp extends StatelessWidget {
           ThemeData(
             brightness: dark ? Brightness.dark : Brightness.light,
           ).textTheme.apply(
-            bodyColor: dark ? const Color(0xffe5e9de) : const Color(0xff243e36),
+            bodyColor: dark ? const Color(0xffe5e9de) : const Color(0xff683e2d),
             displayColor: dark
                 ? const Color(0xffe5e9de)
-                : const Color(0xff243e36),
+                : const Color(0xff683e2d),
           ),
       chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: dark ? const Color(0xff20372e) : const Color(0xfffffaf0),
+        fillColor: dark ? const Color(0xff493129) : const Color(0xfffffaf5),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: gold.withValues(alpha: 0.3)),
@@ -109,15 +110,15 @@ class NoorApp extends StatelessWidget {
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: dark
-            ? const Color(0xff182c27)
-            : const Color(0xfff8f1e4),
+            ? const Color(0xff36251f)
+            : const Color(0xfffff5e8),
         height: 76,
         indicatorShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7),
         ),
         indicatorColor: dark
-            ? const Color(0xff35554a)
-            : const Color(0xffe4eee5),
+            ? const Color(0xff734d3b)
+            : const Color(0xffffdfcb),
         labelTextStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
         ),
@@ -234,21 +235,50 @@ class _HomeState extends State<Home> {
   );
   @override
   Widget build(BuildContext context) => Scaffold(
-    body: SafeArea(
-      bottom: false,
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 760),
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 220),
-            child: switch (tab) {
-              0 => today(),
-              1 => duaLibrary(),
-              2 => hadithLibrary(),
-              3 => tasbih(),
-              _ => settings(),
-            },
+    body: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: s.dark
+              ? const [Color(0xff30211e), Color(0xff493129)]
+              : const [Color(0xffffeee0), Color(0xfffff8ef)],
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 760),
+            child: AnimatedSwitcher(
+              duration: Duration(
+                milliseconds: MediaQuery.disableAnimationsOf(context) ? 0 : 320,
+              ),
+              transitionBuilder: (child, animation) => FadeTransition(
+                opacity: animation,
+                child: SlideTransition(
+                  position:
+                      Tween<Offset>(
+                        begin: const Offset(0, 0.025),
+                        end: Offset.zero,
+                      ).animate(
+                        CurvedAnimation(
+                          parent: animation,
+                          curve: Curves.easeOutCubic,
+                        ),
+                      ),
+                  child: child,
+                ),
+              ),
+              child: switch (tab) {
+                0 => today(),
+                1 => duaLibrary(),
+                2 => hadithLibrary(),
+                3 => tasbih(),
+                _ => settings(),
+              },
+            ),
           ),
         ),
       ),
@@ -283,21 +313,12 @@ class _HomeState extends State<Home> {
   }) => Material(
     color: Theme.of(context).cardColor,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(9),
+      borderRadius: BorderRadius.circular(22),
       side: BorderSide(
         color: Theme.of(context).dividerColor.withValues(alpha: 0.6),
       ),
     ),
-    child: Stack(
-      children: [
-        Positioned.fill(
-          child: IgnorePointer(
-            child: CustomPaint(painter: ManuscriptBorderPainter(gold)),
-          ),
-        ),
-        Padding(padding: padding, child: child),
-      ],
-    ),
+    child: Padding(padding: padding, child: child),
   );
   TextStyle arabicStyle(double size) => TextStyle(
     fontFamily: 'Arabic',
@@ -436,13 +457,13 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 22),
         ClipRRect(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(26),
           child: SizedBox(
             height: 270,
             child: Stack(
               fit: StackFit.expand,
               children: [
-                const CustomPaint(painter: ClassicCoverPainter()),
+                const CustomPaint(painter: SunsetBackdropPainter()),
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -494,28 +515,40 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const Spacer(),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.location_on_outlined,
-                            size: 14,
-                            color: Color(0xffd4dfcf),
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            s.city.name,
-                            style: const TextStyle(
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(
+                            0xff794329,
+                          ).withValues(alpha: 0.78),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on_outlined,
+                              size: 14,
                               color: Color(0xffd4dfcf),
-                              fontSize: 12,
                             ),
-                          ),
-                          const Spacer(),
-                          Ks(
-                            next.nativeName,
-                            size: 21,
-                            color: const Color(0xfff6e7c7),
-                          ),
-                        ],
+                            const SizedBox(width: 4),
+                            Text(
+                              s.city.name,
+                              style: const TextStyle(
+                                color: Color(0xffd4dfcf),
+                                fontSize: 12,
+                              ),
+                            ),
+                            const Spacer(),
+                            Ks(
+                              next.nativeName,
+                              size: 21,
+                              color: const Color(0xfff6e7c7),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -677,7 +710,7 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 9),
         InkWell(
-          borderRadius: BorderRadius.circular(9),
+          borderRadius: BorderRadius.circular(22),
           onTap: () => showDua(widget.duas.first),
           child: surface(
             Column(
@@ -825,7 +858,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.only(bottom: 14),
             child: InkWell(
               onTap: () => showDua(d),
-              borderRadius: BorderRadius.circular(9),
+              borderRadius: BorderRadius.circular(22),
               child: surface(
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -960,7 +993,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.only(bottom: 12),
             child: InkWell(
               onTap: () => showDua(d),
-              borderRadius: BorderRadius.circular(9),
+              borderRadius: BorderRadius.circular(22),
               child: surface(
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1251,12 +1284,32 @@ class _HomeState extends State<Home> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '${s.count}',
-                              style: const TextStyle(
-                                fontSize: 64,
-                                fontWeight: FontWeight.w300,
-                                letterSpacing: -2,
+                            AnimatedSwitcher(
+                              duration: Duration(
+                                milliseconds:
+                                    MediaQuery.disableAnimationsOf(context)
+                                    ? 0
+                                    : 180,
+                              ),
+                              transitionBuilder: (child, animation) =>
+                                  FadeTransition(
+                                    opacity: animation,
+                                    child: ScaleTransition(
+                                      scale: Tween<double>(
+                                        begin: 0.9,
+                                        end: 1,
+                                      ).animate(animation),
+                                      child: child,
+                                    ),
+                                  ),
+                              child: Text(
+                                '${s.count}',
+                                key: ValueKey(s.count),
+                                style: const TextStyle(
+                                  fontSize: 64,
+                                  fontWeight: FontWeight.w300,
+                                  letterSpacing: -2,
+                                ),
                               ),
                             ),
                             const Text(
@@ -1443,12 +1496,12 @@ class _HomeState extends State<Home> {
             ),
             const SizedBox(height: 10),
             const Text(
-              'No account. No ads. No server. Prayer times are calculated on your device. Your saved duas, prayer log, and tasbih count stay here. Location is selected manually; Noor does not track you.',
+              'No account. No ads. No server. Prayer times are calculated on your device. Choose a city or explicitly use GPS in Qibla. The saved GPS position and device timezone stay in local app storage; no background location is collected.',
               style: TextStyle(fontSize: 12, height: 1.8, color: Colors.grey),
             ),
             const SizedBox(height: 16),
             const Text(
-              'Kashmiri meanings are drafts for owner review. Prayer times are calculations, not mosque iqamah times. No background alarm or audio feature is enabled in this version.',
+              'Kashmiri meanings are drafts for owner review. Prayer times are calculations, not mosque iqamah times. Live Qibla needs compatible Android sensors and calibration. No background alarm or audio feature is enabled in this version.',
               style: TextStyle(fontSize: 11, height: 1.7, color: Colors.grey),
             ),
             TextButton.icon(
@@ -1467,7 +1520,7 @@ class _HomeState extends State<Home> {
               onPressed: () => showLicensePage(
                 context: context,
                 applicationName: 'Koshur Noor',
-                applicationVersion: '1.2.0',
+                applicationVersion: '1.3.0',
               ),
               child: const Text('Open-source licences'),
             ),
@@ -1544,68 +1597,9 @@ class _HomeState extends State<Home> {
   }
 
   void showQibla() {
-    final bearing = s.service.bearing;
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      builder: (c) => SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(28, 8, 28, 30),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Ks('قِبلہٕ کُن رُخ', size: 25, align: TextAlign.center),
-              Text(
-                'From ${s.city.name} towards Makkah',
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
-              ),
-              SizedBox(
-                width: 280,
-                height: 280,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CustomPaint(
-                      size: const Size(280, 280),
-                      painter: CompassPainter(
-                        bearing,
-                        Theme.of(c).colorScheme.primary,
-                      ),
-                    ),
-                    const Positioned(
-                      top: 8,
-                      child: Text(
-                        'N',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Text(
-                '${bearing.toStringAsFixed(1)}°',
-                style: const TextStyle(
-                  fontSize: 42,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              const Text(
-                'clockwise from true north',
-                style: TextStyle(fontSize: 12, color: gold),
-              ),
-              const SizedBox(height: 18),
-              const Text(
-                'This is a fixed bearing guide, not a live compass. First identify true north with a reliable compass or map, then use this angle. The pointer does not follow your phone.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12, color: Colors.grey, height: 1.8),
-              ),
-            ],
-          ),
-        ),
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => QiblaScreen(state: s, onPickCity: pickCity),
       ),
     );
   }

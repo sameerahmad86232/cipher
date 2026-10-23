@@ -4,13 +4,17 @@ import 'package:timezone/timezone.dart' as tz;
 class City {
   final String name, nativeName, zone;
   final double latitude, longitude;
+  final bool gps;
+  final double? accuracyMeters;
   const City(
     this.name,
     this.nativeName,
     this.latitude,
     this.longitude,
-    this.zone,
-  );
+    this.zone, {
+    this.gps = false,
+    this.accuracyMeters,
+  });
   static const all = [
     City('Srinagar', 'سِریٖنَگَر', 34.0837, 74.7973, 'Asia/Kolkata'),
     City('Anantnag', 'اَنَنت ناگ', 33.7311, 75.1487, 'Asia/Kolkata'),

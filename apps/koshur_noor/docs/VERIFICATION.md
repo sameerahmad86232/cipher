@@ -21,3 +21,14 @@ Kashmiri meanings have not been independently reviewed. They remain explicitly m
 - Ivory/forest/antique-gold palette, Cormorant Garamond headings, locally painted illuminated frames, architectural prayer cover and Arabic invocation header. Arabic and Kashmiri content are unchanged. Decorative paintings ignore pointer events.
 - Twelve tests passed after fixing the prayer clock’s narrow-width layout. Existing 320px large-text, search, saved content, counter, prayer calculation and reader controls continue to pass. Analyzer clean.
 - Final Android and web release builds succeeded. Mobile screenshots inspected at 390×844; browser reported no JavaScript exceptions. APK signature verified; application version 1.2.0, build 3. No physical-device installation test was available.
+
+## Version 1.3: reference palette and live Android Qibla
+
+- Eighteen tests pass. New tests cover compass angle wrapping and alignment, GPS/timezone/accuracy persistence, invalid stored coordinates, injected heading/calibration state, GPS application to prayer coordinates, disabled-GPS enable dialog and no-sensor fallback. Device service interfaces use fakes only in tests; release code uses Android sensors and Geolocator.
+- Native SensorManager bridge calculates true heading by applying GeomagneticField declination at the selected/GPS coordinates. Rotation-vector and accelerometer/magnetometer paths are implemented, with orientation remapping, throttled updates and lifecycle cleanup.
+- Tab fade/slide, zikr count and short-angle compass animations honor reduced-motion settings. Reference-inspired coral/peach/cream/cocoa styling and launcher/splash assets replace the earlier green manuscript cover.
+- Browser screenshots cover all five main tabs and Qibla. Browser mode truthfully shows reference-only guidance, since Android hardware sensors are unavailable there.
+- Physical Android installation, live GPS fixes, actual calibration accuracy and magnetic interference behaviour remain untested on a real phone. Automated heading tests do not certify hardware accuracy.
+- The default Flutter 8 GB Gradle heap caused memory contention when checks overlapped in this environment; build memory was reduced to a 3 GB heap with two workers, and the final build was rerun. No application feature was disabled to work around it.
+
+Final 1.3 delivery checks: `flutter analyze` clean; 18 tests passed; web release and Android arm64 release builds succeeded. APK version 1.3.0/build 4 verified with aapt; signature verified and identical to the prior preview. DEX contains the native true-compass channel. Manifest contains coarse/fine location permission, no background-location permission and no INTERNET permission. Browser screenshots of all tabs and reference-only Qibla had zero JavaScript exceptions. The APK remains a development-signed preview, with physical sensors/GPS testing outstanding.

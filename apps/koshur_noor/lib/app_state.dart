@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'prayer_service.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class AppState extends ChangeNotifier {
   final SharedPreferences prefs;
@@ -16,6 +17,33 @@ class AppState extends ChangeNotifier {
       (c) => c.name == prefs.getString('city'),
       orElse: () => City.all.first,
     );
+    if (prefs.getBool('gpsEnabled') == true) {
+      final lat = prefs.getDouble('gpsLatitude'),
+          lon = prefs.getDouble('gpsLongitude'),
+          zone = prefs.getString('gpsZone');
+      if (lat != null &&
+          lon != null &&
+          lat.isFinite &&
+          lon.isFinite &&
+          lat.abs() <= 90 &&
+          lon.abs() <= 180 &&
+          zone != null) {
+        try {
+          tz.getLocation(zone);
+          city = City(
+            'GPS location',
+            'GPS',
+            lat,
+            lon,
+            zone,
+            gps: true,
+            accuracyMeters: prefs.getDouble('gpsAccuracy'),
+          );
+        } catch (_) {
+          /* Fall back to a known manual city. */
+        }
+      }
+    }
     method = prefs.getString('method') ?? 'Karachi';
     if (![
       'Karachi',
@@ -50,6 +78,14 @@ class AppState extends ChangeNotifier {
     notifyListeners();
     await Future.wait([
       prefs.setString('city', city.name),
+      prefs.setBool('gpsEnabled', city.gps),
+      if (city.gps) prefs.setDouble('gpsLatitude', city.latitude),
+      if (city.gps) prefs.setDouble('gpsLongitude', city.longitude),
+      if (city.gps) prefs.setString('gpsZone', city.zone),
+      if (city.gps)
+        city.accuracyMeters != null
+            ? prefs.setDouble('gpsAccuracy', city.accuracyMeters!)
+            : prefs.remove('gpsAccuracy'),
       prefs.setString('method', method),
       prefs.setBool('hanafi', hanafi),
       prefs.setBool('dark', dark),

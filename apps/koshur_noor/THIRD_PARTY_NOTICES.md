@@ -14,3 +14,10 @@
 - Mosque/valley artwork and app icons: original geometric artwork created for this project; no stock image or external image service.
 
 No recorded audio, commercial corpus, non-commercial model weights, or neural model is bundled. Open-source licences are accessible from Settings. Check all applicable distribution and source-content rights before a public commercial release.
+
+## Device integration added in 1.3
+
+- geolocator 14.1.2 and platform implementations: MIT (Baseflow); full root notice in licenses/geolocator-MIT.txt. Android implementation uses Android/Google system location APIs; no location server or paid API is configured by this app.
+- flutter_timezone 5.1.1: Apache-2.0; full notice in licenses/flutter_timezone-Apache-2.0.txt. Used only to identify the device’s timezone for GPS prayer dates.
+- Native true-north sensor bridge and all sunset/mosque/compass vector artwork: original project code. Android SensorManager and GeomagneticField platform APIs are used; no third-party heading model or compass dataset is bundled.
+- Dependency licences are also bundled in Flutter’s generated licence registry. The reference image inspired the palette and layout; no reference image file is embedded in the app.
