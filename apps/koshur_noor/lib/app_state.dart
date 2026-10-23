@@ -9,6 +9,7 @@ class AppState extends ChangeNotifier {
   late String method;
   late bool hanafi, dark, clock24, large;
   late int adjustment, count, target;
+  late double arabicScale;
   late Set<String> favourites, completed;
   AppState(this.prefs) {
     city = City.all.firstWhere(
@@ -26,6 +27,7 @@ class AppState extends ChangeNotifier {
     }
     hanafi = prefs.getBool('hanafi') ?? true;
     dark = prefs.getBool('dark') ?? false;
+    arabicScale = (prefs.getDouble('arabicScale') ?? 1).clamp(0.85, 1.35);
     clock24 = prefs.getBool('clock24') ?? false;
     large = prefs.getBool('large') ?? false;
     adjustment = (prefs.getInt('adjustment') ?? 0).clamp(-15, 15);
@@ -51,6 +53,7 @@ class AppState extends ChangeNotifier {
       prefs.setString('method', method),
       prefs.setBool('hanafi', hanafi),
       prefs.setBool('dark', dark),
+      prefs.setDouble('arabicScale', arabicScale),
       prefs.setBool('clock24', clock24),
       prefs.setBool('large', large),
       prefs.setInt('adjustment', adjustment),
@@ -62,10 +65,12 @@ class AppState extends ChangeNotifier {
   }
 
   String exportReview(
-    List<Map<String, dynamic>> duas,
-  ) => const JsonEncoder.withIndent('  ').convert({
+    List<Map<String, dynamic>> duas, [
+    List<Map<String, dynamic>> hadiths = const [],
+  ]) => const JsonEncoder.withIndent('  ').convert({
     'app': 'Koshur Noor',
     'duas': duas,
+    'hadiths': hadiths,
     'note':
         'Kashmiri meanings await owner review; Arabic is retained separately.',
   });

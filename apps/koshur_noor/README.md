@@ -6,7 +6,7 @@ A Flutter Android/web prayer companion with offline astronomical prayer calculat
 
 [Android arm64 APK](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Android-arm64.apk) · [Flutter source ZIP](https://github.com/sameerahmad86232/cipher/raw/refs/heads/noor-downloads/Koshur-Noor-Flutter-source.zip)
 
-Android 7.0+ on a 64-bit ARM phone. Open the downloaded APK and allow installation from your browser if Android asks. This is a development-signed test preview; the Kashmiri meaning drafts await review. Verified APK SHA-256: `31d8d6ed93f5137e734fbe4c0e3fa3f48199cdf80d3f405321abccf6cb2075cf`.
+Android 7.0+ on a 64-bit ARM phone. Open the downloaded APK and allow installation from your browser if Android asks. This is a development-signed test preview; the Kashmiri meaning drafts await review. Verified APK SHA-256: `cbe25493ca476fd76b62d5fc199623b2d7e60a17d1881e33b1884c8e51be9a99`.
 
 ## Working features
 
@@ -14,6 +14,8 @@ Android 7.0+ on a 64-bit ARM phone. Open the downloaded APK and allow installati
 - Eleven manually selected cities, IANA timezones with daylight-saving handling.
 - Karachi, Muslim World League, Egyptian and Moonsighting Committee methods; Hanafi/standard Asr and ±15-minute prayer adjustment.
 - Monthly timetable and Qibla bearing clockwise from true north. Qibla is a **fixed bearing guide, not a live compass**.
+- Eight hadiths from Sahih al-Bukhari and Sahih Muslim with Arabic text, narrators, references, topic filters and saved favourites. Excerpts and omitted chains are labelled.
+- Amiri Arabic reading font with Noto Naskh fallback, selectable Arabic text and persistent reading-size controls. Kashmiri remains in Nastaliq.
 - Twelve sourced Arabic supplications with Kashmiri meaning drafts, categories, diacritic-insensitive search, bookmarks, copy and correction templates.
 - Private per-city/per-date prayer log and persistent tasbih counter with selectable targets and reset confirmation.
 - Offline Android operation, no account, analytics, tracking, API keys or server.
@@ -35,7 +37,7 @@ The delivered arm64 APK is a development-signed release-mode preview for sideloa
 
 ## Content review
 
-Arabic is retained separately from the Kashmiri meanings. All meanings are `draft-awaiting-owner-review` in `assets/data/duas.json`. Quran snippets are explicitly labelled as excerpts. No accuracy percentage is claimed. Review grammar, orthography and meaning with a fluent Kashmiri reviewer before marking translations verified. The app exposes copyable correction templates and a full JSON review export in Settings. Prior owner corrections guide wording; they do not automatically verify new text.
+Arabic is retained separately from the Kashmiri meanings. All meanings are `draft-awaiting-owner-review` in `assets/data/duas.json` and `assets/data/hadiths.json`. Quran snippets are explicitly labelled as excerpts. No accuracy percentage is claimed. Review grammar, orthography and meaning with a fluent Kashmiri reviewer before marking translations verified. The app exposes copyable correction templates and a full JSON review export in Settings. Prior owner corrections guide wording; they do not automatically verify new text.
 
 Prayer calculations are not mosque iqamah times. Confirm the local calculation convention and timetable. Default: Srinagar, Karachi, Hanafi. No background alarms, adhan playback, live compass, GPS tracking or generated speech are included in this version.
 

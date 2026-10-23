@@ -17,9 +17,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   tzdata.initializeTimeZones();
   LicenseRegistry.addLicense(() async* {
-    for (final name in ['nastaliq', 'naskh']) {
+    for (final name in ['nastaliq', 'naskh', 'amiri']) {
       final text = await rootBundle.loadString('assets/fonts/$name-OFL.txt');
-      yield LicenseEntryWithLineBreaks(['Noto $name font'], text);
+      yield LicenseEntryWithLineBreaks([
+        name == 'amiri' ? 'Amiri Arabic font' : 'Noto $name font',
+      ], text);
     }
   });
   final prefs = await SharedPreferences.getInstance();
@@ -27,13 +29,23 @@ Future<void> main() async {
   final duas = (jsonDecode(raw) as List)
       .map((r) => Map<String, dynamic>.from(r as Map))
       .toList();
-  runApp(NoorApp(state: AppState(prefs), duas: duas));
+  final hadithRaw = await rootBundle.loadString('assets/data/hadiths.json');
+  final hadiths = (jsonDecode(hadithRaw) as List)
+      .map((r) => Map<String, dynamic>.from(r as Map))
+      .toList();
+  runApp(NoorApp(state: AppState(prefs), duas: duas, hadiths: hadiths));
 }
 
 class NoorApp extends StatelessWidget {
   final AppState state;
   final List<Map<String, dynamic>> duas;
-  const NoorApp({super.key, required this.state, required this.duas});
+  final List<Map<String, dynamic>> hadiths;
+  const NoorApp({
+    super.key,
+    required this.state,
+    required this.duas,
+    this.hadiths = const [],
+  });
   @override
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: state,
@@ -53,7 +65,7 @@ class NoorApp extends StatelessWidget {
         ),
         child: child!,
       ),
-      home: Home(state: state, duas: duas),
+      home: Home(state: state, duas: duas, hadiths: hadiths),
     ),
   );
   ThemeData makeTheme(bool dark) {
@@ -130,7 +142,13 @@ class Ks extends StatelessWidget {
 class Home extends StatefulWidget {
   final AppState state;
   final List<Map<String, dynamic>> duas;
-  const Home({super.key, required this.state, required this.duas});
+  final List<Map<String, dynamic>> hadiths;
+  const Home({
+    super.key,
+    required this.state,
+    required this.duas,
+    this.hadiths = const [],
+  });
   @override
   State<Home> createState() => _HomeState();
 }
@@ -140,6 +158,8 @@ class _HomeState extends State<Home> {
   Timer? timer;
   DateTime now = DateTime.now();
   String query = '', category = 'All';
+  String hadithQuery = '', hadithCategory = 'All';
+  bool savedHadithOnly = false;
   bool savedOnly = false;
   AppState get s => widget.state;
   @override
@@ -181,7 +201,8 @@ class _HomeState extends State<Home> {
             child: switch (tab) {
               0 => today(),
               1 => duaLibrary(),
-              2 => tasbih(),
+              2 => hadithLibrary(),
+              3 => tasbih(),
               _ => settings(),
             },
           ),
@@ -202,6 +223,11 @@ class _HomeState extends State<Home> {
           selectedIcon: Icon(Icons.menu_book),
           label: 'Duas',
         ),
+        NavigationDestination(
+          icon: Icon(Icons.auto_stories_outlined),
+          selectedIcon: Icon(Icons.auto_stories),
+          label: 'Hadith',
+        ),
         NavigationDestination(icon: Icon(Icons.blur_circular), label: 'Tasbih'),
         NavigationDestination(icon: Icon(Icons.tune), label: 'Settings'),
       ],
@@ -219,6 +245,13 @@ class _HomeState extends State<Home> {
       ),
     ),
     child: Padding(padding: padding, child: child),
+  );
+  TextStyle arabicStyle(double size) => TextStyle(
+    fontFamily: 'Arabic',
+    fontFamilyFallback: const ['NaskhFallback'],
+    fontSize: size * s.arabicScale,
+    height: 2.1,
+    fontWeight: FontWeight.w400,
   );
   Widget heading(String eyebrow, String title, {Widget? trailing}) => Padding(
     padding: const EdgeInsets.fromLTRB(2, 8, 0, 22),
@@ -595,11 +628,7 @@ class _HomeState extends State<Home> {
                 Text(
                   widget.duas.first['arabic'],
                   textDirection: TextDirection.rtl,
-                  style: const TextStyle(
-                    fontFamily: 'Arabic',
-                    fontSize: 26,
-                    height: 1.9,
-                  ),
+                  style: arabicStyle(28),
                 ),
                 const SizedBox(height: 12),
                 Ks(widget.duas.first['kashmiri'], size: 17),
@@ -656,6 +685,139 @@ class _HomeState extends State<Home> {
     RegExp(r'[\u064B-\u065F\u0670\u06D6-\u06ED]'),
     '',
   );
+  Widget hadithLibrary() {
+    final rows = widget.hadiths
+        .where(
+          (d) =>
+              (hadithCategory == 'All' || d['category'] == hadithCategory) &&
+              (!savedHadithOnly || s.favourites.contains(d['id'])) &&
+              fold(
+                '${d['title']} ${d['subtitle']} ${d['source']} ${d['narrator']} ${d['kashmiri']} ${d['arabic']}',
+              ).contains(fold(hadithQuery)),
+        )
+        .toList();
+    return ListView(
+      key: const ValueKey('hadiths'),
+      padding: const EdgeInsets.fromLTRB(22, 18, 22, 28),
+      children: [
+        heading(
+          'Guidance for everyday life',
+          'Words to live by.',
+          trailing: IconButton(
+            tooltip: savedHadithOnly
+                ? 'Show all hadiths'
+                : 'Show saved hadiths',
+            onPressed: () => setState(() => savedHadithOnly = !savedHadithOnly),
+            icon: Icon(
+              savedHadithOnly ? Icons.bookmark : Icons.bookmark_border,
+              color: gold,
+            ),
+          ),
+        ),
+        const Ks('حَدیٖث — زِندگی ہٕنٛز رَہنُمٲیی', size: 23),
+        const SizedBox(height: 18),
+        TextField(
+          onChanged: (v) => setState(() => hadithQuery = v),
+          decoration: const InputDecoration(
+            prefixIcon: Icon(Icons.search),
+            hintText: 'Search hadith, narrator or reference',
+            hintStyle: TextStyle(fontSize: 12),
+          ),
+        ),
+        const SizedBox(height: 14),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: ['All', 'Faith', 'Character', 'Learning']
+                .map(
+                  (c) => Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: ChoiceChip(
+                      label: Text(c),
+                      selected: hadithCategory == c,
+                      onSelected: (_) => setState(() => hadithCategory = c),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+        const SizedBox(height: 14),
+        const Text(
+          'Arabic prophetic text with source references. Kashmiri meanings are drafts for review. Narration chains are omitted; shorter excerpts are labelled.',
+          style: TextStyle(fontSize: 11, height: 1.7, color: Colors.grey),
+        ),
+        const SizedBox(height: 18),
+        if (rows.isEmpty)
+          surface(
+            const Text('No hadiths found. Try another search or filter.'),
+          ),
+        ...rows.map(
+          (d) => Padding(
+            padding: const EdgeInsets.only(bottom: 14),
+            child: InkWell(
+              onTap: () => showDua(d),
+              borderRadius: BorderRadius.circular(24),
+              child: surface(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            d['source'],
+                            style: const TextStyle(
+                              color: gold,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          s.favourites.contains(d['id'])
+                              ? Icons.bookmark
+                              : Icons.north_east,
+                          size: 18,
+                          color: gold,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Ks(d['title'], size: 21),
+                    const SizedBox(height: 10),
+                    Text(
+                      d['arabic'],
+                      textDirection: TextDirection.rtl,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: arabicStyle(25),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      d['subtitle'],
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(height: 7),
+                    Text(
+                      d['excerpt'] == true
+                          ? 'Excerpt · Kashmiri meaning draft'
+                          : 'Kashmiri meaning draft',
+                      style: const TextStyle(fontSize: 10, color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget duaLibrary() {
     final list = widget.duas
         .where(
@@ -781,8 +943,10 @@ class _HomeState extends State<Home> {
           listenable: s,
           builder: (context, _) => Scaffold(
             appBar: AppBar(
-              title: const Text(
-                'Dua & reflection',
+              title: Text(
+                d['kind'] == 'hadith'
+                    ? 'Hadith & reflection'
+                    : 'Dua & reflection',
                 style: TextStyle(fontSize: 16),
               ),
               actions: [
@@ -798,7 +962,7 @@ class _HomeState extends State<Home> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text(
-                          'Dua copied with source and review label.',
+                          'Text copied with source and review label.',
                         ),
                       ),
                     );
@@ -806,7 +970,7 @@ class _HomeState extends State<Home> {
                   icon: const Icon(Icons.copy_outlined),
                 ),
                 IconButton(
-                  tooltip: 'Save dua',
+                  tooltip: d['kind'] == 'hadith' ? 'Save hadith' : 'Save dua',
                   onPressed: () => s.update(() {
                     s.favourites.contains(d['id'])
                         ? s.favourites.remove(d['id'])
@@ -832,17 +996,71 @@ class _HomeState extends State<Home> {
                       d['subtitle'],
                       style: const TextStyle(color: gold, fontSize: 13),
                     ),
-                    const SizedBox(height: 30),
-                    surface(
+                    const SizedBox(height: 14),
+                    if (d['narrator'] != null)
                       Text(
+                        'Narrated by ${d['narrator']}',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          height: 1.8,
+                          color: gold,
+                        ),
+                      ),
+                    if (d['kind'] == 'hadith')
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Text(
+                          d['excerpt'] == true
+                              ? 'Hadith excerpt · chain omitted'
+                              : 'Prophetic text · chain omitted',
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: Text(
+                            'ARABIC READING SIZE',
+                            style: TextStyle(
+                              fontSize: 9,
+                              letterSpacing: 1.4,
+                              color: gold,
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: 'Smaller Arabic',
+                          onPressed: s.arabicScale <= 0.85
+                              ? null
+                              : () => s.update(
+                                  () => s.arabicScale = (s.arabicScale - 0.1)
+                                      .clamp(0.85, 1.35),
+                                ),
+                          icon: const Icon(Icons.text_decrease),
+                        ),
+                        IconButton(
+                          tooltip: 'Larger Arabic',
+                          onPressed: s.arabicScale >= 1.35
+                              ? null
+                              : () => s.update(
+                                  () => s.arabicScale = (s.arabicScale + 0.1)
+                                      .clamp(0.85, 1.35),
+                                ),
+                          icon: const Icon(Icons.text_increase),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    surface(
+                      SelectableText(
                         d['arabic'],
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontFamily: 'Arabic',
-                          fontSize: 33,
-                          height: 2.1,
-                        ),
+                        style: arabicStyle(32),
                       ),
                       padding: const EdgeInsets.all(25),
                     ),
@@ -875,8 +1093,10 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
-                      'Meaning draft · awaiting your review. Arabic excerpts are identified in the reference. A translation explains meaning and does not replace the Arabic Qur’an.',
+                    Text(
+                      d['kind'] == 'hadith'
+                          ? 'Kashmiri meaning draft · awaiting your review. References identify the narration. Excerpts and omitted chains are labelled separately.'
+                          : 'Meaning draft · awaiting your review. Arabic excerpts are identified in the reference. A translation explains meaning and does not replace the Arabic Qur’an.',
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 11,
@@ -889,7 +1109,7 @@ class _HomeState extends State<Home> {
                         Clipboard.setData(
                           ClipboardData(
                             text:
-                                'Dua ID: ${d['id']}\nSource: ${d['source']}\nCurrent: ${d['kashmiri']}\nMy correction: ',
+                                '${d['kind'] == 'hadith' ? 'Hadith' : 'Dua'} ID: ${d['id']}\nSource: ${d['source']}\nCurrent: ${d['kashmiri']}\nMy correction: ',
                           ),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -923,10 +1143,10 @@ class _HomeState extends State<Home> {
       surface(
         Column(
           children: [
-            const Text(
+            Text(
               'سُبْحَانَ اللَّهِ',
               textDirection: TextDirection.rtl,
-              style: TextStyle(fontFamily: 'Arabic', fontSize: 34, height: 1.8),
+              style: arabicStyle(34),
             ),
             const Ks('اللہ چھُ پاک', size: 18, align: TextAlign.center),
             const SizedBox(height: 20),
@@ -1166,9 +1386,11 @@ class _HomeState extends State<Home> {
             TextButton.icon(
               onPressed: () {
                 Clipboard.setData(
-                  ClipboardData(text: s.exportReview(widget.duas)),
+                  ClipboardData(
+                    text: s.exportReview(widget.duas, widget.hadiths),
+                  ),
                 );
-                snack('All dua meanings copied as review JSON.');
+                snack('Dua and hadith meanings copied as review JSON.');
               },
               icon: const Icon(Icons.file_copy_outlined, size: 18),
               label: const Text('Copy all meanings for review'),
@@ -1177,7 +1399,7 @@ class _HomeState extends State<Home> {
               onPressed: () => showLicensePage(
                 context: context,
                 applicationName: 'Koshur Noor',
-                applicationVersion: '1.0.0',
+                applicationVersion: '1.1.0',
               ),
               child: const Text('Open-source licences'),
             ),
