@@ -1,13 +1,11 @@
-# Koshur Noor 1.2 — Android preview
+# Koshur Noor 1.3 — coral/peach Qibla edition
 
-Download **Koshur-Noor-Android-arm64.apk** for a 64-bit ARM Android phone (Android 7.0+). Version 1.2 introduces a classical manuscript design: ivory pages, antique-gold borders, Cormorant Garamond headings and a framed mosque cover. It retains eight hadiths with Arabic prophetic text, narrators and references, Kashmiri meaning drafts, search, category filters and saved favourites. Arabic now uses the bundled Amiri Naskh font with persistent size controls; Kashmiri remains Nastaliq.
+Download Koshur-Noor-Android-arm64.apk for Android 7.0+ on a 64-bit ARM phone. It is a development-signed preview and may be installed over the prior preview (same verified signing identity). The new palette and launcher icon follow the supplied Qibla reference: coral, peach, cream and warm brown, with original vector mosque artwork.
 
-Also includes offline prayer times, Kashmir-first locations, next-prayer countdown, monthly timetable, Qibla bearing guide, twelve duas, a private prayer log, tasbih and night palette.
+Live Android Qibla uses native rotation-vector/accelerometer/magnetometer sensors with geomagnetic declination correction for true north. Compass rotation follows the short angular path. Calibration, stale data and missing hardware are handled explicitly. GPS is opt-in; saved coordinates and device IANA timezone also drive prayer calculations. Permission denial, disabled GPS, timeout and manual-city alternatives are supported.
 
-This is a development-signed preview for testing and sideloading. Android may ask you to allow installation from your browser. It is not a Play Store production signing setup. Existing app data is preserved by an ordinary update; both previews use the same application ID and signing identity.
+Screen transitions, zikr counting and compass movement are animated, with reduced-motion support. Includes offline prayer times, countdown, monthly timetable, twelve duas, eight hadiths, Arabic/Kashmiri reading, saved favourites, prayer log and night mode. Kashmiri meanings remain drafts for review.
 
-Kashmiri meanings are drafts awaiting review. Hadith excerpts and omitted narration chains are labelled. Confirm prayer times with your mosque. Qibla is a fixed true-north bearing, not a live compass. Background alarms and audio playback are not included.
+18 tests passed; analyzer clean; native Android/web release builds succeeded; APK signature and permissions verified. Physical sensor calibration and live GPS accuracy have not been tested on an actual phone. Browser Qibla screenshots correctly show the reference-only fallback, not simulated live sensor readings. No background location, server, ads or model download.
 
-Validation: twelve Flutter tests passed; analyzer clean; Android and web release builds succeeded; mobile browser render inspected; APK signature verified. Physical Android installation testing was unavailable.
-
-Source: apps/koshur_noor on main or the attached Flutter source ZIP. See noor-classical-home.png, noor-hadiths.png and noor-arabic-reader.png.
+Source: apps/koshur_noor on main and the source ZIP. Screenshots: noor-reference-home.png, noor-qibla.png, noor-duas.png, noor-hadiths.png, noor-tasbih.png and noor-settings.png.
