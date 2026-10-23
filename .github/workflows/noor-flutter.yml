@@ -1,0 +1,35 @@
+name: Koshur Noor Android
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/koshur_noor/**'
+      - '.github/workflows/noor-flutter.yml'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/koshur_noor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.7'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+      - run: flutter build apk --release --target-platform android-arm64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: koshur-noor-android-test-apk
+          path: apps/koshur_noor/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 14
