@@ -1,0 +1,19 @@
+{
+  "owner_exact_feedback": {
+    "55": "ژورئ for theft",
+    "59": "مییل for ink"
+  },
+  "lexical_items": [
+    {
+      "english": "theft",
+      "owner_kashmiri": "ژورئ",
+      "scope": "Separate lexical item; not translation of conceal in item 55"
+    },
+    {
+      "english": "ink",
+      "owner_kashmiri": "مییل",
+      "scope": "Noun in item 59"
+    }
+  ],
+  "unresolved": "Natural Kashmiri wording for conceal my faults in item 55"
+}

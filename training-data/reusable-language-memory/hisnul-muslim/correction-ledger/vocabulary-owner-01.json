@@ -1,0 +1,42 @@
+{
+  "batch": "vocabulary-owner-01",
+  "items_covered": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "owner_exact_wording": {
+    "1": "تہنز مہربانی یا فیاضی",
+    "2": "یہِ مُکمل / کٲمل اذان",
+    "3": "جنتَس مَنٛز خاص جاۓ دِنٕچ درخواست آیہ رسول اللہ صلی اللہ علیہ وآلہ وسلم سٕندِ خٲطرٕ کرنہٕ",
+    "4": "اکھ خاص شناخت یا اعلیٰ درجہ",
+    "5": "اکھ تعریفی سٹیشن",
+    "6": "ڈونڈھ کنہ — شین تہٕ عام شینٕ نش مختلف",
+    "7": "پلو صاف کرنَس مُقابلہٕ چھُ گندٕ یا داغ",
+    "8": "صرف اللہ تعالہس کُن رجوع کرُن تہٕ کُنہ نہ  شریک ٹھراون",
+    "9": "میٲنۍ قربانی / قربانی عبادت",
+    "10": "بہٕ چُھس چانیس آلوس جواب  تہٕ بہٕ چُھس تہنز اطاعت کرنہٕ خٲطرٕ تیار",
+    "11": "بدی ہند الزام چھہ نہ تۅہہِ پیٹھ لگاونہ یوان — یہ گژھہِ سیاق و سباق کہ لحاظہ احتیاط سان لفظن ہند اظہار"
+  },
+  "integration_notes": {
+    "1": "Owner wording recorded. Inflect the second-person possessive consistently with the surrounding prayer register.",
+    "3": "Explanation of al-wasilah, not an independent phrase to insert into a recited supplication. Keep the term الوسيلة where appropriate.",
+    "4": "Owner supplied two alternatives; elevated rank is more precise than identification in this context.",
+    "5": "مقام here means rank/station, not a transport station. Suggested draft: اَکھ تَعریف کَرمُت مَقام۔ Owner original retained; suggestion not approved.",
+    "6": "Owner term ڈونڈھ کنہ retained. Arabic الْبَرَد means hailstones; the explanatory contrast is snow versus ordinary ice, not snow versus ordinary snow. Do not silently infer owner preferred word for ice.",
+    "7": "Garment-cleaning context is explanation; lexical candidates are گندٕ / داغ.",
+    "8": "Preserve exclusive devotion and rejection of associating partners in context.",
+    "9": "Phrase concerns sacrificial worship; do not expand to unrelated meanings.",
+    "10": "Whole sentence needs inflection/register consistency. Preserve both answering the call and readiness to obey.",
+    "11": "Text after the dash is an editorial instruction, not the dua. Treat the theological expression in context; no doctrinal approval inferred."
+  },
+  "status": "verbatim feedback recorded, not blanket approval of all drafts"
+}

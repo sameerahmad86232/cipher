@@ -1,0 +1,49 @@
+{
+  "batch": "hisnul-owner-02",
+  "source": "six owner phrase corrections in chat",
+  "items": [
+    {
+      "number": 1,
+      "arabic": "أَنْ أَضِلَّ أَوْ أُضَلَّ",
+      "owner_native_exact": "یہ زِ بہٕ گژھہِ تہِ واتہ  ڈالن، یا کانہہ گسہ نہ  میہ وتہِ ڈالن",
+      "review_note": "Owner wording preserved exactly. Check negation and active/passive structure when composing the whole supplication; this is a request for protection, not an assertion.",
+      "book_entry": 17
+    },
+    {
+      "number": 2,
+      "arabic": "أَنْ أَزِلَّ أَوْ أُزَلَّ",
+      "owner_native_exact": "زِ بہٕ گسه  غلطس کن گسن ، یا کانٛہہ کرنایم مےٚ غلطی",
+      "review_note": "Owner wording preserved exactly. Check first-person and causative forms in the composed sentence.",
+      "book_entry": 17
+    },
+    {
+      "number": 3,
+      "arabic": "أَنْ أَظْلِمَ أَوْ أُظْلَمَ",
+      "owner_native_exact": "زِ بہٕ چُھس کٲنٛسہِ تکلیف دِوان، یا کٲنٛه چُھ مےٚ تکلیف دِوان",
+      "review_note": "Owner preference: تکلیف دِوان. Arabic ظلم also includes injustice/wrongdoing; retain that broader sense in later uses.",
+      "book_entry": 17
+    },
+    {
+      "number": 4,
+      "arabic": "أَنْ أَجْهَلَ أَوْ يُجْهَلَ عَلَيَّ",
+      "owner_native_exact": "یہ زِ بہٕ چھُس کٲنسہِ ستی بیوقوفی کران، یا کانہہ چھہ میه ستی بیوقوفی کران",
+      "review_note": "Owner preference: بیوقوفی کران. Retain active/passive distinction and prayer context.",
+      "book_entry": 17
+    },
+    {
+      "number": 5,
+      "arabic": "بِوَجْهِهِ الْكَرِيمِ",
+      "owner_native_exact": "تٔمۍ سٕندِ عظیم بُتھِ سٍتۍ",
+      "review_note": "Owner appended: اکھ الہی صفت۔ محتاط مذہبی لفاظن ہٕنٛز ضرورت. This is editorial explanation, not words to recite. الكريم means noble/generous; عظیم is owner wording and should not become an automatic equivalent in every context.",
+      "book_entry": 20
+    },
+    {
+      "number": 6,
+      "arabic": "سُلْطَانِهِ الْقَدِيمِ",
+      "owner_native_exact": "تٔمۍ سُند ابدی اختیار تہٕ خودمختاری",
+      "review_note": "Owner preference for eternal authority/sovereignty; inflect within the full sentence.",
+      "book_entry": 20
+    }
+  ],
+  "status": "owner wordings recorded; composed dua grammar not independently approved"
+}

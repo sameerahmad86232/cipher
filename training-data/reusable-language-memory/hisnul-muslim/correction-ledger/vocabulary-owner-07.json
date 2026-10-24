@@ -1,0 +1,33 @@
+{
+  "batch": "vocabulary-owner-07",
+  "mapped_items": [
+    102,
+    103,
+    106,
+    108,
+    109
+  ],
+  "items": {
+    "102": {
+      "owner_exact": "Use asel inplace of acha",
+      "note": "Replace acha with owner-preferred asel in good/gracious dealings. Proposed script اَصٕل; exact Roman wording retained."
+    },
+    "103": {
+      "owner_exact": "It is paaanas for myself",
+      "note": "Record paaanas as owner reflexive form for myself/oneself in context. Interpret as feedback on pannes nish in #103; do not replace possessive پَننِس / پَنُن indiscriminately."
+    },
+    "106": {
+      "owner_exact": "Raaeth keuth yenee oooual",
+      "note": "Owner preferred phrase for one who comes by night. Preserve Roman wording; native-script transcription and inflection require review."
+    },
+    "108": {
+      "owner_exact": "Samandaruk pouuus",
+      "note": "Owner phrase for foam of the sea, superseding assistant Samandaruk jhag. Proposed script سَمَندَرُک پوٗس; pronunciation/spelling still owner-reviewable."
+    },
+    "109": {
+      "owner_exact": "Wazne ke lihaaaze goueb",
+      "note": "Owner phrase for heavy by weight. Use it for heavy in the scale, preserving the two-phrase subject and scale context. No complete-sentence approval inferred."
+    }
+  },
+  "scope": "Explicit lexical corrections only; no approval inferred for 104,105,107 or whole duas."
+}

@@ -1,0 +1,1185 @@
+{
+  "status": "Kashmiri wording questions, not unknown Arabic definitions",
+  "items": [
+    {
+      "item": 1,
+      "book_entries": [
+        21
+      ],
+      "arabic": "فَضْلِكَ",
+      "meaning_in_context": "Your favour or gracious bounty",
+      "your_kashmiri": "تہنز مہربانی یا فیاضی",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording recorded. Inflect the second-person possessive consistently with the surrounding prayer register."
+    },
+    {
+      "item": 2,
+      "book_entries": [
+        25
+      ],
+      "arabic": "الدَّعْوَةِ التَّامَّةِ",
+      "meaning_in_context": "This complete/perfect call to prayer",
+      "your_kashmiri": "یہِ مُکمل / کٲمل اذان",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved exactly."
+    },
+    {
+      "item": 3,
+      "book_entries": [
+        25
+      ],
+      "arabic": "الْوَسِيلَةَ",
+      "meaning_in_context": "The special station in Paradise requested for the Prophet ﷺ",
+      "your_kashmiri": "جنتَس مَنٛز خاص جاۓ دِنٕچ درخواست آیہ رسول اللہ صلی اللہ علیہ وآلہ وسلم سٕندِ خٲطرٕ کرنہٕ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Explanation of al-wasilah, not an independent phrase to insert into a recited supplication. Keep the term الوسيلة where appropriate."
+    },
+    {
+      "item": 4,
+      "book_entries": [
+        25
+      ],
+      "arabic": "الْفَضِيلَةَ",
+      "meaning_in_context": "Distinction or an elevated rank",
+      "your_kashmiri": "اکھ خاص شناخت یا اعلیٰ درجہ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner supplied two alternatives; elevated rank is more precise than identification in this context."
+    },
+    {
+      "item": 5,
+      "book_entries": [
+        25
+      ],
+      "arabic": "مَقَامًا مَحْمُودًا",
+      "meaning_in_context": "A praised station",
+      "your_kashmiri": "اکھ تعریفی سٹیشن",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "مقام here means rank/station, not a transport station. Suggested draft: اَکھ تَعریف کَرمُت مَقام۔ Owner original retained; suggestion not approved.",
+      "suggested_native_revision": "اَکھ تَعریف کَرمُت مَقام۔"
+    },
+    {
+      "item": 6,
+      "book_entries": [
+        27,
+        148
+      ],
+      "arabic": "الْبَرَدِ",
+      "meaning_in_context": "Hailstones, distinguished from snow and ordinary ice",
+      "your_kashmiri": "ڈونڈھ کنہ — شین تہٕ عام شینٕ نش مختلف",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner term ڈونڈھ کنہ retained. Arabic الْبَرَد means hailstones; the explanatory contrast is snow versus ordinary ice, not snow versus ordinary snow. Do not silently infer owner preferred word for ice."
+    },
+    {
+      "item": 7,
+      "book_entries": [
+        27,
+        148
+      ],
+      "arabic": "الدَّنَسِ",
+      "meaning_in_context": "Dirt, stains or defilement in the garment comparison",
+      "your_kashmiri": "پلو صاف کرنَس مُقابلہٕ چھُ گندٕ یا داغ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Garment-cleaning context is explanation; lexical candidates are گندٕ / داغ."
+    },
+    {
+      "item": 8,
+      "book_entries": [
+        29,
+        93
+      ],
+      "arabic": "حَنِيفًا",
+      "meaning_in_context": "Turning exclusively to Allah, away from associating partners",
+      "your_kashmiri": "صرف اللہ تعالہس کُن رجوع کرُن تہٕ کُنہ نہ  شریک ٹھراون",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Preserve exclusive devotion and rejection of associating partners in context."
+    },
+    {
+      "item": 9,
+      "book_entries": [
+        29
+      ],
+      "arabic": "نُسُكِي",
+      "meaning_in_context": "My sacrifice / sacrificial worship",
+      "your_kashmiri": "میٲنۍ قربانی / قربانی عبادت",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Phrase concerns sacrificial worship; do not expand to unrelated meanings."
+    },
+    {
+      "item": 10,
+      "book_entries": [
+        29
+      ],
+      "arabic": "لَبَّيْكَ وَسَعْدَيْكَ",
+      "meaning_in_context": "I answer Your call and am ready to obey You",
+      "your_kashmiri": "بہٕ چُھس چانیس آلوس جواب  تہٕ بہٕ چُھس تہنز اطاعت کرنہٕ خٲطرٕ تیار",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Whole sentence needs inflection/register consistency. Preserve both answering the call and readiness to obey."
+    },
+    {
+      "item": 11,
+      "book_entries": [
+        29
+      ],
+      "arabic": "وَالشَّرُّ لَيْسَ إِلَيْكَ",
+      "meaning_in_context": "Evil is not attributed to You; retain the full religious context",
+      "your_kashmiri": "بدی ہند الزام چھہ نہ تۅہہِ پیٹھ لگاونہ یوان — یہ گژھہِ سیاق و سباق کہ لحاظہ احتیاط سان لفظن ہند اظہار",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Text after the dash is an editorial instruction, not the dua. Treat the theological expression in context; no doctrinal approval inferred."
+    },
+    {
+      "item": 12,
+      "book_entries": [
+        30
+      ],
+      "arabic": "فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ",
+      "meaning_in_context": "Originator of the heavens and earth",
+      "your_kashmiri": "یمۍ آسمانن تہ زمینن بنوو",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. فاطر means Originator/Creator; inflect the phrase in the actual invocation."
+    },
+    {
+      "item": 13,
+      "book_entries": [
+        30,
+        84
+      ],
+      "arabic": "عَالِمَ الْغَيْبِ وَالشَّهَادَةِ",
+      "meaning_in_context": "Knower of the unseen and the seen",
+      "your_kashmiri": "یُس وُچھُن تہٕ غیب چُھ زانان",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. Seen/unseen are objects of knowing, not a statement that God is seen. Verify the composed sentence."
+    },
+    {
+      "item": 14,
+      "book_entries": [
+        31
+      ],
+      "arabic": "نَفْخِهِ",
+      "meaning_in_context": "Satan’s arrogance/pride, according to the explanation here",
+      "your_kashmiri": "شیطان سُند تکبر یا غرور، یِتھ کٔنۍ زن یتہِ وضاحت کرنہٕ آمٕژ چھِ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording before the comma is lexical wording; the explanation after the comma is editorial, not recited text."
+    },
+    {
+      "item": 15,
+      "book_entries": [
+        31
+      ],
+      "arabic": "نَفْثِهِ",
+      "meaning_in_context": "Satan’s corrupting poetry, according to the explanation here",
+      "your_kashmiri": "شیطان سنز بد عنوانی شاعری، یتھ کٔنۍ زن ییتہِ وضاحت کرنہٕ آمژ چھِ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. Verify whether بد عنوانی شاعری naturally conveys corrupting/evil poetry; commentary is not recited text."
+    },
+    {
+      "item": 16,
+      "book_entries": [
+        31
+      ],
+      "arabic": "هَمْزِهِ",
+      "meaning_in_context": "Satan’s harmful prompting/affliction, explained here as madness",
+      "your_kashmiri": "",
+      "status": "Awaiting your wording — omitted from batch 12–21"
+    },
+    {
+      "item": 17,
+      "book_entries": [
+        32
+      ],
+      "arabic": "قَيِّمُ السَّمَاوَاتِ وَالْأَرْضِ",
+      "meaning_in_context": "The One who sustains and maintains the heavens and earth",
+      "your_kashmiri": "یُس آسمانس تہٕ زمینس جٲری تھاوان چُھ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. Refers to sustaining/maintaining creation, not merely its motion."
+    },
+    {
+      "item": 18,
+      "book_entries": [
+        32,
+        58
+      ],
+      "arabic": "الْمُقَدِّمُ وَالْمُؤَخِّرُ",
+      "meaning_in_context": "The One who advances and the One who defers; divine names",
+      "your_kashmiri": "سُہ یُس کینژن لوٗکن برونہہ پکنس منز مدد کران چُھ باقین پتھ کُن تھاوان۔",
+      "status": "Owner revised wording received; use in context",
+      "integration_note": "Owner revised #18 to advancing others and holding others back, superseding the self-motion/waiting interpretation. In this explanation لوٗکن is illustrative; the divine names are not restricted to people. Full prayer grammar remains context-dependent.",
+      "previous_owner_versions": [
+        {
+          "text": "یُس برونہہ کُن پکان چُھ تہٕ یُس انتظار کران چُھ—خدایہ ناو",
+          "status": "Meaning clarification needed"
+        }
+      ]
+    },
+    {
+      "item": 19,
+      "book_entries": [
+        35,
+        43
+      ],
+      "arabic": "سُبُّوحٌ قُدُّوسٌ",
+      "meaning_in_context": "Utterly pure and holy",
+      "your_kashmiri": "مکمل طور پاک تہٕ صاف",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. قدوس conveys holiness/sanctity and freedom from imperfection, not merely ordinary physical cleanliness."
+    },
+    {
+      "item": 20,
+      "book_entries": [
+        36
+      ],
+      "arabic": "مُخِّي",
+      "meaning_in_context": "My marrow / inner substance; rendered brain in some translations",
+      "your_kashmiri": "میون میرو ؛ کُنہِ ساتہٕ کینژن نسخن منٛز 'دماغ' پٲٹھۍ ترجمہٕ کرنہٕ آمُت",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner lexical candidate میون میرو recorded; note on other translations stays outside the dua. Anatomical sense should be reviewed against the source."
+    },
+    {
+      "item": 21,
+      "book_entries": [
+        36
+      ],
+      "arabic": "عَصَبِي",
+      "meaning_in_context": "My sinews or tendons",
+      "your_kashmiri": "میٲنۍ رگ یا ٹینڈن — سخت ٹشو یم مژھن أڑجن سۭتۍ جوڑان چھِ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner candidate preserved. Tendons/sinews are not veins; do not treat رگ as an exact anatomical equivalent without checking intended Kashmiri usage. Explanatory tissue description stays outside the dua."
+    },
+    {
+      "item": 22,
+      "book_entries": [
+        37,
+        45
+      ],
+      "arabic": "الْجَبَرُوتِ",
+      "meaning_in_context": "Overwhelming might and power",
+      "your_kashmiri": "ناقابل یقین طاقت تہٕ زوور",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording retained exactly. الجبروت conveys overwhelming/irresistible might; ناقابل یقین literally suggests unbelievable. Review that nuance before integrating into a divine praise formula."
+    },
+    {
+      "item": 23,
+      "book_entries": [
+        37,
+        45
+      ],
+      "arabic": "الْمَلَكُوتِ",
+      "meaning_in_context": "Absolute dominion",
+      "your_kashmiri": "مکمل کنٹرول یا اختیار",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner lexical choices preserved; choose and inflect according to the whole phrase."
+    },
+    {
+      "item": 24,
+      "book_entries": [
+        37,
+        45
+      ],
+      "arabic": "الْكِبْرِيَاءِ",
+      "meaning_in_context": "Supreme greatness or majesty",
+      "your_kashmiri": "حتمی عظمت تہٕ بٔجر",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved; not a declaration that the final sentence has been reviewed."
+    },
+    {
+      "item": 25,
+      "book_entries": [
+        40,
+        67
+      ],
+      "arabic": "وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",
+      "meaning_in_context": "Wealth or high standing cannot protect its possessor against You",
+      "your_kashmiri": "کانہہ تہِ امیر یا اہم شخص ، سُہ ہیکہِ نہٕ تم  تۅہہِ نِش محفوٗظ کرتھ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. Check pronoun reference: the possessor’s wealth/status does not avail its possessor against Allah; do not change the subject to a person protecting someone else."
+    },
+    {
+      "item": 26,
+      "book_entries": [
+        47
+      ],
+      "arabic": "عَفْوِكَ",
+      "meaning_in_context": "Your pardon; distinguish from punishment and displeasure",
+      "your_kashmiri": "تُہٕنٛز مَعافی",
+      "status": "Approved by owner — phrase only",
+      "integration_note": "Owner explicitly approved assistant suggestion for عَفْوِكَ (Your pardon). Supersedes unclear تلہ حز. Inflect/register-match in the complete dua; no approval of the whole dua inferred.",
+      "previous_owner_versions": [
+        {
+          "text": "تلہ حز",
+          "status": "Clarification needed"
+        }
+      ]
+    },
+    {
+      "item": 27,
+      "book_entries": [
+        49
+      ],
+      "arabic": "وَاجْبُرْنِي",
+      "meaning_in_context": "Restore me / make good my deficiencies",
+      "your_kashmiri": "مے ٹھیٖک کٔرِو تہٕ کٔرِو میانین خٲمِین ہُند مدتھ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. Verify intended مدتھ / مدد and ensure the construction means making good deficiencies/restoration, not merely assisting deficiencies."
+    },
+    {
+      "item": 28,
+      "book_entries": [
+        51
+      ],
+      "arabic": "وِزْرًا",
+      "meaning_in_context": "A burden of sin",
+      "your_kashmiri": "گۅناہ ہُند اکھ بوجھ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved exactly."
+    },
+    {
+      "item": 29,
+      "book_entries": [
+        51,
+        152
+      ],
+      "arabic": "ذُخْرًا",
+      "meaning_in_context": "A reward or treasure stored for the Hereafter",
+      "your_kashmiri": "آخرت خٲطرٕ اکھ انعام یا خزانہٕ الگ تھاونہٕ آمُت",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved; contextual gloss, not automatically a fully inflected prayer phrase."
+    },
+    {
+      "item": 30,
+      "book_entries": [
+        52
+      ],
+      "arabic": "التَّحِيَّاتُ",
+      "meaning_in_context": "Expressions of reverence and honour directed to Allah",
+      "your_kashmiri": "اللہ تعالیٰ سُند احترام تہٕ عزت کرنٕکۍ طریقہٕ",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner explanation preserved. In tashahhud, express that all reverence/honour belongs to Allah; do not silently replace this with a list of methods of respect."
+    },
+    {
+      "item": 31,
+      "book_entries": [
+        52
+      ],
+      "arabic": "الطَّيِّبَاتُ",
+      "meaning_in_context": "Good and pure words/deeds, in the tashahhud context",
+      "your_kashmiri": "اصٕل تہٕ خالص کلامَن تہٕ عملَن ہٕندِس تناظرس مَنٛز",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner wording preserved. Treat context/explanation as editorial; the lexical meaning is good/pure words and deeds, not the phrase in the context of."
+    },
+    {
+      "item": 32,
+      "book_entries": [
+        53
+      ],
+      "arabic": "آلِ مُحَمَّدٍ",
+      "meaning_in_context": "Muhammad’s family/household; interpretation of scope needs care",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 33,
+      "book_entries": [
+        55,
+        56
+      ],
+      "arabic": "فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ",
+      "meaning_in_context": "Trials of life and death",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 34,
+      "book_entries": [
+        56
+      ],
+      "arabic": "الْمَأْثَمِ وَالْمَغْرَمِ",
+      "meaning_in_context": "Sin and the burden/liability of debt",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 35,
+      "book_entries": [
+        60
+      ],
+      "arabic": "أَرْذَلِ الْعُمُرِ",
+      "meaning_in_context": "The debilitating stage of extreme old age",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 36,
+      "book_entries": [
+        62
+      ],
+      "arabic": "خَشْيَتَكَ",
+      "meaning_in_context": "Reverent fear of You",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 37,
+      "book_entries": [
+        62
+      ],
+      "arabic": "الْقَصْدَ فِي الْغِنَى وَالْفَقْرِ",
+      "meaning_in_context": "Moderation in both wealth and poverty",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 38,
+      "book_entries": [
+        62
+      ],
+      "arabic": "نَعِيمًا لَا يَنْفَدُ",
+      "meaning_in_context": "Blessed enjoyment that never runs out",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 39,
+      "book_entries": [
+        62
+      ],
+      "arabic": "قُرَّةَ عَيْنٍ لَا تَنْقَطِعُ",
+      "meaning_in_context": "Lasting comfort and delight",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 40,
+      "book_entries": [
+        62
+      ],
+      "arabic": "الرِّضَا بَعْدَ الْقَضَاءِ",
+      "meaning_in_context": "Contentment after the divine decree",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 41,
+      "book_entries": [
+        62
+      ],
+      "arabic": "بَرْدَ الْعَيْشِ بَعْدَ الْمَوْتِ",
+      "meaning_in_context": "Ease and comfort of life after death",
+      "your_kashmiri": "",
+      "assistant_proposed_before_correction": "مَوتہٕ پَتہٕ آرام تہٕ سُکوٗن وٲنۍ زِندٕگی",
+      "owner_partial_correction_roman": "waajean zindagi",
+      "suggested_native_revision": "مَوتہٕ پَتہٕ آرام تہٕ سُکوٗن واجِنۍ زِندٕگی",
+      "status": "Owner corrected ending; native-script transcription pending review",
+      "integration_note": "Owner corrected the final phrase to waajean zindagi. Preserve this Roman wording as authoritative feedback; واجِنۍ زِندٕگی is a proposed transcription. No approval of entries 32–40 or the complete sentence is inferred."
+    },
+    {
+      "item": 42,
+      "book_entries": [
+        62
+      ],
+      "arabic": "هُدَاةً مُهْتَدِينَ",
+      "meaning_in_context": "People who guide others and are themselves rightly guided",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 43,
+      "book_entries": [
+        63,
+        65,
+        94
+      ],
+      "arabic": "الصَّمَدُ",
+      "meaning_in_context": "The Self-Sufficient One whom all creation needs",
+      "your_kashmiri": "سُہ یُس پانہٕ بےنیاز چھُ تہٕ سٲری مَخلوٗق تَمہِ سٕنٛد مُحتاج چھےٚ۔",
+      "owner_partial_correction_roman": "Teamsend mahtaj che",
+      "suggested_native_revision": "سُہ یُس پانہٕ بےنیاز چھُ تہٕ سٲری مَخلوٗق تَمہِ سٕنٛد مُحتاج چھےٚ",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner explicitly confirmed Correct Next after the full revised Kashmiri wording was displayed. This approves item 43 wording, not the other entries in batch 42–51."
+    },
+    {
+      "item": 44,
+      "book_entries": [
+        64
+      ],
+      "arabic": "الْمَنَّانُ",
+      "meaning_in_context": "The One who abundantly bestows favours",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 45,
+      "book_entries": [
+        64
+      ],
+      "arabic": "بَدِيعَ السَّمَاوَاتِ وَالْأَرْضِ",
+      "meaning_in_context": "Originator of the heavens and earth without a prior example",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 46,
+      "book_entries": [
+        64,
+        89
+      ],
+      "arabic": "الْقَيُّومُ",
+      "meaning_in_context": "The Self-Subsisting One who sustains all",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 47,
+      "book_entries": [
+        66
+      ],
+      "arabic": "أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ",
+      "meaning_in_context": "You are as-Salam, free of imperfection; peace comes from You",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 48,
+      "book_entries": [
+        74
+      ],
+      "arabic": "أَسْتَخِيرُكَ بِعِلْمِكَ",
+      "meaning_in_context": "I seek Your choice of what is good through Your knowledge",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 49,
+      "book_entries": [
+        74
+      ],
+      "arabic": "أَسْتَقْدِرُكَ بِقُدْرَتِكَ",
+      "meaning_in_context": "I seek ability through Your power",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 50,
+      "book_entries": [
+        74
+      ],
+      "arabic": "عَاقِبَةِ أَمْرِي",
+      "meaning_in_context": "The eventual outcome of my affair",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 51,
+      "book_entries": [
+        74
+      ],
+      "arabic": "فَاصْرِفْهُ عَنِّي وَاصْرِفْنِي عَنْهُ",
+      "meaning_in_context": "Turn it away from me and turn me away from it",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 52,
+      "book_entries": [
+        77
+      ],
+      "arabic": "عَهْدِكَ وَوَعْدِكَ",
+      "meaning_in_context": "Your covenant and promise",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 53,
+      "book_entries": [
+        77
+      ],
+      "arabic": "أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ",
+      "meaning_in_context": "I acknowledge Your favour upon me",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 54,
+      "book_entries": [
+        82,
+        207,
+        240
+      ],
+      "arabic": "كَلِمَاتِ اللَّهِ التَّامَّاتِ",
+      "meaning_in_context": "Allah’s perfect words",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 55,
+      "book_entries": [
+        83
+      ],
+      "arabic": "اسْتُرْ عَوْرَاتِي",
+      "meaning_in_context": "Conceal my vulnerabilities/faults",
+      "your_kashmiri": "",
+      "status": "Concealment wording still unresolved",
+      "integration_note": "Owner wrote ژورئ for theft. Record as separate vocabulary, not an equivalent of اسْتُرْ (conceal). Assistant intended keep my faults hidden; ask for preferred concealment wording."
+    },
+    {
+      "item": 56,
+      "book_entries": [
+        83
+      ],
+      "arabic": "آمِنْ رَوْعَاتِي",
+      "meaning_in_context": "Calm my fears and make me feel secure",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 57,
+      "book_entries": [
+        83
+      ],
+      "arabic": "أَنْ أُغْتَالَ مِنْ تَحْتِي",
+      "meaning_in_context": "Being struck or destroyed unexpectedly from beneath me",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 58,
+      "book_entries": [
+        84
+      ],
+      "arabic": "أَقْتَرِفَ عَلَى نَفْسِي سُوءًا",
+      "meaning_in_context": "Commit evil against myself",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 59,
+      "book_entries": [
+        87
+      ],
+      "arabic": "مِدَادَ كَلِمَاتِهِ",
+      "meaning_in_context": "Ink sufficient for His words; an expression of immeasurable praise",
+      "your_kashmiri": "",
+      "owner_partial_correction_exact": "مییل",
+      "suggested_native_revision": "تَمہِ سٕندۍ کَلِمات لیٖکھنہٕ خٲطرٕ لَگَن وٲلِ مییل",
+      "status": "Owner supplied ink term; full phrase grammar pending review",
+      "integration_note": "Owner explicitly supplied مییل for ink, replacing assistant مَس. Preserve exact spelling; gender/agreement and full phrase not yet approved."
+    },
+    {
+      "item": 60,
+      "book_entries": [
+        89
+      ],
+      "arabic": "لَا تَكِلْنِي إِلَى نَفْسِي",
+      "meaning_in_context": "Do not leave me to my own resources",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 61,
+      "book_entries": [
+        93
+      ],
+      "arabic": "فِطْرَةِ الْإِسْلَامِ",
+      "meaning_in_context": "The natural, original disposition of Islam",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 62,
+      "book_entries": [
+        94,
+        95
+      ],
+      "arabic": "غَاسِقٍ إِذَا وَقَبَ",
+      "meaning_in_context": "Darkness as it settles or becomes intense",
+      "your_kashmiri": "ani gati not ande gati; yeali su waehraaavne yeye",
+      "owner_correction_roman_exact": "ani gati not ande gati; yeali su waehraaavne yeye",
+      "integration_note": "Owner corrects darkness wording and when it spreads/settles. Preserve Roman spelling; native orthography and full clause pending review.",
+      "status": "Owner Roman correction received; native script pending"
+    },
+    {
+      "item": 63,
+      "book_entries": [
+        94,
+        95
+      ],
+      "arabic": "النَّفَّاثَاتِ فِي الْعُقَدِ",
+      "meaning_in_context": "Those who blow into knots, in the sorcery context",
+      "your_kashmiri": "waael not waen",
+      "owner_correction_roman_exact": "waael not waen",
+      "integration_note": "Owner corrects the agent form. Preserve exact Roman wording. Arabic النَّفَّاثَات is grammatically feminine plural; grammatical integration must be checked without changing source Arabic.",
+      "status": "Owner Roman correction received; native script pending"
+    },
+    {
+      "item": 64,
+      "book_entries": [
+        94,
+        95
+      ],
+      "arabic": "الْوَسْوَاسِ الْخَنَّاسِ",
+      "meaning_in_context": "The whisperer who withdraws",
+      "your_kashmiri": "Waswaase trawaen wael sende share neshee yous ghre ghre paeout pherith yewaan che",
+      "owner_correction_roman_exact": "Waswaase trawaen wael sende share neshee yous ghre ghre paeout pherith yewaan che",
+      "integration_note": "Owner supplies a full phrase with from the evil of, beyond the short isolated glossary expression. Keep preposition/frame when using in Surah an-Nas. Do not interpret ghre ghre as houses without confirmation; Roman phrase authoritative, script transcription pending.",
+      "status": "Owner Roman correction received; native script pending"
+    },
+    {
+      "item": 65,
+      "book_entries": [
+        96
+      ],
+      "arabic": "سِنَةٌ",
+      "meaning_in_context": "Drowsiness, distinguished from sleep",
+      "your_kashmiri": "neeender ghaseeen",
+      "owner_correction_roman_exact": "feeling sleepy means neeender ghaseeen",
+      "integration_note": "Owner confirmed Zaaman means to yawn; feeling sleepy/drowsiness is neeender ghaseeen. Use the latter for سِنَةٌ. Native-script spelling remains to be reviewed; do not use the yawning term here.",
+      "status": "Owner clarified meaning — Roman wording confirmed",
+      "previous_owner_versions": [
+        {
+          "wording": "Zaaaaman for oooung",
+          "note": "Earlier proposed Zaaman; now clarified by owner as yawning, not drowsiness."
+        }
+      ]
+    },
+    {
+      "item": 66,
+      "book_entries": [
+        96
+      ],
+      "arabic": "لَا يَؤُودُهُ حِفْظُهُمَا",
+      "meaning_in_context": "Preserving the heavens and earth does not burden Him",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 67,
+      "book_entries": [
+        97
+      ],
+      "arabic": "إِصْرًا",
+      "meaning_in_context": "A heavy burden or obligation",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 68,
+      "book_entries": [
+        103
+      ],
+      "arabic": "فَالِقَ الْحَبِّ وَالنَّوَى",
+      "meaning_in_context": "Splitter of grain and fruit/date stones",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 69,
+      "book_entries": [
+        103
+      ],
+      "arabic": "آخِذٌ بِنَاصِيَتِهِ",
+      "meaning_in_context": "Holding its forelock; expressing complete mastery",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 70,
+      "book_entries": [
+        103,
+        127
+      ],
+      "arabic": "الظَّاهِرُ وَالْبَاطِنُ",
+      "meaning_in_context": "Az-Zahir: the Manifest/Most High; al-Batin: the Hidden/One aware of the innermost. Divine names: retain the Arabic names and review their Kashmiri explanation.",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 71,
+      "book_entries": [
+        107
+      ],
+      "arabic": "فَوَّضْتُ أَمْرِي إِلَيْكَ",
+      "meaning_in_context": "I entrust my whole affair to You",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 72,
+      "book_entries": [
+        107
+      ],
+      "arabic": "لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ",
+      "meaning_in_context": "No refuge or escape from You except with You",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 73,
+      "book_entries": [
+        112
+      ],
+      "arabic": "تَوَلَّنِي فِيمَنْ تَوَلَّيْتَ",
+      "meaning_in_context": "Take me into Your care among those You take into Your care",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 74,
+      "book_entries": [
+        114
+      ],
+      "arabic": "نَسْعَى وَنَحْفِدُ",
+      "meaning_in_context": "We hasten and strive in Your service",
+      "your_kashmiri": "أسۍ چھِ تُہنزِ خدمتہٕ خٲطرٕ جلدی کران تہٕ محنت کران",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner exact wording received for نَسْعَى وَنَحْفِدُ. Retain the two actions, hastening and striving; integrate with surrounding prayer grammar."
+    },
+    {
+      "item": 75,
+      "book_entries": [
+        116
+      ],
+      "arabic": "رَبِيعَ قَلْبِي",
+      "meaning_in_context": "The springtime / renewal of my heart",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 76,
+      "book_entries": [
+        116
+      ],
+      "arabic": "جَلَاءَ حُزْنِي",
+      "meaning_in_context": "The clearing away of my sorrow",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 77,
+      "book_entries": [
+        117
+      ],
+      "arabic": "ضَلَعِ الدَّيْنِ",
+      "meaning_in_context": "The crushing burden of debt",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 78,
+      "book_entries": [
+        117
+      ],
+      "arabic": "غَلَبَةِ الرِّجَالِ",
+      "meaning_in_context": "Being overpowered or dominated by people",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 79,
+      "book_entries": [
+        128
+      ],
+      "arabic": "أَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
+      "meaning_in_context": "Make me independent of all others through Your favour",
+      "your_kashmiri": "پننہِ مہربانی سٍتۍ کٔرِو مےٚ سارِوٕے نِش آزاد روزنَس مَنٛز مدد",
+      "status": "Owner wording received; contextual integration pending",
+      "integration_note": "Owner exact wording received for أَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ. Retain the source restriction other than You when composing the whole sentence. Freedom means freedom from dependence on others, not independence from Allah. Proposed integrated wording is not separately approved.",
+      "suggested_native_revision": "پَننہِ مؠہَربٲنی سۭتۍ کٔرِو مےٚ تُہۍ وَرٲے سٲرۍ لوٗکن ہٕنٛزِ مُحتاجی نِش آزاد روزنَس منٛز مَدَد۔"
+    },
+    {
+      "item": 80,
+      "book_entries": [
+        138
+      ],
+      "arabic": "هَامَّةٍ",
+      "meaning_in_context": "A harmful or venomous creature",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 81,
+      "book_entries": [
+        138
+      ],
+      "arabic": "عَيْنٍ لَامَّةٍ",
+      "meaning_in_context": "A harmful evil eye",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 82,
+      "book_entries": [
+        142
+      ],
+      "arabic": "الرَّفِيقِ الْأَعْلَى",
+      "meaning_in_context": "The highest companionship in the Hereafter.",
+      "your_kashmiri": "آخِرَتھَس منٛز بُلَند تَریٖن صُحبَتھ",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 83,
+      "book_entries": [
+        143
+      ],
+      "arabic": "سَكَرَاتٍ",
+      "meaning_in_context": "The agonies and overwhelming pangs of death",
+      "your_kashmiri": "مَوتٕچ سَختۍ تہٕ تَکلیٖفہٕ",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 84,
+      "book_entries": [
+        147
+      ],
+      "arabic": "اخْلُفْهُ فِي عَقِبِهِ",
+      "meaning_in_context": "Care for those he leaves behind",
+      "your_kashmiri": "تَمہِ پَتہٕ رَوزن وٲلؠن ہٕنٛز نِگہبانی کَرِو",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 85,
+      "book_entries": [
+        150
+      ],
+      "arabic": "فِي ذِمَّتِكَ وَحَبْلِ جِوَارِكَ",
+      "meaning_in_context": "Under Your covenant of protection and care",
+      "your_kashmiri": "تُہٕنٛزِ اَمان تہٕ پَناہَس منٛز",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 86,
+      "book_entries": [
+        152,
+        153
+      ],
+      "arabic": "فَرَطًا",
+      "meaning_in_context": "One who goes ahead, becoming a preceding reward for the parents",
+      "your_kashmiri": "پَننؠن موج مالؠن خٲطرٕ بَرونٛہہ گَژھن وول اَجر",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 87,
+      "book_entries": [
+        152
+      ],
+      "arabic": "شَفِيعًا مُجَابًا",
+      "meaning_in_context": "An intercessor whose intercession is accepted",
+      "your_kashmiri": "تِتھ شَفاعَتھ کَرن وول، یَمہِ سٕنٛز شَفاعَتھ قَبوٗل گَژھِ",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 88,
+      "book_entries": [
+        154
+      ],
+      "arabic": "بِأَجَلٍ مُسَمًّى",
+      "meaning_in_context": "For a fixed, appointed term",
+      "your_kashmiri": "اَکِس مُقَرَّر وَقتَس تام",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 89,
+      "book_entries": [
+        161
+      ],
+      "arabic": "غَيْثًا مُغِيثًا",
+      "meaning_in_context": "Rain that brings relief",
+      "your_kashmiri": "مَدَد تہٕ راحَتھ اَنن وول روٗد",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 90,
+      "book_entries": [
+        161
+      ],
+      "arabic": "مَرِيئًا مَرِيعًا",
+      "meaning_in_context": "Wholesome rain that brings fertility and abundant growth",
+      "your_kashmiri": "فٲیدٕ دِن وول روٗد، یَمہِ سۭتۍ زَمیٖن زَرخیز تہٕ فَصلہٕ زیادٕ گَژھَن",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 91,
+      "book_entries": [
+        166
+      ],
+      "arabic": "الْآكَامِ وَالظِّرَابِ",
+      "meaning_in_context": "Raised ground and small hills",
+      "your_kashmiri": "تھوٚد جایہِ تہٕ لۄکٕٹۍ پہاڑ",
+      "status": "Approved by owner — displayed phrase",
+      "integration_note": "Owner confirmed Correct Next after batch 82–91. Approval covers displayed Kashmiri wording; sentence inflection and theological/source verification remain contextual."
+    },
+    {
+      "item": 92,
+      "book_entries": [
+        166
+      ],
+      "arabic": "بُطُونِ الْأَوْدِيَةِ",
+      "meaning_in_context": "The bottoms/interiors of valleys",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 93,
+      "book_entries": [
+        168
+      ],
+      "arabic": "ابْتَلَّتِ الْعُرُوقُ",
+      "meaning_in_context": "The veins have been moistened; bodily thirst is relieved",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 94,
+      "book_entries": [
+        173
+      ],
+      "arabic": "غَيْرَ مَكْفِيٍّ وَلَا مُوَدَّعٍ وَلَا مُسْتَغْنًى عَنْهُ",
+      "meaning_in_context": "One interpretation: praise that cannot be fully discharged, is never abandoned, and is never dispensable. The book gives alternative interpretations; review the whole formula.",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 95,
+      "book_entries": [
+        181
+      ],
+      "arabic": "مَا جَبَلْتَهَا عَلَيْهِ",
+      "meaning_in_context": "The natural disposition You created her with",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 96,
+      "book_entries": [
+        196
+      ],
+      "arabic": "لَا طَيْرَ إِلَّا طَيْرُكَ",
+      "meaning_in_context": "Nothing happens outside Your decree; the omen phrase needs contextual review",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 97,
+      "book_entries": [
+        198
+      ],
+      "arabic": "وَعْثَاءِ السَّفَرِ",
+      "meaning_in_context": "The hardship and strain of travel",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 98,
+      "book_entries": [
+        198
+      ],
+      "arabic": "كَآبَةِ الْمَنْظَرِ",
+      "meaning_in_context": "A distressing or sorrowful sight",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 99,
+      "book_entries": [
+        198
+      ],
+      "arabic": "سُوءِ الْمُنْقَلَبِ",
+      "meaning_in_context": "Returning to an unhappy state of affairs",
+      "your_kashmiri": "",
+      "owner_partial_correction_roman": "nakhoushgawaar",
+      "suggested_native_revision": "واپس یِنہٕ پَتہٕ ناخوٚشگوار حٲلَس سۭتۍ سامنا گَژھُن",
+      "status": "Owner corrected unhappy/unpleasant term; full phrase pending review",
+      "integration_note": "Owner supplied nakhoushgawaar for unhappy/unpleasant in item 99. ناخوٚشگوار is a proposed native-script rendering. Do not infer approval for the whole phrase or entries 92–101."
+    },
+    {
+      "item": 100,
+      "book_entries": [
+        202,
+        203
+      ],
+      "arabic": "أَسْتَوْدِعُكُمُ اللَّهَ",
+      "meaning_in_context": "I entrust you to Allah’s protection",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 101,
+      "book_entries": [
+        203
+      ],
+      "arabic": "خَوَاتِيمَ عَمَلِكَ",
+      "meaning_in_context": "The endings/final outcomes of your deeds",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 102,
+      "book_entries": [
+        206
+      ],
+      "arabic": "حُسْنِ بَلَائِهِ عَلَيْنَا",
+      "meaning_in_context": "His gracious dealings and favours toward us, in this context",
+      "your_kashmiri": "Use asel inplace of acha",
+      "owner_partial_correction_roman": "Use asel inplace of acha",
+      "integration_note": "Replace acha with owner-preferred asel in good/gracious dealings. Proposed script اَصٕل; exact Roman wording retained.",
+      "status": "Owner lexical correction received; full phrase integration pending",
+      "suggested_native_revision": "اَسہِ پیٹھ تَمہِ سٕنٛز مؠہَربٲنی تہٕ اَصٕل سُلوٗک"
+    },
+    {
+      "item": 103,
+      "book_entries": [
+        214
+      ],
+      "arabic": "الْإِنْفَاقُ مِنَ الْإِقْتَارِ",
+      "meaning_in_context": "Giving despite having very little",
+      "your_kashmiri": "It is paaanas for myself",
+      "owner_partial_correction_roman": "It is paaanas for myself",
+      "integration_note": "Record paaanas as owner reflexive form for myself/oneself in context. Interpret as feedback on pannes nish in #103; do not replace possessive پَننِس / پَنُن indiscriminately.",
+      "status": "Owner lexical correction received; full phrase integration pending"
+    },
+    {
+      "item": 104,
+      "book_entries": [
+        219
+      ],
+      "arabic": "لَا أُزَكِّي عَلَى اللَّهِ أَحَدًا",
+      "meaning_in_context": "I do not declare anyone pure before Allah",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 105,
+      "book_entries": [
+        240
+      ],
+      "arabic": "بَرٌّ وَلَا فَاجِرٌ",
+      "meaning_in_context": "A righteous person or a wicked/transgressing person",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 106,
+      "book_entries": [
+        240
+      ],
+      "arabic": "طَارِقٍ",
+      "meaning_in_context": "One who comes by night; not every ordinary visitor",
+      "your_kashmiri": "Raaeth keuth yenee oooual",
+      "owner_partial_correction_roman": "Raaeth keuth yenee oooual",
+      "integration_note": "Owner preferred phrase for one who comes by night. Preserve Roman wording; native-script transcription and inflection require review.",
+      "status": "Owner lexical correction received; full phrase integration pending"
+    },
+    {
+      "item": 107,
+      "book_entries": [
+        246
+      ],
+      "arabic": "يُغَانُ عَلَى قَلْبِي",
+      "meaning_in_context": "A subtle covering/preoccupation over my heart; specialist wording needed",
+      "your_kashmiri": ""
+    },
+    {
+      "item": 108,
+      "book_entries": [
+        248
+      ],
+      "arabic": "زَبَدِ الْبَحْرِ",
+      "meaning_in_context": "The foam of the sea",
+      "your_kashmiri": "Samandaruk pouuus",
+      "owner_partial_correction_roman": "Samandaruk pouuus",
+      "integration_note": "Owner phrase for foam of the sea, superseding assistant Samandaruk jhag. Proposed script سَمَندَرُک پوٗس; pronunciation/spelling still owner-reviewable.",
+      "status": "Owner lexical correction received; full phrase integration pending",
+      "suggested_native_revision": "سَمَندَرُک پوٗس"
+    },
+    {
+      "item": 109,
+      "book_entries": [
+        251
+      ],
+      "arabic": "ثَقِيلَتَانِ فِي الْمِيزَانِ",
+      "meaning_in_context": "Two phrases heavy in the scale of deeds",
+      "your_kashmiri": "Wazne ke lihaaaze goueb",
+      "owner_partial_correction_roman": "Wazne ke lihaaaze goueb",
+      "integration_note": "Owner phrase for heavy by weight. Use it for heavy in the scale, preserving the two-phrase subject and scale context. No complete-sentence approval inferred.",
+      "status": "Owner lexical correction received; full phrase integration pending"
+    }
+  ],
+  "additional_owner_vocabulary": [
+    {
+      "owner_roman": "Zaaman",
+      "english": "to yawn",
+      "source": "Explicit owner clarification",
+      "distinguished_from": "سِنَةٌ / drowsiness / neeender ghaseeen"
+    },
+    {
+      "owner_roman": "asel",
+      "meaning": "good; preferred over acha",
+      "scope": "use contextually"
+    },
+    {
+      "owner_roman": "paaanas",
+      "meaning": "myself / oneself, reflexive in context",
+      "scope": "do not confuse with possessive my/own"
+    },
+    {
+      "owner_roman": "pouuus",
+      "meaning": "foam in sea-foam context",
+      "scope": "owner-supplied pronunciation"
+    }
+  ]
+}

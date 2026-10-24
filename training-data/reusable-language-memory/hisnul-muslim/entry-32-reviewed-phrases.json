@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-24",
+  "book_entry": 32,
+  "approval_scope": "Nine phrases displayed immediately before owner approval, with concealed corrected to ژوورٕ. Earlier pending items remain pending.",
+  "owner_feedback": "Itvis ژوورٕ not choore. Alll is correct push all u know now to repo",
+  "entries": [
+    {
+      "id": "hisnul-32-phrase-1",
+      "arabic": "قَيِّمُ السَّمَوَاتِ وَالْأَرْضِ",
+      "english": "Sustainer of the heavens and earth",
+      "kashmiri": "آسمان تہٕ زَمیٖن قٲیِم تھاون وول",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-2",
+      "arabic": "لِقَاؤُكَ",
+      "english": "Meeting You",
+      "kashmiri": "تُہۍ سۭتۍ مِلان",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-3",
+      "arabic": "لَكَ أَسْلَمْتُ",
+      "english": "I submit myself to You",
+      "kashmiri": "مےٚ کوٚر پَنُن پان تُہۍ حَوالہٕ۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-4",
+      "arabic": "إِلَيْكَ أَنَبْتُ",
+      "english": "I turn back to You in repentance",
+      "kashmiri": "بہٕ پَھریُس تَوبہٕ کٔرِتھ تُہۍ کُن۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-5",
+      "arabic": "بِكَ خَاصَمْتُ",
+      "english": "With Your help, I argue my case",
+      "kashmiri": "مےٚ کٔر تُہٕنٛزِ مَدَد سۭتۍ پَننہِ کتھہِ ہٕنٛز دَلیل پیش۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-6",
+      "arabic": "إِلَيْكَ حَاكَمْتُ",
+      "english": "I refer my disputes to You for judgment",
+      "kashmiri": "مےٚ کوٚر پَننؠن اِختِلافن ہٕنٛدِ فَیصلہٕ خٲطرٕ تُہۍ کُن رُجوٗع۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-7",
+      "arabic": "مَا أَسْرَرْتُ وَمَا أَعْلَنْتُ",
+      "english": "What I concealed and what I made public",
+      "kashmiri": "یِم مےٚ ژوورٕ کٔرۍ تہٕ یِم مےٚ ظٲہِر کٔرۍ۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-8",
+      "arabic": "الْمُقَدِّمُ وَالْمُؤَخِّرُ",
+      "english": "The One who advances and defers",
+      "kashmiri": "یُس پَننہِ حِکمَتھ مُطٲبِق بَرونٛہہ کَن اَنِہ تہٕ پَتھ کَن تھاوِ۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    },
+    {
+      "id": "hisnul-32-phrase-9",
+      "arabic": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "english": "No power or strength except through Allah",
+      "kashmiri": "اَللہ تعالہٕ سٕنٛزِ مَدَد وَرٲے چھےٚ نہٕ کانٛہہ طاقت تہٕ نہٕ قُوَتھ۔",
+      "status": "approved-by-project-owner",
+      "commercial_eligibility": false
+    }
+  ],
+  "terminology": [
+    {
+      "chosen": "ژوورٕ",
+      "rejected": "چھۄرۍ",
+      "meaning": "secretly / concealed",
+      "scope": "Concealed deeds in entry 32; do not globally replace unrelated words."
+    }
+  ]
+}

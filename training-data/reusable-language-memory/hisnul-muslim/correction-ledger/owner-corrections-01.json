@@ -1,0 +1,87 @@
+{
+  "batch": "hisnul-owner-01",
+  "raw_owner_corrections": "1 che allah tallahas kun yeam asee maarne pate doubaare zinde kaer te team se kun chu aseei wathun\n2 correct but use allah tallahas\n3 sarei tareef che allah tallahas jun yyeam meaniss jismas\n4 3:191 Yem khadaa, beheith te pannes bistaraas peath behith allah tallahas yaad karan che. Aai saanei rubee.\nSaanei rubbe. Su korthan ruswaa. Use for ase rubba use saaen rubaa. Qayaamtik duhaa karxe ne asee ruswaa. Use allah tallhas inplace of allahas.\nYe chu kaemsei kaluk faide.\nYe chu allahtallahas neish mehmaannawaziii (hospitality).\nWajean kitaabi peath te teman peath kitaab te teman peath nazil sapdepecx kitaabi peath. Team chene allah tallah senz kitaab kenh pousan khatree kenaan. Teamn sendess rabbas nish. Che jaldeee hisaab kitab karnas manx.\nیہِ چُھ خستہٕ گَژھان، تہٕ خدایہ چُھ اَتھ بدلاوان۔\nنٔوۍ پلو لاگُن، اصل زندگی گُزٲرِو، تہٕ شہید سٕندِ پٲٹھی مرُن۔",
+  "corrected_entries": {
+    "1": "سٲری تَعریف چھےٚ اَللہ تعالہَس کُن، یٔمۍ اَسہِ مارنہٕ پَتہٕ دوبارٕ زِندٕ کٔرۍ؛ تہٕ تَمسے کُن چھُ اَسہِ وَتھُن۔",
+    "2": "اَللہ تعالہَس وَرٲے چھُنہٕ کانٛہہ عبادتُک حقدار۔ سُہ چھُ اَکُے، تَمہِ سُنٛد چھُنہٕ کانٛہہ شَریک۔ بادشٲہی چھےٚ تَمہِ سٕنٛز تہٕ سٲری تَعریف تہِ چھےٚ تَمسے۔ سُہ چھُ پْرَتھ کَتھہِ پیٹھ قُدرَتھ تھاوان۔ اَللہ چھُ پاک، سٲری تَعریف چھےٚ اَللہ تعالہَس، اَللہ تعالہَس وَرٲے چھُنہٕ کانٛہہ عبادتُک حقدار، اَللہ چھُ ساروٕے کھۄتہٕ بَڈ۔ بُرٲیی نِش بَچنٕچ تہٕ نیکی کَرنٕچ قُوَتھ چھےٚ صِرف اَللہ تعالہَس نِشہٕ، یُس ساروٕے کھۄتہٕ تھوٚد تہٕ عَظیم چھُ۔ میانہِ رَبہٕ! مےٚ کٔر بَخشش۔",
+    "3": "سٲری تَعریف چھےٚ اَللہ تعالہَس، یٔمۍ میانِس جِسمَس عافِیَتھ دِژ، میون رُوح مےٚ واپس دیُت تہٕ مےٚ پنُن ذِکر کَرنٕچ توفیٖق دِژ۔",
+    "7": "یہِ چُھ خستہٕ گَژھان، تہٕ خدایہ چُھ اَتھ بدلاوان۔",
+    "8": "نٔوۍ پلو لاگُن، اصل زندگی گُزٲرِو، تہٕ شہید سٕندِ پٲٹھی مرُن۔"
+  },
+  "verse_fragments": [
+    {
+      "verse": "3:191",
+      "draft_native_transcription": "یِم کھٔڑۍ، بؠہِتھ تہٕ لَرۍ بؠہِتھ اَللہ تعالہَس یاد کَران چھِ۔",
+      "note": "Owner clarified that lareei behith means lying on their sides. Earlier sitting-on-bed interpretation superseded. Native-script spelling is a draft."
+    },
+    {
+      "verse": "Invocation address",
+      "draft_native_transcription": "سٲنۍ رَبہٕ!",
+      "note": "Owner-preferred address; do not treat as a universal change to every possessive construction."
+    },
+    {
+      "verse": "3:192",
+      "draft_native_transcription": "سٲنۍ رَبہٕ! سُہ کۆرُتھَن رُسوا۔",
+      "note": "Draft native-script rendering of owner Roman wording; sentence must remain joined to its conditional clause."
+    },
+    {
+      "verse": "3:194",
+      "draft_native_transcription": "قِیامَتھ کِس دۄہَس کَرژٕ نہٕ اَسہِ رُسوا۔",
+      "note": "Draft native-script rendering; orthography still needs owner review."
+    },
+    {
+      "verse": "3:197",
+      "draft_native_transcription": "یِہ چھُ کَمِسے کالُک فٲیدٕ۔",
+      "note": "Owner vocabulary preference recorded."
+    },
+    {
+      "verse": "3:198",
+      "draft_native_transcription": "یِہ چھےٚ اَللہ تعالہَس نِشہٕ مؠہمان نَوازی۔",
+      "note": "Owner preference hospitality for نُزُلًا."
+    },
+    {
+      "verse": "3:199a",
+      "draft_native_transcription": "تُہۍ پیٹھ نازِل سَپدن وٲلِس کِتابَس پیٹھ، تہٕ تِمَن پیٹھ نازِل سَپدمَتِس کِتابَس پیٹھ۔",
+      "note": "Owner phrase recorded as a fragment; retains both revealed-book objects."
+    },
+    {
+      "verse": "3:199b",
+      "draft_native_transcription": "تِم چھِنہٕ اَللہ تعالہٕ سٕنٛز کِتاب کینٛہہ پونٛسَن خٲطرٕ کِنان۔",
+      "note": "Owner wording recorded; Arabic specifically says Allah’s verses/signs, so کتاب versus آیتھ requires confirmation."
+    },
+    {
+      "verse": "3:199c",
+      "draft_native_transcription": "تِمَن سٕندِس رَبَس نِش۔",
+      "note": "Owner oblique possessive pattern recorded."
+    },
+    {
+      "verse": "3:199d",
+      "draft_native_transcription": "اَللہ تعالہٕ چھُ جَلدی حِساب کِتاب کَران۔",
+      "note": "Owner phrase recorded; Arabic means swift in reckoning."
+    }
+  ],
+  "preferences": [
+    {
+      "source": "اَللہَس",
+      "preferred": "اَللہ تعالہَس"
+    },
+    {
+      "source": "اَسہِ رَبہٕ",
+      "preferred": "سٲنۍ رَبہٕ"
+    },
+    {
+      "meaning": "hospitality",
+      "preferred": "مؠہمان نَوازی"
+    }
+  ],
+  "status": "owner-corrections-recorded; unresolved meaning differences flagged; no whole-batch approval inferred",
+  "followup_corrections": [
+    {
+      "verse": "3:191",
+      "owner_roman": "lareei behith",
+      "meaning": "lying on their sides",
+      "native_script_draft": "لَرۍ بؠہِتھ",
+      "status": "Roman phrase and meaning confirmed by owner; native-script transcription awaiting review"
+    }
+  ]
+}

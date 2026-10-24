@@ -1,0 +1,23 @@
+{
+  "batch": "vocabulary-owner-05",
+  "items": {
+    "62": {
+      "owner_exact": "ani gati not ande gati; yeali su waehraaavne yeye",
+      "note": "Owner corrects darkness wording and when it spreads/settles. Preserve Roman spelling; native orthography and full clause pending review."
+    },
+    "63": {
+      "owner_exact": "waael not waen",
+      "note": "Owner corrects the agent form. Preserve exact Roman wording. Arabic النَّفَّاثَات is grammatically feminine plural; grammatical integration must be checked without changing source Arabic."
+    },
+    "64": {
+      "owner_exact": "Waswaase trawaen wael sende share neshee yous ghre ghre paeout pherith yewaan che",
+      "note": "Owner supplies a full phrase with from the evil of, beyond the short isolated glossary expression. Keep preposition/frame when using in Surah an-Nas. Do not interpret ghre ghre as houses without confirmation; Roman phrase authoritative, script transcription pending."
+    },
+    "65": {
+      "owner_exact": "Zaaaaman for oooung",
+      "note": "Owner proposes Zaaaaman for سِنَة. Clarify whether this denotes drowsiness/feeling sleepy or yawning; Arabic سِنَة means drowsiness, not the act of yawning. Do not mark semantic equivalence approved before clarification."
+    }
+  },
+  "source": "Owner chat corrections for 62–65",
+  "scope": "Only explicitly supplied words/phrases; no approval inferred for 66–71."
+}

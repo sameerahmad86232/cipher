@@ -1,0 +1,16 @@
+{
+  "batch": "vocabulary-owner-06",
+  "mapping": {
+    "74": "first supplied sentence",
+    "79": "second supplied sentence, mapped by favour/independence meaning"
+  },
+  "owner_exact_wording": {
+    "74": "أسۍ چھِ تُہنزِ خدمتہٕ خٲطرٕ جلدی کران تہٕ محنت کران",
+    "79": "پننہِ مہربانی سٍتۍ کٔرِو مےٚ سارِوٕے نِش آزاد روزنَس مَنٛز مدد"
+  },
+  "integration_notes": {
+    "74": "Owner exact wording received for نَسْعَى وَنَحْفِدُ. Retain the two actions, hastening and striving; integrate with surrounding prayer grammar.",
+    "79": "Owner exact wording received for أَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ. Retain the source restriction other than You when composing the whole sentence. Freedom means freedom from dependence on others, not independence from Allah. Proposed integrated wording is not separately approved."
+  },
+  "status": "No approval inferred for other entries 72–81."
+}

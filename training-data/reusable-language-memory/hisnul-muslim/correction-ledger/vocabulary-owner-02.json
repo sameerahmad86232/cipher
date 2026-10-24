@@ -1,0 +1,49 @@
+{
+  "batch": "vocabulary-owner-02",
+  "mapped_items": [
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "omitted": [
+    16
+  ],
+  "owner_exact_wording": {
+    "12": "یمۍ آسمانن تہ زمینن بنوو",
+    "13": "یُس وُچھُن تہٕ غیب چُھ زانان",
+    "14": "شیطان سُند تکبر یا غرور، یِتھ کٔنۍ زن یتہِ وضاحت کرنہٕ آمٕژ چھِ",
+    "15": "شیطان سنز بد عنوانی شاعری، یتھ کٔنۍ زن ییتہِ وضاحت کرنہٕ آمژ چھِ",
+    "17": "یُس آسمانس تہٕ زمینس جٲری تھاوان چُھ",
+    "18": "یُس برونہہ کُن پکان چُھ تہٕ یُس انتظار کران چُھ—خدایہ ناو",
+    "19": "مکمل طور پاک تہٕ صاف",
+    "20": "میون میرو ؛ کُنہِ ساتہٕ کینژن نسخن منٛز 'دماغ' پٲٹھۍ ترجمہٕ کرنہٕ آمُت",
+    "21": "میٲنۍ رگ یا ٹینڈن — سخت ٹشو یم مژھن أڑجن سۭتۍ جوڑان چھِ"
+  },
+  "integration_notes": {
+    "12": "Owner wording preserved. فاطر means Originator/Creator; inflect the phrase in the actual invocation.",
+    "13": "Owner wording preserved. Seen/unseen are objects of knowing, not a statement that God is seen. Verify the composed sentence.",
+    "14": "Owner wording before the comma is lexical wording; the explanation after the comma is editorial, not recited text.",
+    "15": "Owner wording preserved. Verify whether بد عنوانی شاعری naturally conveys corrupting/evil poetry; commentary is not recited text.",
+    "17": "Owner wording preserved. Refers to sustaining/maintaining creation, not merely its motion.",
+    "18": "Meaning correction required before use: المُقَدِّم / المُؤَخِّر refer to the One who advances/brings forward and defers/puts back others according to His will. Not God Himself walking forward or waiting. Do not publish this wording as an approved divine-name explanation.",
+    "19": "Owner wording preserved. قدوس conveys holiness/sanctity and freedom from imperfection, not merely ordinary physical cleanliness.",
+    "20": "Owner lexical candidate میون میرو recorded; note on other translations stays outside the dua. Anatomical sense should be reviewed against the source.",
+    "21": "Owner candidate preserved. Tendons/sinews are not veins; do not treat رگ as an exact anatomical equivalent without checking intended Kashmiri usage. Explanatory tissue description stays outside the dua."
+  },
+  "status": "Exact owner text retained; uncertain semantic/anatomical wording not marked approved.",
+  "followup_revisions": [
+    {
+      "item": 18,
+      "arabic": "الْمُقَدِّمُ وَالْمُؤَخِّرُ",
+      "owner_revision_exact": "سُہ یُس کینژن لوٗکن برونہہ پکنس منز مدد کران چُھ باقین پتھ کُن تھاوان۔",
+      "supersedes": "یُس برونہہ کُن پکان چُھ تہٕ یُس انتظار کران چُھ—خدایہ ناو",
+      "note": "Owner revised #18 to advancing others and holding others back, superseding the self-motion/waiting interpretation. In this explanation لوٗکن is illustrative; the divine names are not restricted to people. Full prayer grammar remains context-dependent."
+    }
+  ]
+}

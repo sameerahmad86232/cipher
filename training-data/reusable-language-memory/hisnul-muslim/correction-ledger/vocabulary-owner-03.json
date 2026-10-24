@@ -1,0 +1,43 @@
+{
+  "batch": "vocabulary-owner-03",
+  "items_covered": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "owner_exact_wording": {
+    "22": "ناقابل یقین طاقت تہٕ زوور",
+    "23": "مکمل کنٹرول یا اختیار",
+    "24": "حتمی عظمت تہٕ بٔجر",
+    "25": "کانہہ تہِ امیر یا اہم شخص ، سُہ ہیکہِ نہٕ تم  تۅہہِ نِش محفوٗظ کرتھ",
+    "26": "تلہ حز",
+    "27": "مے ٹھیٖک کٔرِو تہٕ کٔرِو میانین خٲمِین ہُند مدتھ",
+    "28": "گۅناہ ہُند اکھ بوجھ",
+    "29": "آخرت خٲطرٕ اکھ انعام یا خزانہٕ الگ تھاونہٕ آمُت",
+    "30": "اللہ تعالیٰ سُند احترام تہٕ عزت کرنٕکۍ طریقہٕ",
+    "31": "اصٕل تہٕ خالص کلامَن تہٕ عملَن ہٕندِس تناظرس مَنٛز"
+  },
+  "integration_notes": {
+    "22": "Owner wording retained exactly. الجبروت conveys overwhelming/irresistible might; ناقابل یقین literally suggests unbelievable. Review that nuance before integrating into a divine praise formula.",
+    "23": "Owner lexical choices preserved; choose and inflect according to the whole phrase.",
+    "24": "Owner wording preserved; not a declaration that the final sentence has been reviewed.",
+    "25": "Owner wording preserved. Check pronoun reference: the possessor’s wealth/status does not avail its possessor against Allah; do not change the subject to a person protecting someone else.",
+    "26": "Meaning unclear: exact owner text تلہ حز retained without interpretation. Ask for clarification of Your pardon (عفوك); do not apply this string as an approved translation.",
+    "27": "Owner wording preserved. Verify intended مدتھ / مدد and ensure the construction means making good deficiencies/restoration, not merely assisting deficiencies.",
+    "28": "Owner wording preserved exactly.",
+    "29": "Owner wording preserved; contextual gloss, not automatically a fully inflected prayer phrase.",
+    "30": "Owner explanation preserved. In tashahhud, express that all reverence/honour belongs to Allah; do not silently replace this with a list of methods of respect.",
+    "31": "Owner wording preserved. Treat context/explanation as editorial; the lexical meaning is good/pure words and deeds, not the phrase in the context of."
+  },
+  "clarification_needed": [
+    26
+  ],
+  "status": "Raw owner wording preserved; semantic/contextual notes retained; no blanket approval inferred."
+}
