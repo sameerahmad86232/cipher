@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'app_state.dart';
 import 'prayer_service.dart';
-import 'reference_art.dart';
 import 'qibla_screen.dart';
 import 'glass_panel.dart';
 import 'custom_times.dart';
@@ -243,7 +242,7 @@ class _HomeState extends State<Home> {
         image: DecorationImage(
           image: const AssetImage('assets/images/jamia-inspired.png'),
           fit: BoxFit.cover,
-          opacity: s.dark ? .12 : .14,
+          opacity: s.dark ? .07 : .025,
         ),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -291,28 +290,37 @@ class _HomeState extends State<Home> {
         ),
       ),
     ),
-    bottomNavigationBar: NavigationBar(
-      selectedIndex: tab,
-      onDestinationSelected: (v) => setState(() => tab = v),
-      destinations: const [
-        NavigationDestination(
-          icon: Icon(Icons.wb_twilight_outlined),
-          selectedIcon: Icon(Icons.wb_twilight),
-          label: 'Today',
+    bottomNavigationBar: Padding(
+      padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(28),
+        child: NavigationBar(
+          selectedIndex: tab,
+          onDestinationSelected: (v) => setState(() => tab = v),
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.wb_twilight_outlined),
+              selectedIcon: Icon(Icons.wb_twilight),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.menu_book_outlined),
+              selectedIcon: Icon(Icons.menu_book),
+              label: 'Duas',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.auto_stories_outlined),
+              selectedIcon: Icon(Icons.auto_stories),
+              label: 'Hadith',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.blur_circular),
+              label: 'Tasbih',
+            ),
+            NavigationDestination(icon: Icon(Icons.tune), label: 'Settings'),
+          ],
         ),
-        NavigationDestination(
-          icon: Icon(Icons.menu_book_outlined),
-          selectedIcon: Icon(Icons.menu_book),
-          label: 'Duas',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.auto_stories_outlined),
-          selectedIcon: Icon(Icons.auto_stories),
-          label: 'Hadith',
-        ),
-        NavigationDestination(icon: Icon(Icons.blur_circular), label: 'Tasbih'),
-        NavigationDestination(icon: Icon(Icons.tune), label: 'Settings'),
-      ],
+      ),
     ),
   );
   Widget surface(
@@ -364,6 +372,11 @@ class _HomeState extends State<Home> {
     final svc = s.service;
     final next = svc.next(now);
     final prayers = svc.forDate(svc.day(now));
+    final total = widget.duas.where((d) => d['bookNumber'] != null).length;
+    final daily = widget.duas.firstWhere(
+      (d) => d['id'] == 'knowledge',
+      orElse: () => widget.duas.first,
+    );
     final done = prayers
         .where(
           (p) => p.isPrayer && s.completed.contains(s.completionKey(p.id, now)),
@@ -371,390 +384,355 @@ class _HomeState extends State<Home> {
         .length;
     return ListView(
       key: const ValueKey('today'),
-      padding: const EdgeInsets.fromLTRB(22, 18, 22, 24),
+      padding: const EdgeInsets.fromLTRB(18, 12, 18, 28),
       children: [
         Row(
           children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: forest,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: const Icon(
-                Icons.nights_stay_outlined,
-                color: Color(0xfff0d9a7),
-                size: 23,
-              ),
-            ),
-            const SizedBox(width: 11),
+            const Icon(Icons.nights_stay, color: Color(0xffb78b47), size: 30),
+            const SizedBox(width: 8),
             const Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'NOOR',
-                    style: TextStyle(
-                      fontFamily: 'ClassicalSerif',
-                      letterSpacing: 5,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 23,
-                    ),
-                  ),
-                  Text(
-                    'A companion for the devoted heart.',
-                    style: TextStyle(fontSize: 11, color: Colors.grey),
-                  ),
-                ],
+              child: Text(
+                'KOSHUR NOOR',
+                style: TextStyle(
+                  fontFamily: 'ClassicalSerif',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 22,
+                ),
               ),
             ),
             IconButton(
               tooltip: 'Choose location',
               onPressed: pickCity,
-              icon: const Icon(Icons.location_on_outlined),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        const ClassicalInvocation(),
-        const SizedBox(height: 22),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    DateFormat('EEEE, d MMMM').format(svc.local(now)),
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: gold,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Make space\nfor peace.',
-                    style: TextStyle(
-                      fontFamily: 'ClassicalSerif',
-                      fontSize: 43,
-                      height: 1.05,
-                      letterSpacing: -.6,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
+              icon: const Icon(
+                Icons.location_on_outlined,
+                color: Color(0xffef8077),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 8),
-              child: Ks('دِلَس سُکوٗن', size: 22),
+            IconButton(
+              tooltip: 'Settings',
+              onPressed: () => setState(() => tab = 4),
+              icon: const Icon(Icons.settings_outlined),
             ),
           ],
         ),
-        const SizedBox(height: 22),
+        Text(
+          '${s.city.name} · ${DateFormat('EEE, d MMM').format(svc.local(now))}',
+          style: const TextStyle(fontSize: 11, color: gold),
+        ),
+        const SizedBox(height: 16),
         ClipRRect(
           borderRadius: BorderRadius.circular(26),
           child: SizedBox(
-            height: 270,
+            height: 340,
             child: Stack(
               fit: StackFit.expand,
               children: [
-                const MosqueBackdrop(),
+                Image.asset(
+                  'assets/images/jamia-inspired.png',
+                  fit: BoxFit.cover,
+                  alignment: const Alignment(0, .62),
+                ),
                 const DecoratedBox(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0x993b241e), Color(0x003b241e)],
+                      end: Alignment.center,
+                      colors: [Color(0x99fff4e5), Color(0x00fff4e5)],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 6,
-                            height: 6,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffe0c188),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            'NEXT PRAYER · ${next.name.toUpperCase()}',
-                            style: const TextStyle(
-                              color: Color(0xffe5e9da),
-                              fontSize: 10,
-                              letterSpacing: 1.8,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 9),
-                      FittedBox(
-                        fit: BoxFit.scaleDown,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          time(next.instant),
+                const Positioned(
+                  top: 22,
+                  left: 22,
+                  child: Text(
+                    'A moment\nof peace',
+                    style: TextStyle(
+                      fontFamily: 'ClassicalSerif',
+                      fontSize: 34,
+                      height: 1.05,
+                      color: Color(0xff543323),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 12,
+                  right: 12,
+                  bottom: 12,
+                  child: surface(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          next.name,
                           style: const TextStyle(
-                            color: Colors.white,
                             fontFamily: 'ClassicalSerif',
-                            fontSize: 47,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: -1,
+                            fontSize: 22,
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'In $remaining',
-                        style: const TextStyle(
-                          color: Color(0xffe2e9d9),
-                          fontSize: 13,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(
-                            0xff794329,
-                          ).withValues(alpha: 0.78),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.location_on_outlined,
-                              size: 14,
-                              color: Color(0xffd4dfcf),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            time(next.instant),
+                            style: const TextStyle(
+                              fontFamily: 'ClassicalSerif',
+                              fontSize: 40,
+                              height: 1.2,
                             ),
-                            const SizedBox(width: 4),
-                            Text(
-                              s.city.name,
-                              style: const TextStyle(
-                                color: Color(0xffd4dfcf),
-                                fontSize: 12,
-                              ),
-                            ),
-                            const Spacer(),
-                            Ks(
-                              next.nativeName,
-                              size: 21,
-                              color: const Color(0xfff6e7c7),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                        Text(
+                          'Next prayer · in $remaining',
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
         ),
-        const SizedBox(height: 20),
-        Row(
-          children: [
-            Expanded(
-              child: quick(
-                Icons.explore_outlined,
-                'Qibla',
-                'Find your direction',
-                showQibla,
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: quick(
-                Icons.calendar_month_outlined,
-                'Timetable',
-                'Plan your month',
-                showTimetable,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 27),
-        Row(
-          children: [
-            const Expanded(
-              child: Text(
-                'Your prayer rhythm',
-                style: TextStyle(
-                  fontFamily: 'ClassicalSerif',
-                  fontSize: 27,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: -.5,
-                ),
-              ),
-            ),
-            Text(
-              '$done / 5',
-              style: const TextStyle(color: gold, fontWeight: FontWeight.w700),
-            ),
-          ],
-        ),
-        const SizedBox(height: 7),
-        const Text(
-          'Tap a circle to keep a private prayer log.',
-          style: TextStyle(fontSize: 12, color: Colors.grey),
-        ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 12),
         surface(
-          Column(
-            children: prayers.map((p) {
-              final active = p.id == next.id;
-              final checked = s.completed.contains(s.completionKey(p.id, now));
-              return Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 36,
-                          height: 36,
-                          decoration: BoxDecoration(
-                            color: (active ? gold : forest).withValues(
-                              alpha: .09,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Icon(
-                            prayerIcon(p.id),
-                            size: 19,
-                            color: active
-                                ? gold
-                                : Theme.of(context).colorScheme.primary,
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                p.name,
-                                style: TextStyle(
-                                  fontWeight: active
-                                      ? FontWeight.w700
-                                      : FontWeight.w500,
-                                ),
-                              ),
-                              Ks(p.nativeName, size: 13, align: TextAlign.left),
-                            ],
-                          ),
-                        ),
-                        Text(
-                          time(p.instant),
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: active
-                                ? FontWeight.w700
-                                : FontWeight.w500,
-                            color: active ? gold : null,
-                          ),
-                        ),
-                        if (p.isPrayer)
-                          Checkbox(
-                            semanticLabel: 'Mark ${p.name} prayed',
-                            value: checked,
-                            shape: const CircleBorder(),
-                            onChanged: (v) => s.update(() {
-                              final key = s.completionKey(p.id, now);
-                              v == true
-                                  ? s.completed.add(key)
-                                  : s.completed.remove(key);
-                            }),
-                          ),
-                        if (!p.isPrayer) const SizedBox(width: 48),
-                      ],
-                    ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: prayers.map((p) {
+                final active = p.id == next.id;
+                return Container(
+                  width: 86,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                    horizontal: 4,
                   ),
-                  if (p.id != 'isha')
-                    Divider(height: 1, color: Theme.of(context).dividerColor),
-                ],
-              );
-            }).toList(),
+                  decoration: BoxDecoration(
+                    color: active
+                        ? const Color(0xffed8073)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        p.name,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: active ? Colors.white : null,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        time(p.instant),
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: active ? Colors.white : null,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.all(5),
+        ),
+        const SizedBox(height: 22),
+        const Text(
+          'Your daily companion',
+          style: TextStyle(
+            fontFamily: 'ClassicalSerif',
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const SizedBox(height: 12),
-        Text(
-          s.customTimes != null
-              ? 'Custom daily timetable · ${s.city.zone}\nRepeats daily until edited. Sunrise is calculated.'
-              : '${s.method} · ${s.hanafi ? 'Hanafi' : 'Standard'} Asr · ${s.city.zone}\nCalculated times; confirm with your local mosque. Sunrise is not a prayer.',
-          style: const TextStyle(fontSize: 10, height: 1.7, color: Colors.grey),
-        ),
-        const SizedBox(height: 26),
         Row(
           children: [
-            const Expanded(
-              child: Text(
-                'A moment of remembrance',
-                style: TextStyle(
-                  fontFamily: 'ClassicalSerif',
-                  fontSize: 26,
-                  fontWeight: FontWeight.w600,
-                ),
+            Expanded(
+              child: homeShortcut(Icons.explore_outlined, 'Qibla', showQibla),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: homeShortcut(
+                Icons.menu_book_outlined,
+                'Duas',
+                () => setState(() => tab = 1),
               ),
             ),
-            TextButton(
-              onPressed: () => setState(() => tab = 1),
-              child: const Text('All duas →'),
+            const SizedBox(width: 8),
+            Expanded(
+              child: homeShortcut(
+                Icons.blur_circular,
+                'Tasbih',
+                () => setState(() => tab = 3),
+              ),
             ),
           ],
         ),
-        const SizedBox(height: 9),
+        const SizedBox(height: 14),
         InkWell(
-          borderRadius: BorderRadius.circular(22),
-          onTap: () => showDua(widget.duas.first),
+          borderRadius: BorderRadius.circular(24),
+          onTap: () => setState(() {
+            category = 'Hisnul Muslim';
+            query = '';
+            duaLimit = 24;
+            tab = 1;
+          }),
+          child: surface(
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffffdfcb),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: const Icon(
+                    Icons.auto_stories_outlined,
+                    color: gold,
+                    size: 30,
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Hisnul Muslim',
+                        style: TextStyle(
+                          fontFamily: 'ClassicalSerif',
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        '$total numbered entries',
+                        style: const TextStyle(fontSize: 12, color: gold),
+                      ),
+                      const SizedBox(height: 6),
+                      const Text(
+                        'Read in Arabic & Kashmiri',
+                        style: TextStyle(fontSize: 11),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right, color: gold),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 14),
+        InkWell(
+          borderRadius: BorderRadius.circular(24),
+          onTap: () => showDua(daily),
           child: surface(
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'DUA FOR EVERY DAY',
-                  style: TextStyle(
-                    letterSpacing: 1.7,
-                    fontSize: 10,
-                    color: gold,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 14),
-                Text(
-                  widget.duas.first['arabic'],
-                  textDirection: TextDirection.rtl,
-                  style: arabicStyle(28),
+                  'A dua for today',
+                  style: TextStyle(fontFamily: 'ClassicalSerif', fontSize: 23),
                 ),
                 const SizedBox(height: 12),
-                Ks(widget.duas.first['kashmiri'], size: 17),
-                const SizedBox(height: 16),
+                Text(
+                  daily['arabic'],
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
+                  style: arabicStyle(30),
+                ),
+                const SizedBox(height: 10),
                 const Text(
-                  'Qur’an 2:201  ·  Kashmiri meaning draft',
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                  'Continue reading →',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: gold, fontSize: 12),
                 ),
               ],
             ),
           ),
         ),
+        const SizedBox(height: 16),
+        surface(
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            title: const Text(
+              'Your prayer rhythm',
+              style: TextStyle(fontFamily: 'ClassicalSerif', fontSize: 22),
+            ),
+            subtitle: Text(
+              '$done / 5 prayed · private prayer log',
+              style: const TextStyle(fontSize: 11),
+            ),
+            children: [
+              ...prayers
+                  .where((p) => p.isPrayer)
+                  .map(
+                    (p) => CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(p.name),
+                      subtitle: Text(time(p.instant)),
+                      value: s.completed.contains(s.completionKey(p.id, now)),
+                      onChanged: (v) => s.update(() {
+                        final key = s.completionKey(p.id, now);
+                        v == true
+                            ? s.completed.add(key)
+                            : s.completed.remove(key);
+                      }),
+                    ),
+                  ),
+              TextButton.icon(
+                onPressed: showTimetable,
+                icon: const Icon(Icons.calendar_month_outlined),
+                label: const Text('Monthly timetable'),
+              ),
+              Text(
+                s.customTimes != null
+                    ? 'Custom daily timetable · ${s.city.zone}'
+                    : '${s.method} · ${s.hanafi ? 'Hanafi' : 'Standard'} Asr · ${s.city.zone}',
+                style: const TextStyle(fontSize: 10),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
+
+  Widget homeShortcut(IconData icon, String label, VoidCallback onTap) =>
+      InkWell(
+        borderRadius: BorderRadius.circular(22),
+        onTap: onTap,
+        child: surface(
+          Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Color(0xffffdfcb),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(icon, color: gold, size: 25),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 6),
+        ),
+      );
 
   IconData prayerIcon(String id) => switch (id) {
     'fajr' => Icons.wb_twilight,

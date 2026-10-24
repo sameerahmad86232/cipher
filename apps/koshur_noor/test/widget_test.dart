@@ -12,15 +12,22 @@ void main() {
   test('All duas retain Arabic, source and accurate review status', () {
     final rows =
         jsonDecode(File('assets/data/duas.json').readAsStringSync()) as List;
-    expect(rows.length, 196);
-    expect(rows.map((r) => r['id']).toSet().length, 196);
+    expect(rows.length, 273);
+    expect(rows.map((r) => r['id']).toSet().length, 273);
+    expect(
+      rows
+          .where((r) => r['bookNumber'] != null)
+          .map((r) => r['bookNumber'])
+          .toList(),
+      List.generate(261, (i) => i + 1),
+    );
     for (final r in rows) {
       expect(r['arabic'], isNotEmpty);
       expect(r['kashmiri'], isNotEmpty);
       expect(r['source'], isNotEmpty);
       expect(
         r['reviewStatus'],
-        r['bookNumber'] == null
+        r['bookNumber'] == null || (r['bookNumber'] as int) < 78
             ? 'draft-awaiting-owner-review'
             : 'approved-by-project-owner',
       );
@@ -36,7 +43,9 @@ void main() {
             as List;
     final rows =
         (jsonDecode(File('assets/data/duas.json').readAsStringSync()) as List)
-            .where((r) => r['bookNumber'] != null)
+            .where(
+              (r) => r['bookNumber'] != null && (r['bookNumber'] as int) >= 78,
+            )
             .toList();
     expect(rows.length, 184);
     for (final approved in source) {
@@ -85,9 +94,9 @@ void main() {
     final state = AppState(prefs);
     await tester.pumpWidget(NoorApp(state: state, duas: rows));
     await tester.pumpAndSettle();
-    expect(find.text('NOOR'), findsOneWidget);
+    expect(find.text('KOSHUR NOOR'), findsOneWidget);
     expect(tester.takeException(), isNull);
-    await tester.tap(find.text('Duas'));
+    await tester.tap(find.text('Duas').last);
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'entry 261');
     await tester.pumpAndSettle();
@@ -120,7 +129,7 @@ void main() {
     expect(find.text('KASHMIRI MEANING'), findsOneWidget);
     await tester.pageBack();
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Tasbih'));
+    await tester.tap(find.text('Tasbih').last);
     await tester.pumpAndSettle();
     await tester.tap(find.text('TAP TO COUNT'));
     await tester.pump();
@@ -145,10 +154,10 @@ void main() {
     await tester.pumpWidget(NoorApp(state: AppState(prefs), duas: rows));
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
-    await tester.tap(find.text('Duas'));
+    await tester.tap(find.text('Duas').last);
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
-    await tester.tap(find.text('Tasbih'));
+    await tester.tap(find.text('Tasbih').last);
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
     await tester.tap(find.text('Settings'));
@@ -165,7 +174,7 @@ void main() {
       final duas =
           jsonDecode(File('assets/data/duas.json').readAsStringSync()) as List;
       expect(hadiths.length, 8);
-      expect([...hadiths, ...duas].map((r) => r['id']).toSet().length, 204);
+      expect([...hadiths, ...duas].map((r) => r['id']).toSet().length, 281);
       for (final h in hadiths) {
         expect(h['kind'], 'hadith');
         expect(h['arabic'], isNotEmpty);

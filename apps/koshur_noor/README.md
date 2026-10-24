@@ -14,7 +14,7 @@ Android 7.0+, 64-bit ARM. Development-signed preview for sideloading and testing
 - **Live Android Qibla:** native rotation-vector sensor, accelerometer/magnetometer fallback, display-orientation remapping and Android GeomagneticField correction from magnetic to true north. Kaaba pointer follows the relative bearing; north-crossing angles animate by the shortest route.
 - Calibration/low-accuracy guidance, stale/no-sensor states, alignment feedback and explicit manual-location labels. No simulated headings. Web/non-Android builds show a truthful reference-only fallback.
 - Opt-in location permission flow, GPS-disabled and blocked-permission handling, enable-location dialog, timeout handling and manual city alternative. The saved position and device timezone apply to prayer calculations too.
-- 196 offline dua entries (184 owner-reviewed Hisnul Muslim entries 78–261 and the original 12 drafts) and eight hadiths. Includes Hisnul filtering, numbered search, review badges, reading notes, saved favourites, copy/review tools and Arabic size controls.
+- 273 offline dua entries (all 261 Hisnul Muslim entries and the original 12 duas; 184 owner-reviewed meanings) and eight hadiths. Includes Hisnul filtering, numbered search, review badges, reading notes, saved favourites, copy/review tools and Arabic size controls.
 - Zikr counter with count animation, haptic feedback, selectable target and reset confirmation.
 - Fade/slide screen transitions and smoothed compass movement. Custom motion respects the system’s reduced-animation preference. No decorative perpetual animation loop.
 - Night palette, larger reading text, no account, ads, model download or app server.
@@ -59,3 +59,7 @@ Verified 1.4 APK SHA-256: `6f7c2ac34b43de7b1bbff6380a3c95099cec9557fdc31dc783d8e
 ## 1.5 reviewed dua library
 
 Approved text is preserved exactly from `training-data/reusable-language-memory/hisnul-muslim/approved-entries-78-261.json`. A regression test checks all 184 Arabic/Kashmiri pairs and notes. Entries 1–77 have not been bulk imported as approved. Long lists show 24 entries at a time with a show-more control. Reading notes are separate from recited Arabic. No new audio or generated recitation is introduced.
+
+## 1.6 classical home
+
+Home follows the approved concept: Jamia-inspired hero artwork, live next-prayer glass card, a horizontal strip with all six calculated events including Isha, quick actions, complete Hisnul Muslim library entry point, daily dua and collapsible private prayer log. Timetable, GPS, custom times, dark mode and reduced-motion transitions remain available. Missing Hisnul entries 1–77 are now included with available corrections and pending-review labels. Entries 78–261 retain exact owner-approved text.
