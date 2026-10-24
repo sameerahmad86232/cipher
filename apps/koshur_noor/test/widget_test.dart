@@ -9,16 +9,43 @@ import 'package:koshur_noor/app_state.dart';
 
 void main() {
   setUp(tzdata.initializeTimeZones);
-  test('All duas retain Arabic, source and unreviewed Kashmiri meaning', () {
+  test('All duas retain Arabic, source and accurate review status', () {
     final rows =
         jsonDecode(File('assets/data/duas.json').readAsStringSync()) as List;
-    expect(rows.length, 12);
-    expect(rows.map((r) => r['id']).toSet().length, 12);
+    expect(rows.length, 196);
+    expect(rows.map((r) => r['id']).toSet().length, 196);
     for (final r in rows) {
       expect(r['arabic'], isNotEmpty);
       expect(r['kashmiri'], isNotEmpty);
       expect(r['source'], isNotEmpty);
-      expect(r['reviewStatus'], 'draft-awaiting-owner-review');
+      expect(
+        r['reviewStatus'],
+        r['bookNumber'] == null
+            ? 'draft-awaiting-owner-review'
+            : 'approved-by-project-owner',
+      );
+    }
+  });
+  test('Approved Hisnul entries match the owner-reviewed source exactly', () {
+    final source =
+        jsonDecode(
+              File(
+                '../../training-data/reusable-language-memory/hisnul-muslim/approved-entries-78-261.json',
+              ).readAsStringSync(),
+            )['entries']
+            as List;
+    final rows =
+        (jsonDecode(File('assets/data/duas.json').readAsStringSync()) as List)
+            .where((r) => r['bookNumber'] != null)
+            .toList();
+    expect(rows.length, 184);
+    for (final approved in source) {
+      final row = rows.singleWhere(
+        (r) => r['bookNumber'] == approved['book_id'],
+      );
+      expect(row['arabic'], approved['arabic']);
+      expect(row['kashmiri'], approved['kashmiri']);
+      expect(row['instructions'], approved['notes']);
     }
   });
   test(
@@ -61,6 +88,29 @@ void main() {
     expect(find.text('NOOR'), findsOneWidget);
     expect(tester.takeException(), isNull);
     await tester.tap(find.text('Duas'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'entry 261');
+    await tester.pumpAndSettle();
+    expect(find.text('Owner-reviewed meaning'), findsOneWidget);
+    await tester.tap(find.text('حِصنُ المُسلِم — 261'));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('KASHMIRI MEANING'),
+      400,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('KASHMIRI MEANING'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.textContaining('Kashmiri meaning reviewed by the project owner.'),
+      400,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(
+      find.textContaining('Kashmiri meaning reviewed by the project owner.'),
+      findsOneWidget,
+    );
+    expect(tester.takeException(), isNull);
+    await tester.pageBack();
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'knowledge');
     await tester.pumpAndSettle();
@@ -115,7 +165,7 @@ void main() {
       final duas =
           jsonDecode(File('assets/data/duas.json').readAsStringSync()) as List;
       expect(hadiths.length, 8);
-      expect([...hadiths, ...duas].map((r) => r['id']).toSet().length, 20);
+      expect([...hadiths, ...duas].map((r) => r['id']).toSet().length, 204);
       for (final h in hadiths) {
         expect(h['kind'], 'hadith');
         expect(h['arabic'], isNotEmpty);

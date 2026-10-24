@@ -208,6 +208,7 @@ class _HomeState extends State<Home> {
   String hadithQuery = '', hadithCategory = 'All';
   bool savedHadithOnly = false;
   bool savedOnly = false;
+  int duaLimit = 24;
   AppState get s => widget.state;
   @override
   void initState() {
@@ -894,6 +895,24 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     const SizedBox(height: 10),
+                    if (d['reviewStatus'] == 'approved-by-project-owner')
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.verified_outlined,
+                              size: 14,
+                              color: gold,
+                            ),
+                            SizedBox(width: 6),
+                            Text(
+                              'Owner-reviewed meaning',
+                              style: TextStyle(fontSize: 10, color: gold),
+                            ),
+                          ],
+                        ),
+                      ),
                     Ks(d['title'], size: 21),
                     const SizedBox(height: 10),
                     Text(
@@ -935,7 +954,7 @@ class _HomeState extends State<Home> {
               (category == 'All' || d['category'] == category) &&
               (!savedOnly || s.favourites.contains(d['id'])) &&
               fold(
-                '${d['title']} ${d['subtitle']} ${d['kashmiri']} ${d['arabic']} ${d['source']}',
+                '${d['title']} ${d['subtitle']} ${d['kashmiri']} ${d['arabic']} ${d['source']} ${d['instructions'] ?? ''}',
               ).contains(fold(query)),
         )
         .toList();
@@ -945,7 +964,7 @@ class _HomeState extends State<Home> {
       children: [
         heading(
           'Words to return to',
-          'A dua for your day',
+          'Your Kashmiri dua library',
           trailing: IconButton(
             tooltip: savedOnly ? 'Show all duas' : 'Show saved duas',
             onPressed: () => setState(() => savedOnly = !savedOnly),
@@ -958,7 +977,10 @@ class _HomeState extends State<Home> {
         const Ks('دُعا — رَبَس سۭتۍ کتھ', size: 24),
         const SizedBox(height: 16),
         TextField(
-          onChanged: (v) => setState(() => query = v),
+          onChanged: (v) => setState(() {
+            query = v;
+            duaLimit = 24;
+          }),
           decoration: const InputDecoration(
             prefixIcon: Icon(Icons.search),
             hintText: 'Search Kashmiri, Arabic, or English',
@@ -970,14 +992,25 @@ class _HomeState extends State<Home> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children:
-                ['All', 'Daily', 'Family', 'Learning', 'Comfort', 'Prayer']
+                [
+                      'All',
+                      'Hisnul Muslim',
+                      'Daily',
+                      'Family',
+                      'Learning',
+                      'Comfort',
+                      'Prayer',
+                    ]
                     .map(
                       (c) => Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: ChoiceChip(
                           label: Text(c),
                           selected: category == c,
-                          onSelected: (_) => setState(() => category = c),
+                          onSelected: (_) => setState(() {
+                            category = c;
+                            duaLimit = 24;
+                          }),
                         ),
                       ),
                     )
@@ -985,8 +1018,8 @@ class _HomeState extends State<Home> {
           ),
         ),
         const SizedBox(height: 12),
-        const Text(
-          'Arabic supplications with Kashmiri meaning drafts. Please review the meanings before treating them as verified translations.',
+        Text(
+          '${list.length} entries · 184 Hisnul Muslim meanings reviewed by the project owner · available offline',
           style: TextStyle(color: Colors.grey, fontSize: 11, height: 1.6),
         ),
         const SizedBox(height: 18),
@@ -997,51 +1030,86 @@ class _HomeState extends State<Home> {
               child: Text('No duas found. Try another word or category.'),
             ),
           ),
-        ...list.map(
-          (d) => Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: InkWell(
-              onTap: () => showDua(d),
-              borderRadius: BorderRadius.circular(22),
-              child: surface(
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
+        ...list
+            .take(duaLimit)
+            .map(
+              (d) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: InkWell(
+                  onTap: () => showDua(d),
+                  borderRadius: BorderRadius.circular(22),
+                  child: surface(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          d['category'].toString().toUpperCase(),
-                          style: const TextStyle(
-                            color: gold,
-                            fontSize: 9,
-                            letterSpacing: 1.5,
-                            fontWeight: FontWeight.w700,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              d['category'].toString().toUpperCase(),
+                              style: const TextStyle(
+                                color: gold,
+                                fontSize: 9,
+                                letterSpacing: 1.5,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const Spacer(),
+                            Icon(
+                              s.favourites.contains(d['id'])
+                                  ? Icons.bookmark
+                                  : Icons.north_east,
+                              size: 17,
+                              color: gold,
+                            ),
+                          ],
                         ),
-                        const Spacer(),
-                        Icon(
-                          s.favourites.contains(d['id'])
-                              ? Icons.bookmark
-                              : Icons.north_east,
-                          size: 17,
-                          color: gold,
+                        if (d['reviewStatus'] == 'approved-by-project-owner')
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.verified_outlined,
+                                  size: 14,
+                                  color: gold,
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  'Owner-reviewed meaning',
+                                  style: TextStyle(fontSize: 10, color: gold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        Ks(d['title'], size: 21),
+                        const SizedBox(height: 8),
+                        Text(
+                          d['subtitle'],
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          d['source'],
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                          ),
                         ),
                       ],
                     ),
-                    Ks(d['title'], size: 21),
-                    const SizedBox(height: 8),
-                    Text(d['subtitle'], style: const TextStyle(fontSize: 12)),
-                    const SizedBox(height: 8),
-                    Text(
-                      d['source'],
-                      style: const TextStyle(fontSize: 10, color: Colors.grey),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
+        if (list.length > duaLimit)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: OutlinedButton.icon(
+              onPressed: () => setState(() => duaLimit += 24),
+              icon: const Icon(Icons.expand_more),
+              label: Text('Show more · ${list.length - duaLimit} remaining'),
+            ),
           ),
-        ),
       ],
     );
   }
@@ -1066,7 +1134,7 @@ class _HomeState extends State<Home> {
                     Clipboard.setData(
                       ClipboardData(
                         text:
-                            '${d['arabic']}\n\n${d['kashmiri']}\n${d['source']}\nKashmiri meaning: draft for review',
+                            '${d['arabic']}\n\n${d['kashmiri']}\n${d['source']}\nKashmiri meaning: ${d['reviewStatus'] == 'approved-by-project-owner' ? 'reviewed by project owner' : 'draft for review'}',
                       ),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -1194,6 +1262,19 @@ class _HomeState extends State<Home> {
                         height: 2.6,
                       ),
                     ),
+                    if ((d['instructions'] ?? '').toString().isNotEmpty) ...[
+                      const SizedBox(height: 24),
+                      const Text(
+                        'READING NOTES',
+                        style: TextStyle(
+                          color: gold,
+                          fontSize: 10,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Ks(d['instructions'], size: 18),
+                    ],
                     const SizedBox(height: 28),
                     Text(
                       d['source'],
@@ -1204,7 +1285,9 @@ class _HomeState extends State<Home> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      d['kind'] == 'hadith'
+                      d['reviewStatus'] == 'approved-by-project-owner'
+                          ? 'Kashmiri meaning reviewed by the project owner. Source and reading instructions are retained below.'
+                          : d['kind'] == 'hadith'
                           ? 'Kashmiri meaning draft · awaiting your review. References identify the narration. Excerpts and omitted chains are labelled separately.'
                           : 'Meaning draft · awaiting your review. Arabic excerpts are identified in the reference. A translation explains meaning and does not replace the Arabic Qur’an.',
                       style: TextStyle(

@@ -14,7 +14,7 @@ Android 7.0+, 64-bit ARM. Development-signed preview for sideloading and testing
 - **Live Android Qibla:** native rotation-vector sensor, accelerometer/magnetometer fallback, display-orientation remapping and Android GeomagneticField correction from magnetic to true north. Kaaba pointer follows the relative bearing; north-crossing angles animate by the shortest route.
 - Calibration/low-accuracy guidance, stale/no-sensor states, alignment feedback and explicit manual-location labels. No simulated headings. Web/non-Android builds show a truthful reference-only fallback.
 - Opt-in location permission flow, GPS-disabled and blocked-permission handling, enable-location dialog, timeout handling and manual city alternative. The saved position and device timezone apply to prayer calculations too.
-- Twelve duas and eight hadiths with Arabic, Kashmiri meaning drafts, references, search, topics, saved favourites, copy/review tools and Arabic size controls.
+- 196 offline dua entries (184 owner-reviewed Hisnul Muslim entries 78–261 and the original 12 drafts) and eight hadiths. Includes Hisnul filtering, numbered search, review badges, reading notes, saved favourites, copy/review tools and Arabic size controls.
 - Zikr counter with count animation, haptic feedback, selectable target and reset confirmation.
 - Fade/slide screen transitions and smoothed compass movement. Custom motion respects the system’s reduced-animation preference. No decorative perpetual animation loop.
 - Night palette, larger reading text, no account, ads, model download or app server.
@@ -25,7 +25,7 @@ GPS is requested only after tapping the location button. No background-location 
 
 The heading depends on actual phone hardware, calibration and magnetic interference. Keep the phone flat and away from metal. A manual city must match your real location. The browser cannot demonstrate the Android sensor implementation. No physical-device sensor or GPS installation test was available in this workspace; do not treat automated tests as a hardware accuracy certification.
 
-Prayer times are calculations, not mosque iqamah times. Kashmiri meanings are **drafts awaiting review**, not certified translations. No background prayer alarms or audio playback are included.
+Prayer times are calculations, not mosque iqamah times. Hisnul Muslim entries 78–261 are marked **reviewed by the project owner**; the original 12 duas and eight hadiths retain draft status. Owner review is not independent certification. No background prayer alarms or audio playback are included.
 
 ## Build and verify
 
@@ -55,3 +55,7 @@ Verified 1.4 APK SHA-256: `6f7c2ac34b43de7b1bbff6380a3c95099cec9557fdc31dc783d8e
   Switch back with “Use calculated times instead”; sunrise remains calculated.
   An Isha time before Fajr is assigned to the following civil day. Calculated
   method, Asr school and minute offset do not override custom times.
+
+## 1.5 reviewed dua library
+
+Approved text is preserved exactly from `training-data/reusable-language-memory/hisnul-muslim/approved-entries-78-261.json`. A regression test checks all 184 Arabic/Kashmiri pairs and notes. Entries 1–77 have not been bulk imported as approved. Long lists show 24 entries at a time with a show-more control. Reading notes are separate from recited Arabic. No new audio or generated recitation is introduced.
