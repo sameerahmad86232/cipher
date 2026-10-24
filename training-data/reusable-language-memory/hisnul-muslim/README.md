@@ -10,3 +10,7 @@ This bundle preserves owner corrections for future translators and agents. It do
 Use respectful address consistently; distinguish reflexive paanas from possessives; preserve person, gender, number and tense; use the owner's preferred contextual vocabulary. Roman feedback without verified native spelling remains tentative. Do not substitute wording globally across unrelated meanings.
 
 Book numbering and vocabulary-list numbering are separate. Latest delivered book entry is 32; next is 33. Earlier unreviewed drafts remain unreviewed. Source PDFs and OCR are not included. Language approval does not establish redistribution or commercial training rights; no automatic training ingestion is enabled.
+
+## Owner approval of remaining entries
+
+`approved-entries-78-261.json` and `Hisnul-Muslim-Duas-78-261-Approved.xlsx` preserve the exact 184 rows approved by the owner after reviewing the simplified workbook. The main review workbook statuses are updated for these entries. This approval does not include earlier entries or imply source-rights clearance. Latest book entry is 261; the book review sequence is complete.

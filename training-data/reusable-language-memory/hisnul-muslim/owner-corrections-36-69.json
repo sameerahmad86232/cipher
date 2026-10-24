@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-24",
+  "status": "owner-corrections; native script tentative where only Roman supplied",
+  "model_weights_updated": false,
+  "corrections": [
+    {
+      "book_entry": 36,
+      "meaning": "marrow",
+      "chosen": "وس",
+      "status": "owner-supplied-native-script"
+    },
+    {
+      "book_entry": 36,
+      "meaning": "tendon",
+      "singular": "نس",
+      "plural": "نسِ",
+      "status": "owner-supplied-native-script"
+    },
+    {
+      "book_entry": 39,
+      "meaning": "praise full of blessings",
+      "chosen": "بَرکَتھ سۭتۍ بٔرِتھ تَعریف",
+      "owner_roman": "bareth tareef",
+      "replaces": "بَرکَتھ وٲنۍ تَعریف"
+    },
+    {
+      "book_entry": 50,
+      "meaning": "created it",
+      "owner_roman": "paaaede koruss"
+    },
+    {
+      "book_entry": 51,
+      "meaning": "with Yourself, a reward",
+      "owner_roman": "paaannas nish ajr"
+    },
+    {
+      "book_entry": 54,
+      "meaning": "upon descendants",
+      "owner_roman": "Aawladan peath"
+    },
+    {
+      "book_entry": 58,
+      "arabic": "وَمَا أَسْرَفْتُ",
+      "owner_roman": "meaane had tajaawouuzee te kareooo maaaf",
+      "native_draft": "میٲنۍ حَد تَجاوُزی تہٕ کَرِو مَعاف۔"
+    },
+    {
+      "book_entry": 62,
+      "arabic_context": "فِي الْغَيْبِ وَالشَّهَادَةِ",
+      "meaning": "alone / in private",
+      "owner_roman": "kounzoen",
+      "replaces": "akh kune",
+      "scope": "Private setting contrasted with being before people; not a universal translation of unseen."
+    },
+    {
+      "book_entry": 62,
+      "arabic": "الْغَضَبِ",
+      "meaning": "anger",
+      "owner_roman": "Sharaat",
+      "replaces": "ghussu",
+      "scope": "Anger in the contrast between contentment and anger."
+    }
+  ],
+  "application_rules": [
+    "Apply contextual terminology without changing the underlying Arabic meaning.",
+    "Keep respectful second-person address consistent throughout each supplication.",
+    "Preserve singular/plural distinction: نس versus نسِ.",
+    "Do not treat a partial correction or Next as approval of an entire batch.",
+    "Roman-only corrections do not establish owner-approved native spelling.",
+    "Book entries 60–69 remain drafts except for individually supplied corrections."
+  ]
+}

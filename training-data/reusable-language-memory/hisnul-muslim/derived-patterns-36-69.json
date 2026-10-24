@@ -1,0 +1,85 @@
+{
+  "status": "Derived translation checks, not independently approved new translations",
+  "source_files": [
+    "entry-32-reviewed-phrases.json",
+    "owner-corrections-36-69.json"
+  ],
+  "model_training_run": false,
+  "patterns": [
+    {
+      "id": "privacy-context",
+      "source_entry": 62,
+      "owner_form": "kounzoen",
+      "rule": "In the contrast between private and public conduct, use the owner wording for alone/in private. Do not replace every occurrence of unseen or hidden with this expression.",
+      "check": "Preserve both private and public sides of the contrast."
+    },
+    {
+      "id": "anger-context",
+      "source_entry": 62,
+      "owner_form": "Sharaat",
+      "rule": "Use owner wording for anger in the contentment/anger contrast.",
+      "check": "Do not change contentment into anger or omit either condition."
+    },
+    {
+      "id": "anatomy-number",
+      "source_entry": 36,
+      "owner_forms": {
+        "marrow": "وس",
+        "tendon": "نس",
+        "tendons": "نسِ"
+      },
+      "rule": "Distinguish marrow, bones and tendons; preserve singular or plural as appropriate.",
+      "check": "Do not use vein as an automatic synonym for tendon."
+    },
+    {
+      "id": "filled-with",
+      "source_entry": 39,
+      "owner_form": "bareth tareef",
+      "rule": "For praise full of blessings, use the owner-preferred construction with بٔرِتھ rather than the rejected construction with وٲنۍ in this phrase.",
+      "check": "Do not globally replace وٲنۍ; it serves other grammatical functions."
+    },
+    {
+      "id": "created-object",
+      "source_entry": 50,
+      "owner_form": "paaaede koruss",
+      "rule": "Preserve the object-referencing form supplied for created it.",
+      "check": "Do not lose the reference back to the face; native spelling awaits review."
+    },
+    {
+      "id": "divine-reflexive",
+      "source_entry": 51,
+      "owner_form": "paaannas nish ajr",
+      "rule": "Use the owner wording in the request to record a reward with Yourself.",
+      "check": "Keep with Yourself distinct from for myself."
+    },
+    {
+      "id": "descendants-oblique",
+      "source_entry": 54,
+      "owner_form": "Aawladan peath",
+      "rule": "Use the owner oblique construction for upon descendants.",
+      "check": "Preserve the distinction between wives and descendants."
+    },
+    {
+      "id": "transgression",
+      "source_entry": 58,
+      "owner_form": "meaane had tajaawouuzee te kareooo maaaf",
+      "rule": "Render exceeding bounds with the owner transgression wording.",
+      "check": "Do not narrow the Arabic to wasting money alone."
+    },
+    {
+      "id": "concealment",
+      "source_entry": 32,
+      "owner_form": "ژوورٕ",
+      "rule": "Use the approved spelling for secretly/concealed deeds.",
+      "check": "Keep the hidden/public contrast; this word does not mean theft."
+    }
+  ],
+  "review_checklist": [
+    "Identify the actor and recipient.",
+    "Preserve tense, number, and all clauses.",
+    "Use respectful address consistently.",
+    "Apply terminology only in its reviewed context.",
+    "Keep explanation separate from the translated prayer.",
+    "Mark unreviewed native-script conversions as tentative."
+  ]
+}
