@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:koshur_noor/prayer_service.dart';
@@ -5,6 +6,20 @@ import 'package:koshur_noor/prayer_notifications.dart';
 
 void main() {
   setUpAll(tzdata.initializeTimeZones);
+  test(
+    'Release shrinker retains dynamically referenced adhan and notification icon',
+    () {
+      final keep = File(
+        'android/app/src/main/res/raw/keep.xml',
+      ).readAsStringSync();
+      expect(keep, contains('@raw/adhan'));
+      expect(keep, contains('@drawable/ic_prayer_notification'));
+      expect(
+        File('android/app/src/main/res/raw/adhan.ogg').lengthSync(),
+        greaterThan(10000),
+      );
+    },
+  );
   test('30-day plan schedules only selected future prayers, never sunrise', () {
     final service = PrayerService(city: City.all.first);
     final now = DateTime.utc(2026, 10, 25, 8);
