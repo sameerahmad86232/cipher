@@ -11,6 +11,8 @@ import 'prayer_service.dart';
 import 'qibla_screen.dart';
 import 'glass_panel.dart';
 import 'custom_times.dart';
+import 'prayer_notifications.dart';
+import 'notification_settings.dart';
 
 const forest = Color(0xff763f2b),
     gold = Color(0xffa24e36),
@@ -39,7 +41,16 @@ Future<void> main() async {
   final hadiths = (jsonDecode(hadithRaw) as List)
       .map((r) => Map<String, dynamic>.from(r as Map))
       .toList();
-  runApp(NoorApp(state: AppState(prefs), duas: duas, hadiths: hadiths));
+  final state = AppState(prefs);
+  final alerts = PrayerNotifications(prefs);
+  state.notifications = alerts;
+  try {
+    await alerts.initialize();
+    unawaited(alerts.refresh(state.service));
+  } catch (_) {
+    /* Settings shows scheduling errors without blocking launch. */
+  }
+  runApp(NoorApp(state: state, duas: duas, hadiths: hadiths));
 }
 
 class NoorApp extends StatelessWidget {
@@ -199,7 +210,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with WidgetsBindingObserver {
   int tab = 0;
   Timer? timer;
   DateTime now = DateTime.now();
@@ -212,6 +223,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (mounted) setState(() => now = DateTime.now());
     });
@@ -219,8 +231,16 @@ class _HomeState extends State<Home> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     timer?.cancel();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      s.notifications?.refresh(s.service, force: true);
+    }
   }
 
   String time(DateTime instant) => DateFormat(
@@ -541,6 +561,56 @@ class _HomeState extends State<Home> {
             ),
           ),
           padding: const EdgeInsets.all(5),
+        ),
+        const SizedBox(height: 12),
+        InkWell(
+          borderRadius: BorderRadius.circular(22),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (_) => NotificationSettings(state: s),
+            ),
+          ),
+          child: surface(
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    color: Color(0xffffdfcb),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.notifications_active_outlined,
+                    color: gold,
+                    size: 22,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'A gentle call to prayer',
+                        style: TextStyle(
+                          fontFamily: 'ClassicalSerif',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Set up adhan & prayer reminders',
+                        style: TextStyle(fontSize: 11, color: gold),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right, color: gold),
+              ],
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          ),
         ),
         const SizedBox(height: 22),
         const Text(
@@ -997,7 +1067,7 @@ class _HomeState extends State<Home> {
         ),
         const SizedBox(height: 12),
         Text(
-          '${list.length} entries · 184 Hisnul Muslim meanings reviewed by the project owner · available offline',
+          '${list.length} entries · Arabic & Kashmiri · available offline',
           style: TextStyle(color: Colors.grey, fontSize: 11, height: 1.6),
         ),
         const SizedBox(height: 18),
@@ -1459,6 +1529,22 @@ class _HomeState extends State<Home> {
     padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),
     children: [
       heading('Made for your rhythm', 'Make Noor yours.'),
+      surface(
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.notifications_active_outlined, color: gold),
+          title: const Text('Adhan & prayer alerts'),
+          subtitle: const Text('Sound, silent reminders & prayer selection'),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (_) => NotificationSettings(state: s),
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 16),
       surface(
         ListTile(
           contentPadding: EdgeInsets.zero,

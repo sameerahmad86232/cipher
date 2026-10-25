@@ -26,3 +26,7 @@ No recorded audio, commercial corpus, non-commercial model weights, or neural mo
 `assets/images/jamia-inspired.png` is generated artwork inspired by Jamia Masjid,
 Srinagar, created for this app. It is an illustrative reconstruction, not a
 photograph, surveyed architectural record, or third-party licensed photo.
+
+## Adhan notification recording
+
+“Adhan wiki”, Jarih (2007), Wikimedia Commons. Source: https://commons.wikimedia.org/wiki/File:Adhan_wiki.oga . Used under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/ . Android resource `android/app/src/main/res/raw/adhan.ogg` is a format conversion to Ogg Vorbis of the complete 26.56-second recording, with no content edits. This recording and its conversion remain CC BY-SA 3.0. Attribution and license link are also displayed in Adhan & prayer alerts settings. This recording has no additional Fajr phrase.

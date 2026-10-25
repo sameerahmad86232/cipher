@@ -3,10 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'prayer_service.dart';
 import 'custom_times.dart';
+import 'prayer_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class AppState extends ChangeNotifier {
   final SharedPreferences prefs;
+  PrayerNotifications? notifications;
   late City city;
   late String method;
   late bool hanafi, dark, clock24, large;
@@ -119,6 +121,7 @@ class AppState extends ChangeNotifier {
       prefs.setStringList('favourites', favourites.toList()),
       prefs.setStringList('completed', completed.toList()),
     ]);
+    await notifications?.refresh(service);
   }
 
   String exportReview(

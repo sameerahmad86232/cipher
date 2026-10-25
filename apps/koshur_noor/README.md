@@ -25,7 +25,7 @@ GPS is requested only after tapping the location button. No background-location 
 
 The heading depends on actual phone hardware, calibration and magnetic interference. Keep the phone flat and away from metal. A manual city must match your real location. The browser cannot demonstrate the Android sensor implementation. No physical-device sensor or GPS installation test was available in this workspace; do not treat automated tests as a hardware accuracy certification.
 
-Prayer times are calculations, not mosque iqamah times. Hisnul Muslim entries 78–261 are marked **reviewed by the project owner**; the original 12 duas and eight hadiths retain draft status. Owner review is not independent certification. No background prayer alarms or audio playback are included.
+Prayer times are calculations, not mosque iqamah times. Hisnul Muslim entries 78–261 are marked **reviewed by the project owner**; the original 12 duas and eight hadiths retain draft status. Owner review is not independent certification. Android now supports opt-in scheduled prayer alerts with a bundled adhan recording; web has no notification support.
 
 ## Build and verify
 
@@ -63,3 +63,9 @@ Approved text is preserved exactly from `training-data/reusable-language-memory/
 ## 1.6 classical home
 
 Home follows the approved concept: Jamia-inspired hero artwork, live next-prayer glass card, a horizontal strip with all six calculated events including Isha, quick actions, complete Hisnul Muslim library entry point, daily dua and collapsible private prayer log. Timetable, GPS, custom times, dark mode and reduced-motion transitions remain available. Missing Hisnul entries 1–77 are now included with available corrections and pending-review labels. Entries 78–261 retain exact owner-approved text.
+
+## 1.7 Adhan and prayer notifications
+
+Settings → Adhan & prayer alerts (also accessible from Home). Android notification permission is requested only when enabling/testing alerts. Optional SCHEDULE_EXACT_ALARM access permits precise alarms; otherwise the screen clearly reports approximate delivery. Users can select prayers and silent/recorded-adhan channels. Schedule uses selected-city timezone, calculation method, offsets and custom times; excludes sunrise, schedules future one-shot alerts for 30 days and refreshes on launch, resume and timetable changes. Reboot/package-replacement receiver restores scheduled notifications. Open the app at least monthly. Force-stop, DND, battery restrictions and Android channel settings can affect sound/delivery. Never bypasses DND. No background location or network required.
+
+Recording attribution and CC BY-SA 3.0 terms: see THIRD_PARTY_NOTICES.md and in-app settings. No additional Fajr phrase in the bundled recording. On-device screen-off delivery, audio output, reboot, exact-alarm grant/revocation and OEM battery behavior still require physical Android testing. Unit tests verify future-only scheduling, prayer selection, after-midnight custom Isha and DST changes; they do not prove hardware delivery.
