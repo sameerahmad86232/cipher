@@ -7,6 +7,24 @@ import 'package:koshur_noor/prayer_notifications.dart';
 void main() {
   setUpAll(tzdata.initializeTimeZones);
   test(
+    'Advance reminder is exactly two minutes early and never schedules in the past',
+    () {
+      final now = DateTime.utc(2026, 10, 25, 10);
+      expect(
+        prePrayerReminderTime(now.add(const Duration(minutes: 5)), now),
+        now.add(const Duration(minutes: 3)),
+      );
+      expect(
+        prePrayerReminderTime(now.add(const Duration(minutes: 1)), now),
+        isNull,
+      );
+      expect(
+        prePrayerReminderTime(now.add(const Duration(minutes: 2)), now),
+        isNull,
+      );
+    },
+  );
+  test(
     'Release shrinker retains dynamically referenced adhan and notification icon',
     () {
       final keep = File(

@@ -1,6 +1,10 @@
 package com.koshur.koshur_noor
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
+import io.flutter.plugin.common.MethodChannel
 import android.hardware.*
 import android.os.SystemClock
 import android.view.Surface
@@ -12,6 +16,15 @@ class MainActivity : FlutterActivity() {
     private var compass: TrueNorthCompass? = null
     override fun configureFlutterEngine(engine: FlutterEngine) {
         super.configureFlutterEngine(engine)
+        MethodChannel(engine.dartExecutor.binaryMessenger, "com.koshur.noor/prayer_focus").setMethodCallHandler { call, result ->
+            when(call.method) {
+                "status" -> result.success(mapOf("overlay" to Settings.canDrawOverlays(this), "exact" to PrayerFocus.canExact(this)))
+                "requestOverlay" -> {startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")));result.success(null)}
+                "configure" -> {val rows=call.argument<List<Map<*, *>>>("alarms")?:emptyList();result.success(PrayerFocus.configure(this,call.argument<Boolean>("enabled")==true,rows,call.argument<Boolean>("sound")!=false,call.argument<String>("voice")?:"adhan"))}
+                "preview" -> {PrayerFocus.show(this,"Prayer focus preview");result.success(null)}
+                else -> result.notImplemented()
+            }
+        }
         compass = TrueNorthCompass(this)
         EventChannel(engine.dartExecutor.binaryMessenger, "com.koshur.noor/true_compass").setStreamHandler(compass)
     }

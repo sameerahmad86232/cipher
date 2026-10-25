@@ -30,3 +30,10 @@ photograph, surveyed architectural record, or third-party licensed photo.
 ## Adhan notification recording
 
 “Adhan wiki”, Jarih (2007), Wikimedia Commons. Source: https://commons.wikimedia.org/wiki/File:Adhan_wiki.oga . Used under CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/ . Android resource `android/app/src/main/res/raw/adhan.ogg` is a format conversion to Ogg Vorbis of the complete 26.56-second recording, with no content edits. This recording and its conversion remain CC BY-SA 3.0. Attribution and license link are also displayed in Adhan & prayer alerts settings. This recording has no additional Fajr phrase.
+
+## Additional adhan recordings
+
+- “Adhan”, Aishatu98, own work, CC0 1.0. https://commons.wikimedia.org/wiki/File:Adhan.ogg ; https://creativecommons.org/publicdomain/zero/1.0/ . Resource `adhan_cc0.ogg`, complete 42.10-second recording converted to Ogg Vorbis.
+- “Azan”, Andrewler, own work, CC BY-SA 4.0. https://commons.wikimedia.org/wiki/File:Azan.ogg ; https://creativecommons.org/licenses/by-sa/4.0/ . Resource `adhan_andrew.ogg`, complete 183.48-second recording converted to Ogg Vorbis. Its conversion remains CC BY-SA 4.0.
+
+No content edits, celebrity identity claims or voice cloning. Recording metadata is not independent religious or performance-quality certification. Android may limit notification sound duration; the optional focus service plays its selected recording until dismissed or completed.

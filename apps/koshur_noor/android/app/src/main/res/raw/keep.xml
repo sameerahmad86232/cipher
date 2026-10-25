@@ -1,2 +1,2 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
-    tools:keep="@raw/adhan,@drawable/ic_prayer_notification" />
+    tools:keep="@raw/adhan,@raw/adhan_cc0,@raw/adhan_andrew,@drawable/ic_prayer_notification" />

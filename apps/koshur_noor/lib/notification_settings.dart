@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_state.dart';
 import 'glass_panel.dart';
+import 'prayer_notifications.dart';
 
 class NotificationSettings extends StatelessWidget {
   final AppState state;
@@ -60,6 +61,42 @@ class NotificationSettings extends StatelessWidget {
                           value: alerts.sound,
                           onChanged: (v) => alerts.setSound(v, state.service),
                         ),
+                        DropdownButtonFormField<String>(
+                          initialValue: alerts.voice,
+                          decoration: const InputDecoration(
+                            labelText: 'Adhan recording',
+                          ),
+                          items: PrayerNotifications.voices.entries
+                              .map(
+                                (v) => DropdownMenuItem(
+                                  value: v.key,
+                                  child: Text(v.value),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (v) {
+                            if (v != null) alerts.setVoice(v, state.service);
+                          },
+                        ),
+                        SwitchListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: const Text('Two-minute reminder'),
+                          subtitle: const Text(
+                            'A separate alert before each prayer',
+                          ),
+                          value: alerts.preReminder,
+                          onChanged: (v) =>
+                              alerts.setPreReminder(v, state.service),
+                        ),
+                        SwitchListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: const Text('Prayer focus overlay'),
+                          subtitle: const Text(
+                            'Cover other apps · hold 5 seconds to dismiss',
+                          ),
+                          value: alerts.focus,
+                          onChanged: (v) => alerts.setFocus(v, state.service),
+                        ),
                         const Divider(),
                         for (final p in const {
                           'fajr': 'Fajr',
@@ -90,18 +127,28 @@ class NotificationSettings extends StatelessWidget {
                     label: const Text('Allow precise prayer alarms'),
                   ),
                   OutlinedButton.icon(
+                    onPressed: alerts.requestOverlay,
+                    icon: const Icon(Icons.layers_outlined),
+                    label: const Text('Allow display over other apps'),
+                  ),
+                  OutlinedButton.icon(
+                    onPressed: alerts.previewFocus,
+                    icon: const Icon(Icons.touch_app_outlined),
+                    label: const Text('Test five-second prayer focus'),
+                  ),
+                  OutlinedButton.icon(
                     onPressed: alerts.preview,
                     icon: const Icon(Icons.volume_up_outlined),
                     label: const Text('Test notification & sound'),
                   ),
                   const SizedBox(height: 18),
                   const Text(
-                    'Open Noor at least once every 30 days to renew the schedule. Reboot restores scheduled alerts. After force-stopping the app, reopen it. Silent mode, Do Not Disturb, notification-channel settings and battery restrictions can affect delivery or sound. This recording does not include the additional Fajr phrase.',
+                    'Focus is opt-in and does not lock Android or block system controls. Emergency dismiss remains available in the ongoing notification. Grant display-over-apps and precise alarms, then enable focus. Custom prayer times are under Settings → Custom prayer times. Open Noor at least once every 30 days to renew the schedule. Reboot restores scheduled alerts. After force-stopping the app, reopen it. Silent mode, Do Not Disturb, notification-channel settings and battery restrictions can affect delivery or sound. This recording does not include the additional Fajr phrase.',
                     style: TextStyle(fontSize: 12, height: 1.7),
                   ),
                   const SizedBox(height: 14),
                   const Text(
-                    'Adhan recording: Jarih, “Adhan wiki”, Wikimedia Commons. CC BY-SA 3.0. Converted to Ogg Vorbis; no content edits. commons.wikimedia.org/wiki/File:Adhan_wiki.oga · creativecommons.org/licenses/by-sa/3.0/',
+                    'Additional recordings: Aishatu98, “Adhan”, CC0; Andrewler, “Azan”, CC BY-SA 4.0, Wikimedia Commons. See app source THIRD_PARTY_NOTICES for links and credits. Classic recording: Jarih, “Adhan wiki”, Wikimedia Commons. CC BY-SA 3.0. Converted to Ogg Vorbis; no content edits. commons.wikimedia.org/wiki/File:Adhan_wiki.oga · creativecommons.org/licenses/by-sa/3.0/',
                     style: TextStyle(fontSize: 11, height: 1.6),
                   ),
                 ],

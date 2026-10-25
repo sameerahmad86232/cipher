@@ -13,6 +13,7 @@ import 'glass_panel.dart';
 import 'custom_times.dart';
 import 'prayer_notifications.dart';
 import 'notification_settings.dart';
+import 'real_tasbih.dart';
 
 const forest = Color(0xff763f2b),
     gold = Color(0xffa24e36),
@@ -257,91 +258,161 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   );
   @override
   Widget build(BuildContext context) => Scaffold(
-    body: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: const AssetImage('assets/images/jamia-inspired.png'),
-          fit: BoxFit.cover,
-          opacity: s.dark ? .07 : .025,
-        ),
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: s.dark
-              ? const [Color(0xff30211e), Color(0xff493129)]
-              : const [Color(0xffffeee0), Color(0xfffff8ef)],
-        ),
-      ),
-      child: SafeArea(
-        bottom: false,
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 760),
-            child: AnimatedSwitcher(
-              duration: Duration(
-                milliseconds: MediaQuery.disableAnimationsOf(context) ? 0 : 320,
-              ),
-              transitionBuilder: (child, animation) => FadeTransition(
-                opacity: animation,
-                child: SlideTransition(
-                  position:
-                      Tween<Offset>(
-                        begin: const Offset(0, 0.025),
-                        end: Offset.zero,
-                      ).animate(
-                        CurvedAnimation(
-                          parent: animation,
-                          curve: Curves.easeOutCubic,
-                        ),
+    body: Row(
+      children: [
+        if (MediaQuery.sizeOf(context).width >= 1000)
+          SizedBox(
+            width: 220,
+            child: SafeArea(
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 32),
+                    child: Text(
+                      'KOSHUR NOOR',
+                      style: TextStyle(
+                        fontFamily: 'ClassicalSerif',
+                        fontSize: 24,
                       ),
-                  child: child,
+                    ),
+                  ),
+                  Expanded(
+                    child: NavigationRail(
+                      extended: true,
+                      selectedIndex: tab,
+                      onDestinationSelected: (v) => setState(() => tab = v),
+                      destinations: const [
+                        NavigationRailDestination(
+                          icon: Icon(Icons.wb_twilight_outlined),
+                          label: Text('Home'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.menu_book_outlined),
+                          label: Text('Duas'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.auto_stories_outlined),
+                          label: Text('Hadith'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.blur_circular),
+                          label: Text('Tasbih'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.tune),
+                          label: Text('Settings'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Text(
+                      'A moment of peace.\nArabic & Kashmiri',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 12, height: 1.8),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: const AssetImage('assets/images/jamia-inspired.png'),
+                fit: BoxFit.cover,
+                opacity: s.dark ? .07 : .025,
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: s.dark
+                    ? const [Color(0xff30211e), Color(0xff493129)]
+                    : const [Color(0xffffeee0), Color(0xfffff8ef)],
+              ),
+            ),
+            child: SafeArea(
+              bottom: false,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 760),
+                  child: AnimatedSwitcher(
+                    duration: Duration(
+                      milliseconds: MediaQuery.disableAnimationsOf(context)
+                          ? 0
+                          : 320,
+                    ),
+                    transitionBuilder: (child, animation) => FadeTransition(
+                      opacity: animation,
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0, 0.025),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeOutCubic,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    ),
+                    child: switch (tab) {
+                      0 => today(),
+                      1 => duaLibrary(),
+                      2 => hadithLibrary(),
+                      3 => tasbih(),
+                      _ => settings(),
+                    },
+                  ),
                 ),
               ),
-              child: switch (tab) {
-                0 => today(),
-                1 => duaLibrary(),
-                2 => hadithLibrary(),
-                3 => tasbih(),
-                _ => settings(),
-              },
             ),
           ),
         ),
-      ),
+      ],
     ),
-    bottomNavigationBar: Padding(
-      padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(28),
-        child: NavigationBar(
-          selectedIndex: tab,
-          onDestinationSelected: (v) => setState(() => tab = v),
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.wb_twilight_outlined),
-              selectedIcon: Icon(Icons.wb_twilight),
-              label: 'Home',
+    bottomNavigationBar: MediaQuery.sizeOf(context).width >= 1000
+        ? null
+        : Padding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(28),
+              child: NavigationBar(
+                selectedIndex: tab,
+                onDestinationSelected: (v) => setState(() => tab = v),
+                destinations: const [
+                  NavigationDestination(
+                    icon: Icon(Icons.wb_twilight_outlined),
+                    selectedIcon: Icon(Icons.wb_twilight),
+                    label: 'Home',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.menu_book_outlined),
+                    selectedIcon: Icon(Icons.menu_book),
+                    label: 'Duas',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.auto_stories_outlined),
+                    selectedIcon: Icon(Icons.auto_stories),
+                    label: 'Hadith',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.blur_circular),
+                    label: 'Tasbih',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.tune),
+                    label: 'Settings',
+                  ),
+                ],
+              ),
             ),
-            NavigationDestination(
-              icon: Icon(Icons.menu_book_outlined),
-              selectedIcon: Icon(Icons.menu_book),
-              label: 'Duas',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.auto_stories_outlined),
-              selectedIcon: Icon(Icons.auto_stories),
-              label: 'Hadith',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.blur_circular),
-              label: 'Tasbih',
-            ),
-            NavigationDestination(icon: Icon(Icons.tune), label: 'Settings'),
-          ],
-        ),
-      ),
-    ),
+          ),
   );
   Widget surface(
     Widget child, {
@@ -1391,82 +1462,14 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
             ),
             const Ks('اللہ چھُ پاک', size: 18, align: TextAlign.center),
             const SizedBox(height: 20),
-            SizedBox(
-              width: 230,
-              height: 230,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  SizedBox.expand(
-                    child: CircularProgressIndicator(
-                      value: (s.count % s.target) / s.target,
-                      strokeWidth: 4,
-                      backgroundColor: gold.withValues(alpha: .14),
-                      color: gold,
-                    ),
-                  ),
-                  Semantics(
-                    button: true,
-                    label: 'Tap to count dhikr. Current count ${s.count}',
-                    child: InkWell(
-                      customBorder: const CircleBorder(),
-                      onTap: () {
-                        HapticFeedback.selectionClick();
-                        s.update(() => s.count++);
-                      },
-                      child: Container(
-                        width: 207,
-                        height: 207,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: forest.withValues(alpha: .06),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AnimatedSwitcher(
-                              duration: Duration(
-                                milliseconds:
-                                    MediaQuery.disableAnimationsOf(context)
-                                    ? 0
-                                    : 180,
-                              ),
-                              transitionBuilder: (child, animation) =>
-                                  FadeTransition(
-                                    opacity: animation,
-                                    child: ScaleTransition(
-                                      scale: Tween<double>(
-                                        begin: 0.9,
-                                        end: 1,
-                                      ).animate(animation),
-                                      child: child,
-                                    ),
-                                  ),
-                              child: Text(
-                                '${s.count}',
-                                key: ValueKey(s.count),
-                                style: const TextStyle(
-                                  fontSize: 64,
-                                  fontWeight: FontWeight.w300,
-                                  letterSpacing: -2,
-                                ),
-                              ),
-                            ),
-                            const Text(
-                              'TAP TO COUNT',
-                              style: TextStyle(
-                                fontSize: 9,
-                                letterSpacing: 2,
-                                color: gold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            RealTasbih(
+              count: s.count,
+              target: s.target,
+              onCount: () => s.update(() => s.count++),
+            ),
+            const Text(
+              'Tap a bead or gently pull the strand',
+              style: TextStyle(fontSize: 12, color: gold),
             ),
             const SizedBox(height: 24),
             Text(

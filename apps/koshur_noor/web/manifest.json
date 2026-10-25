@@ -5,8 +5,8 @@
   "display": "standalone",
   "background_color": "#fff2e3",
   "theme_color": "#f46767",
-  "description": "Offline prayer companion with Kashmiri dua meanings.",
-  "orientation": "portrait-primary",
+  "description": "Prayer times, Kashmiri duas and a realistic bead tasbih",
+  "orientation": "any",
   "prefer_related_applications": false,
   "icons": [
     {

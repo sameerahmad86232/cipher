@@ -18,12 +18,12 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Offline prayer companion with Kashmiri dua meanings.">
+  <meta name="description" content="Koshur Noor — prayer times, 261 Hisnul Muslim entries in Arabic and Kashmiri, and an interactive wooden-bead tasbih.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="koshur_noor">
+  <meta name="apple-mobile-web-app-title" content="Koshur Noor">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
@@ -31,8 +31,20 @@
 
   <title>Koshur Noor — نوٗر</title>
   <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#fff2e3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html,body{margin:0;background:#fff2e3;color:#763f2b}
+    #noor-loading{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at top,#ffe0cb,#fff8ef);font-family:Georgia,serif;z-index:9999}
+    #noor-loading .moon{font-size:52px;color:#b58a48;margin-bottom:20px}
+    #noor-loading h1{font-size:30px;letter-spacing:3px;font-weight:400;margin:0 0 12px}
+    #noor-loading p{font:14px system-ui,sans-serif;color:#98674f}
+    #noor-loading .line{height:3px;width:120px;border-radius:3px;background:linear-gradient(90deg,#ef8077,#ead1ac);margin:16px}
+  </style>
 </head>
 <body>
+  <div id="noor-loading" role="status" aria-live="polite"><div class="moon">☾</div><h1>KOSHUR NOOR</h1><p>A moment of peace.</p><div class="line"></div><p>Preparing your quiet space…</p></div>
+  <script>window.addEventListener('flutter-first-frame',()=>document.getElementById('noor-loading')?.remove());</script>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
