@@ -24,7 +24,6 @@ flutter:
     - assets/images/jamia-inspired.png
     - assets/data/duas.json
     - assets/data/hadiths.json
-    - assets/data/dictionary.json
     - assets/fonts/amiri-OFL.txt
     - assets/fonts/classical-serif-OFL.txt
     - assets/fonts/nastaliq-OFL.txt

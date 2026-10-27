@@ -13,7 +13,6 @@ import 'prayer_service.dart';
 import 'qibla_screen.dart';
 import 'glass_panel.dart';
 import 'custom_times.dart';
-import 'dictionary_screen.dart';
 import 'prayer_notifications.dart';
 import 'notification_settings.dart';
 import 'real_tasbih.dart';
@@ -700,19 +699,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           children: [
             Expanded(
               child: homeShortcut(Icons.explore_outlined, 'Qibla', showQibla),
-            ),
-            const SizedBox(width: 6),
-            Expanded(
-              child: homeShortcut(
-                Icons.translate_rounded,
-                'Dictionary',
-                () => Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (_) => const DictionaryScreen(),
-                  ),
-                ),
-              ),
             ),
             const SizedBox(width: 6),
             Expanded(

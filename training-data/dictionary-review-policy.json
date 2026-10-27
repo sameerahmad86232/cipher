@@ -1,7 +1,8 @@
 {
   "version": 1,
   "lookup": "server-data/lexicon.json",
-  "mobileExport": "apps/koshur_noor/assets/data/dictionary.json",
+  "mobileExport": null,
+  "bundledInMobileApp": false,
   "searchableHeadwords": 49682,
   "sourceRecordLabel": "58,000+ source records",
   "approvedUses": [
