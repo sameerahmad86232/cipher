@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:koshur_noor/prayer_service.dart';
@@ -6,6 +7,14 @@ import 'package:koshur_noor/prayer_notifications.dart';
 
 void main() {
   setUpAll(tzdata.initializeTimeZones);
+  test('Every selectable adhan has display details', () {
+    expect(PrayerNotifications.voices, isNotEmpty);
+    expect(
+      PrayerNotifications.voiceDetails.keys.toSet(),
+      PrayerNotifications.voices.keys.toSet(),
+    );
+  });
+
   test(
     'Advance reminder is exactly two minutes early and never schedules in the past',
     () {

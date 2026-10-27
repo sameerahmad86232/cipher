@@ -16,8 +16,11 @@ Android 7.0+, 64-bit ARM. Development-signed preview for sideloading and testing
 - Opt-in location permission flow, GPS-disabled and blocked-permission handling, enable-location dialog, timeout handling and manual city alternative. The saved position and device timezone apply to prayer calculations too.
 - 273 offline dua entries (all 261 Hisnul Muslim entries and the original 12 duas; 184 owner-reviewed meanings) and eight hadiths. Includes Hisnul filtering, numbered search, review badges, reading notes, saved favourites, copy/review tools and Arabic size controls.
 - Zikr counter with count animation, haptic feedback, selectable target and reset confirmation.
+- Immersive tasbih with four dhikr choices, animated round progress, persistent selection and distinct 11-count/round-complete haptics.
 - Fade/slide screen transitions and smoothed compass movement. Custom motion respects the system’s reduced-animation preference. No decorative perpetual animation loop.
 - Night palette, larger reading text, no account, ads, model download or app server.
+- Visual adhan voice profiles with recording style, duration and one-tap preview for every bundled licensed recording.
+- Offline Kashmiri–English dictionary search across 49,682 headwords derived from the project’s 58,000+ lexical records, including Kashmiri, English and romanized lookup.
 
 ## Privacy and limitations
 
@@ -45,6 +48,23 @@ Android entry: `android/app/src/main/kotlin/com/koshur/koshur_noor/MainActivity.
 See [verification](docs/VERIFICATION.md), [translation review](docs/TRANSLATION_REVIEW.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 Verified 1.4 APK SHA-256: `6f7c2ac34b43de7b1bbff6380a3c95099cec9557fdc31dc783d8e5cfd6947617`.
+
+### Version 1.10 — Voice & remembrance polish
+
+- Adhan recordings now appear as visual voice profiles with performer credit,
+  style, duration and individual preview controls.
+- Tasbih now includes four selectable dhikr phrases, animated goal progress,
+  round and 11-count haptics, round/remaining stats and an undo action.
+- The selected dhikr, count and target remain private and persist on-device.
+
+### Version 1.11 — Dictionary for translation review
+
+- Adds the compact Koshur Lughat index to the Android app for fully offline
+  Kashmiri, English and romanized searches.
+- The dictionary is terminology and review context for future book work.
+  Glosses remain excluded from neural sentence training because a word gloss is
+  not an aligned sentence. Human-approved, source-cleared sentence corrections
+  can still be promoted through the existing reviewed training workflow.
 
 ### Version 1.4 — Sunset Glass
 - Jamia Masjid–inspired generated sunset illustration (not a photograph).

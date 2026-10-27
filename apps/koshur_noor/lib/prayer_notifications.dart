@@ -1,9 +1,11 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
+
 import 'prayer_service.dart';
 
 /// One-shot local times preserve changing daily solar calculations and DST.
@@ -44,9 +46,14 @@ class PrayerNotifications extends ChangeNotifier {
   bool get enabled => prefs.getBool('prayerAlerts') ?? false;
   static const focusChannel = MethodChannel('com.koshur.noor/prayer_focus');
   static const voices = {
-    'adhan': 'Classic · Jarih',
-    'adhan_cc0': 'Adhan · Aishatu98',
-    'adhan_andrew': 'Extended adhan · Andrewler',
+    'adhan': 'Classic',
+    'adhan_cc0': 'Clear & gentle',
+    'adhan_andrew': 'Full recitation',
+  };
+  static const voiceDetails = {
+    'adhan': ('Jarih', 'Warm, concise · 27 sec'),
+    'adhan_cc0': ('Aishatu98', 'Gentle, unhurried · 42 sec'),
+    'adhan_andrew': ('Andrewler', 'Extended, resonant · 3 min'),
   };
   bool get focus => prefs.getBool('prayerFocus') ?? false;
   bool get preReminder => prefs.getBool('prePrayerReminder') ?? true;
@@ -168,6 +175,30 @@ class PrayerNotifications extends ChangeNotifier {
       title: 'Koshur Noor · adhan preview',
       body: 'Your selected prayer notification sound',
       notificationDetails: details(),
+    );
+  }
+
+  Future<void> previewVoice(String value) async {
+    if (!supported || !voices.containsKey(value)) return;
+    if (await android?.requestNotificationsPermission() != true) return;
+    final detail = voiceDetails[value];
+    await plugin.show(
+      id: 900002,
+      title: 'Koshur Noor · ${voices[value]}',
+      body: 'Previewing ${detail == null ? 'adhan recording' : detail.$1}',
+      notificationDetails: NotificationDetails(
+        android: AndroidNotificationDetails(
+          'noor_${value}_preview_v1',
+          'Adhan preview · ${voices[value]}',
+          channelDescription: 'Preview for a Koshur Noor adhan recording',
+          importance: Importance.high,
+          priority: Priority.high,
+          playSound: true,
+          sound: RawResourceAndroidNotificationSound(value),
+          audioAttributesUsage: AudioAttributesUsage.notification,
+          icon: 'ic_prayer_notification',
+        ),
+      ),
     );
   }
 

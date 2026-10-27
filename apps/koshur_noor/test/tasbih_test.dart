@@ -4,6 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:koshur_noor/real_tasbih.dart';
 
 void main() {
+  test('Tasbih progress fills at a completed round', () {
+    expect(tasbihProgress(0, 33), 0);
+    expect(tasbihProgress(11, 33), closeTo(1 / 3, .001));
+    expect(tasbihProgress(33, 33), 1);
+    expect(tasbihProgress(34, 33), closeTo(1 / 33, .001));
+  });
+
   testWidgets(
     'Beads count once per tap or pull and support keyboard counting',
     (tester) async {

@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,7 +20,14 @@ class RealTasbih extends StatefulWidget {
 class _RealTasbihState extends State<RealTasbih> {
   double drag = 0;
   void count() {
-    HapticFeedback.selectionClick();
+    final next = widget.count + 1;
+    if (next % widget.target == 0) {
+      HapticFeedback.heavyImpact();
+    } else if (next % 11 == 0) {
+      HapticFeedback.mediumImpact();
+    } else {
+      HapticFeedback.selectionClick();
+    }
     widget.onCount();
   }
 
@@ -53,7 +61,7 @@ class _RealTasbihState extends State<RealTasbih> {
         },
         child: SizedBox(
           height: 360,
-          width: 330,
+          width: double.infinity,
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -69,6 +77,7 @@ class _RealTasbihState extends State<RealTasbih> {
                   size: const Size(330, 360),
                   painter: BeadPainter(
                     phase: phase,
+                    progress: tasbihProgress(widget.count, widget.target),
                     dark: Theme.of(context).brightness == Brightness.dark,
                   ),
                 ),
@@ -79,12 +88,20 @@ class _RealTasbihState extends State<RealTasbih> {
                 right: 70,
                 child: Column(
                   children: [
-                    Text(
-                      '${widget.count}',
-                      style: TextStyle(
-                        fontFamily: 'ClassicalSerif',
-                        fontSize: widget.count > 9999 ? 42 : 62,
-                        height: 1.2,
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 180),
+                      transitionBuilder: (child, animation) => ScaleTransition(
+                        scale: Tween(begin: .82, end: 1.0).animate(animation),
+                        child: FadeTransition(opacity: animation, child: child),
+                      ),
+                      child: Text(
+                        '${widget.count}',
+                        key: ValueKey(widget.count),
+                        style: TextStyle(
+                          fontFamily: 'ClassicalSerif',
+                          fontSize: widget.count > 9999 ? 42 : 62,
+                          height: 1.2,
+                        ),
                       ),
                     ),
                     const Text(
@@ -111,10 +128,20 @@ class _RealTasbihState extends State<RealTasbih> {
   );
 }
 
+double tasbihProgress(int count, int target) {
+  if (count <= 0 || target <= 0) return 0;
+  final remainder = count % target;
+  return remainder == 0 ? 1 : remainder / target;
+}
+
 class BeadPainter extends CustomPainter {
-  final double phase;
+  final double phase, progress;
   final bool dark;
-  const BeadPainter({required this.phase, required this.dark});
+  const BeadPainter({
+    required this.phase,
+    required this.progress,
+    required this.dark,
+  });
   @override
   void paint(Canvas canvas, Size size) {
     final scale = math.min(size.width / 330, size.height / 360);
@@ -123,6 +150,16 @@ class BeadPainter extends CustomPainter {
     canvas.scale(scale);
     const center = Offset(165, 145);
     final ring = Rect.fromCenter(center: center, width: 242, height: 242);
+    canvas.drawCircle(
+      center,
+      92,
+      Paint()
+        ..shader = RadialGradient(
+          colors: dark
+              ? const [Color(0x337bc9a0), Color(0x007bc9a0)]
+              : const [Color(0x33ed8073), Color(0x00ed8073)],
+        ).createShader(Rect.fromCircle(center: center, radius: 92)),
+    );
     canvas.drawOval(
       ring.shift(const Offset(0, 8)),
       Paint()
@@ -135,6 +172,17 @@ class BeadPainter extends CustomPainter {
         ..color = const Color(0xff8a5832)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2.5,
+    );
+    canvas.drawArc(
+      ring.inflate(8),
+      -math.pi / 2,
+      math.pi * 2 * progress,
+      false,
+      Paint()
+        ..color = const Color(0xffed8073)
+        ..style = PaintingStyle.stroke
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = 5,
     );
     // 33 beads glide one position with every count; lighting stays fixed.
     for (var i = 0; i < 33; i++) {
@@ -254,5 +302,5 @@ class BeadPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant BeadPainter old) =>
-      old.phase != phase || old.dark != dark;
+      old.phase != phase || old.progress != progress || old.dark != dark;
 }

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "lookup": "server-data/lexicon.json",
+  "mobileExport": "apps/koshur_noor/assets/data/dictionary.json",
+  "searchableHeadwords": 49682,
+  "sourceRecordLabel": "58,000+ source records",
+  "approvedUses": [
+    "terminology retrieval during book translation",
+    "spelling and romanization lookup",
+    "human translation review context",
+    "candidate term collection for later approval"
+  ],
+  "automaticSentenceTraining": false,
+  "reason": "A dictionary gloss is lexical evidence, not an aligned sentence translation. OCR-only and corpus-vocabulary records may not contain an English definition, and source licenses differ.",
+  "promotionRule": "Only source-cleared sentence pairs approved through the existing human-review workflow may be promoted into neural sentence training data. Preserve source, license, original wording and reviewer status."
+}

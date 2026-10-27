@@ -1,16 +1,19 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart' hide TextDirection;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
+
 import 'app_state.dart';
 import 'prayer_service.dart';
 import 'qibla_screen.dart';
 import 'glass_panel.dart';
 import 'custom_times.dart';
+import 'dictionary_screen.dart';
 import 'prayer_notifications.dart';
 import 'notification_settings.dart';
 import 'real_tasbih.dart';
@@ -698,7 +701,20 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
             Expanded(
               child: homeShortcut(Icons.explore_outlined, 'Qibla', showQibla),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 6),
+            Expanded(
+              child: homeShortcut(
+                Icons.translate_rounded,
+                'Dictionary',
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) => const DictionaryScreen(),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 6),
             Expanded(
               child: homeShortcut(
                 Icons.menu_book_outlined,
@@ -706,7 +722,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                 () => setState(() => tab = 1),
               ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 6),
             Expanded(
               child: homeShortcut(
                 Icons.blur_circular,
@@ -864,6 +880,8 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
               const SizedBox(height: 8),
               Text(
                 label,
+                maxLines: 1,
+                overflow: TextOverflow.fade,
                 style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
@@ -1447,86 +1465,191 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
 
   Widget tasbih() => ListView(
     key: const ValueKey('tasbih'),
-    padding: const EdgeInsets.fromLTRB(22, 18, 22, 24),
+    padding: const EdgeInsets.fromLTRB(18, 22, 18, 28),
     children: [
-      heading('Small words. Lasting peace.', 'Remember, gently.'),
-      const Ks('اللہ سُنٛد ذِکر', size: 25),
+      const Text(
+        'A QUIET MOMENT',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: gold,
+          fontSize: 10,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 2.8,
+        ),
+      ),
+      const SizedBox(height: 7),
+      const Text(
+        'Dhikr',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontFamily: 'ClassicalSerif',
+          fontSize: 38,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      const Ks('اللہ سُنٛد ذِکر', size: 20, align: TextAlign.center),
+      const SizedBox(height: 8),
+      SizedBox(
+        height: 42,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          itemCount: _dhikr.length,
+          separatorBuilder: (_, _) => const SizedBox(width: 8),
+          itemBuilder: (_, i) {
+            final selected = s.dhikrIndex == i;
+            return ChoiceChip(
+              showCheckmark: false,
+              avatar: selected
+                  ? const Icon(Icons.circle, size: 7, color: Colors.white)
+                  : null,
+              label: Text(_dhikr[i].$3),
+              selected: selected,
+              selectedColor: const Color(0xffa24e36),
+              labelStyle: TextStyle(
+                color: selected ? Colors.white : null,
+                fontWeight: FontWeight.w600,
+              ),
+              side: BorderSide(
+                color: selected
+                    ? Colors.transparent
+                    : gold.withValues(alpha: .28),
+              ),
+              onSelected: (_) => s.update(() => s.dhikrIndex = i),
+            );
+          },
+        ),
+      ),
       const SizedBox(height: 22),
-      surface(
-        Column(
+      AnimatedSwitcher(
+        duration: const Duration(milliseconds: 240),
+        child: Column(
+          key: ValueKey(s.dhikrIndex),
           children: [
             Text(
-              'سُبْحَانَ اللَّهِ',
+              _dhikr[s.dhikrIndex].$1,
+              textAlign: TextAlign.center,
               textDirection: TextDirection.rtl,
-              style: arabicStyle(34),
+              style: arabicStyle(37),
             ),
-            const Ks('اللہ چھُ پاک', size: 18, align: TextAlign.center),
-            const SizedBox(height: 20),
-            RealTasbih(
-              count: s.count,
-              target: s.target,
-              onCount: () => s.update(() => s.count++),
-            ),
-            const Text(
-              'Tap a bead or gently pull the strand',
-              style: TextStyle(fontSize: 12, color: gold),
-            ),
-            const SizedBox(height: 24),
-            Text(
-              '${s.count ~/ s.target} completed rounds · ${s.count % s.target} / ${s.target}',
-              style: const TextStyle(color: Colors.grey, fontSize: 12),
-            ),
-            const SizedBox(height: 18),
-            Wrap(
-              spacing: 8,
-              children: [33, 99, 100]
-                  .map(
-                    (n) => ChoiceChip(
-                      label: Text('$n'),
-                      selected: s.target == n,
-                      onSelected: (_) => s.update(() => s.target = n),
-                    ),
-                  )
-                  .toList(),
-            ),
-            const SizedBox(height: 12),
-            TextButton.icon(
-              onPressed: () async {
-                final reset = await showDialog<bool>(
-                  context: context,
-                  builder: (c) => AlertDialog(
-                    title: const Text('Reset your counter?'),
-                    content: const Text(
-                      'Your current count will return to zero.',
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(c, false),
-                        child: const Text('Keep it'),
-                      ),
-                      FilledButton(
-                        onPressed: () => Navigator.pop(c, true),
-                        child: const Text('Reset'),
-                      ),
-                    ],
-                  ),
-                );
-                if (reset == true) s.update(() => s.count = 0);
-              },
-              icon: const Icon(Icons.restart_alt, size: 18),
-              label: const Text('Reset counter'),
-            ),
+            Ks(_dhikr[s.dhikrIndex].$2, size: 17, align: TextAlign.center),
           ],
         ),
       ),
-      const SizedBox(height: 18),
+      RealTasbih(
+        count: s.count,
+        target: s.target,
+        onCount: () => s.update(() => s.count++),
+      ),
+      AnimatedSwitcher(
+        duration: const Duration(milliseconds: 250),
+        child: Text(
+          s.count > 0 && s.count % s.target == 0
+              ? 'Round complete · may it bring you peace'
+              : '${s.count ~/ s.target} rounds  •  ${s.target - (s.count % s.target)} remaining',
+          key: ValueKey('${s.count ~/ s.target}:${s.count % s.target}'),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: s.count > 0 && s.count % s.target == 0
+                ? gold
+                : Theme.of(context).colorScheme.onSurfaceVariant,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            letterSpacing: .2,
+          ),
+        ),
+      ),
+      const SizedBox(height: 22),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (final n in const [33, 99, 100])
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(30),
+                onTap: () => s.update(() => s.target = n),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  width: 58,
+                  height: 38,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: s.target == n
+                        ? const Color(0xffed8073)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      color: s.target == n
+                          ? Colors.transparent
+                          : gold.withValues(alpha: .35),
+                    ),
+                  ),
+                  child: Text(
+                    '$n',
+                    style: TextStyle(
+                      color: s.target == n ? Colors.white : null,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      Wrap(
+        alignment: WrapAlignment.center,
+        spacing: 4,
+        children: [
+          TextButton.icon(
+            onPressed: s.count == 0 ? null : () => s.update(() => s.count--),
+            icon: const Icon(Icons.undo_rounded, size: 18),
+            label: const Text('Undo'),
+          ),
+          TextButton.icon(
+            onPressed: _resetTasbih,
+            icon: const Icon(Icons.restart_alt, size: 18),
+            label: const Text('Reset'),
+          ),
+        ],
+      ),
+      const SizedBox(height: 8),
       const Text(
-        'Your count stays on this device. Choose a target for your own routine; the app does not prescribe a particular count.',
+        'Private and saved only on this device',
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.grey, fontSize: 11, height: 1.7),
+        style: TextStyle(color: Colors.grey, fontSize: 10, letterSpacing: .3),
       ),
     ],
   );
+
+  Future<void> _resetTasbih() async {
+    final reset = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: const Text('Begin again?'),
+        content: const Text('Your current tasbih count will return to zero.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(c, false),
+            child: const Text('Keep counting'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(c, true),
+            child: const Text('Reset'),
+          ),
+        ],
+      ),
+    );
+    if (reset == true) s.update(() => s.count = 0);
+  }
+
+  static const _dhikr = <(String, String, String)>[
+    ('سُبْحَانَ اللَّهِ', 'اللہ چھُ پاک', 'SubhanAllah'),
+    ('الْحَمْدُ لِلَّهِ', 'سارِوٕے تعریف اللہ سُنٛد', 'Alhamdulillah'),
+    ('اللَّهُ أَكْبَرُ', 'اللہ چھُ سارِوٕے کھۄتہٕ بۆڑ', 'Allahu Akbar'),
+    ('لَا إِلٰهَ إِلَّا اللَّهُ', 'اللہ سِوا چھُنہٕ کانٛہہ معبود', 'Tahlil'),
+  ];
   Widget settings() => ListView(
     key: const ValueKey('settings'),
     padding: const EdgeInsets.fromLTRB(22, 18, 22, 30),

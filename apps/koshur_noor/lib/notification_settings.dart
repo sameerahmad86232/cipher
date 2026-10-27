@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'app_state.dart';
 import 'glass_panel.dart';
 import 'prayer_notifications.dart';
@@ -61,23 +62,28 @@ class NotificationSettings extends StatelessWidget {
                           value: alerts.sound,
                           onChanged: (v) => alerts.setSound(v, state.service),
                         ),
-                        DropdownButtonFormField<String>(
-                          initialValue: alerts.voice,
-                          decoration: const InputDecoration(
-                            labelText: 'Adhan recording',
+                        const SizedBox(height: 8),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Choose your adhan',
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
-                          items: PrayerNotifications.voices.entries
-                              .map(
-                                (v) => DropdownMenuItem(
-                                  value: v.key,
-                                  child: Text(v.value),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (v) {
-                            if (v != null) alerts.setVoice(v, state.service);
-                          },
                         ),
+                        const SizedBox(height: 10),
+                        for (final voice in PrayerNotifications.voices.entries)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: _VoiceCard(
+                              name: voice.value,
+                              selected: alerts.voice == voice.key,
+                              detail:
+                                  PrayerNotifications.voiceDetails[voice.key]!,
+                              onSelect: () =>
+                                  alerts.setVoice(voice.key, state.service),
+                              onPreview: () => alerts.previewVoice(voice.key),
+                            ),
+                          ),
                         SwitchListTile(
                           contentPadding: EdgeInsets.zero,
                           title: const Text('Two-minute reminder'),
@@ -156,4 +162,82 @@ class NotificationSettings extends StatelessWidget {
             ),
     );
   }
+}
+
+class _VoiceCard extends StatelessWidget {
+  final String name;
+  final (String, String) detail;
+  final bool selected;
+  final VoidCallback onSelect, onPreview;
+  const _VoiceCard({
+    required this.name,
+    required this.detail,
+    required this.selected,
+    required this.onSelect,
+    required this.onPreview,
+  });
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: selected
+        ? Theme.of(context).colorScheme.primaryContainer.withValues(alpha: .55)
+        : Theme.of(context).colorScheme.surface.withValues(alpha: .45),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(14),
+      side: BorderSide(
+        color: selected
+            ? const Color(0xffed8073)
+            : Theme.of(context).dividerColor.withValues(alpha: .55),
+        width: selected ? 1.5 : 1,
+      ),
+    ),
+    child: InkWell(
+      borderRadius: BorderRadius.circular(14),
+      onTap: onSelect,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
+        child: Row(
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 220),
+              width: 38,
+              height: 38,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: selected
+                    ? const Color(0xffed8073)
+                    : const Color(0xffed8073).withValues(alpha: .12),
+              ),
+              child: Icon(
+                selected ? Icons.check_rounded : Icons.graphic_eq_rounded,
+                color: selected ? Colors.white : const Color(0xffa24e36),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    '${detail.$1} · ${detail.$2}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              tooltip: 'Preview $name',
+              onPressed: onPreview,
+              icon: const Icon(Icons.play_circle_outline_rounded),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }

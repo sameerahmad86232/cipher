@@ -1,9 +1,12 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'prayer_service.dart';
 import 'custom_times.dart';
 import 'prayer_notifications.dart';
+
 import 'package:timezone/timezone.dart' as tz;
 
 class AppState extends ChangeNotifier {
@@ -17,7 +20,7 @@ class AppState extends ChangeNotifier {
   String get scheduleKey =>
       "${city.name}:${city.latitude.toStringAsFixed(1)}:${city.longitude.toStringAsFixed(1)}:${city.zone}";
   List<int>? get customTimes => customSchedules[scheduleKey];
-  late int adjustment, count, target;
+  late int adjustment, count, target, dhikrIndex;
   late double arabicScale;
   late Set<String> favourites, completed;
   AppState(this.prefs) {
@@ -81,6 +84,7 @@ class AppState extends ChangeNotifier {
     adjustment = (prefs.getInt('adjustment') ?? 0).clamp(-15, 15);
     count = prefs.getInt('count') ?? 0;
     target = prefs.getInt('target') ?? 33;
+    dhikrIndex = (prefs.getInt('dhikrIndex') ?? 0).clamp(0, 3);
     if (![33, 99, 100].contains(target)) target = 33;
     favourites = (prefs.getStringList('favourites') ?? []).toSet();
     completed = (prefs.getStringList('completed') ?? []).toSet();
@@ -118,6 +122,7 @@ class AppState extends ChangeNotifier {
       prefs.setInt('adjustment', adjustment),
       prefs.setInt('count', count),
       prefs.setInt('target', target),
+      prefs.setInt('dhikrIndex', dhikrIndex),
       prefs.setStringList('favourites', favourites.toList()),
       prefs.setStringList('completed', completed.toList()),
     ]);
