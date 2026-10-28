@@ -87,14 +87,25 @@
   function renderHome(){
     const last=findSurah(state.lastRead.surah)||state.surahs[0];
     const lastTitle=last?escapeHtml(last.name_en)+' · '+Number(state.lastRead.ayah):'Al-Fatihah · 1';
-    return '<section class="hero"><div class="hero-content"><span class="hero-pill">✦ &nbsp; YOUR DAILY SPIRITUAL COMPANION</span><h1>Closer to the <em>Qur\'an,</em><br>closer to home.</h1><p class="subtext">Discover the words of Allah with beautiful Arabic text and Kashmiri translations. A peaceful space to read, reflect, and grow.</p><div class="hero-buttons"><button type="button" class="btn btn-primary" data-continue>'+icon('book')+'Start Reading '+icon('arrow')+'</button>'+btnNav('Explore Quran','quran','btn-ghost')+'</div><div class="hero-bottom-rule">Read in Arabic &amp; Kashmiri · Free forever</div></div><div class="hero-art"><div class="hero-art-circle"><div class="hero-arabic">بِسْمِ اللَّهِ<br>الرَّحْمَٰنِ الرَّحِيمِ<small>IN THE NAME OF ALLAH</small></div></div></div></section>'+
+    return '<section class="hero premium-hero" aria-labelledby="hero-headline">'+
+    '<canvas id="koshur-shader-canvas" class="hero-shader-canvas" aria-hidden="true"></canvas>'+
+    '<div class="hero-texture" aria-hidden="true"></div>'+
+    '<div class="hero-content"><span class="hero-pill"><span class="hero-pill-star">✦</span> A HOME FOR KASHMIRI REFLECTION</span>'+
+    '<div class="hero-eyebrow">Read with meaning. Return with peace.</div>'+
+    '<h1 id="hero-headline">The words of Allah,<br><em>closer to home.</em></h1>'+
+    '<p class="subtext">An exquisite, distraction-free space to explore the Qur’an in Arabic and Kashmiri—one verse, one reflection, one beautiful moment at a time.</p>'+
+    '<div class="hero-buttons"><button type="button" class="btn btn-primary" data-continue>'+icon('book')+' Continue reading '+icon('arrow')+'</button>'+
+    '<button type="button" class="btn btn-ghost" data-quran-view="cards">'+icon('layers')+' Study flashcards</button></div>'+
+    '<div class="hero-trust-line"><span><i class="hero-trust-dot"></i> Two Kashmiri translations</span><span class="hero-trust-divider"></span><span>114 chapters · thoughtfully presented</span></div></div>'+
+    '<div class="hero-seal" aria-hidden="true"><div class="hero-seal-ring"><span class="hero-seal-glyph">۞</span><small>قُرآن کٲشِر پٲٹھۍ</small></div></div>'+
+    '<div class="hero-corner-caption" aria-hidden="true">THE KASHMIRI QUR’AN EXPERIENCE</div></section>'+
     '<section class="stat-row" aria-label="Quran collection facts"><div class="stat-card"><div class="stat-icon">'+icon('book')+'</div><div class="stat-text"><strong>114</strong><span>Surahs</span></div></div><div class="stat-card"><div class="stat-icon">'+icon('star')+'</div><div class="stat-text"><strong>6,236</strong><span>Ayahs</span></div></div><div class="stat-card"><div class="stat-icon">'+icon('globe')+'</div><div class="stat-text"><strong>2</strong><span>Kashmiri editions</span></div></div></section>'+
-    '<div class="section-header"><div><span class="section-eyebrow">WELCOME BACK</span><h2>Pick up where you left off</h2></div></div><section class="reading-strip"><span class="stat-icon">'+icon('bookmark')+'</span><div style="flex:1"><h3>'+lastTitle+'</h3><p>Your reading journey is waiting for you.</p></div><button type="button" class="btn btn-green" data-continue>Continue '+icon('arrow')+'</button></section>'+
-    '<div class="section-header"><div><span class="section-eyebrow">EXPLORE THE LIBRARY</span><h2>What would you like to read?</h2><p>Made for moments of learning and reflection.</p></div></div>'+
+    '<div class="section-header section-header-reading"><div><span class="section-eyebrow">YOUR READING SPACE</span><h2>Continue your journey</h2><p>A familiar place to start, every day.</p></div><button type="button" class="section-action" data-nav="bookmarks">Your saved verses '+icon('arrow')+'</button></div><section class="reading-strip"><span class="stat-icon">'+icon('bookmark')+'</span><div style="flex:1"><h3>'+lastTitle+'</h3><p>Your reading journey is waiting for you.</p></div><button type="button" class="btn btn-green" data-continue>Continue '+icon('arrow')+'</button></section>'+
+    '<div class="section-header"><div><span class="section-eyebrow">A LIBRARY OF REFLECTION</span><h2>Everything you need to reconnect.</h2><p>Carefully organized. Beautifully simple.</p></div></div>'+
     '<section class="cards-grid"><button type="button" data-nav="quran" class="feature-card"><div class="feature-icon">'+icon('book')+'</div><div><h3>Read Al-Quran</h3><p>Every surah, with Kashmiri and Arabic side by side.</p></div><span class="feature-arrow">Explore chapters '+icon('arrow')+'</span></button>'+
     '<button type="button" data-nav="hadith" class="feature-card gold"><div class="feature-icon">'+icon('layers')+'</div><div><h3>Hadith collections</h3><p>Find trusted sources of Prophetic teachings.</p></div><span class="feature-arrow">Browse hadith '+icon('arrow')+'</span></button>'+
     '<button type="button" data-nav="duas" class="feature-card blue"><div class="feature-icon">'+icon('heart')+'</div><div><h3>Daily Duas</h3><p>Turn to the Qur\'an for heartfelt supplications.</p></div><span class="feature-arrow">Explore duas '+icon('arrow')+'</span></button></section>'+
-    '<div class="section-header"><div><span class="section-eyebrow">A MOMENT TO REFLECT</span><h2>Wisdom for today</h2></div></div><section class="two-column"><article class="panel verse-spotlight"><span class="section-eyebrow">VERSE OF REFLECTION</span><div class="arabic-mini" lang="ar">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div><p>Indeed, with hardship comes ease.</p><div class="verse-ref">Surah Ash-Sharh · 94:5</div></article><article class="mini-seerah"><span class="tag">CONTINUE YOUR JOURNEY</span><h3 lang="ks-Arab">اَلرَّحِیقُ الْمَخْتُوم</h3><p>Explore the Seerah of Prophet Muhammad ﷺ in Kashmiri. Your existing chapters are preserved.</p><a class="section-action" href="/seerah/index.html">Read Kashmiri Seerah '+icon('arrow')+'</a></article></section>';
+    '<div class="section-header"><div><span class="section-eyebrow">WORDS TO CARRY WITH YOU</span><h2>Pause for a verse.</h2><p>Beautiful reminders from the Qur’an.</p></div></div><section class="two-column"><article class="panel verse-spotlight"><span class="section-eyebrow">VERSE OF REFLECTION</span><div class="arabic-mini" lang="ar">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div><p>Indeed, with hardship comes ease.</p><div class="verse-ref">Surah Ash-Sharh · 94:5</div></article><article class="mini-seerah"><span class="tag">CONTINUE YOUR JOURNEY</span><h3 lang="ks-Arab">اَلرَّحِیقُ الْمَخْتُوم</h3><p>Explore the Seerah of Prophet Muhammad ﷺ in Kashmiri. Your existing chapters are preserved.</p><a class="section-action" href="/seerah/index.html">Read Kashmiri Seerah '+icon('arrow')+'</a></article></section>';
   }
   function renderSurahGrid(){
     const needle=state.query.trim().toLowerCase();
@@ -232,9 +243,14 @@
     else if(state.tab==='hadith')content.innerHTML=renderHadith();
     else if(state.tab==='duas'||state.tab==='hisnul')content.innerHTML=extras?extras.render(state.tab):renderDuas();
     else if(['tasbih','ramadan','prayers'].includes(state.tab))content.innerHTML=extras?extras.render(state.tab):'<div class="empty">Preparing experience...</div>';
-    else if(state.tab==='settings')content.innerHTML=renderSettings().replace('</section>',(extras?extras.settingsAddon():'')+'</section>');
+    else if(state.tab==='settings'){
+      const shader=window.KoshurShaders;
+      const motion=shader?'<article class="panel settings-panel"><h3>Ambient design effects</h3><p class="panel-description">Enjoy a subtle emerald-and-gold shader on compatible desktop devices. Automatically skips reduced-motion settings and low-power devices.</p><div class="setting-row"><div><strong>Animated atmosphere</strong><small data-motion-label>'+(shader.enabled()?'On when supported':'Off')+'</small></div><button type="button" class="toggle" role="switch" aria-label="Animated atmosphere" aria-checked="'+shader.enabled()+'" data-motion-toggle></button></div></article>':'';
+      content.innerHTML=renderSettings().replace('</section>',(extras?extras.settingsAddon():'')+motion+'</section>');
+    }
     else if(state.tab==='bookmarks')content.innerHTML=renderBookmarks();
     applyPreferences();updateBadge();updateSurahCount();if(extras)extras.updateProgress();
+    if(window.KoshurShaders){if(state.tab==='home')window.KoshurShaders.mount();else window.KoshurShaders.clean();}
   }
   function updateSurahCount(){
     const count=document.getElementById('surah-count');if(!count)return;
