@@ -27,10 +27,11 @@ function display(t){const n=hmMinutes(t);if(n===null)return '—';if(cfg.show24h
 function valueFor(k,d=day){const custom=normTime(cfg.overrides[k]);if(custom)return custom;const raw=d?.timings?.[k];return raw?shifted(raw,Number(cfg.offsets[k]||0)):null;}
 function prayerMode(k){return normTime(cfg.overrides[k])?'manual':cfg.offsets[k]?'adjusted':'calculated';}
 async function requestJson(url){const c=new AbortController(),t=setTimeout(()=>c.abort(),13000);try{const r=await fetch(url,{signal:c.signal});if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();if(j.code!==200||!j.data?.timings)throw Error('Invalid prayer times response');return j.data;}finally{clearTimeout(t);}}
-async function loadOne(date){const q=new URLSearchParams({method:String(cfg.method),school:String(cfg.school)});let base;
- if(Number.isFinite(cfg.latitude)&&Number.isFinite(cfg.longitude)){q.set('latitude',String(cfg.latitude));q.set('longitude',String(cfg.longitude));base='https://api.aladhan.com/v1/timings/'+dateParam(date);}
- else{q.set('city',cfg.city);q.set('country',cfg.country);base='https://api.aladhan.com/v1/timingsByCity/'+dateParam(date);}
- return requestJson(base+'?'+q.toString());
+async function loadOne(date){
+ const q=new URLSearchParams({date:dateParam(date),method:String(cfg.method),school:String(cfg.school)});
+ if(Number.isFinite(cfg.latitude)&&Number.isFinite(cfg.longitude)){q.set('latitude',String(cfg.latitude));q.set('longitude',String(cfg.longitude));}
+ else{q.set('city',cfg.city);q.set('country',cfg.country);}
+ return requestJson('/api/prayer-times?'+q.toString());
 }
 function cacheKey(iso){return KEY+':schedule:'+iso+':'+cfg.city+':'+cfg.country+':'+(cfg.latitude??'')+':'+(cfg.longitude??'')+':'+cfg.method+':'+cfg.school;}
 function cached(iso){try{const data=JSON.parse(localStorage.getItem(cacheKey(iso)));return data?.timings?data:null;}catch(e){return null;}}
@@ -93,7 +94,7 @@ function render(){
  '<div class="pt-panel"><div class="pt-heading"><div><h3>Your custom reminders</h3><p>Add personal daily times, such as Quran study or dhikr. Display only—no push alerts.</p></div></div>'+
  '<form id="pt-reminder-form" class="pt-reminder-form"><label>Label<input required maxlength="40" name="label" placeholder="Evening adhkar" aria-label="Reminder label"></label><label>Time<input required type="time" name="time" aria-label="Reminder time"></label><button type="submit" class="btn btn-green">Add</button></form>'+
  '<div class="pt-reminders">'+cfg.reminders.map((r,i)=>'<div class="pt-reminder"><span>✦</span><strong>'+esc(r.label)+'</strong><span>'+display(r.time)+'</span><button type="button" data-pt-delete="'+i+'" aria-label="Delete '+esc(r.label)+'">'+icon('left')+'</button></div>').join('')+(cfg.reminders.length?'':'<p class="pt-empty">No custom reminders yet.</p>')+'</div></div></div>'+
- '<aside class="pt-settings"><div class="pt-panel"><div class="pt-settings-title"><h3>My prayer location</h3><p>Enter a city or choose a preset. Location is only sent to the prayer-time provider when retrieving times.</p></div><div class="pt-presets">'+presets.map(([city,country])=>'<button type="button" data-pt-preset="'+esc(city)+'" class="'+(cfg.city===city&&cfg.country===country&&cfg.latitude===null?'selected':'')+'">'+esc(city)+'</button>').join('')+'</div>'+
+ '<aside class="pt-settings"><div class="pt-panel"><div class="pt-settings-title"><h3>My prayer location</h3><p>Enter a city or choose a preset. Your chosen location is sent to the prayer calculation service when retrieving times.</p></div><div class="pt-presets">'+presets.map(([city,country])=>'<button type="button" data-pt-preset="'+esc(city)+'" class="'+(cfg.city===city&&cfg.country===country&&cfg.latitude===null?'selected':'')+'">'+esc(city)+'</button>').join('')+'</div>'+
  '<form id="pt-city-form"><label>City<input name="city" required maxlength="80" value="'+esc(cfg.city)+'" placeholder="Srinagar"></label><label>Country<input name="country" required maxlength="80" value="'+esc(cfg.country)+'" placeholder="India"></label><label>Calculation method<select name="method">'+options(methods,cfg.method)+'</select></label><label>Asr school<select name="school">'+options([{id:1,label:'Hanafi'},{id:0,label:'Shafi / Standard'}],cfg.school)+'</select></label><button type="submit" class="btn btn-green">Apply & refresh</button><button type="button" class="btn btn-outline" data-pt-geolocate>Use my GPS location</button></form>'+
  '<p class="pt-hint">Using GPS asks for your browser’s permission and sends approximate coordinates to AlAdhan. No location is stored on a website server.</p></div>'+
  '<div class="pt-panel"><div class="pt-settings-title"><h3>Customize each time</h3><p>Adjust calculated times by minutes or set a fixed manual clock time to match your masjid.</p></div>'+
@@ -121,7 +122,7 @@ document.addEventListener('click',function(e){
  if(b.dataset.ptDelete!==undefined){const i=Number(b.dataset.ptDelete);if(i>=0&&i<cfg.reminders.length){cfg.reminders.splice(i,1);save();api.render();}return;}
  if(b.hasAttribute('data-pt-geolocate')){
   if(!navigator.geolocation){api.toast('Location is not supported on this device');return;}
-  navigator.geolocation.getCurrentPosition(pos=>{cfg.latitude=Number(pos.coords.latitude.toFixed(4));cfg.longitude=Number(pos.coords.longitude.toFixed(4));cfg.city='GPS position';cfg.country='';save();day=null;nextDay=null;refresh(true);},()=>api.toast('Location permission was denied or unavailable'),{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
+  navigator.geolocation.getCurrentPosition(pos=>{cfg.latitude=Number(pos.coords.latitude.toFixed(3));cfg.longitude=Number(pos.coords.longitude.toFixed(3));cfg.city='GPS position';cfg.country='';save();day=null;nextDay=null;refresh(true);},()=>api.toast('Location permission was denied or unavailable'),{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
  }
 });
 document.addEventListener('change',e=>{if(e.target.id==='pt-24h'){cfg.show24h=e.target.checked;save();api.render();}});
