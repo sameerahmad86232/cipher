@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Vocabulary only: 11 corrections and 19 accepted terms, not full Hadith approval.",
+  "scope": "Vocabulary review through item 40; Romanized fragments retained verbatim; no full Hadith narrations approved.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -111,6 +111,48 @@
       "ownerCorrection": "وضو وِزِ کھورِ نہ چھلُن",
       "status": "Owner corrected",
       "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 31,
+      "hadithNumber": 61,
+      "ownerInputExact": "Khazir kul",
+      "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
+      "source": "User ChatGPT review 2026-10-28"
+    },
+    {
+      "itemId": 32,
+      "hadithNumber": 63,
+      "ownerInputExact": "akh awoont kothean peath behith te برٛونٛہمہِ زنٛگہِ گٔنڈِتھ",
+      "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
+      "source": "User ChatGPT review 2026-10-28"
+    },
+    {
+      "itemId": 34,
+      "hadithNumber": 65,
+      "ownerInputExact": "Waen",
+      "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
+      "source": "User ChatGPT review 2026-10-28"
+    },
+    {
+      "itemId": 36,
+      "hadithNumber": 67,
+      "ownerInputExact": "Hurmaet wael cxour reath",
+      "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
+      "source": "User ChatGPT review 2026-10-28"
+    },
+    {
+      "itemId": 37,
+      "hadithNumber": 68,
+      "ownerInputExact": "baar baar waen parith lukh paraishan karen",
+      "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
+      "source": "User ChatGPT review 2026-10-28"
+    },
+    {
+      "itemId": 40,
+      "hadithNumber": 72,
+      "ownerInputExact": "Khazre khulech پوشن ہُند جھرمٹ",
+      "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
+      "source": "User ChatGPT review 2026-10-28"
     }
   ],
   "acceptedEntries": [
@@ -240,6 +282,26 @@
     {
       "itemId": 29,
       "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 33,
+      "status": "Owner accepted vocabulary",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 35,
+      "status": "Owner accepted vocabulary",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 38,
+      "status": "Owner accepted vocabulary",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 39,
+      "status": "Owner accepted vocabulary",
       "source": "User review 2026-10-28"
     }
   ]

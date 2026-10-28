@@ -131,3 +131,18 @@ Accepted as proposed: 21, 22, 24, 25, 26, 27, 28, 29.
 - Item 30: **وضو وِزِ کھورِ نہ چھلُن** (exact wording supplied by owner).
 
 Only these vocabulary expressions were reviewed; the full narrations remain separate drafts.
+
+## Owner review: items 31–40
+
+Owner accepted items **33, 35, 38 and 39** as drafted. The following six corrections are preserved in exactly the language and script supplied:
+
+| Item | Hadith | Correction |
+|---|---|---|
+| 31 | 61 | Khazir kul |
+| 32 | 63 | akh awoont kothean peath behith te برٛونٛہمہِ زنٛگہِ گٔنڈِتھ |
+| 34 | 65 | Replace *anghottee* with **Waen**; rest of the original draft phrase unchanged |
+| 36 | 67 | Hurmaet wael cxour reath |
+| 37 | 68 | baar baar waen parith lukh paraishan karen |
+| 40 | 72 | Khazre khulech پوشن ہُند جھرمٹ |
+
+Romanized forms are preserved, not silently converted into owner-confirmed Kashmiri-script spellings. This is **vocabulary review only**; no additional complete hadith translations were approved.
