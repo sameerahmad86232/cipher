@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Vocabulary review through item 40; Romanized fragments retained verbatim; no full Hadith narrations approved.",
+  "scope": "Kashmiri vocabulary review through item 50: 19 corrected expressions (some Romanized or mixed script) and 31 accepted draft expressions. Full Hadith translations 27–100 not yet owner-approved.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -153,6 +153,26 @@
       "ownerInputExact": "Khazre khulech پوشن ہُند جھرمٹ",
       "status": "Owner-corrected vocabulary; Romanized script retained where supplied",
       "source": "User ChatGPT review 2026-10-28"
+    },
+    {
+      "itemId": 44,
+      "hadithNumber": 77,
+      "englishExpression": "drawing water from a well with a bucket",
+      "ownerInputExact": "kear(for well) mnx balti seet aab kadun",
+      "ownerRomanized": "kear mnx balti seet aab kadun",
+      "note": "kear denotes well. Exact Kashmiri script not supplied.",
+      "status": "owner-corrected-vocabulary-in-romanization; script-unconfirmed",
+      "source": "User ChatGPT review, 2026-10-28"
+    },
+    {
+      "itemId": 50,
+      "hadithNumber": 83,
+      "englishExpression": "shaving the head before slaughtering",
+      "ownerInputExact": "Quraabnei bronuh kaluk maees cxatun.",
+      "ownerRomanized": "Quraabnei bronuh kaluk maees cxatun.",
+      "note": "Preserve user's exact Romanized head-shaving wording. Complete Kashmiri script not supplied.",
+      "status": "owner-corrected-vocabulary-in-romanization; script-unconfirmed",
+      "source": "User ChatGPT review, 2026-10-28"
     }
   ],
   "acceptedEntries": [
@@ -303,6 +323,46 @@
       "itemId": 39,
       "status": "Owner accepted vocabulary",
       "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 41,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 42,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 43,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 45,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 46,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 47,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 48,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 49,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining terms correct, 2026-10-28"
     }
   ]
 }
