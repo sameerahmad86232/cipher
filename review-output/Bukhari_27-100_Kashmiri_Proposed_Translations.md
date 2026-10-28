@@ -23,6 +23,15 @@ The project owner supplied corrected Kashmiri vocabulary wording for the followi
 **Status:** Owner corrected (vocabulary only). No full Hadith 27–100 narration has been approved by this update.
 
 ---
+
+## Further owner review — 28 October 2026
+
+The user confirmed that the existing Kashmiri wording of items **4, 5, 8 and 9** is acceptable. These are vocabulary-only acceptances, not approval of complete Hadith narration translations.
+
+For item **10** (Sahih al-Bukhari 34), the user replaced the earlier draft “وَعدٕ یا عَہد توٗرُن” with **“wade khilafiii”**, provisionally represented as **“وعدٕ خلافی”** in Perso-Arabic script. The spelling is a transliteration choice, **not** a user-typed Kashmiri-script confirmation.
+
+The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) and [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) show these corrections and decisions, while the full table below retains the original draft proposals for comparison.
+
 ## Proposed translations
 
 | # | Hadith | English expression | Proposed Kashmiri (draft) | Confidence |
