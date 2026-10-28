@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d382e">
+  <meta name="description" content="Read the Holy Quran with Kashmiri translations, explore authentic Hadith collections, Quranic duas, and Seerah.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/quran-app/favicon.svg">
+  <link rel="stylesheet" href="/quran-app/app.css">
+  <title>Koshur Quran — Read the Qur'an in Kashmiri</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="identity" href="/" data-home-link aria-label="Koshur Quran home">
+        <span class="identity-icon">۞</span>
+        <span class="identity-text"><strong>Koshur Quran</strong><small>قُرآن کٲشِر پٲٹھۍ</small></span>
+      </a>
+      <div class="side-label">EXPLORE</div>
+      <nav class="side-nav" aria-label="Site sections">
+        <button class="nav-link active" data-nav="home" type="button"><span data-icon="home"></span><span>Home</span></button>
+        <button class="nav-link" data-nav="quran" type="button"><span data-icon="book"></span><span>Al-Quran</span></button>
+        <button class="nav-link" data-nav="hadith" type="button"><span data-icon="layers"></span><span>Hadith</span></button>
+        <button class="nav-link" data-nav="duas" type="button"><span data-icon="heart"></span><span>Duas</span></button>
+        <button class="nav-link" data-nav="settings" type="button"><span data-icon="settings"></span><span>Settings</span></button>
+      </nav>
+      <div class="side-label side-label-library">YOUR LIBRARY</div>
+      <nav class="side-nav" aria-label="Reading tools">
+        <button class="nav-link" data-nav="bookmarks" type="button"><span data-icon="bookmark"></span><span>Saved verses</span><span class="nav-count" id="bookmarks-count">0</span></button>
+        <a class="nav-link" href="/seerah/index.html"><span data-icon="scroll"></span><span>Kashmiri Seerah</span><span data-icon="external"></span></a>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="side-quote"><span class="side-quote-mark">“</span><p>In the remembrance of Allah do hearts find rest.</p><span>Surah Ar-Ra'd · 13:28</span></div>
+      <div class="sidebar-footer">Made for Kashmiri readers <span>✦</span></div>
+    </aside>
+    <div class="main-frame">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" id="menu-toggle" class="icon-button menu-toggle" aria-label="Open menu" aria-expanded="false"><span data-icon="menu"></span></button>
+          <span class="topbar-path">KOSHUR QURAN <span class="crumb-separator">/</span> <strong id="current-section">Home</strong></span>
+        </div>
+        <div class="topbar-right">
+          <button type="button" class="topbar-search" id="top-search"><span data-icon="search"></span><span>Search Surahs</span><kbd>/</kbd></button>
+          <span class="topbar-divider"></span>
+          <button type="button" class="icon-button" id="top-bookmarks" aria-label="Saved verses"><span data-icon="bookmark"></span></button>
+          <span class="avatar-circle" aria-hidden="true">ق</span>
+        </div>
+      </header>
+      <main id="content" class="content-area" tabindex="-1">
+        <div class="content-loading"><span class="spinner"></span><p>Preparing your reading space…</p></div>
+      </main>
+      <footer class="site-footer"><span>© 2026 Koshur Quran</span><span>Read. Reflect. Remember.</span><a href="https://github.com/izan-majeed/kaeshur-quran-data" target="_blank" rel="noopener noreferrer">Quran data source</a></footer>
+    </div>
+  </div>
+  <nav class="bottom-nav" aria-label="Mobile sections">
+    <button class="mobile-nav-link active" type="button" data-nav="home"><span data-icon="home"></span><span>Home</span></button>
+    <button class="mobile-nav-link" type="button" data-nav="quran"><span data-icon="book"></span><span>Quran</span></button>
+    <button class="mobile-nav-link" type="button" data-nav="hadith"><span data-icon="layers"></span><span>Hadith</span></button>
+    <button class="mobile-nav-link" type="button" data-nav="duas"><span data-icon="heart"></span><span>Duas</span></button>
+    <button class="mobile-nav-link" type="button" data-nav="settings"><span data-icon="settings"></span><span>Settings</span></button>
+  </nav>
+  <div class="backdrop" id="backdrop" hidden></div>
+  <div class="toast" role="status" aria-live="polite" id="toast"></div>
+  <script defer src="/quran-app/app.js"></script>
+</body>
+</html>
