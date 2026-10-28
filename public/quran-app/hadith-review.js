@@ -27,7 +27,7 @@
    if(error){root.innerHTML='<div class="bh-error">Could not load the Kashmiri hadith collection. <button type="button" data-bh-retry>Retry</button></div>';return;}
    if(!loaded){root.innerHTML='<div class="bh-loading">Loading the reviewed Kashmiri translations…</div>';return;}
    root.innerHTML=toolbar()+'<div class="bh-count">'+visible().length+' of 20 narrations</div><div id="bh-cards" class="bh-grid">'+(visible().map(card).join('')||'<p class="bh-empty">No hadith match this search.</p>')+'</div>'+
-      '<div class="bh-review-footer"><h3>Your review notes</h3><p>Notes are saved only in this browser. Copy them to share corrections in ChatGPT. They are not automatically sent to the website or GitHub.</p><div class="bh-review-footer-actions"><button type="button" class="btn btn-green" data-bh-export>Copy all corrections ('+Object.values(notes).filter(x=>x.trim()).length+')</button><button type="button" class="btn btn-outline" data-bh-clear>Clear all my notes</button></div></div>';
+      '<div class="bh-review-footer"><h3>Your review notes</h3><p>Notes are saved only in this browser. Copy them to share corrections in ChatGPT. They are not automatically sent to the website or GitHub.</p><div class="bh-review-footer-actions"><button type="button" class="btn btn-green" data-bh-export>Copy all corrections ('+Object.values(notes).filter(x=>x.trim()).length+')</button><button type="button" class="btn btn-outline" data-bh-clear>Clear all my notes</button></div><textarea id="bh-export-text" class="bh-fallback" hidden aria-label="Select and copy your corrections"></textarea><div id="bh-save-toast" class="bh-toast" role="status" hidden></div></div>';
  }
  async function load(){
    if(loaded){list();return;}
