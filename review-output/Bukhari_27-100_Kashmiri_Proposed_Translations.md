@@ -1,8 +1,8 @@
 # Sahih al-Bukhari Hadith 27–100 — Kashmiri vocabulary drafts
 
-**Review edition · 66 proposed translations · NOT owner-approved.**
+**Owner vocabulary review completed · 66 of 66 expressions reviewed · 39 accepted as drafted · 27 owner-corrected.**
 
-These are proposed Kashmiri renderings of the **66 English expressions from the user's review worksheet**, not complete translated hadith. Each corresponds to the worksheet's Hadith number and context. Renderings are provisional and may contain unnatural Kashmiri spelling, case, grammar, or religious-technical terminology. The project owner's corrections take precedence over these drafts. The untouched owner-correction column is in the CSV.
+These are proposed Kashmiri renderings of the **66 English expressions from the user's review worksheet**, not complete translated hadith. Each corresponds to the worksheet's Hadith number and context. Renderings are provisional and may contain unnatural Kashmiri spelling, case, grammar, or religious-technical terminology. The project owner's corrections take precedence over these drafts. The editable owner-correction column in the CSV and XLSX now contains the completed review; the original AI proposals remain separately visible for comparison.
 
 **Files:** [Download the editable proposed-translations CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) · [Original blank review worksheet](Bukhari_27-100_Kashmiri_Words_For_Review.csv)
 
@@ -30,7 +30,7 @@ The user confirmed that the existing Kashmiri wording of items **4, 5, 8 and 9**
 
 For item **10** (Sahih al-Bukhari 34), the user replaced the earlier draft “وَعدٕ یا عَہد توٗرُن” with **“wade khilafiii”**, provisionally represented as **“وعدٕ خلافی”** in Perso-Arabic script. The spelling is a transliteration choice, **not** a user-typed Kashmiri-script confirmation.
 
-The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) contains these latest corrections and decisions. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) has been updated with owner review through item 20. The full table below retains the original draft proposals for comparison.
+The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) contains these latest corrections and decisions. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) reflects owner review of all 66 vocabulary entries. The full table below retains the original draft proposals for comparison.
 
 ## Further owner review — vocabulary items 11–20
 
