@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Kashmiri vocabulary review through item 50: 19 corrected expressions (some Romanized or mixed script) and 31 accepted draft expressions. Full Hadith translations 27–100 not yet owner-approved.",
+  "scope": "Kashmiri Bukhari vocabulary review through item 60: 25 owner corrections (some Romanized/mixed) and 35 accepted draft expressions; no complete Hadith 27–100 narrations approved.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -173,6 +173,66 @@
       "note": "Preserve user's exact Romanized head-shaving wording. Complete Kashmiri script not supplied.",
       "status": "owner-corrected-vocabulary-in-romanization; script-unconfirmed",
       "source": "User ChatGPT review, 2026-10-28"
+    },
+    {
+      "itemId": 51,
+      "hadithNumber": 84,
+      "englishExpression": "throwing pebbles at the Jamrat (ramy)",
+      "ownerInputExact": "Jumratas peath loket kaneii (for stones ) lagawaeoun(for throwing) hajjas doraan (during hajj)",
+      "displayWording": "Jumratas peath loket kaneii lagawaeoun hajjas doraan",
+      "status": "owner-corrected-romanization; script-not-confirmed",
+      "note": "Romanization with glosses; glossary words for stones/throwing/during Hajj preserved verbatim in ownerInputExact.",
+      "source": "User provided corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 53,
+      "hadithNumber": 86,
+      "englishExpression": "solar eclipse",
+      "ownerInputExact": "Sollar eclipse in place of soraj grhun  use (aftabs gruhun)",
+      "displayWording": "سِرِس گِرَہَن / aftabs gruhun",
+      "status": "owner-corrected-romanization; script-not-confirmed",
+      "note": "Replace only the alternative 'soraj grhun' with Romanized 'aftabs gruhun'. Other original alternate is a draft.",
+      "source": "User provided corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 56,
+      "hadithNumber": 89,
+      "englishExpression": "taking turns attending lessons",
+      "ownerInputExact": "وارِ وارِ کلاسس منز گژھُن",
+      "displayWording": "وارِ وارِ کلاسس منز گژھُن",
+      "status": "owner-corrected-kashmiri-script",
+      "note": "Exact owner-supplied Perso-Arabic spelling.",
+      "source": "User provided corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 57,
+      "hadithNumber": 90,
+      "englishExpression": "prolonging congregational prayer",
+      "ownerInputExact": "Jamaatech niamaaz  wariya zeanth vannawaoyn",
+      "displayWording": "Jamaatech niamaaz wariya zeanth vannawaoyn",
+      "status": "owner-corrected-romanization; script-not-confirmed",
+      "note": "Romanized user wording (display collapses extra whitespace).",
+      "source": "User provided corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 58,
+      "hadithNumber": 91,
+      "englishExpression": "lost property and its identifying features",
+      "ownerInputExact": "رٲومُت چیز تہٕ یہ کِتھٕ کٔنۍ  پرزناوُن",
+      "displayWording": "رٲومُت چیز تہٕ یہ کِتھٕ کٔنۍ  پرزناوُن",
+      "status": "owner-corrected-kashmiri-script",
+      "note": "Exact user-supplied Kashmiri, including spacing.",
+      "source": "User provided corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 59,
+      "hadithNumber": 91,
+      "englishExpression": "binding string and leather container",
+      "ownerInputExact": "Paen te leatherooo thealee",
+      "displayWording": "Paen te leatherooo thealee",
+      "status": "owner-corrected-romanization; script-not-confirmed",
+      "note": "Romanized / English mixed owner-supplied phrase; exact Kashmiri-script wording unconfirmed.",
+      "source": "User provided corrections in ChatGPT, 2026-10-28"
     }
   ],
   "acceptedEntries": [
@@ -363,6 +423,30 @@
       "itemId": 49,
       "status": "owner-accepted-vocabulary-only",
       "source": "User said all remaining terms correct, 2026-10-28"
+    },
+    {
+      "itemId": 52,
+      "hadithNumber": 85,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining items 51–60 are correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 54,
+      "hadithNumber": 87,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining items 51–60 are correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 55,
+      "hadithNumber": 88,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining items 51–60 are correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 60,
+      "hadithNumber": 92,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all remaining items 51–60 are correct in ChatGPT, 2026-10-28"
     }
   ]
 }
