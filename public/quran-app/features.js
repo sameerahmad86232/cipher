@@ -45,6 +45,7 @@ function updateTop(label,number,total){
 function updateProgress(){
  if(!api)return;
  const tab=api.state.tab;
+ if(tab==='prayers'){const p=prayer?prayer.progress():{elapsed:0,total:5};updateTop('Today’s prayer times passed · '+p.elapsed+' / '+p.total,p.elapsed,p.total);return;}
  if(tab==='quran'&&quranMode==='cards'){updateTop('Flashcards · '+(cards.items.length?cards.index+1:0)+' / '+cards.items.length,cards.items.length?cards.index+1:0,cards.items.length||1);return;}
  if(tab==='quran'&&api.state.selected){const info=api.findSurah(api.state.selected);if(info){const last=api.state.lastRead.surah===info.surah_id?api.state.lastRead.ayah:1;updateTop(info.name_en+' · ayah '+last+' of '+info.verses_count,last,info.verses_count);return;}}
  if(tab==='ramadan'){const d=dayData();updateTop('Daily Quran goal · '+d.ayat.length+' / '+ramadan.goal,d.ayat.length,ramadan.goal);return;}
