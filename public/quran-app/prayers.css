@@ -1,0 +1,110 @@
+/* Prayer-time companion and Quran-integrated study controls */
+.quran-study-switch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-2px 0 25px;padding:11px;background:var(--surface);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
+.quran-study-switch>div{display:flex;gap:7px;flex-wrap:wrap}
+.quran-study-switch button{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:none;border:1px solid transparent;padding:11px 19px;border-radius:10px;font-size:12px;font-weight:800;color:var(--muted);transition:background .2s,color .2s}
+.quran-study-switch button svg{width:17px;height:17px}
+.quran-study-switch button.active{background:#14563e;color:#fff;border-color:#14563e;box-shadow:0 4px 13px #0e49331a}
+.quran-study-switch button:hover:not(.active){background:var(--mint);color:var(--ink)}
+.quran-study-switch>span{font-size:11px;color:var(--muted);padding-right:8px}
+.pt-page{width:100%}.pt-hero{border-radius:22px;position:relative;background:radial-gradient(circle at 92% 12%,#366c4e,#0b3a2c 71%);overflow:hidden;padding:34px 42px;min-height:225px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #d5bc805c;box-shadow:0 18px 42px #082a1b21;color:#f8f2e5;margin-bottom:23px}
+.pt-hero::before{content:"۞";position:absolute;right:8px;top:-135px;font:290px Amiri,serif;color:#e5c68713;pointer-events:none}
+.pt-hero>div{position:relative;z-index:1}
+.pt-kicker{font-size:10px;letter-spacing:2.5px;font-weight:800;color:#e6d7a5}
+.pt-hero h2{font:700 clamp(32px,3.6vw,46px)/1.25 Manrope,sans-serif;color:#fff;margin:13px 0}
+.pt-location{display:flex;gap:8px;align-items:center;color:#cfdfd2;font-size:12px}
+.pt-location svg{width:15px;height:15px}
+.pt-date{font-size:11px;color:#d6dbca;margin-top:14px}
+.pt-hero-count{text-align:right;min-width:170px;flex:none}
+.pt-hero-count strong{display:block;font:800 clamp(29px,4vw,47px)/1.25 Manrope,sans-serif;letter-spacing:-1.6px;color:#f5dfac}
+.pt-hero-count span{display:block;font-size:12px;color:#c9e0d1;margin-top:10px;font-weight:700}
+.pt-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(290px,.75fr);gap:20px;align-items:start}
+.pt-layout>div,.pt-settings{display:grid;gap:20px;min-width:0}
+.pt-panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow);min-width:0}
+.pt-heading,.pt-settings-title{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:19px}
+.pt-settings-title{display:block}
+.pt-heading h3,.pt-settings-title h3{margin:0 0 5px;font-size:16px;color:var(--ink);font-weight:800}
+.pt-heading p,.pt-settings-title p{margin:0;font-size:11px;line-height:1.75;color:var(--muted)}
+.pt-refresh{display:flex;gap:7px;align-items:center;white-space:nowrap;background:var(--mint);border:1px solid #d6e4d7;border-radius:9px;font-size:11px;color:var(--green);font-weight:800;padding:9px 11px}
+.pt-refresh svg{width:14px;height:14px}
+.pt-list{display:grid;gap:9px}
+.pt-row{border:1px solid var(--line);padding:16px 15px;display:flex;align-items:center;gap:12px;border-radius:13px;transition:border-color .2s}
+.pt-row.next{border-color:#b4cb9d;background:linear-gradient(95deg,#f1f8ed,#eaf5eb)}
+.dark .pt-row.next{background:#244837;border-color:#5a9470}
+.pt-row-icon{width:39px;height:39px;background:var(--mint);border-radius:11px;display:grid;place-items:center;font-size:20px;color:var(--green);flex:none}
+.pt-name{min-width:0;flex:1}
+.pt-name strong{display:block;font-size:13px;color:var(--ink);margin-bottom:5px}
+.pt-name small{display:block;font-size:10px;color:var(--muted);line-height:1.45}
+.pt-row-time{text-align:right;flex:none}
+.pt-row-time strong{display:block;font-size:16px;color:var(--ink);font-weight:800;white-space:nowrap}
+.pt-row-time small{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+.pt-disclaimer{font-size:10px;line-height:1.8;color:var(--muted);margin:19px 0 0}
+.pt-disclaimer a{text-decoration:underline;color:var(--green);font-weight:800}
+.pt-settings label,.pt-reminder-form label{display:grid;gap:7px;color:var(--muted);font-size:11px;font-weight:800}
+.pt-settings input:not([type=checkbox]),.pt-settings select,.pt-reminder-form input{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;min-height:42px;width:100%;padding:10px 12px;outline:0;min-width:0}
+.pt-settings input:focus,.pt-settings select:focus,.pt-reminder-form input:focus{border-color:#87b392;box-shadow:0 0 0 3px #83b38c26}
+.pt-settings form{display:grid;gap:13px}
+.pt-settings form .btn{width:100%}
+.pt-settings form .btn-outline{margin-top:-5px}
+.pt-presets{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0 20px}
+.pt-presets button{padding:8px 10px;font-size:10px;font-weight:800;border:1px solid var(--line);border-radius:99px;background:var(--surface);color:var(--muted)}
+.pt-presets button.selected{background:#15563e;color:#fff;border-color:#15563e}
+.pt-hint{color:var(--muted);font-size:10px;line-height:1.8;margin:13px 0 0}
+.pt-edit-line{display:grid;grid-template-columns:.72fr .75fr 1.2fr;align-items:center;gap:8px;padding:11px 0;border-top:1px solid var(--line)}
+.pt-edit-line:first-child{border-top:0}
+.pt-edit-line strong{color:var(--ink);font-size:12px}
+.pt-edit-line label{font-size:9px;gap:4px}
+.pt-edit-line input{min-height:38px!important;padding:8px!important;font-size:11px}
+.pt-clock-format{margin-top:19px;display:flex!important;flex-direction:row;align-items:center;gap:9px!important;font-size:11px!important}
+.pt-clock-format input{accent-color:#23664a}
+.pt-reminder-form{display:grid;grid-template-columns:1fr 110px auto;align-items:end;gap:10px;margin-bottom:17px}
+.pt-reminder-form .btn{min-height:42px}
+.pt-reminders{display:grid;gap:8px}
+.pt-reminder{display:flex;align-items:center;gap:11px;border:1px solid var(--line);background:var(--bg);padding:12px 13px;border-radius:11px}
+.pt-reminder>span:first-child{font-size:19px;color:#bdad6c}
+.pt-reminder strong{font-size:12px;color:var(--ink);flex:1}
+.pt-reminder>span:nth-of-type(2){font-size:11px;color:var(--muted)}
+.pt-reminder button{border:0;background:none;color:#af7466;border-radius:7px;padding:6px}
+.pt-reminder button svg{width:17px;height:17px}
+.pt-empty{font-size:12px;color:var(--muted);margin:2px}
+.pt-home-card{display:flex;align-items:center;gap:19px;border:1px solid var(--line);background:linear-gradient(100deg,#f0f4e9,#e8f3e9);padding:23px 25px;border-radius:16px;margin:24px 0;box-shadow:var(--shadow)}
+.dark .pt-home-card{background:linear-gradient(110deg,#233d2e,#1a3a2b)}
+.pt-home-emblem{background:#14553d;color:#e9d29b;border-radius:12px;display:grid;place-items:center;width:52px;height:52px;font:34px Georgia,serif;flex:none}
+.pt-home-card>div:nth-child(2){flex:1}
+.pt-home-card>div:nth-child(2)>span{color:#76927c;font-size:10px;font-weight:800;letter-spacing:1.8px}
+.pt-home-card h3{font-size:16px;color:var(--ink);margin:7px 0}
+.pt-home-card h3 em{font-style:normal;color:var(--green)}
+.pt-home-card p{font-size:11px;color:var(--muted);line-height:1.55;margin:0}
+@media(max-width:1050px){.pt-layout{grid-template-columns:1fr}.pt-settings{grid-template-columns:repeat(2,minmax(0,1fr))}.pt-settings .pt-panel{min-width:0}.pt-home-card .btn{white-space:nowrap}}
+@media(max-width:760px){.pt-settings{grid-template-columns:1fr}.pt-hero{padding:29px 26px}}
+@media(max-width:650px){
+.quran-study-switch{padding:7px;margin:0 0 18px}
+.quran-study-switch>div{width:100%;display:grid;grid-template-columns:1fr 1fr}
+.quran-study-switch button{padding:12px 8px;font-size:11px}
+.quran-study-switch>span{display:none}
+.pt-hero{border-radius:17px;padding:26px 21px;min-height:220px;align-items:start;display:flex;flex-direction:column;gap:10px}
+.pt-hero h2{font-size:33px;margin:9px 0}
+.pt-hero-count{text-align:left;min-width:0;display:flex;align-items:center;gap:13px}
+.pt-hero-count strong{font-size:31px}
+.pt-hero-count span{margin:0}
+.pt-location,.pt-date{font-size:11px;line-height:1.7}
+.pt-layout{gap:12px}.pt-layout>div,.pt-settings{gap:12px}
+.pt-panel{padding:19px 16px;border-radius:15px}
+.pt-heading{align-items:start}
+.pt-heading h3,.pt-settings-title h3{font-size:15px}
+.pt-row{gap:9px;padding:13px 11px}
+.pt-row-icon{height:34px;width:34px;font-size:17px}
+.pt-name strong{font-size:12px}
+.pt-name small{font-size:9px}
+.pt-row-time strong{font-size:14px}
+.pt-row-time small{font-size:9px}
+.pt-reminder-form{grid-template-columns:1fr 115px;gap:8px}
+.pt-reminder-form .btn{grid-column:1/-1}
+.pt-edit-line{grid-template-columns:.66fr .78fr 1.18fr;gap:7px}
+.pt-edit-line label{font-size:9px}
+.pt-edit-line input{padding:6px!important}
+.pt-home-card{padding:17px 14px;gap:10px;align-items:start;flex-wrap:wrap}
+.pt-home-emblem{height:39px;width:39px;font-size:26px}
+.pt-home-card h3{font-size:14px}
+.pt-home-card p{font-size:10px}
+.pt-home-card .btn{width:100%;min-height:40px}
+}
