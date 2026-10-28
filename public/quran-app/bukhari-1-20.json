@@ -59,9 +59,7 @@
       "translationLanguage": "kas-Arab",
       "sourceUrl": "https://sunnah.com/bukhari:3",
       "sourcePdfPages": [
-        46,
-        47,
-        48
+        46
       ],
       "sourcePdfTitle": "Sahih al-Bukhari Vol. 1 — Darussalam / Dr. Muhammad Muhsin Khan (1997)",
       "translationProvenance": "Cipher / training-data/hadith-corrections/approved-passages.jsonl",
@@ -145,14 +143,7 @@
       "translationLanguage": "kas-Arab",
       "sourceUrl": "https://sunnah.com/bukhari:7",
       "sourcePdfPages": [
-        50,
-        51,
-        52,
-        53,
-        54,
-        55,
-        56,
-        57
+        50
       ],
       "sourcePdfTitle": "Sahih al-Bukhari Vol. 1 — Darussalam / Dr. Muhammad Muhsin Khan (1997)",
       "translationProvenance": "Cipher / training-data/hadith-corrections/approved-passages.jsonl",
@@ -278,8 +269,7 @@
       "translationLanguage": "kas-Arab",
       "sourceUrl": "https://sunnah.com/bukhari:13",
       "sourcePdfPages": [
-        60,
-        61
+        60
       ],
       "sourcePdfTitle": "Sahih al-Bukhari Vol. 1 — Darussalam / Dr. Muhammad Muhsin Khan (1997)",
       "translationProvenance": "Cipher / training-data/hadith-corrections/approved-passages.jsonl",
@@ -342,8 +332,7 @@
       "translationLanguage": "kas-Arab",
       "sourceUrl": "https://sunnah.com/bukhari:16",
       "sourcePdfPages": [
-        61,
-        62
+        61
       ],
       "sourcePdfTitle": "Sahih al-Bukhari Vol. 1 — Darussalam / Dr. Muhammad Muhsin Khan (1997)",
       "translationProvenance": "Cipher / training-data/hadith-corrections/approved-passages.jsonl",
@@ -385,8 +374,7 @@
       "translationLanguage": "kas-Arab",
       "sourceUrl": "https://sunnah.com/bukhari:18",
       "sourcePdfPages": [
-        62,
-        63
+        62
       ],
       "sourcePdfTitle": "Sahih al-Bukhari Vol. 1 — Darussalam / Dr. Muhammad Muhsin Khan (1997)",
       "translationProvenance": "Cipher / training-data/hadith-corrections/approved-passages.jsonl",
@@ -428,8 +416,7 @@
       "translationLanguage": "kas-Arab",
       "sourceUrl": "https://sunnah.com/bukhari:20",
       "sourcePdfPages": [
-        63,
-        64
+        63
       ],
       "sourcePdfTitle": "Sahih al-Bukhari Vol. 1 — Darussalam / Dr. Muhammad Muhsin Khan (1997)",
       "translationProvenance": "Cipher / training-data/hadith-corrections/approved-passages.jsonl",
