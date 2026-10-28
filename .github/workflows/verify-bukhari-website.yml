@@ -1,0 +1,31 @@
+name: Verify Bukhari Kashmiri website data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/quran-app/bukhari-*.json'
+      - 'public/quran-app/hadith-library-v2.js'
+      - 'public/quran-app/index.html'
+      - 'scripts/validate-bukhari-public-data.mjs'
+      - '.github/workflows/verify-bukhari-website.yml'
+  pull_request:
+    paths:
+      - 'public/quran-app/bukhari-*.json'
+      - 'public/quran-app/hadith-library-v2.js'
+      - 'scripts/validate-bukhari-public-data.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73c27597364c9af683
+      - name: Check Hadith reader JavaScript syntax
+        run: node --check public/quran-app/hadith-library-v2.js
+      - name: Validate numbered Hadith records and draft review statuses
+        run: node scripts/validate-bukhari-public-data.mjs
