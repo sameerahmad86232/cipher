@@ -79,33 +79,65 @@
   function applyPreferences(){document.body.classList.toggle('dark',!!state.prefs.dark);document.documentElement.style.setProperty('--reading-scale',String(Math.max(.8,Math.min(1.5,Number(state.prefs.scale)||1))));}
   function toast(message){const node=document.getElementById('toast');node.textContent=message;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){node.classList.remove('show');},2600);}
   function updateBadge(){document.getElementById('bookmarks-count').textContent=String(state.bookmarks.length);}
-  function setNav(tab){document.querySelectorAll('[data-nav]').forEach(function(el){const active=el.dataset.nav===tab;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});document.getElementById('current-section').textContent={home:'Home',quran:'Al-Quran',hadith:'Hadith',duas:'Duas',hisnul:'Hisnul Muslim',prayers:'Prayer Times',flashcards:'Flashcards',tasbih:'Tasbih',ramadan:'Ramadan',settings:'Settings',bookmarks:'Saved verses'}[tab]||'Home';}
-  function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').hidden=true;document.getElementById('menu-toggle').setAttribute('aria-expanded','false');}
+  function setNav(tab){document.querySelectorAll('[data-nav]').forEach(function(el){const active=el.dataset.nav===tab;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});document.getElementById('current-section').textContent={home:'Home',quran:'Al-Quran',hadith:'Hadith',duas:'Duas',hisnul:'Hisnul Muslim',prayers:'Prayer Times',flashcards:'Flashcards',tasbih:'Tasbih',ramadan:'Ramadan',settings:'Settings',bookmarks:'Saved verses'}[tab]||'Home';const more=document.getElementById('mobile-more');if(more){const active=['hadith','hisnul','tasbih','ramadan','settings','bookmarks'].includes(tab);more.classList.toggle('active',active);more.setAttribute('aria-label',active?'More sections · '+tab:'More sections');}}
+  function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').hidden=true;document.getElementById('menu-toggle').setAttribute('aria-expanded','false');const more=document.getElementById('mobile-more');if(more)more.setAttribute('aria-expanded','false');}
   function navigate(tab,keepReader){if(tab==='flashcards'){tab='quran';keepReader=true;if(extras)extras.setQuranMode('cards');}if(!['home','quran','prayers','hadith','duas','hisnul','tasbih','ramadan','settings','bookmarks'].includes(tab))tab='home';if(tab==='quran'&&!keepReader&&extras)extras.setQuranMode('read');state.tab=tab;if(tab!=='quran'||!keepReader){if(tab==='quran')state.selected=null;}state.error=null;closeMenu();setNav(tab);history.replaceState(null,'',location.pathname+location.search+'#'+tab);render();window.scrollTo({top:0,behavior:'instant'});}
   function heading(title,description,label){return '<div class="page-heading"><span class="section-eyebrow">'+escapeHtml(label||'DISCOVER')+'</span><h1>'+escapeHtml(title)+'</h1><p>'+escapeHtml(description)+'</p></div>';}
   function btnNav(label,tab,cls,ic){return '<button type="button" class="btn '+cls+'" data-nav="'+tab+'">'+(ic?icon(ic):'')+escapeHtml(label)+'</button>';}
+  function featuredSurahs(){
+    const picks=[1,55,67].map(findSurah).filter(Boolean);
+    return '<div class="curated-surah-grid">'+picks.map(function(meta,i){
+      const labels=['The Opening','The Most Merciful','The Sovereignty'];
+      return '<button type="button" class="curated-surah-card" data-open="'+meta.surah_id+'">'+
+        '<span class="curated-top"><span class="curated-number">'+String(meta.surah_id).padStart(2,'0')+'</span><span class="curated-recommend">'+labels[i]+'</span></span>'+
+        '<span class="curated-arabic" lang="ar" dir="rtl">'+escapeHtml(meta.name_ar)+'</span>'+
+        '<span class="curated-bottom"><span><strong>'+escapeHtml(meta.name_en)+'</strong><small>'+escapeHtml(meta.meaning_en)+' · '+meta.verses_count+' verses</small></span>'+icon('arrow')+'</span>'+
+        '</button>';
+    }).join('')+'</div>';
+  }
   function renderHome(){
     const last=findSurah(state.lastRead.surah)||state.surahs[0];
-    const lastTitle=last?escapeHtml(last.name_en)+' · '+Number(state.lastRead.ayah):'Al-Fatihah · 1';
+    const current=Math.max(1,Math.min(last?last.verses_count:7,Number(state.lastRead.ayah)||1));
+    const total=last?last.verses_count:7;
+    const lastTitle=last?escapeHtml(last.name_en):'Al-Fatihah';
+    const lastArabic=last?escapeHtml(last.name_ar):'الْفَاتِحَة';
+    const p=Math.max(0,Math.min(100,Math.round(current/total*100)));
+    const prayer=window.KoshurPrayer&&window.KoshurPrayer.homeWidget?window.KoshurPrayer.homeWidget():'';
     return '<section class="hero premium-hero" aria-labelledby="hero-headline">'+
     '<canvas id="koshur-shader-canvas" class="hero-shader-canvas" aria-hidden="true"></canvas>'+
     '<div class="hero-texture" aria-hidden="true"></div>'+
     '<div class="hero-content"><span class="hero-pill"><span class="hero-pill-star">✦</span> A HOME FOR KASHMIRI REFLECTION</span>'+
     '<div class="hero-eyebrow">Read with meaning. Return with peace.</div>'+
     '<h1 id="hero-headline">The words of Allah,<br><em>closer to home.</em></h1>'+
-    '<p class="subtext">An exquisite, distraction-free space to explore the Qur’an in Arabic and Kashmiri—one verse, one reflection, one beautiful moment at a time.</p>'+
+    '<p class="subtext">A beautiful, peaceful home for the Qur’an in Arabic and Kashmiri. Return to your reading, discover a dua, or begin a new chapter.</p>'+
     '<div class="hero-buttons"><button type="button" class="btn btn-primary" data-continue>'+icon('book')+' Continue reading '+icon('arrow')+'</button>'+
     '<button type="button" class="btn btn-ghost" data-quran-view="cards">'+icon('layers')+' Study flashcards</button></div>'+
-    '<div class="hero-trust-line"><span><i class="hero-trust-dot"></i> Two Kashmiri translations</span><span class="hero-trust-divider"></span><span>114 chapters · thoughtfully presented</span></div></div>'+
+    '<div class="hero-trust-line"><span><i class="hero-trust-dot"></i> Two Kashmiri translations</span><span class="hero-trust-divider"></span><span>114 Surahs · An open reading space</span></div></div>'+
     '<div class="hero-seal" aria-hidden="true"><div class="hero-seal-ring"><span class="hero-seal-glyph">۞</span><small>قُرآن کٲشِر پٲٹھۍ</small></div></div>'+
     '<div class="hero-corner-caption" aria-hidden="true">THE KASHMIRI QUR’AN EXPERIENCE</div></section>'+
-    '<section class="stat-row" aria-label="Quran collection facts"><div class="stat-card"><div class="stat-icon">'+icon('book')+'</div><div class="stat-text"><strong>114</strong><span>Surahs</span></div></div><div class="stat-card"><div class="stat-icon">'+icon('star')+'</div><div class="stat-text"><strong>6,236</strong><span>Ayahs</span></div></div><div class="stat-card"><div class="stat-icon">'+icon('globe')+'</div><div class="stat-text"><strong>2</strong><span>Kashmiri editions</span></div></div></section>'+
-    '<div class="section-header section-header-reading"><div><span class="section-eyebrow">YOUR READING SPACE</span><h2>Continue your journey</h2><p>A familiar place to start, every day.</p></div><button type="button" class="section-action" data-nav="bookmarks">Your saved verses '+icon('arrow')+'</button></div><section class="reading-strip"><span class="stat-icon">'+icon('bookmark')+'</span><div style="flex:1"><h3>'+lastTitle+'</h3><p>Your reading journey is waiting for you.</p></div><button type="button" class="btn btn-green" data-continue>Continue '+icon('arrow')+'</button></section>'+
-    '<div class="section-header"><div><span class="section-eyebrow">A LIBRARY OF REFLECTION</span><h2>Everything you need to reconnect.</h2><p>Carefully organized. Beautifully simple.</p></div></div>'+
-    '<section class="cards-grid"><button type="button" data-nav="quran" class="feature-card"><div class="feature-icon">'+icon('book')+'</div><div><h3>Read Al-Quran</h3><p>Every surah, with Kashmiri and Arabic side by side.</p></div><span class="feature-arrow">Explore chapters '+icon('arrow')+'</span></button>'+
-    '<button type="button" data-nav="hadith" class="feature-card gold"><div class="feature-icon">'+icon('layers')+'</div><div><h3>Hadith collections</h3><p>Find trusted sources of Prophetic teachings.</p></div><span class="feature-arrow">Browse hadith '+icon('arrow')+'</span></button>'+
-    '<button type="button" data-nav="duas" class="feature-card blue"><div class="feature-icon">'+icon('heart')+'</div><div><h3>Daily Duas</h3><p>Turn to the Qur\'an for heartfelt supplications.</p></div><span class="feature-arrow">Explore duas '+icon('arrow')+'</span></button></section>'+
-    '<div class="section-header"><div><span class="section-eyebrow">WORDS TO CARRY WITH YOU</span><h2>Pause for a verse.</h2><p>Beautiful reminders from the Qur’an.</p></div></div><section class="two-column"><article class="panel verse-spotlight"><span class="section-eyebrow">VERSE OF REFLECTION</span><div class="arabic-mini" lang="ar">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div><p>Indeed, with hardship comes ease.</p><div class="verse-ref">Surah Ash-Sharh · 94:5</div></article><article class="mini-seerah"><span class="tag">CONTINUE YOUR JOURNEY</span><h3 lang="ks-Arab">اَلرَّحِیقُ الْمَخْتُوم</h3><p>Explore the Seerah of Prophet Muhammad ﷺ in Kashmiri. Your existing chapters are preserved.</p><a class="section-action" href="/seerah/index.html">Read Kashmiri Seerah '+icon('arrow')+'</a></article></section>';
+    '<nav class="home-jump-links" aria-label="Quickly explore Koshur Quran">'+
+       '<button type="button" data-nav="quran"><span class="jump-icon">'+icon('book')+'</span><span><strong>Read Quran</strong><small>114 chapters</small></span>'+icon('chevron')+'</button>'+
+       '<button type="button" data-nav="prayers"><span class="jump-icon">'+icon('sun')+'</span><span><strong>Prayer times</strong><small>Local & custom</small></span>'+icon('chevron')+'</button>'+
+       '<button type="button" data-nav="hisnul"><span class="jump-icon">'+icon('scroll')+'</span><span><strong>Hisnul Muslim</strong><small>Daily supplications</small></span>'+icon('chevron')+'</button>'+
+       '<button type="button" data-nav="tasbih"><span class="jump-icon">'+icon('star')+'</span><span><strong>Tasbih</strong><small>Remember Allah</small></span>'+icon('chevron')+'</button>'+
+    '</nav>'+
+    '<div class="section-header daily-header"><div><span class="section-eyebrow">YOUR PERSONAL CORNER</span><h2>Make space for what matters.</h2><p>Start small. Continue with intention.</p></div><button type="button" class="section-action" data-nav="bookmarks">Saved verses '+icon('arrow')+'</button></div>'+
+    '<section class="daily-spotlight">'+
+      '<article class="daily-reading-card"><div class="daily-decor" aria-hidden="true">۞</div><span class="daily-mini-label">'+icon('bookmark')+' YOUR READING POSITION</span>'+
+       '<div class="daily-reading-inner"><div><span class="daily-arabic-title" lang="ar" dir="rtl">'+lastArabic+'</span><h3>'+lastTitle+'</h3><p>Ayah '+current+' of '+total+' · Pick up where you were reading</p></div><span class="daily-chapter-badge">'+String(last?.surah_id||1).padStart(2,'0')+'</span></div>'+
+       '<div class="daily-reading-progress-label"><span>Position in chapter</span><span>'+current+' / '+total+'</span></div>'+
+       '<div class="daily-reading-track" role="progressbar" aria-label="Last reading position within Surah" aria-valuenow="'+current+'" aria-valuemin="0" aria-valuemax="'+total+'"><span style="width:'+p+'%"></span></div>'+
+       '<div class="daily-reading-bottom"><button type="button" class="btn btn-primary" data-continue>Resume reading '+icon('arrow')+'</button><button type="button" class="daily-bookmark-link" data-nav="bookmarks">'+icon('bookmark')+' Bookmarks</button></div></article>'+
+      '<div class="daily-prayer-wrapper">'+prayer+'</div></section>'+
+    '<div class="section-header explore-header"><div><span class="section-eyebrow">DISCOVER</span><h2>A little inspiration, every day.</h2><p>Thoughtfully arranged paths to faith and reflection.</p></div></div>'+
+    '<section class="cards-grid home-discover-grid">'+
+      '<button type="button" data-nav="quran" class="feature-card"><span class="feature-card-number">01 / EXPLORE</span><div class="feature-icon">'+icon('book')+'</div><div><h3>Al-Quran</h3><p>All 114 Surahs, with Arabic and Kashmiri reading modes.</p></div><span class="feature-arrow">Open the Quran '+icon('arrow')+'</span></button>'+
+      '<button type="button" data-nav="duas" class="feature-card gold"><span class="feature-card-number">02 / REMEMBER</span><div class="feature-icon">'+icon('heart')+'</div><div><h3>Duas for every moment</h3><p>Find a supplication by meaning, occasion or need.</p></div><span class="feature-arrow">Explore duas '+icon('arrow')+'</span></button>'+
+      '<button type="button" data-nav="hadith" class="feature-card blue"><span class="feature-card-number">03 / LEARN</span><div class="feature-icon">'+icon('layers')+'</div><div><h3>Hadith & Sunnah</h3><p>A path to trusted collections and prophetic wisdom.</p></div><span class="feature-arrow">Discover collections '+icon('arrow')+'</span></button></section>'+
+    '<div class="section-header curated-header"><div><span class="section-eyebrow">BEGIN WITH A CHAPTER</span><h2>Beautiful places to begin.</h2><p>Three familiar Surahs, always one tap away.</p></div><button type="button" data-nav="quran" class="section-action">All 114 Surahs '+icon('arrow')+'</button></div>'+featuredSurahs()+
+    '<div class="section-header reflection-header"><div><span class="section-eyebrow">WORDS TO CARRY WITH YOU</span><h2>A moment to reflect.</h2></div></div>'+
+    '<section class="two-column"><article class="panel verse-spotlight"><span class="section-eyebrow">QURAN · 94:5</span><div class="arabic-mini" lang="ar">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا</div><p>Indeed, with hardship comes ease.</p><div class="verse-ref">Surah Ash-Sharh · 94:5</div></article>'+
+    '<article class="mini-seerah"><span class="tag">THE STORY OF THE PROPHET ﷺ</span><h3 lang="ks-Arab">اَلرَّحِیقُ الْمَخْتُوم</h3><p>Read the Kashmiri Seerah of Prophet Muhammad ﷺ and continue your journey through his life.</p><a class="section-action" href="/seerah/index.html">Read Kashmiri Seerah '+icon('arrow')+'</a></article></section>';
   }
   function renderSurahGrid(){
     const needle=state.query.trim().toLowerCase();
@@ -117,6 +149,7 @@
   }
   function renderCatalog(){
     return heading('Explore the Holy Quran','Read all 114 chapters with authentic Arabic text and Kashmiri translations.','THE HOLY QURAN')+
+    '<div class="quran-catalog-intro"><div><span class="section-eyebrow">SUGGESTED STARTING POINTS</span><h2>Begin somewhere beautiful.</h2><p>Open a favorite Surah or explore the entire collection below.</p></div></div>'+featuredSurahs()+
     '<section class="search-line"><label class="search-input">'+icon('search')+'<input type="search" id="surah-search" placeholder="Search surah name, number or 2:255…" value="'+escapeHtml(state.query)+'" autocomplete="off" aria-label="Search surahs"></label><span class="filter-pill">114 Surahs · 6,236 Ayahs</span></section><div class="surah-filter-row" role="group" aria-label="Filter chapters by revelation place">'+['all','makkah','madinah'].map(function(name){const label={all:'All Surahs',makkah:'Makki Surahs',madinah:'Madani Surahs'}[name];return '<button type="button" class="surah-filter'+(state.filter===name?' active':'')+'" data-surah-filter="'+name+'" aria-pressed="'+String(state.filter===name)+'">'+label+'</button>';}).join('')+'<span class="surah-count" id="surah-count"></span></div><div id="surah-results">'+renderSurahGrid()+'</div>';
   }
   function basePath(surah,translator){

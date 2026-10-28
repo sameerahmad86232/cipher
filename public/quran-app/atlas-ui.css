@@ -1,0 +1,226 @@
+/* Koshur Quran — Atlas experience, designed for meaningful reading
+ * Visual improvements without extra app dependencies.
+ * Supports light/dark palettes, reduced motion and compact phones.
+*/
+:root{--atlas-green:#174a37;--atlas-gold:#c9ab6c;--atlas-cream:#f8f7f0;--atlas-stroke:#e4e9df;--atlas-shadow:0 12px 34px rgba(13,46,29,.055)}
+body{background-color:var(--bg)}
+.content-area{max-width:1250px}
+.hero.premium-hero{min-height:432px}
+.hero.premium-hero .hero-content{max-width:690px}
+.premium-hero h1{font-size:clamp(39px,4.3vw,60px)}
+.premium-hero::after{border-color:#e9d7a646}
+.hero-trust-line{font-size:11px}
+.home-jump-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-top:19px}
+.home-jump-links button{display:flex;align-items:center;gap:12px;text-align:left;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:16px 13px;box-shadow:var(--atlas-shadow);transition:transform .2s,border-color .2s,box-shadow .2s}
+.home-jump-links button:hover{transform:translateY(-3px);border-color:#b1cdb3;box-shadow:0 18px 34px rgba(10,64,32,.11)}
+.home-jump-links button:focus-visible{outline:2px solid #4e9669;outline-offset:3px}
+.home-jump-links button>span:nth-child(2){display:grid;gap:4px;flex:1;min-width:0}
+.home-jump-links button strong{display:block;color:var(--ink);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.12px}
+.home-jump-links button small{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.home-jump-links button>svg{width:14px;height:14px;color:#92ad97;flex:none}
+.jump-icon{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:11px;background:#e9f2e9;color:#226748}
+.jump-icon svg{height:18px;width:18px}
+.home-jump-links button:nth-child(2) .jump-icon{color:#af874d;background:#fbf2df}
+.home-jump-links button:nth-child(3) .jump-icon{color:#497e81;background:#eaf4f4}
+.home-jump-links button:nth-child(4) .jump-icon{color:#8261a4;background:#f2edfa}
+.dark .jump-icon{background:#2c533c;color:#a8e0bc}
+.dark .home-jump-links button:nth-child(2) .jump-icon{background:#463d2e;color:#e4c58e}
+.dark .home-jump-links button:nth-child(3) .jump-icon{background:#2c4241;color:#a8d1d0}
+.dark .home-jump-links button:nth-child(4) .jump-icon{background:#39324b;color:#d6c3e7}
+.section-header.daily-header{margin-top:47px}
+.daily-spotlight{display:grid;grid-template-columns:minmax(0,1.09fr) minmax(0,.91fr);gap:16px;align-items:stretch}
+.daily-reading-card{min-width:0;min-height:245px;border:1px solid #d6bd8099;border-radius:19px;background:radial-gradient(ellipse at 92% 5%,#2d6a4a,#10432f 60%,#0c3228);padding:26px 29px 23px;display:flex;flex-direction:column;color:#eef3e6;position:relative;overflow:hidden;box-shadow:0 17px 42px #103b2931}
+.daily-reading-card::before{content:"";position:absolute;pointer-events:none;inset:12px;border-radius:12px;border:1px solid #e8d9ac22}
+.daily-decor{position:absolute;right:-50px;top:-94px;font:230px Amiri,serif;opacity:.08;color:#f4dfa9;pointer-events:none}
+.daily-mini-label{display:flex;gap:9px;align-items:center;font-size:9px;letter-spacing:2.1px;font-weight:800;color:#ead9ab}
+.daily-mini-label svg{width:16px;height:16px}
+.daily-reading-inner{display:flex;align-items:center;justify-content:space-between;gap:13px;margin-top:22px;position:relative}
+.daily-reading-inner h3{font:800 22px/1.3 Manrope,sans-serif;color:#fff;margin:4px 0 6px;letter-spacing:-.6px}
+.daily-reading-inner p{font-size:11px;color:#c8dec9;margin:0;line-height:1.5}
+.daily-arabic-title{display:block;font:25px/1.6 Amiri,serif;color:#f2deae;text-align:left}
+.daily-chapter-badge{width:46px;height:46px;flex:none;border-radius:14px;border:1px solid #f0d9a563;background:#f4dcaf10;display:grid;place-items:center;font:700 18px Manrope;color:#f4d9a3}
+.daily-reading-progress-label{display:flex;justify-content:space-between;align-items:center;color:#c9dccb;font-size:10px;letter-spacing:.1px;margin-top:auto;padding-top:22px}
+.daily-reading-track{height:5px;border-radius:9px;background:#ffffff29;overflow:hidden;margin-top:10px}
+.daily-reading-track span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#ebd5a0,#fff0c4);box-shadow:0 0 10px #edc98973}
+.daily-reading-bottom{display:flex;gap:14px;justify-content:space-between;align-items:center;margin-top:21px}
+.daily-reading-bottom .btn-primary{min-height:39px;font-size:11px;padding:9px 14px;background:#e5d1a0;color:#17402d;border-radius:10px}
+.daily-reading-bottom .btn-primary:hover{background:#f2dfb9}
+.daily-bookmark-link{display:flex;gap:6px;align-items:center;background:none;border:0;padding:8px;color:#e1e9d9;font-size:10px;font-weight:800}
+.daily-bookmark-link svg{width:15px;height:15px}
+.daily-prayer-wrapper{min-height:245px;min-width:0}
+.daily-prayer-wrapper .pt-home-card{margin:0;width:100%;height:100%;border:1px solid #dbe6d6;border-radius:19px;background:radial-gradient(ellipse at 95% 5%,#e1ede2,#f6f7ef 74%);display:flex;flex-direction:column;align-items:flex-start;gap:11px;box-shadow:var(--atlas-shadow);position:relative;overflow:hidden;padding:27px 29px 23px}
+.daily-prayer-wrapper .pt-home-card::after{content:"☾";position:absolute;right:18px;top:-24px;font:128px Georgia,serif;color:#9dbb9133;pointer-events:none}
+.daily-prayer-wrapper .pt-home-emblem{width:41px;height:41px;border-radius:12px;background:#e2ebda;color:#2c6547;font-size:29px;box-shadow:none}
+.daily-prayer-wrapper .pt-home-card>div:nth-child(2){position:relative;z-index:1;flex:none}
+.daily-prayer-wrapper .pt-home-card>div:nth-child(2)>span{letter-spacing:2px;color:#789a7c}
+.daily-prayer-wrapper .pt-home-card h3{font:800 22px/1.3 Manrope,sans-serif;color:#1c4531;letter-spacing:-.7px;margin:8px 0}
+.daily-prayer-wrapper .pt-home-card h3 em{display:block;font:600 17px/1.5 "Cormorant Garamond",Georgia,serif;color:#54745e;margin-top:4px}
+.daily-prayer-wrapper .pt-home-card p{font-size:11px;color:#7b8a7e;line-height:1.7}
+.daily-prayer-wrapper .pt-home-card .btn-green{margin-top:auto;z-index:1;min-height:39px;font-size:11px;background:#215e43;padding:9px 14px}
+.dark .daily-prayer-wrapper .pt-home-card{background:radial-gradient(ellipse at 95% 5%,#365c3d,#20362a 74%);border-color:#40604a}
+.dark .daily-prayer-wrapper .pt-home-card h3{color:#eef4e8}
+.dark .daily-prayer-wrapper .pt-home-card h3 em{color:#b6d5b8}
+.dark .daily-prayer-wrapper .pt-home-card p{color:#b1c5b4}
+.dark .daily-prayer-wrapper .pt-home-emblem{background:#304a38;color:#d2ddb1}
+.home-discover-grid .feature-card{min-height:233px;padding:23px 24px 22px;border-radius:17px;gap:13px;position:relative;overflow:hidden;background:var(--surface);border-color:var(--line);box-shadow:var(--atlas-shadow)}
+.home-discover-grid .feature-card::before{content:"";position:absolute;right:-40px;top:-38px;width:145px;height:145px;border:1px solid #b4d0b159;border-radius:50%;box-shadow:0 0 0 24px #a8cba614,0 0 0 49px #a8cba60d}
+.home-discover-grid .feature-card.gold::before{border-color:#d7ba8566;box-shadow:0 0 0 24px #ecd4a819,0 0 0 49px #e8c9910d}
+.home-discover-grid .feature-card.blue::before{border-color:#a0cfcd6f;box-shadow:0 0 0 24px #aed8d51d,0 0 0 49px #aed8d512}
+.home-discover-grid .feature-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px #0e422315}
+.home-discover-grid .feature-card-number{display:block;font-size:9px;letter-spacing:2.2px;font-weight:800;color:#89a18d;position:relative}
+.home-discover-grid .feature-card h3{font-size:17px;letter-spacing:-.4px}
+.home-discover-grid .feature-card p{font-size:12px;line-height:1.75;max-width:255px}
+.home-discover-grid .feature-icon{width:46px;height:46px;box-shadow:0 2px 6px #183a2111}
+.home-discover-grid .feature-card .feature-arrow{font-size:11px;letter-spacing:.2px}
+.section-header.curated-header{margin-top:44px}
+.curated-surah-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.curated-surah-card{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:208px;text-align:left;padding:20px 22px 19px;border:1px solid #d4c69f61;border-radius:17px;box-shadow:var(--atlas-shadow);background:linear-gradient(145deg,#f4f5ea 0%,#e9f0e9 100%);transition:transform .22s,border-color .22s,box-shadow .22s}
+.curated-surah-card:nth-child(2){background:linear-gradient(145deg,#e6f0e7 0%,#dfece4 100%)}
+.curated-surah-card:nth-child(3){background:linear-gradient(145deg,#f2efe2 0%,#ebeada 100%)}
+.curated-surah-card::before{content:"۞";position:absolute;right:-22px;top:-74px;font:178px Amiri,serif;color:#5b856b13;pointer-events:none}
+.curated-surah-card:hover{transform:translateY(-4px);border-color:#9dbc9c;box-shadow:0 18px 40px #103b271a}
+.curated-top{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative}
+.curated-number{font-size:10px;font-weight:800;letter-spacing:.6px;color:#37684b;background:#ffffff7a;border:1px solid #bcd4ba;border-radius:9px;padding:7px 9px}
+.curated-recommend{font-size:10px;color:#799a7d;font-weight:700;letter-spacing:.2px}
+.curated-arabic{font:34px/1.7 Amiri,serif;text-align:right;color:#20543a;display:block;margin:13px 0}
+.curated-bottom{display:flex;align-items:end;justify-content:space-between;gap:8px;position:relative}
+.curated-bottom strong{display:block;color:#193f2d;font-size:14px;margin-bottom:6px}
+.curated-bottom small{display:block;color:#748c77;font-size:10px;line-height:1.45}
+.curated-bottom svg{width:19px;height:19px;color:#23533e;flex:none}
+.dark .curated-surah-card,.dark .curated-surah-card:nth-child(2),.dark .curated-surah-card:nth-child(3){background:linear-gradient(145deg,#2a4836,#243b30);border-color:#47664c}
+.dark .curated-surah-card::before{color:#a6c7a512}
+.dark .curated-number{background:#35533c;color:#b6deba;border-color:#50734f}
+.dark .curated-recommend{color:#b0cab0}
+.dark .curated-arabic{color:#e8dfb8}
+.dark .curated-bottom strong{color:#e8efe4}
+.dark .curated-bottom small{color:#b1c4af}
+.dark .curated-bottom svg{color:#cce4c1}
+.quran-catalog-intro{margin:25px 0 17px}
+.quran-catalog-intro h2{color:var(--ink);font:800 21px/1.35 Manrope,sans-serif;letter-spacing:-.6px;margin:7px 0 6px}
+.quran-catalog-intro p{color:var(--muted);font-size:12px;line-height:1.7;margin:0}
+.quran-catalog-intro+.curated-surah-grid{margin-bottom:32px}
+.page-heading h1{font-size:clamp(30px,3.5vw,41px)}
+.surah-card{position:relative;box-shadow:var(--atlas-shadow);border-color:var(--line);padding:20px;border-radius:15px;min-height:95px}
+.surah-card::after{content:"";position:absolute;inset:7px;border:1px solid transparent;border-radius:11px;pointer-events:none}
+.surah-card:hover{border-color:#b2cebc;box-shadow:0 18px 33px #0f3c2715;transform:translateY(-2px)}
+.surah-card h3{font-size:15px}
+.surah-card-main p{font-size:11px}
+.surah-number{border-radius:10px}
+.surah-ar{font-size:24px}
+.surah-card:focus-visible{outline:2px solid #4b976b;outline-offset:2px}
+.verse{padding-top:31px;padding-bottom:30px}
+.verse-actions{gap:7px}
+.verse-pill{letter-spacing:.25px}
+.verse-translation{margin-top:17px}
+.verse-source{font-size:10px}
+.chapter-banner{border-radius:20px}
+.reader-progress{font-size:11px}
+.quran-study-switch{border-radius:13px;box-shadow:var(--atlas-shadow)}
+.quran-study-switch button.active{background:#1c6145}
+.flashcard{box-shadow:0 18px 50px #0f3d2729}
+.feature-shortcuts button{border-radius:17px;box-shadow:var(--atlas-shadow);min-height:166px}
+.feature-shortcuts button:hover{transform:translateY(-3px)}
+.shortcut-symbol{border-radius:14px}
+.pt-panel,.hm-card,.settings-panel{border-radius:17px}
+.pt-hero{border-radius:20px}
+.bottom-nav{border-top:1px solid var(--line)}
+.bottom-nav .mobile-nav-link.active{color:#1b6145;background:#e9f3e8}
+.dark .bottom-nav .mobile-nav-link.active{color:#b2eac0;background:#2d4d3a}
+@media(max-width:1130px){
+.home-jump-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+.daily-spotlight{grid-template-columns:1fr 1fr}
+.curated-surah-card{min-height:193px}
+.home-discover-grid .feature-card{min-height:227px}
+}
+@media(max-width:960px){
+.daily-reading-card{padding:22px 21px}
+.daily-prayer-wrapper .pt-home-card{padding:22px}
+.daily-reading-inner h3,.daily-prayer-wrapper .pt-home-card h3{font-size:19px}
+.daily-reading-bottom{gap:7px}
+.daily-reading-bottom .btn{font-size:10px}
+.home-discover-grid .feature-card{padding:19px}
+.curated-surah-card{padding:16px;min-height:192px}
+.curated-arabic{font-size:30px}
+}
+@media(max-width:800px){
+.home-jump-links{grid-template-columns:repeat(4,minmax(0,1fr))}
+.home-jump-links button{flex-direction:column;align-items:flex-start;gap:9px;padding:15px 12px}
+.home-jump-links button>svg{display:none}
+.daily-spotlight{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+.hero.premium-hero{min-height:395px}
+.premium-hero h1{font-size:clamp(33px,8.2vw,44px)}
+.home-jump-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:13px}
+.home-jump-links button{min-height:70px;flex-direction:row;align-items:center;gap:9px;padding:12px 10px;border-radius:12px;box-shadow:none}
+.home-jump-links button>svg{display:none}
+.jump-icon{width:34px;height:34px;border-radius:10px}
+.jump-icon svg{width:16px;height:16px}
+.home-jump-links button strong{font-size:11px}
+.home-jump-links button small{font-size:9px}
+.section-header.daily-header{margin-top:31px;gap:8px}
+.section-header.daily-header h2{font-size:22px}
+.section-header.daily-header p{font-size:10px}
+.section-header.daily-header .section-action{font-size:10px;white-space:nowrap}
+.daily-spotlight{display:grid;grid-template-columns:1fr;gap:10px}
+.daily-reading-card{min-height:247px;padding:22px 22px 21px;border-radius:16px}
+.daily-mini-label{font-size:9px}
+.daily-reading-inner{margin-top:18px}
+.daily-reading-inner h3{font-size:21px}
+.daily-reading-inner p{font-size:10px}
+.daily-arabic-title{font-size:23px}
+.daily-reading-progress-label{padding-top:19px;font-size:10px}
+.daily-reading-bottom{margin-top:18px}
+.daily-prayer-wrapper{min-height:173px}
+.daily-prayer-wrapper .pt-home-card{min-height:175px;padding:17px 19px;display:grid;grid-template-columns:40px 1fr;align-items:start;column-gap:12px;row-gap:9px}
+.daily-prayer-wrapper .pt-home-emblem{width:40px;height:40px;grid-column:1}
+.daily-prayer-wrapper .pt-home-card>div:nth-child(2){grid-column:2}
+.daily-prayer-wrapper .pt-home-card h3{font-size:17px;margin:6px 0}
+.daily-prayer-wrapper .pt-home-card h3 em{display:inline;font-size:16px}
+.daily-prayer-wrapper .pt-home-card .btn-green{grid-column:2;margin:2px 0 0;width:max-content;min-height:37px;font-size:10px}
+.daily-prayer-wrapper .pt-home-card::after{font-size:98px;right:4px;top:-6px}
+.home-discover-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.home-discover-grid .feature-card{min-height:204px;padding:17px 14px;gap:10px}
+.home-discover-grid .feature-card:nth-child(3){grid-column:1/-1;min-height:145px;display:grid;grid-template-columns:42px 1fr;column-gap:15px;align-items:start}
+.home-discover-grid .feature-card:nth-child(3) .feature-card-number{grid-column:1/-1}
+.home-discover-grid .feature-card:nth-child(3) .feature-icon{grid-column:1;grid-row:2}
+.home-discover-grid .feature-card:nth-child(3)>div:nth-of-type(2){grid-column:2;grid-row:2}
+.home-discover-grid .feature-card:nth-child(3) .feature-arrow{grid-column:2;grid-row:3}
+.home-discover-grid .feature-card-number{font-size:8px;letter-spacing:1.35px}
+.home-discover-grid .feature-icon{width:40px;height:40px}
+.home-discover-grid .feature-card h3{font-size:13px}
+.home-discover-grid .feature-card p{font-size:10px}
+.home-discover-grid .feature-card .feature-arrow{font-size:10px}
+.curated-header{margin-top:32px}
+.curated-header .section-action{font-size:10px}
+.curated-surah-grid{grid-template-columns:1fr;gap:10px}
+.curated-surah-card{min-height:145px;padding:14px 18px;border-radius:14px}
+.curated-top{min-height:24px}
+.curated-arabic{font-size:29px;margin:0;line-height:1.65;position:absolute;right:20px;top:28px}
+.curated-bottom{align-items:center;margin-top:36px}
+.curated-bottom strong{font-size:13px;margin-bottom:3px}
+.curated-bottom small{font-size:10px}
+.quran-catalog-intro{margin-top:22px}
+.quran-catalog-intro+.curated-surah-grid{margin-bottom:24px}
+.quran-catalog-intro h2{font-size:19px}
+.quran-catalog-intro p{font-size:11px}
+.surah-grid{grid-template-columns:1fr}
+.surah-card{min-height:82px;padding:15px 14px;box-shadow:none}
+.surah-ar{font-size:23px}
+.verse{padding:22px 17px}
+.verse-arabic{line-height:2.3}
+.verse-translation{line-height:2.4}
+.feature-shortcuts button{min-height:150px;box-shadow:none}
+.pt-home-card{margin:0}
+}
+@media(max-width:375px){
+.home-jump-links button{padding:10px 8px;gap:8px}
+.jump-icon{width:31px;height:31px}
+.home-jump-links button strong{font-size:10.5px}
+.daily-reading-card{padding:20px 17px}
+.daily-prayer-wrapper .pt-home-card{padding:16px}
+.home-discover-grid .feature-card{padding:14px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+.home-jump-links button,.home-discover-grid .feature-card,.curated-surah-card{transition:none}
+}
