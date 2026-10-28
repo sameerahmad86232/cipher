@@ -228,8 +228,9 @@
     content.querySelectorAll('[data-observe-verse]').forEach(function(el){observer.observe(el);});
   }
   function renderHadith(){
-    return heading('Hadith & Sunnah','Explore trusted collections of the Prophet’s teachings, organized for meaningful study.','THE PROPHETIC TRADITION')+
-      '<div class="source-note">'+icon('check')+' These collection links open their original pages on Sunnah.com. Verified Kashmiri Hadith translations are not bundled with this website yet.</div>'+
+    return heading('Hadith & Sunnah','Read the first 20 Sahih al-Bukhari narrations in reviewed Kashmiri, and help refine every word.','THE PROPHETIC TRADITION')+
+      '<section id="hadith-library" aria-live="polite"><div class="bh-loading">Loading Sahih al-Bukhari in Kashmiri…</div></section>'+
+      '<div class="section-header"><div><span class="section-eyebrow">EXPLORE MORE COLLECTIONS</span><h2>Continue your study</h2></div></div>'+
       '<section class="collection-grid">'+collections.map(function(h){return '<article class="panel collection-card"><span class="collection-icon">'+icon('layers')+'</span><div><div class="arabic-heading" lang="ar">'+escapeHtml(h.arabic)+'</div><h3>'+escapeHtml(h.name)+'</h3></div><p>'+escapeHtml(h.description)+'</p><a href="'+h.url+'" target="_blank" rel="noopener noreferrer">Open collection '+icon('external')+'</a></article>';}).join('')+'</section>';
   }
   function renderDuas(){
@@ -283,6 +284,7 @@
     }
     else if(state.tab==='bookmarks')content.innerHTML=renderBookmarks();
     applyPreferences();updateBadge();updateSurahCount();if(extras)extras.updateProgress();
+    if(state.tab==='hadith'&&window.KoshurHadithReview)window.KoshurHadithReview.mount();
     if(window.KoshurShaders){if(state.tab==='home')window.KoshurShaders.mount();else window.KoshurShaders.clean();}
   }
   function updateSurahCount(){
