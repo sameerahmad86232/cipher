@@ -8,6 +8,21 @@ These are proposed Kashmiri renderings of the **66 English expressions from the 
 
 **Evidence used:** existing owner-approved Hadith 1–26 from `training-data/hadith-corrections/approved-passages.jsonl`; approved terminology from `training-data/reusable-language-memory/terminology-preferences.jsonl`; reviewed sentence examples from `server-data/reviewed-pairs.json`; and translation policy in `training-data/HADITH-TRANSLATION-METHOD.md`. These only support selected wording and style, **not** automatic approval of the complete 66 new phrases.
 
+## Owner corrections received — 28 October 2026
+
+The project owner supplied corrected Kashmiri vocabulary wording for the following five entries. These **replace the draft wording for these vocabulary items only**. The 66-row table below retains the previous AI proposals for comparison; the editable CSV and XLSX store the corrections in **Your Kashmiri wording**.
+
+| Item | Hadith | English expression | Owner-supplied Kashmiri wording |
+|---:|---:|---|---|
+| 1 | 27 | to leave somebody out of a distribution | کانهه تقسیمہٕ نِش تراوُن |
+| 2 | 27 | to be thrown face-first into the Fire | نارس منز بُتھ  کٕن تراونہ یُن |
+| 3 | 29 | ungrateful to one’s husband | پننِس خانٛدارس ناشکرا |
+| 6 | 30 | insulting a person through their mother | کٲنٛسہِ  بے عزتی کَرٕن  ماجہِ ہٕنٛز زریع |
+| 7 | 31 | intending to kill someone | کٲنهه شَخصَس قَتل کَرنُک اِرادٕ تھاوُن |
+
+**Status:** Owner corrected (vocabulary only). No full Hadith 27–100 narration has been approved by this update.
+
+---
 ## Proposed translations
 
 | # | Hadith | English expression | Proposed Kashmiri (draft) | Confidence |

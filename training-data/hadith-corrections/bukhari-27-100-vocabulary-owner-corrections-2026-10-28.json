@@ -1,0 +1,56 @@
+{
+  "type": "hadith-vocabulary-owner-corrections",
+  "collection": "Sahih al-Bukhari",
+  "range": "27–100",
+  "receivedOn": "2026-10-28",
+  "scope": "Five Kashmiri expression corrections only, not full hadith translation approval",
+  "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
+  "preserveDrafts": true,
+  "corrections": [
+    {
+      "itemId": 1,
+      "hadithNumber": 27,
+      "englishExpression": "to leave somebody out of a distribution",
+      "proposedAITranslation": "باقیَن دِتھ اَکھ شَخص مَحروٗم تھاوُن",
+      "ownerCorrection": "کانهه تقسیمہٕ نِش تراوُن",
+      "status": "owner-corrected",
+      "source": "User's corrections supplied in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 2,
+      "hadithNumber": 27,
+      "englishExpression": "to be thrown face-first into the Fire",
+      "proposedAITranslation": "بوٗتھِ پؠٹھ جہنمَس منٛز ترٛاوُن",
+      "ownerCorrection": "نارس منز بُتھ  کٕن تراونہ یُن",
+      "status": "owner-corrected",
+      "source": "User's corrections supplied in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 3,
+      "hadithNumber": 29,
+      "englishExpression": "ungrateful to one’s husband",
+      "proposedAITranslation": "پَننِس روٗنَس سٕندۍ اَحسانَن ہُنٛد شُکر اَدا نہٕ کَرُن",
+      "ownerCorrection": "پننِس خانٛدارس ناشکرا",
+      "status": "owner-corrected",
+      "source": "User's corrections supplied in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 6,
+      "hadithNumber": 30,
+      "englishExpression": "insulting a person through their mother",
+      "proposedAITranslation": "کٲنسہِ ماجہِ پؠٹھ طَعنہٕ دِتھ بَدزَبٲنی کَرُن",
+      "ownerCorrection": "کٲنٛسہِ  بے عزتی کَرٕن  ماجہِ ہٕنٛز زریع",
+      "status": "owner-corrected",
+      "source": "User's corrections supplied in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 7,
+      "hadithNumber": 31,
+      "englishExpression": "intending to kill someone",
+      "proposedAITranslation": "کٲنسہِ شَخصَس قَتل کَرنُک اِرادٕ تھاوُن",
+      "ownerCorrection": "کٲنهه شَخصَس قَتل کَرنُک اِرادٕ تھاوُن",
+      "status": "owner-corrected",
+      "source": "User's corrections supplied in ChatGPT, 2026-10-28"
+    }
+  ]
+}
