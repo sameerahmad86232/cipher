@@ -225,10 +225,12 @@ document.addEventListener('click',async function(e){
  if((b.dataset.nav==='duas'||b.dataset.nav==='hisnul')&&api.state.tab!==b.dataset.nav){duaQuery='';duaCategory='All duas';duaLimit=16;openDuas.clear();}
  if(b.dataset.quranView){
    if(b.dataset.quranView==='cards'){
-     cards.surah=api.state.selected||api.state.lastRead.surah||1;
-     cards.translator=[300,301].includes(Number(api.state.prefs.translator))?Number(api.state.prefs.translator):300;
-     quranMode='cards';
+     const selectedSurah=api.state.selected||api.state.lastRead.surah||1;
+     const translation=[300,301].includes(Number(api.state.prefs.translator))?Number(api.state.prefs.translator):300;
+     const needsNewDeck=cards.surah!==selectedSurah||cards.translator!==translation||!cards.items.length;
+     cards.surah=selectedSurah;cards.translator=translation;quranMode='cards';
      if(api.state.tab==='quran')api.render();else api.navigate('quran',true);
+     if(needsNewDeck)loadCards();
    }else{
      quranMode='read';
      if(api.state.tab==='quran')api.render();else api.navigate('quran',true);
