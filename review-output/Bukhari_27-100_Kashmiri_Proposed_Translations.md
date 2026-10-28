@@ -30,7 +30,7 @@ The user confirmed that the existing Kashmiri wording of items **4, 5, 8 and 9**
 
 For item **10** (Sahih al-Bukhari 34), the user replaced the earlier draft “وَعدٕ یا عَہد توٗرُن” with **“wade khilafiii”**, provisionally represented as **“وعدٕ خلافی”** in Perso-Arabic script. The spelling is a transliteration choice, **not** a user-typed Kashmiri-script confirmation.
 
-The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) contains these latest corrections and decisions. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) currently contains the earlier five owner corrections, and has not yet incorporated this later review; use the CSV for the latest status. The full table below retains the original draft proposals for comparison.
+The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) contains these latest corrections and decisions. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) has been updated with owner review through item 20. The full table below retains the original draft proposals for comparison.
 
 ## Further owner review — vocabulary items 11–20
 
@@ -42,7 +42,7 @@ On 28 October 2026 the project owner accepted items **11, 12, 13, 14, 15, 16 and
 | 18 | 45 | **أکِس دۄہس تیوہارک پٲٹھۍ مانُن** | Exact full phrase from owner. |
 | 19 | 46 | **مٔس**; Romanized phrase: **maes waekrith aaasun** | Only the noun's Kashmiri spelling was explicitly supplied; do not invent spelling for other words. |
 
-See the editable [review CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) for latest correction and acceptance states. The previous [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) will need regeneration to reflect this newest review. Items remain vocabulary-only; the full hadith narrations are not owner-approved.
+See the editable [review CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) for latest correction and acceptance states. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) has been updated with owner review through item 20. Items remain vocabulary-only; the full hadith narrations are not owner-approved.
 
 ## Proposed translations
 
