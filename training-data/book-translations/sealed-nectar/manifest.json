@@ -1,0 +1,17 @@
+{
+  "project": "Ar-Raheeq Al-Makhtum Kashmiri translation",
+  "source_title": "Ar-Raheeq Al-Makhtum (The Sealed Nectar)",
+  "source_author": "Saifur Rahman al-Mubarakpuri",
+  "source_file_sha256": "28f6331b8026d95b4bd64154d93337858509822c1e449535011e0be8a6c1858c",
+  "source_pdf_pages": 324,
+  "translated_book_pages": "8-21",
+  "chapters": [
+    "Location and Nature of Arab Tribes",
+    "Rulership and Princeship among the Arabs"
+  ],
+  "language": "Kashmiri (Perso-Arabic script)",
+  "status": "draft-awaiting-owner-review",
+  "dictionary_source_records": "58,000+",
+  "searchable_dictionary_headwords": 49682,
+  "translation_policy": "Dictionary glosses and saved terminology are evidence. Complete sentences require contextual translation and human review."
+}
