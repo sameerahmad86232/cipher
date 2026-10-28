@@ -68,6 +68,7 @@ function currentNext(){
  return {...first,diff:24*3600-seconds+hmMinutes(first.time)*60,tomorrow:true};
 }
 function countdown(sec){const s=Math.max(0,sec);const h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return (h?h+'h ':'')+m+'m';}
+function progress(){const now=zonedParts(new Date(),timeZone),current=now.h*60+now.n;return {elapsed:prayers.filter(k=>{const n=hmMinutes(valueFor(k));return n!==null&&n<=current;}).length,total:5};}
 function updateCountdown(){
  const v=currentNext();const title=document.getElementById('prayer-next-label'),tm=document.getElementById('prayer-next-time'),inN=document.getElementById('prayer-countdown');
  if(!v)return;
@@ -76,6 +77,7 @@ function updateCountdown(){
  if(inN)inN.textContent='In '+countdown(v.diff);
  const x=zonedParts(new Date(),timeZone),iso=[x.y,String(x.m).padStart(2,'0'),String(x.d).padStart(2,'0')].join('-');
  if(iso!==todaysDate&&!loading)refresh();
+ if(api?.state.tab==='prayers'&&window.KoshurExtras)window.KoshurExtras.updateProgress();
 }
 function updateMini(){
  const el=document.getElementById('prayer-home-next');if(!el)return;const n=currentNext();
@@ -126,6 +128,6 @@ document.addEventListener('click',function(e){
  }
 });
 document.addEventListener('change',e=>{if(e.target.id==='pt-24h'){cfg.show24h=e.target.checked;save();api.render();}});
-window.KoshurPrayer={attach,render,homeWidget,settingsAddon,updateMini,updateCountdown,refresh};
+window.KoshurPrayer={attach,render,homeWidget,settingsAddon,updateMini,updateCountdown,refresh,progress};
 setInterval(()=>{if(api){updateCountdown();updateMini();}},30000);
 })();
