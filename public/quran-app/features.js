@@ -237,7 +237,7 @@ document.addEventListener('click',async function(e){
    }
    return;
  }
- if(b.id==='mobile-more'){const side=document.getElementById('sidebar'),overlay=document.getElementById('backdrop');side.classList.toggle('open');overlay.hidden=!side.classList.contains('open');document.getElementById('menu-toggle').setAttribute('aria-expanded',String(side.classList.contains('open')));return;}
+ if(b.id==='mobile-more'){const side=document.getElementById('sidebar'),overlay=document.getElementById('backdrop');side.classList.toggle('open');overlay.hidden=!side.classList.contains('open');const expanded=String(side.classList.contains('open'));document.getElementById('menu-toggle').setAttribute('aria-expanded',expanded);b.setAttribute('aria-expanded',expanded);return;}
  if(b.dataset.hmCategory){duaCategory=b.dataset.hmCategory;duaLimit=16;filterDuasInPlace();return;}
  if(b.dataset.hmMore!==undefined){duaLimit+=16;filterDuasInPlace();return;}
  if(b.dataset.hmOpen){const id=b.dataset.hmOpen;openDuas.has(id)?openDuas.delete(id):openDuas.add(id);filterDuasInPlace();return;}
