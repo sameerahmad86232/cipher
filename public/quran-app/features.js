@@ -213,6 +213,7 @@ function attach(data){
 }
 document.addEventListener('click',async function(e){
  const b=e.target.closest('button');if(!b||!api)return;
+ if((b.dataset.nav==='duas'||b.dataset.nav==='hisnul')&&api.state.tab!==b.dataset.nav){duaQuery='';duaCategory='All duas';duaLimit=16;openDuas.clear();}
  if(b.id==='mobile-more'){const side=document.getElementById('sidebar'),overlay=document.getElementById('backdrop');side.classList.toggle('open');overlay.hidden=!side.classList.contains('open');document.getElementById('menu-toggle').setAttribute('aria-expanded',String(side.classList.contains('open')));return;}
  if(b.dataset.hmCategory){duaCategory=b.dataset.hmCategory;duaLimit=16;filterDuasInPlace();return;}
  if(b.dataset.hmMore!==undefined){duaLimit+=16;filterDuasInPlace();return;}
