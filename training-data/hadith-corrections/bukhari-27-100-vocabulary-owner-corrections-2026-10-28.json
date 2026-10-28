@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Five Kashmiri expression corrections only, not full hadith translation approval",
+  "scope": "Six corrected expressions (item 10 in Romanized form) plus four draft vocabulary renderings accepted as-is; not approval of full hadith narrations.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -51,6 +51,50 @@
       "ownerCorrection": "کٲنهه شَخصَس قَتل کَرنُک اِرادٕ تھاوُن",
       "status": "owner-corrected",
       "source": "User's corrections supplied in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 10,
+      "hadithNumber": 34,
+      "englishExpression": "to break a covenant or promise",
+      "proposedAITranslation": "وَعدٕ یا عَہد توٗرُن",
+      "ownerRomanized": "wade khilafiii",
+      "transcribedKashmiri": "وعدٕ خلافی",
+      "status": "owner-corrected-in-romanization; Kashmiri-script spelling-to-confirm",
+      "source": "User's corrections in ChatGPT, 2026-10-28"
+    }
+  ],
+  "acceptedEntries": [
+    {
+      "itemId": 4,
+      "hadithNumber": 30,
+      "englishExpression": "cloak",
+      "acceptedWording": "لَبٲدٕ / چُغہٕ (اوٚپَرُک لِباس)",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User stated 'rest are direct' in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 5,
+      "hadithNumber": 30,
+      "englishExpression": "servant / enslaved person",
+      "acceptedWording": "غُلام (بَنٛدٕ بَنٲونہٕ آمُت شَخص) / خٲدِم (نوکر)",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User stated 'rest are direct' in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 8,
+      "hadithNumber": 32,
+      "englishExpression": "wrongdoing / injustice (zulm)",
+      "acceptedWording": "ظُلم / نااِنصٲفی",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User stated 'rest are direct' in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 9,
+      "hadithNumber": 33,
+      "englishExpression": "to betray an entrusted responsibility",
+      "acceptedWording": "امٲنَتَس خِیٲنَت کَرُن",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User stated 'rest are direct' in ChatGPT, 2026-10-28"
     }
   ]
 }
