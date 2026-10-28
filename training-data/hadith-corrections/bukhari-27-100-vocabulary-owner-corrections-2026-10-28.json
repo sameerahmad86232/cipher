@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Six corrected expressions (item 10 in Romanized form) plus four draft vocabulary renderings accepted as-is; not approval of full hadith narrations.",
+  "scope": "Kashmiri vocabulary review only: 9 owner corrections including Romanized items, plus 11 accepted AI-draft expressions. No full Hadith 27–100 narrations approved.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -61,6 +61,42 @@
       "transcribedKashmiri": "وعدٕ خلافی",
       "status": "owner-corrected-in-romanization; Kashmiri-script spelling-to-confirm",
       "source": "User's corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 17,
+      "hadithNumber": 44,
+      "englishExpression": "a barley grain / a wheat grain",
+      "proposedAITranslation": "جَوٕک دانٕ / گَنٛمٕچ دانٕ",
+      "ownerCorrection": {
+        "barley": "وٕشکہٕ",
+        "wheat": "کٕنُک"
+      },
+      "displayWording": "وٕشکہٕ / کٕنُک",
+      "status": "owner-corrected",
+      "source": "User correction in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 18,
+      "hadithNumber": 45,
+      "englishExpression": "taking a day as a festival",
+      "proposedAITranslation": "دِیٖنی تہوارُک دۄہ",
+      "ownerCorrection": "أکِس دۄہس تیوہارک پٲٹھۍ مانُن",
+      "displayWording": "أکِس دۄہس تیوہارک پٲٹھۍ مانُن",
+      "status": "owner-corrected",
+      "source": "User correction in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 19,
+      "hadithNumber": 46,
+      "englishExpression": "unkempt / dishevelled hair",
+      "proposedAITranslation": "سَرُک بال وِکھرِتھ آسٕنۍ",
+      "ownerCorrection": {
+        "confirmedNoun": "مٔس",
+        "romanization": "maes waekrith aaasun"
+      },
+      "displayWording": "مٔس — maes waekrith aaasun",
+      "status": "owner-corrected-romanized-phrase; full Kashmiri-script spelling unconfirmed",
+      "source": "User correction in ChatGPT, 2026-10-28"
     }
   ],
   "acceptedEntries": [
@@ -95,6 +131,62 @@
       "acceptedWording": "امٲنَتَس خِیٲنَت کَرُن",
       "status": "owner-accepted-vocabulary-only",
       "source": "User stated 'rest are direct' in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 11,
+      "hadithNumber": 35,
+      "englishExpression": "Laylat al-Qadr / Night of Decree",
+      "acceptedWording": "لَیلَۃُ القَدر — قَدرٕچ راتھ",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 12,
+      "hadithNumber": 36,
+      "englishExpression": "to stand guard in the cause of Allah",
+      "acceptedWording": "اللہ تعالہ سٕندِ وَتہِ منٛز پٕہرٕ دِیُن",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 13,
+      "hadithNumber": 39,
+      "englishExpression": "overburdening oneself in religious practice",
+      "acceptedWording": "دیٖنَس منٛز پَنُن پان طاقتہٕ کھۄتہٕ زیادٕ مُشکِلاتَس منٛز ترٛاوُن",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 14,
+      "hadithNumber": 40,
+      "englishExpression": "direction of prayer (qiblah)",
+      "acceptedWording": "قِبلہٕ — نَماز پَرَنہٕ وِزِ رُخ کَرنُک طَرف",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 15,
+      "hadithNumber": 41,
+      "englishExpression": "settlement or reckoning of deeds",
+      "acceptedWording": "عملَن ہُنٛد حِسٲب کِتاب",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 16,
+      "hadithNumber": 43,
+      "englishExpression": "excessive voluntary worship",
+      "acceptedWording": "نَفل عِبٲدَتَس منٛز حدٕ کھۄتہٕ زیادٕ کَرُن",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 20,
+      "hadithNumber": 47,
+      "englishExpression": "funeral procession",
+      "acceptedWording": "جَنازٕ سۭتۍ پَکُن / جَنازَچ جُلوٗس",
+      "status": "owner-accepted-vocabulary-only",
+      "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
     }
   ]
 }
