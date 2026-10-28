@@ -79,9 +79,9 @@
   function applyPreferences(){document.body.classList.toggle('dark',!!state.prefs.dark);document.documentElement.style.setProperty('--reading-scale',String(Math.max(.8,Math.min(1.5,Number(state.prefs.scale)||1))));}
   function toast(message){const node=document.getElementById('toast');node.textContent=message;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){node.classList.remove('show');},2600);}
   function updateBadge(){document.getElementById('bookmarks-count').textContent=String(state.bookmarks.length);}
-  function setNav(tab){document.querySelectorAll('[data-nav]').forEach(function(el){const active=el.dataset.nav===tab;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});document.getElementById('current-section').textContent={home:'Home',quran:'Al-Quran',hadith:'Hadith',duas:'Duas',hisnul:'Hisnul Muslim',flashcards:'Flashcards',tasbih:'Tasbih',ramadan:'Ramadan',settings:'Settings',bookmarks:'Saved verses'}[tab]||'Home';}
+  function setNav(tab){document.querySelectorAll('[data-nav]').forEach(function(el){const active=el.dataset.nav===tab;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});document.getElementById('current-section').textContent={home:'Home',quran:'Al-Quran',hadith:'Hadith',duas:'Duas',hisnul:'Hisnul Muslim',prayers:'Prayer Times',flashcards:'Flashcards',tasbih:'Tasbih',ramadan:'Ramadan',settings:'Settings',bookmarks:'Saved verses'}[tab]||'Home';}
   function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').hidden=true;document.getElementById('menu-toggle').setAttribute('aria-expanded','false');}
-  function navigate(tab,keepReader){if(!['home','quran','hadith','duas','hisnul','flashcards','tasbih','ramadan','settings','bookmarks'].includes(tab))tab='home';state.tab=tab;if(tab!=='quran'||!keepReader){if(tab==='quran')state.selected=null;}state.error=null;closeMenu();setNav(tab);history.replaceState(null,'',location.pathname+location.search+'#'+tab);render();window.scrollTo({top:0,behavior:'instant'});}
+  function navigate(tab,keepReader){if(tab==='flashcards'){tab='quran';keepReader=true;if(extras)extras.setQuranMode('cards');}if(!['home','quran','prayers','hadith','duas','hisnul','tasbih','ramadan','settings','bookmarks'].includes(tab))tab='home';if(tab==='quran'&&!keepReader&&extras)extras.setQuranMode('read');state.tab=tab;if(tab!=='quran'||!keepReader){if(tab==='quran')state.selected=null;}state.error=null;closeMenu();setNav(tab);history.replaceState(null,'',location.pathname+location.search+'#'+tab);render();window.scrollTo({top:0,behavior:'instant'});}
   function heading(title,description,label){return '<div class="page-heading"><span class="section-eyebrow">'+escapeHtml(label||'DISCOVER')+'</span><h1>'+escapeHtml(title)+'</h1><p>'+escapeHtml(description)+'</p></div>';}
   function btnNav(label,tab,cls,ic){return '<button type="button" class="btn '+cls+'" data-nav="'+tab+'">'+(ic?icon(ic):'')+escapeHtml(label)+'</button>';}
   function renderHome(){
@@ -164,7 +164,7 @@
     requestNumber++;
     const request=requestNumber;
     state.selected=meta.surah_id;state.activeAyah=ayah||null;state.chapter=null;state.chapterTranslation=null;state.loading=true;state.error=null;
-    state.tab='quran';setNav('quran');closeMenu();history.replaceState(null,'',location.pathname+location.search+'#quran');render();window.scrollTo(0,0);
+    state.tab='quran';if(extras)extras.setQuranMode('read');setNav('quran');closeMenu();history.replaceState(null,'',location.pathname+location.search+'#quran');render();window.scrollTo(0,0);
     try{
       const data=await Promise.all([loadPart(meta.surah_id,null),loadPart(meta.surah_id,Number(state.prefs.translator))]);
       if(request!==requestNumber||state.selected!==meta.surah_id)return;
@@ -228,10 +228,10 @@
     if(observer){observer.disconnect();observer=null;}
     setNav(state.tab);
     if(state.tab==='home')content.innerHTML=renderHome()+(extras?extras.homeAddon():'');
-    else if(state.tab==='quran')content.innerHTML=state.selected?renderReader():renderCatalog();
+    else if(state.tab==='quran')content.innerHTML=(extras?extras.quranBar():'')+(extras&&extras.isFlashcards()?extras.render('flashcards'):(state.selected?renderReader():renderCatalog()));
     else if(state.tab==='hadith')content.innerHTML=renderHadith();
     else if(state.tab==='duas'||state.tab==='hisnul')content.innerHTML=extras?extras.render(state.tab):renderDuas();
-    else if(['tasbih','flashcards','ramadan'].includes(state.tab))content.innerHTML=extras?extras.render(state.tab):'<div class="empty">Preparing experience...</div>';
+    else if(['tasbih','ramadan','prayers'].includes(state.tab))content.innerHTML=extras?extras.render(state.tab):'<div class="empty">Preparing experience...</div>';
     else if(state.tab==='settings')content.innerHTML=renderSettings().replace('</section>',(extras?extras.settingsAddon():'')+'</section>');
     else if(state.tab==='bookmarks')content.innerHTML=renderBookmarks();
     applyPreferences();updateBadge();updateSurahCount();if(extras)extras.updateProgress();
@@ -328,7 +328,8 @@
       state.surahs=metadata;
       if(!refParts(state.lastRead.surah+':'+state.lastRead.ayah))state.lastRead={surah:1,ayah:1};
       const hash=(location.hash||'').slice(1);
-      state.tab=['home','quran','hadith','duas','hisnul','flashcards','tasbih','ramadan','settings','bookmarks'].includes(hash)?hash:'home';
+      if(hash==='flashcards'&&extras)extras.setQuranMode('cards');
+      state.tab=['home','quran','prayers','hadith','duas','hisnul','tasbih','ramadan','settings','bookmarks'].includes(hash)?hash:hash==='flashcards'?'quran':'home';
       render();
     }catch(e){
       content.innerHTML='<div class="empty"><strong>Unable to start Koshur Quran</strong>The Surah list could not be loaded. Please refresh the page.</div>';
