@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Kashmiri vocabulary review only: 9 owner corrections including Romanized items, plus 11 accepted AI-draft expressions. No full Hadith 27–100 narrations approved.",
+  "scope": "Vocabulary only: 11 corrections and 19 accepted terms, not full Hadith approval.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -97,6 +97,20 @@
       "displayWording": "مٔس — maes waekrith aaasun",
       "status": "owner-corrected-romanized-phrase; full Kashmiri-script spelling unconfirmed",
       "source": "User correction in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 23,
+      "hadithNumber": 50,
+      "ownerRomanized": "Zaen te su wuchaan chu",
+      "status": "Owner wording in Roman script; spelling not confirmed",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 30,
+      "hadithNumber": 60,
+      "ownerCorrection": "وضو وِزِ کھورِ نہ چھلُن",
+      "status": "Owner corrected",
+      "source": "User review 2026-10-28"
     }
   ],
   "acceptedEntries": [
@@ -187,6 +201,46 @@
       "acceptedWording": "جَنازٕ سۭتۍ پَکُن / جَنازَچ جُلوٗس",
       "status": "owner-accepted-vocabulary-only",
       "source": "User said all other items 11–20 correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 21,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 22,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 24,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 25,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 26,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 27,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 28,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
+    },
+    {
+      "itemId": 29,
+      "status": "Owner accepted",
+      "source": "User review 2026-10-28"
     }
   ]
 }

@@ -122,3 +122,12 @@ Check especially the phrases for historical clothing and slavery, the meaning of
 ## How to send corrections
 
 Open the [CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) in a spreadsheet app. Enter your preferred wording in the **Your Kashmiri wording** column, and mark your decision. Or send corrections here as `row 5: [correct Kashmiri wording]`. Draft columns should not be promoted to owner-approved records without explicit review.
+
+## Owner review: items 21–30
+
+Accepted as proposed: 21, 22, 24, 25, 26, 27, 28, 29.
+
+- Item 23: **Zaen te su wuchaan chu** (Romanized wording supplied by owner; Kashmiri-script spelling not confirmed).
+- Item 30: **وضو وِزِ کھورِ نہ چھلُن** (exact wording supplied by owner).
+
+Only these vocabulary expressions were reviewed; the full narrations remain separate drafts.
