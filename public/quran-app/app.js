@@ -59,7 +59,7 @@
   const defaults={translator:300,scale:1,showTranslation:true,dark:false};
   const savedPrefs=restore('preferences',{});
   const state={
-    tab:'home',surahs:[],selected:null,activeAyah:null,query:'',
+    tab:'home',surahs:[],selected:null,activeAyah:null,query:'',filter:'all',
     prefs:Object.assign({},defaults,savedPrefs),
     bookmarks:restore('bookmarks',[]),
     lastRead:restore('lastRead',{surah:1,ayah:1}),
@@ -86,7 +86,7 @@
   function renderHome(){
     const last=findSurah(state.lastRead.surah)||state.surahs[0];
     const lastTitle=last?escapeHtml(last.name_en)+' · '+Number(state.lastRead.ayah):'Al-Fatihah · 1';
-    return '<section class="hero"><div class="hero-content"><span class="hero-pill">✦ &nbsp; YOUR DAILY SPIRITUAL COMPANION</span><h1>Closer to the <em>Qur\'an,</em><br>closer to home.</h1><p class="subtext">Discover the words of Allah with beautiful Arabic text and Kashmiri translations. A peaceful space to read, reflect, and grow.</p><div class="hero-buttons"><button type="button" class="btn btn-primary" data-continue>'+icon('book')+'Start Reading '+icon('arrow')+'</button>'+btnNav('Explore Quran','quran','btn-ghost')+'</div></div><div class="hero-art"><div class="hero-art-circle"><div class="hero-arabic">بِسْمِ اللَّهِ<br>الرَّحْمَٰنِ الرَّحِيمِ<small>IN THE NAME OF ALLAH</small></div></div></div></section>'+
+    return '<section class="hero"><div class="hero-content"><span class="hero-pill">✦ &nbsp; YOUR DAILY SPIRITUAL COMPANION</span><h1>Closer to the <em>Qur\'an,</em><br>closer to home.</h1><p class="subtext">Discover the words of Allah with beautiful Arabic text and Kashmiri translations. A peaceful space to read, reflect, and grow.</p><div class="hero-buttons"><button type="button" class="btn btn-primary" data-continue>'+icon('book')+'Start Reading '+icon('arrow')+'</button>'+btnNav('Explore Quran','quran','btn-ghost')+'</div><div class="hero-bottom-rule">Read in Arabic &amp; Kashmiri · Free forever</div></div><div class="hero-art"><div class="hero-art-circle"><div class="hero-arabic">بِسْمِ اللَّهِ<br>الرَّحْمَٰنِ الرَّحِيمِ<small>IN THE NAME OF ALLAH</small></div></div></div></section>'+
     '<section class="stat-row" aria-label="Quran collection facts"><div class="stat-card"><div class="stat-icon">'+icon('book')+'</div><div class="stat-text"><strong>114</strong><span>Surahs</span></div></div><div class="stat-card"><div class="stat-icon">'+icon('star')+'</div><div class="stat-text"><strong>6,236</strong><span>Ayahs</span></div></div><div class="stat-card"><div class="stat-icon">'+icon('globe')+'</div><div class="stat-text"><strong>2</strong><span>Kashmiri editions</span></div></div></section>'+
     '<div class="section-header"><div><span class="section-eyebrow">WELCOME BACK</span><h2>Pick up where you left off</h2></div></div><section class="reading-strip"><span class="stat-icon">'+icon('bookmark')+'</span><div style="flex:1"><h3>'+lastTitle+'</h3><p>Your reading journey is waiting for you.</p></div><button type="button" class="btn btn-green" data-continue>Continue '+icon('arrow')+'</button></section>'+
     '<div class="section-header"><div><span class="section-eyebrow">EXPLORE THE LIBRARY</span><h2>What would you like to read?</h2><p>Made for moments of learning and reflection.</p></div></div>'+
@@ -97,7 +97,7 @@
   }
   function renderSurahGrid(){
     const needle=state.query.trim().toLowerCase();
-    const visible=state.surahs.filter(function(s){return !needle||[s.name_en,s.name_ar,s.meaning_en,s.surah_id].some(function(t){return String(t).toLowerCase().includes(needle);});});
+    const visible=state.surahs.filter(function(s){return (state.filter==='all'||String(s.revelation_place).toLowerCase()===state.filter)&&(!needle||[s.name_en,s.name_ar,s.meaning_en,s.surah_id].some(function(t){return String(t).toLowerCase().includes(needle);}));});
     if(!visible.length)return '<div class="empty">'+icon('search')+'<strong>No surahs found</strong>Try another surah name or number.</div>';
     return '<div class="surah-grid">'+visible.map(function(s){
       return '<button type="button" class="surah-card" data-open="'+s.surah_id+'"><span class="surah-number"><span>'+s.surah_id+'</span></span><div class="surah-card-main"><h3>'+escapeHtml(s.name_en)+'</h3><p>'+escapeHtml(s.meaning_en)+' · '+s.revelation_place+'</p></div><div class="surah-ar" lang="ar">'+escapeHtml(s.name_ar)+'<small>'+s.verses_count+' verses</small></div></button>';
@@ -105,7 +105,7 @@
   }
   function renderCatalog(){
     return heading('Explore the Holy Quran','Read all 114 chapters with authentic Arabic text and Kashmiri translations.','THE HOLY QURAN')+
-    '<section class="search-line"><label class="search-input">'+icon('search')+'<input type="search" id="surah-search" placeholder="Search surah name, number or 2:255…" value="'+escapeHtml(state.query)+'" autocomplete="off" aria-label="Search surahs"></label><span class="filter-pill">114 Surahs · 6,236 Ayahs</span></section><div id="surah-results">'+renderSurahGrid()+'</div>';
+    '<section class="search-line"><label class="search-input">'+icon('search')+'<input type="search" id="surah-search" placeholder="Search surah name, number or 2:255…" value="'+escapeHtml(state.query)+'" autocomplete="off" aria-label="Search surahs"></label><span class="filter-pill">114 Surahs · 6,236 Ayahs</span></section><div class="surah-filter-row" role="group" aria-label="Filter chapters by revelation place">'+['all','makkah','madinah'].map(function(name){const label={all:'All Surahs',makkah:'Makki Surahs',madinah:'Madani Surahs'}[name];return '<button type="button" class="surah-filter'+(state.filter===name?' active':'')+'" data-surah-filter="'+name+'" aria-pressed="'+String(state.filter===name)+'">'+label+'</button>';}).join('')+'<span class="surah-count" id="surah-count"></span></div><div id="surah-results">'+renderSurahGrid()+'</div>';
   }
   function basePath(surah,translator){
     const file=pad(surah)+'.json';
@@ -140,7 +140,7 @@
     const meta=findSurah(state.selected);
     if(!meta)return renderCatalog();
     const current=selectedTranslation();
-    const top='<div class="reader-head"><button type="button" class="reader-back" data-back>'+icon('left')+' All Surahs</button><div class="reader-tools"><select class="select-field" id="reader-translation" data-setting="translator" aria-label="Select translation">'+options()+'</select><button type="button" class="icon-button" data-nav="settings" aria-label="Reading settings">'+icon('settings')+'</button></div></div>';
+    const top='<div class="reader-head"><button type="button" class="reader-back" data-back>'+icon('left')+' All Surahs</button><div class="reader-tools"><select class="select-field" id="reader-translation" data-setting="translator" aria-label="Select translation">'+options()+'</select><label class="jump-label">Jump to Ayah <input id="jump-ayah" type="number" inputmode="numeric" min="1" max="'+meta.verses_count+'" placeholder="Ayah" aria-label="Ayah number"></label><button type="button" class="btn btn-outline reader-jump" data-jump>Go</button><button type="button" class="icon-button" data-nav="settings" aria-label="Reading settings">'+icon('settings')+'</button></div></div>';
     const banner='<section class="chapter-banner"><div class="ar-title" lang="ar">'+escapeHtml(meta.name_ar)+'</div><h1>'+escapeHtml(meta.name_en)+'</h1><p>'+escapeHtml(meta.meaning_en)+' &nbsp; · &nbsp; '+meta.verses_count+' Ayahs &nbsp; · &nbsp; '+meta.revelation_place+'</p>'+(meta.surah_id!==1&&meta.surah_id!==9?'<div class="bismillah" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>':'')+'</section>';
     if(state.loading)return top+banner+'<div class="content-loading"><span class="spinner"></span><p>Loading Quran text and translation…</p></div>';
     if(state.error)return top+banner+'<div class="empty"><strong>Could not load this chapter</strong>Check your internet connection and try again.<p>'+escapeHtml(state.error)+'</p><button class="btn btn-green" data-retry>Retry loading</button></div>';
@@ -232,7 +232,12 @@
     else if(state.tab==='duas'){state.duasOpen={};content.innerHTML=renderDuas();}
     else if(state.tab==='settings')content.innerHTML=renderSettings();
     else if(state.tab==='bookmarks')content.innerHTML=renderBookmarks();
-    applyPreferences();updateBadge();
+    applyPreferences();updateBadge();updateSurahCount();
+  }
+  function updateSurahCount(){
+    const count=document.getElementById('surah-count');if(!count)return;
+    const matched=state.surahs.filter(function(s){const needle=state.query.trim().toLowerCase();return (state.filter==='all'||String(s.revelation_place).toLowerCase()===state.filter)&&(!needle||[s.name_en,s.name_ar,s.meaning_en,s.surah_id].some(function(v){return String(v).toLowerCase().includes(needle);}));});
+    count.textContent=matched.length+' chapters';
   }
   function clearBookmarkUI(key){
     document.querySelectorAll('[data-bookmark]').forEach(function(b){if(b.dataset.bookmark===key){const saved=isSaved(key);b.classList.toggle('saved',saved);b.setAttribute('aria-label',(saved?'Remove bookmark':'Save verse')+' '+key);}});
@@ -264,6 +269,19 @@
     if(node.id==='menu-toggle'){const bar=document.getElementById('sidebar');const opened=!bar.classList.contains('open');bar.classList.toggle('open',opened);document.getElementById('backdrop').hidden=!opened;node.setAttribute('aria-expanded',String(opened));return;}
     if(node.id==='top-search'){focusSearch();return;}
     if(node.id==='top-bookmarks'){navigate('bookmarks');return;}
+    if(node.dataset.surahFilter){
+      state.filter=node.dataset.surahFilter;
+      content.querySelectorAll('[data-surah-filter]').forEach(function(btn){const active=btn.dataset.surahFilter===state.filter;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});
+      const results=document.getElementById('surah-results');if(results)results.innerHTML=renderSurahGrid();
+      updateSurahCount();return;
+    }
+    if(node.hasAttribute('data-jump')){
+      const input=document.getElementById('jump-ayah');const number=input?Number(input.value):NaN;const meta=findSurah(state.selected);
+      if(!meta||!Number.isInteger(number)||number<1||number>meta.verses_count){toast('Enter a valid ayah number.');if(input)input.focus();return;}
+      const verse=document.getElementById('verse-'+number);
+      if(verse){content.querySelectorAll('.verse.highlight').forEach(function(e){e.classList.remove('highlight');});verse.classList.add('highlight');verse.scrollIntoView({block:'start',behavior:'smooth'});updateLast(meta.surah_id,number);}
+      return;
+    }
     if(node.dataset.open){openSurah(Number(node.dataset.open));return;}
     if(node.hasAttribute('data-back')){state.selected=null;navigate('quran');return;}
     if(node.hasAttribute('data-continue')){openSurah(state.lastRead.surah||1,state.lastRead.ayah||1);return;}
@@ -279,7 +297,7 @@
   });
   document.getElementById('backdrop').addEventListener('click',closeMenu);
   document.addEventListener('input',function(e){
-    if(e.target.id==='surah-search'){state.query=e.target.value;const results=document.getElementById('surah-results');if(results)results.innerHTML=renderSurahGrid();}
+    if(e.target.id==='surah-search'){state.query=e.target.value;const results=document.getElementById('surah-results');if(results)results.innerHTML=renderSurahGrid();updateSurahCount();}
     if(e.target.dataset.setting==='scale'){state.prefs.scale=Number(e.target.value);applyPreferences();store('preferences',state.prefs);}
   });
   document.addEventListener('change',function(e){
@@ -289,6 +307,7 @@
     const focused=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName);
     if(e.key==='Escape'){closeMenu();if(focused)document.activeElement.blur();}
     if(e.key==='/'&&!focused){e.preventDefault();focusSearch();}
+    if(e.key==='Enter'&&e.target.id==='jump-ayah'){e.preventDefault();const button=document.querySelector('[data-jump]');if(button)button.click();return;}
     if(e.key==='Enter'&&e.target.id==='surah-search'){
       const query=e.target.value.trim();const ref=refParts(query);
       if(ref){e.preventDefault();linkAyah(query);return;}
