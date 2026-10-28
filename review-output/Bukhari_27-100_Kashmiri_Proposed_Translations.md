@@ -170,3 +170,16 @@ The owner accepted terms **52, 54, 55 and 60** as originally proposed. They corr
 | 59 | 91 | Paen te leatherooo thealee |
 
 The owner included explanations for **kaneii** (stones), **lagawaeoun** (throwing) and **hajjas doraan** (during Hajj). Those explanations remain in the structured correction ledger. The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) and [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) place the correction in **Your Kashmiri wording** and preserve the former draft in **Kashmiri proposal (AI draft)**. The review concerns vocabulary expressions only, not whole-hadith translations.
+
+## Final owner review — items 61–66
+
+The project owner accepted items **61, 64, 65 and 66** as drafted and supplied two vocabulary corrections:
+
+| Item | Hadith | Owner-provided wording | Interpretation |
+|---:|---:|---|---|
+| 62 | 97 | **Aaesmanei kitaban hend manen waek** | Romanized owner replacement for People of the Scripture; Kashmiri-script spelling not supplied. |
+| 63 | 98 | **douuuer** | Use this word in place of the earlier AI term for earrings; the surrounding clause remains a draft. |
+
+**Vocabulary review complete: 66 of 66 entries reviewed (39 accepted as drafted, 27 corrected by owner).** This is the review of selected religious vocabulary and expressions, **not** approval of entire Sahih al-Bukhari Hadith 27–100 narrations. Some corrected expressions still need owner confirmation of their complete Perso-Arabic spelling.
+
+The updated [review CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) and [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) retain the earlier AI wording separately from the owner corrections.
