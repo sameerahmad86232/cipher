@@ -6,8 +6,11 @@
   const firstSection = chapter === 2 ? 'overview' : 'introduction';
   const chapterLabel = chapter === 2 ? 'باب ۲' : 'باب ۱';
   const storageKey = chapter === 2 ? 'nectar-reader-ch2-v1' : 'nectar-reader-v1';
+  const reviewKey = chapter === 2 ? 'nectar-review-ch2-v1' : 'nectar-review-ch1-v1';
   const readStored = () => { try { return JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch { return {}; } };
   const stored = readStored();
+  const readReviews = () => { try { return JSON.parse(localStorage.getItem(reviewKey) || '{}') || {}; } catch { return {}; } };
+  let reviews = readReviews();
   let data, current = firstSection, bookmarks = new Set(Array.isArray(stored.bookmarks) ? stored.bookmarks.filter(x => typeof x === 'string') : []);
   const language = 'ks';
   let fontSize = Number.isFinite(stored.fontSize) ? Math.min(33,Math.max(21,stored.fontSize)) : 25;
@@ -17,6 +20,16 @@
   const escape = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fold = s => String(s).normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase().replace(/\s+/g,' ');
   const save = () => { try { localStorage.setItem(storageKey,JSON.stringify({bookmarks:[...bookmarks],language,languagePreferenceVersion:2,fontSize,theme:document.body.classList.contains('night')?'night':'day',progress:readingPosition,lastPassage,section:current})); } catch { /* Reading remains available when browser storage is disabled. */ } };
+  const saveReviews = () => { try { localStorage.setItem(reviewKey,JSON.stringify(reviews)); } catch { /* Export remains available for the active session. */ } updateReviewSummary(); };
+  const reviewFor = id => reviews[id] || {status:'pending',correction:'',note:''};
+  function updateReviewSummary(){
+    if(!data)return;
+    const rows=data.passages.map(p=>reviewFor(p.id));
+    const approved=rows.filter(r=>r.status==='approved').length;
+    const changes=rows.filter(r=>r.status==='changes').length;
+    $('#review-count').textContent=approved+changes;
+    $('#review-approved').textContent=approved;$('#review-changes').textContent=changes;$('#review-pending').textContent=data.passages.length-approved-changes;
+  }
   const notify = message => { $('#toast').textContent=message; $('#toast').classList.add('visible'); clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),2600); };
   const updateTheme = () => { const night=document.body.classList.contains('night');$('#theme-toggle').textContent=night?'☀':'☾';$('#theme-toggle').setAttribute('aria-label',night?'دۄہُک رَنٛگ تھاوِو':'راتُک رَنٛگ تھاوِو'); };
   if(stored.theme==='night')document.body.classList.add('night');updateTheme();
@@ -35,7 +48,7 @@
     $('#section-count').textContent=`${String(index+1).padStart(2,'0')} / ${String(data.sections.length).padStart(2,'0')}`;
     $('#previous-section').disabled=index===0;$('#next-section').textContent=index===data.sections.length-1?'گوڈٕ پیٹھٕ پَرِو ↗':'اَگلہِ حِصّہٕ →';
     document.querySelectorAll('[data-section]').forEach(b=>{const active=b.dataset.section===id;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','location');else b.removeAttribute('aria-current');});
-    $('#passages').innerHTML=passages.map(p=>`<article id="${p.id}" class="passage${(chapter===1?[26,40,42]:[6]).includes(Number(p.id.slice(-2)))?' quotation':''}"><div class="passage-meta"><span>حِصّہٕ ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p></article>`).join('');
+    $('#passages').innerHTML=passages.map(p=>{const review=reviewFor(p.id);return `<article id="${p.id}" class="passage${(chapter===1?[26,40,42]:[6]).includes(Number(p.id.slice(-2)))?' quotation':''}" data-review-status="${review.status}"><div class="passage-meta"><span>حِصّہٕ ${p.id.slice(-2)} &nbsp;·&nbsp; ${sourceLabel(p).toUpperCase()}</span><div class="passage-tools"><span class="review-badge">${review.status==='approved'?'منظور':review.status==='changes'?'تبدیلی درکار':'جائزٕ باقی'}</span><button type="button" data-copy="${p.id}" aria-label="Copy Kashmiri passage ${p.id.slice(-2)}">⧉</button><button type="button" data-bookmark="${p.id}" aria-label="${bookmarks.has(p.id)?'Unsave':'Save'} passage ${p.id.slice(-2)}" aria-pressed="${bookmarks.has(p.id)}">${bookmarks.has(p.id)?'◆':'◇'}</button></div></div><p class="kashmiri" lang="ks-Arab" dir="rtl">${escape(p.kashmiri)}</p><details class="passage-review"><summary><span>✎</span> اَمہِ حِصّس جائزٕ دِیِو</summary><div class="source-english"><span>ENGLISH SOURCE</span><p lang="en" dir="ltr">${escape(p.english||p.sourceEnglish||'')}</p></div><div class="review-status-buttons" role="group" aria-label="Review status"><button type="button" data-review-status-button="approved" data-review-id="${p.id}" aria-pressed="${review.status==='approved'}">✓ درست / منظور</button><button type="button" data-review-status-button="changes" data-review-id="${p.id}" aria-pressed="${review.status==='changes'}">✎ تبدیلی درکار</button></div><label>تُہٕنٛز درست کٔرمٕژ کٲشُر عبارت<textarea data-review-correction="${p.id}" dir="rtl" lang="ks-Arab" placeholder="اگر تبدیلی درکار چھےٚ، درست عبارت ییتہِ لیٖکھِو…">${escape(review.correction||'')}</textarea></label><label>نوٹ / وجہ<textarea data-review-note="${p.id}" dir="rtl" lang="ks-Arab" placeholder="لفظ، املا یا مفہوم بارَس منٛز نوٹ…">${escape(review.note||'')}</textarea></label><button type="button" class="save-review" data-save-review="${p.id}">جائزٕ محفوظ کٔرِو</button></details></article>`}).join('');
     updateLanguage();toggleMenu(false);save();
     if(scroll) requestAnimationFrame(()=>{const target=passageId?document.getElementById(passageId):$('#reader');target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});if(passageId){target?.classList.add('highlighted');setTimeout(()=>target?.classList.remove('highlighted'),2400);}});
   }
@@ -67,6 +80,7 @@
     if(action==='search'){showDialog('#search-dialog');setTimeout(()=>$('#search-input').focus(),50);search();}
     if(action==='bookmarks')showBookmarks();
     if(action==='about')showDialog('#about-dialog');
+    if(action==='review-summary'){updateReviewSummary();showDialog('#review-dialog');}
     if(action==='theme'){document.body.classList.toggle('night');updateTheme();save();}
     if(action==='menu')toggleMenu(!$('#sidebar').classList.contains('open'));
     if(action==='read')$('#reader').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
@@ -77,6 +91,8 @@
     const readPlace=event.target.closest('[data-read-place]')?.dataset.readPlace;if(readPlace){$('#map-dialog').close();renderSection(readPlace,true);}
     const bookmark=event.target.closest('[data-bookmark]');if(bookmark){const id=bookmark.dataset.bookmark;if(bookmarks.has(id))bookmarks.delete(id);else bookmarks.add(id);bookmark.setAttribute('aria-pressed',String(bookmarks.has(id)));bookmark.setAttribute('aria-label',`${bookmarks.has(id)?'Unsave':'Save'} passage ${id.slice(-2)}`);bookmark.textContent=bookmarks.has(id)?'◆':'◇';$('#saved-count').textContent=bookmarks.size;save();notify(bookmarks.has(id)?'یہِ حِصّہٕ آو محفوظ کَرنہٕ':'یہِ حِصّہٕ آو محفوظ حِصّن منٛزٕ کَڑنہٕ');}
     const copy=event.target.closest('[data-copy]')?.dataset.copy;if(copy){const p=data.passages.find(p=>p.id===copy);try{await navigator.clipboard.writeText(p.kashmiri);notify('کٲشُر متن آو نَقل کَرنہٕ');}catch{notify('متن چُنِو تہٕ نَقل کَرِو۔');}}
+    const statusButton=event.target.closest('[data-review-status-button]');if(statusButton){const id=statusButton.dataset.reviewId;const review=reviewFor(id);review.status=statusButton.dataset.reviewStatusButton;review.correction=document.querySelector(`[data-review-correction="${id}"]`)?.value.trim()||review.correction;review.note=document.querySelector(`[data-review-note="${id}"]`)?.value.trim()||review.note;reviews[id]=review;saveReviews();renderSection(current,false);requestAnimationFrame(()=>{const details=document.querySelector(`#${id} .passage-review`);if(details)details.open=true;});}
+    const saveReview=event.target.closest('[data-save-review]');if(saveReview){const id=saveReview.dataset.saveReview;const review=reviewFor(id);review.correction=document.querySelector(`[data-review-correction="${id}"]`).value.trim();review.note=document.querySelector(`[data-review-note="${id}"]`).value.trim();reviews[id]=review;saveReviews();notify('جائزٕ آو محفوظ کَرنہٕ');renderSection(current,false,id);}
   });
   $('#chapter-select').addEventListener('change',event=>{const url=new URL(location.href);url.searchParams.set('chapter',event.target.value);url.hash='';location.assign(url.href);});
   $('#search-input').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(search,100);});
@@ -87,6 +103,7 @@
   $('#next-section').addEventListener('click',()=>{const i=data.sections.findIndex(s=>s.id===current);renderSection(data.sections[(i+1)%data.sections.length].id,true);});
   $('#font-smaller').addEventListener('click',()=>{fontSize=Math.max(21,fontSize-2);updateLanguage();save();});$('#font-larger').addEventListener('click',()=>{fontSize=Math.min(33,fontSize+2);updateLanguage();save();});
   $('#export-bookmarks').addEventListener('click',()=>download('nectar-saved-passages.json',JSON.stringify({chapter:data.chapter,reviewStatus:data.reviewStatus,passages:data.passages.filter(p=>bookmarks.has(p.id))},null,2),'application/json'));
+  $('#export-review').addEventListener('click',()=>{const reviewed=data.passages.map(p=>({id:p.id,page:p.page,section:p.section,sourceEnglish:p.english||p.sourceEnglish||'',draftKashmiri:p.kashmiri,...reviewFor(p.id)}));download(`sealed-nectar-chapter-${chapter}-owner-review.json`,JSON.stringify({book:data.title,chapter:data.chapter,exportedAt:new Date().toISOString(),sourceSHA256:data.sourceSHA256,reviewedPassages:reviewed},null,2),'application/json');notify('جائزٕ فائل آیہِ ڈاؤن لوڈ کرنہٕ');});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false);if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)&&!document.activeElement.isContentEditable&&!document.querySelector('dialog[open]')){e.preventDefault();showDialog('#search-dialog');$('#search-input').focus();search();}});
   document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
   let scrollScheduled=false;
@@ -110,7 +127,7 @@
     $('#section-shortcuts').innerHTML=data.sections.map((s,i)=>`<button class="section-shortcut" data-section="${s.id}"><span>${String(i+1).padStart(2,'0')}</span><strong>${escape(s.kashmiriTitle)}</strong><span>↗</span></button>`).join('');
     $('#map-places').innerHTML=places.map((p,i)=>`<button data-place="${i}" aria-pressed="${i===0}">${p.ks}</button>`).join('');
     $('#read-time').textContent=Math.ceil(data.passages.reduce((n,p)=>n+p.kashmiri.split(/\s+/).length,0)/150);
-    $('#resume-reading').hidden=!lastPassage||!ids.has(lastPassage);updateProgress();renderSection(data.sections.some(s=>s.id===stored.section)?stored.section:firstSection);
+    $('#resume-reading').hidden=!lastPassage||!ids.has(lastPassage);updateProgress();updateReviewSummary();renderSection(data.sections.some(s=>s.id===stored.section)?stored.section:firstSection);
     const target=location.hash.slice(1);if(ids.has(target))goToPassage(target);
   }).catch(error=>{const p=document.createElement('p');p.className='empty-results';p.textContent='باب کھُل نہٕ؛ رابطہٕ وُچھِو تہٕ صَفہٕ بیٚیہِ کھولِو۔';$('#passages').replaceChildren(p);$('#start-reading').disabled=true;$('#resume-reading').hidden=true;console.error(error);});
 })();

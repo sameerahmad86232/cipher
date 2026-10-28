@@ -9,3 +9,7 @@ source-books/
 # Hugging Face dataset downloads (word lists, OCR text) used as import sources.
 source-datasets/
 training-data/prepared-parallel/
+
+# Local JavaScript dependencies and production builds.
+node_modules/
+dist/
