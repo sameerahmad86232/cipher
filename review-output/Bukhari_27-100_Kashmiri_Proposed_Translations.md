@@ -1,0 +1,88 @@
+# Sahih al-Bukhari Hadith 27–100 — Kashmiri vocabulary drafts
+
+**Review edition · 66 proposed translations · NOT owner-approved.**
+
+These are proposed Kashmiri renderings of the **66 English expressions from the user's review worksheet**, not complete translated hadith. Each corresponds to the worksheet's Hadith number and context. Renderings are provisional and may contain unnatural Kashmiri spelling, case, grammar, or religious-technical terminology. The project owner's corrections take precedence over these drafts. The untouched owner-correction column is in the CSV.
+
+**Files:** [Download the editable proposed-translations CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) · [Original blank review worksheet](Bukhari_27-100_Kashmiri_Words_For_Review.csv)
+
+**Evidence used:** existing owner-approved Hadith 1–26 from `training-data/hadith-corrections/approved-passages.jsonl`; approved terminology from `training-data/reusable-language-memory/terminology-preferences.jsonl`; reviewed sentence examples from `server-data/reviewed-pairs.json`; and translation policy in `training-data/HADITH-TRANSLATION-METHOD.md`. These only support selected wording and style, **not** automatic approval of the complete 66 new phrases.
+
+## Proposed translations
+
+| # | Hadith | English expression | Proposed Kashmiri (draft) | Confidence |
+|---:|---:|---|---|---|
+| 1 | [27](https://sunnah.com/bukhari:27) | to leave somebody out of a distribution | باقیَن دِتھ اَکھ شَخص مَحروٗم تھاوُن | medium |
+| 2 | [27](https://sunnah.com/bukhari:27) | to be thrown face-first into the Fire | بوٗتھِ پؠٹھ جہنمَس منٛز ترٛاوُن | medium |
+| 3 | [29](https://sunnah.com/bukhari:29) | ungrateful to one’s husband | پَننِس روٗنَس سٕندۍ اَحسانَن ہُنٛد شُکر اَدا نہٕ کَرُن | medium |
+| 4 | [30](https://sunnah.com/bukhari:30) | cloak | لَبٲدٕ / چُغہٕ (اوٚپَرُک لِباس) | low |
+| 5 | [30](https://sunnah.com/bukhari:30) | servant / enslaved person | غُلام (بَنٛدٕ بَنٲونہٕ آمُت شَخص) / خٲدِم (نوکر) | medium |
+| 6 | [30](https://sunnah.com/bukhari:30) | insulting a person through their mother | کٲنسہِ ماجہِ پؠٹھ طَعنہٕ دِتھ بَدزَبٲنی کَرُن | medium |
+| 7 | [31](https://sunnah.com/bukhari:31) | intending to kill someone | کٲنسہِ شَخصَس قَتل کَرنُک اِرادٕ تھاوُن | medium |
+| 8 | [32](https://sunnah.com/bukhari:32) | wrongdoing / injustice (zulm) | ظُلم / نااِنصٲفی | medium |
+| 9 | [33](https://sunnah.com/bukhari:33) | to betray an entrusted responsibility | امٲنَتَس خِیٲنَت کَرُن | medium |
+| 10 | [34](https://sunnah.com/bukhari:34) | to break a covenant or promise | وَعدٕ یا عَہد توٗرُن | medium |
+| 11 | [35](https://sunnah.com/bukhari:35) | Laylat al-Qadr / Night of Decree | لَیلَۃُ القَدر — قَدرٕچ راتھ | medium |
+| 12 | [36](https://sunnah.com/bukhari:36) | to stand guard in the cause of Allah | اللہ تعالہ سٕندِ وَتہِ منٛز پٕہرٕ دِیُن | medium |
+| 13 | [39](https://sunnah.com/bukhari:39) | overburdening oneself in religious practice | دیٖنَس منٛز پَنُن پان طاقتہٕ کھۄتہٕ زیادٕ مُشکِلاتَس منٛز ترٛاوُن | low |
+| 14 | [40](https://sunnah.com/bukhari:40) | direction of prayer (qiblah) | قِبلہٕ — نَماز پَرَنہٕ وِزِ رُخ کَرنُک طَرف | medium |
+| 15 | [41](https://sunnah.com/bukhari:41) | settlement or reckoning of deeds | عملَن ہُنٛد حِسٲب کِتاب | high |
+| 16 | [43](https://sunnah.com/bukhari:43) | excessive voluntary worship | نَفل عِبٲدَتَس منٛز حدٕ کھۄتہٕ زیادٕ کَرُن | medium |
+| 17 | [44](https://sunnah.com/bukhari:44) | a barley grain / a wheat grain | جَوٕک دانٕ / گَنٛمٕچ دانٕ | low |
+| 18 | [45](https://sunnah.com/bukhari:45) | taking a day as a festival | دِیٖنی تہوارُک دۄہ | medium |
+| 19 | [46](https://sunnah.com/bukhari:46) | unkempt / dishevelled hair | سَرُک بال وِکھرِتھ آسٕنۍ | low |
+| 20 | [47](https://sunnah.com/bukhari:47) | funeral procession | جَنازٕ سۭتۍ پَکُن / جَنازَچ جُلوٗس | high |
+| 21 | [48](https://sunnah.com/bukhari:48) | fusuq / sinful wrongdoing | فِسق — گُناہگارٕ عمل | medium |
+| 22 | [49](https://sunnah.com/bukhari:49) | quarrel between two men | دۄن شَخصَن دَرمِیان جَھگڑٕ | medium |
+| 23 | [50](https://sunnah.com/bukhari:50) | ihsan / excellence in worship | اِحسٲن — اللہ تعالہ سٕنز عِبٲدَت یِتھ کٔنۍ کَرُن زَن تۄہہِس سُہ وُچھان چھُ | low |
+| 24 | [52](https://sunnah.com/bukhari:52) | doubtful matters | مَشکوٗک مَعٲملہٕ — یِمَن ہُنٛد حَلٲل یا حَرٲم آسُن صاف چھُنہٕ | medium |
+| 25 | [53](https://sunnah.com/bukhari:53) | a visiting tribal delegation | قَبِیلہٕ ہُنٛد وَفد | medium |
+| 26 | [56](https://sunnah.com/bukhari:56) | morsel / bite of food | بَتہٕ ہُنٛد اَکھ لُقمہٕ / اَکھ نِوالہٕ | medium |
+| 27 | [57](https://sunnah.com/bukhari:57) | sincere counsel (nasihah) | خٲلِص نَصیٖحَت / اَخلٲصہٕ سۭتۍ مَشوَرٕ دِیُن | medium |
+| 28 | [58](https://sunnah.com/bukhari:58) | public pledge of allegiance | لُکَن برونٛہہ بَیعَت کَرُن / وَفٲدٲری ہُنٛد عَہد کَرُن | high |
+| 29 | [59](https://sunnah.com/bukhari:59) | entrusting authority to an unqualified person | اَہل نہٕ ٲسَن وٲلِس شَخصَس ذِمہٕدٲری سونٛپُن | medium |
+| 30 | [60](https://sunnah.com/bukhari:60) | unwashed heels during ablution | وُضوٗ کَرنہٕ وِزِ کھورَن ہٕندۍ پَتھِم حِصہٕ خُشک روزُن | medium |
+| 31 | [61](https://sunnah.com/bukhari:61) | date-palm tree | کھجوٗرٕچ کُل | medium |
+| 32 | [63](https://sunnah.com/bukhari:63) | camel kneeling and tying its foreleg | اونٛٹہٕ گوڈٕ بؠہٲوِتھ تَمیٕچ اَکھ گۆڈ بَنٛد کَرُن | low |
+| 33 | [64](https://sunnah.com/bukhari:64) | governor / provincial ruler | صوٗبَک حٲکِم / والی | medium |
+| 34 | [65](https://sunnah.com/bukhari:65) | signet ring / seal | مُہر وٲلۍ اَنٛگوٗٹھۍ | medium |
+| 35 | [66](https://sunnah.com/bukhari:66) | making room in a gathering | مَجلِسَس منٛز بیٛاکِس شَخصَس جایہِ دِیُن | high |
+| 36 | [67](https://sunnah.com/bukhari:67) | the sacred months | حُرمَت وٲلۍ ژور مٲہ | medium |
+| 37 | [68](https://sunnah.com/bukhari:68) | pestering by constant preaching | بار بار وَعظ کٔرِتھ لُکَن تَنٛگ کَرُن | medium |
+| 38 | [69](https://sunnah.com/bukhari:69) | glad tidings | خُشخَبٔری دِیُن | high |
+| 39 | [71](https://sunnah.com/bukhari:71) | deep understanding of religion | دیٖنُک گٔہٕرٕ علم تہٕ سَمَجھ حٲصِل کَرُن | medium |
+| 40 | [72](https://sunnah.com/bukhari:72) | spadix of a date-palm | کھجوٗرٕ کُلِچ پھوٗلٕچ گٔچھ (سپَیڈِکس) | low |
+| 41 | [73](https://sunnah.com/bukhari:73) | spending wealth righteously | مٲل اللہ تعالہ سٕندِ وَتہِ منٛز دُرُست طَرٖیقَس پؠٹھ خَرچ کَرُن | high |
+| 42 | [74](https://sunnah.com/bukhari:74) | al-Khidr as companion of Musa | حضرت خَضِر علیہ السلام — حضرت موٗسیٰ علیہ السلامَن ہُنٛد ساتھی | medium |
+| 43 | [76](https://sunnah.com/bukhari:76) | puberty / coming of age | بٲلِغ سَپدُن / بٔڈ عُمرَس واتُن | high |
+| 44 | [77](https://sunnah.com/bukhari:77) | drawing water from a well with a bucket | کُنۍ منٛزٕ بالٹی سۭتۍ آب کَڈُن | medium |
+| 45 | [78](https://sunnah.com/bukhari:78) | meeting Musa’s companion | حضرت موٗسیٰ علیہ السلامَن حضرت خَضِر علیہ السلام سۭتۍ مُلٲقات | medium |
+| 46 | [79](https://sunnah.com/bukhari:79) | fertile soil absorbing rainfall | زَرخؠز زٔمیٖن، یۄس روٗدُک آب پَنَس منٛز جذب کَران چھےٚ | medium |
+| 47 | [79](https://sunnah.com/bukhari:79) | barren land that does not retain water | بانٛج زٔمیٖن، یۄس روٗدُک آب نہٕ رَٹِ | medium |
+| 48 | [80](https://sunnah.com/bukhari:80) | signs or portents of the Hour | قِیٲمَتَچ نِشٲنؠ / عَلامَتھ | high |
+| 49 | [82](https://sunnah.com/bukhari:82) | symbolic interpretation of a dream | خوابُک تَعبیٖر کَرُن | high |
+| 50 | [83](https://sunnah.com/bukhari:83) | shaving the head before slaughtering | قُربٲنی برونٛہہ سَرُک بال ترٛاشُن | medium |
+| 51 | [84](https://sunnah.com/bukhari:84) | throwing pebbles at the Jamrat (ramy) | جَمَراتَس پؠٹھ لۄکٕٹۍ پَتھَر ترٛاوُن (رَمی) | high |
+| 52 | [85](https://sunnah.com/bukhari:85) | harj / widespread killing | ہَرج — بٔڈ پَیمانَس پؠٹھ لُکَن ہُنٛد قَتل | medium |
+| 53 | [86](https://sunnah.com/bukhari:86) | solar eclipse | سِرِس گِرَہَن / سوٗرَج گِرَہَن | medium |
+| 54 | [87](https://sunnah.com/bukhari:87) | delegation of Abd al-Qays | عَبدُالقَیس قَبِیلٕ ہُنٛد وَفد | high |
+| 55 | [88](https://sunnah.com/bukhari:88) | breastfeeding relationship / milk kinship | رَضٲعَت — دودھ چھوٚنہٕ سۭتۍ بَنَن وول رِشتٕ | medium |
+| 56 | [89](https://sunnah.com/bukhari:89) | taking turns attending lessons | بٲری بٲری دَرسَس حٲضِر گَژھُن | medium |
+| 57 | [90](https://sunnah.com/bukhari:90) | prolonging congregational prayer | جَمٲعَتَچ نَماز بٔڑٕ دَریگ کَرُن | medium |
+| 58 | [91](https://sunnah.com/bukhari:91) | lost property and its identifying features | گُمٕژ چِیز (لُقَطہٕ) تہٕ تَمیٕچ نِشٲنؠ | medium |
+| 59 | [91](https://sunnah.com/bukhari:91) | binding string and leather container | چَمِچ تھیلی تہٕ اَتھِچ ڈور | low |
+| 60 | [92](https://sunnah.com/bukhari:92) | questions about parentage | نَسَبَس مُتعلِق سَوال — کُس چھُ تَمہِ سُنٛد مول؟ | medium |
+| 61 | [94](https://sunnah.com/bukhari:94) | asking permission three times | دَروازَس پؠٹھ تٕرٛے لَٹہٕ اِجازَت پرژھن | high |
+| 62 | [97](https://sunnah.com/bukhari:97) | People of the Scripture | اَہلِ کِتاب — آسمٲنی کِتابَن ہٕنٛدۍ پٲرَن وٲلۍ | medium |
+| 63 | [98](https://sunnah.com/bukhari:98) | earrings donated in charity | خَیرٲتَس منٛز دِنہٕ آمٕژۍ کَنَن ہٕندۍ بٲلۍ | medium |
+| 64 | [99](https://sunnah.com/bukhari:99) | intercession on the Day of Resurrection | روزِ قِیٲمَتَس منٛز شَفٲعَت | high |
+| 65 | [100](https://sunnah.com/bukhari:100) | religious verdict issued without knowledge | عِلم بَغٲر دِیٖنی فَتویٰ دِیُن | high |
+| 66 | [100](https://sunnah.com/bukhari:100) | leading people astray | لُکَن گُمراہ کَرُن / غَلَط وَتہِ کُن نِیُن | high |
+
+## Items needing particularly careful review
+
+Check especially the phrases for historical clothing and slavery, the meaning of *zulm* in Hadith 32, the full meaning of *ihsan*, the date-palm flowering structure, milk kinship, and the lost-property container. These contexts matter for religious accuracy.
+
+## How to send corrections
+
+Open the [CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) in a spreadsheet app. Enter your preferred wording in the **Your Kashmiri wording** column, and mark your decision. Or send corrections here as `row 5: [correct Kashmiri wording]`. Draft columns should not be promoted to owner-approved records without explicit review.
