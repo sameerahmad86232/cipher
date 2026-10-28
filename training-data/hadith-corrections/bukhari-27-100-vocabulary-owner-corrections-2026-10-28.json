@@ -3,7 +3,7 @@
   "collection": "Sahih al-Bukhari",
   "range": "27–100",
   "receivedOn": "2026-10-28",
-  "scope": "Kashmiri Bukhari vocabulary review through item 60: 25 owner corrections (some Romanized/mixed) and 35 accepted draft expressions; no complete Hadith 27–100 narrations approved.",
+  "scope": "Full 66-item vocabulary review complete: 27 owner-corrected entries and 39 owner-accepted draft expressions. Some corrected words/phrases remain Romanized and their Kashmiri-script spelling is unconfirmed. No complete Hadith 27–100 narrations were owner-approved.",
   "mappingBasis": "First numbered item explicitly indicated; subsequent items matched to terms by sequence and meaning",
   "preserveDrafts": true,
   "corrections": [
@@ -233,6 +233,27 @@
       "status": "owner-corrected-romanization; script-not-confirmed",
       "note": "Romanized / English mixed owner-supplied phrase; exact Kashmiri-script wording unconfirmed.",
       "source": "User provided corrections in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 62,
+      "hadithNumber": 97,
+      "englishExpression": "People of the Scripture",
+      "ownerInputExact": "Aaesmanei kitaban hend manen waek",
+      "ownerRomanized": "Aaesmanei kitaban hend manen waek",
+      "status": "owner-corrected-vocabulary-in-romanization; script-unconfirmed",
+      "note": "Owner's Romanized replacement phrase; no Kashmiri-script spelling inferred.",
+      "source": "Owner correction in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 63,
+      "hadithNumber": 98,
+      "englishExpression": "earrings donated in charity",
+      "ownerInputExact": "For earrings use douuuer",
+      "ownerRomanizedTerm": "douuuer",
+      "displayWording": "خَیرٲتَس منٛز دِنہٕ آمٕژۍ کَنَن ہٕندۍ douuuer",
+      "status": "owner-corrected-term-in-romanization; script-unconfirmed",
+      "note": "Owner approved substitution of term 'douuuer' for earrings; surrounding clause remains original AI draft.",
+      "source": "Owner correction in ChatGPT, 2026-10-28"
     }
   ],
   "acceptedEntries": [
@@ -447,6 +468,38 @@
       "hadithNumber": 92,
       "status": "owner-accepted-vocabulary-only",
       "source": "User said all remaining items 51–60 are correct in ChatGPT, 2026-10-28"
+    },
+    {
+      "itemId": 61,
+      "hadithNumber": 94,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "Owner said rest are correct in final batch, 2026-10-28"
+    },
+    {
+      "itemId": 64,
+      "hadithNumber": 99,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "Owner said rest are correct in final batch, 2026-10-28"
+    },
+    {
+      "itemId": 65,
+      "hadithNumber": 100,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "Owner said rest are correct in final batch, 2026-10-28"
+    },
+    {
+      "itemId": 66,
+      "hadithNumber": 100,
+      "status": "owner-accepted-vocabulary-only",
+      "source": "Owner said rest are correct in final batch, 2026-10-28"
     }
-  ]
+  ],
+  "reviewProgress": {
+    "total": 66,
+    "reviewed": 66,
+    "ownerCorrected": 27,
+    "ownerAccepted": 39,
+    "pendingVocabularyItems": 0,
+    "scope": "selected Hadith vocabulary expressions only"
+  }
 }
