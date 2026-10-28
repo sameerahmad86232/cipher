@@ -23,6 +23,8 @@ let api=null,allDuas=[],loading=true,error='',duaQuery='',duaCategory='All duas'
 let tasbih=read('tasbih',{selected:'subhanallah',target:33,counts:{}});
 let ramadan=read('ramadan',{enabled:false,goal:10,days:{}});
 let cards={surah:1,translator:300,count:10,index:0,revealed:false,known:{},items:[],loading:false,error:null};
+let quranMode='read';
+const prayer=window.KoshurPrayer||null;
 const cache=new Map();
 function read(k,defaultValue){try{return JSON.parse(localStorage.getItem(key+k))??defaultValue;}catch(e){return defaultValue;}}
 function save(k,value){try{localStorage.setItem(key+k,JSON.stringify(value));}catch(e){}}
@@ -43,7 +45,7 @@ function updateTop(label,number,total){
 function updateProgress(){
  if(!api)return;
  const tab=api.state.tab;
- if(tab==='flashcards'){updateTop('Flashcards · '+(cards.items.length?cards.index+1:0)+' / '+cards.items.length,cards.items.length?cards.index+1:0,cards.items.length||1);return;}
+ if(tab==='quran'&&quranMode==='cards'){updateTop('Flashcards · '+(cards.items.length?cards.index+1:0)+' / '+cards.items.length,cards.items.length?cards.index+1:0,cards.items.length||1);return;}
  if(tab==='quran'&&api.state.selected){const info=api.findSurah(api.state.selected);if(info){const last=api.state.lastRead.surah===info.surah_id?api.state.lastRead.ayah:1;updateTop(info.name_en+' · ayah '+last+' of '+info.verses_count,last,info.verses_count);return;}}
  if(tab==='ramadan'){const d=dayData();updateTop('Daily Quran goal · '+d.ayat.length+' / '+ramadan.goal,d.ayat.length,ramadan.goal);return;}
  if(tab==='tasbih'){const n=Number(tasbih.counts[tasbih.selected]||0);updateTop('Tasbih · '+n+' / '+tasbih.target,n,tasbih.target);return;}
@@ -166,6 +168,11 @@ function cardFace(){
  '<span class="flashcard-main" dir="rtl" lang="'+(backs?'ks-Arab':'ar')+'">'+html(backs?c.translation:c.arabic)+'</span>'+
  '<span class="flashcard-bottom"><span>QURAN '+html(c.id)+'</span><span>'+(backs?'TAP TO SEE ARABIC':'TAP TO REVEAL')+' ↻</span></span></button>';
 }
+function quranBar(){
+ return '<div class="quran-study-switch" role="group" aria-label="Quran reading mode"><div><button type="button" class="'+(quranMode==='read'?'active':'')+'" data-quran-view="read" aria-pressed="'+(quranMode==='read')+'">'+icon('book')+' Read Quran</button><button type="button" class="'+(quranMode==='cards'?'active':'')+'" data-quran-view="cards" aria-pressed="'+(quranMode==='cards')+'">'+icon('layers')+' Flashcards</button></div><span>Read · Learn · Reflect</span></div>';
+}
+function setQuranMode(mode){quranMode=mode==='cards'?'cards':'read';}
+function isFlashcards(){return quranMode==='cards';}
 function renderFlashcards(){
  const meta=api.findSurah(cards.surah),total=cards.items.length;
  const studied=Object.keys(cards.known).length,known=Object.values(cards.known).filter(Boolean).length;
@@ -185,24 +192,25 @@ function renderFlashcards(){
 }
 function homeAddon(){
  const d=dayData();
- return '<div class="section-header"><div><span class="section-eyebrow">A LITTLE MORE EVERY DAY</span><h2>Your spiritual toolkit</h2><p>Explore little rituals that fit your day.</p></div></div>'+
- '<div class="feature-shortcuts"><button type="button" data-nav="flashcards"><span class="shortcut-symbol">✦</span><strong>Quran Flashcards</strong><small>Learn one ayah at a time</small></button>'+
+ return (prayer?prayer.homeWidget():'')+'<div class="section-header"><div><span class="section-eyebrow">A LITTLE MORE EVERY DAY</span><h2>Your spiritual toolkit</h2><p>Explore little rituals that fit your day.</p></div></div>'+
+ '<div class="feature-shortcuts"><button type="button" data-quran-view="cards"><span class="shortcut-symbol">✦</span><strong>Study Quran as Flashcards</strong><small>Inside the Quran reader</small></button>'+
  '<button type="button" data-nav="hisnul"><span class="shortcut-symbol">۞</span><strong>Hisnul Muslim</strong><small>261 duas in Kashmiri</small></button>'+
  '<button type="button" data-nav="tasbih"><span class="shortcut-symbol">◉</span><strong>Digital Tasbih</strong><small>Remember & count dhikr</small></button>'+
  '<button type="button" data-nav="ramadan"><span class="shortcut-symbol">☾</span><strong>Ramadan Companion</strong><small>'+d.ayat.length+' ayahs toward today’s goal</small></button></div>';
 }
 function settingsAddon(){
- return '<article class="panel settings-panel"><h3>Ramadan companion</h3><p class="panel-description">Activate a warm gold Ramadan look and optional daily worship tracker. It does not automatically determine Ramadan dates or prayer times.</p>'+
+ return (prayer?prayer.settingsAddon():'')+'<article class="panel settings-panel"><h3>Ramadan companion</h3><p class="panel-description">Activate a warm gold Ramadan look and optional daily worship tracker. It does not automatically determine Ramadan dates or prayer times.</p>'+
  '<div class="setting-row"><div><strong>Ramadan mode</strong><small>Turn the festive appearance and daily Quran goal on or off.</small></div><button type="button" role="switch" aria-label="Ramadan mode" aria-checked="'+ramadan.enabled+'" class="toggle" data-ramadan-mode></button></div>'+
  '<div class="setting-row"><div><strong>Quick access</strong><small>Open the personal Ramadan checklist and Tasbih counter.</small></div><button type="button" class="btn btn-outline" data-nav="ramadan">Open companion '+icon('arrow')+'</button></div></article>';
 }
-function render(tab){if(tab==='duas'||tab==='hisnul')return renderDuas(tab);if(tab==='tasbih')return drawTasbih();if(tab==='ramadan')return renderRamadan();if(tab==='flashcards')return renderFlashcards();return '';}
+function render(tab){if(tab==='duas'||tab==='hisnul')return renderDuas(tab);if(tab==='tasbih')return drawTasbih();if(tab==='ramadan')return renderRamadan();if(tab==='flashcards')return renderFlashcards();if(tab==='prayers')return prayer?prayer.render():'<div class="empty">Prayer times unavailable.</div>';return '';}
 async function init(){
  try{const r=await fetch(ROOT+'hisnul-duas.json');if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();if(!Array.isArray(d)||d.length<261)throw new Error('Invalid Hisnul Muslim data');allDuas=d;loading=false;}catch(e){loading=false;error='The dua library is temporarily unavailable. Please reload to retry.';}
  if(api&&['duas','hisnul'].includes(api.state.tab))api.render();
 }
 function attach(data){
  api=data;
+ if(prayer)prayer.attach(data);
  if(!tasbih||typeof tasbih!=='object')tasbih={selected:'subhanallah',target:33,counts:{}};
  if(!tasbih.counts||typeof tasbih.counts!=='object')tasbih.counts={};
  if(!ramadan||typeof ramadan!=='object')ramadan={enabled:false,goal:10,days:{}};
@@ -214,6 +222,18 @@ function attach(data){
 document.addEventListener('click',async function(e){
  const b=e.target.closest('button');if(!b||!api)return;
  if((b.dataset.nav==='duas'||b.dataset.nav==='hisnul')&&api.state.tab!==b.dataset.nav){duaQuery='';duaCategory='All duas';duaLimit=16;openDuas.clear();}
+ if(b.dataset.quranView){
+   if(b.dataset.quranView==='cards'){
+     cards.surah=api.state.selected||api.state.lastRead.surah||1;
+     cards.translator=[300,301].includes(Number(api.state.prefs.translator))?Number(api.state.prefs.translator):300;
+     quranMode='cards';
+     if(api.state.tab==='quran')api.render();else api.navigate('quran',true);
+   }else{
+     quranMode='read';
+     if(api.state.tab==='quran')api.render();else api.navigate('quran',true);
+   }
+   return;
+ }
  if(b.id==='mobile-more'){const side=document.getElementById('sidebar'),overlay=document.getElementById('backdrop');side.classList.toggle('open');overlay.hidden=!side.classList.contains('open');document.getElementById('menu-toggle').setAttribute('aria-expanded',String(side.classList.contains('open')));return;}
  if(b.dataset.hmCategory){duaCategory=b.dataset.hmCategory;duaLimit=16;filterDuasInPlace();return;}
  if(b.dataset.hmMore!==undefined){duaLimit+=16;filterDuasInPlace();return;}
@@ -235,5 +255,5 @@ document.addEventListener('click',async function(e){
 document.addEventListener('input',e=>{if(e.target.id==='hm-search'){duaQuery=e.target.value;duaLimit=16;filterDuasInPlace();}});
 document.addEventListener('change',e=>{if(e.target.id==='ramadan-goal'){ramadan.goal=Number(e.target.value);save('ramadan',ramadan);api.render();}});
 document.addEventListener('keydown',e=>{if(!api||api.state.tab!=='tasbih'||e.code!=='Space'||['INPUT','TEXTAREA','SELECT','BUTTON'].includes(document.activeElement.tagName))return;e.preventDefault();const btn=document.querySelector('[data-tasbih-tap]');if(btn)btn.click();});
-window.KoshurExtras={attach,render,renderDuas,homeAddon,settingsAddon,updateProgress,markAyah};
+window.KoshurExtras={attach,render,renderDuas,homeAddon,settingsAddon,updateProgress,markAyah,quranBar,isFlashcards,setQuranMode};
 })();
