@@ -146,3 +146,12 @@ Owner accepted items **33, 35, 38 and 39** as drafted. The following six correct
 | 40 | 72 | Khazre khulech پوشن ہُند جھرمٹ |
 
 Romanized forms are preserved, not silently converted into owner-confirmed Kashmiri-script spellings. This is **vocabulary review only**; no additional complete hadith translations were approved.
+
+## Owner review: vocabulary 41–50
+
+Accepted original draft vocabulary: 41, 42, 43, 45, 46, 47, 48, 49.
+
+- **44**: kear mnx balti seet aab kadun (kear means well)
+- **50**: Quraabnei bronuh kaluk maees cxatun.
+
+The above Romanized phrases are user-supplied; Kashmiri-script spellings have not been confirmed. The review is vocabulary only, not full hadith approval. Original AI proposals remain separately recorded in CSV and XLSX.
