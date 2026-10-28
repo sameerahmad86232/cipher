@@ -155,3 +155,18 @@ Accepted original draft vocabulary: 41, 42, 43, 45, 46, 47, 48, 49.
 - **50**: Quraabnei bronuh kaluk maees cxatun.
 
 The above Romanized phrases are user-supplied; Kashmiri-script spellings have not been confirmed. The review is vocabulary only, not full hadith approval. Original AI proposals remain separately recorded in CSV and XLSX.
+
+## Owner review — items 51–60
+
+The owner accepted terms **52, 54, 55 and 60** as originally proposed. They corrected **51, 53, 56, 57, 58 and 59**. Owner-provided wording is recorded below, preserving the supplied Kashmiri or Romanized spelling without unconfirmed transliteration.
+
+| Item | Hadith | Owner-provided replacement |
+|---:|---:|---|
+| 51 | 84 | Jumratas peath loket kaneii lagawaeoun hajjas doraan |
+| 53 | 86 | **aftabs gruhun** replaces the earlier alternative **soraj grhun**; other unreviewed variant retained as draft |
+| 56 | 89 | وارِ وارِ کلاسس منز گژھُن |
+| 57 | 90 | Jamaatech niamaaz wariya zeanth vannawaoyn |
+| 58 | 91 | رٲومُت چیز تہٕ یہ کِتھٕ کٔنۍ  پرزناوُن |
+| 59 | 91 | Paen te leatherooo thealee |
+
+The owner included explanations for **kaneii** (stones), **lagawaeoun** (throwing) and **hajjas doraan** (during Hajj). Those explanations remain in the structured correction ledger. The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) and [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) place the correction in **Your Kashmiri wording** and preserve the former draft in **Kashmiri proposal (AI draft)**. The review concerns vocabulary expressions only, not whole-hadith translations.
