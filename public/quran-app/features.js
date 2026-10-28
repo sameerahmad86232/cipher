@@ -193,7 +193,7 @@ function renderFlashcards(){
 }
 function homeAddon(){
  const d=dayData();
- return (prayer?prayer.homeWidget():'')+'<div class="section-header"><div><span class="section-eyebrow">A LITTLE MORE EVERY DAY</span><h2>Your spiritual toolkit</h2><p>Explore little rituals that fit your day.</p></div></div>'+
+ return '<div class="section-header toolkit-header"><div><span class="section-eyebrow">A QUIETER KIND OF ROUTINE</span><h2>Little rituals. Lasting meaning.</h2><p>A handful of thoughtful tools for your day.</p></div></div>'+
  '<div class="feature-shortcuts"><button type="button" data-quran-view="cards"><span class="shortcut-symbol">✦</span><strong>Study Quran as Flashcards</strong><small>Inside the Quran reader</small></button>'+
  '<button type="button" data-nav="hisnul"><span class="shortcut-symbol">۞</span><strong>Hisnul Muslim</strong><small>261 duas in Kashmiri</small></button>'+
  '<button type="button" data-nav="tasbih"><span class="shortcut-symbol">◉</span><strong>Digital Tasbih</strong><small>Remember & count dhikr</small></button>'+
