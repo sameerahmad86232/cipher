@@ -1,8 +1,8 @@
 # Sahih al-Bukhari Hadith 27–100 — Kashmiri vocabulary drafts
 
-**Review edition · 66 proposed translations · NOT owner-approved.**
+**Owner vocabulary review completed · 66 of 66 expressions reviewed · 39 accepted as drafted · 27 owner-corrected.**
 
-These are proposed Kashmiri renderings of the **66 English expressions from the user's review worksheet**, not complete translated hadith. Each corresponds to the worksheet's Hadith number and context. Renderings are provisional and may contain unnatural Kashmiri spelling, case, grammar, or religious-technical terminology. The project owner's corrections take precedence over these drafts. The untouched owner-correction column is in the CSV.
+These are proposed Kashmiri renderings of the **66 English expressions from the user's review worksheet**, not complete translated hadith. Each corresponds to the worksheet's Hadith number and context. Renderings are provisional and may contain unnatural Kashmiri spelling, case, grammar, or religious-technical terminology. The project owner's corrections take precedence over these drafts. The editable owner-correction column in the CSV and XLSX now contains the completed review; the original AI proposals remain separately visible for comparison.
 
 **Files:** [Download the editable proposed-translations CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) · [Original blank review worksheet](Bukhari_27-100_Kashmiri_Words_For_Review.csv)
 
@@ -30,7 +30,7 @@ The user confirmed that the existing Kashmiri wording of items **4, 5, 8 and 9**
 
 For item **10** (Sahih al-Bukhari 34), the user replaced the earlier draft “وَعدٕ یا عَہد توٗرُن” with **“wade khilafiii”**, provisionally represented as **“وعدٕ خلافی”** in Perso-Arabic script. The spelling is a transliteration choice, **not** a user-typed Kashmiri-script confirmation.
 
-The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) contains these latest corrections and decisions. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) has been updated with owner review through item 20. The full table below retains the original draft proposals for comparison.
+The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) contains these latest corrections and decisions. The [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) reflects owner review of all 66 vocabulary entries. The full table below retains the original draft proposals for comparison.
 
 ## Further owner review — vocabulary items 11–20
 
@@ -170,3 +170,16 @@ The owner accepted terms **52, 54, 55 and 60** as originally proposed. They corr
 | 59 | 91 | Paen te leatherooo thealee |
 
 The owner included explanations for **kaneii** (stones), **lagawaeoun** (throwing) and **hajjas doraan** (during Hajj). Those explanations remain in the structured correction ledger. The [editable CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) and [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) place the correction in **Your Kashmiri wording** and preserve the former draft in **Kashmiri proposal (AI draft)**. The review concerns vocabulary expressions only, not whole-hadith translations.
+
+## Final owner review — items 61–66
+
+The project owner accepted items **61, 64, 65 and 66** as drafted and supplied two vocabulary corrections:
+
+| Item | Hadith | Owner-provided wording | Interpretation |
+|---:|---:|---|---|
+| 62 | 97 | **Aaesmanei kitaban hend manen waek** | Romanized owner replacement for People of the Scripture; Kashmiri-script spelling not supplied. |
+| 63 | 98 | **douuuer** | Use this word in place of the earlier AI term for earrings; the surrounding clause remains a draft. |
+
+**Vocabulary review complete: 66 of 66 entries reviewed (39 accepted as drafted, 27 corrected by owner).** This is the review of selected religious vocabulary and expressions, **not** approval of entire Sahih al-Bukhari Hadith 27–100 narrations. Some corrected expressions still need owner confirmation of their complete Perso-Arabic spelling.
+
+The updated [review CSV](Bukhari_27-100_Kashmiri_Proposed_Translations.csv) and [Excel workbook](Bukhari_27-100_Kashmiri_Proposed_Translations.xlsx) retain the earlier AI wording separately from the owner corrections.
