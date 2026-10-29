@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "lesson": 23,
+  "date": "2026-10-29",
+  "question": "Do woeun and wouen mean the same thing in these sentences, or is there a difference?",
+  "ownerAnswerExact": "Yeah",
+  "interpretation": "Affirmative response: woeun and wouen have the same meaning in the supplied direct-question examples.",
+  "contextualPairs": [
+    {
+      "lesson": 21,
+      "english": "The companion asked, 'What is Islam?'",
+      "kashmiriExact": "Suhaboo woeun islam kai chu"
+    },
+    {
+      "lesson": 22,
+      "english": "The companion asked, 'What is faith?'",
+      "kashmiriExact": "Suhaboo wouen iemaan kai chu"
+    }
+  ],
+  "limits": [
+    "No preferred Romanized spelling was identified.",
+    "Same meaning in these sentence contexts does not prove the pronunciation is identical or that all grammatical use is interchangeable.",
+    "Do not rewrite the original examples or mark any whole Hadith newly approved."
+  ]
+}
