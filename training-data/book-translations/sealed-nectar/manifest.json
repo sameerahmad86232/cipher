@@ -4,14 +4,28 @@
   "source_author": "Saifur Rahman al-Mubarakpuri",
   "source_file_sha256": "28f6331b8026d95b4bd64154d93337858509822c1e449535011e0be8a6c1858c",
   "source_pdf_pages": 324,
-  "translated_book_pages": "8-21",
+  "translated_book_pages": "8-88",
   "chapters": [
     "Location and Nature of Arab Tribes",
-    "Rulership and Princeship among the Arabs"
+    "Rulership and Princeship among the Arabs",
+    "Religions of the Arabs",
+    "Aspects of Pre-Islamic Arabian Society",
+    "The Lineage and Family of Muhammad",
+    "Muhammad’s Birth and Forty Years prior to Prophethood",
+    "In the Shade of the Message and Prophethood",
+    "The First Stage: Strife in the Way of the Call",
+    "The Second Phase: Open Preaching",
+    "The Third Phase: Calling unto Islam beyond Makkah"
   ],
   "language": "Kashmiri (Perso-Arabic script)",
-  "status": "draft-awaiting-owner-review",
+  "status": "chapters-1-2-draft; chapters-3-10-machine-draft-awaiting-human-review",
   "dictionary_source_records": "58,000+",
   "searchable_dictionary_headwords": 49682,
-  "translation_policy": "Dictionary glosses and saved terminology are evidence. Complete sentences require contextual translation and human review."
+  "translation_policy": "Dictionary glosses and saved terminology are evidence. Complete sentences require contextual translation and human review.",
+  "batch_03_10": {
+    "source_words": 34650,
+    "segments": 326,
+    "translation_engine": "NLLB-200 distilled 600M, kas_Arab target; terminology cleanup pending",
+    "review": "required before publication or training use"
+  }
 }
