@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.0 — owner-supplied evidence, October 29, 2026.
+Version 2.1 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -129,7 +129,7 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 #### Pending next checks
 
 - “They are not giving food to that person.” — answered in Lesson 8 below. Compare the complete sentences; word order and noun spelling also differ.
-- “He gives food to that person every day.” and “She gives food to that person every day.” — needed to compare habitual vs current ongoing action.
+- “He gives food to that person every day.” — answered in Lesson 9 below; “She gives food to that person every day.” remains pending.
 - Earlier unanswered “She gave food to the boy” and “They gave food to the boy” remain pending.
 
 ## Lesson 8 — plural present ongoing negation (received)
@@ -154,7 +154,26 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 **Not yet confirmed:** Whether verb order changes because of negation, whether `nafreass`/`nafreaas` is just a spelling variation, and any general agreement or aspect rule. These are not a one-word minimal pair, so they do not license automatic rewriting of other Hadith sentences.
 
-**Still pending:** “He gives food to that person every day,” “She gives food to that person every day,” “She gave food to the boy,” and “They gave food to the boy.” Full Kashmiri-script transcriptions are unverified.
+**Still pending:** “She gives food to that person every day,” “She gave food to the boy,” and “They gave food to the boy.” Full Kashmiri-script transcriptions are unverified.
+
+## Lesson 9 — daily or habitual giving (received)
+
+**English prompt:** He gives food to that person every day.
+
+**Exact owner-supplied Romanized Kashmiri:** `Su che humis nafreass douahaii khean dewaan ` (original terminal space preserved).
+
+### Comparison with Lesson 6
+
+| English | Exact owner-supplied Romanization |
+| --- | --- |
+| He is giving food to that person. | `Su che dewaan humis naferaaas khean ` |
+| He gives food to that person every day. | `Su che humis nafreass douahaii khean dewaan ` |
+
+**Supported:** Both sentences begin `Su che` and include `dewaan` and `khean`. The repeated-action or every-day English prompt was answered with a sentence containing `douahaii`, whereas the earlier ongoing example did not. The position of `dewaan` and the spelling `naferaaas` versus `nafreass` also differ.
+
+**Not yet proven:** A unique independent meaning for `douahaii` (it is associated with the prompt 'every day' but was not separately glossed), a general habitual conjugation distinct from progressive tense, a required word order, or a standard Perso-Arabic spelling. Both examples use `che` and `dewaan` so do **not** claim a verb-tense alternation from this pair.
+
+**Pending:** “She gives food to that person every day,” “She gave food to the boy,” and “They gave food to the boy.” A useful next check is whether `douahaii` independently means 'every day' and the same phrasing works with a female subject.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.

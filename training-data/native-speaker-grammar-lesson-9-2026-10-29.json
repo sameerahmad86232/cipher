@@ -1,0 +1,22 @@
+{
+  "lesson": 9,
+  "date": "2026-10-29",
+  "english": "He gives food to that person every day.",
+  "ownerExact": "Su che humis nafreass douahaii khean dewaan ",
+  "earlierOngoing": "Su che dewaan humis naferaaas khean ",
+  "observations": [
+    "Both examples begin Su che and contain dewaan and khean.",
+    "douahaii occurs in the daily example, not the ongoing example.",
+    "The word order and romanization of the recipient expression also vary."
+  ],
+  "uncertain": [
+    "Exact isolated meaning of douahaii",
+    "Whether habitual form has different verb morphology",
+    "Whether dewaan placement is optional"
+  ],
+  "pending": [
+    "She gives food to that person every day.",
+    "She gave food to the boy.",
+    "They gave food to the boy."
+  ]
+}
