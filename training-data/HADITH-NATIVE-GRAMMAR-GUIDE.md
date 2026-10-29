@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.9 — owner-supplied evidence, October 29, 2026.
+Version 2.0 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -128,9 +128,33 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 #### Pending next checks
 
-- “They are not giving food to that person.” — needed as a minimal contrast to the new plural affirmative example.
+- “They are not giving food to that person.” — answered in Lesson 8 below. Compare the complete sentences; word order and noun spelling also differ.
 - “He gives food to that person every day.” and “She gives food to that person every day.” — needed to compare habitual vs current ongoing action.
 - Earlier unanswered “She gave food to the boy” and “They gave food to the boy” remain pending.
+
+## Lesson 8 — plural present ongoing negation (received)
+
+**English prompt:** They are not giving food to that person.
+
+**Exact owner-supplied Romanized Kashmiri:** `Team che ne dewaaan humis nafreaas khean`
+
+### Paired evidence from Lessons 7 and 8
+
+| English | Exact owner-supplied Kashmiri |
+| --- | --- |
+| They are giving food to that person. | `Team che humis nafreass khean dewaaan` |
+| They are not giving food to that person. | `Team che ne dewaaan humis nafreaas khean` |
+
+**Directly supported in these examples:**
+
+- Both sentences start with `Team che`.
+- The new negative sentence contains `ne` after `che`; the earlier positive sentence does not. This is consistent with the previously supplied singular negative constructions.
+- The negative sentence places `dewaaan` immediately after `ne`, whereas the positive plural sentence places `dewaaan` at the end.
+- The recipient expression differs in spelling: `nafreass` (positive Lesson 7) versus `nafreaas` (negative Lesson 8).
+
+**Not yet confirmed:** Whether verb order changes because of negation, whether `nafreass`/`nafreaas` is just a spelling variation, and any general agreement or aspect rule. These are not a one-word minimal pair, so they do not license automatic rewriting of other Hadith sentences.
+
+**Still pending:** “He gives food to that person every day,” “She gives food to that person every day,” “She gave food to the boy,” and “They gave food to the boy.” Full Kashmiri-script transcriptions are unverified.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
