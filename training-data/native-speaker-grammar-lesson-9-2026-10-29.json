@@ -10,13 +10,19 @@
     "The word order and romanization of the recipient expression also vary."
   ],
   "uncertain": [
-    "Exact isolated meaning of douahaii",
     "Whether habitual form has different verb morphology",
-    "Whether dewaan placement is optional"
+    "Whether dewaan placement is optional",
+    "The official or preferred Romanized spelling of douahaii versus douhaaai is not established."
   ],
   "pending": [
     "She gives food to that person every day.",
     "She gave food to the boy.",
     "They gave food to the boy."
-  ]
+  ],
+  "ownerLesson11Clarification": {
+    "originalTextExact": "Yes u can also use \n\nروزانہ\n\n\nFor everyday ",
+    "kashmiriWrittenExpression": "روزانہ",
+    "englishMeaning": "every day / daily",
+    "scope": "Owner answered yes to a question about both douahaii and douhaaai and explicitly approved روزانہ as another expression. Do not infer a preferred spelling or universal interchangeability."
+  }
 }

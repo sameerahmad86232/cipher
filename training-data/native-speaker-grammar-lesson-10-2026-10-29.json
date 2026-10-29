@@ -20,14 +20,20 @@
   ],
   "notEstablished": [
     "Whether the pronoun and auxiliary variations reflect grammatical agreement rather than romanization differences.",
-    "Whether douahaii or douhaaai independently means every day, or they are synonymous.",
     "Whether the word order is obligatory or whether this form differs morphologically from present ongoing action.",
-    "Verified Kashmiri-script transcription of either full sentence."
+    "Verified Kashmiri-script transcription of either full sentence.",
+    "No preferred standardized Romanization is established for douahaii versus douhaaai."
   ],
   "unansweredOldPrompts": [
     "She gave food to the boy.",
     "They gave food to the boy."
   ],
   "potentialNextCheck": "Ask whether douahaii / douhaaai is the expression for every day, and whether both spellings are acceptable.",
-  "policy": "Use exact owner text as sentence evidence only. Do not alter existing Hadith translations or mark drafts approved."
+  "policy": "Use exact owner text as sentence evidence only. Do not alter existing Hadith translations or mark drafts approved.",
+  "ownerLesson11Clarification": {
+    "originalTextExact": "Yes u can also use \n\nروزانہ\n\n\nFor everyday ",
+    "kashmiriWrittenExpression": "روزانہ",
+    "englishMeaning": "every day / daily",
+    "scope": "Owner answered yes to a question about both douahaii and douhaaai and explicitly approved روزانہ as another expression. Do not infer a preferred spelling or universal interchangeability."
+  }
 }

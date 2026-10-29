@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.2 — owner-supplied evidence, October 29, 2026.
+Version 2.3 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -171,9 +171,9 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 **Supported:** Both sentences begin `Su che` and include `dewaan` and `khean`. The repeated-action or every-day English prompt was answered with a sentence containing `douahaii`, whereas the earlier ongoing example did not. The position of `dewaan` and the spelling `naferaaas` versus `nafreass` also differ.
 
-**Not yet proven:** A unique independent meaning for `douahaii` (it is associated with the prompt 'every day' but was not separately glossed), a general habitual conjugation distinct from progressive tense, a required word order, or a standard Perso-Arabic spelling. Both examples use `che` and `dewaan` so do **not** claim a verb-tense alternation from this pair.
+**Updated by the owner's Lesson 11 confirmation:** The owner responded 'Yes u can also use روزانہ For everyday' when asked whether `douahaii` and `douhaaai` mean 'every day'. Both have owner confirmation in their *supplied sentence contexts*, and `روزانہ` is an additional directly approved Kashmiri-script expression for 'every day'. This does not prove the two Romanized spellings are standardized variants or interchangeable in every context. No general habitual conjugation, obligatory word order or script transcription of the Romanized whole sentence has been established.
 
-**Pending:** “She gave food to the boy” and “They gave food to the boy.” The everyday female example appears in Lesson 10. A useful next check is whether `douahaii`/`douhaaai` independently means “every day.”
+**Pending:** “She gave food to the boy” and “They gave food to the boy.” The everyday female example appears in Lesson 10. The owner supplied `روزانہ` as another way to say “every day”; whether the two Romanizations are interchangeable spellings remains unconfirmed.
 
 ## Lesson 10 — female daily or habitual giving (received)
 
@@ -192,9 +192,36 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 **Directly attested:** The male-referenced example begins `Su che`; the female-referenced example begins `Sua chea`. Both contain `humis` and end with `khean dewaan`. The spelling of the recipient form differs (`nafreass` vs `nafrea`); the time-related expression also differs (`douahaii` vs `douhaaai`), while occupying a similar position in the two answers.
 
-**Not yet confirmed:** General pronoun/auxiliary gender agreement, whether these noun and time-expression differences are grammatical rather than Romanization variability, whether `douhaaai` or `douahaii` alone literally means *every day*, or whether this word order is obligatory.
+**Not yet confirmed:** General pronoun/auxiliary gender agreement, whether these noun and time-expression spelling differences are grammatical rather than Romanization variability, or whether this word order is obligatory. The owner's later reply supports the **'every day' meanings in these sentence contexts** and explicitly allows `روزانہ` as an alternative, but does not settle spelling standardization.
 
 **Previously unanswered:** “She gave food to the boy” and “They gave food to the boy” remain pending. No full Hadith translation approval is implied by these sentence examples.
+
+## Lesson 11 — native-speaker clarification for “every day”
+
+**Question asked:** “Do `douahaii` and `douhaaai` both mean ‘every day’, or is one spelling more correct?”
+
+**Exact owner reply:**
+
+```text
+Yes u can also use 
+
+روزانہ
+
+
+For everyday 
+```
+
+### Attested vocabulary from this reply
+
+| Wording | English | Status |
+| --- | --- | --- |
+| `روزانہ` | every day / daily | Explicit native-speaker alternative |
+| `douahaii` | every day in Lesson 9 context | Affirmed in the reply to the preceding question |
+| `douhaaai` | every day in Lesson 10 context | Affirmed in the reply to the preceding question |
+
+**Important limit:** The response does **not** establish that `douahaii` and `douhaaai` are preferred or standardized spellings, that they are universally interchangeable, or how the Romanized forms are written in Kashmiri script. Preserve the originals as source evidence and use `روزانہ` only where the owner's approved meaning fits.
+
+**Still pending:** Past-tense examples “She gave food to the boy” and “They gave food to the boy.” No full Hadith was approved by this vocabulary note.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
