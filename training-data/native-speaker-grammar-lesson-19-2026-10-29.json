@@ -17,7 +17,7 @@
     "ownerResponseExact": "Rasool s.a.waslamoo farmoo paneain suhaaban"
   },
   "notConfirmed": [
-    "Whether 's.a.wasallamasmas' is the intended full Romanization or includes accidentally joined words, and its precise Kashmiri-script spelling.",
+    "The speaker clarified the blessing words but not exact internal token boundaries or Kashmiri-script representation of 's.a.wasallamasmas'.",
     "Whether 'suhaabiyean' and 'suhaaban' differ by case, number, honorific conventions or Romanization.",
     "Whether 'proucz' is universally the verb for asking in Hadith, or how it inflects.",
     "A word-for-word parsing of the Messenger of Allah expression and indirect object."
@@ -26,5 +26,12 @@
   "potentialNextLesson": [
     "The companion asked, 'What is Islam?'",
     "The Messenger of Allah ﷺ replied to him."
-  ]
+  ],
+  "ownerClarification": {
+    "exactText": "S.a means salallaha hu alihi rest is waslaam",
+    "abbreviation": "s.a",
+    "ownerGloss": "salallaha hu alihi",
+    "completion": "waslaam",
+    "interpretation": "Owner explains an honorific blessing, not an inflection on Rasool; retain the source spellings exactly."
+  }
 }
