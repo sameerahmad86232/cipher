@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "lesson": 13,
+  "date": "2026-10-29",
+  "focus": "Past tense plural versus female singular food-giving",
+  "englishPrompt": "They gave food to the boy.",
+  "ownerResponseExact": "Teamov deout  khean laedkaess",
+  "source": "Owner directly supplied in response to Lesson 13 prompt",
+  "comparisonWithLesson12": {
+    "englishPrompt": "She gave food to the boy.",
+    "ownerResponseExact": "Team deut khean ladkaess "
+  },
+  "attestedObservations": [
+    "Both owner-supplied examples have the order subject, giving form, khean, recipient expression.",
+    "The subject spellings differ: Team (English she) versus Teamov (English they).",
+    "The past giving spellings differ: deut versus deout.",
+    "The recipient spellings differ: ladkaess versus laedkaess. Their different spellings should not be silently standardized.",
+    "The Lesson 13 original has two spaces between deout and khean; Lesson 12 original ends with a space."
+  ],
+  "notEstablished": [
+    "Whether Team vs Teamov is systematically the female-singular versus plural past agent distinction.",
+    "Whether deut vs deout is conjugation, pronunciation or Romanization variability.",
+    "Whether ladkaess and laedkaess represent the same pronunciation or case form.",
+    "A Kashmiri-script transcription for either sentence."
+  ],
+  "lessonStatus": "Native-speaker sentence supplied; broader grammatical rules pending further evidence; no whole Hadith translation approval."
+}
