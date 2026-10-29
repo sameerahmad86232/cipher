@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "lesson": 10,
+  "date": "2026-10-29",
+  "topic": "Female and male habitual everyday giving",
+  "englishPrompt": "She gives food to that person every day.",
+  "ownerResponseExact": "Sua chea  humis nafrea douhaaai khean dewaan  ",
+  "sourceNotes": "User supplied this as a response to Lesson 10. The two spaces after chea and two terminal spaces are preserved in the raw string.",
+  "comparison": {
+    "sourceLesson": 9,
+    "englishPrompt": "He gives food to that person every day.",
+    "ownerResponseExact": "Su che humis nafreass douahaii khean dewaan "
+  },
+  "directlySupported": [
+    "Both samples refer to everyday giving and include the sequence 'humis ... khean dewaan'.",
+    "The he-referenced sentence starts 'Su che'; the she-referenced sentence starts 'Sua chea'. This correspondence is attested in these samples only.",
+    "The everyday-time-positioned Romanized forms are douahaii (he sample) and douhaaai (she sample); whether they are spelling variants is not independently confirmed.",
+    "The recipient forms nafreass (he sample) and nafrea (she sample) differ; do not infer gender/case rules for this noun from the samples.",
+    "Both examples end with the same two words 'khean dewaan' (ignoring trailing whitespace)."
+  ],
+  "notEstablished": [
+    "Whether the pronoun and auxiliary variations reflect grammatical agreement rather than romanization differences.",
+    "Whether douahaii or douhaaai independently means every day, or they are synonymous.",
+    "Whether the word order is obligatory or whether this form differs morphologically from present ongoing action.",
+    "Verified Kashmiri-script transcription of either full sentence."
+  ],
+  "unansweredOldPrompts": [
+    "She gave food to the boy.",
+    "They gave food to the boy."
+  ],
+  "potentialNextCheck": "Ask whether douahaii / douhaaai is the expression for every day, and whether both spellings are acceptable.",
+  "policy": "Use exact owner text as sentence evidence only. Do not alter existing Hadith translations or mark drafts approved."
+}
