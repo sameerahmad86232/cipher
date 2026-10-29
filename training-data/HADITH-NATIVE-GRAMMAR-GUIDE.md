@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.6 — owner-supplied evidence, October 29, 2026.
+Version 1.7 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -68,6 +68,29 @@ The speaker's clarification was exactly “She will kot say anything to me.” W
 **Not yet supported:** Whether `Suo` vs `Suoa` is a spelling variation or grammatical difference, or how `keheeene` relates grammatically to `keanh naete keanh`. Do not remove or reinterpret `naete keanh`, and do not silently invent Perso-Arabic spellings for these Romanized expressions.
 
 Prompts 2 and 3 (“She gave food to the boy”; “They gave food to the boy”) remain unanswered. A further comparison of “He will say something to me” / “He will not say anything to me” is pending.
+
+## Lesson 5 — native-speaker answers (received)
+
+The native speaker supplied the following **exact** Romanized translations for future speech in a masculine-English prompt. Preserve spelling and spaces, including the two spaces before `keaheene` in the second answer:
+
+| English prompt | Exact native Kashmiri | Evidence |
+| --- | --- | --- |
+| He will say something to me. | `Suoa waenii mea kaenh nateei keanh` | User supplied |
+| He will not say anything to me. | `Suoa waeni ne mea  keaheene` | User supplied |
+
+### Supported local observations
+
+- Both Lesson 5 examples use `Suoa` with the English subject **he**. Lesson 4 also has `Suoa` for a **she** affirmative sentence. This usage does **not** establish a universal masculine or feminine form.
+- `ne` appears in the negative but not the affirmative Lesson 5 sentence, consistent with earlier negative examples. Only this specific contrast is confirmed, not a universal future-tense negation rule.
+- The forms `waenii` versus `waeni`, and `kaenh nateei keanh` versus `keaheene`, differ beyond `ne`. Do not silently correct or normalize them or assign individual morpheme meanings without evidence.
+- Compare Lesson 4: She (affirmative) `Suoa waeniie mea keanh naete keanh`; She (negative) `Suo waeniie ne mea keheeene`. No reliable singular masculine/feminine future conjugation paradigm has yet been established.
+
+### Pending learning needs
+
+- Confirm the grammatical function of `Suoa` in both male- and female-referenced future sentences, without replacing the speaker's wording with standalone `سُہ` (he) or `سۅ` (she).
+- Confirm whether the differences among `Suo`/`Suoa`, `waeniie`/`waenii`/`waeni` and `keanh`/`kaenh` are spelling variants or grammatical distinctions.
+- Earlier Lesson 4 prompts “She gave food to the boy” and “They gave food to the boy” remain unanswered.
+- Confirm a Kashmiri-script spelling of these two Romanized phrases only if the owner supplies it; do not invent script equivalents.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
