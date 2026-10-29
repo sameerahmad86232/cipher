@@ -16,3 +16,9 @@ Observations, limited to this sentence:
 Compare Lesson 18's `Rasool s.a.waslamoo farmoo paneain suhaaban`. The different religious-title wording, companion form and reported-speech verb do not establish a universal rule. This example does not approve a full Hadith.
 
 Follow-up: “The Messenger of Allah ﷺ replied to the companion.”
+
+## Speaker clarification
+
+Exact follow-up: `S.a means salallaha hu alihi rest is waslaam`
+
+The speaker describes `s.a` as part of the religious blessing, completed with `waslaam`. Preserve the raw Lesson 18 and 19 Romanizations unchanged. This is not evidence of a Kashmiri recipient or verb ending.
