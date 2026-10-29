@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "lesson": 22,
+  "date": "2026-10-29",
+  "englishPrompt": "The companion asked, 'What is faith?'",
+  "ownerResponseExact": "Suhaboo wouen iemaan kai chu",
+  "evidenceType": "Exact native-speaker sentence in response to prompt",
+  "comparison": {
+    "lesson": 21,
+    "englishPrompt": "The companion asked, 'What is Islam?'",
+    "ownerResponseExact": "Suhaboo woeun islam kai chu"
+  },
+  "directlyObserved": [
+    "Both examples begin with Suhaboo and end with kai chu.",
+    "The English topic differs from Islam to faith, and the source topic differs from islam to iemaan.",
+    "The reporting form is spelled woeun in Lesson 21 and wouen in Lesson 22; both occur in a sentence where a companion introduces a direct question.",
+    "The response does not include quotation marks or a question mark, as with Lesson 21."
+  ],
+  "meaningSupportedInContext": [
+    {
+      "source": "iemaan",
+      "english": "faith (Iman)"
+    },
+    {
+      "source": "iemaan kai chu",
+      "english": "What is faith?"
+    },
+    {
+      "source": "Suhaboo",
+      "english": "the companion"
+    }
+  ],
+  "notYetEstablished": [
+    "Whether the different Romanized spellings reflect identical pronunciation or a preferred standardized spelling; the owner confirms their same contextual meaning.",
+    "Whether kai chu generalizes to all such Kashmiri definitions or all subject forms.",
+    "A standardized Kashmiri-script form for the complete answer."
+  ],
+  "sourceFidelity": "Preserve both owner sentences exactly; do not standardize islam/iemaan or woeun/wouen, add missing punctuation, or assume universal patterns.",
+  "approvalScope": "Sentence-level native-speaker grammar evidence only, not an approval of any whole Hadith translation.",
+  "ownerLesson23Confirmation": {
+    "answerExact": "Yeah",
+    "toQuestion": "Do woeun and wouen mean the same thing in these sentences, or is there a difference?",
+    "confirmed": "The same meaning in the Lesson 21 and 22 question-introducing contexts",
+    "notConfirmed": "Preferred spelling, identical pronunciation, or universal grammatical interchangeability"
+  }
+}
