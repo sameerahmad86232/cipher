@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "lesson": 6,
+  "date": "2026-10-29",
+  "focus": "Present progressive / ongoing giving with male and female referents",
+  "fullHadithTranslationApproval": false,
+  "examples": [
+    {
+      "englishPrompt": "He is giving food to that person.",
+      "ownerResponseExact": "Su che dewaan humis naferaaas khean ",
+      "romanized": true,
+      "source": "Native-speaker supplied sentence"
+    },
+    {
+      "englishPrompt": "She is giving food to that person.",
+      "ownerResponseExact": "Sua chae dewaaan(giving) humis(that )  naferass khean (food) ",
+      "romanized": true,
+      "source": "Native-speaker supplied sentence and parenthetical glosses"
+    }
+  ],
+  "userGlosses": [
+    {
+      "sourceLiteral": "dewaaan(giving)",
+      "gloss": "giving"
+    },
+    {
+      "sourceLiteral": "humis(that )",
+      "gloss": "that"
+    },
+    {
+      "sourceLiteral": "khean (food)",
+      "gloss": "food"
+    }
+  ],
+  "supportedObservations": [
+    "The male-English prompt was answered with 'Su che dewaan ...'; the female-English prompt was answered with 'Sua chae dewaaan...'. These are context-matched observed phrases, not a full pronoun/auxiliary agreement paradigm.",
+    "Both sentences use humis and a nafer- form in recipient expressions; the exact romanizations differ ('naferaaas' vs 'naferass').",
+    "Both sentences end with khean for the item given, and the female sample supplies an explicit '(food)' gloss.",
+    "The female sample explicitly glosses dewaaan as giving and humis as that; preserve these glosses without collapsing spelling variants.",
+    "Present progressive or present ongoing aspect is supported by the paired English prompts; the grammatical analysis of che/chae and dewaan/dewaaan remains tentative."
+  ],
+  "unresolved": [
+    "Whether Su/Sua contrast grammatical gender or is an orthographic variant; owner previously supplied independent 'he' سُہ and 'she' سۅ.",
+    "Whether che/chae and dewaan/dewaaan encode agreement or reflect Romanized spellings.",
+    "How the recipient noun's variants naferaaas/naferass inflect in context.",
+    "The gender/pronoun confusion in earlier future speech examples still needs independent minimal pairs.",
+    "Earlier questions 'She gave food to the boy' and 'They gave food to the boy' remain pending."
+  ],
+  "upcomingLesson": [
+    "He is not giving food to that person.",
+    "She is not giving food to that person.",
+    "They are giving food to that person."
+  ],
+  "evidenceStatus": "Owner-supplied entire sentence pairs; inferred grammatical rules unconfirmed.",
+  "usePolicy": "Keep raw owner examples exactly, including whitespace and explanatory parentheses. Do not promote them to generalized rules, rewrite approved Hadith, or mark any draft approved."
+}
