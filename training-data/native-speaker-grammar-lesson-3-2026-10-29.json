@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "lesson": 3,
+  "source": "Native Kashmiri owner-provided responses, 2026-10-29",
+  "topic": "Subject forms and past negation",
+  "ownerPhrases": [
+    {
+      "item": 1,
+      "question": "For 'He gave food to that person', should we use Temov?",
+      "answerExact": "1 use temov",
+      "interpretation": "Owner confirmed using Temov for the 'he gave' sentence as prompted.",
+      "status": "confirmed-word-choice",
+      "note": "Earlier example also uses Temov with an English 'they' prompt; do not infer exclusive singular meaning."
+    },
+    {
+      "item": 2,
+      "englishPrompt": "She gave food to that person.",
+      "kashmiriExact": "تٔمۍ دِژ أمِس شخصس کینہہ کھیٛن۔",
+      "status": "user-supplied",
+      "mappingNote": "Mapped by order of the three following sentences; user did not number these three individually."
+    },
+    {
+      "item": 3,
+      "englishPrompt": "He did not give food to that person.",
+      "kashmiriExact": "تٔمۍ دِژ نہٕ أمِس شخصس کانٛہہ کھیٛن۔",
+      "status": "user-supplied-source-mapping-pending",
+      "mappingNote": "English subject is he, but Kashmiri subject and verb forms match the preceding 'She gave' example: do not treat the gender distinction as validated. Request clarification later."
+    },
+    {
+      "item": 4,
+      "englishPrompt": "She did not say anything to me.",
+      "kashmiriExact": "تٔمۍ ووٚن نہٕ مےٚ کیٚنٛہہ۔",
+      "status": "user-supplied",
+      "mappingNote": "Compare with Lesson 2 positive 'She said to me': تٔمۍ ووٚن مےٚ."
+    }
+  ],
+  "observations": [
+    "Temov explicitly accepted for he gave; also present in an earlier sentence labelled they gave, so its scope remains unresolved.",
+    "The food-giving negative includes نہٕ, and the food word changes from کینہہ to کانٛہہ. Avoid claiming negation is the only difference.",
+    "She said to me versus She did not say anything to me supports the phrase ووٚن نہٕ and کیٚنٛہہ in that context.",
+    "The direct negative food answer cannot by itself confirm third-person masculine because the supplied verb/subject match the feminine-labeled example."
+  ],
+  "pendingQuestions": [
+    "Confirm whether the food sentence written under 'He did not give' intentionally uses تٔمۍ دِژ or was intended as 'She did not give'.",
+    "Determine case and gender variation in gave/gave not; isolate forms through more minimal pairs.",
+    "Validate Perso-Arabic orthography only as user explicitly supplies or approves it."
+  ],
+  "policy": "Preserve all exact strings and mark mapping/grammar uncertainty; not a Hadith translation approval."
+}
