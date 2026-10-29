@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.6 — owner-supplied evidence, October 29, 2026.
+Version 2.7 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -257,7 +257,7 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 
 **Not yet established:** Which changes, if any, are systematic singular/plural or gender/case agreement, and which differences reflect Romanization variation. Do not replace `Teamov` with earlier attested `Temov` or normalize either recipient spelling. The owner has not supplied Kashmiri-script spellings for these lines.
 
-**Next controlled comparison:** “He gave food to the boy” is answered in Lesson 14. “They did not give food to the boy” remains pending and could test past-tense negation, without assuming an entire paradigm.
+**Next controlled comparison:** “He gave food to the boy” is answered in Lesson 14. “They did not give food to the boy” was answered in Lesson 15; compare both plural past-giving sentences without assuming an entire paradigm.
 
 ## Lesson 14 — completed past giving with masculine singular subject
 
@@ -281,7 +281,29 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 
 **Not confirmed:** A full Kashmiri past tense paradigm; whether recipient noun endings agree with gender, number, or case; any standardized Kashmiri-script equivalent of these exact Romanizations.
 
-**Next pending prompt:** “They did not give food to the boy.” The existing three examples are affirmative; a directly attested negative form would be useful for Hadith translation.
+**Update:** “They did not give food to the boy” was answered in Lesson 15. The negative sentence provides a paired comparison, but its subject and recipient spellings also differ.
+
+## Lesson 15 — completed past negative with plural subject
+
+**English prompt:** They did not give food to the boy.
+
+**Exact owner-supplied Romanized Kashmiri:** `Temov deout ne khean laedkeas`
+
+### Comparison with Lesson 13
+
+| English | Exact owner-supplied Kashmiri |
+| --- | --- |
+| They gave food to the boy. | `Teamov deout  khean laedkaess` |
+| They did not give food to the boy. | `Temov deout ne khean laedkeas` |
+
+**Directly attested:**
+- The negative construction contains `ne` directly after `deout`, while the affirmative does not contain `ne`. This agrees locally with other examples of negation after a verbal form.
+- Both use `deout` as the giving form and `khean` for food.
+- The subject spelling differs between `Teamov` and `Temov`; the recipient spelling differs between `laedkaess` and `laedkeas`. Preserve these spellings exactly, including the two spaces between `deout` and `khean` in the positive sentence.
+
+**Not established:** Whether the other spelling differences are standard alternatives or caused by grammar, or whether `ne` must always appear in this position in completed-past negation. This is not a one-token minimal pair. Do not silently normalize, translate into Kashmiri script, or rewrite approved Hadith from this evidence alone.
+
+**Possible next review:** Examine a matched he/she completed-past negative pair, or return to the outstanding Bukhari 27–100 narration reviews. No full Hadith approval follows from this sentence.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
