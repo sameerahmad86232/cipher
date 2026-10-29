@@ -1,0 +1,17 @@
+{
+  "lesson": 4,
+  "source": "Direct native-speaker reply to Lesson 4 prompt on 2026-10-29",
+  "sourcePromptEnglish": "She will say something to me.",
+  "ownerResponseExact": "Suo waeniie ne mea keheeene",
+  "romanizationConfirmed": "exact-as-typed",
+  "englishAlignment": "pending-confirmation",
+  "notes": [
+    "The word Suo aligns with prior owner-confirmed she = سۅ.",
+    "The token ne also appears in a prior owner-provided negative sentence. Its function in this reply is not yet confirmed.",
+    "Do not automatically interpret as affirmative 'She will say something to me'; user may mean 'She will not say anything to me'.",
+    "No Perso-Arabic spelling of the full utterance was supplied or approved.",
+    "Earlier prompts 'She gave food to the boy' and 'They gave food to the boy' remain unanswered."
+  ],
+  "nextQuestion": "Does ne in this sentence mean not? Did you intend 'She will not say anything to me'?",
+  "approvedGrammarRule": false
+}
