@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.4 — owner-supplied evidence, October 29, 2026.
+Version 2.5 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -221,7 +221,7 @@ For everyday
 
 **Important limit:** The response does **not** establish that `douahaii` and `douhaaai` are preferred or standardized spellings, that they are universally interchangeable, or how the Romanized forms are written in Kashmiri script. Preserve the originals as source evidence and use `روزانہ` only where the owner's approved meaning fits.
 
-**Still pending:** The past-tense example “They gave food to the boy.” The female-referenced example was answered in Lesson 12. No full Hadith was approved by this vocabulary note.
+**Updated:** The past-tense example “They gave food to the boy” was answered in Lesson 13. The female-referenced example was answered in Lesson 12. No full Hadith was approved by these sentence examples.
 
 ## Lesson 12 — completed past giving to a boy
 
@@ -236,7 +236,28 @@ For everyday
 - `Team` was previously used with a *they* English prompt (Lesson 7). This could involve case, spelling or form distinctions; **no universal gender/number rule** is established from these isolated examples.
 - The past giving form `deut` differs from previous Romanized `deout` and native-script `دِژ` in other sentence contexts. Preserve all without standardizing.
 
-**Pending:** “They gave food to the boy.” This needs an independent native-speaker answer to contrast number and past-tense agreement. No full Hadith draft has been approved by this lesson.
+**Updated:** “They gave food to the boy” was answered in Lesson 13; compare the native-speaker examples without assuming all spelling changes are obligatory agreement. No full Hadith draft was approved by this lesson.
+
+## Lesson 13 — completed past giving with plural subject
+
+**English prompt:** They gave food to the boy.
+
+**Exact owner-supplied Romanized Kashmiri:** `Teamov deout  khean laedkaess`
+
+Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exact original, including the distinct `laedkaess` spelling.
+
+### Comparison with Lesson 12
+
+| English prompt | Native-speaker original |
+| --- | --- |
+| She gave food to the boy. | `Team deut khean ladkaess ` |
+| They gave food to the boy. | `Teamov deout  khean laedkaess` |
+
+**Directly attested in these two examples:** Both have the same basic ordering of subject, past giving form, `khean` and a boy-recipient expression. The subjects (`Team` / `Teamov`), past giving forms (`deut` / `deout`), and recipient spellings (`ladkaess` / `laedkaess`) differ. Both examples were supplied for their respective English subjects.
+
+**Not yet established:** Which changes, if any, are systematic singular/plural or gender/case agreement, and which differences reflect Romanization variation. Do not replace `Teamov` with earlier attested `Temov` or normalize either recipient spelling. The owner has not supplied Kashmiri-script spellings for these lines.
+
+**Next controlled comparison:** “He gave food to the boy” and “They did not give food to the boy” could test third-person past and negative construction, while avoiding an invented full paradigm.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
