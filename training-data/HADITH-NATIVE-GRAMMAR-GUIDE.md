@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.3 — owner-supplied evidence, October 29, 2026.
+Version 3.4 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -406,9 +406,19 @@ Contextual observation: `deout jawaaab` occurs for "replied" in this sentence; `
 
 **Directly supported:** `Suhaboo` and `kai chu` are shared by both sentences. `islam` corresponds to Islam in Lesson 21, while `iemaan` corresponds to faith/Iman in Lesson 22. The two native-speaker examples supply `woeun` and `wouen` in corresponding reporting positions.
 
-**Unverified:** Whether `woeun` versus `wouen` is purely Romanized spelling variation or a real grammatical/pronunciation distinction, and whether `kai chu` can be used with all possible question topics. Do not silently normalize either of the original strings, add punctuation, or invent a Kashmiri-script transcription.
+**Updated after Lesson 23:** The owner answered `Yeah` when asked if `woeun` and `wouen` mean the same thing in these sentences, confirming the same contextual meaning. Whether the different spellings represent identical pronunciation, a preferred Romanization or unrestricted grammatical interchangeability remains unverified. It is also unknown whether `kai chu` fits every possible question topic. Do not silently normalize either of the original strings, add punctuation, or invent a Kashmiri-script transcription.
 
 **Approval limit:** A native-speaker sentence was supplied, not an approved complete Hadith. Original Bukhari translation records remain unchanged.
+
+## Lesson 23 — owner confirmation of reporting expression meanings
+
+**Question:** Do `woeun` and `wouen` mean the same thing in these sentences, or is there a difference?
+
+**Exact owner reply:** `Yeah`
+
+**Conservative interpretation:** Both `woeun` (Lesson 21: `Suhaboo woeun islam kai chu`) and `wouen` (Lesson 22: `Suhaboo wouen iemaan kai chu`) have the same contextual meaning, introducing the companion's spoken question.
+
+**Limit:** No preferred spelling, guaranteed identical pronunciation, or rule for using these Romanizations in every grammatical context was specified. Preserve both source sentences unchanged. This clarification does not approve or alter full Hadith translations.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
