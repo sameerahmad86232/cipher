@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.2 — owner-supplied evidence, October 29, 2026.
+Version 3.3 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -390,6 +390,25 @@ Contextual observation: `deout jawaaab` occurs for "replied" in this sentence; `
 **Source fidelity:** Do not insert punctuation, change `woeun` to `woun`, or silently add English quotation marks to the original native-speaker answer. No verified full Kashmiri-script transcription.
 
 **Approval limit:** This is sentence-level evidence only. It does not approve or modify any full Hadith translation.
+
+## Lesson 22 — direct question about faith (Iman)
+
+**English prompt:** The companion asked, “What is faith?”
+
+**Exact owner-supplied Romanized Kashmiri:** `Suhaboo wouen iemaan kai chu`
+
+### Controlled comparison with Lesson 21
+
+| English prompt | Exact owner-supplied answer |
+| --- | --- |
+| The companion asked, “What is Islam?” | `Suhaboo woeun islam kai chu` |
+| The companion asked, “What is faith?” | `Suhaboo wouen iemaan kai chu` |
+
+**Directly supported:** `Suhaboo` and `kai chu` are shared by both sentences. `islam` corresponds to Islam in Lesson 21, while `iemaan` corresponds to faith/Iman in Lesson 22. The two native-speaker examples supply `woeun` and `wouen` in corresponding reporting positions.
+
+**Unverified:** Whether `woeun` versus `wouen` is purely Romanized spelling variation or a real grammatical/pronunciation distinction, and whether `kai chu` can be used with all possible question topics. Do not silently normalize either of the original strings, add punctuation, or invent a Kashmiri-script transcription.
+
+**Approval limit:** A native-speaker sentence was supplied, not an approved complete Hadith. Original Bukhari translation records remain unchanged.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
