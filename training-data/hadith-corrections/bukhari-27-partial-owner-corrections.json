@@ -1,0 +1,23 @@
+{
+  "hadithNumber": 27,
+  "reviewType": "partial-owner-corrections-only",
+  "fullNarrationStatus": "draft-needs-owner-review",
+  "sourceUrl": "https://sunnah.com/bukhari:27",
+  "corrections": [
+    {
+      "location": "first paragraph; a man omitted from distribution",
+      "ownerInputExact": "Magr magr akisss shaksaas detukh ne kenah",
+      "previousDraft": "مگر اکھ شَخص کوٚرُس کانهه تقسیمہٕ نِش تراوُن",
+      "provisionalKashmiriScript": "مگر اَکِس شَخصَس دِتُکھ نہٕ کینہہ",
+      "scriptConfirmedByOwner": false
+    },
+    {
+      "location": "final reason for giving charity; fear of being cast into the Fire",
+      "ownerInputExact": "aiemai khatreee cxe allah tallah traveei teamiis buthei kin naraess manx",
+      "previousDraft": "یہٕ خٲطرٕ زِ اللہ تَمس نارس منز بُتھ کٕن تراونہ یُن نہٕ سَپدِ",
+      "provisionalKashmiriScript": "ایمہِ خٲطرٕ چھِ زِ اللہ تعالیٰ تَمس بُتھِ کِن نارَس منٛز ترٛاوِ",
+      "scriptConfirmedByOwner": false
+    }
+  ],
+  "notes": "The owner supplied Romanized Kashmiri corrections in ChatGPT. Preserve those exact words, distinguish provisional script rendering from owner-confirmed Kashmiri spelling, and do not mark whole narration approved."
+}
