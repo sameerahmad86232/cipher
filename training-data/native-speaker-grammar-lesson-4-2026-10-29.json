@@ -4,14 +4,37 @@
   "sourcePromptEnglish": "She will say something to me.",
   "ownerResponseExact": "Suo waeniie ne mea keheeene",
   "romanizationConfirmed": "exact-as-typed",
-  "englishAlignment": "pending-confirmation",
+  "englishAlignment": "owner-clarified-negative",
   "notes": [
-    "The word Suo aligns with prior owner-confirmed she = سۅ.",
-    "The token ne also appears in a prior owner-provided negative sentence. Its function in this reply is not yet confirmed.",
-    "Do not automatically interpret as affirmative 'She will say something to me'; user may mean 'She will not say anything to me'.",
-    "No Perso-Arabic spelling of the full utterance was supplied or approved.",
+    "Native speaker explicitly clarified first answer means negative 'she will not say anything to me' (English typo 'kot' preserved verbatim in clarificationExact).",
+    "The other phrase is supplied for affirmative 'she will say something to me'.",
+    "Both native Romanized strings are preserved without spelling normalization: Suo differs from Suoa; keheeene differs from keanh naete keanh.",
+    "The token ne occurs in a negative example, but this contrast alone does not prove all future negation morphology or syntactic word order.",
+    "Do not assign an independent grammatical meaning to naete keanh without additional native-speaker evidence.",
+    "No complete Kashmiri-script transcription for either sentence has been confirmed.",
     "Earlier prompts 'She gave food to the boy' and 'They gave food to the boy' remain unanswered."
   ],
-  "nextQuestion": "Does ne in this sentence mean not? Did you intend 'She will not say anything to me'?",
-  "approvedGrammarRule": false
+  "nextQuestion": "How do you say 'He will say something to me' and 'He will not say anything to me'?",
+  "approvedGrammarRule": "Meaning contrast of these two full sentences only; not a universal verb conjugation rule.",
+  "version": "1.6",
+  "originalQuestionAndClarification": {
+    "originalPromptEnglish": "She will say something to me.",
+    "initialAnswerExact": "Suo waeniie ne mea keheeene",
+    "clarificationExact": "She will kot say anything to me.",
+    "intendedEnglish": "She will not say anything to me.",
+    "affirmativeIntroductionExact": "For another she will say something to me",
+    "affirmativeAnswerExact": "Suoa waeniie mea keanh naete keanh"
+  },
+  "confirmedContrasts": [
+    {
+      "english": "She will not say anything to me.",
+      "kashmiriRomanExact": "Suo waeniie ne mea keheeene",
+      "ownerConfirmedMeaning": true
+    },
+    {
+      "english": "She will say something to me.",
+      "kashmiriRomanExact": "Suoa waeniie mea keanh naete keanh",
+      "ownerConfirmedMeaning": true
+    }
+  ]
 }
