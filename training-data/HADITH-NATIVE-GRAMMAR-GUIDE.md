@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.8 — owner-supplied evidence, October 29, 2026.
+Version 1.9 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -109,13 +109,28 @@ The owner supplied the following Romanized Kashmiri with its English prompts. **
 - `che` versus `chae`, `dewaan` versus `dewaaan`, and `naferaaas` versus `naferass` are observed differences, **not yet confirmed** as grammatical agreement or case rules.
 - These two sentences are translations of *is giving*, but they do not independently establish a complete present-tense system or the rules for habitual *gives*.
 
-### Lesson 7 — pending negative and plural contrasts
+### Lesson 7 — owner-supplied negative and plural examples
 
-1. He is not giving food to that person.
-2. She is not giving food to that person.
-3. They are giving food to that person.
+Exact native-speaker lines in order, mapped to the preceding prompts without changing spelling or spacing:
 
-The earlier unanswered prompts “She gave food to the boy” and “They gave food to the boy” remain pending. Do not silently substitute one recipient or tense for another.
+| English prompt | Exact native Kashmiri | Evidence |
+| --- | --- | --- |
+| He is not giving food to that person. | `Su che ne dewaan humis nafreass khean` | Native-speaker supplied |
+| She is not giving food to that person. | `Sua chea  ne dewaaan humis nafreass khean` | Native-speaker supplied (preserve two spaces after `chea`) |
+| They are giving food to that person. | `Team che humis nafreass khean dewaaan` | Native-speaker supplied |
+
+#### Confirmed observations (specific examples only)
+
+1. In both negative sentences, the token `ne` follows `che` or `chea`. The affirmative Lesson 6 sentences omit `ne` — evidence of negation in these contextual pairs, **not** a universal rule.
+2. The male-referenced sentence has `Su che ne dewaan` and the female-referenced sentence has `Sua chea  ne dewaaan`. Several forms differ at once, so these examples alone cannot establish which variation is due to grammatical gender, the orthography of Romanization, or optional usage.
+3. The plural sentence begins `Team che`, followed by `humis nafreass khean`, and then `dewaaan`. This is an attested ordering; do not assume it is the sole or obligatory word order.
+4. All three include the recipient-and-food sequence `humis nafreass khean`. Past Lesson 6 examples used `naferaaas` and `naferass`; do not silently normalize the different spellings.
+
+#### Pending next checks
+
+- “They are not giving food to that person.” — needed as a minimal contrast to the new plural affirmative example.
+- “He gives food to that person every day.” and “She gives food to that person every day.” — needed to compare habitual vs current ongoing action.
+- Earlier unanswered “She gave food to the boy” and “They gave food to the boy” remain pending.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
