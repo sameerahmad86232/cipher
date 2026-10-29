@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "lesson": 25,
+  "date": "2026-10-29",
+  "englishPrompt": "I believe in Allah.",
+  "ownerResponseExact": "Mea ooun iemaan allah tallhas peath",
+  "status": "Direct native-speaker translation of an isolated first-person statement",
+  "comparison": {
+    "sourceLesson": 24,
+    "englishPrompt": "The companion said, 'I believe in Allah.'",
+    "ownerResponseExact": "Suhaboo woouen  mea oouen iemmah allah tallhas peath"
+  },
+  "observations": [
+    "The standalone form omits the companion's preceding speech introduction, as expected from the English prompt.",
+    "The standalone first-person statement begins Mea and ends allah tallhas peath.",
+    "The corresponding span in Lesson 24 was 'mea oouen iemmah allah tallhas peath'. Here the Romanized forms change to 'Mea ooun iemaan allah tallhas peath'.",
+    "The owner has not separately confirmed whether ooun / oouen or iemaan / iemmah are merely spelling differences, inflectional differences, or other context-sensitive forms."
+  ],
+  "limits": [
+    "Treat the full standalone sentence as attested. Do not extract a universal first-person conjugation from one example.",
+    "Do not change the earlier lesson's exact spelling or double spacing.",
+    "Do not assume ooun and oouen or iemaan and iemmah are interchangeable without a separate answer.",
+    "No full Sahih al-Bukhari narration was newly approved or changed."
+  ]
+}
