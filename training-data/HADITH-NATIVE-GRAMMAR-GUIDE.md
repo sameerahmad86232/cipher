@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.8 — owner-supplied evidence, October 29, 2026.
+Version 2.9 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -301,7 +301,7 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 - Both use `deout` as the giving form and `khean` for food.
 - The subject spelling differs between `Teamov` and `Temov`; the recipient spelling differs between `laedkaess` and `laedkeas`. Preserve these spellings exactly, including the two spaces between `deout` and `khean` in the positive sentence.
 
-**Owner's subsequent clarification (Lesson 16):** `Teamov` and `Temov` both mean *they* in these examples (answer: “Yes” to the specific question whether both mean *they*). This resolves their meaning here, but not whether one spelling is preferable or whether there is a broader case/form distinction. The unrelated `laedkaess` / `laedkeas` contrast still requires confirmation. Whether `ne` must always appear in this position remains unproven. Do not silently normalize original wording, translate into Kashmiri script, or rewrite approved Hadith from this evidence alone.
+**Owner's subsequent clarification (Lesson 16):** `Teamov` and `Temov` both mean *they* in these examples (answer: “Yes” to the specific question whether both mean *they*). This resolves their meaning here, but not whether one spelling is preferable or whether there is a broader case/form distinction. Lesson 17 subsequently confirmed that both `laedkaess` and `laedkeas` mean *to the boy* in the given examples; whether they are preferred spellings or have different inflections remains unknown. Whether `ne` must always appear in this position remains unproven. Do not silently normalize original wording, translate into Kashmiri script, or rewrite approved Hadith from this evidence alone.
 
 **Possible next review:** Examine a matched he/she completed-past negative pair, or return to the outstanding Bukhari 27–100 narration reviews. No full Hadith approval follows from this sentence.
 
@@ -316,7 +316,24 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 - `Teamov` — “they” (confirmed meaning in context).
 - `Temov` — “they” (confirmed meaning in context).
 
-**Remaining uncertainty:** The short answer did not specify a preferred Romanized spelling or establish that the forms are interchangeable in every grammatical context. Earlier source sentences remain unchanged, including the contrasting `laedkaess` and `laedkeas` recipient forms.
+**Remaining uncertainty:** The short answer did not specify a preferred Romanized spelling or establish that the forms are interchangeable in every grammatical context. Earlier source sentences remain unchanged, including the recipient forms `laedkaess` and `laedkeas` that the owner subsequently confirmed share the meaning *to the boy* (Lesson 17).
+
+## Lesson 17 — owner-confirmed meaning of two recipient forms
+
+**Question asked:** “Do `laedkaess` and `laedkeas` both mean ‘to the boy’?”
+
+**Exact owner reply:** `Yes`
+
+**Confirmed contextual meanings:**
+
+| Exact Romanization | English meaning | Attested example |
+| --- | --- | --- |
+| `laedkaess` | to the boy | Lesson 13: They gave food to the boy |
+| `laedkeas` | to the boy | Lesson 15: They did not give food to the boy |
+
+**Scope:** The owner confirms the same *contextual meaning* for these two forms. Their preferred spelling, pronunciation, morphology, and universal interchangeability have **not** been established. The related `laedkas` and `ladkaess` spellings from Lessons 12 and 14 were not part of this specific clarification. Preserve all original owner-supplied sentences unchanged.
+
+**Next evidence priority:** Return to Hadith-specific reporting and religious expressions, including clauses involving the Messenger of Allah ﷺ and narrators; the 1–100 translation task still requires whole-Hadith comparison with Arabic and explicit review.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.

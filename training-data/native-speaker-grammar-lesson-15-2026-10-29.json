@@ -20,14 +20,14 @@
   ],
   "limits": [
     "The contrasted examples are not identical apart from 'ne'; do not infer from them alone whether the changed spellings are required by negation.",
-    "The owner confirms Teamov and Temov both mean they in the supplied examples; laedkaess and laedkeas remain unverified as equivalent, and the preferred pronoun spelling remains unconfirmed.",
+    "The owner confirmed laedkaess and laedkeas both mean 'to the boy' in these examples, but preferred spellings and universal interchangeability remain unconfirmed; the owner separately confirmed Teamov and Temov both mean they in examples.",
     "Do not extrapolate a universal completed-past negation position or derive a gender/number paradigm from one comparison.",
     "No Kashmiri-script transcription of this owner-authored Romanized sentence was provided."
   ],
   "approvalScope": "This is grammar-sentence evidence; it does not approve or modify any full Hadith.",
   "nextChecks": [
     "Compare he/she past negation with the same recipient.",
-    "Confirm preferred pronoun Romanization and whether laedkaess/laedkeas are interchangeable spellings.",
+    "Confirm preferred written spellings and whether the already-equivalent meanings reflect identical grammatical forms.",
     "Return to translating and reviewing unapproved Bukhari Hadith against the Arabic original."
   ],
   "ownerLesson16FollowUp": {
@@ -35,5 +35,11 @@
     "answerExact": "Yes",
     "conservativeInterpretation": "Both mean they in the owner-provided examples.",
     "limit": "The reply does not select a standardized preferred spelling or definitively address all contexts or grammatical case distinctions."
+  },
+  "ownerLesson17FollowUp": {
+    "questionExact": "Do `laedkaess` and `laedkeas` both mean “to the boy”?",
+    "answerExact": "Yes",
+    "confirmedMeaningInContext": "Both forms mean to the boy in the supplied examples.",
+    "limits": "The short reply does not establish a preferred spelling, identical pronunciation, or universal grammatical interchangeability; laedkas and ladkaess were not explicitly included in this question."
   }
 }
