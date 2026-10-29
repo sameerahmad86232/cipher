@@ -1,0 +1,37 @@
+{
+  "version": "1.2",
+  "lesson": 2,
+  "purpose": "Native-speaker sentence evidence for translating Sahih al-Bukhari 1–100",
+  "ownerExamples": [
+    {
+      "english": "She said to me.",
+      "kashmiri": "تٔمۍ ووٚن مےٚ"
+    },
+    {
+      "english": "They said to me.",
+      "kashmiri": "تمو ووٚن میہ ۔"
+    },
+    {
+      "english": "He gave food to that person.",
+      "kashmiri": "Temov deuot aiemis nafres kean khean"
+    },
+    {
+      "english": "They did not give food to that person.",
+      "kashmiri": "Temov deuot ne aiemis nafres kean khean"
+    }
+  ],
+  "interpretationStatus": "unverified grammatical generalizations",
+  "observations": [
+    "The owner wrote ووٚن in both reporting sentences.",
+    "In the last two written phrases ne is added after deuot.",
+    "The word Temov was also previously used in an earlier sentence meaning They gave; clarify the singular/plural distinction before deriving a rule.",
+    "Preserve مےٚ and میہ exactly; do not silently conflate them."
+  ],
+  "nextLesson": [
+    "Clarify He gave vs They gave subject marker",
+    "She gave food to that person",
+    "He did not give food to that person",
+    "She did not say anything to me"
+  ],
+  "approvalPolicy": "Sentence evidence is not full Hadith translation approval."
+}
