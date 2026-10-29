@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.5 — owner-supplied evidence, October 29, 2026.
+Version 3.6 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -435,6 +435,25 @@ Contextual observation: `deout jawaaab` occurs for "replied" in this sentence; `
 **Remaining questions:** Exact functions of `mea`, `oouen`, `iemmah`, and `allah tallhas peath`; preferred Romanization; a native-script transcription; and whether `woouen` is interchangeable with `woeun` or `wouen`.
 
 **Approval scope:** Owner-provided sentence evidence, not approval of a whole Hadith. Do not modify existing approved translations.
+
+## Lesson 25 — standalone first-person belief in Allah
+
+**English prompt:** I believe in Allah.
+
+**Exact owner-supplied Romanized Kashmiri:** `Mea ooun iemaan allah tallhas peath`
+
+### Comparison with Lesson 24
+
+| English | Exact owner-provided Kashmiri |
+| --- | --- |
+| The companion said, “I believe in Allah.” | `Suhaboo woouen  mea oouen iemmah allah tallhas peath` |
+| I believe in Allah. | `Mea ooun iemaan allah tallhas peath` |
+
+**Attested:** `Mea ooun iemaan allah tallhas peath` is the owner-approved standalone expression for the English first-person belief sentence. It shares the concluding expression `allah tallhas peath` with the earlier longer Lesson 24 sentence. The earlier quotation has `mea oouen iemmah`, whereas the standalone sentence has `Mea ooun iemaan`.
+
+**Not yet established:** Whether the differences `ooun`/`oouen` and `iemaan`/`iemmah` are spelling variants, grammatical changes, or due to another distinction. Do not declare one to be correct for all contexts or infer universal first-person agreement. Preserve both original answers, including the two spaces in Lesson 24. No validated complete Kashmiri-script sentence has been supplied.
+
+**Approval scope:** Native-speaker sentence evidence only, not approval or automatic rewriting of any full Bukhari Hadith.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
