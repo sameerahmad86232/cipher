@@ -1,0 +1,19 @@
+{
+  "scope": "Owner reviewed Hadith 28 and 29 on 2026-10-29; remaining passages accepted; corrected words are Romanized with provisional script.",
+  "ownerCorrections": [
+    {
+      "hadith": 28,
+      "raw": "Khean kheaaawoen baaqiyaen te"
+    },
+    {
+      "hadith": 29,
+      "rawPhrases": [
+        "Mea aaaow haaaaowne jahanam te tath manx aaaesee zaide zanaane ..... yem nashukraan aeeesei",
+        "Kai tem cha allah tallah sund inkar karaan",
+        "Team che pannes khadaaars send nashukraan te team sendean ahsaanen hind nashukraan",
+        "Tuoeh aggr akis zanii seet pouuure zindagii"
+      ]
+    }
+  ],
+  "status": "owner-reviewed-pending-script-spelling-confirmation"
+}
