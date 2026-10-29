@@ -31,10 +31,16 @@
     }
   ],
   "notYetEstablished": [
-    "Whether woeun and wouen are alternative Romanized spellings of the same word or have a grammatical/phonetic distinction.",
+    "Whether the different Romanized spellings reflect identical pronunciation or a preferred standardized spelling; the owner confirms their same contextual meaning.",
     "Whether kai chu generalizes to all such Kashmiri definitions or all subject forms.",
     "A standardized Kashmiri-script form for the complete answer."
   ],
   "sourceFidelity": "Preserve both owner sentences exactly; do not standardize islam/iemaan or woeun/wouen, add missing punctuation, or assume universal patterns.",
-  "approvalScope": "Sentence-level native-speaker grammar evidence only, not an approval of any whole Hadith translation."
+  "approvalScope": "Sentence-level native-speaker grammar evidence only, not an approval of any whole Hadith translation.",
+  "ownerLesson23Confirmation": {
+    "answerExact": "Yeah",
+    "toQuestion": "Do woeun and wouen mean the same thing in these sentences, or is there a difference?",
+    "confirmed": "The same meaning in the Lesson 21 and 22 question-introducing contexts",
+    "notConfirmed": "Preferred spelling, identical pronunciation, or universal grammatical interchangeability"
+  }
 }
