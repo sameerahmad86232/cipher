@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.5 — owner-supplied evidence, October 29, 2026.
+Version 1.6 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -52,11 +52,22 @@ These are confirmed **standalone pronoun equivalents**, not a complete translati
 1. “He did not give food to that person.” — The Lesson 3 sentence remains accepted as written. A controlled comparison with “She did not give food to that person” is still helpful to establish forms and agreement.
 2. “She gave food to the boy.”
 3. “They gave food to the boy.”
-4. “She will say something to me.” — Native-speaker answer: `Suo waeniie ne mea keheeene` (exact Romanization; **English alignment pending**).
+4. “She will say something to me.” — The owner's **affirmative** translation is `Suoa waeniie mea keanh naete keanh`. The originally provided `Suo waeniie ne mea keheeene` was later clarified as the **negative** sentence.
 
-**New observation (29 October 2026):** The answer begins `Suo`, which the owner previously identified as “she” (`سۅ`). The sequence `ne` was also present in an earlier explicitly negative example, so it may express negation here. Do **not** conclude this means the affirmative English “She will say something to me,” or derive future-tense rules, until the owner clarifies whether the intended meaning is “she will not say anything to me.” Preserve the exact spelling `Suo waeniie ne mea keheeene`; no script conversion has been confirmed.
+### Lesson 4 — native-speaker-confirmed future-speech contrast
 
-Prompts 2 and 3 (She/They gave food to the boy) remain unanswered. Lesson 4 future-tense meaning remains pending confirmation. These target subject agreement, recipient forms and future reporting.
+| English meaning | Exact owner-supplied Romanized Kashmiri | Status |
+| --- | --- | --- |
+| She will not say anything to me. | `Suo waeniie ne mea keheeene` | Meaning explicitly confirmed |
+| She will say something to me. | `Suoa waeniie mea keanh naete keanh` | Meaning explicitly supplied |
+
+The speaker's clarification was exactly “She will kot say anything to me.” We interpret `kot` as the typo `not` because the speaker separately and explicitly supplied the affirmative alternative.
+
+**Supported:** The whole negative phrase contrasts with the whole affirmative phrase; `ne` appears in the negative clause, consistent with earlier negative examples. This gives evidence for future-time speech expressions, but not a complete conjugation or universal negation rule.
+
+**Not yet supported:** Whether `Suo` vs `Suoa` is a spelling variation or grammatical difference, or how `keheeene` relates grammatically to `keanh naete keanh`. Do not remove or reinterpret `naete keanh`, and do not silently invent Perso-Arabic spellings for these Romanized expressions.
+
+Prompts 2 and 3 (“She gave food to the boy”; “They gave food to the boy”) remain unanswered. A further comparison of “He will say something to me” / “He will not say anything to me” is pending.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
