@@ -1,0 +1,28 @@
+{
+  "hadithNumber": 31,
+  "recordedDate": "2026-10-29",
+  "ownerAcceptedRemainingWording": true,
+  "translationStatus": "reviewed-with-provisional-script",
+  "sourceUrl": "https://sunnah.com/bukhari:31",
+  "notes": "Three owner corrections in romanized Kashmiri, written spellings remain proposed pending owner confirmation. All other wording accepted.",
+  "corrections": [
+    {
+      "section": "Where are you going?",
+      "romanizedExact": "kout chukh gasaan",
+      "provisionalScript": "کۄت چھُکھ گَژھان؟",
+      "scriptConfirmedByOwner": false
+    },
+    {
+      "section": "I am going to help that person",
+      "romanizedExact": "Teamis shakhasaa madad kaernei",
+      "provisionalScript": "تَمس شَخصَس مدد کَرنہٕ۔",
+      "scriptConfirmedByOwner": false
+    },
+    {
+      "section": "The killed man's intention to kill",
+      "romanizedExact": "Teamiss te ouss kanh shakass qatel karnuk iraade",
+      "provisionalScript": "تَمس تہِ اوس کانٛہہ شَخصَس قَتل کَرنُک اِرادٕ۔",
+      "scriptConfirmedByOwner": false
+    }
+  ]
+}
