@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "lesson": 8,
+  "date": "2026-10-29",
+  "focus": "Plural present ongoing negative sentence",
+  "englishPrompt": "They are not giving food to that person.",
+  "ownerResponseExact": "Team che ne dewaaan humis nafreaas khean",
+  "ownerResponseStatus": "native-speaker-supplied",
+  "comparator": {
+    "english": "They are giving food to that person.",
+    "ownerResponseExact": "Team che humis nafreass khean dewaaan",
+    "fromLesson": 7
+  },
+  "supportedObservations": [
+    "Both plural examples start with 'Team che'.",
+    "The negative sentence places 'ne' after 'che', matching the occurrence of 'ne' in Lesson 7's singular negative examples.",
+    "The giving form 'dewaaan' precedes 'humis' in the new negative sentence, whereas it is last in the earlier plural affirmative sentence.",
+    "The recipient noun romanization differs: 'nafreaas' in the new negative sentence and 'nafreass' in the affirmative comparator.",
+    "These sentences are both attested as a whole, but the differences beyond 'ne' mean they are not a controlled one-token minimal pair."
+  ],
+  "notEstablished": [
+    "Whether the placement of 'dewaaan' is caused by negation, optional word order, or another factor.",
+    "Whether 'nafreaas' and 'nafreass' are spelling variants or grammatically distinct.",
+    "Any universal negation, plural agreement, or habitual tense rule.",
+    "Kashmiri-script orthography for these Romanized sentences."
+  ],
+  "outstandingPromptExamples": [
+    "He gives food to that person every day.",
+    "She gives food to that person every day.",
+    "She gave food to the boy.",
+    "They gave food to the boy."
+  ],
+  "approvalPolicy": "Sentence is owner-provided grammatical evidence, not approval of any full Sahih al-Bukhari Hadith draft."
+}
