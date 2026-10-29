@@ -113,7 +113,10 @@
     '<div class="hero-buttons"><button type="button" class="btn btn-primary" data-continue>'+icon('book')+' Continue reading '+icon('arrow')+'</button>'+
     '<button type="button" class="btn btn-ghost" data-quran-view="cards">'+icon('layers')+' Study flashcards</button></div>'+
     '<div class="hero-trust-line"><span><i class="hero-trust-dot"></i> Two Kashmiri translations</span><span class="hero-trust-divider"></span><span>114 Surahs · An open reading space</span></div></div>'+
-    '<div class="hero-seal" aria-hidden="true"><div class="hero-seal-ring"><span class="hero-seal-glyph">۞</span><small>قُرآن کٲشِر پٲٹھۍ</small></div></div>'+
+    '<div class="hero-artifact" aria-hidden="true">'+
+    '<div class="artifact-aura"></div><div class="artifact-arch"></div><div class="artifact-dais"></div>'+
+    '<div class="artifact-stand"></div><div class="artifact-book"><div class="artifact-page artifact-page--left"></div><div class="artifact-page artifact-page--right"></div><div class="artifact-spine"></div></div>'+
+    '<div class="artifact-rosette">۞</div><div class="artifact-glint">✦</div></div>'+
     '<div class="hero-corner-caption" aria-hidden="true">THE KASHMIRI QUR’AN EXPERIENCE</div></section>'+
     '<nav class="home-jump-links" aria-label="Quickly explore Koshur Quran">'+
        '<button type="button" data-nav="quran"><span class="jump-icon">'+icon('book')+'</span><span><strong>Read Quran</strong><small>114 chapters</small></span>'+icon('chevron')+'</button>'+
