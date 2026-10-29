@@ -14,12 +14,18 @@
     "The standalone form omits the companion's preceding speech introduction, as expected from the English prompt.",
     "The standalone first-person statement begins Mea and ends allah tallhas peath.",
     "The corresponding span in Lesson 24 was 'mea oouen iemmah allah tallhas peath'. Here the Romanized forms change to 'Mea ooun iemaan allah tallhas peath'.",
-    "The owner has not separately confirmed whether ooun / oouen or iemaan / iemmah are merely spelling differences, inflectional differences, or other context-sensitive forms."
+    "Lesson 26 confirms ooun and oouen have the same contextual meaning in these two examples. Their grammatical and pronunciation differences remain unsettled, as do iemaan / iemmah."
   ],
   "limits": [
     "Treat the full standalone sentence as attested. Do not extract a universal first-person conjugation from one example.",
     "Do not change the earlier lesson's exact spelling or double spacing.",
-    "Do not assume ooun and oouen or iemaan and iemmah are interchangeable without a separate answer.",
+    "Lesson 26 confirms ooun/oouen same contextual meaning only. Do not infer identical pronunciation or universal interchangeability; iemaan/iemmah were not part of this clarification.",
     "No full Sahih al-Bukhari narration was newly approved or changed."
-  ]
+  ],
+  "ownerLesson26Followup": {
+    "ownerAnswerExact": "Yes",
+    "questionExact": "Do ooun and oouen mean the same thing in these sentences, or is there a grammatical difference?",
+    "confirmedScope": "Same contextual meaning in the supplied belief sentences.",
+    "unconfirmed": "Preferred spelling; fully interchangeable grammar or pronunciation; whether iemmah and iemaan have the same form or meaning."
+  }
 }
