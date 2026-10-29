@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "lesson": 15,
+  "date": "2026-10-29",
+  "focus": "Negation in completed past with plural subject",
+  "englishPrompt": "They did not give food to the boy.",
+  "ownerResponseExact": "Temov deout ne khean laedkeas",
+  "evidenceStatus": "Native speaker directly supplied complete sentence",
+  "comparison": {
+    "sourceLesson": 13,
+    "englishPrompt": "They gave food to the boy.",
+    "ownerResponseExact": "Teamov deout  khean laedkaess"
+  },
+  "directObservations": [
+    "The Lesson 15 negative sentence has 'ne' directly after 'deout'; the Lesson 13 positive sentence omits 'ne'.",
+    "The past-giving form 'deout' appears in both.",
+    "The source subject differs in spelling: 'Teamov' in the affirmative example, 'Temov' in the negative example.",
+    "The boy-recipient form differs in spelling: 'laedkaess' (affirmative) versus 'laedkeas' (negative).",
+    "Original source spacing also differs: two spaces between 'deout' and 'khean' in the affirmative; one space between tokens in the negative."
+  ],
+  "limits": [
+    "The contrasted examples are not identical apart from 'ne'; do not infer from them alone whether the changed spellings are required by negation.",
+    "Do not assume 'Teamov' and 'Temov', or 'laedkaess' and 'laedkeas', are equivalent standardized forms without speaker confirmation.",
+    "Do not extrapolate a universal completed-past negation position or derive a gender/number paradigm from one comparison.",
+    "No Kashmiri-script transcription of this owner-authored Romanized sentence was provided."
+  ],
+  "approvalScope": "This is grammar-sentence evidence; it does not approve or modify any full Hadith.",
+  "nextChecks": [
+    "Compare he/she past negation with the same recipient.",
+    "Confirm whether Teamov/Temov and laedkaess/laedkeas are interchangeable spellings.",
+    "Return to translating and reviewing unapproved Bukhari Hadith against the Arabic original."
+  ]
+}
