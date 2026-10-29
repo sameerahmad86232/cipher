@@ -4,7 +4,7 @@
   "source_author": "Saifur Rahman al-Mubarakpuri",
   "source_file_sha256": "28f6331b8026d95b4bd64154d93337858509822c1e449535011e0be8a6c1858c",
   "source_pdf_pages": 324,
-  "translated_book_pages": "8-88",
+  "translated_book_pages": "8-end",
   "chapters": [
     "Location and Nature of Arab Tribes",
     "Rulership and Princeship among the Arabs",
@@ -18,7 +18,7 @@
     "The Third Phase: Calling unto Islam beyond Makkah"
   ],
   "language": "Kashmiri (Perso-Arabic script)",
-  "status": "chapters-1-2-draft; chapters-3-10-machine-draft-awaiting-human-review",
+  "status": "complete machine draft awaiting comprehensive human review",
   "dictionary_source_records": "58,000+",
   "searchable_dictionary_headwords": 49682,
   "translation_policy": "Dictionary glosses and saved terminology are evidence. Complete sentences require contextual translation and human review.",
@@ -26,6 +26,13 @@
     "source_words": 34650,
     "segments": 326,
     "translation_engine": "NLLB-200 distilled 600M, kas_Arab target; terminology cleanup pending",
+    "review": "required before publication or training use"
+  },
+  "full_book": {
+    "chapters_on_website": 48,
+    "remainder_source_words": 121330,
+    "remainder_segments": 1566,
+    "major_remainder_sections": 38,
     "review": "required before publication or training use"
   }
 }
