@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.0 — owner-supplied evidence, October 29, 2026.
+Version 3.1 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -356,6 +356,14 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 **Next useful prompt:** “A companion asked the Messenger of Allah ﷺ a question.” This can test respectful address and reported questioning, without presuming any new grammar.
 
 **Approval status:** This example is native-speaker approved sentence evidence, **not** an approval or replacement of a full Hadith narration.
+
+## Lesson 19 and speaker honorific clarification
+
+Exact Lesson 19 sentence: `Aiek suhaabiyean proucz rasool s.a.wasallamasmas  sawaal `
+
+Exact follow-up: `S.a means salallaha hu alihi rest is waslaam`
+
+The speaker explains `s.a` as part of an honorific blessing, with `waslaam` completing it. Preserve all original spelling without splitting `s.a.wasallamasmas` or inferring a case suffix. For details and unresolved grammar consult `HADITH-NATIVE-GRAMMAR-LESSON-19.md` and the native-speaker Lesson 19 JSON. This clarification is not a full Hadith approval.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
