@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "lesson": 21,
+  "date": "2026-10-29",
+  "englishPrompt": "The companion asked, 'What is Islam?'",
+  "ownerResponseExact": "Suhaboo woeun islam kai chu",
+  "evidenceType": "Direct owner response to English prompt",
+  "localObservations": [
+    "Suhaboo occurs where the English prompt refers to the companion.",
+    "woeun occurs as the speech-introducing word in this direct-question context. Earlier woun appeared in a nonreligious 'said' example, while proucz appeared for 'asked' in Lesson 19. Do not infer that these forms are obligatory or interchangeable.",
+    "islam kai chu corresponds in context to 'What is Islam?'",
+    "The source is a Romanized Kashmiri sentence without the English quotation marks or question mark; preserve the original punctuation exactly."
+  ],
+  "comparison": [
+    {
+      "lesson": 19,
+      "english": "A companion asked the Messenger of Allah ﷺ a question.",
+      "ownerExact": "Aiek suhaabiyean proucz rasool s.a.wasallamasmas  sawaal "
+    },
+    {
+      "lesson": 1,
+      "english": "He said to me.",
+      "ownerExact": "Team woun mea"
+    }
+  ],
+  "unknowns": [
+    "The exact morphology of suhaboo and any standard Kashmiri-script equivalent.",
+    "Whether woeun should always introduce direct quotations or whether proucz also works in this context.",
+    "Whether kai chu can be freely generalized to all what-is questions."
+  ],
+  "approval": "Sentence-level grammar evidence only; no complete Sahih al-Bukhari Hadith approval."
+}

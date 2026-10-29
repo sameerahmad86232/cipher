@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.1 — owner-supplied evidence, October 29, 2026.
+Version 3.2 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -364,6 +364,32 @@ Exact Lesson 19 sentence: `Aiek suhaabiyean proucz rasool s.a.wasallamasmas  saw
 Exact follow-up: `S.a means salallaha hu alihi rest is waslaam`
 
 The speaker explains `s.a` as part of an honorific blessing, with `waslaam` completing it. Preserve all original spelling without splitting `s.a.wasallamasmas` or inferring a case suffix. For details and unresolved grammar consult `HADITH-NATIVE-GRAMMAR-LESSON-19.md` and the native-speaker Lesson 19 JSON. This clarification is not a full Hadith approval.
+
+## Lesson 20 — respectful reply (reference)
+
+English: The Messenger of Allah ﷺ replied to the companion.
+
+Exact owner wording: `Rasool salalllah hu alllai he wasaalamau deout jawaaab suhaaaban`
+
+Contextual observation: `deout jawaaab` occurs for "replied" in this sentence; `suhaaaban` appears with the companion recipient. Preserve the full blessing and all spelling. For the original saved record, see `lesson20-native-sentence.md`. No independent grammatical rules are established by this one example.
+
+## Lesson 21 — companion's direct question
+
+**English prompt:** The companion asked, “What is Islam?”
+
+**Exact owner Romanized Kashmiri:** `Suhaboo woeun islam kai chu`
+
+| Attested phrase | Contextual correspondence |
+| --- | --- |
+| `Suhaboo` | the companion |
+| `woeun` | reporting speech introducing the question |
+| `islam kai chu` | What is Islam? |
+
+**Evidence and comparison:** The speaker used `woeun` to introduce this direct question, but previously used `proucz` for "asked" in Lesson 19 (`Aiek suhaabiyean proucz rasool s.a.wasallamasmas  sawaal `). `woun` also occurred in an earlier "said" sentence. This supports a *contextual* distinction between wording that introduces quoted speech and wording referring to asking a question, but it does **not** establish universal equivalence or obligatory word order.
+
+**Source fidelity:** Do not insert punctuation, change `woeun` to `woun`, or silently add English quotation marks to the original native-speaker answer. No verified full Kashmiri-script transcription.
+
+**Approval limit:** This is sentence-level evidence only. It does not approve or modify any full Hadith translation.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
