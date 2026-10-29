@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.6 — owner-supplied evidence, October 29, 2026.
+Version 3.7 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -451,9 +451,19 @@ Contextual observation: `deout jawaaab` occurs for "replied" in this sentence; `
 
 **Attested:** `Mea ooun iemaan allah tallhas peath` is the owner-approved standalone expression for the English first-person belief sentence. It shares the concluding expression `allah tallhas peath` with the earlier longer Lesson 24 sentence. The earlier quotation has `mea oouen iemmah`, whereas the standalone sentence has `Mea ooun iemaan`.
 
-**Not yet established:** Whether the differences `ooun`/`oouen` and `iemaan`/`iemmah` are spelling variants, grammatical changes, or due to another distinction. Do not declare one to be correct for all contexts or infer universal first-person agreement. Preserve both original answers, including the two spaces in Lesson 24. No validated complete Kashmiri-script sentence has been supplied.
+**Updated after Lesson 26:** The owner answered `Yes` when asked if `ooun` and `oouen` mean the same thing in these two sentences, confirming their same meaning **in context**. Preferred spelling, pronunciation, and unrestricted grammatical interchangeability are still unconfirmed. The separate `iemaan`/`iemmah` distinction has not been clarified. Do not declare any one form universally correct or infer a full first-person paradigm. Preserve both original answers, including the two spaces in Lesson 24. No validated complete Kashmiri-script sentence has been supplied.
 
 **Approval scope:** Native-speaker sentence evidence only, not approval or automatic rewriting of any full Bukhari Hadith.
+
+## Lesson 26 — native-speaker clarification of ooun versus oouen
+
+**Question asked:** Do `ooun` and `oouen` mean the same thing in these sentences, or is there a grammatical difference?
+
+**Exact owner reply:** `Yes`
+
+**Conservative confirmation:** The forms `ooun` in `Mea ooun iemaan allah tallhas peath` (Lesson 25) and `oouen` in `Suhaboo woouen  mea oouen iemmah allah tallhas peath` (Lesson 24) have the **same meaning in their supplied first-person belief contexts**.
+
+**Limits:** This short confirmation does not select a preferred spelling, establish identical pronunciation, resolve grammatical differences in all contexts, or confirm that `iemaan` and `iemmah` are equivalent. Do not conflate `woouen` (speech introduction in Lesson 24) with `oouen` (part of the first-person belief expression). Original native-speaker source texts and spacing remain unchanged. No complete Bukhari Hadith is newly approved by this vocabulary clarification.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
