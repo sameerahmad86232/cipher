@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.1 — owner-supplied evidence, October 29, 2026.
+Version 2.2 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -154,7 +154,7 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 **Not yet confirmed:** Whether verb order changes because of negation, whether `nafreass`/`nafreaas` is just a spelling variation, and any general agreement or aspect rule. These are not a one-word minimal pair, so they do not license automatic rewriting of other Hadith sentences.
 
-**Still pending:** “She gives food to that person every day,” “She gave food to the boy,” and “They gave food to the boy.” Full Kashmiri-script transcriptions are unverified.
+**Still pending:** “She gave food to the boy” and “They gave food to the boy.” The female everyday sentence was supplied in Lesson 10. Full Kashmiri-script transcriptions are unverified.
 
 ## Lesson 9 — daily or habitual giving (received)
 
@@ -173,7 +173,28 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 **Not yet proven:** A unique independent meaning for `douahaii` (it is associated with the prompt 'every day' but was not separately glossed), a general habitual conjugation distinct from progressive tense, a required word order, or a standard Perso-Arabic spelling. Both examples use `che` and `dewaan` so do **not** claim a verb-tense alternation from this pair.
 
-**Pending:** “She gives food to that person every day,” “She gave food to the boy,” and “They gave food to the boy.” A useful next check is whether `douahaii` independently means 'every day' and the same phrasing works with a female subject.
+**Pending:** “She gave food to the boy” and “They gave food to the boy.” The everyday female example appears in Lesson 10. A useful next check is whether `douahaii`/`douhaaai` independently means “every day.”
+
+## Lesson 10 — female daily or habitual giving (received)
+
+**English prompt:** She gives food to that person every day.
+
+**Exact owner-supplied Romanized Kashmiri:** `Sua chea  humis nafrea douhaaai khean dewaan  `
+
+**Source fidelity:** Preserve the two spaces after `chea` and the two trailing spaces after `dewaan`. Do not normalize spelling or spacing in the original record.
+
+### Comparison with Lesson 9 (male subject)
+
+| English | Exact original Kashmiri |
+| --- | --- |
+| He gives food to that person every day. | `Su che humis nafreass douahaii khean dewaan ` |
+| She gives food to that person every day. | `Sua chea  humis nafrea douhaaai khean dewaan  ` |
+
+**Directly attested:** The male-referenced example begins `Su che`; the female-referenced example begins `Sua chea`. Both contain `humis` and end with `khean dewaan`. The spelling of the recipient form differs (`nafreass` vs `nafrea`); the time-related expression also differs (`douahaii` vs `douhaaai`), while occupying a similar position in the two answers.
+
+**Not yet confirmed:** General pronoun/auxiliary gender agreement, whether these noun and time-expression differences are grammatical rather than Romanization variability, whether `douhaaai` or `douahaii` alone literally means *every day*, or whether this word order is obligatory.
+
+**Previously unanswered:** “She gave food to the boy” and “They gave food to the boy” remain pending. No full Hadith translation approval is implied by these sentence examples.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
