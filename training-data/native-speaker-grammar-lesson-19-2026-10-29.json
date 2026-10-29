@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "lesson": 19,
+  "date": "2026-10-29",
+  "englishPrompt": "A companion asked the Messenger of Allah ﷺ a question.",
+  "ownerResponseExact": "Aiek suhaabiyean proucz rasool s.a.wasallamasmas  sawaal ",
+  "evidenceStatus": "Owner-supplied Romanized Kashmiri sentence matched to the English prompt",
+  "contextualObservations": [
+    "'Aiek suhaabiyean' occurs in the span corresponding to 'a companion' in this sentence; the internal case and number forms are not independently established.",
+    "'proucz' occurs where 'asked' appears in the English source. This suggests a past asking expression only in this example.",
+    "'rasool s.a.wasallamasmas' occurs in the address/recipient portion corresponding to 'the Messenger of Allah ﷺ'; do not split, standardize or expand its abbreviation without speaker input.",
+    "'sawaal' occurs where 'a question' appears in the English prompt.",
+    "The original source has two spaces between 's.a.wasallamasmas' and 'sawaal', and one trailing space."
+  ],
+  "comparisonLesson18": {
+    "englishPrompt": "The Messenger of Allah ﷺ said to his companions.",
+    "ownerResponseExact": "Rasool s.a.waslamoo farmoo paneain suhaaban"
+  },
+  "notConfirmed": [
+    "Whether 's.a.wasallamasmas' is the intended full Romanization or includes accidentally joined words, and its precise Kashmiri-script spelling.",
+    "Whether 'suhaabiyean' and 'suhaaban' differ by case, number, honorific conventions or Romanization.",
+    "Whether 'proucz' is universally the verb for asking in Hadith, or how it inflects.",
+    "A word-for-word parsing of the Messenger of Allah expression and indirect object."
+  ],
+  "approvalScope": "This sentence is direct native-speaker evidence, not approval of any whole Hadith narration.",
+  "potentialNextLesson": [
+    "The companion asked, 'What is Islam?'",
+    "The Messenger of Allah ﷺ replied to him."
+  ]
+}
