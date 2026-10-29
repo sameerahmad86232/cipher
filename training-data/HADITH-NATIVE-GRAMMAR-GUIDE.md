@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.2 — owner-supplied evidence, October 29, 2026.
+Version 1.3 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -24,11 +24,25 @@ This file is a working grammatical reference, not a certified universal grammar.
 
 **Open:** `Temov` was also used for the Lesson 1 *they gave* example, but Lesson 2 Example 9 was offered for *he gave*. Do not infer it is unambiguously singular or plural. Preserve differences between `deout` and `deuot`, and `temis` and `aiemis`. Do not normalize without the owner's confirmation.
 
-## Lesson 3 — questions pending native-speaker answers
-1. In Example 9, was `Temov` intended for *he* or *they*? If *he gave* is different, provide the natural sentence.
-2. She gave food to that person.
-3. He did not give food to that person.
-4. She did not say anything to me.
+## Lesson 3 — native-speaker responses (received)
+
+1. For “He gave food to that person,” the speaker confirmed: **1 use temov**.
+2. She gave food to that person. — تٔمۍ دِژ أمِس شخصس کینہہ کھیٛن۔
+3. He did not give food to that person. — تٔمۍ دِژ نہٕ أمِس شخصس کانٛہہ کھیٛن۔
+4. She did not say anything to me. — تٔمۍ ووٚن نہٕ مےٚ کیٚنٛہہ۔
+
+**Evidenced features:** `نہٕ` appears in both new negative expressions; in 2 vs 3 the `دِژ` construction is followed by `نہٕ` in the negative but `کینہہ` also changes to `کانٛہہ`, so this is not a one-word minimal pair. Compared with Lesson 2 “She said to me,” the negative sentence has `نہٕ` and `کیٚنٛہہ`. The owner confirmed `Temov` is used for *he gave* as prompted, but the same word was previously supplied for *they gave*; do not generalize its gender or number.
+
+**Pending source/English alignment:** Sentence 3 is associated by answer order with the English prompt “He did not give,” yet its `تٔمۍ دِژ` begins like sentence 2, which had the English subject “she”. It may need a clarification of the *he/she* distinction. Preserve the exact native sentence in either case, with this note. No manuscript-wide grammar normalization should follow from it.
+
+## Lesson 4 — pending minimal-pair review
+
+1. “He did not give food to that person.” — Give the natural Kashmiri phrasing specifically for **he**, or confirm whether the Lesson 3 answer is correct as written.
+2. “She gave food to the boy.”
+3. “They gave food to the boy.”
+4. “She will say something to me.”
+
+These target subject agreement, recipient forms and future reporting; unanswered prompts remain pending.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
