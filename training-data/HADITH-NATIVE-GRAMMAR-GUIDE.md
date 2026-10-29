@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 3.4 — owner-supplied evidence, October 29, 2026.
+Version 3.5 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -419,6 +419,22 @@ Contextual observation: `deout jawaaab` occurs for "replied" in this sentence; `
 **Conservative interpretation:** Both `woeun` (Lesson 21: `Suhaboo woeun islam kai chu`) and `wouen` (Lesson 22: `Suhaboo wouen iemaan kai chu`) have the same contextual meaning, introducing the companion's spoken question.
 
 **Limit:** No preferred spelling, guaranteed identical pronunciation, or rule for using these Romanizations in every grammatical context was specified. Preserve both source sentences unchanged. This clarification does not approve or alter full Hadith translations.
+
+## Lesson 24 — companion's first-person declaration of belief
+
+**English prompt:** The companion said, “I believe in Allah.”
+
+**Exact owner-supplied Romanized Kashmiri:** `Suhaboo woouen  mea oouen iemmah allah tallhas peath`
+
+**Source fidelity:** Preserve the two spaces after `woouen`, the distinct spellings `woouen` and `oouen`, and all original words without adding punctuation or normalizing Romanization.
+
+**Sentence-level evidence:** `Suhaboo` occurs for the companion subject. `woouen` occurs where the spoken statement is introduced by “said”; the remaining stretch `mea oouen iemmah allah tallhas peath` corresponds contextually to the full quoted first-person statement “I believe in Allah.” This does **not** yet establish an independent word-by-word gloss or a complete verb conjugation.
+
+**Comparison with Lessons 21–23:** The speaker wrote `woeun` in `Suhaboo woeun islam kai chu` and `wouen` in `Suhaboo wouen iemaan kai chu` and subsequently confirmed these two meant the same thing in those contexts. The newly attested `woouen` (with an additional 'o') has not been separately confirmed as a spelling variant; neither has `oouen`. The prior `iemaan` (faith/Iman in a question) and `iemmah` (in this belief statement) must not be blindly conflated.
+
+**Remaining questions:** Exact functions of `mea`, `oouen`, `iemmah`, and `allah tallhas peath`; preferred Romanization; a native-script transcription; and whether `woouen` is interchangeable with `woeun` or `wouen`.
+
+**Approval scope:** Owner-provided sentence evidence, not approval of a whole Hadith. Do not modify existing approved translations.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
