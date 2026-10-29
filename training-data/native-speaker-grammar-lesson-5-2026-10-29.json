@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "lesson": 5,
+  "date": "2026-10-29",
+  "purpose": "Native-speaker sentence evidence for Sahih al-Bukhari 1–100; not full Hadith approval.",
+  "promptSource": "User supplied full Lesson 5 response with English prompt paired to exact Romanized Kashmiri.",
+  "examples": [
+    {
+      "number": 1,
+      "english": "He will say something to me.",
+      "kashmiriExact": "Suoa waenii mea kaenh nateei keanh",
+      "status": "native-speaker-supplied",
+      "scriptStatus": "Romanized only; no native Kashmiri-script spelling approved."
+    },
+    {
+      "number": 2,
+      "english": "He will not say anything to me.",
+      "kashmiriExact": "Suoa waeni ne mea  keaheene",
+      "status": "native-speaker-supplied",
+      "scriptStatus": "Romanized only; preserve two spaces between mea and keaheene."
+    }
+  ],
+  "observations": [
+    {
+      "observation": "Both Lesson 5 answers use the written subject Suoa, even though the English subject is he.",
+      "support": "The exact subject in both Lesson 5 examples.",
+      "scope": "Attested use only; does not establish universal gender marking."
+    },
+    {
+      "observation": "ne appears in the negative Lesson 5 answer, while the affirmative answer omits it.",
+      "support": "Comparison of Lesson 5 pair.",
+      "scope": "Evidence for this particular positive/negative pair, not a complete negation rule."
+    },
+    {
+      "observation": "The affirmative and negative phrases show additional spelling/wording differences: waenii versus waeni and kaenh nateei keanh versus keaheene.",
+      "support": "Exact Lesson 5 pair.",
+      "scope": "Do not silently normalize as equivalent forms or independently assign morpheme meanings."
+    },
+    {
+      "observation": "The prior She future phrases also use Suoa in the affirmative and Suo in the negative.",
+      "support": "Native-speaker Lesson 4 records.",
+      "scope": "No confirmed systematic male-female future conjugation contrast yet."
+    }
+  ],
+  "pending": [
+    "Confirm whether Suoa is also naturally used for 'he' in these future examples, as recorded, despite the separately confirmed standalone 'he' pronoun سُہ.",
+    "Determine whether differences between Suo and Suoa, waenii/waeni/waeniie, kaenh/keanh and related phrases are orthographic or grammatical before generalizing.",
+    "Lesson 4 prompts 'She gave food to the boy' and 'They gave food to the boy' remain unanswered."
+  ],
+  "policy": "Exact user phrases are source evidence. Do not change Arabic-script Hadith drafts, infer comprehensive tense/gender paradigms or mark complete Hadith translations approved."
+}
