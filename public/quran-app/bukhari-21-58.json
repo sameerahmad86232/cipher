@@ -228,14 +228,18 @@
       "book": "Belief (Faith)",
       "title": "Three signs of hypocrisy",
       "narrator": "Abu Huraira",
-      "kashmiri": "ابوہریرہ رضی اللہ عنہ چھِ روایت کَران زِ نبی کریم ﷺَن فَرموو: «منافق سٕندۍ ترٛے نِشان چھِ: ییلہِ کتھ کَرِ، دَروگ وَنِ؛ ییلہِ وعدٕ کَرِ، وعدٕ خلافی کَرِ؛ تہٕ ییلہِ تَمس اَمانت دِنہٕ یِیہِ، سُہ خیانت کَرِ۔»",
+      "kashmiri": "ابوہریرہ رضی اللہ عنہ چھِ روایت کَران زِ نبی کریم ﷺَن فَرموو: «منافق سٕندۍ ترٛے نِشان چھِ: ییلہِ کتھ کَرِ، اَپُز وَنِ؛ ییلہِ وعدٕ کَرِ، وعدٕ خلافی کَرِ؛ تہٕ ییلہِ تَمس اَمانت دِنہٕ یِیہِ، تَتھ کَرِ خِیٲنَت۔»",
       "translationLanguage": "kas-Arab",
       "translationStatus": "draft-needs-owner-review",
-      "websiteReviewStatus": "owner-review-required",
+      "websiteReviewStatus": "owner-corrections-applied-full-review-required",
       "sourceUrl": "https://sunnah.com/bukhari:33",
       "sourceDataset": "AhmedBaset/hadith-json v1.2.0, Sahih al-Bukhari chapter 2",
       "arabic": "حَدَّثَنَا سُلَيْمَانُ أَبُو الرَّبِيعِ، قَالَ حَدَّثَنَا إِسْمَاعِيلُ بْنُ جَعْفَرٍ، قَالَ حَدَّثَنَا نَافِعُ بْنُ مَالِكِ بْنِ أَبِي عَامِرٍ أَبُو سُهَيْلٍ، عَنْ أَبِيهِ، عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ ‏\n\"‏ آيَةُ الْمُنَافِقِ ثَلاَثٌ إِذَا حَدَّثَ كَذَبَ، وَإِذَا وَعَدَ أَخْلَفَ، وَإِذَا اؤْتُمِنَ خَانَ ‏\"‏‏.‏",
-      "revision": 1
+      "revision": 2,
+      "reviewNotes": [
+        "Owner explicitly replaced lie with Apuz and betrayal clause with Taeth kareii khayaaanat.",
+        "Provisional Kashmiri-script forms; exact owner Romanization preserved in training-data review log. Other narration wording not explicitly reapproved."
+      ]
     },
     {
       "number": 34,
