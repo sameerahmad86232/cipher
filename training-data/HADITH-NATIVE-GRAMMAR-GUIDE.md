@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.7 — owner-supplied evidence, October 29, 2026.
+Version 1.8 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -91,6 +91,31 @@ The native speaker supplied the following **exact** Romanized translations for f
 - Confirm whether the differences among `Suo`/`Suoa`, `waeniie`/`waenii`/`waeni` and `keanh`/`kaenh` are spelling variants or grammatical distinctions.
 - Earlier Lesson 4 prompts “She gave food to the boy” and “They gave food to the boy” remain unanswered.
 - Confirm a Kashmiri-script spelling of these two Romanized phrases only if the owner supplies it; do not invent script equivalents.
+
+## Lesson 6 — owner-supplied present ongoing-action pairs
+
+The owner supplied the following Romanized Kashmiri with its English prompts. **Original text and parenthetical glosses are preserved exactly**, including word spellings and spaces:
+
+| English prompt | Native-speaker original | Status |
+| --- | --- | --- |
+| He is giving food to that person. | `Su che dewaan humis naferaaas khean ` | Owner supplied |
+| She is giving food to that person. | `Sua chae dewaaan(giving) humis(that )  naferass khean (food) ` | Owner supplied |
+
+### Attested observations — not universal rules
+
+- In these paired contexts, the English male subject corresponds to `Su che dewaan ...` and the English female subject corresponds to `Sua chae dewaaan ...`. The owner had earlier provided standalone `سُہ` for *he* and `سۅ` for *she*; no formal mapping from the new Romanizations to those script forms is certified.
+- `humis` appears in both recipient phrases, and the owner explicitly glosses `humis` as *that* in the second.
+- The second original glosses `dewaaan` as *giving* and `khean` as *food*. Both phrases contain `khean`.
+- `che` versus `chae`, `dewaan` versus `dewaaan`, and `naferaaas` versus `naferass` are observed differences, **not yet confirmed** as grammatical agreement or case rules.
+- These two sentences are translations of *is giving*, but they do not independently establish a complete present-tense system or the rules for habitual *gives*.
+
+### Lesson 7 — pending negative and plural contrasts
+
+1. He is not giving food to that person.
+2. She is not giving food to that person.
+3. They are giving food to that person.
+
+The earlier unanswered prompts “She gave food to the boy” and “They gave food to the boy” remain pending. Do not silently substitute one recipient or tense for another.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
