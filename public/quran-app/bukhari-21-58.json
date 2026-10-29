@@ -130,14 +130,19 @@
       "book": "Belief (Faith)",
       "title": "Feeding people and giving greetings",
       "narrator": "'Abdullah bin 'Amr",
-      "kashmiri": "عبداللہ بن عمرو رضی اللہ عنہما چھِ روایت کَران زِ اَکِس شَخصَن پٔرژھ رسول اللہ ﷺ سۭتۍ: «اسلامُک کُس عمل چھُ بہتر؟» حضور ﷺَن فَرموو: «کھؠن کھَلاوُن، تہٕ ہر کانٛسہِ شَخصَس سلام کَرُن، چاہے تُہۍ تَمس زانان ٲسِو یا نہٕ۔»",
+      "kashmiri": "عبداللہ بن عمرو رضی اللہ عنہما چھِ روایت کَران زِ اَکِس شَخصَن پٔرژھ رسول اللہ ﷺ سۭتۍ: «اسلامُک کُس عمل چھُ بہتر؟» حضور ﷺَن فَرموو: «کھؠن کھَلاوُن باقیَن تہٕ ہر کانٛسہِ شَخصَس سلام کَرُن، چاہے تُہۍ تَمس زانان ٲسِو یا نہٕ۔»",
       "translationLanguage": "kas-Arab",
       "translationStatus": "draft-needs-owner-review",
-      "websiteReviewStatus": "owner-review-required",
+      "websiteReviewStatus": "owner-reviewed-remaining-text; proposed-script-spelling-unconfirmed",
       "sourceUrl": "https://sunnah.com/bukhari:28",
       "sourceDataset": "AhmedBaset/hadith-json v1.2.0, Sahih al-Bukhari chapter 2",
       "arabic": "حَدَّثَنَا قُتَيْبَةُ، قَالَ حَدَّثَنَا اللَّيْثُ، عَنْ يَزِيدَ بْنِ أَبِي حَبِيبٍ، عَنْ أَبِي الْخَيْرِ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، أَنَّ رَجُلاً، سَأَلَ رَسُولَ اللَّهِ صلى الله عليه وسلم أَىُّ الإِسْلاَمِ خَيْرٌ قَالَ ‏\n\"‏ تُطْعِمُ الطَّعَامَ، وَتَقْرَأُ السَّلاَمَ عَلَى مَنْ عَرَفْتَ وَمَنْ لَمْ تَعْرِفْ ‏\"‏‏.‏",
-      "revision": 1
+      "revision": 2,
+      "ownerReviewedRemainder": true,
+      "reviewNotes": [
+        "User accepted the rest of hadith 28, 2026-10-29.",
+        "Romanized correction(s) preserved in review ledger; script rendering provisional until confirmed."
+      ]
     },
     {
       "number": 29,
@@ -146,14 +151,19 @@
       "book": "Belief (Faith)",
       "title": "Ingratitude and kindness",
       "narrator": "Ibn 'Abbas",
-      "kashmiri": "ابن عباس رضی اللہ عنہما چھِ روایت کَران زِ نبی کریم ﷺَن فَرموو: «مےٚ ہاوُن گٔیہِ جہنم، تہٕ تَتھ منٛز زیادٕ تر زنانہٕ ٲس، یِم ناشُکرا ٲس۔» پٔرژھنہٕ آو: «کیا تِم اللہ تعالیٰ سٕند اِنکار چھِ کَران؟» حضور ﷺَن فَرموو: «تِم چھِ پننِس خانٛدارس ناشکرا تہٕ تَمہِ سٕندۍ احسانَن ہٕندۍ ناشکرا۔ تُہۍ اگر اَکھ زَنہِ سۭتۍ پوٗرٕ زندگی نیکی کَرِو، پَتہٕ تُہُنٛد اَکھ کَتھ تَمس نہٕ خۄش آیہِ، سُہ وَنِ: مےٚ چھُنہٕ ژیہِ نِش زانہہ تہِ کینٛہہ بھلٲئی وُچھمٕژ۔»",
+      "kashmiri": "ابن عباس رضی اللہ عنہما چھِ روایت کَران زِ نبی کریم ﷺَن فَرموو: «مےٚ آو ہاوُن جہنم تہٕ تَتھ منٛز ٲسۍ زیادٕ زنانہٕ، یِم ناشُکران ٲسۍ۔» پٔرژھنہٕ آو: «کیا تِم چھِ اللہ تعالیٰ سٕند اِنکار کَران؟» حضور ﷺَن فَرموو: «تِم چھِ پننِس خانٛدارس سٕند ناشُکران تہٕ تَمہِ سٕندؠن احسانَن ہٕندۍ ناشُکران۔ تُہۍ اگر اَکِس زَنہِ سۭتۍ پوٗرٕ زندگی نیکی کَرِو، پَتہٕ تُہُنٛد اَکھ کَتھ تَمس نہٕ خۄش آیہِ، سُہ وَنِ: مےٚ چھُنہٕ ژیہِ نِش زانہہ تہِ کینٛہہ بھلٲئی وُچھمٕژ۔»",
       "translationLanguage": "kas-Arab",
       "translationStatus": "draft-needs-owner-review",
-      "websiteReviewStatus": "owner-review-required",
+      "websiteReviewStatus": "owner-reviewed-remaining-text; proposed-script-spelling-unconfirmed",
       "sourceUrl": "https://sunnah.com/bukhari:29",
       "sourceDataset": "AhmedBaset/hadith-json v1.2.0, Sahih al-Bukhari chapter 2",
       "arabic": "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ، عَنْ مَالِكٍ، عَنْ زَيْدِ بْنِ أَسْلَمَ، عَنْ عَطَاءِ بْنِ يَسَارٍ، عَنِ ابْنِ عَبَّاسٍ، قَالَ قَالَ النَّبِيُّ صلى الله عليه وسلم ‏\"‏ أُرِيتُ النَّارَ فَإِذَا أَكْثَرُ أَهْلِهَا النِّسَاءُ يَكْفُرْنَ ‏\"‏‏.‏ قِيلَ أَيَكْفُرْنَ بِاللَّهِ قَالَ ‏\"‏ يَكْفُرْنَ الْعَشِيرَ، وَيَكْفُرْنَ الإِحْسَانَ، لَوْ أَحْسَنْتَ إِلَى إِحْدَاهُنَّ الدَّهْرَ ثُمَّ رَأَتْ مِنْكَ شَيْئًا قَالَتْ مَا رَأَيْتُ مِنْكَ خَيْرًا قَطُّ ‏\"‏‏.‏",
-      "revision": 1
+      "revision": 2,
+      "ownerReviewedRemainder": true,
+      "reviewNotes": [
+        "User accepted the rest of hadith 29, 2026-10-29.",
+        "Romanized correction(s) preserved in review ledger; script rendering provisional until confirmed."
+      ]
     },
     {
       "number": 30,
