@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.7 — owner-supplied evidence, October 29, 2026.
+Version 2.8 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -301,9 +301,22 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 - Both use `deout` as the giving form and `khean` for food.
 - The subject spelling differs between `Teamov` and `Temov`; the recipient spelling differs between `laedkaess` and `laedkeas`. Preserve these spellings exactly, including the two spaces between `deout` and `khean` in the positive sentence.
 
-**Not established:** Whether the other spelling differences are standard alternatives or caused by grammar, or whether `ne` must always appear in this position in completed-past negation. This is not a one-token minimal pair. Do not silently normalize, translate into Kashmiri script, or rewrite approved Hadith from this evidence alone.
+**Owner's subsequent clarification (Lesson 16):** `Teamov` and `Temov` both mean *they* in these examples (answer: “Yes” to the specific question whether both mean *they*). This resolves their meaning here, but not whether one spelling is preferable or whether there is a broader case/form distinction. The unrelated `laedkaess` / `laedkeas` contrast still requires confirmation. Whether `ne` must always appear in this position remains unproven. Do not silently normalize original wording, translate into Kashmiri script, or rewrite approved Hadith from this evidence alone.
 
 **Possible next review:** Examine a matched he/she completed-past negative pair, or return to the outstanding Bukhari 27–100 narration reviews. No full Hadith approval follows from this sentence.
+
+## Lesson 16 — owner-confirmed meaning of Teamov and Temov
+
+**Question asked:** “Do `Teamov` and `Temov` mean the same thing — ‘they’ — or do they have different grammatical uses?”
+
+**Exact owner reply:** `Yes`
+
+**Conservative interpretation in context:** The user confirmed that `Teamov` and `Temov` both mean **they** in the supplied examples.
+
+- `Teamov` — “they” (confirmed meaning in context).
+- `Temov` — “they” (confirmed meaning in context).
+
+**Remaining uncertainty:** The short answer did not specify a preferred Romanized spelling or establish that the forms are interchangeable in every grammatical context. Earlier source sentences remain unchanged, including the contrasting `laedkaess` and `laedkeas` recipient forms.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
