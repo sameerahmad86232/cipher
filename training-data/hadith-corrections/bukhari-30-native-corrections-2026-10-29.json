@@ -1,0 +1,27 @@
+{
+  "hadithNumber": 30,
+  "reviewType": "partial-native-speaker-corrections",
+  "fullNarrationStatus": "draft-needs-owner-review",
+  "recordedDate": "2026-10-29",
+  "sourceUrl": "https://sunnah.com/bukhari:30",
+  "scriptConfirmedByOwner": false,
+  "ownerAcceptedRemainingText": false,
+  "corrections": [
+    {
+      "section": "Prophet addressing Abu Dharr and remaining traits of Jahiliyyah",
+      "romanizedExact": "Aaaei abu zaer kai cxai karthaa teamis majjjei hinx zaryee baiizteii  cxai amnx che aaaez te jahaaaltech keanh aadaet.",
+      "provisionalScript": "اے ابوذر! کیا ژےٚ کٔرِتھ تَمس ماجہِ ہٕنٛز ذٔریعہٕ بے عزتی؟ ژےٚ منٛز چھِ اَز تہِ جاہلیتٕچ کینہہ عادَتھ۔"
+    },
+    {
+      "section": "Those in your care are your brothers and Allah placed them under authority",
+      "romanizedExact": "Tehend ghulaam che tuhuend bhaaaie.    Alllah talllhan che tem tuhendis ikhtiyaaras manx thoveimit.",
+      "provisionalScript": "تُہُنٛدۍ غلام چھِ تُہُنٛدۍ بای؛ اللہ تعالیٰن چھِ تِم تُہُنٛدِ اختیارَس منٛز تھاومٕتۍ۔"
+    },
+    {
+      "section": "Feed and clothe those under your authority",
+      "romanizedExact": "Yous shakahs pannnis ikhtiyaaras manz bhaoooie rataan chu teamis pazee su kheawoun yous su paeenei kheawaaen chu.  Te su lagnawpun (waering) yous su paaanas lagaan chu",
+      "provisionalScript": "یُس شَخص پَننِس اختیارَس منٛز بای رَٹان چھُ، تَمس پَزِ سُہ کھَلاوُن یُس سُہ پان کھؠوان چھُ، تہٕ سُہ لَگناوُن یُس سُہ پانَس لَگان چھُ۔"
+    }
+  ],
+  "notes": "Exact Romanized owner expressions retained, including the parenthetical explanation of wearing. Perso-Arabic spelling is a proposal and not a user-approved transcription; leave the remaining narration unchanged."
+}
