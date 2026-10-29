@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.3 — owner-supplied evidence, October 29, 2026.
+Version 2.4 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -194,7 +194,7 @@ Exact native-speaker lines in order, mapped to the preceding prompts without cha
 
 **Not yet confirmed:** General pronoun/auxiliary gender agreement, whether these noun and time-expression spelling differences are grammatical rather than Romanization variability, or whether this word order is obligatory. The owner's later reply supports the **'every day' meanings in these sentence contexts** and explicitly allows `روزانہ` as an alternative, but does not settle spelling standardization.
 
-**Previously unanswered:** “She gave food to the boy” and “They gave food to the boy” remain pending. No full Hadith translation approval is implied by these sentence examples.
+**Previously unanswered:** “She gave food to the boy” was answered in Lesson 12. “They gave food to the boy” remains pending. No full Hadith translation approval is implied by these sentence examples.
 
 ## Lesson 11 — native-speaker clarification for “every day”
 
@@ -221,7 +221,22 @@ For everyday
 
 **Important limit:** The response does **not** establish that `douahaii` and `douhaaai` are preferred or standardized spellings, that they are universally interchangeable, or how the Romanized forms are written in Kashmiri script. Preserve the originals as source evidence and use `روزانہ` only where the owner's approved meaning fits.
 
-**Still pending:** Past-tense examples “She gave food to the boy” and “They gave food to the boy.” No full Hadith was approved by this vocabulary note.
+**Still pending:** The past-tense example “They gave food to the boy.” The female-referenced example was answered in Lesson 12. No full Hadith was approved by this vocabulary note.
+
+## Lesson 12 — completed past giving to a boy
+
+**English prompt:** She gave food to the boy.
+
+**Exact owner-supplied Romanized Kashmiri:** `Team deut khean ladkaess ` (terminal space preserved).
+
+**Attested local evidence:**
+- `Team deut khean ladkaess` is the full response supplied for the female-referenced English sentence. Do not substitute a new subject or verb.
+- `khean` also appears in earlier food-giving examples, and was explicitly glossed *food* in Lesson 6.
+- `ladkaess` occurs in the recipient position corresponding to *to the boy* in this sentence. The case ending cannot yet be generalized.
+- `Team` was previously used with a *they* English prompt (Lesson 7). This could involve case, spelling or form distinctions; **no universal gender/number rule** is established from these isolated examples.
+- The past giving form `deut` differs from previous Romanized `deout` and native-script `دِژ` in other sentence contexts. Preserve all without standardizing.
+
+**Pending:** “They gave food to the boy.” This needs an independent native-speaker answer to contrast number and past-tense agreement. No full Hadith draft has been approved by this lesson.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
