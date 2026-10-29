@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.9 — owner-supplied evidence, October 29, 2026.
+Version 3.0 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -334,6 +334,28 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 **Scope:** The owner confirms the same *contextual meaning* for these two forms. Their preferred spelling, pronunciation, morphology, and universal interchangeability have **not** been established. The related `laedkas` and `ladkaess` spellings from Lessons 12 and 14 were not part of this specific clarification. Preserve all original owner-supplied sentences unchanged.
 
 **Next evidence priority:** Return to Hadith-specific reporting and religious expressions, including clauses involving the Messenger of Allah ﷺ and narrators; the 1–100 translation task still requires whole-Hadith comparison with Arabic and explicit review.
+
+## Lesson 18 — respectful Hadith narration
+
+**English prompt:** The Messenger of Allah ﷺ said to his companions.
+
+**Exact native-speaker Romanized Kashmiri:** `Rasool s.a.waslamoo farmoo paneain suhaaban`
+
+### Confirmed at sentence level
+
+| Source wording | English phrase in this supplied example |
+| --- | --- |
+| `Rasool s.a.waslamoo` | The Messenger of Allah ﷺ |
+| `farmoo` | said, in this respectful narration |
+| `paneain suhaaban` | to his companions |
+
+**Observed distinction:** Earlier native-speaker nonreligious examples used `woun` or `ووٚن` for “said”, while this native-speaker religious reporting sentence uses `farmoo`. This is contextual evidence of respectful reporting vocabulary; it **does not** prove that one word must always replace the other, or define any general conjugation for either.
+
+**Do not invent:** A missing separately written Kashmiri word for “of Allah”, a universal analysis of `paneain` versus `suhaaban`, a preferred written representation of the blessing, or the Kashmiri-script transcription of this whole Romanized sentence. The owner supplied only this wording and its English prompt.
+
+**Next useful prompt:** “A companion asked the Messenger of Allah ﷺ a question.” This can test respectful address and reported questioning, without presuming any new grammar.
+
+**Approval status:** This example is native-speaker approved sentence evidence, **not** an approval or replacement of a full Hadith narration.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.

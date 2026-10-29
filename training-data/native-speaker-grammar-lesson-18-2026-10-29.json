@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "lesson": 18,
+  "date": "2026-10-29",
+  "englishPrompt": "The Messenger of Allah ﷺ said to his companions.",
+  "ownerResponseExact": "Rasool s.a.waslamoo farmoo paneain suhaaban",
+  "evidenceStatus": "Native speaker-supplied full sentence in Romanized Kashmiri; no Kashmiri-script transcription supplied",
+  "specificObservations": [
+    "The owner translated the full English clause with the original Romanized phrase, which must be reused exactly in this example.",
+    "Rasool s.a.waslamoo appears in the subject expression corresponding in context to the Messenger of Allah ﷺ. The entire wording, including spacing and abbreviation, is preserved without editorial expansion.",
+    "farmoo occurs where 'said' appears in this respectful narration context. Earlier nonreligious speech examples used woun or ووٚن; no universal lexical equivalence or distribution is inferred.",
+    "paneain suhaaban appears in the position corresponding to 'to his companions' in the given clause. Its internal case or possessive structure has not been separately confirmed."
+  ],
+  "notYetConfirmed": [
+    "Whether the phrase explicitly spells out 'of Allah' in Kashmiri or relies on established Islamic discourse context.",
+    "The independently approved translation of 'companions', 'his', and the inflected 'to' or any exact word-by-word segmentation.",
+    "Whether farmoo is consistently the respectful reporting verb in all tenses, persons, or quotations.",
+    "An authoritative Kashmiri-script representation of the complete Romanized clause or blessing.",
+    "Whether every instance of an English/Arabic narration 'said' should use farmoo instead of woun."
+  ],
+  "nextPrompts": [
+    "The Messenger of Allah ﷺ said: 'Actions are judged by intentions.'",
+    "A companion asked the Messenger of Allah ﷺ a question.",
+    "He narrated from the Messenger of Allah ﷺ."
+  ],
+  "policy": "Do not treat this as approval for an entire Hadith. Preserve exactly, compare Arabic source context before applying a reporting expression to drafted Hadith 1–100."
+}
