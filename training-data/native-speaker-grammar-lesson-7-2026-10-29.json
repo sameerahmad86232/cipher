@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "lesson": 7,
+  "date": "2026-10-29",
+  "focus": "Negation in present ongoing giving, and plural subject construction",
+  "englishPromptMapping": "The native speaker replied with three unnumbered lines in response to three prompts. Map by line order without modifying wording.",
+  "examples": [
+    {
+      "number": 1,
+      "englishPrompt": "He is not giving food to that person.",
+      "ownerResponseExact": "Su che ne dewaan humis nafreass khean",
+      "source": "Native speaker supplied"
+    },
+    {
+      "number": 2,
+      "englishPrompt": "She is not giving food to that person.",
+      "ownerResponseExact": "Sua chea  ne dewaaan humis nafreass khean",
+      "source": "Native speaker supplied; two spaces between chea and ne are intentional source preservation, not a grammatical claim"
+    },
+    {
+      "number": 3,
+      "englishPrompt": "They are giving food to that person.",
+      "ownerResponseExact": "Team che humis nafreass khean dewaaan",
+      "source": "Native speaker supplied"
+    }
+  ],
+  "confirmedLocalObservations": [
+    "In the first two negative examples, 'ne' follows the auxiliary-like item 'che' or 'chea'.",
+    "Neither affirmative Lesson 6 sentence includes 'ne'; this supports a negative-vs-positive contrast in these particular sentence pairs.",
+    "She vs he examples in this set differ in subject spelling Su/Sua, auxiliary spelling che/chea, and giving spelling dewaan/dewaaan. No single difference may be assigned a universal grammatical role yet.",
+    "The plural-English prompt has the exact subject 'Team' and uses 'che'; it places 'humis nafreass khean' before 'dewaaan', contrasting with the two singular examples' verb-first ordering.",
+    "All three Lesson 7 answers contain 'humis nafreass khean', preserving the recipient and food expression in this set."
+  ],
+  "unresolved": [
+    "Determine whether the contrast between che/chea and dewaan/dewaaan is gender agreement, spelling variability, or both.",
+    "Determine whether verb placement in Team che humis nafreass khean dewaaan is obligatory, preferred, or optional; one example is insufficient.",
+    "Do not infer general Kashmiri plural pronouns, case, or habitual aspect from 'Team' here.",
+    "Original earlier questions 'She gave food to the boy' and 'They gave food to the boy' remain unanswered."
+  ],
+  "nextPrompt": "They are not giving food to that person.",
+  "guidance": "Preserve exact Romanized input and whitespace, do not fabricate Kashmiri script. No changes to Hadith translations or their review status."
+}
