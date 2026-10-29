@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "lesson": 26,
+  "date": "2026-10-29",
+  "questionExact": "Do ooun and oouen mean the same thing in these sentences, or is there a grammatical difference?",
+  "ownerAnswerExact": "Yes",
+  "conservativeInterpretation": "The native speaker confirms the same meaning of ooun and oouen in the two provided first-person belief examples.",
+  "examples": [
+    {
+      "lesson": 24,
+      "englishPrompt": "The companion said, 'I believe in Allah.'",
+      "ownerResponseExact": "Suhaboo woouen  mea oouen iemmah allah tallhas peath"
+    },
+    {
+      "lesson": 25,
+      "englishPrompt": "I believe in Allah.",
+      "ownerResponseExact": "Mea ooun iemaan allah tallhas peath"
+    }
+  ],
+  "supported": [
+    "Both ooun and oouen can occur in the owner-provided first-person belief sentences with the contextual meaning associated with 'believe'.",
+    "The two full sentences remain owner-attested and their original spacing and spelling are unchanged."
+  ],
+  "notEstablished": [
+    "Whether ooun and oouen have identical pronunciation, a preferred Romanized spelling, or interchangeable grammatical distributions in all settings.",
+    "Whether iemmah and iemaan are equivalent or have any inflectional contrast.",
+    "Whether woouen (the separate speech-introduction form in Lesson 24) means the same thing as woeun/wouen; this was not the question."
+  ],
+  "policy": "Native-speaker explanation about contextual vocabulary only, not the approval or modification of any complete Sahih al-Bukhari narration."
+}
