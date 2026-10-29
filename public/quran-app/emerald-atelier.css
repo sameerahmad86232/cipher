@@ -1,0 +1,342 @@
+/* Koshur Quran — Emerald Atelier
+   Art direction: illuminated stone, forest-green enamel, antique brass and quiet paper.
+   Keeps sacred reading text stable; decorative movement is limited to the home hero.
+*/
+:root {
+  --bg:#f6f3ec;
+  --surface:#fffdfa;
+  --ink:#1a382e;
+  --muted:#708178;
+  --line:#e5e2d8;
+  --green:#235d43;
+  --green-dark:#092e25;
+  --mint:#eaf2e9;
+  --gold:#cda96b;
+  --shadow:0 16px 42px rgba(29,47,33,.065);
+}
+body {
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse at 88% 4%,rgba(219,199,154,.20),transparent 34%),
+    radial-gradient(ellipse at 6% 67%,rgba(173,205,174,.16),transparent 30%);
+}
+body.dark {
+  --bg:#101b17;--surface:#192c24;--ink:#eff1e8;--muted:#aebeb1;
+  --line:#34473a;--green:#b1ddbb;--green-dark:#092019;
+  --mint:#264638;--gold:#e0c58b;--shadow:0 16px 43px rgba(0,0,0,.2);
+  background-color:var(--bg);
+  background-image:radial-gradient(ellipse at 90% 4%,rgba(180,144,82,.095),transparent 35%);
+}
+::selection{background:#e7d19d;color:#18392d}
+:focus-visible { outline:2px solid #b48c43; outline-offset:4px; }
+.sidebar {
+  background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface) 94%,#d7d4be));
+  border-right:1px solid var(--line);
+  box-shadow:9px 0 50px rgba(10,42,29,.035);
+}
+.identity {padding-bottom:36px}
+.identity-icon {
+  background:linear-gradient(145deg,#2b7553 0%,#0c3d2d 46%,#08251e 100%);
+  border:1px solid #bb9a5d;
+  box-shadow:inset 0 1px 0 #fff4c048,inset 0 -6px 15px #031c15a6,0 9px 22px #0b382a29;
+  color:#f7df9c;border-radius:15px;
+}
+.identity-text strong{letter-spacing:-.65px}
+.side-label{color:#909c89}
+.side-nav{gap:4px}
+.nav-link {border-radius:12px;min-height:46px;transition:background .22s,transform .22s,color .22s}
+.nav-link.active {
+  background:linear-gradient(96deg,#e7f0e4,#f4f4e9);
+  box-shadow:inset 3px 0 #bd9252,inset 0 1px 0 #ffffffc7,0 5px 15px #1b4a2210;
+  color:#205b3c;border-color:#dbe5d4;
+}
+.dark .nav-link.active{background:linear-gradient(96deg,#294d3a,#263b30);border-color:#506747;color:#e2e9d5}
+.nav-link:hover:not(.active){transform:translateX(2px);background:#ecf2e8}
+.dark .nav-link:hover:not(.active){background:#294736}
+.side-quote{
+  background:linear-gradient(145deg,#f4f2e7,#e9f0e3);
+  border:1px solid #dedfcd;
+  box-shadow:inset 0 1px 0 #fff,0 8px 25px #2448270a;
+}
+.dark .side-quote{background:linear-gradient(145deg,#253f30,#24362d);border-color:#53634b}
+.side-quote p{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:23px;line-height:1.16}
+.topbar{
+  background:color-mix(in srgb,var(--surface) 84%,transparent);
+  border-bottom:1px solid color-mix(in srgb,var(--line) 88%,transparent);
+  backdrop-filter:blur(22px) saturate(1.14);
+  -webkit-backdrop-filter:blur(22px) saturate(1.14);
+}
+.avatar-circle{border:1px solid #cfb781;box-shadow:inset 0 1px 0 #fcf2d441,0 0 0 3px #eeeae0}
+.topbar-search{background:color-mix(in srgb,var(--surface) 75%,var(--bg));border:1px solid var(--line)}
+.content-area {padding-top:38px}
+.section-eyebrow{color:#977946;letter-spacing:2.6px}
+.section-eyebrow::before{background:#c6ac73}
+.section-header h2{font-size:clamp(25px,2.7vw,33px);letter-spacing:-1.45px;font-weight:800}
+.section-header p{line-height:1.8}
+.page-heading h1{font-size:clamp(30px,3.5vw,44px)}
+/* Hero: actual CSS perspective geometry, not a flat hero illustration */
+.hero.premium-hero{
+  position:relative;isolation:isolate;display:flex;align-items:center;
+  overflow:hidden;min-height:525px;border-radius:28px;
+  border:1px solid #aa8f5a80;
+  background:
+    radial-gradient(ellipse at 74% 29%,#326e568a,transparent 38%),
+    radial-gradient(ellipse at 92% 94%,#aa885c42,transparent 43%),
+    linear-gradient(120deg,#06251f 0%,#0c3b30 56%,#164939 100%);
+  box-shadow:inset 0 1px 0 #e9d6a743,0 28px 65px #112f2660,0 3px 9px #16372a19;
+}
+.hero.premium-hero::before {
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,#082820 0%,#0b332aeb 40%,#0c392864 68%,transparent 100%),
+    repeating-linear-gradient(90deg,transparent 0 52px,#ffffff05 53px,transparent 54px),
+    radial-gradient(circle at 76% 55%,#d7b57818,transparent 45%);
+  box-shadow:inset 0 0 150px #041a169e;
+}
+.hero.premium-hero::after{
+  content:"";position:absolute;inset:12px;z-index:3;pointer-events:none;
+  border:1px solid #e0c58b52;border-radius:19px;
+  box-shadow:inset 0 0 0 1px #f2e5b00c;
+  background:none;
+}
+.premium-hero .hero-content{
+  position:relative;z-index:5;max-width:660px;width:65%;
+  padding:64px 0 62px 59px;
+}
+.premium-hero .hero-pill {
+  color:#f7dda4;background:#c8a97117;border:1px solid #cfb37a8a;
+  box-shadow:inset 0 1px 0 #fff7d21e;letter-spacing:2.05px;
+}
+.hero-eyebrow{color:#d3e4d7;font-size:12px;letter-spacing:1.15px;margin-top:29px}
+.premium-hero h1{
+  font-size:clamp(43px,4.7vw,67px);line-height:1.065;
+  letter-spacing:-3px;text-shadow:0 4px 25px #051b1580;margin-top:16px;
+}
+.premium-hero h1 em{
+  color:#f0d9ab;font-family:"Cormorant Garamond",Georgia,serif;
+  font-style:italic;font-size:1.13em;font-weight:500;letter-spacing:-1.5px;
+}
+.premium-hero .subtext{max-width:475px;color:#dbe6db;font-size:13px;line-height:1.92}
+.premium-hero .hero-buttons{margin-top:33px;gap:12px}
+.premium-hero .btn{min-height:49px;border-radius:12px;transition:transform .2s,box-shadow .2s,background .2s}
+.premium-hero .btn-primary{
+  color:#1b3b2a;background:linear-gradient(148deg,#fff1c6,#d8b477 84%);
+  border-color:#f8e0a8;box-shadow:inset 0 1px 0 #fff9dd,0 12px 26px #061d1766;
+}
+.premium-hero .btn-primary:hover{background:linear-gradient(135deg,#fff6db,#e5c88f);box-shadow:0 15px 33px #061d1770}
+.premium-hero .btn-ghost{background:#e7eee512;backdrop-filter:blur(9px);border:1px solid #e3dbc87e}
+.hero-trust-line{color:#d4dccc;font-size:10px;margin-top:30px}
+.hero-trust-dot{background:#edcb85}
+.hero-shader-canvas {z-index:1;opacity:0;mask-image:linear-gradient(90deg,transparent 12%,#0005 44%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 12%,#0005 44%,#000 100%)}
+.hero-shader-canvas.is-ready{opacity:.23}
+.hero-texture {
+  z-index:2;opacity:.3;
+  background-image:radial-gradient(#f9e5b3 0.55px,transparent 0.9px);
+  background-size:20px 20px;
+}
+.hero-corner-caption{opacity:.8;color:#d9c18d;letter-spacing:2.1px}
+.hero-artifact{
+  position:absolute;inset:0 0 0 auto;width:45%;height:100%;
+  z-index:3;pointer-events:none;perspective:1050px;transform-style:preserve-3d;
+}
+.artifact-aura{
+  position:absolute;width:94%;aspect-ratio:1;top:6%;left:4%;
+  border-radius:50%;
+  background:radial-gradient(circle,#eac5854f 0%,#d5bf7d17 34%,transparent 69%);
+  filter:blur(12px);
+}
+.artifact-arch{
+  position:absolute;left:18%;top:12%;width:67%;height:74%;
+  border-radius:49% 49% 12px 12px / 37% 37% 12px 12px;
+  background:
+    radial-gradient(ellipse at 50% 22%,#e4c99477,transparent 47%),
+    linear-gradient(155deg,#4c8066 0%,#1b4d40 33%,#09261e 72%);
+  border:6px solid #b18a4d;outline:1px solid #eddea568;
+  box-shadow:inset 0 0 0 4px #063126,inset 0 0 30px #01150fdb,
+    0 0 0 10px #9b835234,0 20px 65px #041b15aa;
+  transform:rotateY(-9deg) rotateX(2deg);
+}
+.artifact-arch::before{
+  content:"";position:absolute;inset:13px;
+  border-radius:48% 48% 8px 8px / 38% 38% 8px 8px;
+  border:1px solid #e6c48a88;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 40px,#d8c0840d 40px 41px),
+    radial-gradient(ellipse at 50% 30%,#e0d5a53a,transparent 64%);
+  box-shadow:inset 0 0 45px #061c17ad;
+}
+.artifact-arch::after{
+  content:"";position:absolute;left:50%;top:9%;height:73%;width:1px;
+  background:linear-gradient(#f1daa077,#d2b57a09);box-shadow:0 0 19px #fce5aa90;
+}
+.artifact-dais{
+  position:absolute;width:88%;height:18%;bottom:7%;left:7%;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 45%,#e1bd7980,#634d3266 38%,#031b1599 70%,transparent 74%);
+  box-shadow:0 24px 30px #061b15b0;transform:rotateX(67deg);
+}
+.artifact-dais::after{content:"";position:absolute;inset:16%;border:1px solid #eccb845c;border-radius:50%;box-shadow:0 0 0 10px #d6b77716}
+.artifact-stand{
+  position:absolute;left:37%;top:67%;height:12%;width:38%;
+  border-radius:2px;
+  background:linear-gradient(110deg,#9c632d,#35251b 45%,#b58142 66%,#4b2b16);
+  box-shadow:inset 0 1px 0 #f6d9a36e,0 10px 17px #03140fa8;
+  transform:rotateZ(-25deg) rotateY(-23deg);
+}
+.artifact-stand::after{
+  content:"";position:absolute;inset:0;border-radius:2px;
+  background:linear-gradient(110deg,#c08f4e,#3b271d 49%,#8a5a2c);
+  transform:rotateZ(51deg);box-shadow:inset 0 1px 0 #f1d5a279,0 8px 16px #03140fbb;
+}
+.artifact-book {
+  position:absolute;left:23%;top:39%;width:62%;height:29%;
+  transform:rotate(-8deg) rotateY(-17deg) rotateX(15deg);
+  transform-style:preserve-3d;
+  filter:drop-shadow(0 21px 20px #03140fc9);
+  animation:atelier-float 9s ease-in-out infinite;
+}
+.artifact-book::before{
+  content:"";position:absolute;left:5%;right:5%;bottom:-5%;height:88%;
+  border-radius:6px;transform:translateZ(-16px);
+  background:#21382d;box-shadow:0 7px 0 #b68c4d;
+}
+.artifact-page{
+  position:absolute;top:5%;width:51%;height:92%;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 16px,#b89b6040 17px,transparent 18px),
+    linear-gradient(120deg,#d4b57e,#fff8e6 26%,#f5dfb1 81%,#b1884b);
+  border:3px solid #a98046;
+  box-shadow:inset 0 0 0 5px #fef4d0,0 5px 8px #080f0b45;
+}
+.artifact-page--left{
+  left:0%;clip-path:polygon(0 4%,100% 16%,100% 100%,4% 84%);
+  border-radius:16px 2px 2px 6px;
+  transform:rotateY(18deg);transform-origin:100% 50%;
+}
+.artifact-page--right{
+  right:0%;clip-path:polygon(0 16%,100% 3%,96% 84%,0 100%);
+  border-radius:2px 16px 6px 2px;
+  transform:rotateY(-17deg);transform-origin:0 50%;
+}
+.artifact-spine{
+  position:absolute;left:49.2%;top:17%;height:83%;width:2.6%;
+  border-radius:50%;background:linear-gradient(90deg,#755328,#f6d9a1,#785629);
+  box-shadow:0 0 10px #ffecb077;
+}
+.artifact-rosette{
+  position:absolute;top:24%;left:42%;font:53px/1 "Amiri",serif;
+  color:#f0d8a5;text-shadow:0 0 18px #ddbc7f6e;
+  animation:atelier-glow 8s ease-in-out infinite;
+}
+.artifact-glint{
+  position:absolute;top:17%;right:15%;font-size:21px;color:#e8c989;
+  text-shadow:0 0 25px #f9e6b7d9;animation:atelier-glow 7s ease-in-out infinite reverse;
+}
+@keyframes atelier-float{
+  0%,100%{transform:translateY(0) rotate(-8deg) rotateY(-17deg) rotateX(15deg)}
+  50%{transform:translateY(-8px) rotate(-7deg) rotateY(-14deg) rotateX(13deg)}
+}
+@keyframes atelier-glow{0%,100%{opacity:.62}50%{opacity:1}}
+/* Content surfaces: polished but never competing with verses */
+.home-jump-links button,
+.stat-card,.daily-prayer-wrapper .pt-home-card,.feature-card,
+.curated-surah-card,.surah-card,.settings-panel,.pt-panel,.hm-card{
+  border-color:var(--line);
+  box-shadow:0 10px 26px rgba(23,45,29,.05),inset 0 1px 0 #ffffff88;
+}
+.home-jump-links button,.feature-card,.surah-card{
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.home-jump-links button:hover,.feature-card:hover,.surah-card:hover{
+  transform:translateY(-3px);
+  border-color:#b7c8ad;box-shadow:0 18px 38px rgba(26,60,32,.1);
+}
+.jump-icon,.feature-icon,.shortcut-symbol{
+  background:linear-gradient(150deg,#f1f6e9,#dfece0);border:1px solid #d9e7d7;
+  box-shadow:inset 0 1px 0 #ffffffb8;
+}
+.daily-reading-card{
+  border:1px solid #bb9a61;
+  background:
+    radial-gradient(ellipse at 80% 12%,#3e765b 0%,transparent 49%),
+    linear-gradient(125deg,#082d24,#164a35 73%,#1b5c40);
+  box-shadow:inset 0 1px 0 #fff2b72a,0 19px 42px #103b2934;
+}
+.daily-reading-card::before{border-color:#d7b98148}
+.daily-reading-bottom .btn-primary{background:linear-gradient(145deg,#fff0c1,#d4b270);color:#20422e}
+.daily-reading-track span{background:linear-gradient(90deg,#c69a58,#fff3c8)}
+.daily-prayer-wrapper .pt-home-card{
+  background:linear-gradient(145deg,#f7f7ef,#e9f2e9);
+}
+.home-discover-grid .feature-card{
+  background:linear-gradient(152deg,var(--surface),color-mix(in srgb,var(--surface) 92%,#dfe6d9));
+}
+.curated-surah-card{background:linear-gradient(140deg,#f9f4e8,#e9f1e5)}
+.curated-surah-card:nth-child(2){background:linear-gradient(140deg,#edf4e9,#e2eee9)}
+.curated-surah-card:nth-child(3){background:linear-gradient(140deg,#f7f0e1,#eeeadd)}
+.verse-spotlight{
+  background:linear-gradient(145deg,#fffefa,#eaf2e6);
+  border:1px solid #e0e6d8;
+  box-shadow:0 14px 35px #24452d0e;
+}
+.mini-seerah{
+  background:linear-gradient(145deg,#f7f0df,#e7eadc);
+  border:1px solid #e4d8b9;
+}
+.verse-arabic,.verse-translation,[lang="ar"],[lang="ks-Arab"]{text-shadow:none}
+.verse-list{box-shadow:0 10px 30px #20462b0d}
+.verse{transition:background .15s}
+.dark .home-jump-links button,.dark .stat-card,.dark .feature-card,
+.dark .surah-card,.dark .settings-panel,.dark .pt-panel{
+  box-shadow:0 10px 30px #0000001b,inset 0 1px 0 #ffffff08;
+}
+.dark .home-discover-grid .feature-card{background:linear-gradient(145deg,#1c3329,#1a2b24)}
+.dark .daily-prayer-wrapper .pt-home-card{background:linear-gradient(145deg,#294334,#1e3228)}
+.dark .curated-surah-card,.dark .curated-surah-card:nth-child(2),.dark .curated-surah-card:nth-child(3){background:linear-gradient(145deg,#304b38,#22372c)}
+.dark .verse-spotlight{background:linear-gradient(145deg,#233d2e,#192e26);border-color:#43583c}
+.dark .mini-seerah{background:linear-gradient(145deg,#45422f,#283b2e);border-color:#605943}
+@media(max-width:1180px){
+  .hero.premium-hero{min-height:480px}
+  .premium-hero .hero-content{width:67%;padding:51px 0 50px 39px}
+  .premium-hero h1{font-size:clamp(40px,4.5vw,55px)}
+  .hero-artifact{width:43%;right:-3%}
+}
+@media(max-width:960px){
+  .hero.premium-hero{min-height:455px}
+  .premium-hero .hero-content{width:69%;max-width:580px}
+  .premium-hero h1{font-size:clamp(39px,4.8vw,50px)}
+  .premium-hero .subtext{max-width:360px}
+  .hero-artifact{width:46%;right:-8%;opacity:.8}
+}
+@media(max-width:800px){
+  .hero.premium-hero{min-height:435px}
+  .premium-hero .hero-content{padding:45px 0 44px 34px;max-width:500px}
+  .hero-artifact{right:-12%;opacity:.58}
+}
+@media(max-width:650px){
+  .content-area{padding-top:22px}
+  .hero.premium-hero{min-height:455px;border-radius:22px;align-items:center}
+  .hero.premium-hero::before{background:linear-gradient(95deg,#082b25f8,#09372ce8 68%,#093a2cc9)}
+  .hero.premium-hero::after{inset:9px;border-radius:15px}
+  .premium-hero .hero-content{width:100%;padding:38px 25px 35px;max-width:460px}
+  .premium-hero h1{font-size:clamp(36px,9.5vw,48px);letter-spacing:-2px;margin:13px 0 14px}
+  .hero-eyebrow{margin-top:22px;font-size:11px}
+  .premium-hero .subtext{max-width:380px;font-size:12px;line-height:1.85}
+  .premium-hero .hero-buttons{margin-top:24px}
+  .premium-hero .btn{min-height:44px;padding:10px 13px}
+  .hero-trust-line{margin-top:22px;gap:7px;font-size:9px}
+  .hero-artifact{width:80%;right:-43%;opacity:.19;filter:blur(.3px)}
+  .hero-corner-caption{display:none}
+  .section-header h2{font-size:clamp(22px,6vw,28px)}
+  .home-jump-links button,.feature-card{box-shadow:none}
+  .daily-prayer-wrapper .pt-home-card{background:linear-gradient(145deg,#f6f7ee,#edf3ea)}
+}
+@media(max-width:375px){
+  .premium-hero .hero-content{padding:32px 20px}
+  .premium-hero h1{font-size:35px}
+  .premium-hero .hero-pill{font-size:8px;letter-spacing:1.35px}
+  .hero-trust-divider{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .artifact-book,.artifact-rosette,.artifact-glint{animation:none!important}
+  .nav-link,.home-jump-links button,.feature-card,.surah-card{transition:none!important}
+}
