@@ -1,0 +1,24 @@
+{
+  "hadithNumber": 33,
+  "reviewType": "partial native-speaker corrections",
+  "fullNarrationStatus": "draft-needs-owner-review",
+  "recordedDate": "2026-10-29",
+  "sourceUrl": "https://sunnah.com/bukhari:33",
+  "scriptConfirmedByOwner": false,
+  "ownerApprovedRemainingText": false,
+  "corrections": [
+    {
+      "ownerInputExact": "Apuz in place of lie",
+      "ownerTermRomanized": "Apuz",
+      "originalDraft": "دَروگ وَنِ",
+      "provisionalKashmiriScript": "اَپُز وَنِ"
+    },
+    {
+      "ownerInputExact": "Taeth kareii khayaaanat",
+      "ownerPhraseRomanized": "Taeth kareii khayaaanat",
+      "originalDraft": "سُہ خیانت کَرِ",
+      "provisionalKashmiriScript": "تَتھ کَرِ خِیٲنَت"
+    }
+  ],
+  "notes": "These are owner corrections only. Original Romanized inputs remain preserved. Script transcription is unconfirmed; do not mark full Hadith 33 approved."
+}
