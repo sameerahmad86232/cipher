@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 2.5 — owner-supplied evidence, October 29, 2026.
+Version 2.6 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -257,7 +257,31 @@ Source fidelity: Two spaces occur between `deout` and `khean`. Preserve this exa
 
 **Not yet established:** Which changes, if any, are systematic singular/plural or gender/case agreement, and which differences reflect Romanization variation. Do not replace `Teamov` with earlier attested `Temov` or normalize either recipient spelling. The owner has not supplied Kashmiri-script spellings for these lines.
 
-**Next controlled comparison:** “He gave food to the boy” and “They did not give food to the boy” could test third-person past and negative construction, while avoiding an invented full paradigm.
+**Next controlled comparison:** “He gave food to the boy” is answered in Lesson 14. “They did not give food to the boy” remains pending and could test past-tense negation, without assuming an entire paradigm.
+
+## Lesson 14 — completed past giving with masculine singular subject
+
+**English prompt:** He gave food to the boy.
+
+**Exact owner-supplied Romanized Kashmiri:** `Team deout khean laedkas`
+
+### Owner-attested contrasts: Lessons 12–14
+
+| English prompt | Exact native-speaker original |
+| --- | --- |
+| She gave food to the boy. | `Team deut khean ladkaess ` |
+| They gave food to the boy. | `Teamov deout  khean laedkaess` |
+| He gave food to the boy. | `Team deout khean laedkas` |
+
+**Directly observed:**
+- Both *he* and *she* completed-past examples begin `Team`, whereas the *they* example begins `Teamov`. This is a sentence-level observation; it does not supersede the separately owner-approved standalone pronouns `سُہ` (he) and `سۅ` (she).
+- The he/they examples both have `deout`, while the she example has `deut`. These are owner-attested original forms, not enough to establish a universal gender/number agreement pattern.
+- The recipient term varies as `laedkas`, `ladkaess`, and `laedkaess`. Preserve each exactly. Their ending variation might be morphological or Romanization variability; no inflection rule is yet confirmed.
+- All three examples have a shared subject – past-giving word – `khean` – recipient sequence.
+
+**Not confirmed:** A full Kashmiri past tense paradigm; whether recipient noun endings agree with gender, number, or case; any standardized Kashmiri-script equivalent of these exact Romanizations.
+
+**Next pending prompt:** “They did not give food to the boy.” The existing three examples are affirmative; a directly attested negative form would be useful for Hadith translation.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.

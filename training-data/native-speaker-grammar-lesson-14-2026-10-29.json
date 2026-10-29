@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "lesson": 14,
+  "date": "2026-10-29",
+  "focus": "Masculine completed past giving versus female and plural examples",
+  "englishPrompt": "He gave food to the boy.",
+  "ownerResponseExact": "Team deout khean laedkas",
+  "comparisons": [
+    {
+      "lesson": 12,
+      "english": "She gave food to the boy.",
+      "ownerResponseExact": "Team deut khean ladkaess "
+    },
+    {
+      "lesson": 13,
+      "english": "They gave food to the boy.",
+      "ownerResponseExact": "Teamov deout  khean laedkaess"
+    }
+  ],
+  "attestedObservations": [
+    "Lesson 14 maps He to Team deout khean laedkas in this past giving context.",
+    "Both English he and she examples begin Team, while the they example starts Teamov.",
+    "The he example uses deout, the she example deut, and the they example deout. This is observed, not yet a generalized past verb conjugation rule.",
+    "The recipient expressions are distinct written forms laedkas (he), ladkaess (she), and laedkaess (they). The grammatical status of their spellings and case forms remains unconfirmed.",
+    "All three share subject + giving form + khean + recipient ordering. The two spaces after deout in the Lesson 13 original are preserved in that record."
+  ],
+  "uncertain": [
+    "Whether the giving verb and recipient form changes are controlled by subject gender or number, object/recipient agreement, context, or Romanization conventions.",
+    "Whether Team is a case-marked completed-past form, and its exact relationship to the standalone He سُہ and She سۅ forms.",
+    "Whether laedkas, ladkaess, and laedkaess represent different case endings or spelling variants.",
+    "The original script equivalents for the Romanized sentences."
+  ],
+  "pending": [
+    "They did not give food to the boy."
+  ],
+  "ownerApprovalScope": "Only the exact sentence is native-speaker attested. No full Hadith text has been approved or changed."
+}
