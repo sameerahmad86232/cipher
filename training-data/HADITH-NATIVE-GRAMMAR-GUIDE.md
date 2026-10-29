@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.4 — owner-supplied evidence, October 29, 2026.
+Version 1.5 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -52,9 +52,11 @@ These are confirmed **standalone pronoun equivalents**, not a complete translati
 1. “He did not give food to that person.” — The Lesson 3 sentence remains accepted as written. A controlled comparison with “She did not give food to that person” is still helpful to establish forms and agreement.
 2. “She gave food to the boy.”
 3. “They gave food to the boy.”
-4. “She will say something to me.”
+4. “She will say something to me.” — Native-speaker answer: `Suo waeniie ne mea keheeene` (exact Romanization; **English alignment pending**).
 
-These target subject agreement, recipient forms and future reporting; unanswered prompts remain pending.
+**New observation (29 October 2026):** The answer begins `Suo`, which the owner previously identified as “she” (`سۅ`). The sequence `ne` was also present in an earlier explicitly negative example, so it may express negation here. Do **not** conclude this means the affirmative English “She will say something to me,” or derive future-tense rules, until the owner clarifies whether the intended meaning is “she will not say anything to me.” Preserve the exact spelling `Suo waeniie ne mea keheeene`; no script conversion has been confirmed.
+
+Prompts 2 and 3 (She/They gave food to the boy) remain unanswered. Lesson 4 future-tense meaning remains pending confirmation. These target subject agreement, recipient forms and future reporting.
 
 ## Reuse and approval policy
 - Keep exact Romanized or Kashmiri-script spellings, punctuation and alternatives in the source records.
