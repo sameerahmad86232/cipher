@@ -20,14 +20,20 @@
   ],
   "limits": [
     "The contrasted examples are not identical apart from 'ne'; do not infer from them alone whether the changed spellings are required by negation.",
-    "Do not assume 'Teamov' and 'Temov', or 'laedkaess' and 'laedkeas', are equivalent standardized forms without speaker confirmation.",
+    "The owner confirms Teamov and Temov both mean they in the supplied examples; laedkaess and laedkeas remain unverified as equivalent, and the preferred pronoun spelling remains unconfirmed.",
     "Do not extrapolate a universal completed-past negation position or derive a gender/number paradigm from one comparison.",
     "No Kashmiri-script transcription of this owner-authored Romanized sentence was provided."
   ],
   "approvalScope": "This is grammar-sentence evidence; it does not approve or modify any full Hadith.",
   "nextChecks": [
     "Compare he/she past negation with the same recipient.",
-    "Confirm whether Teamov/Temov and laedkaess/laedkeas are interchangeable spellings.",
+    "Confirm preferred pronoun Romanization and whether laedkaess/laedkeas are interchangeable spellings.",
     "Return to translating and reviewing unapproved Bukhari Hadith against the Arabic original."
-  ]
+  ],
+  "ownerLesson16FollowUp": {
+    "questionExact": "Do Teamov and Temov mean the same thing — “they” — or do they have different grammatical uses?",
+    "answerExact": "Yes",
+    "conservativeInterpretation": "Both mean they in the owner-provided examples.",
+    "limit": "The reply does not select a standardized preferred spelling or definitively address all contexts or grammatical case distinctions."
+  }
 }
