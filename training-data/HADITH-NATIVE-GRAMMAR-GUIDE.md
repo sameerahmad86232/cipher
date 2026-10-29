@@ -1,5 +1,5 @@
 # Native Kashmiri Grammar Guide for Bukhari 1–100
-Version 1.3 — owner-supplied evidence, October 29, 2026.
+Version 1.4 — owner-supplied evidence, October 29, 2026.
 
 This file is a working grammatical reference, not a certified universal grammar. Preserve the Kashmiri exactly as supplied. The 26 formerly owner-approved Hadith and owner-reviewed vocabulary remain independent evidence, and grammar examples do not approve a full Hadith.
 
@@ -33,11 +33,23 @@ This file is a working grammatical reference, not a certified universal grammar.
 
 **Evidenced features:** `نہٕ` appears in both new negative expressions; in 2 vs 3 the `دِژ` construction is followed by `نہٕ` in the negative but `کینہہ` also changes to `کانٛہہ`, so this is not a one-word minimal pair. Compared with Lesson 2 “She said to me,” the negative sentence has `نہٕ` and `کیٚنٛہہ`. The owner confirmed `Temov` is used for *he gave* as prompted, but the same word was previously supplied for *they gave*; do not generalize its gender or number.
 
-**Pending source/English alignment:** Sentence 3 is associated by answer order with the English prompt “He did not give,” yet its `تٔمۍ دِژ` begins like sentence 2, which had the English subject “she”. It may need a clarification of the *he/she* distinction. Preserve the exact native sentence in either case, with this note. No manuscript-wide grammar normalization should follow from it.
+**Owner follow-up:** The native speaker subsequently supplied the standalone pronouns `سۅ` (she) and `سُہ` (he) and stated that the rest of the previous examples are correct. The Lesson 3 examples remain accepted as provided, including the `تٔمۍ` clauses. The contrast between the standalone pronouns and the forms used in completed past-tense clauses requires a grammatical paradigm before generalizing.
 
-## Lesson 4 — pending minimal-pair review
+## Lesson 4 — confirmed pronoun forms and pending minimal-pair review
 
-1. “He did not give food to that person.” — Give the natural Kashmiri phrasing specifically for **he**, or confirm whether the Lesson 3 answer is correct as written.
+Owner's exact follow-up: `She is سۅ` and `He is سُہ`; `Rest are correct`.
+
+| English pronoun | Native Kashmiri | Status |
+| --- | --- | --- |
+| She | سۅ | Owner supplied |
+| He | سُہ | Owner supplied |
+
+These are confirmed **standalone pronoun equivalents**, not a complete translation of the English clauses “she is ...” or “he is ...”. Keep `سۅ` and `سُہ` distinct. Past reporting and giving examples also contain `تٔمۍ`, but this does not license replacing it with `سۅ` or `سُہ`; subject form and grammatical role may differ.
+
+**Owner confirmed:** Remaining prior Lesson 3 examples are correct as given. The unanswered *new* Lesson 4 translations below remain pending.
+
+
+1. “He did not give food to that person.” — The Lesson 3 sentence remains accepted as written. A controlled comparison with “She did not give food to that person” is still helpful to establish forms and agreement.
 2. “She gave food to the boy.”
 3. “They gave food to the boy.”
 4. “She will say something to me.”
