@@ -1,0 +1,33 @@
+{
+  "version": "1.2",
+  "lesson": 1,
+  "ownerExamples": [
+    {
+      "english": "He said to me.",
+      "kashmiri": "Team woun mea"
+    },
+    {
+      "english": "They gave food to that person.",
+      "kashmiri": "Temov deout temis nafras kheain"
+    },
+    {
+      "english": "When he speaks, he tells a lie.",
+      "kashmiri": "Yeli te su wanan chu, su chu apuz wanan"
+    },
+    {
+      "english": "If someone makes a promise, they should keep it.",
+      "kashmiri": "اگر توہہِ کانہہ وعدہ کران چھِو، توہہِ پزِ اتھ پیٹھ قائم روزُن۔"
+    },
+    {
+      "english": "Whoever does a good deed will receive its reward.",
+      "kashmiri": "یُس کانٛہہ تہِ اصل کٲم کران چھُ تٔمِس میلہِ امُک انعام۔"
+    },
+    {
+      "english": "If it had not caused hardship for my community, I would have gone with them.",
+      "kashmiri": "اگر نہٕ امہِ سۭتۍ میٲنِ برادری  (یا امت) خٲطرٕ مسلہٕ پٲدٕ گژھہِ نہٕ، بہٕ آسہٕ ہا تِمن سۭتۍ گٔومُت۔"
+    }
+  ],
+  "ownerClarification": "In example 2, use only one temis; original was Temov deout temis teamis nafras kheain.",
+  "evidencePolicy": "Original Kashmiri wording is owner supplied. Grammar explanation beyond direct surface observations remains tentative. Example 4 changes generic third person to direct second-person you; example 6 has a lexical alternative and unresolved negation scope.",
+  "fullHadithTranslationApproval": false
+}
