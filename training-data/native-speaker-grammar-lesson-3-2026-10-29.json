@@ -16,21 +16,21 @@
       "item": 2,
       "englishPrompt": "She gave food to that person.",
       "kashmiriExact": "تٔمۍ دِژ أمِس شخصس کینہہ کھیٛن۔",
-      "status": "user-supplied",
+      "status": "owner-accepted-as-written",
       "mappingNote": "Mapped by order of the three following sentences; user did not number these three individually."
     },
     {
       "item": 3,
       "englishPrompt": "He did not give food to that person.",
       "kashmiriExact": "تٔمۍ دِژ نہٕ أمِس شخصس کانٛہہ کھیٛن۔",
-      "status": "user-supplied-source-mapping-pending",
-      "mappingNote": "English subject is he, but Kashmiri subject and verb forms match the preceding 'She gave' example: do not treat the gender distinction as validated. Request clarification later."
+      "status": "owner-accepted-as-written",
+      "mappingNote": "Owner subsequently said the rest of the examples are correct; retain the English prompt and Kashmiri exactly. A gender/case paradigm has not been inferred."
     },
     {
       "item": 4,
       "englishPrompt": "She did not say anything to me.",
       "kashmiriExact": "تٔمۍ ووٚن نہٕ مےٚ کیٚنٛہہ۔",
-      "status": "user-supplied",
+      "status": "owner-accepted-as-written",
       "mappingNote": "Compare with Lesson 2 positive 'She said to me': تٔمۍ ووٚن مےٚ."
     }
   ],
@@ -41,9 +41,24 @@
     "The direct negative food answer cannot by itself confirm third-person masculine because the supplied verb/subject match the feminine-labeled example."
   ],
   "pendingQuestions": [
-    "Confirm whether the food sentence written under 'He did not give' intentionally uses تٔمۍ دِژ or was intended as 'She did not give'.",
-    "Determine case and gender variation in gave/gave not; isolate forms through more minimal pairs.",
-    "Validate Perso-Arabic orthography only as user explicitly supplies or approves it."
+    "Test she/he pronouns in nonpast sentences.",
+    "Separate standalone subject pronouns from completed-past agent/case forms.",
+    "Ask for the unanswered future-tense and plurality examples before deriving a paradigm."
   ],
-  "policy": "Preserve all exact strings and mark mapping/grammar uncertainty; not a Hadith translation approval."
+  "policy": "Preserve all exact strings and mark mapping/grammar uncertainty; not a Hadith translation approval.",
+  "ownerFollowUp": {
+    "originalExact": "She is \nسۅ \nHe is سُہ \n\nRest are correct",
+    "confirmedPronouns": [
+      {
+        "english": "She",
+        "kashmiri": "سۅ"
+      },
+      {
+        "english": "He",
+        "kashmiri": "سُہ"
+      }
+    ],
+    "remainingPriorExamples": "confirmed-correct-as-supplied",
+    "scopeNotes": "Confirmation applies to written Lesson 3 examples, not to as-yet-unanswered Lesson 4 prompts. The standalone pronouns are not necessarily the grammatical forms in completed past-tense sentences."
+  }
 }
