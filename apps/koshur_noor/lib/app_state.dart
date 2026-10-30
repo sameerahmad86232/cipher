@@ -16,6 +16,8 @@ class AppState extends ChangeNotifier {
   late String method;
   late bool hanafi, dark, clock24, large;
   bool glass = true;
+  bool tasbihClick = true;
+  bool tasbihVoice = false;
   final Map<String, List<int>> customSchedules = {};
   String get scheduleKey =>
       "${city.name}:${city.latitude.toStringAsFixed(1)}:${city.longitude.toStringAsFixed(1)}:${city.zone}";
@@ -65,6 +67,8 @@ class AppState extends ChangeNotifier {
       method = 'Karachi';
     }
     glass = prefs.getBool('glass') ?? true;
+    tasbihClick = prefs.getBool('tasbihClick') ?? true;
+    tasbihVoice = prefs.getBool('tasbihVoice') ?? false;
     try {
       final raw = jsonDecode(prefs.getString('customSchedules') ?? '{}') as Map;
       for (final e in raw.entries) {
@@ -115,6 +119,8 @@ class AppState extends ChangeNotifier {
       prefs.setBool('hanafi', hanafi),
       prefs.setBool('dark', dark),
       prefs.setBool('glass', glass),
+      prefs.setBool('tasbihClick', tasbihClick),
+      prefs.setBool('tasbihVoice', tasbihVoice),
       prefs.setString('customSchedules', jsonEncode(customSchedules)),
       prefs.setDouble('arabicScale', arabicScale),
       prefs.setBool('clock24', clock24),
