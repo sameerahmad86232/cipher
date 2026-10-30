@@ -48,3 +48,9 @@ No content edits, celebrity identity claims or voice cloning. Recording metadata
 - **Changes:** None. The original Ogg Vorbis recording (approximately 186.55 seconds) is copied unmodified into Android raw resources when building the app. The CI script validates the original Wikimedia Commons SHA-1 checksum `4aa432b9e44804e7d72af4429bd743aa5fa9e3a4`.
 - **Attribution:** The recording is separately copyrighted and is not covered by this repository's general source code licence. Its use does not imply endorsement by the performer, the Prophet's Mosque, Wikimedia Commons or the recordist.
 - **Availability:** `bash tools/fetch_madinah_adhan.sh` from `apps/koshur_noor` downloads and verifies the licensed asset before Flutter tests and Android builds. The app plays the bundled sound offline after installation; no in-app network access is added. 
+
+
+## Tasbih audio (1.15)
+
+- The wooden-bead SFX are original audio synthesised locally on the Android device from deterministic damped resonances and low-amplitude noise. No third-party sound sample or audio pack is copied or downloaded. Android's SoundPool plays them at a deliberately restrained volume.
+- Spoken dhikr uses a user-installed **offline Android text-to-speech voice** when available, not an external voice service, prerecorded narration or a particular imam's voice. The user's Arabic language TTS data is provided and licensed separately by their device's text-to-speech provider. No prerecorded audio, remote requests, or cloned voices are required by the app. Audible results vary by phone and installed Arabic TTS engine.

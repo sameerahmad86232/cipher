@@ -114,3 +114,12 @@ The home screen and first-run permissions experience now share a premium deep-em
 - Audio: genuine field recording attributed to ejaz215, sourced from Wikimedia Commons under CC BY 3.0. Included unmodified via the repeatable verified build script (see THIRD_PARTY_NOTICES.md). The app still works fully offline after installation.
 - **Build prerequisite:** Run `bash tools/fetch_madinah_adhan.sh` (requires curl, sha1sum and network access during build) from `apps/koshur_noor` before `flutter test` and `flutter build apk`. GitHub Actions performs this automatically. Do not silently substitute a different voice if fetching fails.
 - An Android OS notification might not play the full three-minute Adhan. Prayer focus uses native MediaPlayer to play the selected recording while focus remains open, when user-enabled. Android alert-channel settings, DND and battery policy still apply.
+
+
+## Version 1.15 — Realistic Tasbih with SFX and voice
+
+- Beads are hand-rendered using Flutter Canvas with turned wood grain, brass dividers, drilled beads, warm studio illumination, connecting cord, and a silk tassel. The ring slides forward by one bead when tapped or pulled, while still respecting reduced-motion settings.
+- An original, dynamically synthesised low-volume wooden bead sound plays on each count on Android (enabled by default, toggleable). Haptics remain available independently.
+- Optional *spoken Arabic dhikr* using Android's **installed, offline Arabic text-to-speech** voice. It is a device-generated voice, not a human reciter or a Madinah Adhan recording. It is OFF by default; the user may enable and preview it with “Hear this dhikr”. Rapid taps do not overlap recitations. If no local Arabic TTS voice is installed, only clicking/haptics remain available, and the app tells the user how to fix it.
+- Per-user click/voice preferences, count, dhikr choice, and target remain exclusively in SharedPreferences; no external downloads, model binaries, server or added app permissions. On web, audio controls are disabled and counter remains usable.
+- Native Android bridge: `android/app/src/main/kotlin/com/koshur/koshur_noor/TasbihAudioEngine.kt`; Flutter bridge `lib/tasbih_audio.dart`.

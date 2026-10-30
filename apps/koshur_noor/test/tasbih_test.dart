@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:koshur_noor/app_state.dart';
 import 'package:koshur_noor/real_tasbih.dart';
 
 void main() {
+  test('Tasbih SFX is on, voice is opt-in and both persist locally', () async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final state = AppState(prefs);
+    expect(state.tasbihClick, isTrue);
+    expect(state.tasbihVoice, isFalse);
+    await state.update(() {
+      state.tasbihClick = false;
+      state.tasbihVoice = true;
+    });
+    final restored = AppState(prefs);
+    expect(restored.tasbihClick, isFalse);
+    expect(restored.tasbihVoice, isTrue);
+  });
+
   test('Tasbih progress fills at a completed round', () {
     expect(tasbihProgress(0, 33), 0);
     expect(tasbihProgress(11, 33), closeTo(1 / 3, .001));
