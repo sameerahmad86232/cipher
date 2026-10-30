@@ -15,6 +15,7 @@ import 'glass_panel.dart';
 import 'custom_times.dart';
 import 'prayer_notifications.dart';
 import 'notification_settings.dart';
+import 'permissions_setup.dart';
 import 'real_tasbih.dart';
 
 const forest = Color(0xff763f2b),
@@ -53,18 +54,20 @@ Future<void> main() async {
   } catch (_) {
     /* Settings shows scheduling errors without blocking launch. */
   }
-  runApp(NoorApp(state: state, duas: duas, hadiths: hadiths));
+  runApp(NoorApp(state: state, duas: duas, hadiths: hadiths, enablePermissionIntro: true));
 }
 
 class NoorApp extends StatelessWidget {
   final AppState state;
   final List<Map<String, dynamic>> duas;
   final List<Map<String, dynamic>> hadiths;
+  final bool enablePermissionIntro;
   const NoorApp({
     super.key,
     required this.state,
     required this.duas,
     this.hadiths = const [],
+    this.enablePermissionIntro = false,
   });
   @override
   Widget build(BuildContext context) => ListenableBuilder(
@@ -85,7 +88,11 @@ class NoorApp extends StatelessWidget {
         ),
         child: child!,
       ),
-      home: Home(state: state, duas: duas, hadiths: hadiths),
+      home: PermissionStartup(
+        state: state,
+        enabled: enablePermissionIntro,
+        child: Home(state: state, duas: duas, hadiths: hadiths),
+      ),
     ),
   );
   ThemeData makeTheme(bool dark) {
@@ -1652,6 +1659,25 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
             context,
             MaterialPageRoute<void>(
               builder: (_) => NotificationSettings(state: s),
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 16),
+      surface(
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.admin_panel_settings_outlined, color: gold),
+          title: const Text('App permissions'),
+          subtitle: const Text('Location, notifications & special access'),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (pageContext) => PermissionSetup(
+                state: s,
+                onFinished: () => Navigator.pop(pageContext),
+              ),
             ),
           ),
         ),

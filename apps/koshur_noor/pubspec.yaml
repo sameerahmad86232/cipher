@@ -1,7 +1,7 @@
 name: koshur_noor
 description: Offline prayer companion with Kashmiri dua meanings.
 publish_to: none
-version: 1.11.0+12
+version: 1.12.0+13
 environment:
   sdk: '>=3.10.0 <4.0.0'
 dependencies:
