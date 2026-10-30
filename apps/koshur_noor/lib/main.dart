@@ -18,9 +18,14 @@ import 'notification_settings.dart';
 import 'permissions_setup.dart';
 import 'real_tasbih.dart';
 
-const forest = Color(0xff763f2b),
-    gold = Color(0xffa24e36),
-    paper = Color(0xfffff2e3);
+// Noor Atelier: cedar green, aged brass and warm handmade-paper surfaces.
+const forest = Color(0xff21483d),
+    gold = Color(0xffa77437),
+    paper = Color(0xfffaf5ed);
+const noorInk = Color(0xff183a33),
+    noorDeep = Color(0xff102e2a),
+    noorCream = Color(0xfffffbf5),
+    noorLine = Color(0xffe8dfd0);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   tzdata.initializeTimeZones();
@@ -99,51 +104,85 @@ class NoorApp extends StatelessWidget {
     final scheme = ColorScheme.fromSeed(
       seedColor: forest,
       brightness: dark ? Brightness.dark : Brightness.light,
+      surface: dark ? const Color(0xff152e29) : noorCream,
+    );
+    final base = ThemeData(
+      useMaterial3: true,
+      brightness: dark ? Brightness.dark : Brightness.light,
     );
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
-      scaffoldBackgroundColor: dark ? const Color(0xff30211e) : paper,
-      cardColor: dark ? const Color(0xff493129) : const Color(0xfffffaf5),
-      dividerColor: dark ? const Color(0xff49604b) : const Color(0xffd4c4a0),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
+      scaffoldBackgroundColor: dark ? const Color(0xff102620) : paper,
+      cardColor: dark ? const Color(0xff1d3c34) : noorCream,
+      dividerColor: dark ? const Color(0xff38554b) : noorLine,
+      appBarTheme: AppBarTheme(
+        backgroundColor: dark ? const Color(0xff102620) : paper,
         surfaceTintColor: Colors.transparent,
+        foregroundColor: dark ? const Color(0xfff4ead9) : noorInk,
+        elevation: 0,
+        titleTextStyle: TextStyle(
+          fontFamily: 'ClassicalSerif',
+          fontSize: 23,
+          fontWeight: FontWeight.w600,
+          color: dark ? const Color(0xfff4ead9) : noorInk,
+        ),
       ),
-      textTheme:
-          ThemeData(
-            brightness: dark ? Brightness.dark : Brightness.light,
-          ).textTheme.apply(
-            bodyColor: dark ? const Color(0xffe5e9de) : const Color(0xff683e2d),
-            displayColor: dark
-                ? const Color(0xffe5e9de)
-                : const Color(0xff683e2d),
-          ),
+      textTheme: base.textTheme.apply(
+        bodyColor: dark ? const Color(0xfff2eadd) : noorInk,
+        displayColor: dark ? const Color(0xfff2eadd) : noorInk,
+      ),
       chipTheme: ChipThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        showCheckmark: false,
+        selectedColor: dark ? const Color(0xff46665a) : const Color(0xffdfe9df),
+        backgroundColor: dark ? const Color(0xff1d3c34) : noorCream,
+        side: BorderSide(color: dark ? const Color(0xff3b5a50) : noorLine),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
+        labelStyle: TextStyle(
+          color: dark ? const Color(0xfff2eadd) : noorInk,
+          fontWeight: FontWeight.w600,
+          fontSize: 12,
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: dark ? const Color(0xff493129) : const Color(0xfffffaf5),
+        fillColor: dark ? const Color(0xff1d3c34) : noorCream,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: gold.withValues(alpha: 0.3)),
+          borderRadius: BorderRadius.circular(17),
+          borderSide: BorderSide(color: dark ? const Color(0xff3b5a50) : noorLine),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(17),
+          borderSide: BorderSide(color: dark ? const Color(0xff3b5a50) : noorLine),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(17),
+          borderSide: const BorderSide(color: gold, width: 1.5),
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: dark
-            ? const Color(0xff36251f)
-            : const Color(0xfffff5e8),
-        height: 76,
-        indicatorShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(7),
-        ),
-        indicatorColor: dark
-            ? const Color(0xff734d3b)
-            : const Color(0xffffdfcb),
-        labelTextStyle: WidgetStateProperty.all(
-          const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-        ),
+        backgroundColor: dark ? const Color(0xff1a3831) : noorCream,
+        surfaceTintColor: Colors.transparent,
+        height: 70,
+        elevation: 0,
+        indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        indicatorColor: dark ? const Color(0xff3d6053) : const Color(0xffe4ebdf),
+        iconTheme: WidgetStateProperty.resolveWith((states) => IconThemeData(
+          size: 23,
+          color: states.contains(WidgetState.selected)
+              ? (dark ? const Color(0xffefce99) : forest)
+              : (dark ? const Color(0xff9bb5aa) : const Color(0xff74877b)),
+        )),
+        labelTextStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
+          fontSize: 10.5,
+          letterSpacing: .1,
+          fontWeight: states.contains(WidgetState.selected)
+              ? FontWeight.w700 : FontWeight.w500,
+          color: states.contains(WidgetState.selected)
+              ? (dark ? const Color(0xfff0d6ae) : forest)
+              : (dark ? const Color(0xff9bb5aa) : const Color(0xff74877b)),
+        )),
       ),
     );
   }
@@ -332,14 +371,14 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
               image: DecorationImage(
                 image: const AssetImage('assets/images/jamia-inspired.png'),
                 fit: BoxFit.cover,
-                opacity: s.dark ? .07 : .025,
+                opacity: s.dark ? .045 : .018,
               ),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: s.dark
-                    ? const [Color(0xff30211e), Color(0xff493129)]
-                    : const [Color(0xffffeee0), Color(0xfffff8ef)],
+                    ? const [Color(0xff102620), Color(0xff193d32)]
+                    : const [Color(0xfffaf5ed), Color(0xfffffbf5)],
               ),
             ),
             child: SafeArea(
@@ -388,10 +427,24 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     bottomNavigationBar: MediaQuery.sizeOf(context).width >= 1000
         ? null
         : Padding(
-            padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(28),
-              child: NavigationBar(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 10),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(
+                  color: s.dark ? const Color(0xff36564a) : noorLine,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: s.dark ? .17 : .055),
+                    blurRadius: 22,
+                    offset: const Offset(0, 7),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(21),
+                child: NavigationBar(
                 selectedIndex: tab,
                 onDestinationSelected: (v) => setState(() => tab = v),
                 destinations: const [
@@ -419,6 +472,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                     label: 'Settings',
                   ),
                 ],
+                ),
               ),
             ),
           ),
@@ -435,7 +489,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     fontWeight: FontWeight.w400,
   );
   Widget heading(String eyebrow, String title, {Widget? trailing}) => Padding(
-    padding: const EdgeInsets.fromLTRB(2, 8, 0, 22),
+    padding: const EdgeInsets.fromLTRB(2, 8, 0, 20),
     child: Row(
       children: [
         Expanded(
@@ -456,9 +510,10 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                 title,
                 style: const TextStyle(
                   fontFamily: 'ClassicalSerif',
-                  fontSize: 35,
+                  fontSize: 32,
                   fontWeight: FontWeight.w600,
-                  letterSpacing: -.5,
+                  letterSpacing: -.65,
+                  height: 1.02,
                 ),
               ),
             ],
@@ -488,116 +543,235 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       children: [
         Row(
           children: [
-            const Icon(Icons.nights_stay, color: Color(0xffb78b47), size: 30),
-            const SizedBox(width: 8),
+            Container(
+              width: 42,
+              height: 42,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: noorInk,
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: [BoxShadow(
+                  color: forest.withValues(alpha: .14),
+                  blurRadius: 14,
+                  offset: const Offset(0, 5),
+                )],
+              ),
+              child: const Icon(Icons.brightness_2_rounded,
+                color: Color(0xffe6bf7e), size: 23),
+            ),
+            const SizedBox(width: 11),
             const Expanded(
-              child: Text(
-                'KOSHUR NOOR',
-                style: TextStyle(
-                  fontFamily: 'ClassicalSerif',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 22,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('KOSHUR NOOR',
+                    style: TextStyle(
+                      fontFamily: 'ClassicalSerif',
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: .6,
+                      fontSize: 21,
+                      height: 1,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text('A space for reflection',
+                    style: TextStyle(fontSize: 10, color: gold, letterSpacing: .45),
+                  ),
+                ],
               ),
             ),
-            IconButton(
+            IconButton.filledTonal(
               tooltip: 'Choose location',
               onPressed: pickCity,
-              icon: const Icon(
-                Icons.location_on_outlined,
-                color: Color(0xffef8077),
-              ),
+              icon: const Icon(Icons.location_on_outlined, size: 20),
             ),
+            const SizedBox(width: 3),
             IconButton(
               tooltip: 'Settings',
               onPressed: () => setState(() => tab = 4),
-              icon: const Icon(Icons.settings_outlined),
+              icon: const Icon(Icons.tune_rounded, size: 21),
             ),
           ],
         ),
-        Text(
-          '${s.city.name} · ${DateFormat('EEE, d MMM').format(svc.local(now))}',
-          style: const TextStyle(fontSize: 11, color: gold),
+        const SizedBox(height: 14),
+        Row(
+          children: [
+            const Icon(Icons.location_on_outlined, size: 13, color: gold),
+            const SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                '${s.city.name}  ·  ${DateFormat('EEEE, d MMMM').format(svc.local(now))}',
+                style: const TextStyle(
+                  fontSize: 11, color: gold,
+                  letterSpacing: .1, fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 16),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(26),
-          child: SizedBox(
-            height: 340,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Image.asset(
-                  'assets/images/jamia-inspired.png',
-                  fit: BoxFit.cover,
-                  alignment: const Alignment(0, .62),
+        Container(
+          height: 354,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(27),
+            color: noorDeep,
+            boxShadow: [BoxShadow(
+              color: noorDeep.withValues(alpha: s.dark ? .23 : .18),
+              blurRadius: 24,
+              offset: const Offset(0, 10),
+            )],
+          ),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.asset(
+                'assets/images/jamia-inspired.png',
+                fit: BoxFit.cover,
+                alignment: const Alignment(0, .42),
+                color: const Color(0xff183a33).withValues(alpha: .48),
+                colorBlendMode: BlendMode.multiply,
+              ),
+              const DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0, .44, 1],
+                    colors: [Color(0xee102e29), Color(0x991c4a3b), Color(0xd714302a)],
+                  ),
                 ),
-                const DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.center,
-                      colors: [Color(0x99fff4e5), Color(0x00fff4e5)],
+              ),
+              Positioned(
+                right: -66,
+                top: -72,
+                child: IgnorePointer(
+                  child: Container(
+                    height: 218, width: 218,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: const Color(0x55ebc997), width: .8),
+                    ),
+                    child: Center(
+                      child: Container(
+                        width: 167, height: 167,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: const Color(0x33ebc997)),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                const Positioned(
-                  top: 22,
-                  left: 22,
-                  child: Text(
-                    'A moment\nof peace',
-                    style: TextStyle(
-                      fontFamily: 'ClassicalSerif',
-                      fontSize: 34,
-                      height: 1.05,
-                      color: Color(0xff543323),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 12,
-                  right: 12,
-                  bottom: 12,
-                  child: surface(
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(22, 23, 22, 19),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(
                       children: [
-                        Text(
-                          next.name,
-                          style: const TextStyle(
-                            fontFamily: 'ClassicalSerif',
-                            fontSize: 22,
-                          ),
-                        ),
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            time(next.instant),
-                            style: const TextStyle(
-                              fontFamily: 'ClassicalSerif',
-                              fontSize: 40,
-                              height: 1.2,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'Next prayer · in $remaining',
-                          style: const TextStyle(fontSize: 12),
-                        ),
+                        Icon(Icons.auto_awesome_outlined,
+                          size: 15, color: Color(0xffe5c995)),
+                        SizedBox(width: 8),
+                        Text('A SANCTUARY IN YOUR DAY',
+                          style: TextStyle(
+                            color: Color(0xffe5c995), fontSize: 10,
+                            fontWeight: FontWeight.w700, letterSpacing: 1.9,
+                          )),
                       ],
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 12,
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Pause. Pray.\nFind your light.',
+                      style: TextStyle(
+                        color: Color(0xfffff8e9),
+                        fontFamily: 'ClassicalSerif',
+                        fontSize: 39, fontWeight: FontWeight.w600,
+                        height: .99, letterSpacing: -.9,
+                      ),
                     ),
-                  ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 15),
+                      decoration: BoxDecoration(
+                        color: const Color(0xfffbf6eb).withValues(alpha: .96),
+                        borderRadius: BorderRadius.circular(19),
+                        border: Border.all(color: const Color(0xfff5e6d1)),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text('UP NEXT',
+                                  style: TextStyle(
+                                    color: gold, fontSize: 9,
+                                    letterSpacing: 1.65, fontWeight: FontWeight.w800,
+                                  )),
+                                const SizedBox(height: 5),
+                                Text(next.name,
+                                  style: const TextStyle(
+                                    color: noorInk, fontFamily: 'ClassicalSerif',
+                                    fontSize: 27, height: 1.08, fontWeight: FontWeight.w600,
+                                  )),
+                                const SizedBox(height: 7),
+                                Text('In $remaining',
+                                  style: const TextStyle(
+                                    color: Color(0xff70847a), fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 7),
+                          Flexible(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                time(next.instant), textAlign: TextAlign.right,
+                                style: const TextStyle(
+                                  fontFamily: 'ClassicalSerif',
+                                  color: noorInk, fontSize: 33,
+                                  fontWeight: FontWeight.w700, height: 1.1,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 19),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(3, 0, 0, 10),
+          child: Row(
+            children: [
+              const Expanded(child: Text('TODAY’S PRAYERS',
+                style: TextStyle(
+                  color: gold, fontSize: 10,
+                  letterSpacing: 1.8, fontWeight: FontWeight.w800,
+                ))),
+              InkWell(
+                onTap: showTimetable,
+                child: const Row(children: [
+                  Text('Full timetable',
+                    style: TextStyle(color: gold,
+                      fontWeight: FontWeight.w600, fontSize: 11)),
+                  SizedBox(width: 3),
+                  Icon(Icons.arrow_forward_ios_rounded, color: gold, size: 10),
+                ]),
+              ),
+            ],
+          ),
+        ),
         surface(
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -605,23 +779,25 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
               children: prayers.map((p) {
                 final active = p.id == next.id;
                 return Container(
-                  width: 86,
+                  width: 88,
                   padding: const EdgeInsets.symmetric(
-                    vertical: 14,
+                    vertical: 13,
                     horizontal: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: active
-                        ? const Color(0xffed8073)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(18),
+                    color: active ? forest : Colors.transparent,
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
                     children: [
+                      Icon(prayerIcon(p.id), size: 18,
+                        color: active ? const Color(0xffe9ce97) : gold),
+                      const SizedBox(height: 7),
                       Text(
                         p.name,
                         style: TextStyle(
                           fontSize: 12,
+                          fontWeight: active ? FontWeight.w700 : FontWeight.w500,
                           color: active ? Colors.white : null,
                         ),
                       ),
@@ -640,7 +816,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
               }).toList(),
             ),
           ),
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(6),
         ),
         const SizedBox(height: 12),
         InkWell(
@@ -740,7 +916,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                 Container(
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: const Color(0xffffdfcb),
+                    color: const Color(0xffe9eee5),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Icon(
@@ -857,32 +1033,37 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
 
   Widget homeShortcut(IconData icon, String label, VoidCallback onTap) =>
       InkWell(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(23),
         onTap: onTap,
         child: surface(
           Column(
             children: [
               Container(
-                padding: const EdgeInsets.all(10),
-                decoration: const BoxDecoration(
-                  color: Color(0xffffdfcb),
-                  shape: BoxShape.circle,
+                width: 49,
+                height: 49,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: s.dark ? const Color(0xff355a4d)
+                      : const Color(0xffe8eee5),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                child: Icon(icon, color: gold, size: 25),
+                child: Icon(icon,
+                  color: s.dark ? const Color(0xffe5c995) : forest, size: 24),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               Text(
                 label,
                 maxLines: 1,
                 overflow: TextOverflow.fade,
                 style: const TextStyle(
                   fontSize: 12,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: .1,
                 ),
               ),
             ],
           ),
-          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 6),
+          padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 3),
         ),
       );
 
@@ -1498,7 +1679,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                   : null,
               label: Text(_dhikr[i].$3),
               selected: selected,
-              selectedColor: const Color(0xffa24e36),
+              selectedColor: forest,
               labelStyle: TextStyle(
                 color: selected ? Colors.white : null,
                 fontWeight: FontWeight.w600,
@@ -1569,7 +1750,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: s.target == n
-                        ? const Color(0xffed8073)
+                        ? forest
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
