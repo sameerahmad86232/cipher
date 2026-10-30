@@ -37,3 +37,14 @@ photograph, surveyed architectural record, or third-party licensed photo.
 - “Azan”, Andrewler, own work, CC BY-SA 4.0. https://commons.wikimedia.org/wiki/File:Azan.ogg ; https://creativecommons.org/licenses/by-sa/4.0/ . Resource `adhan_andrew.ogg`, complete 183.48-second recording converted to Ogg Vorbis. Its conversion remains CC BY-SA 4.0.
 
 No content edits, celebrity identity claims or voice cloning. Recording metadata is not independent religious or performance-quality certification. Android may limit notification sound duration; the optional focus service plays its selected recording until dismissed or completed.
+
+
+## Madinah call to prayer (1.14)
+
+- **Recording:** "33937 ejaz215 call-to-prayer-from-the-prophet-s-mo.ogg" / "Islamic call to prayer from the prophet mosque".
+- **Author/recordist:** ejaz215; Wikimedia Commons contributor Nater uploaded the original recording.
+- **Original source:** https://commons.wikimedia.org/wiki/File:33937_ejaz215_call-to-prayer-from-the-prophet-s-mo.ogg
+- **Licence:** Creative Commons Attribution 3.0 Unported (CC BY 3.0) — https://creativecommons.org/licenses/by/3.0/
+- **Changes:** None. The original Ogg Vorbis recording (approximately 186.55 seconds) is copied unmodified into Android raw resources when building the app. The CI script validates the original Wikimedia Commons SHA-1 checksum `4aa432b9e44804e7d72af4429bd743aa5fa9e3a4`.
+- **Attribution:** The recording is separately copyrighted and is not covered by this repository's general source code licence. Its use does not imply endorsement by the performer, the Prophet's Mosque, Wikimedia Commons or the recordist.
+- **Availability:** `bash tools/fetch_madinah_adhan.sh` from `apps/koshur_noor` downloads and verifies the licensed asset before Flutter tests and Android builds. The app plays the bundled sound offline after installation; no in-app network access is added. 

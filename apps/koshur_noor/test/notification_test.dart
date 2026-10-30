@@ -9,6 +9,8 @@ void main() {
   setUpAll(tzdata.initializeTimeZones);
   test('Every selectable adhan has display details', () {
     expect(PrayerNotifications.voices, isNotEmpty);
+    expect(PrayerNotifications.voices, contains('adhan_madinah'));
+    expect(PrayerNotifications.defaultVoice, 'adhan_madinah');
     expect(
       PrayerNotifications.voiceDetails.keys.toSet(),
       PrayerNotifications.voices.keys.toSet(),
@@ -41,6 +43,11 @@ void main() {
       ).readAsStringSync();
       expect(keep, contains('@raw/adhan'));
       expect(keep, contains('@drawable/ic_prayer_notification'));
+      expect(keep, contains('@raw/adhan_madinah'));
+      expect(
+        File('android/app/src/main/res/raw/adhan_madinah.ogg').lengthSync(),
+        greaterThan(1000000),
+      );
       expect(
         File('android/app/src/main/res/raw/adhan.ogg').lengthSync(),
         greaterThan(10000),

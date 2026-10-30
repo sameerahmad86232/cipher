@@ -105,3 +105,12 @@ On first Android launch, an optional, skippable permissions screen explains GPS 
 ## Version 1.13 — Noor Atelier visual refinement
 
 The home screen and first-run permissions experience now share a premium deep-emerald, antique-gold and warm-ivory visual system. A redesigned Jamia-inspired prayer hero, clearer next-prayer details, distinctive timeline icons, refreshed quick actions, cleaner bottom navigation, rounded reading surfaces, and consistent light/dark treatments improve usability without changing saved prayer data, Kashmiri/Arabic content, optional permission handling or offline capabilities. No extra dependencies.
+
+
+## Version 1.14 — Madinah Adhan atelier
+
+- Premium dark-emerald and antique-gold Adhan settings with a featured Madinah voice, voice profiles and preview buttons.
+- Madinah default for new installs; previously selected voice preferences remain respected.
+- Audio: genuine field recording attributed to ejaz215, sourced from Wikimedia Commons under CC BY 3.0. Included unmodified via the repeatable verified build script (see THIRD_PARTY_NOTICES.md). The app still works fully offline after installation.
+- **Build prerequisite:** Run `bash tools/fetch_madinah_adhan.sh` (requires curl, sha1sum and network access during build) from `apps/koshur_noor` before `flutter test` and `flutter build apk`. GitHub Actions performs this automatically. Do not silently substitute a different voice if fetching fails.
+- An Android OS notification might not play the full three-minute Adhan. Prayer focus uses native MediaPlayer to play the selected recording while focus remains open, when user-enabled. Android alert-channel settings, DND and battery policy still apply.

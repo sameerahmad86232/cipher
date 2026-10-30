@@ -45,12 +45,15 @@ class PrayerNotifications extends ChangeNotifier {
       !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
   bool get enabled => prefs.getBool('prayerAlerts') ?? false;
   static const focusChannel = MethodChannel('com.koshur.noor/prayer_focus');
+  static const defaultVoice = 'adhan_madinah';
   static const voices = {
+    'adhan_madinah': 'Madinah · Prophet’s Mosque',
     'adhan': 'Classic',
     'adhan_cc0': 'Clear & gentle',
     'adhan_andrew': 'Full recitation',
   };
   static const voiceDetails = {
+    'adhan_madinah': ('ejaz215 · CC BY 3.0', 'Mosque recording · 3 min 7 sec'),
     'adhan': ('Jarih', 'Warm, concise · 27 sec'),
     'adhan_cc0': ('Aishatu98', 'Gentle, unhurried · 42 sec'),
     'adhan_andrew': ('Andrewler', 'Extended, resonant · 3 min'),
@@ -59,7 +62,7 @@ class PrayerNotifications extends ChangeNotifier {
   bool get preReminder => prefs.getBool('prePrayerReminder') ?? true;
   String get voice => voices.containsKey(prefs.getString('adhanVoice'))
       ? prefs.getString('adhanVoice')!
-      : 'adhan';
+      : defaultVoice;
   bool _focusScheduled = false;
   Future<void> requestOverlay() async {
     if (supported) await focusChannel.invokeMethod<void>('requestOverlay');
@@ -120,7 +123,7 @@ class PrayerNotifications extends ChangeNotifier {
   NotificationDetails details({bool focusSilent = false}) =>
       NotificationDetails(
         android: AndroidNotificationDetails(
-          sound && !focusSilent ? 'noor_${voice}_v2' : 'noor_silent_v1',
+          sound && !focusSilent ? 'noor_${voice}_v3' : 'noor_silent_v1',
           sound && !focusSilent
               ? 'Prayer times · ${voices[voice]}'
               : 'Prayer times · silent',
@@ -188,7 +191,7 @@ class PrayerNotifications extends ChangeNotifier {
       body: 'Previewing ${detail == null ? 'adhan recording' : detail.$1}',
       notificationDetails: NotificationDetails(
         android: AndroidNotificationDetails(
-          'noor_${value}_preview_v1',
+          'noor_${value}_preview_v2',
           'Adhan preview · ${voices[value]}',
           channelDescription: 'Preview for a Koshur Noor adhan recording',
           importance: Importance.high,
