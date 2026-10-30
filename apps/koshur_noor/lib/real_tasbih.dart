@@ -105,7 +105,7 @@ class _RealTasbihState extends State<RealTasbih> {
                       ),
                     ),
                     const Text(
-                      'TAP OR PULL A BEAD',
+                      'TAP TO COUNT',
                       style: TextStyle(
                         fontSize: 9,
                         letterSpacing: 1.35,
