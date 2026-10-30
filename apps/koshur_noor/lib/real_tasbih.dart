@@ -60,7 +60,7 @@ class _RealTasbihState extends State<RealTasbih> {
           drag = 0;
         },
         child: SizedBox(
-          height: 360,
+          height: 372,
           width: double.infinity,
           child: Stack(
             alignment: Alignment.center,
@@ -74,7 +74,7 @@ class _RealTasbihState extends State<RealTasbih> {
                 ),
                 curve: Curves.easeOutCubic,
                 builder: (_, phase, _) => CustomPaint(
-                  size: const Size(330, 360),
+                  size: const Size(330, 372),
                   painter: BeadPainter(
                     phase: phase,
                     progress: tasbihProgress(widget.count, widget.target),
@@ -105,11 +105,12 @@ class _RealTasbihState extends State<RealTasbih> {
                       ),
                     ),
                     const Text(
-                      'TAP TO COUNT',
+                      'TAP OR PULL A BEAD',
                       style: TextStyle(
                         fontSize: 9,
-                        letterSpacing: 1.8,
-                        color: Color(0xffa24e36),
+                        letterSpacing: 1.35,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xffa77437),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -134,166 +135,210 @@ double tasbihProgress(int count, int target) {
   return remainder == 0 ? 1 : remainder / target;
 }
 
+/// Hand-turned wooden misbaha drawn locally, without external image assets.
 class BeadPainter extends CustomPainter {
   final double phase, progress;
   final bool dark;
-  const BeadPainter({
-    required this.phase,
-    required this.progress,
-    required this.dark,
-  });
+  const BeadPainter({required this.phase, required this.progress, required this.dark});
+
   @override
   void paint(Canvas canvas, Size size) {
-    final scale = math.min(size.width / 330, size.height / 360);
+    final scale = math.min(size.width / 330, size.height / 372);
     canvas.save();
     canvas.translate((size.width - 330 * scale) / 2, 0);
     canvas.scale(scale);
     const center = Offset(165, 145);
-    final ring = Rect.fromCenter(center: center, width: 242, height: 242);
+    const radius = 121.0;
+    final ring = Rect.fromCircle(center: center, radius: radius);
+
     canvas.drawCircle(
-      center,
-      92,
+      center + const Offset(0, 5), 130,
+      Paint()
+        ..color = Colors.black.withValues(alpha: dark ? .29 : .13)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 22),
+    );
+    canvas.drawCircle(
+      center, 117,
       Paint()
         ..shader = RadialGradient(
+          center: const Alignment(-.35, -.5),
+          radius: 1.14,
           colors: dark
-              ? const [Color(0x337bc9a0), Color(0x007bc9a0)]
-              : const [Color(0x33ed8073), Color(0x00ed8073)],
-        ).createShader(Rect.fromCircle(center: center, radius: 92)),
+              ? const [Color(0xff315a49), Color(0xff21483e), Color(0xff102a24)]
+              : const [Color(0xfffffcf3), Color(0xfff4eddf), Color(0xffe3d9c8)],
+        ).createShader(Rect.fromCircle(center: center, radius: 119)),
     );
-    canvas.drawOval(
-      ring.shift(const Offset(0, 8)),
+    canvas.drawCircle(
+      center, 97,
       Paint()
-        ..color = Colors.black.withValues(alpha: .045)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10),
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1
+        ..color = const Color(0xffc1a371).withValues(alpha: .5),
+    );
+
+    canvas.drawOval(
+      ring.shift(const Offset(1.0, 2.5)),
+      Paint()
+        ..color = Colors.black.withValues(alpha: .30)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 4.6,
     );
     canvas.drawOval(
       ring,
       Paint()
-        ..color = const Color(0xff8a5832)
+        ..shader = const SweepGradient(
+          colors: [
+            Color(0xffb28b56), Color(0xff59402c),
+            Color(0xffe0c496), Color(0xff65482b),
+            Color(0xffb28b56),
+          ],
+        ).createShader(ring)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.5,
+        ..strokeWidth = 3.1,
     );
     canvas.drawArc(
-      ring.inflate(8),
-      -math.pi / 2,
-      math.pi * 2 * progress,
-      false,
+      ring.inflate(15), -math.pi / 2, math.pi * 2 * progress, false,
       Paint()
-        ..color = const Color(0xffed8073)
+        ..color = const Color(0xffc9a15b)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
-        ..strokeWidth = 5,
+        ..strokeWidth = 3.6,
     );
-    // 33 beads glide one position with every count; lighting stays fixed.
+
+    // Beads rotate around a stationary light. Every eleventh is gilded.
     for (var i = 0; i < 33; i++) {
       final angle = -math.pi / 2 + (i + phase) * 2 * math.pi / 33;
-      final pos = center + Offset(math.cos(angle) * 121, math.sin(angle) * 121);
-      final marker = i % 11 == 0;
-      final radius = marker ? 10.6 : 10.1;
-      canvas.drawCircle(
-        pos + const Offset(1.5, 3),
-        radius,
-        Paint()
-          ..color = Colors.black.withValues(alpha: .18)
-          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.5),
+      final point = center +
+          Offset(math.cos(angle) * radius, math.sin(angle) * radius);
+      final spacer = i % 11 == 0;
+      final hue = (i * 7) % 6;
+      canvas.save();
+      canvas.translate(point.dx, point.dy);
+      canvas.rotate(angle + math.pi / 2);
+      final oval = Rect.fromCenter(
+        center: Offset.zero, width: spacer ? 19.2 : 18.2,
+        height: spacer ? 22 : 21,
       );
-      canvas.drawCircle(
-        pos,
-        radius,
+      canvas.drawOval(
+        oval.shift(const Offset(1.4, 2.4)),
+        Paint()
+          ..color = Colors.black.withValues(alpha: .28)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.2),
+      );
+      canvas.drawOval(
+        oval,
         Paint()
           ..shader = RadialGradient(
-            center: const Alignment(-.45, -.55),
-            radius: 1.1,
-            colors: marker
+            center: const Alignment(-.52, -.67),
+            radius: 1.03,
+            colors: spacer
                 ? const [
-                    Color(0xffffe4a3),
-                    Color(0xffc29543),
-                    Color(0xff714322),
+                    Color(0xffffecb5), Color(0xffd1a856), Color(0xff6e4827),
                   ]
                 : [
-                    const Color(0xfff3cc91),
-                    Color.lerp(
-                      const Color(0xffc48a4e),
-                      const Color(0xff9e6232),
-                      (i % 5) / 7,
-                    )!,
-                    const Color(0xff633c25),
+                    Color.lerp(const Color(0xfff6c990),
+                        const Color(0xffffdfac), hue / 10)!,
+                    Color.lerp(const Color(0xffb97e45),
+                        const Color(0xff926038), hue / 8)!,
+                    const Color(0xff3d261c),
                   ],
-          ).createShader(Rect.fromCircle(center: pos, radius: radius)),
+          ).createShader(oval),
       );
       canvas.save();
-      canvas.clipPath(
-        Path()..addOval(Rect.fromCircle(center: pos, radius: radius - .8)),
-      );
-      for (var g = 0; g < 4; g++) {
-        canvas.drawArc(
-          Rect.fromCenter(
-            center: pos + Offset(2.0 + g, 0),
-            width: radius * (.6 + g * .35),
-            height: radius * 2.5,
-          ),
-          -1.5,
-          3.1,
-          false,
-          Paint()
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = .55
-            ..color = const Color(0xff704322).withValues(alpha: .19),
-        );
+      canvas.clipPath(Path()..addOval(oval));
+      if (spacer) {
+        for (final y in [-7.0, 7.0]) {
+          canvas.drawLine(
+            Offset(-8, y), Offset(8, y),
+            Paint()
+              ..color = const Color(0xffffe0a0).withValues(alpha: .65)
+              ..strokeWidth = 1.25,
+          );
+        }
+      } else {
+        for (var g = 0; g < 5; g++) {
+          final x = -7.2 + g * 3.1;
+          canvas.drawPath(
+            Path()
+              ..moveTo(x, -11)
+              ..cubicTo(x - 2.1, -3, x + 2.5, 3.0, x - 1.4, 11),
+            Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = .48
+              ..color = const Color(0xff512e1e)
+                  .withValues(alpha: .09 + (g % 3) * .05),
+          );
+        }
       }
       canvas.restore();
+      // Drilled wood openings and a small specular highlight.
+      for (final y in [-9.7, 9.7]) {
+        canvas.drawOval(
+          Rect.fromCenter(center: Offset(0, y), width: 6, height: 2.4),
+          Paint()..color = const Color(0xff4e3121).withValues(alpha: .78),
+        );
+      }
       canvas.drawOval(
-        Rect.fromCenter(
-          center: pos + const Offset(-3, -4),
-          width: 5,
-          height: 2.5,
-        ),
+        const Rect.fromLTWH(-5.5, -7, 7, 3.7),
         Paint()
-          ..color = Colors.white.withValues(alpha: .36)
-          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1),
+          ..color = Colors.white.withValues(alpha: spacer ? .48 : .35)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, .9),
       );
+      canvas.restore();
     }
-    // Imame and tied silk tassel below the strand.
+
+    // Turned wooden imame and finely braided thread tassel.
     canvas.drawLine(
-      const Offset(165, 266),
-      const Offset(165, 288),
+      const Offset(165, 263), const Offset(165, 285),
       Paint()
-        ..color = const Color(0xff9a713f)
-        ..strokeWidth = 3,
+        ..color = const Color(0xffad8953)
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = 2.8,
     );
-    final imame = RRect.fromRectAndRadius(
-      const Rect.fromLTWH(157, 277, 16, 34),
-      const Radius.circular(8),
+    final stem = RRect.fromRectAndRadius(
+      const Rect.fromLTWH(157, 283, 16, 34), const Radius.circular(8),
     );
     canvas.drawRRect(
-      imame,
+      stem,
       Paint()
         ..shader = const LinearGradient(
-          colors: [Color(0xff74462c), Color(0xffe4b879), Color(0xff80512e)],
-        ).createShader(imame.outerRect),
+          colors: [
+            Color(0xff4f2c1e), Color(0xffc38b52),
+            Color(0xfff0c78d), Color(0xff7b4a2c),
+          ],
+        ).createShader(stem.outerRect),
     );
+    for (final y in [289.0, 308.0]) {
+      canvas.drawLine(
+        Offset(158, y), Offset(172, y),
+        Paint()
+          ..color = const Color(0xffddc18a)
+          ..strokeWidth = 1.2,
+      );
+    }
     canvas.drawOval(
-      const Rect.fromLTWH(154, 308, 22, 7),
-      Paint()..color = const Color(0xffb68d48),
+      const Rect.fromLTWH(153, 314, 24, 8),
+      Paint()
+        ..shader = const LinearGradient(
+          colors: [Color(0xff72502e), Color(0xffe3bc7a), Color(0xff755032)],
+        ).createShader(const Rect.fromLTWH(153, 314, 24, 8)),
     );
-    for (var i = 0; i < 24; i++) {
-      final p = Path()
-        ..moveTo(160 + (i % 10), 313)
+    for (var i = 0; i < 26; i++) {
+      final path = Path()
+        ..moveTo(162 + (i % 7), 320)
         ..quadraticBezierTo(
-          146 + i * 1.6,
-          335,
-          144 + i * 1.85,
-          348 + (i % 3) * 2,
+          151 + i * 1.02, 338, 144 + i * 1.60, 355 + i % 4,
         );
       canvas.drawPath(
-        p,
+        path,
         Paint()
           ..style = PaintingStyle.stroke
-          ..strokeWidth = 1.3
+          ..strokeCap = StrokeCap.round
+          ..strokeWidth = .7 + (i % 3) * .27
           ..color = Color.lerp(
-            const Color(0xffb88b4c),
-            const Color(0xff74462c),
-            (i % 5) / 5,
+            const Color(0xff6b4a2a),
+            const Color(0xffedcb94),
+            (i % 7) / 7,
           )!,
       );
     }
