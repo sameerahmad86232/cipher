@@ -71,18 +71,67 @@ class PrayerFocusService: Service() {
         handler.removeCallbacksAndMessages(null)
         removeOverlay()
         val dm=resources.displayMetrics;fun dp(v:Int)=(v*dm.density).toInt()
-        val root=LinearLayout(this).apply {orientation=LinearLayout.VERTICAL;gravity=Gravity.CENTER;setPadding(dp(28),dp(40),dp(28),dp(40));background=GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,intArrayOf(Color.rgb(255,224,203),Color.rgb(255,248,239)))}
-        fun text(value:String,size:Float):TextView = TextView(this).apply {text=value;textSize=size;setTextColor(Color.rgb(104,62,45));gravity=Gravity.CENTER;setPadding(0,dp(12),0,dp(12))}
-        root.addView(text("☾  KOSHUR NOOR",22f));root.addView(text("A moment for prayer",18f));root.addView(text(title,38f).apply{typeface=Typeface.create("serif",Typeface.NORMAL)})
-        root.addView(text("Pause. Breathe. Return to prayer.",17f))
-        val progress=ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal).apply {max=5000;progress=0;progressTintList=android.content.res.ColorStateList.valueOf(Color.rgb(237,128,115))}
-        val label=text("Hold to unlock · 5 seconds",20f).apply {setPadding(dp(18),dp(28),dp(18),dp(28));background=GradientDrawable().apply{setColor(Color.rgb(255,250,245));cornerRadius=dp(24).toFloat()};contentDescription="Hold for five seconds to dismiss prayer focus. Alternatively use emergency dismiss in the notification."}
+        val root=LinearLayout(this).apply {
+            orientation=LinearLayout.VERTICAL
+            gravity=Gravity.CENTER
+            setPadding(dp(24),dp(30),dp(24),dp(30))
+            background=GradientDrawable(
+                GradientDrawable.Orientation.TL_BR,
+                intArrayOf(Color.rgb(14,41,35),Color.rgb(33,81,64),Color.rgb(13,40,34))
+            )
+        }
+        fun text(value:String,size:Float):TextView = TextView(this).apply {
+            text=value
+            textSize=size
+            setTextColor(Color.rgb(255,249,235))
+            gravity=Gravity.CENTER
+            setPadding(0,dp(10),0,dp(10))
+        }
+        root.addView(text("☾",58f).apply {
+            setTextColor(Color.rgb(226,192,132))
+            setPadding(0,0,0,dp(3))
+            contentDescription="Koshur Noor"
+        })
+        root.addView(text("KOSHUR NOOR",15f).apply {
+            setTextColor(Color.rgb(226,192,132))
+            letterSpacing=.20f
+            typeface=Typeface.create("sans-serif-medium",Typeface.NORMAL)
+        })
+        root.addView(text("حَيَّ عَلَى الصَّلَاةِ",29f).apply {
+            setTextColor(Color.rgb(226,192,132))
+            setPadding(0,dp(8),0,dp(14))
+        })
+        root.addView(text("A MOMENT OF STILLNESS",13f).apply {
+            setTextColor(Color.rgb(215,198,164))
+            letterSpacing=.17f
+        })
+        root.addView(text(title,43f).apply {
+            typeface=Typeface.create("serif",Typeface.NORMAL)
+            setTextColor(Color.rgb(255,249,235))
+        })
+        root.addView(text("Pause the day. Return to prayer.",16f).apply {
+            setTextColor(Color.rgb(216,226,215))
+        })
+        val progress=ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal).apply {max=5000;progress=0;progressTintList=android.content.res.ColorStateList.valueOf(Color.rgb(219,185,116))}
+        val label=text("Hold to return · 5 seconds",18f).apply {
+            setTextColor(Color.rgb(22,64,50))
+            typeface=Typeface.create("sans-serif-medium",Typeface.NORMAL)
+            setPadding(dp(16),dp(24),dp(16),dp(24))
+            background=GradientDrawable().apply {
+                setColor(Color.rgb(250,245,234))
+                cornerRadius=dp(20).toFloat()
+            }
+            contentDescription="Hold for five seconds to dismiss prayer focus. Alternatively use emergency dismiss in the notification."
+        }
         val button=LinearLayout(this).apply{orientation=LinearLayout.VERTICAL;addView(label);addView(progress,LinearLayout.LayoutParams(-1,dp(6)))}
         val gate=HoldGate();var holding=false
-        val tick=object:Runnable {override fun run(){if(!holding)return;val elapsed=gate.progress(SystemClock.elapsedRealtime());progress.progress=elapsed;label.text="Hold to unlock · ${((5000-elapsed+999)/1000).coerceAtLeast(0)}";if(elapsed>=5000){holding=false;stopSelf()}else handler.postDelayed(this,40)}}
-        label.setOnTouchListener {_,event -> when(event.actionMasked) {MotionEvent.ACTION_DOWN->{holding=true;gate.start(SystemClock.elapsedRealtime());handler.post(tick)};MotionEvent.ACTION_UP,MotionEvent.ACTION_CANCEL->{holding=false;gate.cancel();handler.removeCallbacks(tick);progress.progress=0;label.text="Hold to unlock · 5 seconds"}};true}
+        val tick=object:Runnable {override fun run(){if(!holding)return;val elapsed=gate.progress(SystemClock.elapsedRealtime());progress.progress=elapsed;label.text="Hold to return · ${((5000-elapsed+999)/1000).coerceAtLeast(0)}";if(elapsed>=5000){holding=false;stopSelf()}else handler.postDelayed(this,40)}}
+        label.setOnTouchListener {_,event -> when(event.actionMasked) {MotionEvent.ACTION_DOWN->{holding=true;gate.start(SystemClock.elapsedRealtime());handler.post(tick)};MotionEvent.ACTION_UP,MotionEvent.ACTION_CANCEL->{holding=false;gate.cancel();handler.removeCallbacks(tick);progress.progress=0;label.text="Hold to return · 5 seconds"}};true}
         root.addView(button,LinearLayout.LayoutParams(-1,-2).apply {topMargin=dp(30)})
-        root.addView(text("You remain in control. Android system controls and the emergency dismiss notification remain available.",12f))
+        root.addView(text("Your moment. Your choice.\nAndroid controls and emergency dismiss stay available.",12f).apply {
+            setTextColor(Color.rgb(192,211,199))
+            setPadding(0,dp(19),0,0)
+        })
         val params=WindowManager.LayoutParams(-1,-1,(if(Build.VERSION.SDK_INT>=26) WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY else WindowManager.LayoutParams.TYPE_PHONE),WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,android.graphics.PixelFormat.TRANSLUCENT)
         try {(getSystemService(WINDOW_SERVICE) as WindowManager).addView(root,params);overlay=root} catch(_:Exception){stopSelf();return START_NOT_STICKY}
         player?.release();player=null
@@ -90,7 +139,7 @@ class PrayerFocusService: Service() {
             audioManager=getSystemService(AUDIO_SERVICE) as AudioManager
             if(Build.VERSION.SDK_INT>=26) {audioRequest=AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT).setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build()).setOnAudioFocusChangeListener{}.build();audioManager?.requestAudioFocus(audioRequest!!)}
             else {@Suppress("DEPRECATION") audioManager?.requestAudioFocus(null,AudioManager.STREAM_ALARM,AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)}
-            val voice=PrayerFocus.prefs(this).getString("voice","adhan")?:"adhan"
+            val voice=PrayerFocus.prefs(this).getString("voice","adhan_madinah")?:"adhan_madinah"
             val res=resources.getIdentifier(voice,"raw",packageName).let{if(it==0)R.raw.adhan else it}
             val fd=resources.openRawResourceFd(res)
             player=MediaPlayer().apply{setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build());setDataSource(fd.fileDescriptor,fd.startOffset,fd.length);prepare();start()};fd.close()
