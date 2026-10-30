@@ -17,6 +17,7 @@ import 'prayer_notifications.dart';
 import 'notification_settings.dart';
 import 'permissions_setup.dart';
 import 'real_tasbih.dart';
+import 'tasbih_audio.dart';
 
 // Noor Atelier: cedar green, aged brass and warm handmade-paper surfaces.
 const forest = Color(0xff21483d),
@@ -1658,7 +1659,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     padding: const EdgeInsets.fromLTRB(18, 22, 18, 28),
     children: [
       const Text(
-        'A QUIET MOMENT',
+        'HANDCRAFTED REMEMBRANCE',
         textAlign: TextAlign.center,
         style: TextStyle(
           color: gold,
@@ -1669,11 +1670,11 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       ),
       const SizedBox(height: 7),
       const Text(
-        'Dhikr',
+        'Your Tasbih',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontFamily: 'ClassicalSerif',
-          fontSize: 38,
+          fontSize: 42,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -1705,7 +1706,10 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                     ? Colors.transparent
                     : gold.withValues(alpha: .28),
               ),
-              onSelected: (_) => s.update(() => s.dhikrIndex = i),
+              onSelected: (_) {
+                unawaited(TasbihAudio.stop());
+                s.update(() => s.dhikrIndex = i);
+              },
             );
           },
         ),
@@ -1729,8 +1733,101 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       RealTasbih(
         count: s.count,
         target: s.target,
-        onCount: () => s.update(() => s.count++),
+        onCount: () {
+          final phrase = _dhikr[s.dhikrIndex].$1;
+          s.update(() => s.count++);
+          if (s.tasbihClick) unawaited(TasbihAudio.click());
+          if (s.tasbihVoice) {
+            unawaited(TasbihAudio.speak(phrase).then((_) {}));
+          }
+        },
       ),
+      const SizedBox(height: 7),
+      surface(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Row(
+              children: [
+                Icon(Icons.graphic_eq_rounded, color: gold, size: 19),
+                SizedBox(width: 9),
+                Expanded(
+                  child: Text(
+                    'Tasbih soundscape',
+                    style: TextStyle(
+                      fontFamily: 'ClassicalSerif',
+                      fontSize: 23,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 3),
+            const Text(
+              'Realistic wooden clicks and a softly spoken dhikr.',
+              style: TextStyle(fontSize: 11, height: 1.5),
+            ),
+            const SizedBox(height: 8),
+            SwitchListTile(
+              key: const Key('tasbihClickToggle'),
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Wooden bead clicks',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
+              subtitle: const Text('A quiet, natural click with each bead',
+                  style: TextStyle(fontSize: 11)),
+              value: s.tasbihClick && TasbihAudio.available,
+              onChanged: TasbihAudio.available
+                  ? (v) => s.update(() => s.tasbihClick = v)
+                  : null,
+            ),
+            const Divider(height: 1),
+            SwitchListTile(
+              key: const Key('tasbihVoiceToggle'),
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Arabic spoken dhikr',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
+              subtitle: const Text('Uses your phone’s installed offline Arabic voice',
+                  style: TextStyle(fontSize: 11)),
+              value: s.tasbihVoice && TasbihAudio.available,
+              onChanged: TasbihAudio.available
+                  ? (v) async {
+                      await s.update(() => s.tasbihVoice = v);
+                      if (!v) {
+                        await TasbihAudio.stop();
+                      } else {
+                        final result = await TasbihAudio.voiceStatus();
+                        if (mounted) snack(result);
+                      }
+                    }
+                  : null,
+            ),
+            const SizedBox(height: 5),
+            OutlinedButton.icon(
+              onPressed: TasbihAudio.available
+                  ? () async {
+                      final result = await TasbihAudio.speak(
+                        _dhikr[s.dhikrIndex].$1, preview: true);
+                      if (mounted) {
+                        snack(result == 'Speaking'
+                            ? 'Playing Arabic dhikr with the offline device voice'
+                            : result);
+                      }
+                    }
+                  : null,
+              icon: const Icon(Icons.play_circle_outline_rounded, size: 19),
+              label: const Text('Hear this dhikr'),
+            ),
+            const SizedBox(height: 5),
+            const Text(
+              'Spoken audio is optional and off by default. Rapid taps never stack voices. If no offline Arabic voice is installed, enable one in Android text-to-speech settings. All counting data stays on your device.',
+              style: TextStyle(fontSize: 10, color: Colors.grey, height: 1.55),
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.fromLTRB(18, 19, 18, 16),
+      ),
+      const SizedBox(height: 19),
       AnimatedSwitcher(
         duration: const Duration(milliseconds: 250),
         child: Text(
@@ -1750,6 +1847,12 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
         ),
       ),
       const SizedBox(height: 22),
+      const Text('BEADS PER ROUND',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: gold, fontSize: 10, letterSpacing: 1.5,
+          fontWeight: FontWeight.w700)),
+      const SizedBox(height: 10),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -1806,7 +1909,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       ),
       const SizedBox(height: 8),
       const Text(
-        'Private and saved only on this device',
+        'Pull the beads or tap to count · stored privately on this device',
         textAlign: TextAlign.center,
         style: TextStyle(color: Colors.grey, fontSize: 10, letterSpacing: .3),
       ),
