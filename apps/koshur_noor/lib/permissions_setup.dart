@@ -171,7 +171,7 @@ class _PermissionSetupState extends State<PermissionSetup>
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
-    final surface = dark ? const Color(0xff493129) : const Color(0xfffffaf5);
+    final surface = dark ? const Color(0xff1d3c34) : const Color(0xfffffbf5);
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -181,50 +181,106 @@ class _PermissionSetupState extends State<PermissionSetup>
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
               children: [
                 Container(
-                  padding: const EdgeInsets.fromLTRB(22, 22, 22, 24),
+                  clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(26),
+                    borderRadius: BorderRadius.circular(27),
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [Color(0xffec7d73), Color(0xffffc0a0)],
+                      colors: [Color(0xff102e29), Color(0xff28564a)],
                     ),
+                    boxShadow: [BoxShadow(
+                      color: const Color(0xff193b32).withValues(alpha: .18),
+                      blurRadius: 22,
+                      offset: const Offset(0, 9),
+                    )],
                   ),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Stack(
                     children: [
-                      Icon(Icons.nights_stay_outlined, size: 34, color: Color(0xff63382d)),
-                      SizedBox(height: 14),
-                      Text(
-                        'WELCOME TO NOOR',
-                        style: TextStyle(
-                          color: Color(0xff63382d),
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 2.1,
-                          fontSize: 11,
+                      Positioned(
+                        right: -58,
+                        top: -70,
+                        child: IgnorePointer(
+                          child: Container(
+                            height: 210,
+                            width: 210,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: const Color(0x65e8ce9b)),
+                            ),
+                            child: Center(
+                              child: Container(
+                                width: 156, height: 156,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: const Color(0x40e8ce9b)),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Make prayer time your own.',
-                        style: TextStyle(
-                          color: Color(0xff63382d),
-                          fontFamily: 'ClassicalSerif',
-                          fontSize: 30,
-                          height: 1.06,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 25, 24, 28),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 44,
+                              width: 44,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff385c4e),
+                                borderRadius: BorderRadius.circular(14),
+                                border: Border.all(
+                                  color: const Color(0x55e8ce9b)),
+                              ),
+                              child: const Icon(Icons.brightness_2_rounded,
+                                size: 25, color: Color(0xffe8ce9b)),
+                            ),
+                            const SizedBox(height: 22),
+                            const Text('WELCOME TO NOOR',
+                              style: TextStyle(
+                                color: Color(0xffe8ce9b),
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 2.1,
+                                fontSize: 10,
+                              ),
+                            ),
+                            const SizedBox(height: 9),
+                            const Text('A quieter day\nbegins here.',
+                              style: TextStyle(
+                                color: Color(0xfffff8ed),
+                                fontFamily: 'ClassicalSerif',
+                                fontSize: 36,
+                                fontWeight: FontWeight.w600,
+                                height: 1.02,
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            const Text(
+                              'Bring prayer times and remembrance closer. Every permission is your choice.',
+                              style: TextStyle(
+                                color: Color(0xffdfebe2),
+                                fontSize: 12,
+                                height: 1.6,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(height: 12),
-                      Text(
-                        'Choose which features to enable. Noor still works offline if you skip everything.',
-                        style: TextStyle(color: Color(0xff63382d), height: 1.5),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 24),
                 Text('Your permissions',
-                    style: Theme.of(context).textTheme.titleLarge),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontFamily: 'ClassicalSerif',
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                    )),
                 const SizedBox(height: 6),
                 const Text(
                   'Nothing is requested automatically. Each choice is optional.',
@@ -282,11 +338,11 @@ class _PermissionSetupState extends State<PermissionSetup>
                 FilledButton(
                   onPressed: busy == null ? widget.onFinished : null,
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xffa24e36),
+                    backgroundColor: const Color(0xff21483d),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(17),
                     ),
                   ),
                   child: const Text('Continue to Noor'),
@@ -334,14 +390,31 @@ class _PermissionRow extends StatelessWidget {
     child: DecoratedBox(
       decoration: BoxDecoration(
         color: surface,
-        borderRadius: BorderRadius.circular(17),
-        border: Border.all(color: Theme.of(context).dividerColor.withValues(alpha: .35)),
+        borderRadius: BorderRadius.circular(19),
+        border: Border.all(color: Theme.of(context).dividerColor.withValues(alpha: .60)),
+        boxShadow: [BoxShadow(
+          color: Colors.black.withValues(alpha: .025),
+          blurRadius: 15,
+          offset: const Offset(0, 4),
+        )],
       ),
       child: Padding(
         padding: const EdgeInsets.all(13),
         child: Row(
           children: [
-            Icon(icon, color: const Color(0xffd77869), size: 26),
+            Container(
+              height: 44, width: 44,
+              decoration: BoxDecoration(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? const Color(0xff37584e)
+                    : const Color(0xffe8eee5),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              alignment: Alignment.center,
+              child: Icon(icon, color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xffe8ce9b)
+                : const Color(0xff21483d), size: 23),
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

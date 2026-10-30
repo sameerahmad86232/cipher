@@ -100,3 +100,8 @@ Website: https://koshur-noor.najarsameer8899.chatgpt.site (initial owner-private
 ## Version 1.12 — first-run Android permission choices
 
 On first Android launch, an optional, skippable permissions screen explains GPS location, prayer notifications, precise alarms and display-over-apps. Every Android prompt is initiated only by tapping that specific option. No permission is required to read duas, count tasbih or choose a city manually. Precise alarms and overlay access are separate Android settings pages, and overlay permission alone does not turn on prayer focus. Settings → App permissions opens the same controls again; the first-run screen stays dismissed after Continue or Skip. This release requires real-device validation of the Android OS permission panels and scheduled alert delivery.
+
+
+## Version 1.13 — Noor Atelier visual refinement
+
+The home screen and first-run permissions experience now share a premium deep-emerald, antique-gold and warm-ivory visual system. A redesigned Jamia-inspired prayer hero, clearer next-prayer details, distinctive timeline icons, refreshed quick actions, cleaner bottom navigation, rounded reading surfaces, and consistent light/dark treatments improve usability without changing saved prayer data, Kashmiri/Arabic content, optional permission handling or offline capabilities. No extra dependencies.
