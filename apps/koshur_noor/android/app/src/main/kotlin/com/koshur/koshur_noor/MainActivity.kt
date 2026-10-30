@@ -14,6 +14,7 @@ import io.flutter.plugin.common.EventChannel
 
 class MainActivity : FlutterActivity() {
     private var compass: TrueNorthCompass? = null
+    private var tasbihAudio: TasbihAudioEngine? = null
     override fun configureFlutterEngine(engine: FlutterEngine) {
         super.configureFlutterEngine(engine)
         MethodChannel(engine.dartExecutor.binaryMessenger, "com.koshur.noor/prayer_focus").setMethodCallHandler { call, result ->
@@ -25,12 +26,26 @@ class MainActivity : FlutterActivity() {
                 else -> result.notImplemented()
             }
         }
+        tasbihAudio = TasbihAudioEngine(this)
+        MethodChannel(engine.dartExecutor.binaryMessenger, "com.koshur.noor/tasbih")
+            .setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "click" -> { tasbihAudio?.click(); result.success(null) }
+                    "status" -> result.success(tasbihAudio?.voiceStatus() ?: "Voice unavailable")
+                    "speak" -> result.success(tasbihAudio?.speak(
+                        call.argument<String>("phrase") ?: "",
+                        call.argument<Boolean>("preview") == true
+                    ) ?: "Voice unavailable")
+                    "stop" -> { tasbihAudio?.stop(); result.success(null) }
+                    else -> result.notImplemented()
+                }
+            }
         compass = TrueNorthCompass(this)
         EventChannel(engine.dartExecutor.binaryMessenger, "com.koshur.noor/true_compass").setStreamHandler(compass)
     }
     override fun onPause() { compass?.pause(); super.onPause() }
     override fun onResume() { super.onResume(); compass?.resume() }
-    override fun onDestroy() { compass?.dispose(); super.onDestroy() }
+    override fun onDestroy() { compass?.dispose(); tasbihAudio?.dispose(); tasbihAudio = null; super.onDestroy() }
 }
 
 /** Android rotation-vector heading with platform geomagnetic declination correction.
