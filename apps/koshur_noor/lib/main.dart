@@ -674,21 +674,37 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                         Icon(Icons.auto_awesome_outlined,
                           size: 15, color: Color(0xffe5c995)),
                         SizedBox(width: 8),
-                        Text('A SANCTUARY IN YOUR DAY',
-                          style: TextStyle(
-                            color: Color(0xffe5c995), fontSize: 10,
-                            fontWeight: FontWeight.w700, letterSpacing: 1.9,
-                          )),
+                        Expanded(
+                          child: Text('A SANCTUARY IN YOUR DAY',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Color(0xffe5c995), fontSize: 10,
+                              fontWeight: FontWeight.w700, letterSpacing: 1.55,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Pause. Pray.\nFind your light.',
-                      style: TextStyle(
-                        color: Color(0xfffff8e9),
-                        fontFamily: 'ClassicalSerif',
-                        fontSize: 39, fontWeight: FontWeight.w600,
-                        height: .99, letterSpacing: -.9,
+                    const SizedBox(height: 18),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 96,
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Pause. Pray.\nFind your light.',
+                            style: const TextStyle(
+                              color: Color(0xfffff8e9),
+                              fontFamily: 'ClassicalSerif',
+                              fontSize: 39, fontWeight: FontWeight.w600,
+                              height: .99, letterSpacing: -.9,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const Spacer(),
