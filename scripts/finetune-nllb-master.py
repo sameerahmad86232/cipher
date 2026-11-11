@@ -213,7 +213,15 @@ random.shuffle(corpus)
 split_idx = max(int(len(corpus) * 0.98), 1)
 train_rows = corpus[:split_idx]
 eval_rows = corpus[split_idx:] if len(corpus) > 50 else corpus[:10]
-print(f"[+] Train dataset: {len(train_rows)} | Validation dataset: {len(eval_rows)}")
+# Write to disk to enable memory-mapped arrow cache (prevents RAM OOM on 300k+ rows)
+tmp_train = Path("/tmp/kashmiri_train.jsonl")
+tmp_eval = Path("/tmp/kashmiri_eval.jsonl")
+with tmp_train.open("w", encoding="utf-8") as f:
+    for r in train_rows:
+        f.write(json.dumps(r, ensure_ascii=False) + "\n")
+with tmp_eval.open("w", encoding="utf-8") as f:
+    for r in eval_rows[:1500]:
+        f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
 def tokenize_batch(batch):
     encoded = []
@@ -224,8 +232,21 @@ def tokenize_batch(batch):
         encoded.append(res)
     return {k: [r[k] for r in encoded] for k in encoded[0]}
 
-train_ds = Dataset.from_list(train_rows).map(tokenize_batch, batched=True, remove_columns=["source", "target", "src_lang", "tgt_lang", "tier"])
-eval_ds = Dataset.from_list(eval_rows).map(tokenize_batch, batched=True, remove_columns=["source", "target", "src_lang", "tgt_lang", "tier"])
+raw_ds = load_dataset("json", data_files={"train": str(tmp_train), "eval": str(tmp_eval)})
+train_ds = raw_ds["train"].map(
+    tokenize_batch,
+    batched=True,
+    batch_size=1000,
+    keep_in_memory=False,
+    remove_columns=["source", "target", "src_lang", "tgt_lang", "tier"]
+)
+eval_ds = raw_ds["eval"].map(
+    tokenize_batch,
+    batched=True,
+    batch_size=1000,
+    keep_in_memory=False,
+    remove_columns=["source", "target", "src_lang", "tgt_lang", "tier"]
+)
 
 # ---------------------------------------------------------------------------
 # Metrics: sacreBLEU and chrF++
