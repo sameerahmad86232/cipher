@@ -220,7 +220,7 @@ with tmp_train.open("w", encoding="utf-8") as f:
     for r in train_rows:
         f.write(json.dumps(r, ensure_ascii=False) + "\n")
 with tmp_eval.open("w", encoding="utf-8") as f:
-    for r in eval_rows[:1500]:
+    for r in eval_rows[:100]:
         f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
 def tokenize_batch(batch):
@@ -288,6 +288,7 @@ training_args = Seq2SeqTrainingArguments(
     gradient_checkpointing=True,
     gradient_checkpointing_kwargs={"use_reentrant": False},
     fp16=torch.cuda.is_available(),
+    eval_accumulation_steps=1,
     eval_strategy="epoch",
     save_strategy="epoch",
     save_total_limit=2,
