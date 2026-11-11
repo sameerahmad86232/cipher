@@ -60,8 +60,8 @@ HF_REPO_ID = os.getenv("HF_REPO_ID", "Sameer0313/kashmiri-whisper-lora")
 HF_TOKEN = os.getenv("HF_TOKEN", "")
 
 NUM_EPOCHS = int(os.getenv("NUM_EPOCHS", "8"))
-BATCH_SIZE = int(os.getenv("BATCH_SIZE", "8"))
-GRAD_ACCUM = int(os.getenv("GRAD_ACCUM", "2"))
+BATCH_SIZE = int(os.getenv("BATCH_SIZE", "4"))
+GRAD_ACCUM = int(os.getenv("GRAD_ACCUM", "4"))
 LEARNING_RATE = float(os.getenv("LEARNING_RATE", "1.5e-4"))
 TARGET_SAMPLE_RATE = 16000
 
@@ -336,6 +336,7 @@ training_args = Seq2SeqTrainingArguments(
     lr_scheduler_type="cosine",
     warmup_ratio=0.1,
     weight_decay=0.01,
+    gradient_checkpointing=True,
     num_train_epochs=NUM_EPOCHS,
     fp16=torch.cuda.is_available(),
     eval_strategy="epoch" if len(eval_dataset) > 5 else "no",
