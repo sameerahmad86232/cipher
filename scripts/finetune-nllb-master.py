@@ -199,6 +199,7 @@ peft_config = LoraConfig(
 )
 model = get_peft_model(base_model, peft_config)
 model.config.use_cache = False
+model.enable_input_require_grads()
 model.print_trainable_parameters()
 
 corpus = load_all_parallel_data()
