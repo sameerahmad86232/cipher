@@ -13,3 +13,4 @@ training-data/prepared-parallel/
 # Local JavaScript dependencies and production builds.
 node_modules/
 dist/
+__pycache__/

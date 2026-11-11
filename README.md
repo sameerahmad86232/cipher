@@ -96,3 +96,20 @@ The standalone Seerah reader lives in `public/seerah/` and is embedded in the ex
 
 Source coverage: `python scripts/test-seerah-firstchapter.py [path-to-the-supplied-PDF]`.
 Reader interactions: `scripts/test-seerah-reader.cjs` requires a separate Playwright installation and a running static server; see `public/seerah/README.md` for the reader structure and rights boundaries. The same static reader is published as source in `sameerahmad86232/zameer`.
+
+## Advanced Linguistic Patterns & Cloud Hardware Pipelines
+
+- **Comprehensive Kashmiri Grammar Guide**: See [`docs/kashmiri-grammar-patterns.md`](docs/kashmiri-grammar-patterns.md) for in-depth rules on:
+  - Verb-Second (V2) Main Clause syntax vs. Subordinate SOV with `تِکیازِ` (*Tikyazi*).
+  - Split Ergativity and Direct Object agreement (`تٔمۍ پٔر کِتاب`).
+  - Tense morphology (Present, Past Imperfect, Synthetic Future, Conditionals).
+  - Kashmiri Diacritical System (`ـٕ`, `ٲ`, `ۄ`, `ۆ`, `ؠ`) and minimal pair disambiguation.
+  - Pronominal enclitic verb morphology (`دیُتُمے`, `وۆنُمَس`).
+  - Dative of Experiencer psychological predicates (`مےٚ چھےٚ شیٖشُر لَگان`).
+  - 3-Way Genitive possession (`سُنٛد`, `ہُنٛد`, `-uk`).
+- **Cloud TPU v4 & v5e Acceleration**:
+  - `configs/tpu-v5e8-accelerate.yaml`: 8-core TPU v5e distributed BF16 configuration.
+  - `scripts/finetune-tpu-v5e8.py`: TPU v5e master NLLB-200 fine-tuning pipeline.
+  - `scripts/finetune-whisper-tpu-v4.py`: Cloud TPU v4 pipeline for Whisper Large-V3-Turbo speech transcription.
+  - `training-data/native-speaker-grammar-lesson-27-2026-11-11.json`: Gold-standard parallel pairs for subordinate clauses, ergativity, and Hadith 1.
+
