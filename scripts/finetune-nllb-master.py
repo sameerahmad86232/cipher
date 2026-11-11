@@ -265,6 +265,7 @@ training_args = Seq2SeqTrainingArguments(
     warmup_ratio=0.05,
     weight_decay=0.01,
     gradient_checkpointing=True,
+    gradient_checkpointing_kwargs={"use_reentrant": False},
     fp16=torch.cuda.is_available(),
     eval_strategy="epoch",
     save_strategy="epoch",
