@@ -1,7 +1,8 @@
 # Master NLLB-200 Kashmiri Translation Model: Training Complete
 **Repository:** [sameerahmad86232/cipher](https://github.com/sameerahmad86232/cipher)  
 **Model Backbone:** Meta `facebook/nllb-200-distilled-600M`  
-**Fine-Tuned Adapter:** `kashmiri-nllb-master-adapter.zip` (66.59 MB)  
+**Hugging Face Hub:** [`Sameer0313/kashmiri-nllb-200-master-lora`](https://huggingface.co/Sameer0313/kashmiri-nllb-200-master-lora)  
+**Fine-Tuned Adapter Artifact:** `kashmiri-nllb-master-adapter.zip` (66.59 MB)  
 **Target Languages:** English (`eng_Latn`) $\longleftrightarrow$ Kashmiri Perso-Arabic (`kas_Arab`)  
 **Status:** **Training Complete & Verified**  
 
@@ -87,7 +88,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from peft import PeftModel
 
 BASE_MODEL = "facebook/nllb-200-distilled-600M"
-ADAPTER_PATH = "path/to/kashmiri-nllb-master-adapter"
+ADAPTER_PATH = "Sameer0313/kashmiri-nllb-200-master-lora"
 
 # 1. Load Tokenizer & Base Architecture
 tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
