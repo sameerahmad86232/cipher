@@ -86,4 +86,6 @@ def push_diff_to_remote(commit_message: str):
     print(f"[+] Successfully pushed commit {new_commit['sha']} to origin/main!")
 
 if __name__ == "__main__":
-    push_diff_to_remote("fix(nllb): set gradient_checkpointing_kwargs use_reentrant=False for PEFT")
+    import sys
+    msg = sys.argv[1] if len(sys.argv) > 1 else "docs: update repository documentation and findings"
+    push_diff_to_remote(msg)
