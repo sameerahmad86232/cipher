@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Fine-tune OpenAI Whisper for Kashmiri Speech-to-Text (ASR) transcription.
+"""Fine-tune OpenAI Whisper Large-V3-Turbo for High-Quality Kashmiri Speech-to-Text (ASR).
 
-Features:
-- Fast dictionary mapping of all WAV files in Kaggle dataset (e.g. gopikrishnan2005/kashmiri-text-to-speech)
-- Header pre-validation (sf.info) to filter out corrupted or truncated audio files
-- On-demand PyTorch Dataset streaming to eliminate RAM memory limits and Python 3.13 arrow buffer errors
-- Automatic 16kHz audio resampling and 80-channel log-Mel spectrogram feature extraction
-- Kashmiri Perso-Arabic orthography support with prefix prompt conditioning
-- Parameter-efficient fine-tuning via LoRA on attention projections
-- Word Error Rate (WER) and Character Error Rate (CER) evaluation
-- Automatic checkpointing and export of final adapter
+Key Architectural & Training Enhancements:
+- Backbone: openai/whisper-large-v3-turbo (809M parameters, 128 Mel channels)
+- Multi-dataset ingestion: Automatically indexes & pairs audio from both
+  gopikrishnan2005/kashmiri-text-to-speech and umar1103/converteddatanew
+- Audio integrity pre-validation (sf.info) to eliminate unreadable/truncated WAV files
+- Streaming PyTorch Dataset: On-demand resampling to 16kHz with zero-RAM memory leaks
+- Deep LoRA: Rank=64, Alpha=128 on Attention (q, k, v, out) and Feed-Forward (fc1, fc2) projections
+- Forced decoder prompt tokens with Kashmiri Perso-Arabic conditioning
+- Cosine learning rate schedule with warmup
+- Beam search generation during evaluation (num_beams=2)
+- Automatic checkpointing, export of zip archive, and Hugging Face upload
 """
 
 import os
@@ -17,6 +19,7 @@ import sys
 import glob
 import json
 import shutil
+import unicodedata
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Any, Dict, List, Union
@@ -34,7 +37,9 @@ if not torch.cuda.is_available():
     device = "cpu"
 else:
     device = "cuda"
-    print(f"[+] Active GPU: {torch.cuda.get_device_name(0)}")
+    gpu_name = torch.cuda.get_device_name(0)
+    vram = torch.cuda.get_device_properties(0).total_memory / (1024 ** 3)
+    print(f"[+] Active GPU: {gpu_name} ({vram:.1f} GB VRAM)")
 
 from transformers import (
     WhisperProcessor,
@@ -48,34 +53,44 @@ import evaluate
 # ---------------------------------------------------------------------------
 # Configuration & Paths
 # ---------------------------------------------------------------------------
-BASE_MODEL = os.getenv("WHISPER_MODEL", "openai/whisper-small")
+BASE_MODEL = os.getenv("WHISPER_MODEL", "openai/whisper-large-v3-turbo")
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", "/kaggle/working/kashmiri-whisper-transcribe-adapter"))
 CHECKPOINTS_DIR = Path(os.getenv("CHECKPOINTS_DIR", "/kaggle/working/whisper-checkpoints"))
 HF_REPO_ID = os.getenv("HF_REPO_ID", "Sameer0313/kashmiri-whisper-lora")
 HF_TOKEN = os.getenv("HF_TOKEN", "")
 
-NUM_EPOCHS = int(os.getenv("NUM_EPOCHS", "10"))
+NUM_EPOCHS = int(os.getenv("NUM_EPOCHS", "8"))
 BATCH_SIZE = int(os.getenv("BATCH_SIZE", "8"))
 GRAD_ACCUM = int(os.getenv("GRAD_ACCUM", "2"))
-LEARNING_RATE = float(os.getenv("LEARNING_RATE", "1e-4"))
+LEARNING_RATE = float(os.getenv("LEARNING_RATE", "1.5e-4"))
 TARGET_SAMPLE_RATE = 16000
 
 print(f"[+] Target Base Model: {BASE_MODEL}")
 print(f"[+] Output Directory: {OUTPUT_DIR}")
+print(f"[+] Target HF Repo: {HF_REPO_ID}")
 
 # ---------------------------------------------------------------------------
 # Processor & Tokenizer Setup
 # ---------------------------------------------------------------------------
-print("[*] Loading Whisper processor and tokenizer...")
+print(f"[*] Loading Whisper processor and tokenizer for {BASE_MODEL}...")
 processor = WhisperProcessor.from_pretrained(BASE_MODEL, language="urdu", task="transcribe")
 
-KASHMIRI_PREFIX = "کٲشُر زَبان، کٲشِر پٲٹھۍ، خۄداے، سۄ چھَ، سُہ چھُ، بہٕ چھُس"
-prompt_ids = processor.tokenizer.get_prompt_ids(KASHMIRI_PREFIX)
+KASHMIRI_PROMPT = "کٲشُر زَبان، کٲشِر پٲٹھۍ، خۄداے، سۄ چھَ، سُہ چھُ، بہٕ چھُس"
+prompt_ids = processor.tokenizer.get_prompt_ids(KASHMIRI_PROMPT)
+
+def normalize_kashmiri_text(text: str) -> str:
+    """Normalize Kashmiri Perso-Arabic text to clean consistent unicode."""
+    if not isinstance(text, str):
+        return ""
+    text = unicodedata.normalize("NFKC", text)
+    # Remove excessive punctuation spaces
+    text = " ".join(text.strip().split())
+    return text
 
 # ---------------------------------------------------------------------------
 # Audio File Verification & Dataset Discovery
 # ---------------------------------------------------------------------------
-def is_valid_audio(path):
+def is_valid_audio(path: str) -> bool:
     """Verify audio file header and minimum size to eliminate corrupt files."""
     try:
         if not os.path.exists(path) or os.path.getsize(path) < 2000:
@@ -84,14 +99,13 @@ def is_valid_audio(path):
         return info.frames > 0 and info.samplerate > 0
     except Exception:
         try:
-            # Secondary check with librosa
             d, s = librosa.load(path, sr=None, duration=0.1)
             return len(d) > 0
         except Exception:
             return False
 
 def find_kashmiri_audio_corpus():
-    """Discover Kashmiri audio and paired transcriptions with validation checks."""
+    """Discover Kashmiri audio and paired transcriptions across /kaggle/input."""
     samples = []
     kaggle_input = Path("/kaggle/input")
     
@@ -122,9 +136,10 @@ def find_kashmiri_audio_corpus():
                     id_col = c
             
             if text_col and id_col:
+                matched_in_csv = 0
                 for _, row in df.iterrows():
                     audio_key = str(row[id_col]).strip()
-                    sentence = str(row[text_col]).strip()
+                    sentence = normalize_kashmiri_text(str(row[text_col]))
                     if not sentence or sentence.lower() == "nan":
                         continue
                     
@@ -132,24 +147,26 @@ def find_kashmiri_audio_corpus():
                     if matched_wav and matched_wav.is_file():
                         if is_valid_audio(str(matched_wav)):
                             samples.append({"audio_path": str(matched_wav), "sentence": sentence})
+                            matched_in_csv += 1
                         else:
                             corrupt_count += 1
-                        
-                if samples:
-                    print(f"[+] Successfully paired {len(samples)} valid audio recordings ({corrupt_count} skipped corrupt/unreadable)!")
-                    return samples
+                print(f"[+] Matched {matched_in_csv} samples from {csv_file.name}!")
         except Exception as e:
             print(f"[-] Could not parse {csv_file}: {e}")
             
     # Check for direct text file pairings (.txt beside .wav)
-    if not samples and wav_files:
+    txt_paired = 0
+    if wav_files:
         print("[*] Checking for .txt transcript pairs beside .wav files...")
-        for w in wav_files[:3000]:
+        for w in wav_files:
             txt_partner = w.with_suffix(".txt")
             if txt_partner.exists() and is_valid_audio(str(w)):
-                text = txt_partner.read_text(encoding="utf-8").strip()
+                text = normalize_kashmiri_text(txt_partner.read_text(encoding="utf-8"))
                 if text:
                     samples.append({"audio_path": str(w), "sentence": text})
+                    txt_paired += 1
+        if txt_paired:
+            print(f"[+] Found {txt_paired} direct .txt/.wav pairs!")
                     
     return samples
 
@@ -166,6 +183,14 @@ if not paired_samples:
 
 print(f"[+] Verified Training Corpus: {len(paired_samples)} paired Kashmiri speech samples!")
 
+# Deduplicate samples by audio_path
+unique_samples = {}
+for s in paired_samples:
+    if s["audio_path"] not in unique_samples:
+        unique_samples[s["audio_path"]] = s
+paired_samples = list(unique_samples.values())
+print(f"[+] Unique Audio Samples: {len(paired_samples)}")
+
 # Train / Validation Split
 import random
 random.seed(42)
@@ -178,7 +203,7 @@ print(f"[+] Train split: {len(train_samples)} | Eval split: {len(eval_samples)}"
 # ---------------------------------------------------------------------------
 # On-Demand Streaming PyTorch Dataset (Zero-RAM Overhead)
 # ---------------------------------------------------------------------------
-def load_and_resample(path):
+def load_and_resample(path: str) -> np.ndarray:
     if path and os.path.exists(path):
         try:
             arr, sr = sf.read(path)
@@ -246,22 +271,27 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 data_collator = DataCollatorSpeechSeq2SeqWithPadding(processor=processor)
 
 # ---------------------------------------------------------------------------
-# Model Initialization & LoRA
+# Model Initialization & High-Capacity LoRA
 # ---------------------------------------------------------------------------
-print(f"[*] Initializing {BASE_MODEL} with LoRA...")
+print(f"[*] Initializing {BASE_MODEL} with High-Capacity LoRA...")
 model = WhisperForConditionalGeneration.from_pretrained(
     BASE_MODEL,
     torch_dtype=torch.float32,
     low_cpu_mem_usage=True
 ).to(device)
 
-model.config.forced_decoder_ids = None
-model.config.suppress_tokens = []
+# Force decoder to generate in Urdu/Perso-Arabic script tokens for Kashmiri
+forced_ids = processor.get_decoder_prompt_ids(language="urdu", task="transcribe")
+model.generation_config.forced_decoder_ids = forced_ids
+model.generation_config.suppress_tokens = []
+model.generation_config.language = "urdu"
+model.generation_config.task = "transcribe"
 
+# High-rank LoRA on both attention & feed-forward layers
 peft_config = LoraConfig(
-    r=32,
-    lora_alpha=64,
-    target_modules=["q_proj", "v_proj", "k_proj", "out_proj"],
+    r=64,
+    lora_alpha=128,
+    target_modules=["q_proj", "v_proj", "k_proj", "out_proj", "fc1", "fc2"],
     lora_dropout=0.05,
     bias="none",
 )
@@ -284,8 +314,12 @@ def compute_metrics(pred):
     pred_str = processor.tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
     label_str = processor.tokenizer.batch_decode(label_ids, skip_special_tokens=True)
 
-    wer = 100 * wer_metric.compute(predictions=pred_str, references=label_str)
-    cer = 100 * cer_metric.compute(predictions=pred_str, references=label_str)
+    # Clean empty strings for metric calculation
+    pred_clean = [p if p.strip() else " " for p in pred_str]
+    label_clean = [l if l.strip() else " " for l in label_str]
+
+    wer = 100 * wer_metric.compute(predictions=pred_clean, references=label_clean)
+    cer = 100 * cer_metric.compute(predictions=pred_clean, references=label_clean)
 
     return {"wer": wer, "cer": cer}
 
@@ -299,16 +333,19 @@ training_args = Seq2SeqTrainingArguments(
     per_device_train_batch_size=BATCH_SIZE,
     gradient_accumulation_steps=GRAD_ACCUM,
     learning_rate=LEARNING_RATE,
-    warmup_steps=30,
+    lr_scheduler_type="cosine",
+    warmup_ratio=0.1,
+    weight_decay=0.01,
     num_train_epochs=NUM_EPOCHS,
     fp16=torch.cuda.is_available(),
     eval_strategy="epoch" if len(eval_dataset) > 5 else "no",
     save_strategy="epoch",
     save_total_limit=2,
-    logging_steps=25,
+    logging_steps=20,
     report_to=["none"],
     predict_with_generate=True,
-    generation_max_length=128,
+    generation_max_length=225,
+    generation_num_beams=2,
     remove_unused_columns=False,
     label_names=["labels"],
 )
@@ -324,7 +361,7 @@ trainer = Seq2SeqTrainer(
 )
 
 print("=" * 70)
-print(f"[*] Starting Whisper fine-tuning on {len(train_dataset)} real speech samples across {NUM_EPOCHS} epochs...")
+print(f"[*] Starting Whisper Large-V3-Turbo fine-tuning on {len(train_dataset)} speech samples across {NUM_EPOCHS} epochs...")
 print("=" * 70)
 
 trainer.train()
@@ -344,7 +381,7 @@ zip_path = Path("/kaggle/working/kashmiri-whisper-transcribe-adapter.zip")
 shutil.make_archive(str(zip_path.with_suffix("")), "zip", OUTPUT_DIR)
 print(f"[+] Generated download zip: {zip_path}")
 
-# Optional Hugging Face Push
+# Hugging Face Push
 if HF_TOKEN:
     try:
         from huggingface_hub import HfApi
@@ -354,12 +391,12 @@ if HF_TOKEN:
             folder_path=str(OUTPUT_DIR),
             repo_id=HF_REPO_ID,
             repo_type="model",
-            commit_message="Update: SOTA Kashmiri Whisper Speech-to-Text Transcribe Adapter"
+            commit_message="Update: High-Fidelity Kashmiri Whisper Large-V3-Turbo Transcribe Adapter"
         )
-        print(f"[+] Uploaded adapter directly to: https://huggingface.co/{HF_REPO_ID}")
+        print(f"[+] Uploaded adapter directly to Hugging Face: https://huggingface.co/{HF_REPO_ID}")
     except Exception as e:
-        print(f"[-] Hugging Face upload skipped: {e}")
+        print(f"[-] Hugging Face upload skipped or error: {e}")
 
 print("=" * 70)
-print("KASHMIRI WHISPER TRANSCRIBE PIPELINE COMPLETE!")
+print("KASHMIRI WHISPER LARGE-V3-TURBO TRANSCRIBE PIPELINE COMPLETE!")
 print("=" * 70)
