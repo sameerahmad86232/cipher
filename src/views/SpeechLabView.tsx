@@ -110,7 +110,7 @@ export const SpeechLabView: React.FC = () => {
     if (!audio || !modelTranscript || transcript.trim() === modelTranscript.trim()) return;
     const feedback = {
       audioFile: audio.name,
-      model: 'Sameer0313/kashmiri-whisper-lora',
+      model: 'Sameer0313/kashmiri-whisper-lora-v2',
       modelTranscript,
       correctedTranscript: transcript.trim(),
       reviewedAt: new Date().toISOString(),
@@ -125,12 +125,12 @@ export const SpeechLabView: React.FC = () => {
 
   return <section className="speech-lab" aria-labelledby="speech-lab-title">
     <div className="speech-hero">
-      <div><p className="eyebrow">Kashmiri speech recognition</p><h1 id="speech-lab-title">Large V3 Turbo speech lab</h1><p className="speech-intro">Record or upload Kashmiri speech and test the fine-tuned Whisper Large V3 Turbo adapter. Your audio is sent only to the configured inference service.</p></div>
+      <div><p className="eyebrow">Kashmiri speech recognition</p><h1 id="speech-lab-title">Large V3 Turbo v2 speech lab</h1><p className="speech-intro">Record or upload Kashmiri speech and test the latest fine-tuned Whisper Large V3 Turbo adapter. Your audio is sent only to the configured inference service.</p></div>
       <div className={`service-pill ${service}`} role="status"><span aria-hidden="true"/><div><strong>{service === 'ready' ? 'Model online' : service === 'checking' ? 'Checking model' : 'Model offline'}</strong><small>{serviceMessage}</small></div></div>
     </div>
     <div className="speech-grid">
       <article className="speech-card capture-card">
-        <span className="step-number">01</span><h2>Provide a voice sample</h2><p>Speak naturally in Kashmiri. Clear recordings between 3 and 30 seconds work best. This model completed 8 training epochs with 22.42% CER.</p>
+        <span className="step-number">01</span><h2>Provide a voice sample</h2><p>Speak naturally in Kashmiri. Clear recordings between 3 and 30 seconds work best. The latest v2 adapter achieved 22.34% CER in evaluation.</p>
         <div className={`record-orbit ${recording ? 'is-recording' : ''}`}><button className="record-button" type="button" onClick={recording ? stopRecording : startRecording} aria-label={recording ? 'Stop recording' : 'Start recording'}><span>{recording ? '■' : '●'}</span></button><strong>{recording ? clock(seconds) : 'Record'}</strong></div>
         <div className="audio-divider"><span>or upload audio</span></div>
         <label className="upload-audio"><input type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac" onChange={event => { const file = event.target.files?.[0]; if (file) useAudio(file); }}/><span>Choose an audio file</span><small>WAV, MP3, M4A, WebM, OGG or FLAC · maximum 3 MB</small></label>

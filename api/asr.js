@@ -61,7 +61,7 @@ export default async function handler(request, response) {
       const ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri']);
       return response.status(ready ? 200 : 503).json({
         ready,
-        model: 'Kashmiri Whisper Large V3 Turbo · CER 22.42%',
+        model: 'Kashmiri Whisper Large V3 Turbo v2 · CER 22.34%',
       });
     } catch (error) {
       return response.status(503).json({
