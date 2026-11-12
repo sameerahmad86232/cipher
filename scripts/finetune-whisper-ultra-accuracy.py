@@ -293,6 +293,7 @@ except Exception as e:
     model = get_peft_model(base_model, peft_config)
 
 model.print_trainable_parameters()
+model.config.use_cache = False
 
 # ---------------------------------------------------------------------------
 # Metrics: Word Error Rate (WER) & Character Error Rate (CER)
@@ -335,6 +336,9 @@ training_args = Seq2SeqTrainingArguments(
     eval_strategy="epoch" if len(eval_dataset) > 5 else "no",
     save_strategy="epoch",
     save_total_limit=2,
+    load_best_model_at_end=True,
+    metric_for_best_model="eval_cer",
+    greater_is_better=False,
     logging_steps=20,
     predict_with_generate=True,
     generation_max_length=225,
@@ -369,7 +373,7 @@ model.save_pretrained(str(OUTPUT_DIR))
 processor.save_pretrained(str(OUTPUT_DIR))
 print(f"[+] Saved Ultra Kashmiri Whisper Adapter to: {OUTPUT_DIR}")
 
-zip_path = Path("/kaggle/working/kashmiri-whisper-ultra-adapter.zip")
+zip_path = OUTPUT_DIR.parent / "kashmiri-whisper-ultra-adapter.zip"
 shutil.make_archive(str(zip_path.with_suffix("")), "zip", OUTPUT_DIR)
 print(f"[+] Created 1-Click Download Zip: {zip_path}")
 
