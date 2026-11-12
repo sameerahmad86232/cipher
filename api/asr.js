@@ -3,6 +3,7 @@ const MAX_BYTES = 3 * 1024 * 1024;
 export const config = { maxDuration: 300 };
 
 const timeoutSignal = (milliseconds) => AbortSignal.timeout(milliseconds);
+const wait = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
 const spaceHeaders = (extra = {}) => ({
   ...(process.env.HF_TOKEN ? { Authorization: `Bearer ${process.env.HF_TOKEN}` } : {}),
   ...extra,
@@ -88,8 +89,20 @@ export default async function handler(request, response) {
     if (!bytes.length) return response.status(400).json({ error: 'Audio is empty' });
     if (bytes.length > MAX_BYTES) return response.status(413).json({ error: 'Audio must be 3 MB or smaller' });
 
-    const text = await transcribe(bytes, mimeType, fileName);
-    return response.status(200).json({ text, language: 'ks-Arab', fileName });
+    let lastError;
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
+      try {
+        const text = await transcribe(bytes, mimeType, fileName);
+        return response.status(200).json({ text, language: 'ks-Arab', fileName, attempts: attempt });
+      } catch (error) {
+        lastError = error;
+        const message = error instanceof Error ? error.message : '';
+        const allocationFailure = message.includes('GPU queue could not allocate');
+        if (!allocationFailure || attempt === 3) throw error;
+        await wait(attempt * 2500);
+      }
+    }
+    throw lastError;
   } catch (error) {
     console.error('ASR proxy error', error);
     return response.status(502).json({
