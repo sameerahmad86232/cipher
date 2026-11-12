@@ -3,18 +3,23 @@ const MAX_BYTES = 3 * 1024 * 1024;
 export const config = { maxDuration: 300 };
 
 const timeoutSignal = (milliseconds) => AbortSignal.timeout(milliseconds);
+const spaceHeaders = (extra = {}) => ({
+  ...(process.env.HF_TOKEN ? { Authorization: `Bearer ${process.env.HF_TOKEN}` } : {}),
+  ...extra,
+});
 
 async function readEventResult(eventId) {
   const upstream = await fetch(
     `${SPACE}/gradio_api/call/transcribe_kashmiri/${encodeURIComponent(eventId)}`,
-    { signal: timeoutSignal(285000) }
+    { headers: spaceHeaders(), signal: timeoutSignal(285000) }
   );
   if (!upstream.ok) throw new Error(`Inference queue returned ${upstream.status}`);
   const stream = await upstream.text();
   const completed = [...stream.matchAll(/^event: complete\s*\ndata: (.+)$/gm)].at(-1);
   if (!completed) {
     const failed = [...stream.matchAll(/^event: error\s*\ndata: (.+)$/gm)].at(-1);
-    throw new Error(failed?.[1] || 'The model did not return a completed result');
+    const upstreamError = failed?.[1] && failed[1] !== 'null' ? failed[1] : '';
+    throw new Error(upstreamError || 'The Hugging Face GPU queue could not allocate a worker. Please retry.');
   }
   const payload = JSON.parse(completed[1]);
   return String(payload?.[0] || '').trim();
@@ -25,6 +30,7 @@ async function transcribe(bytes, mimeType, fileName) {
   upload.append('files', new Blob([bytes], { type: mimeType }), fileName);
   const uploadResponse = await fetch(`${SPACE}/gradio_api/upload`, {
     method: 'POST',
+    headers: spaceHeaders(),
     body: upload,
     signal: timeoutSignal(60000),
   });
@@ -35,7 +41,7 @@ async function transcribe(bytes, mimeType, fileName) {
 
   const queueResponse = await fetch(`${SPACE}/gradio_api/call/transcribe_kashmiri`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: spaceHeaders({ 'Content-Type': 'application/json' }),
     body: JSON.stringify({
       data: [{
         path,
@@ -56,7 +62,10 @@ export default async function handler(request, response) {
   response.setHeader('Cache-Control', 'no-store');
   if (request.method === 'GET') {
     try {
-      const upstream = await fetch(`${SPACE}/gradio_api/info`, { signal: timeoutSignal(15000) });
+      const upstream = await fetch(`${SPACE}/gradio_api/info`, {
+        headers: spaceHeaders(),
+        signal: timeoutSignal(15000),
+      });
       const data = await upstream.json();
       const ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri']);
       return response.status(ready ? 200 : 503).json({
