@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import type { ViewMode } from '../App';
 
 interface HeaderProps {
-  currentView: 'dictionary' | 'translator' | 'about' | 'guide' | 'orthography' | 'seerah';
-  onSelectView: (view: 'dictionary' | 'translator' | 'about' | 'guide' | 'orthography' | 'seerah') => void;
+  currentView: ViewMode;
+  onSelectView: (view: ViewMode) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentView, onSelectView }) => {
@@ -81,6 +82,13 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onSelectView }) => 
           onClick={() => onSelectView('translator')}
         >
           Translator
+        </button>
+        <button
+          className={`nav-link ${currentView === 'speech' ? 'active' : ''}`}
+          type="button"
+          onClick={() => onSelectView('speech')}
+        >
+          Speech lab
         </button>
         <button
           className={`nav-link ${currentView === 'about' ? 'active' : ''}`}

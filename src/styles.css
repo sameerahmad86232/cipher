@@ -1574,3 +1574,36 @@ footer a {
     flex-direction: column;
   }
 }
+
+.speech-lab { max-width: 1180px; margin: 0 auto; }
+.speech-hero { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 40px; align-items: end; margin-bottom: 42px; }
+.speech-hero h1 { margin: 6px 0 12px; color: var(--forest); font-size: clamp(44px,7vw,82px); letter-spacing: -.055em; line-height: .95; }
+.speech-intro { max-width: 700px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.service-pill { min-width: 250px; display: flex; gap: 12px; align-items: center; padding: 15px 18px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.74); }
+.service-pill > span { width: 11px; height: 11px; flex: 0 0 auto; border-radius: 50%; background: #a77730; box-shadow: 0 0 0 6px rgba(167,119,48,.12); }
+.service-pill.ready > span { background: #23835d; box-shadow: 0 0 0 6px rgba(35,131,93,.12); }
+.service-pill.offline > span { background: #a84335; box-shadow: 0 0 0 6px rgba(168,67,53,.12); }
+.service-pill strong,.service-pill small { display: block; }.service-pill small { max-width: 260px; margin-top: 3px; color: var(--muted); overflow-wrap: anywhere; }
+.speech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.speech-card { position: relative; min-height: 580px; padding: clamp(24px,4vw,42px); overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: rgba(255,255,255,.9); box-shadow: 0 20px 60px rgba(21,55,43,.07); }
+.speech-card h2 { margin: 12px 0 10px; color: var(--forest); font-size: 29px; }.speech-card > p { color: var(--muted); line-height: 1.65; }
+.step-number { color: #a77730; font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+.record-orbit { width: 164px; height: 164px; margin: 38px auto 30px; display: grid; place-items: center; border: 1px solid #dce5de; border-radius: 50%; background: radial-gradient(circle,#fff 35%,#f0f5f1 36%,#f7faf7 68%); }
+.record-orbit strong { color: var(--forest); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.record-button { width: 78px; height: 78px; display: grid; place-items: center; border: 0; border-radius: 50%; color: white; background: linear-gradient(145deg,#295d4a,#12372b); box-shadow: 0 12px 24px rgba(18,55,43,.22); cursor: pointer; font-size: 24px; }
+.record-orbit.is-recording { animation: record-pulse 1.6s infinite; }.record-orbit.is-recording .record-button { background: #9f493d; }
+@keyframes record-pulse { 50% { box-shadow: 0 0 0 12px rgba(159,73,61,.09); } }
+.audio-divider { display:flex; align-items:center; gap:12px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.11em; }.audio-divider::before,.audio-divider::after { content:""; height:1px; flex:1; background:var(--line); }
+.upload-audio { display:block; margin-top:18px; padding:22px; text-align:center; border:1px dashed #aebdb3; border-radius:15px; cursor:pointer; background:#f8faf7; }.upload-audio input { position:absolute; opacity:0; pointer-events:none; }.upload-audio span,.upload-audio small { display:block; }.upload-audio span { color:var(--forest); font-weight:750; }.upload-audio small { margin-top:5px; color:var(--muted); }
+.selected-audio { margin-top:16px; }.selected-audio div { display:flex; justify-content:space-between; gap:12px; margin-bottom:8px; font-size:12px; }.selected-audio small { color:var(--muted); }.selected-audio audio { width:100%; height:38px; }
+.transcript-card { background: linear-gradient(155deg,#fff 0%,#f6f2e8 100%); }.transcript-paper { min-height:265px; margin:28px 0 20px; padding:30px; border:1px solid #ded6c4; border-radius:16px; background:#fffdf7; color:#a59e8e; font-family:"Noto Nastaliq Urdu",serif; font-size:24px; line-height:2.2; }.transcript-paper.has-text { color:#172e25; }
+.speech-error { margin:0 0 14px; padding:12px 14px; border-radius:10px; color:#7c3027; background:#fff0ed; font-size:13px; }
+.transcribe-button,.copy-transcript { width:100%; padding:15px 18px; border-radius:12px; cursor:pointer; font-weight:750; }.transcribe-button { border:0; color:white; background:var(--forest); }.transcribe-button:disabled { cursor:not-allowed; opacity:.45; }.copy-transcript { margin-top:9px; border:1px solid var(--line); color:var(--forest); background:white; }
+.endpoint-settings { margin-top:22px; padding:20px 24px; border:1px solid var(--line); border-radius:16px; background:white; }.endpoint-settings summary { cursor:pointer; color:var(--forest); font-weight:750; }.endpoint-settings div { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; margin-top:18px; }.endpoint-settings input { min-width:0; padding:12px; border:1px solid var(--line); border-radius:9px; }.endpoint-settings button { padding:12px 16px; border:0; border-radius:9px; color:white; background:var(--forest); }.endpoint-settings p { margin:10px 0 0; color:var(--muted); font-size:12px; }
+
+@media (max-width: 760px) {
+  .speech-hero, .speech-grid { grid-template-columns: 1fr; }
+  .service-pill { min-width: 0; }
+  .speech-card { min-height: 0; }
+  .endpoint-settings div { grid-template-columns: 1fr; }
+}
