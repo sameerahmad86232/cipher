@@ -17,6 +17,8 @@ export const SpeechLabView: React.FC = () => {
   const [transcribing, setTranscribing] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [modelTranscript, setModelTranscript] = useState('');
+  const [englishTranslation, setEnglishTranslation] = useState('');
+  const [translating, setTranslating] = useState(false);
   const [error, setError] = useState('');
   const recorder = useRef<MediaRecorder | null>(null);
   const timer = useRef<number | null>(null);
@@ -40,7 +42,27 @@ export const SpeechLabView: React.FC = () => {
 
   const useAudio = (file: File) => {
     if (audioUrl) URL.revokeObjectURL(audioUrl);
-    setAudio(file); setAudioUrl(URL.createObjectURL(file)); setTranscript(''); setModelTranscript(''); setError('');
+    setAudio(file); setAudioUrl(URL.createObjectURL(file)); setTranscript(''); setModelTranscript(''); setEnglishTranslation(''); setError('');
+  };
+
+  const translateToEnglish = async (kashmiriText = transcript) => {
+    const text = kashmiriText.trim();
+    if (!text) return;
+    setTranslating(true); setError('');
+    try {
+      const response = await fetch(url('/api/translate'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'English translation failed');
+      setEnglishTranslation(String(data.english || '').trim());
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : 'Unable to translate the transcription.');
+    } finally {
+      setTranslating(false);
+    }
   };
   const startRecording = async () => {
     setError('');
@@ -77,7 +99,9 @@ export const SpeechLabView: React.FC = () => {
       if (!response.ok) throw new Error(data.detail || data.error || 'Transcription failed');
       const text = String(data.text || '').trim();
       setTranscript(text); setModelTranscript(text);
+      setEnglishTranslation('');
       if (!text) setError('The model returned no text. Try a clearer recording.');
+      else await translateToEnglish(text);
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'Unable to reach the transcription service.'); }
     finally { setTranscribing(false); }
   };
@@ -131,6 +155,23 @@ export const SpeechLabView: React.FC = () => {
         {modelTranscript && transcript.trim() !== modelTranscript.trim() && (
           <button className="copy-transcript" type="button" onClick={downloadCorrection}>Download correction for retraining</button>
         )}
+        <div className="english-translation-block">
+          <div className="english-translation-heading">
+            <span>English translation</span>
+            <small>Automatic translation · review important meaning</small>
+          </div>
+          <div className={`english-translation ${englishTranslation ? 'has-text' : ''}`} lang="en" dir="ltr">
+            {translating ? 'Translating to English…' : englishTranslation || 'The English meaning will appear here after transcription.'}
+          </div>
+          <button
+            className="translate-english-button"
+            type="button"
+            onClick={() => translateToEnglish()}
+            disabled={!transcript.trim() || translating}
+          >
+            {translating ? 'Translating…' : 'Translate corrected Kashmiri to English'}
+          </button>
+        </div>
       </article>
     </div>
     <details className="endpoint-settings"><summary>Advanced service settings</summary><div><label htmlFor="asr-endpoint">Proxy URL</label><input id="asr-endpoint" value={endpoint} onChange={event => setEndpoint(event.target.value)} placeholder="Leave blank to use Cipher"/><button type="button" onClick={() => { localStorage.setItem('koshur-asr-endpoint', endpoint.trim()); void checkService(); }}>Save and test</button></div><p>Leave blank to use the secure Cipher proxy. Existing custom settings can be cleared here.</p></details>
