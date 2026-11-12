@@ -16,6 +16,7 @@ export const SpeechLabView: React.FC = () => {
   const [seconds, setSeconds] = useState(0);
   const [transcribing, setTranscribing] = useState(false);
   const [transcript, setTranscript] = useState('');
+  const [modelTranscript, setModelTranscript] = useState('');
   const [error, setError] = useState('');
   const recorder = useRef<MediaRecorder | null>(null);
   const timer = useRef<number | null>(null);
@@ -39,7 +40,7 @@ export const SpeechLabView: React.FC = () => {
 
   const useAudio = (file: File) => {
     if (audioUrl) URL.revokeObjectURL(audioUrl);
-    setAudio(file); setAudioUrl(URL.createObjectURL(file)); setTranscript(''); setError('');
+    setAudio(file); setAudioUrl(URL.createObjectURL(file)); setTranscript(''); setModelTranscript(''); setError('');
   };
   const startRecording = async () => {
     setError('');
@@ -75,10 +76,27 @@ export const SpeechLabView: React.FC = () => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.detail || data.error || 'Transcription failed');
       const text = String(data.text || '').trim();
-      setTranscript(text);
+      setTranscript(text); setModelTranscript(text);
       if (!text) setError('The model returned no text. Try a clearer recording.');
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'Unable to reach the transcription service.'); }
     finally { setTranscribing(false); }
+  };
+
+  const downloadCorrection = () => {
+    if (!audio || !modelTranscript || transcript.trim() === modelTranscript.trim()) return;
+    const feedback = {
+      audioFile: audio.name,
+      model: 'Sameer0313/kashmiri-whisper-lora',
+      modelTranscript,
+      correctedTranscript: transcript.trim(),
+      reviewedAt: new Date().toISOString(),
+    };
+    const href = URL.createObjectURL(new Blob([JSON.stringify(feedback, null, 2)], { type: 'application/json' }));
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = `${audio.name.replace(/\.[^.]+$/, '')}-kashmiri-correction.json`;
+    link.click();
+    URL.revokeObjectURL(href);
   };
 
   return <section className="speech-lab" aria-labelledby="speech-lab-title">
@@ -96,10 +114,23 @@ export const SpeechLabView: React.FC = () => {
       </article>
       <article className="speech-card transcript-card">
         <span className="step-number">02</span><h2>Read the transcription</h2><p>The output is a model prediction. Check spelling and meaning before treating it as reviewed Kashmiri.</p>
-        <div className={`transcript-paper ${transcript ? 'has-text' : ''}`} lang="ks-Arab" dir="rtl">{transcript || <span>تُہُنٛد کٲشُر متن یِیہِ یَتھ پؠٹھ…</span>}</div>
+        <label className="transcript-label" htmlFor="kashmiri-transcript">Model output · edit any incorrect words</label>
+        <textarea
+          id="kashmiri-transcript"
+          className={`transcript-paper ${transcript ? 'has-text' : ''}`}
+          lang="ks-Arab"
+          dir="rtl"
+          value={transcript}
+          onChange={event => setTranscript(event.target.value)}
+          placeholder="تُہُنٛد کٲشُر متن یِیہِ یَتھ پؠٹھ…"
+          spellCheck={false}
+        />
         {error && <div className="speech-error" role="alert">{error}</div>}
         <button className="transcribe-button" type="button" onClick={transcribe} disabled={!audio || transcribing || service !== 'ready'}>{transcribing ? 'Transcribing…' : 'Transcribe Kashmiri audio'}</button>
         {transcript && <button className="copy-transcript" type="button" onClick={() => navigator.clipboard.writeText(transcript)}>Copy transcription</button>}
+        {modelTranscript && transcript.trim() !== modelTranscript.trim() && (
+          <button className="copy-transcript" type="button" onClick={downloadCorrection}>Download correction for retraining</button>
+        )}
       </article>
     </div>
     <details className="endpoint-settings"><summary>Advanced service settings</summary><div><label htmlFor="asr-endpoint">Proxy URL</label><input id="asr-endpoint" value={endpoint} onChange={event => setEndpoint(event.target.value)} placeholder="Leave blank to use Cipher"/><button type="button" onClick={() => { localStorage.setItem('koshur-asr-endpoint', endpoint.trim()); void checkService(); }}>Save and test</button></div><p>Leave blank to use the secure Cipher proxy. Existing custom settings can be cleared here.</p></details>

@@ -1607,3 +1607,18 @@ footer a {
   .speech-card { min-height: 0; }
   .endpoint-settings div { grid-template-columns: 1fr; }
 }
+
+.transcript-label {
+  display: block;
+  margin-top: 24px;
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .04em;
+}
+
+textarea.transcript-paper {
+  width: 100%;
+  resize: vertical;
+  font-family: "Noto Nastaliq Urdu", serif;
+}
