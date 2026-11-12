@@ -45,10 +45,13 @@ KASHMIRI_DIACRITICS = "ًٌٍَُِْٰٖٗ٘ٲٕۄۆؠ"
 
 ---
 
-## 3. Training on Kaggle GPU
+## 3. Training on Google Colab (Free T4 GPU) & Kaggle
 
-To launch training on Kaggle with the `gopikrishnan2005/kashmiri-text-to-speech` dataset:
+Run the training pipeline directly in Google Colab with 1-click execution:
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sameerahmad86232/cipher/blob/main/colab-kashmiri-vits-training.ipynb)
+
+Or run on local / Kaggle GPU using:
 ```bash
 python scripts/finetune-vits-kashmiri.py
 ```
