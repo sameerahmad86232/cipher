@@ -57,7 +57,7 @@ else:
 # Configuration
 # ---------------------------------------------------------------------------
 BASE_MODEL = os.getenv("BASE_MODEL", "openai/whisper-large-v3-turbo")
-STAGE1_ADAPTER = os.getenv("STAGE1_ADAPTER", "Sameer0313/kashmiri-whisper-lora")
+STAGE1_ADAPTER = os.getenv("STAGE1_ADAPTER", "Sameer0313/kashmiri-whisper-lora-v2")
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", "/kaggle/working/kashmiri-whisper-ultra-adapter"))
 CHECKPOINTS_DIR = Path(os.getenv("CHECKPOINTS_DIR", "/kaggle/working/whisper-ultra-checkpoints"))
 HF_REPO_ID = os.getenv("HF_REPO_ID", "Sameer0313/kashmiri-whisper-ultra-lora")
@@ -200,15 +200,16 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 # Multi-Dataset Corpus Harvester
 # ---------------------------------------------------------------------------
 def harvest_kashmiri_audio():
-    kaggle_input = Path("/kaggle/input")
+    roots = [Path("/kaggle/input")]
+    roots.extend(Path(value) for value in os.getenv("EXTRA_AUDIO_ROOTS", "").split(os.pathsep) if value)
     samples = []
-    
-    wav_files = list(kaggle_input.glob("**/*.wav")) if kaggle_input.exists() else []
+
+    wav_files = [wav for root in roots if root.exists() for wav in root.glob("**/*.wav")]
     print(f"[+] Total audio WAV files detected: {len(wav_files)}")
     wav_map = {w.stem.strip(): str(w) for w in wav_files}
     wav_map.update({w.name.strip(): str(w) for w in wav_files})
 
-    csv_files = list(kaggle_input.glob("**/*.csv")) if kaggle_input.exists() else []
+    csv_files = [csv_file for root in roots if root.exists() for csv_file in root.glob("**/*.csv")]
     for csv_file in csv_files:
         try:
             df = pd.read_csv(csv_file)
