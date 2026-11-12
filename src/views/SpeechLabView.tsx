@@ -25,9 +25,23 @@ export const SpeechLabView: React.FC = () => {
   const chunks = useRef<Blob[]>([]);
   const url = (path: string) => `${endpoint.trim().replace(/\/$/, '')}${path}`;
 
+  const isGradio = () => {
+    const ep = endpoint.trim().toLowerCase();
+    return ep.includes('gradio.live') || ep.includes(':7860') || ep.includes('ngrok') || ep.includes('loca.lt');
+  };
+
   const checkService = async () => {
     setService('checking'); setServiceMessage('Checking the Whisper service…');
     try {
+      const ep = endpoint.trim().replace(/\/$/, '');
+      if (isGradio()) {
+        const response = await fetch(`${ep}/gradio_api/info`, { signal: AbortSignal.timeout(15000) });
+        const data = await response.json();
+        const hasEndpoint = Boolean(data?.named_endpoints?.['/transcribe_kashmiri']);
+        if (!hasEndpoint) throw new Error('Colab server missing /transcribe_kashmiri endpoint');
+        setService('ready'); setServiceMessage('Google Colab Kashmiri AI GPU Server is ready');
+        return;
+      }
       const response = await fetch(url('/api/asr'), { signal: AbortSignal.timeout(20000) });
       const data = await response.json();
       if (!response.ok || !data.ready) throw new Error(data.detail || 'Model is not ready');
@@ -37,7 +51,7 @@ export const SpeechLabView: React.FC = () => {
     }
   };
 
-  useEffect(() => { void checkService(); }, []);
+  useEffect(() => { void checkService(); }, [endpoint]);
   useEffect(() => () => { if (timer.current) clearInterval(timer.current); }, []);
 
   const useAudio = (file: File) => {
@@ -50,6 +64,25 @@ export const SpeechLabView: React.FC = () => {
     if (!text) return;
     setTranslating(true); setError('');
     try {
+      const ep = endpoint.trim().replace(/\/$/, '');
+      if (isGradio()) {
+        const queueRes = await fetch(`${ep}/gradio_api/call/translate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: [text, 'Kashmiri → English'] }),
+          signal: AbortSignal.timeout(30000),
+        });
+        const queueData = await queueRes.json();
+        const eventId = queueData?.event_id;
+        if (!eventId) throw new Error('Colab translation queue failed');
+        const eventRes = await fetch(`${ep}/gradio_api/call/translate/${eventId}`, { signal: AbortSignal.timeout(60000) });
+        const stream = await eventRes.text();
+        const completed = [...stream.matchAll(/^event: complete\s*\ndata: (.+)$/gm)].at(-1);
+        if (!completed) throw new Error('Colab translation returned no completion');
+        const payload = JSON.parse(completed[1]);
+        setEnglishTranslation(String(payload?.[0] || '').trim());
+        return;
+      }
       const response = await fetch(url('/api/translate'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -88,16 +121,49 @@ export const SpeechLabView: React.FC = () => {
     setTranscribing(true); setError(''); setTranscript('');
     try {
       if (audio.size > 3 * 1024 * 1024) throw new Error('Audio must be 3 MB or smaller. Record a shorter sample.');
-      const bytes = new Uint8Array(await audio.arrayBuffer());
-      let binary = '';
-      for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
-      const response = await fetch(url('/api/asr'), {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: audio.type, fileName: audio.name })
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.detail || data.error || 'Transcription failed');
-      const text = String(data.text || '').trim();
+      const ep = endpoint.trim().replace(/\/$/, '');
+      let text = '';
+
+      if (isGradio()) {
+        const uploadData = new FormData();
+        uploadData.append('files', audio, audio.name);
+        const upRes = await fetch(`${ep}/gradio_api/upload`, { method: 'POST', body: uploadData, signal: AbortSignal.timeout(60000) });
+        if (!upRes.ok) throw new Error(`Audio upload returned ${upRes.status}`);
+        const upJson = await upRes.json();
+        const serverPath = upJson?.[0];
+        if (!serverPath) throw new Error('Colab server rejected audio upload');
+
+        const queueRes = await fetch(`${ep}/gradio_api/call/transcribe_kashmiri`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            data: [{ path: serverPath, orig_name: audio.name, mime_type: audio.type, meta: { _type: 'gradio.FileData' } }]
+          }),
+          signal: AbortSignal.timeout(30000)
+        });
+        const queueData = await queueRes.json();
+        const eventId = queueData?.event_id;
+        if (!eventId) throw new Error('Colab speech queue failed');
+
+        const eventRes = await fetch(`${ep}/gradio_api/call/transcribe_kashmiri/${eventId}`, { signal: AbortSignal.timeout(120000) });
+        const stream = await eventRes.text();
+        const completed = [...stream.matchAll(/^event: complete\s*\ndata: (.+)$/gm)].at(-1);
+        if (!completed) throw new Error('Colab server returned no transcription completion');
+        const payload = JSON.parse(completed[1]);
+        text = String(payload?.[0] || '').trim();
+      } else {
+        const bytes = new Uint8Array(await audio.arrayBuffer());
+        let binary = '';
+        for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
+        const response = await fetch(url('/api/asr'), {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ audioBase64: btoa(binary), mimeType: audio.type, fileName: audio.name })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || data.error || 'Transcription failed');
+        text = String(data.text || '').trim();
+      }
+
       setTranscript(text); setModelTranscript(text);
       setEnglishTranslation('');
       if (!text) setError('The model returned no text. Try a clearer recording.');
