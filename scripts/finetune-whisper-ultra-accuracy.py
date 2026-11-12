@@ -67,6 +67,8 @@ NUM_EPOCHS = int(os.getenv("NUM_EPOCHS", "12"))
 BATCH_SIZE = int(os.getenv("BATCH_SIZE", "4"))
 GRAD_ACCUM = int(os.getenv("GRAD_ACCUM", "4"))
 LEARNING_RATE = float(os.getenv("LEARNING_RATE", "7.5e-5"))  # Lower rate for ultra refinement
+EVAL_SIZE = int(os.getenv("EVAL_SIZE", "150"))
+SAVE_STEPS = int(os.getenv("SAVE_STEPS", "200"))
 TARGET_SAMPLE_RATE = 16000
 
 # ---------------------------------------------------------------------------
@@ -252,7 +254,8 @@ print(f"[+] Total Unique Speech Pairs: {len(samples)}")
 
 np.random.seed(42)
 np.random.shuffle(samples)
-split_idx = max(int(len(samples) * 0.94), 1)
+eval_size = min(EVAL_SIZE, max(len(samples) - 1, 1))
+split_idx = max(len(samples) - eval_size, 1)
 train_samples = samples[:split_idx]
 eval_samples = samples[split_idx:] if len(samples) > 1 else samples
 
@@ -334,8 +337,10 @@ training_args = Seq2SeqTrainingArguments(
     gradient_checkpointing=True,
     num_train_epochs=NUM_EPOCHS,
     fp16=torch.cuda.is_available(),
-    eval_strategy="epoch" if len(eval_dataset) > 5 else "no",
-    save_strategy="epoch",
+    eval_strategy="steps" if len(eval_dataset) > 5 else "no",
+    eval_steps=SAVE_STEPS,
+    save_strategy="steps",
+    save_steps=SAVE_STEPS,
     save_total_limit=2,
     load_best_model_at_end=True,
     metric_for_best_model="eval_cer",
@@ -347,6 +352,10 @@ training_args = Seq2SeqTrainingArguments(
     remove_unused_columns=False,
     label_names=["labels"],
     report_to=["none"],
+    push_to_hub=bool(HF_TOKEN),
+    hub_model_id=HF_REPO_ID if HF_TOKEN else None,
+    hub_strategy="every_save",
+    hub_token=HF_TOKEN or None,
 )
 
 trainer = Seq2SeqTrainer(
