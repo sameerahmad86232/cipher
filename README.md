@@ -100,6 +100,7 @@ Reader interactions: `scripts/test-seerah-reader.cjs` requires a separate Playwr
 ## Advanced Linguistic Patterns & Cloud Hardware Pipelines
 
 - **Master NLLB-200 320k Model**: Available on Hugging Face at [`Sameer0313/kashmiri-nllb-200-master-lora`](https://huggingface.co/Sameer0313/kashmiri-nllb-200-master-lora). See [`docs/master-nllb-training-report.md`](docs/master-nllb-training-report.md) for full training convergence metrics, hyperparameters (LoRA rank 64, alpha 128, FP16), loss curve (2.0216), and verified smoke test outputs.
+- **Kashmiri Whisper Large-V3-Turbo Model**: Available on Hugging Face at [`Sameer0313/kashmiri-whisper-lora`](https://huggingface.co/Sameer0313/kashmiri-whisper-lora). See [`docs/whisper-large-v3-turbo-training-report.md`](docs/whisper-large-v3-turbo-training-report.md) for full training benchmarks across 8 epochs (CER: 22.42%, Eval Loss: 0.5968, Train Loss: 0.6382).
 - **Comprehensive Kashmiri Grammar Guide**: See [`docs/kashmiri-grammar-patterns.md`](docs/kashmiri-grammar-patterns.md) for in-depth rules on:
   - Verb-Second (V2) Main Clause syntax vs. Subordinate SOV with `تِکیازِ` (*Tikyazi*).
   - Split Ergativity and Direct Object agreement (`تٔمۍ پٔر کِتاب`).
