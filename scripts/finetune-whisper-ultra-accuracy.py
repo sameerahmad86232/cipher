@@ -294,6 +294,7 @@ except Exception as e:
 
 model.print_trainable_parameters()
 model.config.use_cache = False
+model.enable_input_require_grads()
 
 # ---------------------------------------------------------------------------
 # Metrics: Word Error Rate (WER) & Character Error Rate (CER)
