@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 type ServiceState = 'checking' | 'ready' | 'offline';
+type SpeechModel = 'v2' | 'v4';
+const MODEL_REPOS: Record<SpeechModel, string> = {
+  v2: 'Sameer0313/kashmiri-whisper-lora-v2',
+  v4: 'Sameer0313/kashmiri-whisper-lora-v4-candidate',
+};
 const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 
 export const SpeechLabView: React.FC = () => {
@@ -10,6 +15,8 @@ export const SpeechLabView: React.FC = () => {
   });
   const [service, setService] = useState<ServiceState>('checking');
   const [serviceMessage, setServiceMessage] = useState('Checking the Whisper service…');
+  const [speechModel, setSpeechModel] = useState<SpeechModel>('v2');
+  const [v4Available, setV4Available] = useState(false);
   const [audio, setAudio] = useState<File | null>(null);
   const [audioUrl, setAudioUrl] = useState('');
   const [recording, setRecording] = useState(false);
@@ -39,12 +46,18 @@ export const SpeechLabView: React.FC = () => {
         const data = await response.json();
         const hasEndpoint = Boolean(data?.named_endpoints?.['/transcribe_kashmiri']);
         if (!hasEndpoint) throw new Error('Colab server missing /transcribe_kashmiri endpoint');
+        const v4Ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri_v4']);
+        setV4Available(v4Ready);
+        if (!v4Ready) setSpeechModel('v2');
         setService('ready'); setServiceMessage('Google Colab Kashmiri AI GPU Server is ready');
         return;
       }
       const response = await fetch(url('/api/asr'), { signal: AbortSignal.timeout(20000) });
       const data = await response.json();
       if (!response.ok || !data.ready) throw new Error(data.detail || 'Model is not ready');
+      const v4Ready = Boolean(data.models?.v4);
+      setV4Available(v4Ready);
+      if (!v4Ready) setSpeechModel('v2');
       setService('ready'); setServiceMessage(`${data.model || 'Kashmiri Whisper'} is ready`);
     } catch (reason) {
       setService('offline'); setServiceMessage(reason instanceof Error ? reason.message : 'Speech service is offline');
@@ -133,7 +146,8 @@ export const SpeechLabView: React.FC = () => {
         const serverPath = upJson?.[0];
         if (!serverPath) throw new Error('Colab server rejected audio upload');
 
-        const queueRes = await fetch(`${ep}/gradio_api/call/transcribe_kashmiri`, {
+        const gradioEndpoint = speechModel === 'v4' ? 'transcribe_kashmiri_v4' : 'transcribe_kashmiri';
+        const queueRes = await fetch(`${ep}/gradio_api/call/${gradioEndpoint}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -145,7 +159,7 @@ export const SpeechLabView: React.FC = () => {
         const eventId = queueData?.event_id;
         if (!eventId) throw new Error('Colab speech queue failed');
 
-        const eventRes = await fetch(`${ep}/gradio_api/call/transcribe_kashmiri/${eventId}`, { signal: AbortSignal.timeout(120000) });
+        const eventRes = await fetch(`${ep}/gradio_api/call/${gradioEndpoint}/${eventId}`, { signal: AbortSignal.timeout(120000) });
         const stream = await eventRes.text();
         const completed = [...stream.matchAll(/^event: complete\s*\ndata: (.+)$/gm)].at(-1);
         if (!completed) throw new Error('Colab server returned no transcription completion');
@@ -157,7 +171,7 @@ export const SpeechLabView: React.FC = () => {
         for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
         const response = await fetch(url('/api/asr'), {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ audioBase64: btoa(binary), mimeType: audio.type, fileName: audio.name })
+          body: JSON.stringify({ audioBase64: btoa(binary), mimeType: audio.type, fileName: audio.name, model: speechModel })
         });
         const data = await response.json();
         if (!response.ok) throw new Error(data.detail || data.error || 'Transcription failed');
@@ -176,7 +190,7 @@ export const SpeechLabView: React.FC = () => {
     if (!audio || !modelTranscript || transcript.trim() === modelTranscript.trim()) return;
     const feedback = {
       audioFile: audio.name,
-      model: 'Sameer0313/kashmiri-whisper-lora-v2',
+      model: MODEL_REPOS[speechModel],
       modelTranscript,
       correctedTranscript: transcript.trim(),
       reviewedAt: new Date().toISOString(),
@@ -191,12 +205,17 @@ export const SpeechLabView: React.FC = () => {
 
   return <section className="speech-lab" aria-labelledby="speech-lab-title">
     <div className="speech-hero">
-      <div><p className="eyebrow">Kashmiri speech recognition</p><h1 id="speech-lab-title">Large V3 Turbo v2 speech lab</h1><p className="speech-intro">Record or upload Kashmiri speech and test the latest fine-tuned Whisper Large V3 Turbo adapter. Your audio is sent only to the configured inference service.</p></div>
+      <div><p className="eyebrow">Kashmiri speech recognition</p><h1 id="speech-lab-title">Large V3 Turbo speech lab</h1><p className="speech-intro">Compare the stable v2 adapter with the experimental v4 real-speech candidate. Your audio is sent only to the configured inference service.</p></div>
       <div className={`service-pill ${service}`} role="status"><span aria-hidden="true"/><div><strong>{service === 'ready' ? 'Model online' : service === 'checking' ? 'Checking model' : 'Model offline'}</strong><small>{serviceMessage}</small></div></div>
     </div>
     <div className="speech-grid">
       <article className="speech-card capture-card">
-        <span className="step-number">01</span><h2>Provide a voice sample</h2><p>Speak naturally in Kashmiri. Clear recordings between 3 and 30 seconds work best. The latest v2 adapter achieved 22.34% CER in evaluation.</p>
+        <span className="step-number">01</span><h2>Provide a voice sample</h2><p>Speak naturally in Kashmiri. Clear recordings between 3 and 30 seconds work best.</p>
+        <fieldset className="speech-model-picker">
+          <legend>Model to test</legend>
+          <label><input type="radio" name="speech-model" value="v2" checked={speechModel === 'v2'} onChange={() => { setSpeechModel('v2'); setTranscript(''); setModelTranscript(''); }}/><span><strong>v2 stable</strong><small>Current website model</small></span></label>
+          <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="speech-model" value="v4" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => { setSpeechModel('v4'); setTranscript(''); setModelTranscript(''); }}/><span><strong>v4 candidate</strong><small>{v4Available ? 'Real-speech refinement' : 'Candidate service starting'}</small></span></label>
+        </fieldset>
         <div className={`record-orbit ${recording ? 'is-recording' : ''}`}><button className="record-button" type="button" onClick={recording ? stopRecording : startRecording} aria-label={recording ? 'Stop recording' : 'Start recording'}><span>{recording ? '■' : '●'}</span></button><strong>{recording ? clock(seconds) : 'Record'}</strong></div>
         <div className="audio-divider"><span>or upload audio</span></div>
         <label className="upload-audio"><input type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac" onChange={event => { const file = event.target.files?.[0]; if (file) useAudio(file); }}/><span>Choose an audio file</span><small>WAV, MP3, M4A, WebM, OGG or FLAC · maximum 3 MB</small></label>
@@ -216,7 +235,7 @@ export const SpeechLabView: React.FC = () => {
           spellCheck={false}
         />
         {error && <div className="speech-error" role="alert">{error}</div>}
-        <button className="transcribe-button" type="button" onClick={transcribe} disabled={!audio || transcribing || service !== 'ready'}>{transcribing ? 'Transcribing…' : 'Transcribe Kashmiri audio'}</button>
+        <button className="transcribe-button" type="button" onClick={transcribe} disabled={!audio || transcribing || service !== 'ready'}>{transcribing ? `Transcribing with ${speechModel}…` : `Transcribe with ${speechModel}`}</button>
         {transcript && <button className="copy-transcript" type="button" onClick={() => navigator.clipboard.writeText(transcript)}>Copy transcription</button>}
         {modelTranscript && transcript.trim() !== modelTranscript.trim() && (
           <button className="copy-transcript" type="button" onClick={downloadCorrection}>Download correction for retraining</button>

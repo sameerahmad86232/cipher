@@ -9,9 +9,9 @@ const spaceHeaders = (extra = {}) => ({
   ...extra,
 });
 
-async function readEventResult(eventId) {
+async function readEventResult(eventId, endpoint) {
   const upstream = await fetch(
-    `${SPACE}/gradio_api/call/transcribe_kashmiri/${encodeURIComponent(eventId)}`,
+    `${SPACE}/gradio_api/call/${endpoint}/${encodeURIComponent(eventId)}`,
     { headers: spaceHeaders(), signal: timeoutSignal(285000) }
   );
   if (!upstream.ok) throw new Error(`Inference queue returned ${upstream.status}`);
@@ -26,7 +26,7 @@ async function readEventResult(eventId) {
   return String(payload?.[0] || '').trim();
 }
 
-async function transcribe(bytes, mimeType, fileName) {
+async function transcribe(bytes, mimeType, fileName, endpoint) {
   const upload = new FormData();
   upload.append('files', new Blob([bytes], { type: mimeType }), fileName);
   const uploadResponse = await fetch(`${SPACE}/gradio_api/upload`, {
@@ -40,7 +40,7 @@ async function transcribe(bytes, mimeType, fileName) {
   const path = uploaded?.[0];
   if (!path) throw new Error('The speech service did not accept the audio file');
 
-  const queueResponse = await fetch(`${SPACE}/gradio_api/call/transcribe_kashmiri`, {
+  const queueResponse = await fetch(`${SPACE}/gradio_api/call/${endpoint}`, {
     method: 'POST',
     headers: spaceHeaders({ 'Content-Type': 'application/json' }),
     body: JSON.stringify({
@@ -56,7 +56,7 @@ async function transcribe(bytes, mimeType, fileName) {
   if (!queueResponse.ok) throw new Error(`Inference request returned ${queueResponse.status}`);
   const queued = await queueResponse.json();
   if (!queued?.event_id) throw new Error('The speech service did not queue the request');
-  return readEventResult(queued.event_id);
+  return readEventResult(queued.event_id, endpoint);
 }
 
 export default async function handler(request, response) {
@@ -69,9 +69,11 @@ export default async function handler(request, response) {
       });
       const data = await upstream.json();
       const ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri']);
+      const v4Ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri_v4']);
       return response.status(ready ? 200 : 503).json({
         ready,
         model: 'Kashmiri Whisper Large V3 Turbo v2 · CER 22.34%',
+        models: { v2: ready, v4: v4Ready },
       });
     } catch (error) {
       return response.status(503).json({
@@ -83,7 +85,9 @@ export default async function handler(request, response) {
   if (request.method !== 'POST') return response.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { audioBase64, mimeType = 'audio/webm', fileName = 'recording.webm' } = request.body || {};
+    const { audioBase64, mimeType = 'audio/webm', fileName = 'recording.webm', model = 'v2' } = request.body || {};
+    if (!['v2', 'v4'].includes(model)) return response.status(400).json({ error: 'Unknown speech model' });
+    const endpoint = model === 'v4' ? 'transcribe_kashmiri_v4' : 'transcribe_kashmiri';
     if (typeof audioBase64 !== 'string' || !audioBase64) return response.status(400).json({ error: 'Audio is required' });
     const bytes = Buffer.from(audioBase64, 'base64');
     if (!bytes.length) return response.status(400).json({ error: 'Audio is empty' });
@@ -92,8 +96,8 @@ export default async function handler(request, response) {
     let lastError;
     for (let attempt = 1; attempt <= 3; attempt += 1) {
       try {
-        const text = await transcribe(bytes, mimeType, fileName);
-        return response.status(200).json({ text, language: 'ks-Arab', fileName, attempts: attempt });
+        const text = await transcribe(bytes, mimeType, fileName, endpoint);
+        return response.status(200).json({ text, language: 'ks-Arab', fileName, model, attempts: attempt });
       } catch (error) {
         lastError = error;
         const message = error instanceof Error ? error.message : '';
