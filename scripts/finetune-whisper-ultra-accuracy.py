@@ -205,7 +205,7 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 # Multi-Dataset Corpus Harvester
 # ---------------------------------------------------------------------------
 def harvest_kashmiri_audio():
-    roots = [Path("/kaggle/input")]
+    roots = [] if os.getenv("AUDIO_ROOTS_ONLY") == "1" else [Path("/kaggle/input")]
     roots.extend(Path(value) for value in os.getenv("EXTRA_AUDIO_ROOTS", "").split(os.pathsep) if value)
     samples = []
 
@@ -240,6 +240,8 @@ def harvest_kashmiri_audio():
                 samples.append({"audio_path": str(w), "sentence": c})
 
     # Synthetic fallback if running outside Kaggle
+    if not samples and os.getenv("REQUIRE_REAL_AUDIO") == "1":
+        raise SystemExit("No verified real audio pairs were found; refusing synthetic fallback training")
     if not samples:
         print("[!] Creating warmup corpus...")
         for i in range(50):
