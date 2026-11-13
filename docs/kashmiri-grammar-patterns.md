@@ -18,6 +18,14 @@ This document synthesizes deep structural, syntactic, and morphological patterns
 8. [Correlative Symmetrical Clauses](#8-correlative-symmetrical-clauses)
 9. [Echo-Word Reduplication Morphology](#9-echo-word-reduplication-morphology)
 10. [Classical Translation Case Study: Sahih al-Bukhari Hadith 1](#10-classical-translation-case-study-sahih-al-bukhari-hadith-1)
+11. [The 4 Noun Declensions & Case System](#11-the-4-noun-declensions--case-system)
+12. [Postpositional Case Governance (Dative vs. Ablative vs. Genitive)](#12-postpositional-case-governance-dative-vs-ablative-vs-genitive)
+13. [Causative, Double Causative & Passive Voice Morphology](#13-causative-double-causative--passive-voice-morphology)
+14. [Conjunctive Participles (`ـِتھ` / *-ith*), Modals & Light Verbs](#14-conjunctive-participles-%D9%80%D9%90%D8%AA%DA%BE--ith-modals--light-verbs)
+15. [Negation, Prohibition & Interrogative V2 Placement](#15-negation-prohibition--interrogative-v2-placement)
+16. [The Quintuple Deictic & Adverbial Series (Wade Ch. VI)](#16-the-quintuple-deictic--adverbial-series-wade-ch-vi)
+17. [Honorifics, Politeness & Classical Register](#17-honorifics-politeness--classical-register)
+18. [Morphophonemic Vowel Harmony, Palatalization & Corpus Statistics](#18-morphophonemic-vowel-harmony-palatalization--corpus-statistics)
 
 ---
 
@@ -190,3 +198,134 @@ Kashmiri pairs relative markers (`یـ`) with correlative markers (`تـ` / `س�
 2. `ہَر اَکِس اِنسانَس مِلِہِ سۄے چیٖز`: Dative Benefactive (`ہَر اَکِس اِنسانَس`) + Future Verb (`مِلِہِ`).
 3. `یِتھٕچ تٔمۍ نِیَّت کٔر`: Split Ergative Relative Clause with Feminine Object agreement (`نِیَّت` [f] $\rightarrow$ `کٔر`).
 4. `تَمہِ سٕنٛز ہِجرَت چھےٚ`: Feminine Genitive (`سٕنٛز`) agreeing with `ہِجرَت` [f] + Feminine Copula (`چھےٚ`).
+
+---
+
+## 11. The 4 Noun Declensions & Case System
+
+Per Wade's *Grammar of the Kashmiri Language* (Ch. II, Rules #7–36), Kashmiri nouns fall into **4 declensions** (2 Masculine, 2 Feminine) across 5 core cases:
+
+| Declension | Gender & Ending | Nom. Sg. | Dative Sg. | Agentive/Erg. Sg. | Ablative Sg. | Dative/Erg. Pl. | Example |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **I (Masc. Consonant / -a)** | Masculine, no palatalization | `گَرٕ` (*garə*) | `گَرَس` (*garas*) | `گَرَن` (*garan*) | `گَرٕ` (*garə*) | `گَرَن` (*garan*) | `گَرَس مَنٛز` (*in the house*) |
+| **II (Masc. Palatalized / -u)** | Masculine ending in short `-u` | `گُر` (*gur*) | `گُرِس` (*guris*) | `گُرۍ` (*gur'*) | `گُرِ` (*guri*) | `گُرؠن` (*gur'an*) | `گُرِس پؠٹھ` (*on the horse*) |
+| **III (Fem. Vowel-mutating)** | Feminine with stem vowel shift | `کِتاب` (*kitaab*) | `کِتابِہ` (*kitaabi*) | `کِتابِہ` (*kitaabi*) | `کِتابِہ` (*kitaabi*) | `کِتابَن` (*kitaaban*) | `کِتابِہ مَنٛز` (*in the book*) |
+| **IV (Fem. Invariable / -ə)** | Feminine ending in `-ə` / `-i` | `زَنان` (*zanaan*) | `زَنانہِ` (*zanaani*) | `زَنانہِ` (*zanaani*) | `زَنانہِ` (*zanaani*) | `زَنانَن` (*zanaanan*) | `زَنانہِ سۭتۍ` (*with the woman*) |
+
+* **Epenthetic `ہ` (*-h-*) Insertion (Wade Rule #8)**: Vowel-final Declension I nouns insert `ہ` before `-as` / `-an` (e.g., `سَزا` *sazaa* $\rightarrow$ `سَزاہَس` *sazaahas*).
+
+---
+
+## 12. Postpositional Case Governance (Dative vs. Ablative vs. Genitive)
+
+Postpositions always follow their noun phrase and **govern a specific oblique case** on the preceding noun:
+
+| Governed Case | Postpositions | Kashmiri Examples | English Meaning |
+| :--- | :--- | :--- | :--- |
+| **Dative (`-as`, `-is`, `-i`, `-an`)** | `مَنٛز` (in), `پؠٹھ` (on/at), `نِش` (near/to), `خٲطرٕ` (for), `سۭتۍ` (with), `تَل` (under) | `سَرَس پؠٹھ` / `وانَس پؠٹھ` / `خۄابَن سۭتۍ` | *on the lake / at the store / with dreams* |
+| **Ablative (`-ə`, `-i`, `-av`)** | `پؠٹھٕ` (from on), `مَنٛزٕ` (from inside), `نِشہِ` (from near), `بَغٲر` (without), `سِواے` (except) | `گَرٕ پؠٹھٕ` / `شَہَرٕ مَنٛزٕ` | *from home / out of the city* |
+| **Genitive (`سُنٛد`, `ہُنٛد`, `ـُک`)** | `خِلاف` (against), `مُتعلِق` (about), `دٔسۍ` (by means of) | `تَمہِ سٕنٛدِ خِلاف` | *against him/her* |
+
+> **Critical Contrast**: `پؠٹھ` (*peth*, "on/at") governs Dative (`مےٚ پؠٹھ`), whereas `پؠٹھٕ` (*pethə*, "from") governs Ablative (`گَرٕ پؠٹھٕ`). Dropping the final `ـٕ` changes "from" into "on".
+
+---
+
+## 13. Causative, Double Causative & Passive Voice Morphology
+
+### A. Causative Derivation (Wade Rule #100)
+Adding **`ـاوُن` (*-aavun*)** creates a first-degree causative (transitive); adding **`ـاوناوُن` (*-aavnaavun*)** creates a second-degree (double) causative:
+
+| Base Verb (Intransitive/Simple) | 1st Causative (*to make X do*) | 2nd Causative (*to have someone make X do*) |
+| :--- | :--- | :--- |
+| `بَچُن` (*bachun* — to escape) | `بَچاوُن` (*bachaavun* — to save) | `بَچاوناوُن` (*bachaavnaavun* — to have saved) |
+| `بوزُن` (*bozun* — to hear) | `بوزناوُن` (*boznaavun* — to inform) | `بوزناوناوُن` (*boznaavnaavun* — to have informed) |
+| `بیہُن` (*behun* — to sit) | `بیہناوُن` (*behnaavun* — to seat) | `بیہناوناوُن` (*behnaavnaavun* — to have seated) |
+| `دِیُن` (*diyun* — to give) | `دِیاوُن` (*diyaavun* — to cause to give) | `دِیاوناوُن` (*diyaavnaavun*) |
+
+### B. Passive Voice (`ـنہٕ یُن` / *-nə yun*) (Wade Rule #101)
+The passive is formed regularly by replacing the infinitive ending **`ـُن` (*-un*)** with invariable **`ـنہٕ` (*-nə*)** + inflected auxiliary **`یُن` (*yun*, "to come")**:
+* `کَرُن` (*to do*) $\rightarrow$ `کَرنہٕ یِیِہ` (*will be done*) / `کَرنہٕ آو` (*was done [m.sg]*) / `کَرنہٕ آیہِ` (*was done [f.sg]*).
+* `لیٖکھُن` (*to write*) $\rightarrow$ `لیٖکھنہٕ آمُت` (*has been written*).
+
+---
+
+## 14. Conjunctive Participles (`ـِتھ` / *-ith*), Modals & Light Verbs
+
+### A. Conjunctive Participle (`ـِتھ` / *-ith*) — "Having done X, Y"
+Attaches `ـِتھ` to the verb root to chain sequential actions without a conjunction:
+* `پَرِتھ` (*parith* — having read): `کِتاب پَرِتھ گوٚو سُہ گَرٕ۔` (*Having read the book, he went home.*)
+* `ہؠتھ` (*heth* — having taken / carrying): `کِتاب ہؠتھ آو۔` (*He came with the book.*)
+* `ٲسِتھ` (*əesith* — being / despite being): `رازٕ ہَمٕس ٲسِتھ` (*despite being a royal swan*).
+
+### B. Core Modal Auxiliaries
+* **Ability (`ہؠکُن` / *hyekun* — can)**: `بہٕ ہؠکہٕ یہِ کٲم کٔرِتھ۔` (*I can do this work.*) — Takes the main verb in **`ـِتھ` (*-ith*)**!
+* **Obligation (`پَزُن` / *pazun* — should/must)**: `تۄہۍ پَزِ سَچ وَنُن۔` (*You should speak the truth.*) — Takes **Dative subject** + Infinitive.
+* **Need (`گَژھُن` / *gatshun* — ought/must)**: `یہِ گَژھِ کَرُن۔` (*This must be done.*)
+
+### C. Light Verb Compounds (Noun/Adj + `کَرُن` / `گَژھُن` / `سَپُدُن`)
+High-register and modern Kashmiri integrates Arabic, Persian, and English loanwords via light verbs:
+* **Active/Transitive (`کَرُن` *karun*)**: `شروٗع کَرُن` (*to start*), `حٲصِل کَرُن` (*to obtain*), `رِوایَت کَرُن` (*to narrate*), `نَظَر کَرُن` (*to observe*).
+* **Inchoative/Stative (`گَژھُن` *gatshun* / `سَپُدُن` *sapudun*)**: `نازِل سَپُدُن` (*to be revealed*), `بَنٛد گَژھُن` (*to close*), `شُمار گَژھُن` (*to be counted*).
+
+---
+
+## 15. Negation, Prohibition & Interrogative V2 Placement
+
+### A. Negation (`نہٕ` / *nə*)
+Unlike English pre-verbal *not*, Kashmiri **`نہٕ` (*nə*)** attaches **immediately after the finite V2 verb/auxiliary**:
+* `سُہ چھُ نہٕ گَژھان۔` (*Suh chu nə gatshaan.* — "He is not going.")
+* `مےٚ روٗد نٕہ تٔمؠ سُنٛد ناو وَنہِ۔` (*Mye rood nə təm'sund naav vani.* — "I couldn't remember his name.")
+
+### B. Prohibitive (`مَہ` / `مَتہٕ` — Don't!)
+In negative imperatives, **`مَہ` (*ma*)** or **`مَتہٕ` (*matə*)** precedes the imperative verb:
+* `مَہ کَر!` (*Ma kar!* — "Don't do it!") / `مَتہٕ گَژھِو!` (*Matə gatshiv!* — "Don't go [polite]!")
+
+### C. Interrogatives (Wh-Words & Yes/No Enclitic `ـآ`)
+* **Yes/No Questions**: Append the interrogative suffix **`ـآ` (*-aa*)** to the finite V2 verb (`تۄہۍ چھِوا خۄش؟` *Chivaa khush?* — "Are you happy?"), or front `کِیا` (*kyaa*).
+* **Wh-Questions**: Wh-words (`کُس` who, `کؠا` what, `کَر` when, `کَتہِ` where, `کِتھہٕ` how) appear **immediately before the finite V2 verb** (Slot 1, or Slot 2 right before V2 if subject is topicalized):
+  - `سُہ کُس چھُ؟` (*Who is he?*)
+  - `سُہ کَر آو؟` (*When did he come?*)
+
+---
+
+## 16. The Quintuple Deictic & Adverbial Series (Wade Ch. VI)
+
+Kashmiri maintains a symmetrical **5-way demonstrative/adverbial grid** (unlike English's 2-way *this/that*):
+
+| Series | Proximal (*this/here*) | Remote Visible (*that over there*) | Remote Invisible (*that/then*) | Relative (*which/where*) | Interrogative (*who/where?*) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Pronoun** | `یِہ` (*yih*) | `ہُہ` (*huh*) | `سُہ` (*suh*) | `یُس` (*yus*) | `کُس` (*kus*) |
+| **Place** | `یَتہِ` (*yati*) | `ہۄتہِ` (*hoti*) | `تَتہِ` (*tati*) | `یۆت` (*yot*) | `کَتہِ` (*kati*) |
+| **Time** | `وۄنؠ` (*vɔn'*) | — | `تیلہِ` (*teli*) | `ییلہِ` (*yeli*) | `کَر` (*kar*) |
+| **Manner** | `یِتھہٕ` (*yithə*) | `ہُتھہٕ` (*huthə*) | `تِتھہٕ` (*tithə*) | `یِتھہٕ کٔنۍ` | `کِتھہٕ کٔنۍ` |
+| **Quantity** | `یوٗت` (*yoot*) | `ہوٗت` (*hoot*) | `تیوٗت` (*tyoot*) | `یوٗتاہ` (*yootaah*) | `کوٗت` (*koot*) |
+
+---
+
+## 17. Honorifics, Politeness & Classical Register
+
+1. **2nd Person Plural as Polite Singular**: Use **`تۄہۍ` / `تُہۍ`** (*tɔh' / tuh'*) + plural verb suffix **`ـِو` (*-iv*)** (`تُہۍ چھِو` instead of `ژٕ چھُکھ`).
+2. **3rd Person Plural as Respectful Singular**: Classical and Hadith prose uses plural **`تِم` (*tim*) + `چھِ` / `ٲسۍ`** for prophets, elders, and teachers (e.g., `حَضرت اِبنِ عباس چھِ رِوایَت کَران`).
+3. **Polite Imperative Clitics (Wade Rule #89)**: Append **`ـزِ` (*-zi*)**, **`ـتۄ` (*-tə*)**, or honorific titles (`صٲب` *səəb*, `جَناب` *janaab*, `حَض` *haz*) to soften commands (`وَنِو` / `وَنزِو` — "please tell").
+
+---
+
+## 18. Morphophonemic Vowel Harmony, Palatalization & Corpus Statistics
+
+### A. Systematic Stem Vowel & Consonant Mutations
+When adding feminine or plural suffixes (`-i`, `-ʲ`), Kashmiri triggers **regressive vowel raising/centralization** and **palatalization**:
+* **Vowel Mutation**: `/a/` $\rightarrow$ `/ə/` (`کَرُن` $\rightarrow$ `کٔر` *kər* [f.sg]); `/o/` $\rightarrow$ `/ɔ/` or `/u/` (`کوٚر` *kor* [m.sg] vs. `کٔرۍ` *kər'* [m.pl]).
+* **Consonant Palatalization**: Dental/velar stops shift when palatalized: `ت` $\rightarrow$ `ژ` (`رات` $\rightarrow$ `راژ`), `د` $\rightarrow$ `ز`, `ک` $\rightarrow$ `چ`, `گ` $\rightarrow$ `ج`, `ل` $\rightarrow$ `لۍ`.
+
+### B. Empirical Corpus Pattern Counts (399 Reviewed Parallel & Grammar Lesson Sentences)
+Automated pattern mining across `combined-parallel.jsonl`, `reviewed-parallel.jsonl`, `approved-parallel.jsonl`, and `native-speaker-grammar-lesson-1..27`:
+* **Progressive `-aan` (`ـان`)**: 161 occurrences
+* **Present Copula (`چھُ` / `چھےٚ` / `چھِ` / `چھُس`)**: 143 occurrences
+* **Post-verbal Negation (`نہٕ` / `نَہ`)**: 70 occurrences
+* **Past Copula (`اوس` / `ٲس` / `ٲسۍ`)**: 53 occurrences
+* **Locative `مَنٛز` (*in*) / `پؠٹھ` (*on/at*)**: 52 / 49 occurrences
+* **Conjunctive Participle (`ـِتھ` *-ith*)**: 36 occurrences
+* **Perfect Participle (`ـمُت` / `ـمٕژ` / `ـمٕتۍ`)**: 35 occurrences
+* **3-Way Genitive (`سُنٛد` / `ہُنٛد`)**: 32 occurrences
+* **Instrumental `سۭتۍ` (*with*) / Ablative `نِش` / `پؠٹھٕ`**: 25 / 24 occurrences
+* **Subordinating `زِ` (*that*) / Purposive `خٲطرٕ` (*for*)**: 23 / 22 occurrences
