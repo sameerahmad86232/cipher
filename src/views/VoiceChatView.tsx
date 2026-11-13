@@ -3,6 +3,7 @@ import { generateKashmiriSpeech } from '../lib/speechSynthesis';
 
 type Message = { role: 'user' | 'assistant'; content: string };
 type Stage = 'idle' | 'recording' | 'transcribing' | 'thinking' | 'speaking';
+type SpeechModel = 'v2' | 'v4';
 
 const speechText = (reply: string) => {
   const lines = reply.split('\n').map(line => line.trim()).filter(Boolean);
@@ -18,6 +19,8 @@ export const VoiceChatView: React.FC = () => {
   const [error, setError] = useState('');
   const [audioUrl, setAudioUrl] = useState('');
   const [autoSpeak, setAutoSpeak] = useState(true);
+  const [speechModel, setSpeechModel] = useState<SpeechModel>('v2');
+  const [v4Available, setV4Available] = useState(false);
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
   const timer = useRef<number | null>(null);
@@ -27,6 +30,9 @@ export const VoiceChatView: React.FC = () => {
     if (timer.current) clearInterval(timer.current);
     if (audioUrl) URL.revokeObjectURL(audioUrl);
   }, [audioUrl]);
+  useEffect(() => {
+    fetch('/api/asr').then(response => response.json()).then(data => setV4Available(Boolean(data.models?.v4))).catch(() => setV4Available(false));
+  }, []);
 
   const askQwen = async (text: string) => {
     const userMessage: Message = { role: 'user', content: text.trim() };
@@ -64,7 +70,7 @@ export const VoiceChatView: React.FC = () => {
       for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
       const response = await fetch('/api/asr', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: file.type, fileName: file.name, model: 'v2' }),
+        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: file.type, fileName: file.name, model: speechModel }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Whisper transcription failed');
@@ -107,7 +113,7 @@ export const VoiceChatView: React.FC = () => {
     <header className="voice-chat-hero">
       <p className="eyebrow">Experimental live conversation</p>
       <h1 id="voice-chat-title">Koshur Live Voice</h1>
-      <p>Speak in Kashmiri. Whisper converts your voice to text, Qwen 2.5 prepares a reply, and Bolbosh reads the Kashmiri response aloud.</p>
+      <p>Speak in Kashmiri. The real fine-tuned Whisper adapter converts your voice to text, Qwen prepares the meaning, and the Kashmiri translation model produces the response Bolbosh reads aloud.</p>
       <div className="voice-pipeline" aria-label="Voice processing pipeline"><span>Whisper</span><b>→</b><span>Qwen 2.5</span><b>→</b><span>Bolbosh</span></div>
     </header>
     <div className="voice-chat-shell">
@@ -118,6 +124,11 @@ export const VoiceChatView: React.FC = () => {
         </article>)}
       </div>
       <div className="voice-console">
+        <fieldset className="voice-model-select">
+          <legend>Fine-tuned Whisper adapter</legend>
+          <label><input type="radio" name="voice-whisper" checked={speechModel === 'v2'} onChange={() => setSpeechModel('v2')}/><span><strong>v2 stable</strong><small>Sameer0313/kashmiri-whisper-lora-v2</small></span></label>
+          <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="voice-whisper" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => setSpeechModel('v4')}/><span><strong>v4 candidate</strong><small>Real-speech refinement</small></span></label>
+        </fieldset>
         <button className={`voice-orb ${stage === 'recording' ? 'recording' : ''}`} type="button" onClick={stage === 'recording' ? stopRecording : startRecording} disabled={!['idle', 'recording'].includes(stage)} aria-label={stage === 'recording' ? 'Stop and send recording' : 'Start recording'}><span>{stage === 'recording' ? '■' : '●'}</span></button>
         <strong>{stageLabel[stage]}</strong>
         <label className="voice-autoplay"><input type="checkbox" checked={autoSpeak} onChange={event => setAutoSpeak(event.target.checked)}/> Speak replies automatically</label>
