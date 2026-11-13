@@ -94,6 +94,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=Path("/kaggle/working/public-kashmiri-asr"))
     parser.add_argument("--include-gated", action="store_true")
     parser.add_argument("--max-per-source", type=int, default=12000, help="0 keeps every accepted sample")
+    parser.add_argument("--source-id", action="append", default=[], help="Only prepare these source repository IDs")
     args = parser.parse_args()
 
     audio_dir = args.output / "audio"
@@ -103,6 +104,8 @@ def main() -> None:
     seen: set[str] = set()
 
     for source in SOURCES:
+        if args.source_id and source["id"] not in args.source_id:
+            continue
         if source["gated"] and (not args.include_gated or not token):
             print(f"[skip] {source['id']}: gated; accept its terms and provide HF_TOKEN")
             continue
