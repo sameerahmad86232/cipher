@@ -70,7 +70,7 @@ export const VoiceChatView: React.FC = () => {
       for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
       const response = await fetch('/api/asr', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: file.type, fileName: file.name, model: speechModel }),
+        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: file.type, fileName: file.name, model: speechModel, fast: speechModel === 'v2' }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Whisper transcription failed');
@@ -126,7 +126,7 @@ export const VoiceChatView: React.FC = () => {
       <div className="voice-console">
         <fieldset className="voice-model-select">
           <legend>Fine-tuned Whisper adapter</legend>
-          <label><input type="radio" name="voice-whisper" checked={speechModel === 'v2'} onChange={() => setSpeechModel('v2')}/><span><strong>v2 stable</strong><small>Sameer0313/kashmiri-whisper-lora-v2</small></span></label>
+          <label><input type="radio" name="voice-whisper" checked={speechModel === 'v2'} onChange={() => setSpeechModel('v2')}/><span><strong>v2 fast + stable</strong><small>Greedy live decoding · fine-tuned adapter</small></span></label>
           <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="voice-whisper" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => setSpeechModel('v4')}/><span><strong>v4 candidate</strong><small>Real-speech refinement</small></span></label>
         </fieldset>
         <button className={`voice-orb ${stage === 'recording' ? 'recording' : ''}`} type="button" onClick={stage === 'recording' ? stopRecording : startRecording} disabled={!['idle', 'recording'].includes(stage)} aria-label={stage === 'recording' ? 'Stop and send recording' : 'Start recording'}><span>{stage === 'recording' ? '■' : '●'}</span></button>
