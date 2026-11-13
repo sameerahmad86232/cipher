@@ -4,6 +4,7 @@ export const config = { maxDuration: 300 };
 
 const timeoutSignal = (milliseconds) => AbortSignal.timeout(milliseconds);
 const wait = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
+const MAX_QUEUE_ATTEMPTS = 5;
 const spaceHeaders = (extra = {}) => ({
   ...(process.env.HF_TOKEN ? { Authorization: `Bearer ${process.env.HF_TOKEN}` } : {}),
   ...extra,
@@ -19,7 +20,14 @@ async function readEventResult(eventId, endpoint) {
   const completed = [...stream.matchAll(/^event: complete\s*\ndata: (.+)$/gm)].at(-1);
   if (!completed) {
     const failed = [...stream.matchAll(/^event: error\s*\ndata: (.+)$/gm)].at(-1);
-    const upstreamError = failed?.[1] && failed[1] !== 'null' ? failed[1] : '';
+    let upstreamError = failed?.[1] && failed[1] !== 'null' ? failed[1] : '';
+    try {
+      const parsed = JSON.parse(upstreamError);
+      if (typeof parsed === 'string') upstreamError = parsed;
+      else if (parsed?.message) upstreamError = parsed.message;
+    } catch {
+      // Gradio may return plain text instead of JSON.
+    }
     throw new Error(upstreamError || 'The Hugging Face GPU queue could not allocate a worker. Please retry.');
   }
   const payload = JSON.parse(completed[1]);
@@ -94,23 +102,28 @@ export default async function handler(request, response) {
     if (bytes.length > MAX_BYTES) return response.status(413).json({ error: 'Audio must be 3 MB or smaller' });
 
     let lastError;
-    for (let attempt = 1; attempt <= 3; attempt += 1) {
+    for (let attempt = 1; attempt <= MAX_QUEUE_ATTEMPTS; attempt += 1) {
       try {
         const text = await transcribe(bytes, mimeType, fileName, endpoint);
         return response.status(200).json({ text, language: 'ks-Arab', fileName, model, attempts: attempt });
       } catch (error) {
         lastError = error;
         const message = error instanceof Error ? error.message : '';
-        const allocationFailure = message.includes('GPU queue could not allocate');
-        if (!allocationFailure || attempt === 3) throw error;
-        await wait(attempt * 2500);
+        const transientQueueFailure = /gpu|queue|worker|capacity|temporar|rate.?limit|429|502|503|fetch failed|timed?\s*out/i.test(message);
+        if (!transientQueueFailure || attempt === MAX_QUEUE_ATTEMPTS) throw error;
+        await wait(attempt * 3000);
       }
     }
     throw lastError;
   } catch (error) {
     console.error('ASR proxy error', error);
-    return response.status(502).json({
-      error: error instanceof Error ? error.message : 'Transcription service failed',
+    const message = error instanceof Error ? error.message : 'Transcription service failed';
+    const queueUnavailable = /gpu|queue|worker|capacity|temporar|rate.?limit|429|502|503/i.test(message);
+    if (queueUnavailable) response.setHeader('Retry-After', '30');
+    return response.status(queueUnavailable ? 503 : 502).json({
+      error: queueUnavailable
+        ? 'The free GPU pool is busy. The website retried five times; please wait 30 seconds and try again.'
+        : message,
     });
   }
 }
