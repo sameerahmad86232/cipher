@@ -15,7 +15,7 @@ export const SpeechLabView: React.FC = () => {
   });
   const [service, setService] = useState<ServiceState>('checking');
   const [serviceMessage, setServiceMessage] = useState('Checking the Whisper service…');
-  const [speechModel, setSpeechModel] = useState<SpeechModel>('v2');
+  const [speechModel, setSpeechModel] = useState<SpeechModel>('v4');
   const [v4Available, setV4Available] = useState(false);
   const [audio, setAudio] = useState<File | null>(null);
   const [audioUrl, setAudioUrl] = useState('');
@@ -48,7 +48,7 @@ export const SpeechLabView: React.FC = () => {
         if (!hasEndpoint) throw new Error('Colab server missing /transcribe_kashmiri endpoint');
         const v4Ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri_v4']);
         setV4Available(v4Ready);
-        if (!v4Ready) setSpeechModel('v2');
+        setSpeechModel(v4Ready ? 'v4' : 'v2');
         setService('ready'); setServiceMessage('Google Colab Kashmiri AI GPU Server is ready');
         return;
       }
@@ -57,7 +57,7 @@ export const SpeechLabView: React.FC = () => {
       if (!response.ok || !data.ready) throw new Error(data.detail || 'Model is not ready');
       const v4Ready = Boolean(data.models?.v4);
       setV4Available(v4Ready);
-      if (!v4Ready) setSpeechModel('v2');
+      setSpeechModel(v4Ready ? 'v4' : 'v2');
       setService('ready'); setServiceMessage(`${data.model || 'Kashmiri Whisper'} is ready`);
     } catch (reason) {
       setService('offline'); setServiceMessage(reason instanceof Error ? reason.message : 'Speech service is offline');
@@ -213,8 +213,8 @@ export const SpeechLabView: React.FC = () => {
         <span className="step-number">01</span><h2>Provide a voice sample</h2><p>Speak naturally in Kashmiri. Clear recordings between 3 and 30 seconds work best.</p>
         <fieldset className="speech-model-picker">
           <legend>Model to test</legend>
-          <label><input type="radio" name="speech-model" value="v2" checked={speechModel === 'v2'} onChange={() => { setSpeechModel('v2'); setTranscript(''); setModelTranscript(''); }}/><span><strong>v2 stable</strong><small>Current website model</small></span></label>
-          <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="speech-model" value="v4" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => { setSpeechModel('v4'); setTranscript(''); setModelTranscript(''); }}/><span><strong>v4 candidate</strong><small>{v4Available ? 'Real-speech refinement' : 'Candidate service starting'}</small></span></label>
+          <label><input type="radio" name="speech-model" value="v2" checked={speechModel === 'v2'} onChange={() => { setSpeechModel('v2'); setTranscript(''); setModelTranscript(''); }}/><span><strong>v2 fallback</strong><small>Previous production model</small></span></label>
+          <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="speech-model" value="v4" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => { setSpeechModel('v4'); setTranscript(''); setModelTranscript(''); }}/><span><strong>v4 recommended</strong><small>{v4Available ? 'Best controlled WER and CER' : 'Model service starting'}</small></span></label>
         </fieldset>
         <div className={`record-orbit ${recording ? 'is-recording' : ''}`}><button className="record-button" type="button" onClick={recording ? stopRecording : startRecording} aria-label={recording ? 'Stop recording' : 'Start recording'}><span>{recording ? '■' : '●'}</span></button><strong>{recording ? clock(seconds) : 'Record'}</strong></div>
         <div className="audio-divider"><span>or upload audio</span></div>

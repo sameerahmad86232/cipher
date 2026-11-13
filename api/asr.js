@@ -80,7 +80,7 @@ export default async function handler(request, response) {
       const v4Ready = Boolean(data?.named_endpoints?.['/transcribe_kashmiri_v4']);
       return response.status(ready ? 200 : 503).json({
         ready,
-        model: 'Kashmiri Whisper Large V3 Turbo v2 · CER 22.34%',
+        model: 'Kashmiri Whisper v4 · held-out CER 37.16% · WER 76.99%',
         models: { v2: ready, v4: v4Ready },
       });
     } catch (error) {
@@ -95,7 +95,9 @@ export default async function handler(request, response) {
   try {
     const { audioBase64, mimeType = 'audio/webm', fileName = 'recording.webm', model = 'v2', fast = false } = request.body || {};
     if (!['v2', 'v4'].includes(model)) return response.status(400).json({ error: 'Unknown speech model' });
-    const endpoint = model === 'v4' ? 'transcribe_kashmiri_v4' : fast ? 'transcribe_kashmiri_fast' : 'transcribe_kashmiri';
+    const endpoint = model === 'v4'
+      ? fast ? 'transcribe_kashmiri_v4_fast' : 'transcribe_kashmiri_v4'
+      : fast ? 'transcribe_kashmiri_fast' : 'transcribe_kashmiri';
     if (typeof audioBase64 !== 'string' || !audioBase64) return response.status(400).json({ error: 'Audio is required' });
     const bytes = Buffer.from(audioBase64, 'base64');
     if (!bytes.length) return response.status(400).json({ error: 'Audio is empty' });
@@ -105,7 +107,7 @@ export default async function handler(request, response) {
     for (let attempt = 1; attempt <= MAX_QUEUE_ATTEMPTS; attempt += 1) {
       try {
         const text = await transcribe(bytes, mimeType, fileName, endpoint);
-        return response.status(200).json({ text, language: 'ks-Arab', fileName, model, fast: Boolean(fast && model === 'v2'), attempts: attempt });
+        return response.status(200).json({ text, language: 'ks-Arab', fileName, model, fast: Boolean(fast), attempts: attempt });
       } catch (error) {
         lastError = error;
         const message = error instanceof Error ? error.message : '';

@@ -19,7 +19,7 @@ export const VoiceChatView: React.FC = () => {
   const [error, setError] = useState('');
   const [audioUrl, setAudioUrl] = useState('');
   const [autoSpeak, setAutoSpeak] = useState(true);
-  const [speechModel, setSpeechModel] = useState<SpeechModel>('v2');
+  const [speechModel, setSpeechModel] = useState<SpeechModel>('v4');
   const [v4Available, setV4Available] = useState(false);
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
@@ -31,7 +31,9 @@ export const VoiceChatView: React.FC = () => {
     if (audioUrl) URL.revokeObjectURL(audioUrl);
   }, [audioUrl]);
   useEffect(() => {
-    fetch('/api/asr').then(response => response.json()).then(data => setV4Available(Boolean(data.models?.v4))).catch(() => setV4Available(false));
+    fetch('/api/asr').then(response => response.json()).then(data => {
+      const ready = Boolean(data.models?.v4); setV4Available(ready); setSpeechModel(ready ? 'v4' : 'v2');
+    }).catch(() => { setV4Available(false); setSpeechModel('v2'); });
   }, []);
 
   const askQwen = async (text: string) => {
@@ -70,7 +72,7 @@ export const VoiceChatView: React.FC = () => {
       for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
       const response = await fetch('/api/asr', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: file.type, fileName: file.name, model: speechModel, fast: speechModel === 'v2' }),
+        body: JSON.stringify({ audioBase64: btoa(binary), mimeType: file.type, fileName: file.name, model: speechModel, fast: true }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Whisper transcription failed');
@@ -126,8 +128,8 @@ export const VoiceChatView: React.FC = () => {
       <div className="voice-console">
         <fieldset className="voice-model-select">
           <legend>Fine-tuned Whisper adapter</legend>
-          <label><input type="radio" name="voice-whisper" checked={speechModel === 'v2'} onChange={() => setSpeechModel('v2')}/><span><strong>v2 fast + stable</strong><small>Greedy live decoding · fine-tuned adapter</small></span></label>
-          <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="voice-whisper" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => setSpeechModel('v4')}/><span><strong>v4 candidate</strong><small>Real-speech refinement</small></span></label>
+          <label><input type="radio" name="voice-whisper" checked={speechModel === 'v2'} onChange={() => setSpeechModel('v2')}/><span><strong>v2 fallback</strong><small>Previous production adapter</small></span></label>
+          <label className={!v4Available ? 'is-disabled' : ''}><input type="radio" name="voice-whisper" checked={speechModel === 'v4'} disabled={!v4Available} onChange={() => setSpeechModel('v4')}/><span><strong>v4 fast · recommended</strong><small>Best held-out WER/CER</small></span></label>
         </fieldset>
         <button className={`voice-orb ${stage === 'recording' ? 'recording' : ''}`} type="button" onClick={stage === 'recording' ? stopRecording : startRecording} disabled={!['idle', 'recording'].includes(stage)} aria-label={stage === 'recording' ? 'Stop and send recording' : 'Start recording'}><span>{stage === 'recording' ? '■' : '●'}</span></button>
         <strong>{stageLabel[stage]}</strong>
