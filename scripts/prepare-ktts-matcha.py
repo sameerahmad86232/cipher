@@ -11,10 +11,12 @@ released checkpoint architecture.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import io
 import json
 import re
+import subprocess
 import unicodedata
 from pathlib import Path
 
@@ -49,15 +51,19 @@ def stable_bucket(text: str, raw: bytes) -> int:
     return int(hashlib.sha256(text.encode("utf-8") + raw[:4096]).hexdigest()[:8], 16) % 100
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--output", type=Path, default=Path("/kaggle/working/ktts-matcha"))
-    parser.add_argument("--repo-dir", type=Path, required=True, help="Bolbosh repository root")
-    args = parser.parse_args()
+def iter_source_rows(local_root: Path):
+    """Prefer Kaggle's attached original KTTS files; fall back to pinned HF Parquet."""
+    csv_files = list(local_root.glob("**/textcorpus.csv")) if local_root.exists() else []
+    if csv_files:
+        metadata = csv_files[0]
+        wavs = {path.stem: path for path in metadata.parent.parent.glob("Recordings/*") if path.is_file()}
+        with metadata.open(encoding="utf-8-sig", newline="") as handle:
+            for row in csv.DictReader(handle):
+                audio = wavs.get(str(row.get("id", "")).strip())
+                if audio:
+                    yield {"audio": {"bytes": audio.read_bytes()}, "text": row.get("sentence", "")}
+        return
 
-    output = args.output.resolve()
-    wav_dir = output / "wavs"
-    wav_dir.mkdir(parents=True, exist_ok=True)
     cache = snapshot_download(
         DATASET_ID,
         repo_type="dataset",
@@ -66,52 +72,79 @@ def main() -> None:
     )
     shards = sorted(Path(cache).glob("data/*.parquet"))
     if not shards:
-        raise SystemExit("No KTTS Parquet shards were downloaded")
+        raise SystemExit("No KTTS source files were found")
+    for shard in shards:
+        parquet = pq.ParquetFile(shard)
+        for batch in parquet.iter_batches(batch_size=32, columns=["audio", "text"]):
+            yield from batch.to_pylist()
 
+
+def decode_audio(raw: bytes) -> tuple[np.ndarray, int]:
+    """Decode PCM WAV or Opus-in-WAV, which occurs in the original KTTS archive."""
+    try:
+        audio, source_rate = sf.read(io.BytesIO(raw), dtype="float32", always_2d=False)
+        return np.asarray(audio), int(source_rate)
+    except Exception:
+        process = subprocess.run(
+            ["ffmpeg", "-v", "error", "-i", "pipe:0", "-ac", "1", "-ar", str(SAMPLE_RATE), "-f", "f32le", "pipe:1"],
+            input=raw,
+            capture_output=True,
+            check=True,
+        )
+        return np.frombuffer(process.stdout, dtype="<f4").copy(), SAMPLE_RATE
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, default=Path("/kaggle/working/ktts-matcha"))
+    parser.add_argument("--repo-dir", type=Path, required=True, help="Bolbosh repository root")
+    parser.add_argument("--local-root", type=Path, default=Path("/kaggle/input"))
+    args = parser.parse_args()
+
+    output = args.output.resolve()
+    wav_dir = output / "wavs"
+    wav_dir.mkdir(parents=True, exist_ok=True)
     splits: dict[str, list[str]] = {"train": [], "val": [], "test": []}
     rejected: list[dict[str, object]] = []
     durations: list[float] = []
     index = 0
-    for shard in shards:
-        parquet = pq.ParquetFile(shard)
-        for batch in parquet.iter_batches(batch_size=32, columns=["audio", "text"]):
-            for row in batch.to_pylist():
-                raw = audio_bytes(row.get("audio"))
-                text = normalize_text(row.get("text"))
-                reason = ""
-                if not raw:
-                    reason = "missing_audio"
-                elif not text or not KASHMIRI_RE.search(text):
-                    reason = "missing_kashmiri_text"
-                try:
-                    if reason:
-                        raise ValueError(reason)
-                    audio, source_rate = sf.read(io.BytesIO(raw), dtype="float32", always_2d=False)
-                    if audio.ndim == 2:
-                        audio = audio.mean(axis=1)
-                    duration = len(audio) / source_rate
-                    if not np.isfinite(audio).all() or float(np.max(np.abs(audio), initial=0)) < 1e-4:
-                        raise ValueError("invalid_or_silent_audio")
-                    if duration < 0.8 or duration > 20.0:
-                        raise ValueError("duration_out_of_range")
-                    if source_rate != SAMPLE_RATE:
-                        divisor = np.gcd(source_rate, SAMPLE_RATE)
-                        audio = resample_poly(audio, SAMPLE_RATE // divisor, source_rate // divisor).astype(np.float32)
-                    peak = float(np.max(np.abs(audio), initial=0))
-                    if peak > 0.99:
-                        audio = audio * (0.99 / peak)
-                except Exception as exc:  # keep an auditable rejection ledger
-                    rejected.append({"row": index, "reason": reason or str(exc)})
-                    index += 1
-                    continue
+    for row in iter_source_rows(args.local_root):
+        raw = audio_bytes(row.get("audio"))
+        text = normalize_text(row.get("text"))
+        reason = ""
+        if not raw:
+            reason = "missing_audio"
+        elif not text or not KASHMIRI_RE.search(text):
+            reason = "missing_kashmiri_text"
+        try:
+            if reason:
+                raise ValueError(reason)
+            audio, source_rate = decode_audio(raw)
+            if audio.ndim == 2:
+                audio = audio.mean(axis=1)
+            duration = len(audio) / source_rate
+            if not np.isfinite(audio).all() or float(np.max(np.abs(audio), initial=0)) < 1e-4:
+                raise ValueError("invalid_or_silent_audio")
+            if duration < 0.8 or duration > 20.0:
+                raise ValueError("duration_out_of_range")
+            if source_rate != SAMPLE_RATE:
+                divisor = np.gcd(source_rate, SAMPLE_RATE)
+                audio = resample_poly(audio, SAMPLE_RATE // divisor, source_rate // divisor).astype(np.float32)
+            peak = float(np.max(np.abs(audio), initial=0))
+            if peak > 0.99:
+                audio = audio * (0.99 / peak)
+        except Exception as exc:  # keep an auditable rejection ledger
+            rejected.append({"row": index, "reason": reason or str(exc)})
+            index += 1
+            continue
 
-                wav_path = wav_dir / f"ktts_{index:05d}.wav"
-                sf.write(wav_path, audio, SAMPLE_RATE, subtype="PCM_16")
-                bucket = stable_bucket(text, raw)
-                split = "test" if bucket < 3 else "val" if bucket < 8 else "train"
-                splits[split].append(f"{wav_path}|{SPEAKER_ID}|{text}")
-                durations.append(duration)
-                index += 1
+        wav_path = wav_dir / f"ktts_{index:05d}.wav"
+        sf.write(wav_path, audio, SAMPLE_RATE, subtype="PCM_16")
+        bucket = stable_bucket(text, raw)
+        split = "test" if bucket < 3 else "val" if bucket < 8 else "train"
+        splits[split].append(f"{wav_path}|{SPEAKER_ID}|{text}")
+        durations.append(duration)
+        index += 1
 
     for split, lines in splits.items():
         (output / f"{split}.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
