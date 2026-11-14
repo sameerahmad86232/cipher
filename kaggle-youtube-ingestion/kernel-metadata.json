@@ -1,0 +1,13 @@
+{
+  "id": "sameerahmadnajar/permitted-kashmiri-youtube-ingestion",
+  "title": "Permitted Kashmiri YouTube Ingestion",
+  "code_file": "kaggle-youtube-kashmiri-ingestion.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
