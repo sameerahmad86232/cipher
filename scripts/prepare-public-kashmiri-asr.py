@@ -23,6 +23,28 @@ from datasets import Audio, load_dataset
 
 SOURCES = (
     {
+        "id": "facebook/omnilingual-asr-corpus",
+        "config": "ks_Arab",
+        "split": "train",
+        "audio": ("audio",),
+        "text": ("raw_text", "text"),
+        "license": "CC-BY-4.0",
+        "revision": "8648ba8946377697b427ae952076e49fc0e5e44d",
+        "gated": False,
+        "origin": "Meta Omnilingual ASR Kashmiri",
+    },
+    {
+        "id": "GAASH-Lab/Bolbosh",
+        "config": "default",
+        "split": "train",
+        "audio": ("audio",),
+        "text": ("text",),
+        "license": "CC-BY-4.0",
+        "revision": "88aef14aa30bca969b7bda49b056a2483f7fcde8",
+        "gated": False,
+        "origin": "GAASH-Lab Bolbosh",
+    },
+    {
         "id": "programindz/kashmiri-audio-corpus",
         "config": "default",
         "split": "train",

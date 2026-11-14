@@ -6,6 +6,8 @@ Audit date: 2026-11-12
 
 | Source | Material | License | Integration |
 | --- | --- | --- | --- |
+| [Meta Omnilingual ASR Corpus](https://huggingface.co/datasets/facebook/omnilingual-asr-corpus) | Kashmiri `ks_Arab` speech with transcripts | CC BY 4.0 | Enabled at pinned revision `8648ba8946377697b427ae952076e49fc0e5e44d` |
+| [GAASH-Lab Bolbosh](https://huggingface.co/datasets/GAASH-Lab/Bolbosh) | Curated Kashmiri audio/text derived from IndicVoices-R and RASA | CC BY 4.0 on dataset card | Enabled at pinned revision `88aef14aa30bca969b7bda49b056a2483f7fcde8`; hash-deduplicate against IndicVoices |
 | [OpenSLR-122 segmented corpus](https://huggingface.co/datasets/programindz/kashmiri-audio-corpus) | 1,955 Kashmiri audio/transcript segments, 16 kHz | GPL-3.0-or-later | Enabled by default at pinned revision `cd0b1408bf2757f7fefc5832a6c12cbc61abc627` |
 | [AI4Bharat IndicVoices](https://huggingface.co/datasets/ai4bharat/IndicVoices) | Multi-speaker Kashmiri speech and transcripts | CC BY 4.0 | Supported after accepting the Hugging Face access terms |
 | [AI4Bharat IndicVoices-R](https://huggingface.co/datasets/ai4bharat/indicvoices_r) | Read Kashmiri speech and transcripts | CC BY 4.0 | Supported after accepting the Hugging Face access terms |
