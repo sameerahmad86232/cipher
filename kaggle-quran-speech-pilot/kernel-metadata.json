@@ -1,0 +1,13 @@
+{
+  "id": "sameerahmadnajar/kashmiri-quran-speech-pilot",
+  "title": "Kashmiri Quran Speech Pilot",
+  "code_file": "kaggle-quran-kashmiri-speech-pilot.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": ["sameerahmadnajar/permitted-kashmiri-youtube-ingestion"]
+}
