@@ -12,3 +12,5 @@ The ingestion notebook writes an immutable provenance record and a review
 inventory. Downloaded audio is not training-eligible by default. Captions and
 Whisper-generated drafts require human verification, and music, overlapping
 speech, non-Kashmiri material, and low-quality recordings must be excluded.
+To stay within Kaggle storage limits, ingestion runs in numbered batches of up
+to 50 videos and retains compact source audio until reviewed clips are cut.
