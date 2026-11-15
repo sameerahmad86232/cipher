@@ -69,6 +69,8 @@ GRAD_ACCUM = int(os.getenv("GRAD_ACCUM", "4"))
 LEARNING_RATE = float(os.getenv("LEARNING_RATE", "7.5e-5"))  # Lower rate for ultra refinement
 EVAL_SIZE = int(os.getenv("EVAL_SIZE", "150"))
 SAVE_STEPS = int(os.getenv("SAVE_STEPS", "200"))
+ACOUSTIC_AUG_PROB = float(os.getenv("ACOUSTIC_AUG_PROB", "0.5"))
+SPEC_AUG_PROB = float(os.getenv("SPEC_AUG_PROB", "0.6"))
 TARGET_SAMPLE_RATE = 16000
 
 # ---------------------------------------------------------------------------
@@ -139,7 +141,7 @@ class KashmiriAudioUltraDataset(Dataset):
                 speech = np.zeros(TARGET_SAMPLE_RATE, dtype=np.float32)
 
         # Light acoustic perturbation during training
-        if self.augment and np.random.rand() > 0.5:
+        if self.augment and np.random.rand() < ACOUSTIC_AUG_PROB:
             # Random gain perturbation (+/- 2 dB)
             gain = np.random.uniform(0.85, 1.15)
             speech = speech * gain
@@ -157,7 +159,7 @@ class KashmiriAudioUltraDataset(Dataset):
         ).input_features[0]
 
         # SpecAugment: Random frequency & time masking
-        if self.augment and np.random.rand() > 0.4:
+        if self.augment and np.random.rand() < SPEC_AUG_PROB:
             # Frequency mask
             f_dim = input_features.shape[0]
             f_mask = np.random.randint(4, 16)

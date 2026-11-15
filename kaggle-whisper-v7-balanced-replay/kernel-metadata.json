@@ -1,0 +1,13 @@
+{
+  "id": "sameerahmadnajar/kashmiri-whisper-v7-balanced-replay",
+  "title": "Kashmiri Whisper v7 Balanced Replay",
+  "code_file": "kaggle-whisper-v7-balanced-replay.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

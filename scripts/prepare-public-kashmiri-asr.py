@@ -86,7 +86,9 @@ VARIANTS = str.maketrans({"ي": "ی", "ى": "ی", "ك": "ک", "أ": "ا", "إ": 
 
 def normalize_text(value: object) -> str:
     text = unicodedata.normalize("NFC", str(value or "")).translate(VARIANTS)
-    return re.sub(r"\s+", " ", text.replace("\u200b", "").replace("\ufeff", "")).strip()
+    text = re.sub(r"\s+", " ", text.replace("\u200b", "").replace("\ufeff", "")).strip()
+    text = re.sub(r"\s+([،؛؟۔,.!?])", r"\1", text)
+    return re.sub(r"([،؛؟۔,.!?])(?=\S)", r"\1 ", text)
 
 
 def valid_text(text: str) -> bool:
@@ -159,7 +161,9 @@ def main() -> None:
                     continue
                 duration = len(audio) / rate
                 rms = float(np.sqrt(np.mean(np.square(audio)))) if len(audio) else 0.0
-                if not 0.8 <= duration <= 30.0 or rms < 0.0005 or not np.isfinite(audio).all():
+                words_per_second = len(text.split()) / max(duration, 0.001)
+                if (not 0.8 <= duration <= 30.0 or not 0.25 <= words_per_second <= 10.0
+                        or rms < 0.0005 or not np.isfinite(audio).all()):
                     continue
                 digest = hashlib.sha256(audio.tobytes() + text.encode("utf-8")).hexdigest()
                 if digest in seen:
