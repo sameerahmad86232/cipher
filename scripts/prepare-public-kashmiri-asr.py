@@ -24,7 +24,7 @@ from datasets import Audio, load_dataset
 SOURCES = (
     {
         "id": "facebook/omnilingual-asr-corpus",
-        "config": "ks_Arab",
+        "config": "kas_Arab",
         "split": "train",
         "audio": ("audio",),
         "text": ("raw_text", "text"),
