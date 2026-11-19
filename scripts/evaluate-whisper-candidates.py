@@ -24,6 +24,7 @@ ADAPTERS = {
     "v4-real-speech-candidate": "Sameer0313/kashmiri-whisper-lora-v4-candidate",
     "v5-licensed-speech-candidate": "Sameer0313/kashmiri-whisper-lora-v5-candidate",
     "v6-open-speech-candidate": "Sameer0313/kashmiri-whisper-lora-v6-candidate",
+    "v7-balanced-replay-candidate": "Sameer0313/kashmiri-whisper-lora-v7-candidate",
 }
 VARIANTS = str.maketrans({"ي": "ی", "ى": "ی", "ك": "ک", "أ": "ا", "إ": "ا", "ٱ": "ا"})
 
