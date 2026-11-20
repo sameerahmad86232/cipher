@@ -1,0 +1,13 @@
+{
+  "id": "sameerahmadnajar/yemberzal-kashmiri-tts-listening-test",
+  "title": "Yemberzal Kashmiri TTS Listening Test",
+  "code_file": "kaggle-yemberzal-kashmiri-tts-test.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
