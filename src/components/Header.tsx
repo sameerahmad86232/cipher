@@ -91,6 +91,13 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onSelectView }) => 
           Voice chat
         </button>
         <button
+          className={`nav-link ${currentView === 'voice-clone' ? 'active' : ''}`}
+          type="button"
+          onClick={() => onSelectView('voice-clone')}
+        >
+          Clone voice
+        </button>
+        <button
           className={`nav-link ${currentView === 'speech' ? 'active' : ''}`}
           type="button"
           onClick={() => onSelectView('speech')}

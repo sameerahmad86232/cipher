@@ -11,8 +11,9 @@ import { OrthographyView } from './views/OrthographyView';
 import { SeerahView } from './views/SeerahView';
 import { SpeechLabView } from './views/SpeechLabView';
 import { VoiceChatView } from './views/VoiceChatView';
+import { VoiceCloneView } from './views/VoiceCloneView';
 
-export type ViewMode = 'dictionary' | 'translator' | 'speech' | 'voice-chat' | 'about' | 'guide' | 'orthography' | 'seerah';
+export type ViewMode = 'dictionary' | 'translator' | 'speech' | 'voice-chat' | 'voice-clone' | 'about' | 'guide' | 'orthography' | 'seerah';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewMode>(() => {
@@ -24,6 +25,7 @@ export const App: React.FC = () => {
     if (hash === 'seerah') return 'seerah';
     if (hash === 'speech' || hash === 'asr' || hash === 'whisper') return 'speech';
     if (hash === 'voice-chat' || hash === 'live') return 'voice-chat';
+    if (hash === 'voice-clone' || hash === 'clone') return 'voice-clone';
     return 'dictionary';
   });
 
@@ -39,6 +41,7 @@ export const App: React.FC = () => {
       if (hash === 'translator') setCurrentView('translator');
       else if (hash === 'speech' || hash === 'asr' || hash === 'whisper') setCurrentView('speech');
       else if (hash === 'voice-chat' || hash === 'live') setCurrentView('voice-chat');
+      else if (hash === 'voice-clone' || hash === 'clone') setCurrentView('voice-clone');
       else if (hash === 'about') setCurrentView('about');
       else if (hash === 'guide' || hash === 'language-guide') setCurrentView('guide');
       else if (hash === 'orthography') setCurrentView('orthography');
@@ -116,6 +119,7 @@ export const App: React.FC = () => {
         )}
         {currentView === 'speech' && <SpeechLabView />}
         {currentView === 'voice-chat' && <VoiceChatView />}
+        {currentView === 'voice-clone' && <VoiceCloneView />}
         {currentView === 'about' && <AboutView />}
         {currentView === 'guide' && (
           <LanguageGuideView
