@@ -12,8 +12,9 @@ import { SeerahView } from './views/SeerahView';
 import { SpeechLabView } from './views/SpeechLabView';
 import { VoiceChatView } from './views/VoiceChatView';
 import { VoiceCloneView } from './views/VoiceCloneView';
+import { TextToSpeechView } from './views/TextToSpeechView';
 
-export type ViewMode = 'dictionary' | 'translator' | 'speech' | 'voice-chat' | 'voice-clone' | 'about' | 'guide' | 'orthography' | 'seerah';
+export type ViewMode = 'dictionary' | 'translator' | 'speech' | 'tts' | 'voice-chat' | 'voice-clone' | 'about' | 'guide' | 'orthography' | 'seerah';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewMode>(() => {
@@ -26,6 +27,7 @@ export const App: React.FC = () => {
     if (hash === 'speech' || hash === 'asr' || hash === 'whisper') return 'speech';
     if (hash === 'voice-chat' || hash === 'live') return 'voice-chat';
     if (hash === 'voice-clone' || hash === 'clone') return 'voice-clone';
+    if (hash === 'tts' || hash === 'text-to-speech') return 'tts';
     return 'dictionary';
   });
 
@@ -42,6 +44,7 @@ export const App: React.FC = () => {
       else if (hash === 'speech' || hash === 'asr' || hash === 'whisper') setCurrentView('speech');
       else if (hash === 'voice-chat' || hash === 'live') setCurrentView('voice-chat');
       else if (hash === 'voice-clone' || hash === 'clone') setCurrentView('voice-clone');
+      else if (hash === 'tts' || hash === 'text-to-speech') setCurrentView('tts');
       else if (hash === 'about') setCurrentView('about');
       else if (hash === 'guide' || hash === 'language-guide') setCurrentView('guide');
       else if (hash === 'orthography') setCurrentView('orthography');
@@ -120,6 +123,7 @@ export const App: React.FC = () => {
         {currentView === 'speech' && <SpeechLabView />}
         {currentView === 'voice-chat' && <VoiceChatView />}
         {currentView === 'voice-clone' && <VoiceCloneView />}
+        {currentView === 'tts' && <TextToSpeechView />}
         {currentView === 'about' && <AboutView />}
         {currentView === 'guide' && (
           <LanguageGuideView
