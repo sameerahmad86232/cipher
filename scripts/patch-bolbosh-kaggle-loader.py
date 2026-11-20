@@ -24,3 +24,21 @@ replacement = """    def __getitem__(self, index):
 """
 target.write_text(source[:start] + replacement + source[end:], encoding="utf-8")
 print(f"Patched current-Kaggle dataset loader: {target}")
+
+# Matplotlib 3.10 removed FigureCanvasAgg.tostring_rgb(). Bolbosh calls it
+# after every validation pass to create TensorBoard spectrogram previews.
+utils_path = target.parent.parent / "utils" / "utils.py"
+utils_source = utils_path.read_text(encoding="utf-8")
+old_figure_helper = """def save_figure_to_numpy(fig):
+    data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep="")
+    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+    return data
+"""
+new_figure_helper = """def save_figure_to_numpy(fig):
+    # Matplotlib >=3.10 exposes an RGBA memory view instead of tostring_rgb.
+    return np.asarray(fig.canvas.buffer_rgba(), dtype=np.uint8)[:, :, :3].copy()
+"""
+if old_figure_helper not in utils_source:
+    raise SystemExit(f"Expected legacy Matplotlib helper not found: {utils_path}")
+utils_path.write_text(utils_source.replace(old_figure_helper, new_figure_helper), encoding="utf-8")
+print(f"Patched current-Matplotlib figure logger: {utils_path}")
