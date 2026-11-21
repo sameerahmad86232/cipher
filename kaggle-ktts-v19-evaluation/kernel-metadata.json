@@ -1,0 +1,14 @@
+{
+  "id": "sameerahmadaaa/ktts-v19-evaluation",
+  "title": "KTTS v19 Baseline Evaluation",
+  "code_file": "kaggle-ktts-v19-evaluation.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": ["sameerahmadaaa/ktts-bolbosh-voice-adaptation"],
+  "model_sources": []
+}
