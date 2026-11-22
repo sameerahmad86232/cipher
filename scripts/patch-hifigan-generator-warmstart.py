@@ -38,3 +38,14 @@ if source.count(old) != 1:
     raise SystemExit(f"Expected official HiFi-GAN checkpoint block not found: {target}")
 target.write_text(source.replace(old, new), encoding="utf-8")
 print(f"Enabled generator-only warm start: {target}")
+
+# Librosa >=0.10 made mel-filter arguments keyword-only. The upstream
+# HiFi-GAN repository still calls the function positionally.
+mel_target = target.with_name("meldataset.py")
+mel_source = mel_target.read_text(encoding="utf-8")
+old_mel = "librosa_mel_fn(sampling_rate, n_fft, num_mels, fmin, fmax)"
+new_mel = "librosa_mel_fn(sr=sampling_rate, n_fft=n_fft, n_mels=num_mels, fmin=fmin, fmax=fmax)"
+if old_mel not in mel_source:
+    raise SystemExit(f"Expected legacy Librosa mel call not found: {mel_target}")
+mel_target.write_text(mel_source.replace(old_mel, new_mel), encoding="utf-8")
+print(f"Patched keyword-only Librosa mel call: {mel_target}")
