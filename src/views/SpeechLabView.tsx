@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { normalizeKashmiriTranscript } from '../lib/kashmiriText';
 
 type ServiceState = 'checking' | 'ready' | 'offline';
 type SpeechModel = 'v2' | 'v4';
@@ -178,6 +179,7 @@ export const SpeechLabView: React.FC = () => {
         text = String(data.text || '').trim();
       }
 
+      text = normalizeKashmiriTranscript(text);
       setTranscript(text); setModelTranscript(text);
       setEnglishTranslation('');
       if (!text) setError('The model returned no text. Try a clearer recording.');

@@ -28,6 +28,43 @@ export function autocorrectKashmiri(value: string): string {
   return text.normalize('NFC');
 }
 
+const speechPunctuation: [RegExp, string][] = [
+  [/,/g, '،'], [/;/g, '؛'], [/\?/g, '؟'], [/\./g, '۔']
+];
+
+const speechSafeReplacements: [RegExp, string][] = [
+  [/\u066e\u06ea/g, '\u0620'], [/\u06c5/g, '\u06c4'], [/\u065b/g, '\u0652'],
+  [/\u0626/g, '\u06cc\u0654'], [/أ|إ|ٱ/g, 'ا'], [/ك/g, 'ک'], [/ي|ى/g, 'ی'], [/ه|ة/g, 'ہ']
+];
+
+const speechSafeCleanup = (value: string): string => {
+  let text = String(value || '').normalize('NFKC').replace(/[\u061c\u200b-\u200f\u2060\ufeff]/gu, '');
+  for (const [pattern, replacement] of speechSafeReplacements) text = text.replace(pattern, replacement);
+  return text.normalize('NFC');
+};
+
+/** Prepare model-facing TTS text without guessing spellings or missing vowels. */
+export function normalizeKashmiriForSpeech(value: string): string {
+  let text = speechSafeCleanup(value);
+  for (const [pattern, replacement] of speechPunctuation) text = text.replace(pattern, replacement);
+  return text
+    .normalize('NFC')
+    .replace(/\s+/gu, ' ')
+    .replace(/([،؛؟۔!])(?:\s*\1)+/gu, '$1')
+    .replace(/\s*([،؛؟۔!])\s*/gu, '$1 ')
+    .trim();
+}
+
+/** Clean Whisper formatting while retaining the model's decoded words verbatim. */
+export function normalizeKashmiriTranscript(value: string): string {
+  return speechSafeCleanup(value)
+    .normalize('NFC')
+    .replace(/\s+/gu, ' ')
+    .replace(/\s+([،؛؟۔!,.?])/gu, '$1')
+    .replace(/([،؛؟۔!])\1+/gu, '$1')
+    .trim();
+}
+
 export function correctionChanges(value: string) {
   const original = String(value || '').normalize('NFC');
   const corrected = autocorrectKashmiri(original);

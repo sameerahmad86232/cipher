@@ -1,3 +1,5 @@
+import { normalizeWhisperTranscript } from './_kashmiriSpeech.js';
+
 const SPACE = 'https://sameer0313-koshur-lughat.hf.space';
 const MAX_BYTES = 3 * 1024 * 1024;
 export const config = { maxDuration: 300 };
@@ -106,8 +108,9 @@ export default async function handler(request, response) {
     let lastError;
     for (let attempt = 1; attempt <= MAX_QUEUE_ATTEMPTS; attempt += 1) {
       try {
-        const text = await transcribe(bytes, mimeType, fileName, endpoint);
-        return response.status(200).json({ text, language: 'ks-Arab', fileName, model, fast: Boolean(fast), attempts: attempt });
+        const rawText = await transcribe(bytes, mimeType, fileName, endpoint);
+        const text = normalizeWhisperTranscript(rawText);
+        return response.status(200).json({ text, rawText, normalized: text !== rawText, language: 'ks-Arab', fileName, model, fast: Boolean(fast), attempts: attempt });
       } catch (error) {
         lastError = error;
         const message = error instanceof Error ? error.message : '';

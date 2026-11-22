@@ -174,12 +174,7 @@ print("[*] Searching for Kashmiri speech dataset...")
 paired_samples = find_kashmiri_audio_corpus()
 
 if not paired_samples:
-    print("[!] No paired dataset matched. Creating minimal validation dataset.")
-    for i in range(40):
-        paired_samples.append({
-            "audio_path": "",
-            "sentence": "کٲشُر زَبان چھِ اَکھ خوٗبصوٗرَت زَبان۔"
-        })
+    raise SystemExit("No verified paired speech dataset matched; refusing to train on silent synthetic audio")
 
 print(f"[+] Verified Training Corpus: {len(paired_samples)} paired Kashmiri speech samples!")
 
@@ -346,7 +341,7 @@ training_args = Seq2SeqTrainingArguments(
     report_to=["none"],
     predict_with_generate=True,
     generation_max_length=225,
-    generation_num_beams=2,
+    generation_num_beams=5,
     remove_unused_columns=False,
     label_names=["labels"],
 )

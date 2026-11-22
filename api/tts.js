@@ -1,3 +1,5 @@
+import { normalizeKashmiriTts } from './_kashmiriSpeech.js';
+
 const TTS_SPACE = 'https://gaash-lab-matcha-tts-kashmiri-demo.hf.space';
 const VOICES = new Set(['Male', 'Female']);
 const QUALITIES = new Set(['Low (fast)', 'Medium', 'High']);
@@ -34,7 +36,8 @@ export default async function handler(request, response) {
 
   if (request.method !== 'POST') return response.status(405).json({ error: 'Method not allowed' });
 
-  const text = String(request.body?.text || '').trim();
+  const originalText = String(request.body?.text || '').trim();
+  const text = normalizeKashmiriTts(originalText);
   const voice = String(request.body?.voice || 'Male');
   const quality = String(request.body?.quality || 'Low (fast)');
   if (!text || text.length > 500) return response.status(400).json({ error: 'Enter 1–500 Kashmiri characters.' });
@@ -68,7 +71,7 @@ export default async function handler(request, response) {
       ? `${TTS_SPACE}/gradio_api/file=${encodeURIComponent(audio.path)}`
       : '');
     if (!audioUrl) throw new Error('The TTS model returned no audio');
-    return response.status(200).json({ processedText, audioUrl, voice, quality, model: 'GAASH-Lab/Matcha-TTS-Kashmiri' });
+    return response.status(200).json({ processedText: processedText || text, normalizedInput: text, originalText, audioUrl, voice, quality, model: 'GAASH-Lab/Matcha-TTS-Kashmiri' });
   } catch (error) {
     console.error('TTS proxy error', error);
     return response.status(502).json({ error: error instanceof Error ? error.message : 'Speech generation failed' });
