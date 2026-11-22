@@ -1,0 +1,14 @@
+{
+  "id": "sameerahmadaaa/ktts-v20-evaluation",
+  "title": "KTTS v20 Evaluation",
+  "code_file": "kaggle-ktts-v20-evaluation.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": ["sameerahmadaaa/ktts-bolbosh-quality-v20"],
+  "model_sources": []
+}
