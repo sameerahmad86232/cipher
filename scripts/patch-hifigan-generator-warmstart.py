@@ -49,3 +49,22 @@ if old_mel not in mel_source:
     raise SystemExit(f"Expected legacy Librosa mel call not found: {mel_target}")
 mel_target.write_text(mel_source.replace(old_mel, new_mel), encoding="utf-8")
 print(f"Patched keyword-only Librosa mel call: {mel_target}")
+
+# PyTorch >=2 requires complex STFT output to be selected explicitly. Convert
+# it back to the legacy real/imag view expected by upstream magnitude code.
+mel_source = mel_target.read_text(encoding="utf-8")
+old_stft = """    spec = torch.stft(y, n_fft, hop_length=hop_size, win_length=win_size, window=hann_window[str(y.device)],
+                      center=center, pad_mode='reflect', normalized=False, onesided=True)
+
+    spec = torch.sqrt(spec.pow(2).sum(-1)+(1e-9))
+"""
+new_stft = """    spec = torch.stft(y, n_fft, hop_length=hop_size, win_length=win_size, window=hann_window[str(y.device)],
+                      center=center, pad_mode='reflect', normalized=False, onesided=True, return_complex=True)
+
+    spec = torch.view_as_real(spec)
+    spec = torch.sqrt(spec.pow(2).sum(-1)+(1e-9))
+"""
+if old_stft not in mel_source:
+    raise SystemExit(f"Expected legacy PyTorch STFT block not found: {mel_target}")
+mel_target.write_text(mel_source.replace(old_stft, new_stft), encoding="utf-8")
+print(f"Patched complex PyTorch STFT output: {mel_target}")
