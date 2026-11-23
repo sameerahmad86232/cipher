@@ -160,7 +160,14 @@ def main() -> None:
         mixed_precision=True,
         cudnn_benchmark=False,
     )
-    train_samples, eval_samples = load_tts_samples(config, eval_split=False)
+    train_samples, eval_samples = load_tts_samples(
+        config,
+        eval_split=True,
+        eval_split_max_size=166,
+        eval_split_size=0.05,
+    )
+    if not eval_samples:
+        raise SystemExit("Coqui did not load validation samples; refusing training without evaluation")
     print(f"Loaded clean KTTS samples: train={len(train_samples)}, eval={len(eval_samples)}")
     model = Vits(config)
     trainer = Trainer(
