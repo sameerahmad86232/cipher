@@ -1,0 +1,14 @@
+{
+  "id": "sameerahmadaaa/ktts-v20-vocoder-ab",
+  "title": "KTTS v20 Vocoder AB",
+  "code_file": "kaggle-ktts-v20-vocoder-ab.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["sameerahmadaaa/ktts-bolbosh-quality-v20-epoch6"],
+  "competition_sources": [],
+  "kernel_sources": ["sameerahmadaaa/ktts-speaker-hifi-gan-v1"],
+  "model_sources": []
+}
