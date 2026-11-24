@@ -34,6 +34,12 @@ class KashmiriSpeechFrontendTests(unittest.TestCase):
         self.assertIn("ii", output)
         self.assertIn("aa", output)
 
+    def test_digits_are_canonical_and_shadda_geminates_the_consonant(self):
+        self.assertEqual(normalize_for_tts("سَنہٕ ۲۰۲۶"), "سَنہٕ 2026")
+        output = ascii_g2p("رَبّ")
+        self.assertEqual(output, "rabb")
+        self.assertNotIn("~", output)
+
 
 if __name__ == "__main__":
     unittest.main()

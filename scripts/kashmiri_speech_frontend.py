@@ -17,6 +17,11 @@ VARIANTS = str.maketrans({
     "ك": "ک", "ي": "ی", "ى": "ی", "ئ": "یٔ", "ة": "ہ", "ه": "ہ",
     "أ": "ا", "إ": "ا", "ٱ": "ا", "ٵ": "ٲ",
     "ۅ": "ۄ", "ٛ": "ْ",
+    # Arabic-Indic and Persian digits must reach XTTS as ordinary digits.
+    "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4",
+    "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9",
+    "۰": "0", "۱": "1", "۲": "2", "۳": "3", "۴": "4",
+    "۵": "5", "۶": "6", "۷": "7", "۸": "8", "۹": "9",
 })
 REMOVED_CONTROLS = {"\u200b", "\u200c", "\u200d", "\u2060", "\ufeff", "\u061c", "\u200e", "\u200f"}
 PUNCTUATION = {",": "،", ";": "؛", "?": "؟", ".": "۔"}
@@ -41,7 +46,7 @@ ASCII_BASE = {
     "ٲ": "aa", "ۄ": "o", "ۆ": "o", "ٮ": "b",
 }
 ASCII_MARK = {
-    "َ": "a", "ِ": "i", "ُ": "u", "ْ": "", "ّ": "~", "ٕ": "e", "ٖ": "ee",
+    "َ": "a", "ِ": "i", "ُ": "u", "ْ": "", "ٕ": "e", "ٖ": "ee",
     "ٗ": "oo", "۪": "i", "ٔ": "'", "ٰ": "aa",
 }
 
@@ -111,6 +116,11 @@ def ascii_g2p(text: str) -> str:
             if token is None:
                 raise ValueError(f"No ASCII G2P mapping for Kashmiri grapheme U+{ord(base):04X} {base!r}")
         for mark in marks:
+            if mark == "ّ":
+                # Shadda is consonant gemination, not a literal punctuation
+                # symbol. Repeat the base pronunciation for XTTS.
+                token += ASCII_BASE.get(base, token)
+                continue
             mapped = ASCII_MARK.get(mark)
             if mapped is None:
                 if unicodedata.combining(mark):
