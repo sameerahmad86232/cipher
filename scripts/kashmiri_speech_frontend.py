@@ -31,6 +31,19 @@ IPA_MARK = {
     "َ": "a", "ِ": "i", "ُ": "u", "ْ": "", "ٕ": "ə", "ٖ": "iː",
     "ٗ": "uː", "ٲ": "əː", "ۄ": "ɔ", "ۆ": "o", "ؠ": "ʲ",
 }
+ASCII_BASE = {
+    "ا": "a", "آ": "aa", "ب": "b", "پ": "p", "ت": "t", "ٹ": "tt", "ث": "s",
+    "ج": "j", "چ": "ch", "ح": "h", "خ": "kh", "د": "d", "ڈ": "dd", "ذ": "z",
+    "ر": "r", "ڑ": "rr", "ز": "z", "ژ": "zh", "س": "s", "ش": "sh", "ص": "s",
+    "ض": "z", "ط": "t", "ظ": "z", "ع": "a", "غ": "gh", "ف": "f", "ق": "q",
+    "ک": "k", "گ": "g", "ل": "l", "م": "m", "ن": "n", "ں": "n", "و": "w",
+    "ہ": "h", "ھ": "h", "ء": "'", "ی": "y", "ے": "e", "ۍ": "ii", "ؠ": "y",
+    "ٲ": "aa", "ۄ": "o", "ۆ": "o", "ٮ": "b",
+}
+ASCII_MARK = {
+    "َ": "a", "ِ": "i", "ُ": "u", "ْ": "", "ّ": "~", "ٕ": "e", "ٖ": "ee",
+    "ٗ": "oo", "۪": "i", "ٔ": "'", "ٰ": "aa",
+}
 
 
 def normalize_for_tts(text: str) -> str:
@@ -75,11 +88,46 @@ def g2p(text: str) -> list[str]:
     return phones
 
 
+def ascii_g2p(text: str) -> str:
+    """Return tokenizer-safe Kashmiri pronunciation hints using ASCII only.
+
+    XTTS's published vocabulary lacks multiple Kashmiri code points. Training
+    and inference must both use this deterministic representation so no letter
+    is silently discarded. Unknown Arabic graphemes fail loudly.
+    """
+    output: list[str] = []
+    for unit in grapheme_units(text):
+        if unit.isspace():
+            output.append(" ")
+            continue
+        if unit in "،؛؟۔!":
+            output.append({"،": ",", "؛": ";", "؟": "?", "۔": ".", "!": "!"}[unit])
+            continue
+        base, marks = unit[0], unit[1:]
+        if base.isascii():
+            token = base
+        else:
+            token = ASCII_BASE.get(base)
+            if token is None:
+                raise ValueError(f"No ASCII G2P mapping for Kashmiri grapheme U+{ord(base):04X} {base!r}")
+        for mark in marks:
+            mapped = ASCII_MARK.get(mark)
+            if mapped is None:
+                if unicodedata.combining(mark):
+                    raise ValueError(f"No ASCII G2P mapping for Kashmiri mark U+{ord(mark):04X}")
+                mapped = mark
+            token += mapped
+        output.append(token)
+    value = "".join(output)
+    value = re.sub(r"\s+", " ", value)
+    return value.strip()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("text")
     args = parser.parse_args()
-    payload = {"original": args.text, "normalized": normalize_for_tts(args.text), "units": grapheme_units(args.text), "phones": g2p(args.text)}
+    payload = {"original": args.text, "normalized": normalize_for_tts(args.text), "units": grapheme_units(args.text), "phones": g2p(args.text), "asciiPhones": ascii_g2p(args.text)}
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
