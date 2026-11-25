@@ -40,6 +40,15 @@ class KashmiriSpeechFrontendTests(unittest.TestCase):
         self.assertEqual(output, "rabb")
         self.assertNotIn("~", output)
 
+    def test_complete_ktts_symbol_extensions_are_pronounced(self):
+        output = ascii_g2p("ؤنۍ چھےٚ سۭتۍ یِۂے گۓ فوراً شادؔ")
+        self.assertTrue(output.isascii())
+        self.assertNotIn("ؔ", output)
+        self.assertIn("e", output)
+
+    def test_stray_known_vowel_mark_is_preserved(self):
+        self.assertEqual(ascii_g2p("کلہ ٕاول"), "klh eawl")
+
 
 if __name__ == "__main__":
     unittest.main()

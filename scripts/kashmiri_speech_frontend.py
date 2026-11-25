@@ -43,11 +43,13 @@ ASCII_BASE = {
     "ض": "z", "ط": "t", "ظ": "z", "ع": "a", "غ": "gh", "ف": "f", "ق": "q",
     "ک": "k", "گ": "g", "ل": "l", "م": "m", "ن": "n", "ں": "n", "و": "w",
     "ہ": "h", "ھ": "h", "ء": "'", "ی": "y", "ے": "e", "ۍ": "ii", "ؠ": "y",
+    "ؤ": "w", "ۂ": "h", "ۓ": "e",
     "ٲ": "aa", "ۄ": "o", "ۆ": "o", "ٮ": "b",
 }
 ASCII_MARK = {
     "َ": "a", "ِ": "i", "ُ": "u", "ْ": "", "ٕ": "e", "ٖ": "ee",
-    "ٗ": "oo", "۪": "i", "ٔ": "'", "ٰ": "aa",
+    "ٗ": "oo", "۪": "i", "ٔ": "'", "ٰ": "aa", "ٚ": "e", "ۭ": "e",
+    "ً": "an", "ؔ": "",
 }
 
 
@@ -109,7 +111,14 @@ def ascii_g2p(text: str) -> str:
             output.append({"،": ",", "؛": ";", "؟": "?", "۔": ".", "!": "!"}[unit])
             continue
         base, marks = unit[0], unit[1:]
-        if base.isascii():
+        if unicodedata.combining(base):
+            # A handful of corpus rows contain a vowel mark separated from its
+            # base by a stray space. Preserve its sound instead of dropping the
+            # entire otherwise valid recording.
+            token = ASCII_MARK.get(base)
+            if token is None:
+                raise ValueError(f"No ASCII G2P mapping for standalone Kashmiri mark U+{ord(base):04X}")
+        elif base.isascii():
             token = base
         else:
             token = ASCII_BASE.get(base)
