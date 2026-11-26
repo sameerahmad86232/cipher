@@ -136,13 +136,17 @@ def main() -> None:
             {"text": ascii_g2p("کٲشُر زَبان چھِ واریاہ خوٗبصوٗرَت۔"), "speaker_wav": [reference], "language": "ar"},
         ],
     )
+    # Coqui 0.28 expects the full trainer config here (newer development
+    # recipes accept a raw dataset list). Pin this to the installed release.
     train_samples, eval_samples = load_tts_samples(
-        [dataset], eval_split=True, eval_split_max_size=166, eval_split_size=0.05
+        config, eval_split=True, eval_split_max_size=166, eval_split_size=0.05
     )
     if not eval_samples:
         raise SystemExit("XTTS validation samples missing")
     print(f"XTTS clean phonetic samples: train={len(train_samples)}, eval={len(eval_samples)}")
-    model = GPTTrainer.init_from_config(config)
+    # GPTTrainer does not expose init_from_config in Coqui 0.28; instantiate
+    # it directly, as required by that release's pinned XTTS recipe.
+    model = GPTTrainer(config)
     trainer = Trainer(
         TrainerArgs(restore_path=None, skip_train_epoch=False, start_with_eval=True, grad_accum_steps=32),
         config,
