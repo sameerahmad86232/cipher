@@ -1,0 +1,14 @@
+{
+  "id": "sameerahmadaaa/ktts-xtts-v1-evaluation",
+  "title": "KTTS XTTS v1 Evaluation",
+  "code_file": "kaggle-ktts-xtts-v1-evaluation.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": ["sameerahmadaaa/ktts-xtts-v1"],
+  "model_sources": []
+}
