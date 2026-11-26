@@ -5,9 +5,9 @@ from __future__ import annotations
 
 import json
 import os
-import shutil
 import sys
 import unicodedata
+import zipfile
 from pathlib import Path
 
 from trainer import Trainer, TrainerArgs
@@ -121,8 +121,10 @@ def main() -> None:
         print_step=25,
         plot_step=200,
         log_model_step=1000,
-        save_step=2000,
-        save_n_checkpoints=2,
+        # XTTS checkpoints are about 1.9 GB. Periodic copies exhausted Kaggle's
+        # disk during v4; retain only the validation-best model.
+        save_step=1000000,
+        save_n_checkpoints=1,
         save_checkpoints=True,
         print_eval=True,
         optimizer="AdamW",
@@ -147,6 +149,11 @@ def main() -> None:
     # GPTTrainer does not expose init_from_config in Coqui 0.28; instantiate
     # it directly, as required by that release's pinned XTTS recipe.
     model = GPTTrainer(config)
+    # The pretrained weights and DVAE are now resident in the model. Keeping
+    # their downloaded copies alongside multi-GB trainer checkpoints needlessly
+    # raises peak disk use and caused the previous run to fail while saving.
+    for disposable in (base["model"], base["dvae"]):
+        disposable.unlink(missing_ok=True)
     trainer = Trainer(
         TrainerArgs(restore_path=None, skip_train_epoch=False, start_with_eval=True, grad_accum_steps=32),
         config,
@@ -162,18 +169,26 @@ def main() -> None:
         raise SystemExit("XTTS training ended without a checkpoint")
     best = max(candidates, key=lambda path: path.stat().st_mtime)
     configs = list(best.parent.glob("config.json")) or list(OUTPUT_ROOT.rglob("config.json"))
-    release = Path("/kaggle/working/ktts-xtts-v1")
-    release.mkdir(exist_ok=True)
-    shutil.copy2(best, release / "model.pth")
-    shutil.copy2(configs[0], release / "config.json")
-    shutil.copy2(base["vocab"], release / "vocab.json")
-    shutil.copy2(DATA_ROOT / "xtts-g2p-report.json", release / "g2p-report.json")
-    (release / "LICENSES.txt").write_text("XTTS-v2: Coqui Public Model License 1.0.0. KTTS data: CC BY-NC 3.0. Non-commercial experiment.\n", encoding="utf-8")
     report = {"architecture": "XTTS-v2 GPT adaptation", "epochs": EPOCHS, "g2p": g2p_report, "checkpoint": str(best), "productionDeployed": False, "humanReviewRequired": True}
-    (release / "training-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    shutil.make_archive("/kaggle/working/ktts-xtts-v1", "zip", release)
+    report_path = OUTPUT_ROOT / "training-report.json"
+    licenses_path = OUTPUT_ROOT / "LICENSES.txt"
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    licenses_path.write_text("XTTS-v2: Coqui Public Model License 1.0.0. KTTS data: CC BY-NC 3.0. Non-commercial experiment.\n", encoding="utf-8")
+    # Stream files directly into the archive. A staging copy of model.pth would
+    # consume another ~1.9 GB before ZIP creation.
+    artifact = Path("/kaggle/working/ktts-xtts-v1.zip")
+    with zipfile.ZipFile(artifact, "w", compression=zipfile.ZIP_STORED, allowZip64=True) as archive:
+        for source, archive_name in (
+            (best, "model.pth"),
+            (configs[0], "config.json"),
+            (base["vocab"], "vocab.json"),
+            (DATA_ROOT / "xtts-g2p-report.json", "g2p-report.json"),
+            (report_path, "training-report.json"),
+            (licenses_path, "LICENSES.txt"),
+        ):
+            archive.write(source, archive_name)
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    print("Artifact: /kaggle/working/ktts-xtts-v1.zip")
+    print(f"Artifact: {artifact} ({artifact.stat().st_size} bytes)")
 
 
 if __name__ == "__main__":
