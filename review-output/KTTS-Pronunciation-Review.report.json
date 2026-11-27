@@ -1,0 +1,10 @@
+{
+  "transcriptRows": 2882,
+  "uniqueWords": 11279,
+  "reviewRows": 300,
+  "withAttestedEvidence": 20,
+  "fromApprovedSentences": 15,
+  "policy": "Sentence transliterations are only positional candidates, even when the sentence was approved. Only reviewer_status=approved may become a word-level pronunciation override.",
+  "output": "/workspace/cipher/review-output/KTTS-Pronunciation-Review.csv",
+  "workbook": "/workspace/cipher/review-output/KTTS-Pronunciation-Review.xlsx"
+}
