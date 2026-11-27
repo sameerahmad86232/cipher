@@ -1,0 +1,14 @@
+{
+  "id": "sameerahmadaaa/bolbosh-official-evaluation",
+  "title": "Official Bolbosh Kashmiri TTS Evaluation",
+  "code_file": "kaggle-bolbosh-official-evaluation.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}
